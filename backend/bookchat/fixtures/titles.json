@@ -1,0 +1,226 @@
+[
+ {
+  "model": "bookchat.book",
+  "pk": 0,
+  "fields": {
+   "title": "Frankenstein; Or, The Modern Prometheus"
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "pk": 1,
+  "fields": {
+   "title": "Romeo and Juliet"
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "pk": 2,
+  "fields": {
+   "title": "Pride and Prejudice"
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "pk": 3,
+  "fields": {
+   "title": "Moby Dick; Or, The Whale"
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "pk": 4,
+  "fields": {
+   "title": "Alice's Adventures in Wonderland"
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "pk": 5,
+  "fields": {
+   "title": "Little Women; Or, Meg, Jo, Beth, and Amy"
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "pk": 6,
+  "fields": {
+   "title": "The Scarlet Letter"
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "pk": 7,
+  "fields": {
+   "title": "The Enchanted April"
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "pk": 8,
+  "fields": {
+   "title": "A Room with a View"
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "pk": 9,
+  "fields": {
+   "title": "Middlemarch"
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "pk": 10,
+  "fields": {
+   "title": "The Complete Works of William Shakespeare"
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "pk": 11,
+  "fields": {
+   "title": "The Adventures of Ferdinand Count Fathom \u2014 Complete"
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "pk": 12,
+  "fields": {
+   "title": "History of Tom Jones, a Foundling"
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "pk": 13,
+  "fields": {
+   "title": "The Adventures of Roderick Random"
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "pk": 14,
+  "fields": {
+   "title": "My Life \u2014 Volume 1"
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "pk": 15,
+  "fields": {
+   "title": "The Expedition of Humphry Clinker"
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "pk": 16,
+  "fields": {
+   "title": "The Blue Castle: a novel"
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "pk": 17,
+  "fields": {
+   "title": "Twenty years after"
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "pk": 18,
+  "fields": {
+   "title": "Cranford"
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "pk": 19,
+  "fields": {
+   "title": "A Doll's House : a play"
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "pk": 20,
+  "fields": {
+   "title": "Beowulf: An Anglo-Saxon Epic Poem"
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "pk": 21,
+  "fields": {
+   "title": "Metamorphosis"
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "pk": 22,
+  "fields": {
+   "title": "The Yellow Wallpaper"
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "pk": 23,
+  "fields": {
+   "title": "The Great Gatsby"
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "pk": 24,
+  "fields": {
+   "title": "Dracula"
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "pk": 25,
+  "fields": {
+   "title": "The Picture of Dorian Gray"
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "pk": 26,
+  "fields": {
+   "title": "A Modest Proposal: For preventing the children of poor people in Ireland, from being a burden on their parents or country, and for making them beneficial to the publick"
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "pk": 27,
+  "fields": {
+   "title": "The Iliad"
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "pk": 28,
+  "fields": {
+   "title": "The Brothers Karamazov"
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "pk": 29,
+  "fields": {
+   "title": "Leviathan"
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "pk": 30,
+  "fields": {
+   "title": "The Souls of Black Folk"
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "pk": 31,
+  "fields": {
+   "title": "The Importance of Being Earnest: A Trivial Comedy for Serious People"
+  }
+ }
+]
