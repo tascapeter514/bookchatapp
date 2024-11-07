@@ -19,5 +19,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('authors/', views.authors, name='authors')
+    path('authors/', views.authors, name='authors'),
+    path('frontend/', views.frontend, name='frontend')
 ]
