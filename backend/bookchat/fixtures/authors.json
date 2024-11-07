@@ -1,374 +1,441 @@
 [
  {
   "model": "bookchat.author",
-  "pk": 0,
+  "author_id": 1,
   "fields": {
+   "languages": [
+    "en"
+   ],
+   "titles": [
+    1
+   ],
    "name": "Shelley, Mary Wollstonecraft",
    "birth_year": 1797,
-   "death_year": 1851,
-   "languages": [
-    "en"
-   ]
+   "death_year": 1851
   }
  },
  {
   "model": "bookchat.author",
-  "pk": 1,
+  "author_id": 2,
   "fields": {
+   "languages": [
+    "en"
+   ],
+   "titles": [
+    2,
+    11
+   ],
    "name": "Shakespeare, William",
    "birth_year": 1564,
-   "death_year": 1616,
-   "languages": [
-    "en"
-   ]
+   "death_year": 1616
   }
  },
  {
   "model": "bookchat.author",
-  "pk": 2,
+  "author_id": 3,
   "fields": {
+   "languages": [
+    "en"
+   ],
+   "titles": [
+    3
+   ],
    "name": "Austen, Jane",
    "birth_year": 1775,
-   "death_year": 1817,
-   "languages": [
-    "en"
-   ]
+   "death_year": 1817
   }
  },
  {
   "model": "bookchat.author",
-  "pk": 3,
+  "author_id": 4,
   "fields": {
+   "languages": [
+    "en"
+   ],
+   "titles": [
+    4
+   ],
    "name": "Melville, Herman",
    "birth_year": 1819,
-   "death_year": 1891,
-   "languages": [
-    "en"
-   ]
+   "death_year": 1891
   }
  },
  {
   "model": "bookchat.author",
-  "pk": 4,
+  "author_id": 5,
   "fields": {
+   "languages": [
+    "en"
+   ],
+   "titles": [
+    5
+   ],
    "name": "Carroll, Lewis",
    "birth_year": 1832,
-   "death_year": 1898,
-   "languages": [
-    "en"
-   ]
+   "death_year": 1898
   }
  },
  {
   "model": "bookchat.author",
-  "pk": 5,
+  "author_id": 6,
   "fields": {
+   "languages": [
+    "en"
+   ],
+   "titles": [
+    6
+   ],
    "name": "Alcott, Louisa May",
    "birth_year": 1832,
-   "death_year": 1888,
-   "languages": [
-    "en"
-   ]
+   "death_year": 1888
   }
  },
  {
   "model": "bookchat.author",
-  "pk": 6,
+  "author_id": 7,
   "fields": {
+   "languages": [
+    "en"
+   ],
+   "titles": [
+    7
+   ],
    "name": "Hawthorne, Nathaniel",
    "birth_year": 1804,
-   "death_year": 1864,
-   "languages": [
-    "en"
-   ]
+   "death_year": 1864
   }
  },
  {
   "model": "bookchat.author",
-  "pk": 7,
+  "author_id": 8,
   "fields": {
+   "languages": [
+    "en"
+   ],
+   "titles": [
+    8
+   ],
    "name": "Von Arnim, Elizabeth",
    "birth_year": 1866,
-   "death_year": 1941,
-   "languages": [
-    "en"
-   ]
+   "death_year": 1941
   }
  },
  {
   "model": "bookchat.author",
-  "pk": 8,
+  "author_id": 9,
   "fields": {
+   "languages": [
+    "en"
+   ],
+   "titles": [
+    9
+   ],
    "name": "Forster, E. M. (Edward Morgan)",
    "birth_year": 1879,
-   "death_year": 1970,
-   "languages": [
-    "en"
-   ]
+   "death_year": 1970
   }
  },
  {
   "model": "bookchat.author",
-  "pk": 9,
+  "author_id": 10,
   "fields": {
+   "languages": [
+    "en"
+   ],
+   "titles": [
+    10
+   ],
    "name": "Eliot, George",
    "birth_year": 1819,
-   "death_year": 1880,
-   "languages": [
-    "en"
-   ]
+   "death_year": 1880
   }
  },
  {
   "model": "bookchat.author",
-  "pk": 10,
+  "author_id": 12,
   "fields": {
-   "name": "Shakespeare, William",
-   "birth_year": 1564,
-   "death_year": 1616,
    "languages": [
     "en"
-   ]
-  }
- },
- {
-  "model": "bookchat.author",
-  "pk": 11,
-  "fields": {
+   ],
+   "titles": [
+    12,
+    14,
+    16
+   ],
    "name": "Smollett, T. (Tobias)",
    "birth_year": 1721,
-   "death_year": 1771,
-   "languages": [
-    "en"
-   ]
+   "death_year": 1771
   }
  },
  {
   "model": "bookchat.author",
-  "pk": 12,
+  "author_id": 13,
   "fields": {
+   "languages": [
+    "en"
+   ],
+   "titles": [
+    13
+   ],
    "name": "Fielding, Henry",
    "birth_year": 1707,
-   "death_year": 1754,
-   "languages": [
-    "en"
-   ]
+   "death_year": 1754
   }
  },
  {
   "model": "bookchat.author",
-  "pk": 13,
+  "author_id": 15,
   "fields": {
-   "name": "Smollett, T. (Tobias)",
-   "birth_year": 1721,
-   "death_year": 1771,
    "languages": [
     "en"
-   ]
-  }
- },
- {
-  "model": "bookchat.author",
-  "pk": 14,
-  "fields": {
+   ],
+   "titles": [
+    15
+   ],
    "name": "Wagner, Richard",
    "birth_year": 1813,
-   "death_year": 1883,
-   "languages": [
-    "en"
-   ]
+   "death_year": 1883
   }
  },
  {
   "model": "bookchat.author",
-  "pk": 15,
+  "author_id": 17,
   "fields": {
-   "name": "Smollett, T. (Tobias)",
-   "birth_year": 1721,
-   "death_year": 1771,
    "languages": [
     "en"
-   ]
-  }
- },
- {
-  "model": "bookchat.author",
-  "pk": 16,
-  "fields": {
+   ],
+   "titles": [
+    17
+   ],
    "name": "Montgomery, L. M. (Lucy Maud)",
    "birth_year": 1874,
-   "death_year": 1942,
-   "languages": [
-    "en"
-   ]
+   "death_year": 1942
   }
  },
  {
   "model": "bookchat.author",
-  "pk": 17,
+  "author_id": 18,
   "fields": {
+   "languages": [
+    "en"
+   ],
+   "titles": [
+    18
+   ],
+   "name": "Dumas, Alexandre",
+   "birth_year": 1802,
+   "death_year": 1870
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 18,
+  "fields": {
+   "languages": [
+    "en"
+   ],
+   "titles": [
+    18
+   ],
    "name": "Maquet, Auguste",
    "birth_year": 1813,
-   "death_year": 1888,
-   "languages": [
-    "en"
-   ]
+   "death_year": 1888
   }
  },
  {
   "model": "bookchat.author",
-  "pk": 18,
+  "author_id": 19,
   "fields": {
+   "languages": [
+    "en"
+   ],
+   "titles": [
+    19
+   ],
    "name": "Gaskell, Elizabeth Cleghorn",
    "birth_year": 1810,
-   "death_year": 1865,
-   "languages": [
-    "en"
-   ]
+   "death_year": 1865
   }
  },
  {
   "model": "bookchat.author",
-  "pk": 19,
+  "author_id": 20,
   "fields": {
+   "languages": [
+    "en"
+   ],
+   "titles": [
+    20
+   ],
    "name": "Ibsen, Henrik",
    "birth_year": 1828,
-   "death_year": 1906,
-   "languages": [
-    "en"
-   ]
+   "death_year": 1906
   }
  },
  {
   "model": "bookchat.author",
-  "pk": 20,
+  "author_id": 21,
   "fields": {
+   "languages": [
+    "en"
+   ],
+   "titles": [
+    21
+   ],
+   "name": "unknown",
+   "birth_year": 0,
+   "death_year": 0
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 22,
+  "fields": {
+   "languages": [
+    "en"
+   ],
+   "titles": [
+    22
+   ],
    "name": "Kafka, Franz",
    "birth_year": 1883,
-   "death_year": 1924,
-   "languages": [
-    "en"
-   ]
+   "death_year": 1924
   }
  },
  {
   "model": "bookchat.author",
-  "pk": 21,
+  "author_id": 23,
   "fields": {
+   "languages": [
+    "en"
+   ],
+   "titles": [
+    23
+   ],
    "name": "Gilman, Charlotte Perkins",
    "birth_year": 1860,
-   "death_year": 1935,
-   "languages": [
-    "en"
-   ]
+   "death_year": 1935
   }
  },
  {
   "model": "bookchat.author",
-  "pk": 22,
+  "author_id": 24,
   "fields": {
+   "languages": [
+    "en"
+   ],
+   "titles": [
+    24
+   ],
    "name": "Fitzgerald, F. Scott (Francis Scott)",
    "birth_year": 1896,
-   "death_year": 1940,
-   "languages": [
-    "en"
-   ]
+   "death_year": 1940
   }
  },
  {
   "model": "bookchat.author",
-  "pk": 23,
+  "author_id": 25,
   "fields": {
+   "languages": [
+    "en"
+   ],
+   "titles": [
+    25
+   ],
    "name": "Stoker, Bram",
    "birth_year": 1847,
-   "death_year": 1912,
-   "languages": [
-    "en"
-   ]
+   "death_year": 1912
   }
  },
  {
   "model": "bookchat.author",
-  "pk": 24,
+  "author_id": 26,
   "fields": {
+   "languages": [
+    "en"
+   ],
+   "titles": [
+    26,
+    32
+   ],
    "name": "Wilde, Oscar",
    "birth_year": 1854,
-   "death_year": 1900,
-   "languages": [
-    "en"
-   ]
+   "death_year": 1900
   }
  },
  {
   "model": "bookchat.author",
-  "pk": 25,
+  "author_id": 27,
   "fields": {
+   "languages": [
+    "en"
+   ],
+   "titles": [
+    27
+   ],
    "name": "Swift, Jonathan",
    "birth_year": 1667,
-   "death_year": 1745,
-   "languages": [
-    "en"
-   ]
+   "death_year": 1745
   }
  },
  {
   "model": "bookchat.author",
-  "pk": 26,
+  "author_id": 28,
   "fields": {
+   "languages": [
+    "en"
+   ],
+   "titles": [
+    28
+   ],
    "name": "Homer",
    "birth_year": -750,
-   "death_year": -650,
-   "languages": [
-    "en"
-   ]
+   "death_year": -650
   }
  },
  {
   "model": "bookchat.author",
-  "pk": 27,
+  "author_id": 29,
   "fields": {
+   "languages": [
+    "en"
+   ],
+   "titles": [
+    29
+   ],
    "name": "Dostoyevsky, Fyodor",
    "birth_year": 1821,
-   "death_year": 1881,
-   "languages": [
-    "en"
-   ]
+   "death_year": 1881
   }
  },
  {
   "model": "bookchat.author",
-  "pk": 28,
+  "author_id": 30,
   "fields": {
+   "languages": [
+    "en"
+   ],
+   "titles": [
+    30
+   ],
    "name": "Hobbes, Thomas",
    "birth_year": 1588,
-   "death_year": 1679,
-   "languages": [
-    "en"
-   ]
+   "death_year": 1679
   }
  },
  {
   "model": "bookchat.author",
-  "pk": 29,
+  "author_id": 31,
   "fields": {
+   "languages": [
+    "en"
+   ],
+   "titles": [
+    31
+   ],
    "name": "Du Bois, W. E. B. (William Edward Burghardt)",
    "birth_year": 1868,
-   "death_year": 1963,
-   "languages": [
-    "en"
-   ]
-  }
- },
- {
-  "model": "bookchat.author",
-  "pk": 30,
-  "fields": {
-   "name": "Wilde, Oscar",
-   "birth_year": 1854,
-   "death_year": 1900,
-   "languages": [
-    "en"
-   ]
+   "death_year": 1963
   }
  }
 ]

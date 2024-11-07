@@ -1,224 +1,224 @@
 [
  {
   "model": "bookchat.book",
-  "pk": 0,
+  "title_id": 1,
   "fields": {
    "title": "Frankenstein; Or, The Modern Prometheus"
   }
  },
  {
   "model": "bookchat.book",
-  "pk": 1,
+  "title_id": 2,
   "fields": {
    "title": "Romeo and Juliet"
   }
  },
  {
   "model": "bookchat.book",
-  "pk": 2,
+  "title_id": 3,
   "fields": {
    "title": "Pride and Prejudice"
   }
  },
  {
   "model": "bookchat.book",
-  "pk": 3,
+  "title_id": 4,
   "fields": {
    "title": "Moby Dick; Or, The Whale"
   }
  },
  {
   "model": "bookchat.book",
-  "pk": 4,
+  "title_id": 5,
   "fields": {
    "title": "Alice's Adventures in Wonderland"
   }
  },
  {
   "model": "bookchat.book",
-  "pk": 5,
+  "title_id": 6,
   "fields": {
    "title": "Little Women; Or, Meg, Jo, Beth, and Amy"
   }
  },
  {
   "model": "bookchat.book",
-  "pk": 6,
+  "title_id": 7,
   "fields": {
    "title": "The Scarlet Letter"
   }
  },
  {
   "model": "bookchat.book",
-  "pk": 7,
+  "title_id": 8,
   "fields": {
    "title": "The Enchanted April"
   }
  },
  {
   "model": "bookchat.book",
-  "pk": 8,
+  "title_id": 9,
   "fields": {
    "title": "A Room with a View"
   }
  },
  {
   "model": "bookchat.book",
-  "pk": 9,
+  "title_id": 10,
   "fields": {
    "title": "Middlemarch"
   }
  },
  {
   "model": "bookchat.book",
-  "pk": 10,
+  "title_id": 11,
   "fields": {
    "title": "The Complete Works of William Shakespeare"
   }
  },
  {
   "model": "bookchat.book",
-  "pk": 11,
+  "title_id": 12,
   "fields": {
    "title": "The Adventures of Ferdinand Count Fathom \u2014 Complete"
   }
  },
  {
   "model": "bookchat.book",
-  "pk": 12,
+  "title_id": 13,
   "fields": {
    "title": "History of Tom Jones, a Foundling"
   }
  },
  {
   "model": "bookchat.book",
-  "pk": 13,
+  "title_id": 14,
   "fields": {
    "title": "The Adventures of Roderick Random"
   }
  },
  {
   "model": "bookchat.book",
-  "pk": 14,
+  "title_id": 15,
   "fields": {
    "title": "My Life \u2014 Volume 1"
   }
  },
  {
   "model": "bookchat.book",
-  "pk": 15,
+  "title_id": 16,
   "fields": {
    "title": "The Expedition of Humphry Clinker"
   }
  },
  {
   "model": "bookchat.book",
-  "pk": 16,
+  "title_id": 17,
   "fields": {
    "title": "The Blue Castle: a novel"
   }
  },
  {
   "model": "bookchat.book",
-  "pk": 17,
+  "title_id": 18,
   "fields": {
    "title": "Twenty years after"
   }
  },
  {
   "model": "bookchat.book",
-  "pk": 18,
+  "title_id": 19,
   "fields": {
    "title": "Cranford"
   }
  },
  {
   "model": "bookchat.book",
-  "pk": 19,
+  "title_id": 20,
   "fields": {
    "title": "A Doll's House : a play"
   }
  },
  {
   "model": "bookchat.book",
-  "pk": 20,
+  "title_id": 21,
   "fields": {
    "title": "Beowulf: An Anglo-Saxon Epic Poem"
   }
  },
  {
   "model": "bookchat.book",
-  "pk": 21,
+  "title_id": 22,
   "fields": {
    "title": "Metamorphosis"
   }
  },
  {
   "model": "bookchat.book",
-  "pk": 22,
+  "title_id": 23,
   "fields": {
    "title": "The Yellow Wallpaper"
   }
  },
  {
   "model": "bookchat.book",
-  "pk": 23,
+  "title_id": 24,
   "fields": {
    "title": "The Great Gatsby"
   }
  },
  {
   "model": "bookchat.book",
-  "pk": 24,
+  "title_id": 25,
   "fields": {
    "title": "Dracula"
   }
  },
  {
   "model": "bookchat.book",
-  "pk": 25,
+  "title_id": 26,
   "fields": {
    "title": "The Picture of Dorian Gray"
   }
  },
  {
   "model": "bookchat.book",
-  "pk": 26,
+  "title_id": 27,
   "fields": {
    "title": "A Modest Proposal: For preventing the children of poor people in Ireland, from being a burden on their parents or country, and for making them beneficial to the publick"
   }
  },
  {
   "model": "bookchat.book",
-  "pk": 27,
+  "title_id": 28,
   "fields": {
    "title": "The Iliad"
   }
  },
  {
   "model": "bookchat.book",
-  "pk": 28,
+  "title_id": 29,
   "fields": {
    "title": "The Brothers Karamazov"
   }
  },
  {
   "model": "bookchat.book",
-  "pk": 29,
+  "title_id": 30,
   "fields": {
    "title": "Leviathan"
   }
  },
  {
   "model": "bookchat.book",
-  "pk": 30,
+  "title_id": 31,
   "fields": {
    "title": "The Souls of Black Folk"
   }
  },
  {
   "model": "bookchat.book",
-  "pk": 31,
+  "title_id": 32,
   "fields": {
    "title": "The Importance of Being Earnest: A Trivial Comedy for Serious People"
   }
