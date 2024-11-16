@@ -1,16 +1,30 @@
 from django.shortcuts import render
-from .models import Author, Book
+from .models import Author, Book, Genre
 from django.http import HttpResponse, JsonResponse
 import json
 
 # Create your views here.
 
-# def authors(request):
-#     return HttpResponse('<h1>Hello world!</h1>')
+
+def genres(request):
+    genre_list = Genre.objects.values()
+    return render(request, 'bookchat/genres.html', {'genres': genre_list})
+
+def sci_fi(request):
+    sci_fi_list = Book.objects.filter(genres__genre_name='Science-Fiction & Fantasy')
+    print(sci_fi_list)
+    return render(request, 'bookchat/sci_fi.html', {'scifi': sci_fi_list})
+    
+
+
 
 def authors(request):
     author_list = Author.objects.values()
     return render(request, 'bookchat/authors.html', {'authors': author_list})
+
+def books(request):
+    book_list = Book.objects.values()
+    return render(request, 'bookchat/books.html', {'books': book_list} )
 
 def frontend(request):
     author_list = list(Author.objects.values())

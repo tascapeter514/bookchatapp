@@ -3,224 +3,387 @@
   "model": "bookchat.book",
   "title_id": 1,
   "fields": {
-   "title": "Frankenstein; Or, The Modern Prometheus"
+   "title": "Frankenstein; Or, The Modern Prometheus",
+   "genres": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ]
   }
  },
  {
   "model": "bookchat.book",
   "title_id": 2,
   "fields": {
-   "title": "Romeo and Juliet"
+   "title": "Romeo and Juliet",
+   "genres": [
+    2,
+    4,
+    6
+   ]
   }
  },
  {
   "model": "bookchat.book",
   "title_id": 3,
   "fields": {
-   "title": "Pride and Prejudice"
+   "title": "Pride and Prejudice",
+   "genres": [
+    1,
+    2,
+    4
+   ]
   }
  },
  {
   "model": "bookchat.book",
   "title_id": 4,
   "fields": {
-   "title": "Moby Dick; Or, The Whale"
+   "title": "Moby Dick; Or, The Whale",
+   "genres": [
+    2,
+    4
+   ]
   }
  },
  {
   "model": "bookchat.book",
   "title_id": 5,
   "fields": {
-   "title": "Alice's Adventures in Wonderland"
+   "title": "Alice's Adventures in Wonderland",
+   "genres": [
+    7,
+    2
+   ]
   }
  },
  {
   "model": "bookchat.book",
   "title_id": 6,
   "fields": {
-   "title": "Little Women; Or, Meg, Jo, Beth, and Amy"
+   "title": "Little Women; Or, Meg, Jo, Beth, and Amy",
+   "genres": [
+    1,
+    2,
+    4
+   ]
   }
  },
  {
   "model": "bookchat.book",
   "title_id": 7,
   "fields": {
-   "title": "The Scarlet Letter"
+   "title": "The Scarlet Letter",
+   "genres": [
+    1,
+    2,
+    8,
+    4
+   ]
   }
  },
  {
   "model": "bookchat.book",
   "title_id": 8,
   "fields": {
-   "title": "The Enchanted April"
+   "title": "The Enchanted April",
+   "genres": [
+    1,
+    2,
+    4
+   ]
   }
  },
  {
   "model": "bookchat.book",
   "title_id": 9,
   "fields": {
-   "title": "A Room with a View"
+   "title": "A Room with a View",
+   "genres": [
+    1,
+    2,
+    9,
+    4,
+    10
+   ]
   }
  },
  {
   "model": "bookchat.book",
   "title_id": 10,
   "fields": {
-   "title": "Middlemarch"
+   "title": "Middlemarch",
+   "genres": [
+    1,
+    2,
+    11,
+    4
+   ]
   }
  },
  {
   "model": "bookchat.book",
   "title_id": 11,
   "fields": {
-   "title": "The Complete Works of William Shakespeare"
+   "title": "The Complete Works of William Shakespeare",
+   "genres": [
+    2,
+    4
+   ]
   }
  },
  {
   "model": "bookchat.book",
   "title_id": 12,
   "fields": {
-   "title": "The Adventures of Ferdinand Count Fathom \u2014 Complete"
+   "title": "The Adventures of Ferdinand Count Fathom \u2014 Complete",
+   "genres": [
+    2,
+    4
+   ]
   }
  },
  {
   "model": "bookchat.book",
   "title_id": 13,
   "fields": {
-   "title": "History of Tom Jones, a Foundling"
+   "title": "History of Tom Jones, a Foundling",
+   "genres": [
+    2,
+    9,
+    4
+   ]
   }
  },
  {
   "model": "bookchat.book",
   "title_id": 14,
   "fields": {
-   "title": "The Adventures of Roderick Random"
+   "title": "The Adventures of Roderick Random",
+   "genres": [
+    1,
+    2,
+    12,
+    4
+   ]
   }
  },
  {
   "model": "bookchat.book",
   "title_id": 15,
   "fields": {
-   "title": "My Life \u2014 Volume 1"
+   "title": "My Life \u2014 Volume 1",
+   "genres": [
+    13,
+    14
+   ]
   }
  },
  {
   "model": "bookchat.book",
   "title_id": 16,
   "fields": {
-   "title": "The Expedition of Humphry Clinker"
+   "title": "The Expedition of Humphry Clinker",
+   "genres": [
+    2,
+    12,
+    4,
+    10
+   ]
   }
  },
  {
   "model": "bookchat.book",
   "title_id": 17,
   "fields": {
-   "title": "The Blue Castle: a novel"
+   "title": "The Blue Castle: a novel",
+   "genres": [
+    1,
+    2,
+    4,
+    15
+   ]
   }
  },
  {
   "model": "bookchat.book",
   "title_id": 18,
   "fields": {
-   "title": "Twenty years after"
+   "title": "Twenty years after",
+   "genres": [
+    1,
+    2,
+    12,
+    4
+   ]
   }
  },
  {
   "model": "bookchat.book",
   "title_id": 19,
   "fields": {
-   "title": "Cranford"
+   "title": "Cranford",
+   "genres": [
+    1,
+    2,
+    4
+   ]
   }
  },
  {
   "model": "bookchat.book",
   "title_id": 20,
   "fields": {
-   "title": "A Doll's House : a play"
+   "title": "A Doll's House : a play",
+   "genres": [
+    2,
+    4
+   ]
   }
  },
  {
   "model": "bookchat.book",
   "title_id": 21,
   "fields": {
-   "title": "Beowulf: An Anglo-Saxon Epic Poem"
+   "title": "Beowulf: An Anglo-Saxon Epic Poem",
+   "genres": [
+    16,
+    4,
+    6
+   ]
   }
  },
  {
   "model": "bookchat.book",
   "title_id": 22,
   "fields": {
-   "title": "Metamorphosis"
+   "title": "Metamorphosis",
+   "genres": [
+    2,
+    4,
+    17
+   ]
   }
  },
  {
   "model": "bookchat.book",
   "title_id": 23,
   "fields": {
-   "title": "The Yellow Wallpaper"
+   "title": "The Yellow Wallpaper",
+   "genres": [
+    2,
+    3,
+    4,
+    17
+   ]
   }
  },
  {
   "model": "bookchat.book",
   "title_id": 24,
   "fields": {
-   "title": "The Great Gatsby"
+   "title": "The Great Gatsby",
+   "genres": [
+    1,
+    2,
+    4
+   ]
   }
  },
  {
   "model": "bookchat.book",
   "title_id": 25,
   "fields": {
-   "title": "Dracula"
+   "title": "Dracula",
+   "genres": [
+    2,
+    4,
+    5
+   ]
   }
  },
  {
   "model": "bookchat.book",
   "title_id": 26,
   "fields": {
-   "title": "The Picture of Dorian Gray"
+   "title": "The Picture of Dorian Gray",
+   "genres": [
+    2,
+    4,
+    18
+   ]
   }
  },
  {
   "model": "bookchat.book",
   "title_id": 27,
   "fields": {
-   "title": "A Modest Proposal: For preventing the children of poor people in Ireland, from being a burden on their parents or country, and for making them beneficial to the publick"
+   "title": "A Modest Proposal: For preventing the children of poor people in Ireland, from being a burden on their parents or country, and for making them beneficial to the publick",
+   "genres": [
+    9,
+    4,
+    19
+   ]
   }
  },
  {
   "model": "bookchat.book",
   "title_id": 28,
   "fields": {
-   "title": "The Iliad"
+   "title": "The Iliad",
+   "genres": [
+    4,
+    6
+   ]
   }
  },
  {
   "model": "bookchat.book",
   "title_id": 29,
   "fields": {
-   "title": "The Brothers Karamazov"
+   "title": "The Brothers Karamazov",
+   "genres": [
+    1,
+    2,
+    4
+   ]
   }
  },
  {
   "model": "bookchat.book",
   "title_id": 30,
   "fields": {
-   "title": "Leviathan"
+   "title": "Leviathan",
+   "genres": [
+    12,
+    19
+   ]
   }
  },
  {
   "model": "bookchat.book",
   "title_id": 31,
   "fields": {
-   "title": "The Souls of Black Folk"
+   "title": "The Souls of Black Folk",
+   "genres": [
+    13,
+    1,
+    8
+   ]
   }
  },
  {
   "model": "bookchat.book",
   "title_id": 32,
   "fields": {
-   "title": "The Importance of Being Earnest: A Trivial Comedy for Serious People"
+   "title": "The Importance of Being Earnest: A Trivial Comedy for Serious People",
+   "genres": [
+    2,
+    4,
+    20
+   ]
   }
  }
 ]

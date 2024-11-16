@@ -3,10 +3,15 @@ from django.db import models
 # Create your models here.
 
 
+
+class Genre(models.Model):
+    genre_id = models.AutoField(primary_key=True)
+    genre_name = models.CharField(max_length=128, unique=True)
+
 class Book(models.Model):
     title_id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=128, unique=True)
-    # authors = models.ManyToManyField('Author', related_name='my_authors')
+    genres = models.ManyToManyField(Genre, related_name='titles')
 
 
 class Author(models.Model):

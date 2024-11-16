@@ -20,5 +20,7 @@ from . import views
 
 urlpatterns = [
     path('authors/', views.authors, name='authors'),
-    path('frontend/', views.frontend, name='frontend')
+    path('frontend/', views.frontend, name='frontend'),
+    path('genres/', views.genres, name='genres'),
+    path('sci_fi/', views.sci_fi, name='sci_fi')
 ]

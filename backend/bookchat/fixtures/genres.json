@@ -1,0 +1,142 @@
+[
+ {
+  "model": "bookchat.genre",
+  "genre_id": 1,
+  "fields": {
+   "genre_name": "Culture/Civilization/Society"
+  }
+ },
+ {
+  "model": "bookchat.genre",
+  "genre_id": 2,
+  "fields": {
+   "genre_name": "Fiction"
+  }
+ },
+ {
+  "model": "bookchat.genre",
+  "genre_id": 3,
+  "fields": {
+   "genre_name": "Gender & Sexuality Studies"
+  }
+ },
+ {
+  "model": "bookchat.genre",
+  "genre_id": 4,
+  "fields": {
+   "genre_name": "Literature"
+  }
+ },
+ {
+  "model": "bookchat.genre",
+  "genre_id": 5,
+  "fields": {
+   "genre_name": "Science-Fiction & Fantasy"
+  }
+ },
+ {
+  "model": "bookchat.genre",
+  "genre_id": 6,
+  "fields": {
+   "genre_name": "Poetry"
+  }
+ },
+ {
+  "model": "bookchat.genre",
+  "genre_id": 7,
+  "fields": {
+   "genre_name": "Children & Young Adult Reading"
+  }
+ },
+ {
+  "model": "bookchat.genre",
+  "genre_id": 8,
+  "fields": {
+   "genre_name": "History - American"
+  }
+ },
+ {
+  "model": "bookchat.genre",
+  "genre_id": 9,
+  "fields": {
+   "genre_name": "Humour"
+  }
+ },
+ {
+  "model": "bookchat.genre",
+  "genre_id": 10,
+  "fields": {
+   "genre_name": "Travel & Geography"
+  }
+ },
+ {
+  "model": "bookchat.genre",
+  "genre_id": 11,
+  "fields": {
+   "genre_name": "History - British"
+  }
+ },
+ {
+  "model": "bookchat.genre",
+  "genre_id": 12,
+  "fields": {
+   "genre_name": "History - General"
+  }
+ },
+ {
+  "model": "bookchat.genre",
+  "genre_id": 13,
+  "fields": {
+   "genre_name": "Biographies"
+  }
+ },
+ {
+  "model": "bookchat.genre",
+  "genre_id": 14,
+  "fields": {
+   "genre_name": "Music"
+  }
+ },
+ {
+  "model": "bookchat.genre",
+  "genre_id": 15,
+  "fields": {
+   "genre_name": "Teaching & Education"
+  }
+ },
+ {
+  "model": "bookchat.genre",
+  "genre_id": 16,
+  "fields": {
+   "genre_name": "History - Medieval/The Middle Ages"
+  }
+ },
+ {
+  "model": "bookchat.genre",
+  "genre_id": 17,
+  "fields": {
+   "genre_name": "Psychiatry/Psychology"
+  }
+ },
+ {
+  "model": "bookchat.genre",
+  "genre_id": 18,
+  "fields": {
+   "genre_name": "Philosophy & Ethics"
+  }
+ },
+ {
+  "model": "bookchat.genre",
+  "genre_id": 19,
+  "fields": {
+   "genre_name": "Politics"
+  }
+ },
+ {
+  "model": "bookchat.genre",
+  "genre_id": 20,
+  "fields": {
+   "genre_name": "Performing Arts/Film"
+  }
+ }
+]
