@@ -1,0 +1,2466 @@
+[
+ {
+  "model": "bookchat.author",
+  "author_id": 1,
+  "fields": {
+   "name": "Albert Camus",
+   "bio": "Albert Camus was a French Algerian author, philosopher, and journalist who was awarded the Nobel Prize for Literature in 1957. He was a key philosopher of the 20th-century and his most famous work is the novel *L'Étranger* (*The Stranger*).\r\n\r\nIn 1949, Camus founded the Group for International Liaisons within the Revolutionary Union Movement, which was a group opposed to some tendencies of the surrealistic movement of André Breton. Camus was the second-youngest recipient of the Nobel Prize for Literature - after Rudyard Kipling - when he became the first African-born writer to receive the award. He is the shortest-lived of any literature laureate to date, having died in an automobile accident just over two years after receiving the award.\r\n\r\nHe is often cited as a proponent of existentialism, the philosophy that he was associated with during his own lifetime, but Camus himself rejected this particular label. In an interview in 1945, Camus rejected any ideological associations: \"No, I am not an existentialist. Sartre and I are always surprised to see our names linked…\"",
+   "birth_date": "7 November 1913",
+   "death_date": "4 January 1960",
+   "links": [
+    {
+     "title": "Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Albert_Camus",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 2,
+  "fields": {
+   "name": "Alvin Toffler",
+   "bio": "American writer and futurist",
+   "birth_date": "1928",
+   "death_date": "2016",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 3,
+  "fields": {
+   "name": "Tommy Orange",
+   "bio": {
+    "type": "/type/text",
+    "value": "American novelist and writer who's first book, There There (2018), was a finalist for the 2019 Pulitzer Prize and received the 2019 American Book Award."
+   },
+   "birth_date": "1982",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 4,
+  "fields": {
+   "name": "James Baldwin",
+   "bio": {
+    "type": "/type/text",
+    "value": "James Arthur Baldwin was an American novelist, writer, playwright, poet, essayist and civil rights activist. Most of Baldwin's work deals with racial and sexual issues in the mid-20th century in the United States. His novels are notable for the personal way in which they explore questions of identity as well as the way in which they mine complex social and psychological pressures related to being black and homosexual well before the social, cultural or political equality of these groups was improved.\r\n\r\nSource and more information: https://en.wikipedia.org/wiki/James_Baldwin"
+   },
+   "birth_date": "2 August 1924",
+   "death_date": "30 November 1987",
+   "links": [
+    {
+     "url": "https://en.wikipedia.org/wiki/James_Baldwin",
+     "title": "Wikipedia",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "title": "BookBrainz",
+     "url": "https://bookbrainz.org/author/034280de-a359-4928-8035-c6f66ba54f6a",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "title": "inventaire.io",
+     "url": "https://inventaire.io/entity/wd:Q273210",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 5,
+  "fields": {
+   "name": "Chaim Potok",
+   "bio": {
+    "type": "/type/text",
+    "value": "Chaim Potok (February 17, 1929 – July 23, 2002) was an American author, novelist, playwright, editor and rabbi. Of the more than dozen novels he authored, his first book The Chosen (1967), was listed on The New York Times’ bestseller list for 39 weeks and sold more than 3,400,000 copies and which was adapted into a well-received 1981 feature film by the same title."
+   },
+   "birth_date": "1929",
+   "death_date": "2002",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 6,
+  "fields": {
+   "name": "Barbara Kingsolver",
+   "bio": {
+    "type": "/type/text",
+    "value": "Barbara Kingsolver is an American novelist, essayist and poet."
+   },
+   "birth_date": "8 April 1955",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 7,
+  "fields": {
+   "name": "Ernest Cline",
+   "bio": "ERNEST CLINE is an internationally best-selling novelist, screenwriter, father, and full-time geek. He is the author of the novels Ready Player One and Armada and co-screenwriter of the film adaptation of Ready Player One, directed by Steven Spielberg. His books have been published in over fifty countries and have spent more than 100 weeks on The New York Times Best Sellers list. He lives in Austin, Texas, with his family, a time-traveling DeLorean, and a large collection of classic video games.",
+   "birth_date": "1972-03-29",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 8,
+  "fields": {
+   "name": "Stephen King",
+   "bio": "Stephen Edwin King (born September 21, 1947) is an American author of horror, supernatural fiction, suspense, crime, science-fiction, and fantasy novels. His books have sold more than 350 million copies, and many have been adapted into films, television series, miniseries, and comic books. King has published 63 novels, including seven under the pen name Richard Bachman, and five non-fiction books. He has also written approximately 200 short stories, most of which have been published in book collections.\r\n\r\nKing has received Bram Stoker Awards, World Fantasy Awards, and British Fantasy Society Awards. In 2003, the National Book Foundation awarded him the Medal for Distinguished Contribution to American Letters. He has also received awards for his contribution to literature for his entire bibliography, such as the 2004 World Fantasy Award for Life Achievement and the 2007 Grand Master Award from the Mystery Writers of America. In 2015, he was awarded with a National Medal of Arts from the U.S. National Endowment for the Arts for his contributions to literature. He has been described as the \"King of Horror\", a play on his surname and a reference to his high standing in pop culture.",
+   "birth_date": "September 21, 1947",
+   "death_date": "none",
+   "links": [
+    {
+     "title": "Stephen King's Official Web Site",
+     "url": "http://www.stephenking.com",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 9,
+  "fields": {
+   "name": "Ismail Kadare",
+   "bio": "none",
+   "birth_date": "1936",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 10,
+  "fields": {
+   "name": "Paul Auster",
+   "bio": "Paul Benjamin Auster is an American author and director whose writing blends absurdism, existentialism, crime fiction, and the search for identity and personal meaning in works such as The New York Trilogy (1987), Moon Palace (1989), The Music of Chance (1990), The Book of Illusions (2002), and The Brooklyn Follies (2005). His books have been translated into more than forty languages.\r\nSource: Wikipedia",
+   "birth_date": "3 February 1947",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 11,
+  "fields": {
+   "name": "Ernest Hemingway",
+   "bio": "Ernest Miller Hemingway was an American writer and journalist. During his lifetime he wrote and had published seven novels; six collections of short stories; and two works of non-fiction. Since his death three novels, four collections of short stories, and three non-fiction autobiographical works have been published. Hemingway received the Nobel Prize in Literature in 1954.\r\n\r\nHemingway was born and raised in Oak Park, Illinois. After high school he worked as a reporter but within months he left for the Italian front to be an ambulance driver in World War I. He was seriously injured and returned home within the year. He married his first wife Hadley Richardson in 1922 and moved to Paris, where he worked as a foreign correspondent. During this time Hemingway met, and was influenced by, writers and artists of the 1920s expatriate community known as the \"Lost Generation\". In 1924 Hemingway wrote his first novel, The Sun Also Rises.\r\n\r\nIn the late 1920s, Hemingway divorced Hadley, married his second wife Pauline Pfeiffer, and moved to Key West, Florida. In 1937 Hemingway went to Spain as a war correspondent to cover the Spanish Civil War. After the war he divorced Pauline, married his third wife Martha Gellhorn, wrote For Whom the Bell Tolls, and moved to Cuba. Hemingway covered World War II in Europe and he was present at Operation Overlord. Later he was in Paris during the liberation of Paris. After the war, he divorced again, married his fourth wife Mary Welsh Hemingway, and wrote Across the River and Into the Trees. Two years later, The Old Man and the Sea was published in 1952. Nine years later, after moving from Cuba to Idaho, he committed suicide in the summer of 1961.\r\n\r\nHemingway produced most of his work between the mid 1920s and the mid 1950s, though a number of unfinished works were published posthumously. Hemingway's distinctive writing style is characterized by economy and understatement, and had a significant influence on the development of twentieth-century fiction writing. His protagonists are typically stoical men who exhibit an ideal described as \"grace under pressure.\" Many of his works are now considered classics of American literature. During his lifetime, Hemingway's popularity peaked after the publication of The Old Man and the Sea. [1]\r\n\r\n\r\n  [1]: https://en.wikipedia.org/wiki/Ernest_Hemingway\r\n\r\nSource and more information: https://en.wikipedia.org/wiki/Ernest_Hemingway",
+   "birth_date": "21 July 1899",
+   "death_date": "2 July 1961",
+   "links": [
+    {
+     "url": "http://nobelprize.org/nobel_prizes/literature/laureates/1954/hemingway-bio.html",
+     "title": "nobelprize.org",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "title": "timelesshemingway.com",
+     "url": "http://www.timelesshemingway.com/",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "title": "Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Ernest_Hemingway",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "url": "https://inventaire.io/entity/wd:Q23434",
+     "title": "inventaire.io",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "url": "https://bookbrainz.org/author/637105e0-5220-49de-815a-21c50f80df28",
+     "title": "BookBrainz",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 12,
+  "fields": {
+   "name": "Gena Showalter",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 13,
+  "fields": {
+   "name": "Virginia Woolf",
+   "bio": "Virginia Woolf  was an English novelist, essayist, diarist, epistler, publisher, feminist, and writer of short stories, regarded as one of the foremost modernist literary  figures of the twentieth century. ([Source][1].)\r\n\r\n[Comment from Ursula Le Guin on The Guardian][2]:\r\n\r\n> You can't write science fiction well if you haven't read it, though not all who try to write it know this. But nor can you write it well if you haven't read anything else. Genre is a rich dialect, in which you can say certain things in a particularly satisfying way, but if it gives up connection with the general literary language it becomes a jargon, meaningful only to an ingroup. Useful models may be found quite outside the genre. I learned a lot from reading the ever-subversive Virginia Woolf.\r\n\r\n> I was 17 when I read [Orlando][3]. It was half-revelation, half-confusion to me at that age, but one thing was clear: that she imagined a society vastly different from our own, an exotic world, and brought it dramatically alive. I'm thinking of the Elizabethan scenes, the winter when the Thames froze over. Reading, I was there, saw the bonfires blazing in the ice, felt the marvellous strangeness of that moment 500 years ago – the authentic thrill of being taken absolutely elsewhere.\r\n\r\n> How did she do it? By precise, specific descriptive details, not heaped up and not explained: a vivid, telling imagery, highly selected, encouraging the reader's imagination to fill out the picture and see it luminous, complete.\r\n\r\n> In [Flush][4], Woolf gets inside a dog's mind, that is, a non-human brain, an alien mentality – very science-fictional if you look at it that way. Again what I learned was the power of accurate, vivid, highly selected detail. I imagine Woolf looking down at the dog asleep beside the ratty armchair she wrote in and thinking what are your dreams? and listening . . . sniffing the wind . . . after the rabbit, out on the hills, in the dog's timeless world.\r\n\r\n> Useful stuff, for those who like to see through eyes other than our own.\r\n\r\n\r\n  [1]:http://en.wikipedia.org/wiki/Virginia_Woolf\r\n  [2]: http://www.guardian.co.uk/books/2011/may/14/science-fiction-authors-choice\r\n  [3]: http://openlibrary.org/works/OL39360W/Orlando\r\n  [4]: http://openlibrary.org/works/OL39320W/Flush",
+   "birth_date": "25 January 1882",
+   "death_date": "28 March 1941",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 14,
+  "fields": {
+   "name": "Jules Verne",
+   "bio": "Jules Verne was a French author who helped pioneer the science-fiction genre. \r\n\r\nHe is best known for his novels A Journey to the Centre of the Earth (1864), From the Earth to the Moon (1865), Twenty Thousand Leagues Under the Sea (1869–1870), Around the World in Eighty Days (1873) and The Mysterious Island (1875). Verne wrote about space, air, and underwater travel before navigable aircraft and practical submarines were invented, and before any means of space travel had been devised. Consequently he is often referred to as the \"Father of science fiction\", along with H. G. Wells. ([Source][1].)\r\n\r\nAlso as of 2023, Jules Verne is regarded as the second most translated author in the world. ([Source][2].)\r\n\r\n  [1]: http://en.wikipedia.org/wiki/Jules_Verne\r\n  [2]: https://www.tomedes.com/translator-hub/most-translated-author.php",
+   "birth_date": "8 February 1828",
+   "death_date": "24 March 1905",
+   "links": [
+    {
+     "title": "Wikipedia entry (includes useful bibliography)",
+     "url": "http://en.wikipedia.org/wiki/Jules_Verne",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "title": "Le musée Jules Verne de Nantes",
+     "url": "http://www.nantes.fr/julesverne/acc_5.htm",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 15,
+  "fields": {
+   "name": "Philippa Gregory",
+   "bio": {
+    "type": "/type/text",
+    "value": "Philippa Gregory was born on 9 January 1954 in Nairobi, Kenya, the second daughter of Elaine (Wedd) and Arthur Percy Gregory, a radio operator and navigator for East African Airways. When she was two years old, her family moved to England. She was a \"rebel\" at school, but managed to attend the University of Sussex. She worked in BBC radio for two years before attending the University of Edinburgh, where she earned her doctorate in 18th-century literature, and she was named Alumna of the Year 2009. She has taught at the University of Durham, University of Teesside, and the Open University, and was made a Fellow of Kingston University in 1994. \r\n\r\nPhilippa wrote her first novel Wideacre while completing her a PhD, and living in a cottage on the Pennine Way with first husband Peter Chislett, editor of the Hartlepool Mail, and their baby daughter, Victoria. They divorced before the book was published. Following the success of Wideacre and the publication of The Favoured Child, she moved south to near Midhurst, West Sussex, where the Wideacre trilogy was set. Here she married her second husband Paul Carter, with whom she has a son. She divorced for a second time and married Anthony Mason, who she had first met during her time in Hartlepool. She was an established historian and writer when she discovered her interest in the Tudor period and wrote the novel The Other Boleyn Girl which was made into a tv drama, and a major film. Her love for history and commitment to historical accuracy are the hallmarks of her writing. She also reviews for the Washington Post, the LA Times, and for UK newspapers, and is a regular broadcaster on television, radio, and webcasts. \r\n\r\nPhilippa now lives on a 100-acre (0.40 km2) farm in the North York Moors national park, with her husband, children and stepchildren (six in all). In her Yorkshire farm, she keeps horses, hens and ducks. Her interests include riding, walking, skiing, and gardening. Her other great interest is the charity that she founded nearly twenty years ago: Gardens for The Gambia. She has raised funds and paid for almost 200 in the primary schools of this very dry and poor African country, and thousands of school children have been able to learn market gardening in the school gardens watered by the wells. The charity also provides wells for womens’ collective gardens and for The Gambia’s only agricultural college at Njawara."
+   },
+   "birth_date": "9 January 1954",
+   "death_date": "none",
+   "links": [
+    {
+     "url": "http://www.philippagregory.com/work/c18th/a-respectable-trade/",
+     "type": {
+      "key": "/type/link"
+     },
+     "title": "Philippa Gregory website"
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 16,
+  "fields": {
+   "name": "James M. Cain",
+   "bio": "none",
+   "birth_date": "1892",
+   "death_date": "1977",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 17,
+  "fields": {
+   "name": "Rudolfo A. Anaya",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 18,
+  "fields": {
+   "name": "None None",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 19,
+  "fields": {
+   "name": "John Steinbeck IV",
+   "bio": "none",
+   "birth_date": "1946",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 20,
+  "fields": {
+   "name": "Neal Stephenson",
+   "bio": "Neal Town Stephenson (born October 31, 1959) is an American writer and game designer known for his works of speculative fiction. His novels have been categorized as science fiction, historical fiction, cyberpunk, postcyberpunk, and baroque.\r\n\r\nStephenson's work explores subjects such as mathematics, cryptography, linguistics, philosophy, currency, and the history of science. He also writes non-fiction articles about technology in publications such as *Wired*. He has also written novels with his uncle, George Jewsbury (\"J. Frederick George\"), under the collective pseudonym Stephen Bury.\r\n\r\nStephenson has worked part-time as an advisor for Blue Origin, a company (funded by Jeff Bezos) developing a manned sub-orbital launch system, and is also a cofounder of Subutai Corporation, whose first offering is the interactive fiction project *The Mongoliad*. He is currently Magic Leap's Chief Futurist.\r\n\r\n**Source**: <a href=https://en.wikipedia.org/wiki/Neal_Stephenson\">Neal Stephenson</a> on Wikipedia (Wikipedia contributors, <a href=\"https://en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License\">CC BY-SA 2.0</a>)",
+   "birth_date": "31 Oct 1959",
+   "death_date": "none",
+   "links": [
+    {
+     "title": "Wikipedia entry",
+     "url": "http://en.wikipedia.org/wiki/Neal_Stephenson",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "title": "nealstephenson.com",
+     "url": "https://www.nealstephenson.com/",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 21,
+  "fields": {
+   "name": "Brothers Grimm",
+   "bio": {
+    "type": "/type/text",
+    "value": "The Brothers Grimm (die Brüder Grimm or die Gebrüder Grimm), Jacob (1785–1863) and Wilhelm Grimm (1786–1859), were German academics, philologists, cultural researchers, lexicographers and authors who together specialized in collecting and publishing folklore during the 19th century. They were among the best-known storytellers of folk tales, and popularized stories such as \"Cinderella\" (\"Aschenputtel\"), \"The Frog Prince\" (\"Der Froschkönig\"), \"The Goose-Girl\" (\"Die Gänsemagd\"), \"Hansel and Gretel\" (\"Hänsel und Gretel\"), \"Rapunzel\", \"Rumpelstiltskin\" (\"Rumpelstilzchen\"),\"Sleeping Beauty\" (\"Dornröschen\"), and \"Snow White\" (\"Schneewittchen\"). Their first collection of folk tales, Children's and Household Tales (Kinder- und Hausmärchen), was published in 1812."
+   },
+   "birth_date": "1785",
+   "death_date": "1863",
+   "links": [
+    {
+     "url": "http://en.wikipedia.org/wiki/Brothers_Grimm",
+     "type": {
+      "key": "/type/link"
+     },
+     "title": "Wikipedia (English)"
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 22,
+  "fields": {
+   "name": "Matt Haig",
+   "bio": "none",
+   "birth_date": "1975",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 23,
+  "fields": {
+   "name": "Maryse Condé",
+   "bio": {
+    "type": "/type/text",
+    "value": "Maryse Condé was a Guadeloupean  author of historical fiction, best known for her novels *[Segu](/works/OL470774W)* & *[Moi, Tituba, Sorcière... Noire de Salem](/works/OL470774W)*. She was born in Pointe-à-Pitre, Guadeloupe, youngest of eight children. In 1953, her parents sent her to study at Lycée Fénelon and Sorbonne in Paris, where she majored in English. In 1959, she married Mamadou Condé, a Guinean actor. After graduating, she taught in Guinea, Ghana, and Senegal. In 1981, she divorced, but the following year married [Richard Philcox](authors/OL3065263A), English language translator of most of her novels. \r\n\r\n(Adapted & modified from [Wikipedia][1].)\r\n\r\n[1]: http://en.wikipedia.org/wiki/Maryse_Cond%C3%A9"
+   },
+   "birth_date": "1934",
+   "death_date": "2024",
+   "links": [
+    {
+     "title": "Wikipedia link for Maryse Conde",
+     "url": "http://en.wikipedia.org/wiki/Maryse_Cond%C3%A9",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 24,
+  "fields": {
+   "name": "Franz Kafka",
+   "bio": "Franz Kafka is one of the most important and influential fiction writers of the early 20th century; a novelist and writer of short stories whose works, only after his death, came to be regarded as one of the major achievements of 20th century literature. ([Source][1].)\r\n\r\n[1]:https://en.wikipedia.org/wiki/Franz_Kafka",
+   "birth_date": "3 July 1883",
+   "death_date": "3 June 1924",
+   "links": [
+    {
+     "title": "BookBrainz",
+     "url": "https://bookbrainz.org/author/542245f2-a6ec-4ee8-913d-c4ec4c19252a",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "title": "inventaire.io",
+     "url": "https://inventaire.io/entity/wd:Q905",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 25,
+  "fields": {
+   "name": "Knut Hamsun",
+   "bio": "Norwegian writer, Nobel Prize winner in 1920.",
+   "birth_date": "1859",
+   "death_date": "1952",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 26,
+  "fields": {
+   "name": "Nathaniel Hawthorne",
+   "bio": {
+    "type": "/type/text",
+    "value": "Nathaniel Hawthorne was an American novelist and short story writer.\r\n\r\nNathaniel Hawthorne was a 19th century American novelist and short story writer. He is seen as a key figure in the development of American literature for his tales of the nation's colonial history.\r\n\r\nShortly after graduating from Bowdoin College, Hathorne changed his name to Hawthorne. Hawthorne anonymously published his first work, a novel titled Fanshawe, in 1828. In 1837, he published Twice-Told Tales and became engaged to Sophia Peabody the next year. He worked at a Custom House and joined a Transcendentalist Utopian community, before marrying Peabody in 1842. The couple moved to The Old Manse in Concord, Massachusetts, later moving to Salem, the Berkshires, then to The Wayside in Concord. The Scarlet Letter was published in 1850, followed by a succession of other novels. A political appointment took Hawthorne and family to Europe before returning to The Wayside in 1860. Hawthorne died on May 19, 1864, leaving behind his wife and their three children.\r\n\r\nMuch of Hawthorne's writing centers around New England and many feature moral allegories with a Puritan inspiration. His work is considered part of the Romantic movement and includes novels, short stories, and a biography of his friend, the United States President Franklin Pierce."
+   },
+   "birth_date": "4 July 1804",
+   "death_date": "19 May 1864",
+   "links": [
+    {
+     "url": "http://en.wikipedia.org/wiki/Nathaniel_Hawthorne",
+     "type": {
+      "key": "/type/link"
+     },
+     "title": "Wikipedia link to Nathaniel Hawthorne"
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 27,
+  "fields": {
+   "name": "John Clellon Holmes",
+   "bio": "none",
+   "birth_date": "1926",
+   "death_date": "1988",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 28,
+  "fields": {
+   "name": "Mark Twain Media",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 29,
+  "fields": {
+   "name": "Homer Andrew Watt",
+   "bio": "none",
+   "birth_date": "1884",
+   "death_date": "1948",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 30,
+  "fields": {
+   "name": "James Fenimore Cooper",
+   "bio": "James Fenimore Cooper was a prolific and popular American writer of the early 19th century. He is best remembered as a novelist who wrote numerous sea-stories and the historical novels known as the Leatherstocking Tales, featuring frontiersman Natty Bumppo. Among his most famous works is the Romantic novel [*The Last of the Mohicans*][1], often regarded as his masterpiece.\r\n\r\n([Source][2])\r\n\r\n\r\n  [1]: http://openlibrary.org/works/OL77958W/The_last_of_the_Mohicans\r\n  [2]: http://en.wikipedia.org/wiki/James_Fenimore_Cooper",
+   "birth_date": "15 September 1789",
+   "death_date": "14 September 1851",
+   "links": [
+    {
+     "title": "Wikipedia entry",
+     "url": "http://en.wikipedia.org/wiki/James_Fenimore_Cooper",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 31,
+  "fields": {
+   "name": "Upton Sinclair",
+   "bio": "Upton Sinclair, Jr., was a Pulitzer Prize-winning American  author who wrote over 90 books in many genres. He achieved popularity in the first half of the 20th century, acquiring particular fame for his 1906 muckraking novel The Jungle. It exposed conditions in the U.S. meat packing industry, causing a public uproar that contributed in part to the passage a few months later of the 1906 Pure Food and Drug Act and the Meat Inspection Act.\r\n--Wikipedia",
+   "birth_date": "20 September 1878",
+   "death_date": "25 November 1968",
+   "links": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Upton_Sinclair",
+     "title": "Wikipedia",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "title": "inventaire.io",
+     "url": "https://inventaire.io/entity/wd:Q216134",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "title": "BookBrainz",
+     "url": "https://bookbrainz.org/author/e306c952-4a3d-46b4-a032-712dd7a7d30a",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 32,
+  "fields": {
+   "name": "Theodore Dreiser",
+   "bio": "none",
+   "birth_date": "1871",
+   "death_date": "1945",
+   "links": [
+    {
+     "title": "Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Theodore_Dreiser",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 33,
+  "fields": {
+   "name": "Han Kang Hong",
+   "bio": "none",
+   "birth_date": "1953",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 34,
+  "fields": {
+   "name": "Geoffrey Chaucer",
+   "bio": {
+    "type": "/type/text",
+    "value": "Geoffrey Chaucer was an English author, poet, philosopher, bureaucrat, courtier and diplomat. Although he wrote many works, he is best remembered for his unfinished frame narrative The Canterbury Tales. Sometimes called the father of English literature, Chaucer is credited by some scholars as the first author to demonstrate the artistic legitimacy of the vernacular English language, rather than French or Latin. ([Source][1].)\r\n\r\n[1]:http://en.wikipedia.org/wiki/Geoffrey_Chaucer"
+   },
+   "birth_date": "1343",
+   "death_date": "25 October 1400",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 35,
+  "fields": {
+   "name": "Agatha Christie",
+   "bio": {
+    "type": "/type/text",
+    "value": "Agatha Mary Clarissa Miller was born in Torquay, Devon, in the United Kingdom, the daughter of a wealthy American stockbroker. Her father died when she was eleven years old. Her mother taught her at home, encouraging her to write at a very young age. At the age of 16, she went to Mrs. Dryden's finishing school in Paris to study singing and piano. In 1914, at age 24, she married Colonel Archibald Christie, an aviator in the Royal Flying Corps. While he went away to war, she worked as a nurse and wrote her first novel, The Mysterious Affair at Styles (1920), which wasn't published until four years later. When her husband came back from the war, they had a daughter. In 1928 she divorced her husband, who had been having an affair. In 1930, she married Sir Max Mallowan, an archaeologist and a Catholic. She was happy in the early years of her second marriage, and did not divorce her husband despite his many affairs. She travelled with her husband's job, and set several of her novels set in the Middle East. Most of her other novels were set in a fictionalized Devon, where she was born.\r\n\r\nAgatha Christie is credited with developing the \"cozy style\" of mystery, which became popular in, and ultimately defined, the Golden Age of fiction in England in the 1920s and '30s, an age of which she is considered to have been Queen. In all, she wrote over 66 novels, numerous short stories and screenplays, and a series of romantic novels using the pen name Mary Westmacott. She was the single most popular mystery writer of all time. In 1971 she was made a Dame Commander of the Order of the British Empire."
+   },
+   "birth_date": "15 September 1890",
+   "death_date": "12 January 1976",
+   "links": [
+    {
+     "title": "Agatha Christie 120",
+     "url": "http://www.agathachristie.com/about-christie/the-queen-of-crime/120-year-anniversary/",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "url": "http://www.agathachristie.com/",
+     "title": "Website",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 36,
+  "fields": {
+   "name": "Ayn Rand",
+   "bio": "Alice O'Connor (born Alisa Zinovyevna Rosenbaum;[a] February 2, [O.S. January 20] 1905 – March 6, 1982), better known by her pen name Ayn Rand (/aɪn/), was a Russian-American writer and philosopher. She is known for her fiction and for developing a philosophical system she named Objectivism. Born and educated in Russia, she moved to the United States in 1926. She wrote a play that opened on Broadway in 1935. After two early novels that were initially unsuccessful, she achieved fame with her 1943 novel, The Fountainhead. In 1957, Rand published her best-known work, the novel Atlas Shrugged. Afterward, until her death in 1982, she turned to non-fiction to promote her philosophy, publishing her own periodicals and releasing several collections of essays.\r\n\r\nRand advocated reason as the only means of acquiring knowledge; she rejected faith and religion. She supported rational and ethical egoism and rejected altruism. In politics, she condemned the initiation of force as immoral[5][6] and opposed collectivism, statism, and anarchism. Instead, she supported laissez-faire capitalism, which she defined as the system based on recognizing individual rights, including property rights. Although Rand opposed libertarianism, which she viewed as anarchism, she is often associated with the modern libertarian movement. In art, Rand promoted romantic realism. She was sharply critical of most philosophers and philosophical traditions known to her, except for Aristotle, Thomas Aquinas and classical liberals.\r\n\r\nRand's fiction received mixed reviews from literary critics.[ Although academic interest in her ideas has grown since her death, academic philosophers have generally ignored or rejected her philosophy because of her polemical approach and lack of methodological rigor.[4] Her writings have influenced some libertarians and conservatives politically. The Objectivist movement attempts to spread her ideas, both to the public and in academic settings",
+   "birth_date": "February 2, 1905",
+   "death_date": "March 6, 1982",
+   "links": [
+    {
+     "url": "http://en.wikipedia.org/wiki/Ayn_rand",
+     "title": "Wikipedia",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 37,
+  "fields": {
+   "name": "J. M. Coetzee",
+   "bio": {
+    "type": "/type/text",
+    "value": "John Maxwell Coetzee FRSL OMG (born 9 February 1940) is a South African and Australian novelist, essayist, linguist, translator and recipient of the 2003 Nobel Prize in Literature. He is one of the most critically acclaimed and decorated authors in the English language. He has won the Booker Prize (twice), the CNA Literary Award (thrice), the Jerusalem Prize, the Prix Femina étranger, and The Irish Times International Fiction Prize, and holds a number of other awards and honorary doctorates. [source](https://en.wikipedia.org/wiki/J._M._Coetzee)"
+   },
+   "birth_date": "9 Feb 1940",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 38,
+  "fields": {
+   "name": "Viktor Pelevin",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 39,
+  "fields": {
+   "name": "Leo Tolstoy",
+   "bio": "none",
+   "birth_date": "1955",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 40,
+  "fields": {
+   "name": "Edith Wharton",
+   "bio": "Edith Wharton was a Pulitzer Prize-winning American novelist, short story writer and designer.\r\n\r\n*The Age of Innocence* (1920) won the 1921 Pulitzer Prize for literature, making her the first woman to win the award. She spoke fluent French as well as several other languages and many of her books were published in both French and English. ([Source][1])\r\n\r\n\r\n  [1]: http://en.wikipedia.org/wiki/Edith_Wharton",
+   "birth_date": "24 January 1862",
+   "death_date": "11 August 1937",
+   "links": [
+    {
+     "title": "Edith Wharton Collection at ale University Beinecke Rare Books & Manuscript Library",
+     "url": "http://beinecke.library.yale.edu/collections/highlights/edith-wharton-collection",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 41,
+  "fields": {
+   "name": "Nikolái V. Gogol",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 42,
+  "fields": {
+   "name": "Alain Robbe-Grillet",
+   "bio": "none",
+   "birth_date": "1922",
+   "death_date": "2008",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 43,
+  "fields": {
+   "name": "Jack Finney",
+   "bio": "Walter Braden \"Jack\" Finney (born John Finney, October 2, 1911 – November 14, 1995) was an American author. His best-known works are science fiction and thrillers, including *The Body Snatchers* and *Time and Again*. The former was the basis for the 1956 film *Invasion of the Body Snatchers* and its remakes.\r\n\r\n**Source**: [Jack Finney](https://en.wikipedia.org/wiki/Jack_Finney) on Wikipedia.",
+   "birth_date": "2 Oct 1911",
+   "death_date": "14 Nov 1995",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 44,
+  "fields": {
+   "name": "J. A. Burrow",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 45,
+  "fields": {
+   "name": "Jason Reynolds",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 46,
+  "fields": {
+   "name": "Ken Kesey",
+   "bio": "KEN KESEY was born in La Junta, Colorado, but his family later moved to Springfield, Oregon, where he attended public schools, and later the University of Oregon at Eugene. He has received the Woodrow Wilson scholarship to Stanford University and a Saxton Fellowship, and won the Fred Lowe Scholarship awarded to the outstanding wrestler in the Northwest. Mr. Kesey was king of the Merry Pranksters, a group which traveled the West Coast staging happenings; as a leader of this group, Mr. Kesey appeared as subject and star in the bestseller, THE ELECTRIC KOOL-AID ACID TEST, by Tom Wolfe.\r\nAt present he is \"scratching his athlete's foot on his farm in Oregon, watching his kids and blueberries grow.\"\r\n\r\nPhoto: By <span title=\"must have been published or publicly displayed outside Wikipedia\">Source</span> (<a href=\"//en.wikipedia.org/wiki/Wikipedia:Non-free_content_criteria#4\" title=\"Wikipedia:Non-free content criteria\">WP:NFCC#4</a>), <a href=\"//en.wikipedia.org/wiki/File:Ken_Kesey,_American_author,_1935-2001.jpg\" title=\"Fair use of copyrighted material in the context of Ken Kesey\">Fair use</a>, <a href=\"https://en.wikipedia.org/w/index.php?curid=54571568\">Link</a>",
+   "birth_date": "1935-09-17",
+   "death_date": "2001-11-10",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 47,
+  "fields": {
+   "name": "J. R. R. (John Ronald Reuel) Tolkien",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 48,
+  "fields": {
+   "name": "Jacob Burckhardt",
+   "bio": {
+    "type": "/type/text",
+    "value": "Jacob Burckhardt was born in Basel, Switzerland, the son of a Protestant clergyman. He studied theology in Basel and in Neuchâtel. In 1839, having lost his faith, he moved to the University of Berlin to study art history. He spent part of 1841 at the University of Bonn studying under the art historian Franz Kugler. His first book, Die Kunstwerke der belgischen Städte, was published in 1842. He taught at the University of Basel from 1843 to 1855, then at ETH, the engineering school in Zurich. In 1858, he joined the faculty at the University of Basel until his 1893 retirement. In 1886 did started teaching art history exclusively. He is known as one of the founders of the field of cultural history."
+   },
+   "birth_date": "25 May 1818",
+   "death_date": "8 August 1897",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 49,
+  "fields": {
+   "name": "Leo Lionni",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 50,
+  "fields": {
+   "name": "Benjamín Labatut",
+   "bio": {
+    "type": "/type/text",
+    "value": "Chilean writer"
+   },
+   "birth_date": "1980",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 51,
+  "fields": {
+   "name": "Pu Songling",
+   "bio": "none",
+   "birth_date": "1640",
+   "death_date": "1715",
+   "links": [
+    {
+     "url": "https://viaf.org/viaf/9852245",
+     "type": {
+      "key": "/type/link"
+     },
+     "title": "VIAF"
+    },
+    {
+     "url": "http://isni.org/isni/0000000121201192",
+     "type": {
+      "key": "/type/link"
+     },
+     "title": "ISNI"
+    },
+    {
+     "url": "http://www.wikidata.org/entity/Q318406",
+     "type": {
+      "key": "/type/link"
+     },
+     "title": "Wikidata"
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 52,
+  "fields": {
+   "name": "Clive Cussler",
+   "bio": "Cussler began writing novels in 1965 and published his first work featuring his continuous series hero, Dirk Pitt, in 1973. His first non-fiction, The Sea Hunters, was released in 1996. The Board of Governors of the Maritime College, State University of New York, considered The Sea Hunters in lieu of a Ph.D. thesis and awarded Cussler a Doctor of Letters degree in May, 1997. It was the first time since the College was founded in 1874 that such a degree was bestowed. \r\n\r\nCussler is an internationally recognized authority on shipwrecks and the founder of the National Underwater and Marine Agency, (NUMA) a 501C3 non-profit organization (named after the fictional Federal agency in his novels) that dedicates itself to preserving American maritime and naval history. He and his crew of marine experts and NUMA volunteers have discovered more than 60 historically significant underwater wreck sites including the first submarine to sink a ship in battle, the Confederacy's Hunley, and its victim, the Union's Housatonic; the U-20, the U-boat that sank the Lusitania; the Cumberland, which was sunk by the famous ironclad, Merrimack; the renowned Confederate raider Florida; the Navy airship, Akron, the Republic of Texas Navy warship, Zavala, found under a parking lot in Galveston, and the Carpathia, which sank almost six years to-the-day after plucking Titanic's survivors from the sea. \r\n\r\nIn September, 1998, NUMA - which turns over all artifacts to state and Federal authorities, or donates them to museums and universities - launched its own web site for those wishing more information about maritime history or wishing to make donations to the organization. (www.numa.net). \r\n\r\nIn addition to being the Chairman of NUMA, Cussler is also a fellow in both the Explorers Club of New York and the Royal Geographic Society in London. He has been honored with the Lowell Thomas Award for outstanding underwater exploration. \r\n\r\nCussler's books have been published in more than 40 languages in more than 100 countries. His past international bestsellers include Pacific Vortex, Mediterranean Caper, Iceberg, Raise the Titanic, Vixen 03, Night Probe, Deep Six, Cyclops, Treasure, Dragon, Sahara, Inca Gold, Shock Wave, Flood Tide, Atlantis Found, Valhalla Rising, Trojan Odyssey and Black Wind (this last with his son, Dirk Cussler); the nonfiction books The Sea Hunters, The Sea Hunters II and Clive Cussler and Dirk Pitt r Revealed; the NUMA® Files novels Serpent, Blue Gold, Fire Ice, White Death and Lost City (written with Paul Kemprecos); and the Oregon Files novels Sacred Stone and Golden Buddha (written with Craig Dirgo) and Dark Watch (written with Jack Du Brul). \r\n\r\nTaken From Good Reads\r\nhttps://www.goodreads.com/author/show/18411.Clive_Cussler",
+   "birth_date": "1931-07-15",
+   "death_date": "2020-02-24",
+   "links": [
+    {
+     "title": "Wikipedia",
+     "url": "http://en.wikipedia.org/wiki/Clive_Cussler",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 53,
+  "fields": {
+   "name": "H.C. Andersens hus",
+   "bio": {
+    "type": "/type/text",
+    "value": "The Hans Christian Andersen Museum in Odense, Denmark, is the home of 19th century fairy-tale writer [H. C. Andersen](/a/OL25931A)."
+   },
+   "birth_date": "none",
+   "death_date": "none",
+   "links": [
+    {
+     "url": "http://museum.odense.dk/museer/hc-andersens-hus.aspx",
+     "title": "Website",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 54,
+  "fields": {
+   "name": "Jussi Adler-Olsen",
+   "bio": "Carl Valdemar Jussi Henry Adler-Olsen (born 2 August 1950) is a Danish writer of crime fiction, as well as a publisher, editor, and entrepreneur.\r\n\r\nJussi Adler-Olsen made his debut as a nonfiction writer in 1984, and as a fiction writer in 1997.",
+   "birth_date": "1950",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 55,
+  "fields": {
+   "name": "Oscar Wilde",
+   "bio": "An Irish writer, poet, and prominent aesthete.\r\n\r\nOscar Fingal O'Flahertie Wills Wilde was an Irish playwright, poet, and author of numerous short stories, and one novel. Known for his biting wit, and a plentitude of aphorisms, he became one of the most successful playwrights of the late Victorian era in London, and one of the greatest celebrities of his day. Several of his plays continue to be widely performed, especially The Importance of Being Earnest.\r\n\r\nAs the result of a widely covered series of trials, Wilde suffered a dramatic downfall and was imprisoned for two years hard labour after being convicted of \"gross indecency\" with other men. After Wilde was released from prison he set sail for Dieppe by the night ferry. He never returned to Ireland or Britain, and died in poverty.",
+   "birth_date": "16 October 1854",
+   "death_date": "30 November 1900",
+   "links": [
+    {
+     "title": "Wikipedia entry",
+     "url": "http://en.wikipedia.org/wiki/Oscar_Wilde",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "title": "Oscar Wilde Quotations",
+     "url": "http://izquotes.com/author/oscar-wilde",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "title": "Jardin des citations",
+     "url": "https://jardindescitations.com/auteurs/@oscarWilde",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 56,
+  "fields": {
+   "name": "Monica Ali",
+   "bio": "none",
+   "birth_date": "1967",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 57,
+  "fields": {
+   "name": "Lisa Appignanesi",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 58,
+  "fields": {
+   "name": "David Constantine",
+   "bio": {
+    "type": "/type/text",
+    "value": "Winner of the UK National Short Story award, 2010."
+   },
+   "birth_date": "1944",
+   "death_date": "none",
+   "links": [
+    {
+     "url": "http://www.guardian.co.uk/books/2010/nov/29/national-short-story-award-david-constantine",
+     "type": {
+      "key": "/type/link"
+     },
+     "title": "The Guardian article re: 2010 National Short Story award"
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 59,
+  "fields": {
+   "name": "Bernardine Evaristo",
+   "bio": "none",
+   "birth_date": "1959",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 60,
+  "fields": {
+   "name": "Patrick Gale",
+   "bio": "none",
+   "birth_date": "1962",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 61,
+  "fields": {
+   "name": "Abdulrazak Gurnah",
+   "bio": {
+    "type": "/type/text",
+    "value": "Abdulrazak Gurnah FRSL (born 20 December 1948) is a Tanzanian-born British novelist and academic. He was born in the Sultanate of Zanzibar and moved to the United Kingdom in the 1960s as a refugee during the Zanzibar Revolution. His novels include Paradise (1994), which was shortlisted for both the Booker and the Whitbread Prize; Desertion (2005); and By the Sea (2001), which was longlisted for the Booker and shortlisted for the Los Angeles Times Book Prize.\r\n\r\nGurnah was awarded the 2021 Nobel Prize in Literature \"for his uncompromising and compassionate penetration of the effects of colonialism and the fates of the refugee in the gulf between cultures and continents\". He is Emeritus Professor of English and Postcolonial Literatures at the University of Kent. [source](https://en.wikipedia.org/wiki/Abdulrazak_Gurnah)"
+   },
+   "birth_date": "20 December 1948",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 62,
+  "fields": {
+   "name": "David Herd",
+   "bio": "none",
+   "birth_date": "1732",
+   "death_date": "1810,",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 63,
+  "fields": {
+   "name": "Emma Parsons",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 64,
+  "fields": {
+   "name": "Ian Sansom",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 65,
+  "fields": {
+   "name": "Jonathan Skinner",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 66,
+  "fields": {
+   "name": "Gillian Slovo",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 67,
+  "fields": {
+   "name": "Lytton Smith",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 68,
+  "fields": {
+   "name": "Roma Tearne",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 69,
+  "fields": {
+   "name": "Jonathan Wittenberg",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 70,
+  "fields": {
+   "name": "William Kent Krueger",
+   "bio": "none",
+   "birth_date": "1950",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 71,
+  "fields": {
+   "name": "Henry Edward Manning",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 72,
+  "fields": {
+   "name": "Ray Bradbury",
+   "bio": "Ray Bradbury is one of those rare individuals whose writing has changed the way people think. His more than five hundred published works -- short stories, novels, plays, screenplays, television scripts, and verse -- exemplify the American imagination at its most creative. \r\n\r\nOnce read, his words are never forgotten. His best-known and most beloved books, *The Martian Chronicles*, *The Illustrated Man*, *Fahrenheit 451* and *Something Wicked This Way Comes*, are masterworks that readers carry with them over a lifetime. His timeless, constant appeal to audiences young and old has proven him to be one of the truly classic authors of the 20th Century -- and the 21st. \r\n\r\nIn recognition of his stature in the world of literature and the impact he has had on so many for so many years, Bradbury was awarded the National Book Foundation's 2000 Medal for Distinguished Contribution to American Letters, an the National Medal of Arts in 2004. \r\n\r\n([Source][1])\r\n\r\n\r\n  [1]: http://www.raybradbury.com/about.html",
+   "birth_date": "22 August 1920",
+   "death_date": "5 June 2012",
+   "links": [
+    {
+     "url": "http://www.raybradbury.com/",
+     "title": "RayBradbury.com",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Ray_Bradbury",
+     "title": "Wikipedia EN",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 73,
+  "fields": {
+   "name": "Herman Melville",
+   "bio": {
+    "type": "/type/text",
+    "value": "Herman Melville was an American novelist, short story writer, essayist and poet who is often classified as part of dark romanticism. He is best known for his novel Moby-Dick and novella Billy Budd, the latter of which was published posthumously. ([Source][1].)\r\n\r\n[1]:http://en.wikipedia.org/wiki/Herman_Melville"
+   },
+   "birth_date": "1 August 1819",
+   "death_date": "28 September 1891",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 74,
+  "fields": {
+   "name": "Robert Louis Stevenson",
+   "bio": "Robert Louis Stevenson (born Robert Lewis Balfour Stevenson; 13 November 1850 – 3 December 1894) was a Scottish novelist, essayist, poet and travel writer. He is best known for works such as Treasure Island, Strange Case of Dr Jekyll and Mr Hyde, Kidnapped and A Child's Garden of Verses.",
+   "birth_date": "13 November 1850",
+   "death_date": "3 December 1894",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 75,
+  "fields": {
+   "name": "Abbi Glines",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 76,
+  "fields": {
+   "name": "Nan Ke",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 77,
+  "fields": {
+   "name": "David Foster Wallace",
+   "bio": "none",
+   "birth_date": "21 February 1962",
+   "death_date": "12 September 2008",
+   "links": [
+    {
+     "url": "http://en.wikipedia.org/wiki/David_Foster_Wallace",
+     "type": {
+      "key": "/type/link"
+     },
+     "title": "Wikipedia"
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 78,
+  "fields": {
+   "name": "Isaac Asimov",
+   "bio": "Asimov was born sometime between October 4, 1919 and January 2, 1920 in Petrovichi in Smolensk Oblast, RSFSR (now Russia), the son of a Jewish family of millers.  Although his exact date of birth is uncertain, Asimov himself celebrated it on January 2.  His family emigrated to Brooklyn, New York and opened a candy store when he was three years old.  He taught himself to read at the age of five. He began reading the science fiction pulp magazines that his family's store carried. Around the age of eleven, he began to write his own stories, and by age nineteen, he was selling them to the science fiction magazines. He graduated from Columbia University in 1939. He married Gertrude Blugerman in 1942.  During World War II he worked as a civilian at the Philadelphia Navy Yard's Naval Air Experimental Station.  After the war, he returned to Columbia University and earned a Ph.D. in biochemistry in 1948.  He then joined the faculty of the Boston University School of Medicine until 1958, when he became a full-time writer. His first novel, [Pebble in the Sky](https://openlibrary.org/works/OL46402W), was published in 1950. He and his wife divorced in 1973, and he married Janet O. Jeppson the same year. He was a highly prolific writer, having written or edited more than 500 books and an estimated 9,000 letters and postcards.",
+   "birth_date": "2 January 1920",
+   "death_date": "6 April 1992",
+   "links": [
+    {
+     "title": "French Wikipédia Page",
+     "url": "http://fr.wikipedia.org/wiki/Isaac_Asimov",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 79,
+  "fields": {
+   "name": "Tom Clancy",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 80,
+  "fields": {
+   "name": "Steve Pieczenik",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 81,
+  "fields": {
+   "name": "Jeff Rovin",
+   "bio": "none",
+   "birth_date": "5 Nov 1951",
+   "death_date": "none",
+   "links": [
+    {
+     "url": "http://id.loc.gov/authorities/names/n79039843.html",
+     "title": "LCAuth",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "url": "https://viaf.org/viaf/29640123/",
+     "title": "VIAF",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "title": "Wikidata",
+     "url": "https://www.wikidata.org/entity/Q571334",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "title": "ISNI",
+     "url": "http://isni.org/isni/0000000081086512",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 82,
+  "fields": {
+   "name": "Voltaire",
+   "bio": "François-Marie Arouet, better known by the pen name Voltaire, was a French Enlightenment writer and philosopher famous for his wit and for his advocacy of civil liberties, including freedom of religion and free trade. Voltaire was a prolific writer and produced works in almost every literary form including plays, poetry, novels, essays, historical and scientific works, more than 20,000 letters and more than 2,000 books and pamphlets. He was an outspoken supporter of social reform, despite strict censorship laws and harsh penalties for those who broke them. As a satirical polemicist, he frequently made use of his works to criticize intolerance, religious dogma and the French institutions of his day.\r\n\r\nVoltaire was one of several Enlightenment figures (along with Montesquieu, John Locke and Jean-Jacques Rousseau) whose works and ideas influenced important thinkers of both the American and French Revolutions. ([Source][1])\r\n\r\n\r\n  [1]: http://en.wikipedia.org/wiki/Voltaire",
+   "birth_date": "21 November 1694",
+   "death_date": "30 May 1778",
+   "links": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Voltaire",
+     "title": "Wikipedia",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "url": "https://inventaire.io/entity/wd:Q9068",
+     "title": "inventaire.io",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 83,
+  "fields": {
+   "name": "Charles Dickens",
+   "bio": "Charles Dickens, was the most popular English novelist of the Victorian era, and one of the most popular of all time. He created some of literature's most iconic characters, with the theme of social reform running throughout his work. The continuing popularity of his novels and short stories is such that they have never gone out of print. ([Source][1].)\r\n\r\n[1]:http://en.wikipedia.org/wiki/Charles_Dickens",
+   "birth_date": "7 February 1812",
+   "death_date": "9 June 1870",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 84,
+  "fields": {
+   "name": "Romain Rolland",
+   "bio": {
+    "type": "/type/text",
+    "value": "Écrivain français, lauréat du Prix Nobel de littérature en 1915."
+   },
+   "birth_date": "1866",
+   "death_date": "1944",
+   "links": [
+    {
+     "url": "http://fr.wikipedia.org/wiki/Romain_Rolland",
+     "type": {
+      "key": "/type/link"
+     },
+     "title": "Wikipedia"
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 85,
+  "fields": {
+   "name": "Stanisław Lem",
+   "bio": "none",
+   "birth_date": "12 September 1921",
+   "death_date": "27 March 2006",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 86,
+  "fields": {
+   "name": "Jane Austen",
+   "bio": {
+    "type": "/type/text",
+    "value": "Jane Austen was an English writer. Although Austen was widely read in her lifetime, she published her works anonymously. The most urgent preoccupations of her bright, young heroines are courtship and marriage. Austen herself never married. Her best-known books include *Pride and Prejudice* (1813) and *Emma* (1816). Virginia Woolf called Austen \"the most perfect artist among women."
+   },
+   "birth_date": "December 16, 1775",
+   "death_date": "July 18, 1817",
+   "links": [
+    {
+     "title": "Jane Austen's Fiction Manuscripts",
+     "url": "http://www.janeausten.ac.uk/manuscripts/index.html",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 87,
+  "fields": {
+   "name": "Johann Wolfgang von Goethe",
+   "bio": "Johann Wolfgang von Goethe was a German writer and polymath. Goethe's works span the fields of poetry, drama, literature, theology, philosophy, pantheism, and science. His magnum opus, lauded as one of the peaks of world literature, is the two-part drama Faust. Goethe's other well-known literary works include his numerous poems, the Bildungsroman Wilhelm Meister's Apprenticeship and the epistolary novel The Sorrows of Young Werther. <sup>[1][1]</sup>\r\n\r\n\r\n  [1]: https://en.wikipedia.org/wiki/Johann_Wolfgang_von_Goethe",
+   "birth_date": "28 August 1749",
+   "death_date": "22 March 1832",
+   "links": [
+    {
+     "title": "BookBrainz",
+     "url": "https://bookbrainz.org/author/6ce2f2d2-8f06-4da9-bc20-107d30f4e333",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "title": "inventaire.io",
+     "url": "https://inventaire.io/entity/wd:Q5879",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "title": "Johann Wolfgang von Goethe - Life and Work",
+     "url": "https://love-books-review.com/reviews-by-author/johann-wolfgang-von-goethe/",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 88,
+  "fields": {
+   "name": "Marion Zimmer Bradley",
+   "bio": "Marion Zimmer was born on a farm in Albany, New York, during the Great Depression.  As a child, she enjoyed reading adventure fantasy stories.  She began writing them herself in 1949 and sold her first story to Vortex in 1952.  She also married Robert Alden Bradley in 1949.  Early in her career, she used pseudonyms for stories she wrote outside the speculative fiction genre, including some gay and lesbian pulp fiction novels such as I Am a Lesbian (1962).  In 1964 she divorced her first husband and married numismatist Walter H. Breen.  In 1965 she received her B.A. degree from Hardin-Simmons University in Abilene, Texas.  She then moved to Berkeley, California, to pursue graduate studies at the University of California, Berkeley.  In 1966, she co-founded the Society for Creative Anachronism.  In 1967 she moved to Staten Island, New York.  She separated from her second husband in 1979 but remained married and continued a business relationship, until 1990 when he was arrested on child molestation charges and they divorced.  After suffering declining health for years, she died in Berkeley in 1999.  In 2000, she was awarded the World Fantasy Award for lifetime achievement.",
+   "birth_date": "3 June 1930",
+   "death_date": "25 September 1999",
+   "links": [
+    {
+     "title": "Website",
+     "url": "http://www.mzbfm.com",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 89,
+  "fields": {
+   "name": "Mario Vargas Llosa",
+   "bio": "Jorge Mario Pedro Vargas Llosa (Arequipa, 28 de marzo de 1936), conocido como Mario Vargas Llosa, es un escritor peruano que cuenta también con la nacionalidad española desde 1993. Considerado uno de los más importantes novelistas y ensayistas contemporáneos, sus obras han cosechado numerosos premios, entre los que destacan el Nobel de Literatura 2010, el Cervantes 1994 —considerado como el más importante en lengua española—, el Príncipe de Asturias de las Letras 1986, el Biblioteca Breve 1962, el Rómulo Gallegos 1967 y el Planeta 1993, entre otros.\r\n\r\nComo escritor, alcanzó la fama en la década de 1960 con novelas como *La ciudad y los perros* (1963), *La casa verde* (1966) y *Conversación en La Catedral* (1969). Continuó escribiendo prolíficamente en varios géneros literarios, como el ensayo, el artículo y el teatro. Entre sus novelas destacan asimismo *La guerra del fin del mundo* (1981), o *La fiesta del Chivo* (2000).\r\n\r\n----------\r\n\r\nMario Vargas Llosa is a Peruvian writer, journalist, essayist, college professor, and a former politician, who also holds Spanish citizenship. Vargas Llosa is one of Latin America's most significant novelists and essayists, and one of the leading writers of his generation. Some critics consider him to have had a larger international impact and worldwide audience than any other writer of the Latin American Boom. In 2010 he won the Nobel Prize in Literature, \"for his cartography of structures of power and his trenchant images of the individual's resistance, revolt, and defeat.\"\r\n\r\n\r\nWinner of the 2010 Nobel Prize in Literature, a Peruvian writer, politician, journalist, essayist.",
+   "birth_date": "28 March 1936",
+   "death_date": "none",
+   "links": [
+    {
+     "url": "https://es.wikipedia.org/wiki/Mario_Vargas_Llosa",
+     "title": "Wikipedia (Español)",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Mario_Vargas_Llosa",
+     "title": "Wikipedia (English)",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "url": "http://www.mvargasllosa.com/",
+     "title": "Official Website",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "title": "Britannica",
+     "url": "https://www.britannica.com/biography/Mario-Vargas-Llosa",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 90,
+  "fields": {
+   "name": "Nicholas Frankel",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 91,
+  "fields": {
+   "name": "Jack London",
+   "bio": "John Griffith London (born John Griffith Chaney; January 12, 1876 – November 22, 1916) was an American novelist, journalist, and social activist. A pioneer in the world of commercial magazine fiction, he was one of the first writers to become a worldwide celebrity and earn a large fortune from writing. He was also an innovator in the genre that would later become known as science fiction.\r\n\r\nHis most famous works include *The Call of the Wild* and *White Fang*, both set in the Klondike Gold Rush, as well as the short stories \"To Build a Fire\", \"An Odyssey of the North\", and \"Love of Life\". He also wrote about the South Pacific in stories such as \"The Pearls of Parlay\", and \"The Heathen\".\r\n\r\nLondon was part of the radical literary group \"The Crowd\" in San Francisco and a passionate advocate of unionization, workers' rights, socialism, and eugenics. He wrote several works dealing with these topics, such as his dystopian novel The Iron Heel, his non-fiction exposé *The People of the Abyss*, *The War of the Classes*, and *Before Adam*.\r\n\r\n**Source**: [Jack London](https://en.wikipedia.org/wiki/Jack_London) on Wikipedia.",
+   "birth_date": "12 January 1876",
+   "death_date": "22 November 1916",
+   "links": [
+    {
+     "title": "Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Jack_London",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 92,
+  "fields": {
+   "name": "Francis Scott Fitzgerald",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 93,
+  "fields": {
+   "name": "J. R. R. Tolkien",
+   "bio": "none",
+   "birth_date": "1892",
+   "death_date": "1973",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 94,
+  "fields": {
+   "name": "Rudyard Kipling",
+   "bio": "Rudyard Kipling was a British author and poet. Born in Bombay, in British India, he is best known for his works of fiction \"[The Jungle Book][1]\" (1894). He is regarded as a major \"innovator in the art of the short story\"; his children's books are enduring classics of children's literature. ([Source][2])\r\n\r\n\r\n  [1]: /works/OL15400121W/\r\n  [2]: http://en.wikipedia.org/wiki/Rudyard_Kipling",
+   "birth_date": "30 December 1865",
+   "death_date": "18 January 1936",
+   "links": [
+    {
+     "url": "http://en.wikipedia.org/wiki/Rudyard_Kipling",
+     "title": "Wikipedia",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 95,
+  "fields": {
+   "name": "Sun Tzu",
+   "bio": "none",
+   "birth_date": "6th cent. B.C.",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 96,
+  "fields": {
+   "name": "Liza Marklund",
+   "bio": "none",
+   "birth_date": "1962",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 97,
+  "fields": {
+   "name": "Virgina Woolf",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 98,
+  "fields": {
+   "name": "L. Frank Baum",
+   "bio": {
+    "type": "/type/text",
+    "value": "Lyman Frank Baum was a US author, poet, playwright, actor, and independent filmmaker best known today as the creator - along with illustrator WW Denslow - of one of the most popular books in US children's literature, The Wonderful Wizard of Oz. - [Wikipedia][1]\r\n\r\n\r\n  [1]: http://en.wikipedia.org/wiki/L._Frank_Baum"
+   },
+   "birth_date": "15 May 1856",
+   "death_date": "6 May 1919",
+   "links": [
+    {
+     "title": "Wikipedia entry",
+     "url": "http://en.wikipedia.org/wiki/L._Frank_Baum",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 99,
+  "fields": {
+   "name": "Tobias S. Buckell",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 100,
+  "fields": {
+   "name": "Karen Traviss",
+   "bio": "British science fiction author. Karen Traviss is a science fiction author from Wiltshire, England. She is the author of the Wess'Har series, and is also known for writing tie-in material based on Star Wars, Gears of War, Halo, and G.I. Joe. Her work crosses various forms of media including novels, short stories, comics, and video games.",
+   "birth_date": "2000",
+   "death_date": "none",
+   "links": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Karen_Traviss",
+     "title": "Wikipedia",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 101,
+  "fields": {
+   "name": "Frank O'Connor",
+   "bio": "Frank O'Connor (born Michael Francis O'Donovan) was an Irish writer of over 150 works, best known for his short stories and memoirs. The Frank O'Connor International Short Story Award is named in his honor.",
+   "birth_date": "17 September 1903",
+   "death_date": "10 March 1966",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 102,
+  "fields": {
+   "name": "Eric S. Nylund",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 103,
+  "fields": {
+   "name": "Milan Kundera",
+   "bio": "none",
+   "birth_date": "1929",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 104,
+  "fields": {
+   "name": "Carlo Collodi",
+   "bio": {
+    "type": "/type/text",
+    "value": "Carlo Collodi was a pseudonym of Carlo Lorenzini"
+   },
+   "birth_date": "1826",
+   "death_date": "1890",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 105,
+  "fields": {
+   "name": "Fyodor Dostoyevsky",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 106,
+  "fields": {
+   "name": "Henry Rider Haggard",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 107,
+  "fields": {
+   "name": "Fyodor Fyodor Dostoyevsky",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 108,
+  "fields": {
+   "name": "Jerome David Salinger",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 109,
+  "fields": {
+   "name": "Mary Shelley",
+   "bio": "Mary Wollstonecraft Shelley was a British novelist, short story writer, dramatist, essayist, biographer, and travel writer, best known for her Gothic novel Frankenstein: or, The Modern Prometheus (1818). She also edited and promoted the works of her husband, the Romantic poet and philosopher Percy Bysshe Shelley. Her father was the political philosopher  William Godwin, and her mother was the philosopher and feminist Mary Wollstonecraft. ([Source][1].)\r\n\r\n[1]: https://en.wikipedia.org/wiki/Mary_Shelley",
+   "birth_date": "30 August 1797",
+   "death_date": "1 February 1851",
+   "links": [
+    {
+     "title": "Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Mary_Shelley",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 110,
+  "fields": {
+   "name": "Wilkie Collins",
+   "bio": {
+    "type": "/type/text",
+    "value": "William Wilkie Collins (8 January 1824 – 23 September 1889) was an English novelist, playwright and short story writer best known for *The Woman in White* (1859) and *The Moonstone* (1868). The last has been called the first modern English detective novel. Born to the family of a painter, William Collins, in London, he grew up in Italy and France, learning French and Italian. He began work as a clerk for a tea merchant. After his first novel, Antonina, appeared in 1850, he met Charles Dickens, who became a close friend and mentor. Some of Collins's works appeared first in Dickens's journals *All the Year Round* and *Household Words* and they collaborated on drama and fiction. Collins achieved financial stability and an international following with his best known works in the 1860s, but began suffering from gout. Taking opium for the pain grew into an addiction. In the 1870s and 1880s his writing quality declined with his health. Collins was critical of the institution of marriage: he split his time between Caroline Graves and his common-law wife Martha Rudd, with whom he had three children.\r\n\r\n**Source**: [Wilkie Collins](https://en.wikipedia.org/wiki/Wilkie_Collins) on Wikipedia."
+   },
+   "birth_date": "8 Jan 1824",
+   "death_date": "23 Sep 1889",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 111,
+  "fields": {
+   "name": "Jack Kerouac",
+   "bio": {
+    "type": "/type/text",
+    "value": "Jack Kerouac was an American novelist and poet of French-Canadian ancestry.\r\n\r\nHe is considered a literary iconoclast and, alongside William S. Burroughs and Allen Ginsberg, a pioneer of the Beat Generation Kerouac is recognized for his method of spontaneous prose. Thematically, his work covers topics such as Catholic spirituality, jazz, promiscuity, Buddhism, drugs, poverty, and travel. He became an underground celebrity and, with other beats, a progenitor of the hippie movement, although he remained antagonistic toward some of its politically radical elements."
+   },
+   "birth_date": "12 March 1922",
+   "death_date": "21 October 1969",
+   "links": [
+    {
+     "title": "Wikipedia entry",
+     "url": "http://en.wikipedia.org/wiki/Jack_Kerouac",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "title": "Official website (Jack Kerouac Estate)",
+     "url": "https://jackkerouac.com/",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "title": "Encyclopædia Britannica",
+     "url": "https://www.britannica.com/biography/Jack-Kerouac",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 112,
+  "fields": {
+   "name": "Mary Wollstonecraft Shelley",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 113,
+  "fields": {
+   "name": "Titus Lucretius Carus",
+   "bio": "none",
+   "birth_date": "99 BC",
+   "death_date": "55 BC",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 114,
+  "fields": {
+   "name": "Niccolò Machiavelli",
+   "bio": "**Niccolò di Bernardo dei Machiavelli**-Italian diplomat, writer and political philosopher was born in Florence, Italy, on May 3, 1469 to the parentage of Bernardo Machiavelli and Bartolomea Nelli.  In 1502 Machiavelli married Marietta Corsini, who bore him four sons and two daughters. His grandson, Giovanni Ricci, is credited with saving many of Machiavelli's letters and writings.  He died in the city on June 21, 1527. His tomb is in the church of Santa Croce in Florence.\r\n\r\n(Sources: The Historical, Political, and Diplomatic Writings of Niccolò Machiavelli by Christian E. Detmold, Encyclopedia of World Biography, Biography.com, Wikipedia)",
+   "birth_date": "3 May 1469",
+   "death_date": "21 June 1527",
+   "links": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Niccol%C3%B2_Machiavelli",
+     "title": "Wikipedia",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 115,
+  "fields": {
+   "name": "Joseph Conrad",
+   "bio": "Joseph Conrad was a Polish-born British novelist, who became a British subject in 1886. He is regarded as one of the greatest novelists in English though he did not speak the language fluently until he was in his twenties (and then always with a marked Polish accent). He wrote stories and novels, predominantly with a nautical or seaboard setting, that depict trials of the human spirit by the demands of duty and honor. ([Source][1].)\r\n\r\n[1]:https://en.wikipedia.org/wiki/Joseph_Conrad",
+   "birth_date": "3 December 1857",
+   "death_date": "3 August 1924",
+   "links": [
+    {
+     "title": "Wikipedia",
+     "url": "https://en.wikipedia.org/wiki/Joseph_Conrad",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 116,
+  "fields": {
+   "name": "Lucy Montgomery",
+   "bio": "none",
+   "birth_date": "1955",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 117,
+  "fields": {
+   "name": "L. M. Montgomery",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 118,
+  "fields": {
+   "name": "Colette",
+   "bio": {
+    "type": "/type/text",
+    "value": "Sidonie-Gabrielle Colette was born in Saint-Sauveur-en-Puisaye, Yonne, in the Burgundy Region of France.  In 1893 she married Henri Gauthier-Villars, a famous wit known as \"Willy\", who was 15 years her senior.  Her first books, the Claudine series, were published under the pen name of her husband, \"Willy\".  In 1906 she left her husband and lived for a time with the American writer and salonist Natalie Barney.  The two had a short affair, and remained friends until Colette's death.  She then started working in the music halls of Paris with Mathilde de Morny, the Marquise de Belbeuf, with whom she became romantically involved.  In 1907, they performed together in a pantomime entitled Rêve d'Égypte at the Moulin Rouge.  Their onstage kiss nearly caused a riot, which the police were called in to suppress.  As a result of this scandal, further performances of Rêve d'Égypte were banned and Colette and de Morny were no longer able to openly live together, though their relationship continued a total of five years.  She was also involved with the Italian writer Gabriele D'Annunzio during this time.  In 1912 she married Henri de Jouvenel, the editor of the newspaper Le Matin.  She had one daughter.  In 1914, she was asked to write a ballet for the Opéra de Paris, but the composer Maurice Ravel convinced her to rework it into an opera, L'Enfant et les sortilèges, which opened after the war in 1925.  During World War I she converted her husband's estate into a hospital for the wounded.  After the war, her writing career became more successful after the publication of her novel Chéri (1920).  She divorced her husband after having an affair with her stepson.  She married Maurice Goudeket in 1935 and changed her name to Sidonie Goudeket.  Maurice Goudeket published a book about her called Close to Colette: An Intimate Portrait of a Woman of Genius.  She published around 50 novels in total, many with autobiographical elements."
+   },
+   "birth_date": "28 January 1873",
+   "death_date": "3 August 1954",
+   "links": [
+    {
+     "url": "https://www.nytimes.com/books/99/10/17/specials/colette-obit.html",
+     "type": {
+      "key": "/type/link"
+     },
+     "title": "New York Times"
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 119,
+  "fields": {
+   "name": "Stefan Zweig",
+   "bio": "Stefan Zweig (28 November 1881 – 22 February 1942) was an Austrian novelist, playwright, journalist and biographer. At the height of his literary career, in the 1920s and 1930s, he was one of the most popular writers in the world.\r\n\r\n**Source**: [Stefan Zweig](https://en.wikipedia.org/wiki/Stefan_Zweig) on Wikipedia.",
+   "birth_date": "28 November 1881",
+   "death_date": "22 February 1942",
+   "links": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Stefan_Zweig",
+     "title": "Wikipedia",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "url": "https://bookbrainz.org/author/7b831345-4ef3-4156-8bb7-9091ca197073",
+     "title": "BookBrainz",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "title": "inventaire.io",
+     "url": "https://inventaire.io/entity/wd:Q78491",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 120,
+  "fields": {
+   "name": "Rebecca Ross",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 121,
+  "fields": {
+   "name": "William Shakespeare",
+   "bio": "William Shakespeare was an English poet and playwright, widely regarded as the greatest writer in the English language and the world's pre-eminent dramatist.  He is often called England's national poet and the \"Bard of Avon\".  His surviving works, including some collaborations, consist of 38 plays,[c]  154 sonnets, two long narrative poems, and several other poems. His plays have been translated into every major living language and are performed more often than those of any other playwright. He has invented over 1700 words and some of them are common, some of them are not. ([Source][1].)\r\n\r\n[1]:https://en.wikipedia.org/wiki/William_Shakespeare\r\n\r\nLooking for the '[First Folio](https://openlibrary.org/works/OL362289W/Plays)'?",
+   "birth_date": "20 April 1564",
+   "death_date": "23 April 1616",
+   "links": [
+    {
+     "title": "Books of William Shakespeare",
+     "url": "http://www.amazon.co.uk/gp/redirect.html?ie=UTF8&location=http%3A%2F%2Fwww.amazon.co.uk%2Fs%3Fie%3DUTF8%26x%3D0%26ref_%3Dnb_sb_noss%26y%3D0%26field-keywords%3Dwilliam%2520shakespeare%26url%3Dsearch-alias%253Dstripbooks&tag=themicrphotwe-21&linkCode=ur2&camp=1634&creative=19450",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "title": "BookBrainz",
+     "url": "https://bookbrainz.org/author/49d873e6-7f3e-4160-9833-5b17d89cf4dc",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "title": "inventaire.io",
+     "url": "https://inventaire.io/entity/wd:Q692",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "title": "Jardin des citations",
+     "url": "https://jardindescitations.com/auteurs/@williamShakespeare",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 122,
+  "fields": {
+   "name": "L. Frank Baum",
+   "bio": {
+    "type": "/type/text",
+    "value": "Lyman Frank Baum was a US author, poet, playwright, actor, and independent filmmaker best known today as the creator - along with illustrator WW Denslow - of one of the most popular books in US children's literature, The Wonderful Wizard of Oz. - [Wikipedia][1]\r\n\r\n\r\n  [1]: http://en.wikipedia.org/wiki/L._Frank_Baum"
+   },
+   "birth_date": "15 May 1856",
+   "death_date": "6 May 1919",
+   "links": [
+    {
+     "title": "Wikipedia entry",
+     "url": "http://en.wikipedia.org/wiki/L._Frank_Baum",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 123,
+  "fields": {
+   "name": "J. K. Rowling",
+   "bio": "Joanne \"Jo\" Murray, OBE (née Rowling), better known under the pen name J. K. Rowling, is a British author best known as the creator of the Harry Potter fantasy series, the idea for which was conceived whilst on a train trip from Manchester to London in 1990. The Potter books have gained worldwide attention, won multiple awards, sold more than 400 million copies, and been the basis for a popular series of films.",
+   "birth_date": "31 July 1965",
+   "death_date": "none",
+   "links": [
+    {
+     "title": "Official Site",
+     "url": "http://www.jkrowling.com/",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 124,
+  "fields": {
+   "name": "Charlotte Brontë",
+   "bio": "Charlotte Brontë was an English novelist, the eldest of the three Brontë sisters whose novels are English literature standards. Under the pen name Currer Bell, she wrote Jane Eyre.  ([Source][1].)\r\n\r\n[1]: http://en.wikipedia.org/wiki/Charlotte_Brontë\r\n\r\nHer sisters, Anne and Emily, first published their works as Acton and Ellis Bell.",
+   "birth_date": "1816",
+   "death_date": "1855.",
+   "links": [
+    {
+     "url": "http://en.wikipedia.org/wiki/Charlotte_Brontë",
+     "title": "Wikipedia link for Charlotte Brontë",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 125,
+  "fields": {
+   "name": "Henryk Sienkiewicz",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 126,
+  "fields": {
+   "name": "Jeremiah Curtin",
+   "bio": "none",
+   "birth_date": "1835",
+   "death_date": "1906",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 127,
+  "fields": {
+   "name": "John Locke",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 128,
+  "fields": {
+   "name": "Johann Wolfgang von Goethe",
+   "bio": "Johann Wolfgang von Goethe was a German writer and polymath. Goethe's works span the fields of poetry, drama, literature, theology, philosophy, pantheism, and science. His magnum opus, lauded as one of the peaks of world literature, is the two-part drama Faust. Goethe's other well-known literary works include his numerous poems, the Bildungsroman Wilhelm Meister's Apprenticeship and the epistolary novel The Sorrows of Young Werther. <sup>[1][1]</sup>\r\n\r\n\r\n  [1]: https://en.wikipedia.org/wiki/Johann_Wolfgang_von_Goethe",
+   "birth_date": "28 August 1749",
+   "death_date": "22 March 1832",
+   "links": [
+    {
+     "title": "BookBrainz",
+     "url": "https://bookbrainz.org/author/6ce2f2d2-8f06-4da9-bc20-107d30f4e333",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "title": "inventaire.io",
+     "url": "https://inventaire.io/entity/wd:Q5879",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "title": "Johann Wolfgang von Goethe - Life and Work",
+     "url": "https://love-books-review.com/reviews-by-author/johann-wolfgang-von-goethe/",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 129,
+  "fields": {
+   "name": "George Bernard Shaw",
+   "bio": "An Irish playwright.",
+   "birth_date": "26 July 1856",
+   "death_date": "2 November 1950",
+   "links": [
+    {
+     "title": "Wikipedia",
+     "url": "http://en.wikipedia.org/wiki/George_Bernard_Shaw",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 130,
+  "fields": {
+   "name": "John Milton",
+   "bio": "John Milton was an English poet, author, polemicist and civil servant for the Commonwealth of England. He is best known for his epic poem Paradise Lost. \r\n([Source][1].)\r\n\r\n\r\n[1]: http://en.wikipedia.org/wiki/John_Milton",
+   "birth_date": "9 December 1608",
+   "death_date": "8 November 1674",
+   "links": [
+    {
+     "title": "The Life of John Milton",
+     "url": "http://www.luminarium.org/sevenlit/milton/miltonbio.htm",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 131,
+  "fields": {
+   "name": "L. Frank Baum",
+   "bio": {
+    "type": "/type/text",
+    "value": "Lyman Frank Baum was a US author, poet, playwright, actor, and independent filmmaker best known today as the creator - along with illustrator WW Denslow - of one of the most popular books in US children's literature, The Wonderful Wizard of Oz. - [Wikipedia][1]\r\n\r\n\r\n  [1]: http://en.wikipedia.org/wiki/L._Frank_Baum"
+   },
+   "birth_date": "15 May 1856",
+   "death_date": "6 May 1919",
+   "links": [
+    {
+     "title": "Wikipedia entry",
+     "url": "http://en.wikipedia.org/wiki/L._Frank_Baum",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 132,
+  "fields": {
+   "name": "Hans Christian Anderson",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 133,
+  "fields": {
+   "name": "Lee Child",
+   "bio": {
+    "type": "/type/text",
+    "value": "Lee Child was born in 1954 in Coventry, England, but spent his formative years in the nearby city of Birmingham. He went to law school in Sheffield, England, and after part-time work in the theater he joined Granada Television in Manchester for what turned out to be an eighteen-year career as a presentation director during British TV's \"golden age.\" During his tenure his company made Brideshead Revisited, The Jewel in the Crown, Prime Suspect, and Cracker. He was fired in 1995 at the age of 40 as a result of corporate restructuring. Always a voracious reader, he decided to see an opportunity where others might have seen a crisis and bought six dollars' worth of paper and pencils and sat down to write a book, Killing Floor, the first in the (now 15 book) Jack Reacher series.\r\n\r\n-- from leechild.com"
+   },
+   "birth_date": "1954",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 134,
+  "fields": {
+   "name": "Eleanor Porter",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 135,
+  "fields": {
+   "name": "James Matthew Barrie",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 136,
+  "fields": {
+   "name": "Daniel Defoe",
+   "bio": "Daniel Defoe, born Daniel Foe, was an English writer, journalist, and pamphleteer, who gained enduring fame for his novel Robinson Crusoe. Defoe is notable for being one of the earliest proponents of the novel, as he helped to popularise the form in Britain, and is even referred to by some as among the founders of the English novel. A prolific and versatile writer, he wrote more than 500 books, pamphlets, and journals on various topics (including politics, crime, religion, marriage, psychology and the supernatural). He was also a pioneer of economic journalism. ([Source][1])\r\n\r\n\r\n  [1]: http://en.wikipedia.org/wiki/Daniel_Defoe",
+   "birth_date": "1661?",
+   "death_date": "24 April 1731",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 137,
+  "fields": {
+   "name": "Fyodor Dostoevsky",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 138,
+  "fields": {
+   "name": "Selma Lagerlöf",
+   "bio": {
+    "type": "/type/text",
+    "value": "Swedish writer of fiction, Nobel Prize winner in 1909."
+   },
+   "birth_date": "1858",
+   "death_date": "1940",
+   "links": [
+    {
+     "url": "http://sv.wikipedia.org/wiki/Selma_Lagerl%C3%B6f",
+     "type": {
+      "key": "/type/link"
+     },
+     "title": "Swedish Wikipedia"
+    },
+    {
+     "url": "http://runeberg.org/authors/lagerlof.html",
+     "type": {
+      "key": "/type/link"
+     },
+     "title": "Project Runeberg"
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 139,
+  "fields": {
+   "name": "Carlos Ruiz Zafón",
+   "bio": "Mi afición a los dragones viene de largo. Barcelona es ciudad de dragones, que adornan o vigilan muchas de sus fachadas, y me temo que yo soy uno de ellos. Quizás por eso, por solidaridad con el pequeño monstruo, hace ya muchos años que los colecciono y les ofrezco refugio en mi casa, dragonera al uso. Al día de hoy ya son más de 400 criaturas dragonas las que hacen mi censo, que aumenta cada mes. Además de haber nacido en el año, por supuesto, del dragón, mis vínculos con estas bestias verdes que respiran fuego son numerosos. Somos criaturas nocturnas, aficionadas a las tinieblas, no particularmente sociables, poco amigas de hidalgos y caballeros andantes y difíciles de conocer.\r\n([source][1])\r\n\r\n\r\n  [1]: http://www.carlosruizzafon.com/es/carlos-ruiz-zafon.php",
+   "birth_date": "25 September 1964",
+   "death_date": "19 June 2020",
+   "links": [
+    {
+     "title": "carlosruizzafon.com",
+     "url": "http://www.carlosruizzafon.com",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "title": "Official page",
+     "url": "http://www.carlosruizzafon.com/",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "url": "http://en.wikipedia.org/wiki/Carlos_Ruiz_Zaf%C3%B3n",
+     "title": "Wikipedia Entry",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 140,
+  "fields": {
+   "name": "John Bunyan",
+   "bio": "none",
+   "birth_date": "1628",
+   "death_date": "1688",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 141,
+  "fields": {
+   "name": "J. V. Editors",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 142,
+  "fields": {
+   "name": "Scott, W.",
+   "bio": "none",
+   "birth_date": "1846",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 143,
+  "fields": {
+   "name": "Nathaniel Nathaniel Hawthorne",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 144,
+  "fields": {
+   "name": "G. K Chesterton",
+   "bio": "none",
+   "birth_date": "none",
+   "death_date": "none",
+   "links": "none"
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 145,
+  "fields": {
+   "name": "Guy de Maupassant",
+   "bio": "Guy de Maupassant, né le 5 août 1850 au château de Miromesnil près de Tourville-sur-Arques (France) et mort le 6 juillet 1893 dans le 16e arrondissement de Paris, est un écrivain et journaliste littéraire français. Lié à Gustave Flaubert et à Émile Zola, Maupassant a marqué la littérature française par ses six romans, dont *Une vie* en 1883, *Bel-Ami* en 1885, *Pierre et Jean* en 1887-1888, et surtout par ses nouvelles (parfois intitulées contes) comme *Boule de Suif* en 1880, les *Contes de la bécasse* (1883) ou Le Horla (1887). Ces œuvres retiennent l’attention par leur force réaliste, la présence importante du fantastique et par le pessimisme qui s’en dégage le plus souvent, mais aussi par la maîtrise stylistique. La carrière littéraire de Maupassant se limite à une décennie — de 1880 à 1890 — avant qu’il ne sombre peu à peu dans la folie et ne meure peu avant l'âge de 43 ans. Reconnu de son vivant, il conserve un renom de premier plan, renouvelé encore par les nombreuses adaptations cinématographiques de ses œuvres.\r\n\r\n\r\n----------\r\n\r\n\r\n(Henry René Albert) Guy De Maupassant is generally considered to be the greatest French writer of short stories. One account says the location of his birth was the Château de Miromesnil, in Dieppe, though this is not certain. His paternal ancestors were of the minor aristocracy, and his maternal grandfather, Paul Le Poittevin, was Gustave Flaubert's godfather. His parents separated when he was 11 years old. \r\n\r\nMaupassant was gifted with a photographic memory, which aided him in recollecting events and characters for his stories. As a teenager, Maupassant was shown, by the poet Algernon Swinburne (1837-1909), a mummified hand. He used this haunting image in his early short story La Main Ecorchée (1875). In 1869 Maupassant started to study law in Paris, but soon, at age 20, he volunteered to serve in the army during Franco-Prussian War. After his return to Paris, Maupassant joined the literary circle of Gustave Flaubert, who introduced him to some of the leading writers of his day, including Emile Zola, Ivan Turgenev, and Henry James. Flaubert saw Maupassant regularly and schooled him in the craft of being a writer. \r\n\r\nFrom 1872 to 1880, Maupassant worked as a civil servant, first at the ministry of maritime affairs, then at the ministry of education. Toward the end of this time, Maupassant published his first poetry, Des Vers (1880). Later the same year he published his short story masterpiece, \"Boule de Suif\" (Ball of Fat) in the anthology Soirées de Medan (1880), edited by Emile Zola. The story, set during the Franco-Prussian War, is about passengers on a coach, one of whom is a well-known prostitute, nicknamed 'Boule de Suif.' The story later inspired director John Ford's Western film Stagecoach (1945). \r\n\r\nDuring the 1880s Maupassant created some 300 short stories, six novels, three travel books, and one volume of verse. In tone, his tales were marked by precision of style and a range of expression. Although his stories range from moving drama to sometimes bizarre comedy, it is his macabre horror stories that have received much attention. \r\n\r\nAmong Maupassant's best known books is Une Vie (A Woman's Life, 1883), about the frustrating existence of a Norman wife, Bel-Ami (1885), which depicts an unscrupulous journalist. Pierre et Jean (1888) was a psychological study of two brothers. The novel was thought to be immoral, according to the classic definition, because the hero succeeds by doing wrong. Maupassant's most upsetting horror story, \"Le Horla\" (1887) (not to be confused with another of Maupassant's stories called \"The Trip of Le Horla\", which is about a hot air balloon), was about vampire-like ghouls, madness and suicide. \r\n\r\nMaupassant had suffered from syphilis since his 20's, which caused him neurological and mental problem in his later years, and which undoubtedly accounts for his shortened lifespan. Some critics have alleged that Maupassant's developing illness can be seen through a growing preocuppation with mental illness in his stories. However, the theme of mental illness is present even in his first collection, La Maison Tellier (1881), published at the height of his health. Maupassant's horror fiction consists of some 39 stories, only a tenth of his total work. A recurring theme in these is madness: \"A Queer Night in Paris\" is a paranoid nightmare: its narrator feels compelled to walk the streets. In \"Who Knows?\" the subject suffers from delusions about the furniture in his house. \"Diary of a Madman\" is a story about a judge, who commits murder, just for the experience, and condemns an innocent man to death for the crime. \"The Inn\" has many similarities with Stephen King's novel The Shining. His story, \"The Hand,\" based on his teenage recollection, has inspired later authors and movie directors. Maupassant's writing is sometimes compared with that of Edgar Allen Poe. \r\n\r\nOn January 2, 1892, Maupassant tried to commit suicide by cutting his throat and was committed to the celebrated private asylum of Dr. Esprit Blanche at Passy, in Paris, where he died next year. Maupassant's style has been imitated by countless writers, and his influence can be seen on such masters of the short story as W. Somerset Maugham and O. Henry.\r\n\r\n[Source][1]\r\n\r\n\r\n  [1]: http://www.classicallibrary.org/maupassant/index.htm",
+   "birth_date": "5 Aug 1850",
+   "death_date": "2 Mar 1893",
+   "links": [
+    {
+     "title": "Wikipedia deutsch",
+     "url": "http://de.wikipedia.org/wiki/Maupassant",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "title": "Gutenberg DE e-texte",
+     "url": "http://gutenberg.spiegel.de/index.php?id=19&autorid=401&autor_vorname=+Guy+de&autor_nachname=Maupassant&cHash=b31bbae2c6",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "title": "Gutenberg.org e-texts",
+     "url": "http://www.gutenberg.org/browse/authors/m#a306",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "title": "LibriVox audio books",
+     "url": "http://librivox.org/newcatalog/search.php?title=&author=Maupassant&status=complete&action=Search",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 146,
+  "fields": {
+   "name": "James Joyce",
+   "bio": "James Augustine Aloysius Joyce was an Irish novelist and poet. He contributed to the modernist avant-garde and is regarded as one of the most influential and important authors of the 20th century.\r\n\r\nJoyce is best known for Ulysses (1922), a landmark work in which the episodes of Homer's Odyssey are paralleled in an array of contrasting literary styles, perhaps most prominent among these the stream of consciousness technique he utilised. Other well-known works are the short-story collection Dubliners (1914), and the novels A Portrait of the Artist as a Young Man (1916) and Finnegans Wake (1939). His other writings include three books of poetry, a play, occasional journalism and his published letters. [(Wikipedia][1])\r\n\r\n\r\n  [1]: https://en.wikipedia.org/wiki/James_Joyce",
+   "birth_date": "2 February 1882",
+   "death_date": "13 January 1941",
+   "links": [
+    {
+     "url": "https://en.wikipedia.org/wiki/James_Joyce",
+     "title": "Wikipedia",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "title": "BookBrainz",
+     "url": "https://bookbrainz.org/author/ba11ea0f-8607-45f8-a112-e8c067230245",
+     "type": {
+      "key": "/type/link"
+     }
+    },
+    {
+     "title": "inventaire.io",
+     "url": "https://inventaire.io/entity/wd:Q6137020",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 147,
+  "fields": {
+   "name": "Lucy Maud Montgomery",
+   "bio": "Lucy Maud Montgomery CBE, (called \"Maud\" by family and friends) and publicly known as L.M. Montgomery was a Canadian author, best known for a series of novels beginning with *Anne of Green Gables*, published in 1908.\r\n\r\nOnce published, *Anne of Green Gables* was an immediate success. The central character, Anne, an orphaned girl who was adopted by a a sister and brother duo of Marilla and Matthew, made Montgomery famous in her lifetime and gave her an international following. The first novel was followed by a series of sequels with Anne as the central character. The novels became the basis for the highly acclaimed 1985 CBC television miniseries, *Anne of Green Gables* and several other television movies and programs, including Road to Avonlea, which ran in Canada and the U.S. from 1990-1996.She also wrote a couple of other short series of books; 'Chronicles of Avonlea', 'Further Chronicles of Avonlea', 'The Story Girl' (the sequel to it was 'The Golden Road') , 'The Blue Castle' are some of the other books that she has written..She also wrote a 3 book series namely, 'Emily of New Moon', 'Emily Climbs' and 'Emily's Quest' (a trilogy).She also wrote, 'Akin to Anne', 'Kilmeny of the Orchard', 'Jane of Lantern Hill' and 'The Blythe's' are quoted ..she also wrote short stories compilations..'At the Alter', a matrimonial tales collection and tales of the sea were some of the books of short stories she has written..A book that has not been followed by a sequel is 'Magic for Marigold'...Another book series by the famous Montgomery consists of 'Pat of Silver Bush'  and 'Mistress Pat'.",
+   "birth_date": "1874",
+   "death_date": "1942.",
+   "links": [
+    {
+     "title": "LibriVox audio books",
+     "url": "http://librivox.org/newcatalog/search_advanced.php?author=Lucy+Maud+Montgomery&status=complete&action=Search",
+     "type": {
+      "key": "/type/link"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "model": "bookchat.author",
+  "author_id": 148,
+  "fields": {
+   "name": "Peter Straub",
+   "bio": {
+    "type": "/type/text",
+    "value": "Peter Straub was born in Milwaukee, Wisconsin on 2 March, 1943, the first of three sons of a salesman and a nurse. The salesman wanted him to become an athlete, the nurse thought he would do well as either a doctor or a Lutheran minister, but all he wanted to do was to learn to read.\r\n\r\nWhen kindergarten turned out to be a stupefyingly banal disappointment devoted to cutting animal shapes out of heavy colored paper, he took matters into his own hands and taught himself to read by memorizing his comic books and reciting them over and over to other neighborhood children on the front steps until he could recognize the words. Therefore, when he finally got to first grade to find everyone else laboring over the imbecile adventures of Dick, Jane and Spot (“See Spot run. See, see, see,”), he ransacked the library in search of pirates, soldiers, detectives, spies, criminals, and other colorful souls, Soon he had earned a reputation as an ace storyteller, in demand around campfires and in back yards on summer evenings.\r\n\r\nThis career as the John Buchan to the first grade was interrupted by a collision between himself and an automobile which resulted in a classic near-death experience, many broken bones, surgical operations, a year out of school, a lengthy tenure in a wheelchair, and certain emotional quirks. Once back on his feet, he quickly acquired a severe stutter which plagued him into his twenties and now and then still puts in a nostalgic appearance, usually to the amusement of telephone operators and shop clerks. Because he had learned prematurely that the world was dangerous, he was jumpy, restless, hugely garrulous in spite of his stutter, physically uncomfortable and, at least until he began writing horror three decades later, prone to nightmares. Books took him out of himself, so he read even more than earlier, a youthful habit immeasurably valuable to any writer. And his storytelling, for in spite of everything he was still a sociable child with a lot of friends, took a turn toward the dark and the garish, toward the ghoulish and the violent. He found his first “effect” when he discovered that he could make this kind of thing funny.\r\n\r\nAs if scripted, the rest of life followed. He went on scholarship to Milwaukee Country Day School and was the darling of his English teachers. He discovered Thomas Wolfe and Jack Kerouac, patron saints of wounded and self-conscious adolescence, and also, blessedly, jazz music, which spoke of utterance beyond any constraint: passion and liberation in the form of speech on the far side of the verbal border. The alto saxophone player Paul Desmond, speaking in the voice of a witty and inspired angel, epitomized ideal expressiveness, Our boy still had no idea why inspired speech spoke best when it spoke in code, the simultaneous terror and ecstasy of his ancient trauma, as well as its lifelong (so far, anyhow) legacy of anger, being so deeply embedded in the self as to be imperceptible, Did he behave badly, now and then? Did he wish to shock, annoy, disturb, and provoke? Are you kidding? Did he also wish to excel, to keep panic and uncertainty at arm's length by good old main force effort? Make a guess. So here we have a pure but unsteady case of denial happily able to maintain itself through merciless effort. Booted along by invisible fears and horrors, this fellow was rewarded by wonderful grades and a vague sense of a mysterious but transcendent wholeness available through expression. He went to the University of Wisconsin and, after opening his eyes to the various joys of Henry James, William Carlos Williams, and the Texas blues-rocker Steve Miller, a great & joyous character who lived across the street, passed through essentially unchanged to emerge in 1965 with an honors degree in English, then an MA at Columbia a year later. He thought actual writing was probably beyond him even though actual writing was probably what he was best at - down crammed he many and many a book, stirred by"
+   },
+   "birth_date": "2 Mar 1943",
+   "death_date": "none",
+   "links": [
+    {
+     "url": "http://peterstraub.net",
+     "type": {
+      "key": "/type/link"
+     },
+     "title": "peterstraub.net"
+    }
+   ]
+  }
+ }
+]
