@@ -51,8 +51,8 @@ with open('./fiction_authors.json' ,'r', encoding='utf-8') as fa:
 print(AUTHORS)
 
 
-# with open('./fiction_authors.json', '') as fts:
-#     string = json.dumps(AUTHORS, indent=1, ensure_ascii=False)
-#     fts.write(string)
+with open('./fiction_authors.json', 'w', encoding='utf-8') as fts:
+    string = json.dumps(AUTHORS, indent=1, ensure_ascii=False)
+    fts.write(string)
 
 

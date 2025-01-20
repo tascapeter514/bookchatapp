@@ -17,7 +17,7 @@
     }
    ],
    "titles": [
-    1
+    "feee8858-4908-481f-804d-9c5290caa359"
    ]
   }
  },
@@ -31,7 +31,7 @@
    "death_date": "2016",
    "links": "none",
    "titles": [
-    2
+    "e0d8c143-9913-46b6-9fb5-1492e791189c"
    ]
   }
  },
@@ -48,7 +48,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    3
+    "d1e66754-36ad-455f-8227-bf3c14ee564f"
    ]
   }
  },
@@ -87,7 +87,7 @@
     }
    ],
    "titles": [
-    4
+    "d94e1efb-597a-467d-b727-04e56ca7aebd"
    ]
   }
  },
@@ -104,7 +104,7 @@
    "death_date": "2002",
    "links": "none",
    "titles": [
-    5
+    "efc433d8-dea3-46fc-b63c-c9da5db9b818"
    ]
   }
  },
@@ -121,7 +121,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    6
+    "14747194-12a2-45ce-a9ce-ce00e9b5c8b1"
    ]
   }
  },
@@ -135,7 +135,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    7
+    "7315192a-101a-41cd-9143-8bc6cba21d72"
    ]
   }
  },
@@ -157,13 +157,13 @@
     }
    ],
    "titles": [
-    8,
-    49,
-    52,
-    92,
-    106,
-    126,
-    200
+    "7dac59c0-81fd-4aff-878a-2b8b13153aa5",
+    "fbe7339c-a238-4934-b18e-46f6a0bfbe61",
+    "ab8f7a57-f435-4635-9888-6f194c5f716f",
+    "f2d4c742-ac07-40f3-947f-36f7b8dd18a2",
+    "d5348110-9029-4611-ab9e-f94358ffef9a",
+    "ffa4fa0e-453e-445f-b127-3539cf5d6739",
+    "720ca19c-ff05-44a2-bd42-e68140d8e000"
    ]
   }
  },
@@ -177,7 +177,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    9
+    "db7df8e3-3e3a-4df9-8188-81ea5fbb1577"
    ]
   }
  },
@@ -191,7 +191,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    10
+    "20292cd4-f787-442c-ac16-4dfd42acdffe"
    ]
   }
  },
@@ -241,7 +241,7 @@
     }
    ],
    "titles": [
-    11
+    "ac2432a0-a708-4553-b5f6-3f166901c7ac"
    ]
   }
  },
@@ -255,7 +255,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    12
+    "f7b7e585-b5f4-40f1-8a68-b71bb44ae93a"
    ]
   }
  },
@@ -269,8 +269,8 @@
    "death_date": "28 March 1941",
    "links": "none",
    "titles": [
-    13,
-    198
+    "bc86f3fd-bb2c-4584-8c11-5d98f1e6983e",
+    "ae182d4b-0e94-4ead-a05d-5acc53367a82"
    ]
   }
  },
@@ -299,10 +299,10 @@
     }
    ],
    "titles": [
-    14,
-    62,
-    122,
-    123
+    "fd0ea5a7-1118-456d-8e01-248e0f07e8f2",
+    "c00fc139-6a33-431b-8ed0-ad1282080e84",
+    "f94576b1-3ba7-44c8-acf1-b9ab5010f74c",
+    "57002139-48e1-4b3d-927f-887d5709d033"
    ]
   }
  },
@@ -327,7 +327,7 @@
     }
    ],
    "titles": [
-    15
+    "18fece7e-8db3-49be-9524-a51049f294ee"
    ]
   }
  },
@@ -341,7 +341,7 @@
    "death_date": "1977",
    "links": "none",
    "titles": [
-    16
+    "17a9f240-b235-4881-a4ee-854966fc4f89"
    ]
   }
  },
@@ -355,20 +355,8 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    17
+    "dc2bdcde-6fc4-47e1-88cc-42b6735df9bf"
    ]
-  }
- },
- {
-  "model": "bookchat.author",
-  "author_id": "94c4f620-213b-4243-9713-690acb238054",
-  "fields": {
-   "name": "None None",
-   "bio": "none",
-   "birth_date": "none",
-   "death_date": "none",
-   "links": "none",
-   "titles": []
   }
  },
  {
@@ -380,7 +368,9 @@
    "birth_date": "1946",
    "death_date": "none",
    "links": "none",
-   "titles": ["515ff7fa-57d9-430d-bccf-6d399c0f3d1d"]
+   "titles": [
+    "515ff7fa-57d9-430d-bccf-6d399c0f3d1d"
+   ]
   }
  },
  {
@@ -408,7 +398,7 @@
     }
    ],
    "titles": [
-    20
+    "11ee6241-5e33-44e2-a907-569679e4b469"
    ]
   }
  },
@@ -433,7 +423,7 @@
     }
    ],
    "titles": [
-    21
+    "c87f42b7-c94c-42b6-ad93-a8006aa5eae0"
    ]
   }
  },
@@ -447,7 +437,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    22
+    "c86973e5-33ed-4bd8-91ba-820b7796bfe2"
    ]
   }
  },
@@ -471,7 +461,9 @@
      }
     }
    ],
-   "titles": []
+   "titles": [
+    "b469fa81-e768-4263-9d65-ef62f36e1a10"
+   ]
   }
  },
  {
@@ -499,9 +491,9 @@
     }
    ],
    "titles": [
-    24,
-    25,
-    143
+    "cca21fa8-8b24-4114-800d-74a4e8efa111",
+    "010a64fb-edcb-46a3-9c58-acc4debd118d",
+    "a406511a-0472-4f3c-89a0-3686c4c9ca26"
    ]
   }
  },
@@ -515,10 +507,10 @@
    "death_date": "1952",
    "links": "none",
    "titles": [
-    26,
-    29,
-    57,
-    140
+    "07aae38d-e6d6-4dcc-96f4-e07bdd6b0fb5",
+    "df41336d-63f4-4ac1-bea4-96837caf6476",
+    "422b46ea-ad0e-4993-a5eb-b8ff01d8b4f1",
+    "077c13f9-655f-47ff-b330-8920882501b9"
    ]
   }
  },
@@ -543,8 +535,8 @@
     }
    ],
    "titles": [
-    27,
-    113
+    "00c2c3ef-4e5e-4d2a-8418-f092773e0d5e",
+    "a02109a4-3cfd-4780-b76c-03835fb10482"
    ]
   }
  },
@@ -558,32 +550,8 @@
    "death_date": "1988",
    "links": "none",
    "titles": [
-    28
+    "52d1ab4d-f598-46dd-962c-f73e948596e4"
    ]
-  }
- },
- {
-  "model": "bookchat.author",
-  "author_id": "4de6547e-ebad-4e5e-a73c-b5caafb3eaa2",
-  "fields": {
-   "name": "Mark Twain Media",
-   "bio": "none",
-   "birth_date": "none",
-   "death_date": "none",
-   "links": "none",
-   "titles": []
-  }
- },
- {
-  "model": "bookchat.author",
-  "author_id": "a772a224-1e55-40ab-a914-7ae17940cfdf",
-  "fields": {
-   "name": "Homer Andrew Watt",
-   "bio": "none",
-   "birth_date": "1884",
-   "death_date": "1948",
-   "links": "none",
-   "titles": []
   }
  },
  {
@@ -604,7 +572,7 @@
     }
    ],
    "titles": [
-    32
+    "3a042aec-e1a8-4cb9-9041-b2a120278962"
    ]
   }
  },
@@ -640,7 +608,7 @@
     }
    ],
    "titles": [
-    33
+    "a30efce0-0d90-44e3-9478-aac95d09b179"
    ]
   }
  },
@@ -662,22 +630,10 @@
     }
    ],
    "titles": [
-    34,
-    100,
-    164
+    "61f9b41a-5709-46e0-8f79-6934fb880629",
+    "3f82ca79-efbb-444f-bec8-baf22d9380f4",
+    "a1b0c130-e4e2-4853-84f8-1d38da568558"
    ]
-  }
- },
- {
-  "model": "bookchat.author",
-  "author_id": "7becd81e-c68b-4b59-9f79-2e97aa55b371",
-  "fields": {
-   "name": "Han Kang Hong",
-   "bio": "none",
-   "birth_date": "1953",
-   "death_date": "none",
-   "links": "none",
-   "titles": []
   }
  },
  {
@@ -693,7 +649,7 @@
    "death_date": "25 October 1400",
    "links": "none",
    "titles": [
-    36
+    "418a16eb-d0c0-4439-b66f-44cc85f607e9"
    ]
   }
  },
@@ -725,11 +681,11 @@
     }
    ],
    "titles": [
-    149,
-    150,
-    155,
-    183,
-    194
+    "cbae3182-c74a-4dff-85c7-cbf36e6ebe8a",
+    "c3c797ca-7f95-4f32-8cc5-07b5d0989861",
+    "1d11b088-d980-492a-a2d3-a83d6290d949",
+    "b1b0ba0b-3946-4765-bed0-ba830af9c136",
+    "d7e976bd-23f0-4429-8f74-2a6b082bb102"
    ]
   }
  },
@@ -751,23 +707,8 @@
     }
    ],
    "titles": [
-    38
+    "e967419f-789a-4fb3-ae2c-c021eb688f1d"
    ]
-  }
- },
- {
-  "model": "bookchat.author",
-  "author_id": "925a098c-3d57-403f-844c-277800cd28da",
-  "fields": {
-   "name": "J. M. Coetzee",
-   "bio": {
-    "type": "/type/text",
-    "value": "John Maxwell Coetzee FRSL OMG (born 9 February 1940) is a South African and Australian novelist, essayist, linguist, translator and recipient of the 2003 Nobel Prize in Literature. He is one of the most critically acclaimed and decorated authors in the English language. He has won the Booker Prize (twice), the CNA Literary Award (thrice), the Jerusalem Prize, the Prix Femina étranger, and The Irish Times International Fiction Prize, and holds a number of other awards and honorary doctorates. [source](https://en.wikipedia.org/wiki/J._M._Coetzee)"
-   },
-   "birth_date": "9 Feb 1940",
-   "death_date": "none",
-   "links": "none",
-   "titles": []
   }
  },
  {
@@ -780,8 +721,8 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    40,
-    46
+    "7f99ae3f-cf4b-434d-a136-a60ed59b3d99",
+    "232235ef-d4c4-4d75-8cba-a48c20992733"
    ]
   }
  },
@@ -795,7 +736,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    41
+    "80209b69-8403-4dbe-8170-29a60b470788"
    ]
   }
  },
@@ -817,7 +758,7 @@
     }
    ],
    "titles": [
-    42
+    "79880fb8-6417-46c3-b32f-5b39737a776b"
    ]
   }
  },
@@ -831,7 +772,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    43
+    "0f69b072-a022-4217-8d42-cc7ef10c87cc"
    ]
   }
  },
@@ -845,7 +786,7 @@
    "death_date": "2008",
    "links": "none",
    "titles": [
-    44
+    "d1ef864e-b2d9-464d-bed9-a5648fb48592"
    ]
   }
  },
@@ -859,7 +800,7 @@
    "death_date": "14 Nov 1995",
    "links": "none",
    "titles": [
-    45
+    "e5eb8005-6a63-4727-a0eb-d9f76d90a950"
    ]
   }
  },
@@ -873,7 +814,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    47
+    "173077f3-010f-4581-808e-f55f0d255099"
    ]
   }
  },
@@ -887,7 +828,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    48
+    "acb816a2-6ef2-4aa3-9b14-12f598c6b266"
    ]
   }
  },
@@ -901,20 +842,8 @@
    "death_date": "2001-11-10",
    "links": "none",
    "titles": [
-    50
+    "593762e1-370a-417a-9c37-85ca24d29e3f"
    ]
-  }
- },
- {
-  "model": "bookchat.author",
-  "author_id": "28a077cc-916f-4683-bb15-45654abc3941",
-  "fields": {
-   "name": "J. R. R. (John Ronald Reuel) Tolkien",
-   "bio": "none",
-   "birth_date": "none",
-   "death_date": "none",
-   "links": "none",
-   "titles": []
   }
  },
  {
@@ -930,7 +859,7 @@
    "death_date": "8 August 1897",
    "links": "none",
    "titles": [
-    53
+    "da61b505-266e-4273-9174-5f500acf3268"
    ]
   }
  },
@@ -944,23 +873,8 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    54
+    "f3c002a2-7a55-4b97-828d-13b08065ad52"
    ]
-  }
- },
- {
-  "model": "bookchat.author",
-  "author_id": "12c325cc-0dbd-4eab-83a3-2290cfe83d32",
-  "fields": {
-   "name": "Benjamín Labatut",
-   "bio": {
-    "type": "/type/text",
-    "value": "Chilean writer"
-   },
-   "birth_date": "1980",
-   "death_date": "none",
-   "links": "none",
-   "titles": []
   }
  },
  {
@@ -995,7 +909,7 @@
     }
    ],
    "titles": [
-    56
+    "4c99e443-a66a-4bf9-85a5-18503edf0012"
    ]
   }
  },
@@ -1017,31 +931,8 @@
     }
    ],
    "titles": [
-    58
+    "35a90abd-a8df-4c5f-a195-fbc2669b4d1c"
    ]
-  }
- },
- {
-  "model": "bookchat.author",
-  "author_id": "e05a6426-1427-45c4-ac1c-59779fc52434",
-  "fields": {
-   "name": "H.C. Andersens hus",
-   "bio": {
-    "type": "/type/text",
-    "value": "The Hans Christian Andersen Museum in Odense, Denmark, is the home of 19th century fairy-tale writer [H. C. Andersen](/a/OL25931A)."
-   },
-   "birth_date": "none",
-   "death_date": "none",
-   "links": [
-    {
-     "url": "http://museum.odense.dk/museer/hc-andersens-hus.aspx",
-     "title": "Website",
-     "type": {
-      "key": "/type/link"
-     }
-    }
-   ],
-   "titles": []
   }
  },
  {
@@ -1054,7 +945,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    61
+    "63d73bf9-f898-4c14-8b58-7e73b02c5ab9"
    ]
   }
  },
@@ -1090,12 +981,12 @@
     }
    ],
    "titles": [
-    63,
-    91,
-    116,
-    179,
-    180,
-    182
+    "1de6d465-69a5-40d2-a7a0-4e7ffe62e473",
+    "2e3e649c-11b0-4a41-8083-6dac9f198f24",
+    "e04dfab1-e4ac-4f9b-a636-02de2183898a",
+    "79492e13-1a59-462b-8a93-b3838993c589",
+    "1bf65698-cb2d-4930-8a7d-781f418fc994",
+    "166c2b8f-0df3-4d89-acc5-5ac2ffc27118"
    ]
   }
  },
@@ -1109,7 +1000,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    64
+    "e74a2051-2014-420f-a1f0-212c42624687"
    ]
   }
  },
@@ -1123,7 +1014,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    64
+    "e74a2051-2014-420f-a1f0-212c42624687"
    ]
   }
  },
@@ -1148,7 +1039,7 @@
     }
    ],
    "titles": [
-    64
+    "e74a2051-2014-420f-a1f0-212c42624687"
    ]
   }
  },
@@ -1162,7 +1053,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    64
+    "e74a2051-2014-420f-a1f0-212c42624687"
    ]
   }
  },
@@ -1176,7 +1067,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    64
+    "e74a2051-2014-420f-a1f0-212c42624687"
    ]
   }
  },
@@ -1193,7 +1084,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    64
+    "e74a2051-2014-420f-a1f0-212c42624687"
    ]
   }
  },
@@ -1207,7 +1098,7 @@
    "death_date": "1810,",
    "links": "none",
    "titles": [
-    64
+    "e74a2051-2014-420f-a1f0-212c42624687"
    ]
   }
  },
@@ -1221,7 +1112,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    64
+    "e74a2051-2014-420f-a1f0-212c42624687"
    ]
   }
  },
@@ -1235,7 +1126,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    64
+    "e74a2051-2014-420f-a1f0-212c42624687"
    ]
   }
  },
@@ -1249,7 +1140,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    64
+    "e74a2051-2014-420f-a1f0-212c42624687"
    ]
   }
  },
@@ -1263,7 +1154,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    64
+    "e74a2051-2014-420f-a1f0-212c42624687"
    ]
   }
  },
@@ -1277,7 +1168,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    64
+    "e74a2051-2014-420f-a1f0-212c42624687"
    ]
   }
  },
@@ -1291,7 +1182,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    64
+    "e74a2051-2014-420f-a1f0-212c42624687"
    ]
   }
  },
@@ -1305,7 +1196,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    64
+    "e74a2051-2014-420f-a1f0-212c42624687"
    ]
   }
  },
@@ -1319,20 +1210,8 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    65
+    "831934bb-f532-4e58-a160-e8f3961c7b1e"
    ]
-  }
- },
- {
-  "model": "bookchat.author",
-  "author_id": "0810b0f8-31ea-42d8-84d3-9a7ec2a9e8f2",
-  "fields": {
-   "name": "Henry Edward Manning",
-   "bio": "none",
-   "birth_date": "none",
-   "death_date": "none",
-   "links": "none",
-   "titles": []
   }
  },
  {
@@ -1360,8 +1239,8 @@
     }
    ],
    "titles": [
-    67,
-    94
+    "5bfd0f8c-d4db-4284-894f-4f68e68a195b",
+    "4ecae1d3-6f25-4a41-94b4-70e13a0bb136"
    ]
   }
  },
@@ -1378,14 +1257,14 @@
    "death_date": "28 September 1891",
    "links": "none",
    "titles": [
-    68,
-    79,
-    82,
-    86,
-    96,
-    112,
-    138,
-    139
+    "e7fa56b2-eeed-41e5-864c-ae607218d068",
+    "3c178ede-826d-46e0-948e-cd10df04323a",
+    "c55bc303-8ed4-4b9c-85bc-531e15aa19f5",
+    "a5bd7c26-4826-4605-b694-87a470366e4c",
+    "224d310f-3cdf-4b37-8b36-8477514d80b5",
+    "b2b0d6fd-55b1-4bf5-b567-047f2464fa39",
+    "bd3db455-e5c7-490d-8e51-40204ccb163b",
+    "aa96c4c1-d639-4a6d-85ac-14d5a3c8d169"
    ]
   }
  },
@@ -1399,8 +1278,8 @@
    "death_date": "3 December 1894",
    "links": "none",
    "titles": [
-    69,
-    196
+    "a374054a-edb7-4e21-bbd2-936ec525e88d",
+    "3e216a2f-38e2-4cee-baee-e131234e5f56"
    ]
   }
  },
@@ -1414,20 +1293,8 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    70
+    "9fd15207-4167-4ca9-b03d-7279f85705d1"
    ]
-  }
- },
- {
-  "model": "bookchat.author",
-  "author_id": "dc436752-6272-4459-9a3b-e80793212817",
-  "fields": {
-   "name": "Nan Ke",
-   "bio": "none",
-   "birth_date": "none",
-   "death_date": "none",
-   "links": "none",
-   "titles": []
   }
  },
  {
@@ -1448,7 +1315,7 @@
     }
    ],
    "titles": [
-    72
+    "1943f33a-8d95-491f-8dc9-5c3033886d12"
    ]
   }
  },
@@ -1470,7 +1337,7 @@
     }
    ],
    "titles": [
-    73
+    "b174f44c-fdc0-42e1-9f3b-0333e26efe2c"
    ]
   }
  },
@@ -1484,7 +1351,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    74
+    "59485c2d-54b7-4164-9347-7b95c63649b3"
    ]
   }
  },
@@ -1498,7 +1365,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    74
+    "59485c2d-54b7-4164-9347-7b95c63649b3"
    ]
   }
  },
@@ -1541,7 +1408,7 @@
     }
    ],
    "titles": [
-    74
+    "59485c2d-54b7-4164-9347-7b95c63649b3"
    ]
   }
  },
@@ -1570,7 +1437,7 @@
     }
    ],
    "titles": [
-    75
+    "6cf58ec4-7c95-42a3-95a6-be3758b6f4e3"
    ]
   }
  },
@@ -1584,9 +1451,9 @@
    "death_date": "9 June 1870",
    "links": "none",
    "titles": [
-    76,
-    195,
-    197
+    "3de8871a-34a9-456b-9ce4-dafae3a06764",
+    "b9e22ea1-6aef-4501-aa91-73b1098b03c0",
+    "302fd6be-441a-4537-a60a-ea412cfd44c4"
    ]
   }
  },
@@ -1611,7 +1478,7 @@
     }
    ],
    "titles": [
-    77
+    "8d3ac18b-ff67-40b6-a0e1-960864bb4460"
    ]
   }
  },
@@ -1625,8 +1492,8 @@
    "death_date": "27 March 2006",
    "links": "none",
    "titles": [
-    80,
-    83
+    "9b8d6aea-f3bc-4022-a28f-193c3d6f3cd4",
+    "e31d68f1-c212-43c1-91a1-15424d849fdc"
    ]
   }
  },
@@ -1651,13 +1518,13 @@
     }
    ],
    "titles": [
-    84,
-    89,
-    101,
-    109,
-    121,
-    145,
-    173
+    "c7a1975d-e13f-457a-ac48-a151fba45875",
+    "d5b6b42e-306a-4057-ad07-1e4f926556db",
+    "357a3cf9-0522-467f-a61c-bf8f6d88db04",
+    "27340366-2f8e-482e-a74d-465b3d56b921",
+    "3b0671e5-0235-4f86-8c6b-a5a1e746493b",
+    "71b5bcb1-b66e-44d5-b591-ecfb7c073bb9",
+    "541c8a5c-d7a5-4fe1-8767-0e1378eda3af"
    ]
   }
  },
@@ -1693,7 +1560,7 @@
     }
    ],
    "titles": [
-    146
+    "98d4e330-1aa1-4837-a67a-a883a0766243"
    ]
   }
  },
@@ -1715,7 +1582,7 @@
     }
    ],
    "titles": [
-    87
+    "cac967a3-c454-472b-a307-101a420ea0ed"
    ]
   }
  },
@@ -1758,7 +1625,7 @@
     }
    ],
    "titles": [
-    90
+    "fde2430d-da98-4d27-8438-b44f0d8f3bdc"
    ]
   }
  },
@@ -1772,7 +1639,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    91
+    "2e3e649c-11b0-4a41-8083-6dac9f198f24"
    ]
   }
  },
@@ -1794,7 +1661,7 @@
     }
    ],
    "titles": [
-    93
+    "c3ed92ce-24ac-4910-957f-dd9265e278fc"
    ]
   }
  },
@@ -1808,7 +1675,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    95
+    "dac0cf47-8982-443c-a6f3-c1d827d02b27"
    ]
   }
  },
@@ -1822,7 +1689,7 @@
    "death_date": "1973",
    "links": "none",
    "titles": [
-    97
+    "471d4a8f-cb55-4433-aac7-e8cbee130dd3"
    ]
   }
  },
@@ -1844,26 +1711,12 @@
     }
    ],
    "titles": [
-    98,
-    153,
-    166,
-    167,
-    168,
-    181
-   ]
-  }
- },
- {
-  "model": "bookchat.author",
-  "author_id": "7d1d6a84-3b96-4998-8104-158e20e4ce96",
-  "fields": {
-   "name": "Sun Tzu",
-   "bio": "none",
-   "birth_date": "6th cent. B.C.",
-   "death_date": "none",
-   "links": "none",
-   "titles": [
-    99
+    "e66978d1-0dc8-41b8-9e39-7405dd8839f8",
+    "bc646dc8-0514-4113-9c9c-9beb9274e782",
+    "c6bb0280-3b78-4673-b92e-5299d9bd5313",
+    "6e4e774c-6dee-465a-bbba-411e9ce60767",
+    "aa12ad71-6c70-4c5d-ba49-5c8a38101cd9",
+    "0767cab5-0c98-480a-9e5b-b6d8df9e3f47"
    ]
   }
  },
@@ -1877,7 +1730,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    102
+    "938d5c8c-e3c4-4160-b026-8b947b93348d"
    ]
   }
  },
@@ -1891,7 +1744,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    103
+    "2a8bed99-9bec-4f85-bbfa-0a4d779e3490"
    ]
   }
  },
@@ -1916,8 +1769,8 @@
     }
    ],
    "titles": [
-    104,
-    107
+    "8c83e503-6ea7-4c10-a2d9-ac6d05ef35f9",
+    "a82be634-fd31-4b75-8215-be06839cbcd1"
    ]
   }
  },
@@ -1931,7 +1784,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    105
+    "14c1c95e-fd0b-451f-8ddc-09559ba7fb15"
    ]
   }
  },
@@ -1953,7 +1806,7 @@
     }
    ],
    "titles": [
-    105
+    "14c1c95e-fd0b-451f-8ddc-09559ba7fb15"
    ]
   }
  },
@@ -1967,20 +1820,8 @@
    "death_date": "10 March 1966",
    "links": "none",
    "titles": [
-    105
+    "14c1c95e-fd0b-451f-8ddc-09559ba7fb15"
    ]
-  }
- },
- {
-  "model": "bookchat.author",
-  "author_id": "83e084c2-c0dd-4446-9bbb-4c65861ff94e",
-  "fields": {
-   "name": "Eric S. Nylund",
-   "bio": "none",
-   "birth_date": "none",
-   "death_date": "none",
-   "links": "none",
-   "titles": []
   }
  },
  {
@@ -1993,7 +1834,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    108
+    "0ae5f3b9-6a6e-42dc-8151-54da75827ed3"
    ]
   }
  },
@@ -2010,7 +1851,7 @@
    "death_date": "1890",
    "links": "none",
    "titles": [
-    110
+    "ba2019df-316c-4b2a-8758-dc03b46cde9f"
    ]
   }
  },
@@ -2024,8 +1865,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    111,
-    175
+    "910ca41c-a965-4b72-b5e0-044f1c40fffc"
    ]
   }
  },
@@ -2039,9 +1879,9 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    114,
-    158,
-    162
+    "2d9bac34-9f09-4e06-8b02-e3befa9cf615",
+    "527ff113-7323-47ac-9dda-264174d3aa22",
+    "56798e2d-faa3-463f-b61d-b3294175ff54"
    ]
   }
  },
@@ -2055,8 +1895,8 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    115,
-    192
+    "6b26d884-1c44-45db-afb7-bc9fb1d73a99",
+    "6ecfc66d-db42-4d66-80a6-01ae696fad46"
    ]
   }
  },
@@ -2070,7 +1910,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    117
+    "68e19509-ceb9-4202-9f77-b0331643661e"
    ]
   }
  },
@@ -2092,7 +1932,7 @@
     }
    ],
    "titles": [
-    118
+    "4fbf6a1b-4bcb-4358-bedc-6fb91cd3ac5f"
    ]
   }
  },
@@ -2109,8 +1949,8 @@
    "death_date": "23 Sep 1889",
    "links": "none",
    "titles": [
-    119,
-    144
+    "29714482-bcab-4733-b594-c74e772ae0e7",
+    "d9528a9c-8912-46fb-b91c-db5d59edc3f5"
    ]
   }
  },
@@ -2149,8 +1989,8 @@
     }
    ],
    "titles": [
-    120,
-    154
+    "6005edca-80ae-42b7-a6a6-ede13b11aa27",
+    "62ec13b1-280d-4cec-bdef-21a6ebcd17b9"
    ]
   }
  },
@@ -2164,43 +2004,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    124
-   ]
-  }
- },
- {
-  "model": "bookchat.author",
-  "author_id": "999779e8-b792-423b-b251-a24df0137e1e",
-  "fields": {
-   "name": "Titus Lucretius Carus",
-   "bio": "none",
-   "birth_date": "99 BC",
-   "death_date": "55 BC",
-   "links": "none",
-   "titles": [
-    125
-   ]
-  }
- },
- {
-  "model": "bookchat.author",
-  "author_id": "8980b585-2550-4815-819f-2bd45830c4be",
-  "fields": {
-   "name": "Niccolò Machiavelli",
-   "bio": "**Niccolò di Bernardo dei Machiavelli**-Italian diplomat, writer and political philosopher was born in Florence, Italy, on May 3, 1469 to the parentage of Bernardo Machiavelli and Bartolomea Nelli.  In 1502 Machiavelli married Marietta Corsini, who bore him four sons and two daughters. His grandson, Giovanni Ricci, is credited with saving many of Machiavelli's letters and writings.  He died in the city on June 21, 1527. His tomb is in the church of Santa Croce in Florence.\r\n\r\n(Sources: The Historical, Political, and Diplomatic Writings of Niccolò Machiavelli by Christian E. Detmold, Encyclopedia of World Biography, Biography.com, Wikipedia)",
-   "birth_date": "3 May 1469",
-   "death_date": "21 June 1527",
-   "links": [
-    {
-     "url": "https://en.wikipedia.org/wiki/Niccol%C3%B2_Machiavelli",
-     "title": "Wikipedia",
-     "type": {
-      "key": "/type/link"
-     }
-    }
-   ],
-   "titles": [
-    127
+    "39ecdf80-b1e2-4d17-8c00-79971dd5fcff"
    ]
   }
  },
@@ -2222,7 +2026,7 @@
     }
    ],
    "titles": [
-    128
+    "07b8fc54-c8b7-4e4e-b5ea-40882832b421"
    ]
   }
  },
@@ -2236,8 +2040,8 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    129,
-    189
+    "d5a61445-c83b-4e2d-9f4c-d72de625dfb3",
+    "a2b9563d-36f1-4e51-a927-0c132c7d14a9"
    ]
   }
  },
@@ -2251,7 +2055,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    130
+    "89d9faf6-6bb2-4a02-a443-bc2b2ac8647b"
    ]
   }
  },
@@ -2276,7 +2080,7 @@
     }
    ],
    "titles": [
-    131
+    "ba44e35e-a899-4994-971b-66e1348fb6ac"
    ]
   }
  },
@@ -2312,7 +2116,7 @@
     }
    ],
    "titles": [
-    132
+    "2fd2b6a3-dab4-41ab-bdc0-dc4e7a2738ef"
    ]
   }
  },
@@ -2326,7 +2130,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    133
+    "814f9d7d-1976-444e-b82b-6a0d630057aa"
    ]
   }
  },
@@ -2369,7 +2173,7 @@
     }
    ],
    "titles": [
-    134
+    "6562af6c-665c-45a8-b9cc-ec407156823a"
    ]
   }
  },
@@ -2394,8 +2198,8 @@
     }
    ],
    "titles": [
-    104,
-    107
+    "8c83e503-6ea7-4c10-a2d9-ac6d05ef35f9",
+    "a82be634-fd31-4b75-8215-be06839cbcd1"
    ]
   }
  },
@@ -2417,7 +2221,7 @@
     }
    ],
    "titles": [
-    136
+    "ea92a65c-2873-407c-b736-aad58e1e271d"
    ]
   }
  },
@@ -2438,7 +2242,9 @@
      }
     }
    ],
-   "titles": []
+   "titles": [
+    "85ebc13e-6314-4c06-8088-08bd27f5cacb"
+   ]
   }
  },
  {
@@ -2451,7 +2257,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    141
+    "faf515ec-af43-4782-8fd8-9a2594636859"
    ]
   }
  },
@@ -2465,21 +2271,7 @@
    "death_date": "1906",
    "links": "none",
    "titles": [
-    141
-   ]
-  }
- },
- {
-  "model": "bookchat.author",
-  "author_id": "d87c9352-290d-4699-aac4-ecc007ae4d12",
-  "fields": {
-   "name": "John Locke",
-   "bio": "none",
-   "birth_date": "none",
-   "death_date": "none",
-   "links": "none",
-   "titles": [
-    142
+    "faf515ec-af43-4782-8fd8-9a2594636859"
    ]
   }
  },
@@ -2515,7 +2307,7 @@
     }
    ],
    "titles": [
-    146
+    "98d4e330-1aa1-4837-a67a-a883a0766243"
    ]
   }
  },
@@ -2537,29 +2329,7 @@
     }
    ],
    "titles": [
-    147
-   ]
-  }
- },
- {
-  "model": "bookchat.author",
-  "author_id": "43be0d89-7d9e-4575-ab49-e62dbab63b74",
-  "fields": {
-   "name": "John Milton",
-   "bio": "John Milton was an English poet, author, polemicist and civil servant for the Commonwealth of England. He is best known for his epic poem Paradise Lost. \r\n([Source][1].)\r\n\r\n\r\n[1]: http://en.wikipedia.org/wiki/John_Milton",
-   "birth_date": "9 December 1608",
-   "death_date": "8 November 1674",
-   "links": [
-    {
-     "title": "The Life of John Milton",
-     "url": "http://www.luminarium.org/sevenlit/milton/miltonbio.htm",
-     "type": {
-      "key": "/type/link"
-     }
-    }
-   ],
-   "titles": [
-    148
+    "1900091a-673a-4f89-9ec6-6893ed313faf"
    ]
   }
  },
@@ -2584,8 +2354,8 @@
     }
    ],
    "titles": [
-    104,
-    107
+    "8c83e503-6ea7-4c10-a2d9-ac6d05ef35f9",
+    "a82be634-fd31-4b75-8215-be06839cbcd1"
    ]
   }
  },
@@ -2599,8 +2369,8 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    156,
-    169
+    "724ea5a1-3497-4316-9b0d-2539f38cd868",
+    "3e211181-524b-4070-aec0-947e3929828a"
    ]
   }
  },
@@ -2617,8 +2387,8 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    157,
-    161
+    "4565a690-9d5d-4b0e-aa74-87a58efaae8b",
+    "2678b8e7-52d7-4bab-b8a3-1015e4268db9"
    ]
   }
  },
@@ -2632,8 +2402,8 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    159,
-    163
+    "f846ef0d-8a85-45c9-a114-450347a4efad",
+    "0fbd3c55-0367-4222-8536-f561489d1ba7"
    ]
   }
  },
@@ -2647,8 +2417,8 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    160,
-    165
+    "78c71d27-9469-4596-a36c-e709acb0e9dd",
+    "8778a6ca-8994-44f6-a88c-2183af308e0d"
    ]
   }
  },
@@ -2662,9 +2432,9 @@
    "death_date": "24 April 1731",
    "links": "none",
    "titles": [
-    170,
-    177,
-    190
+    "42fc0b1e-918f-4b8c-8838-0b1544932c4a",
+    "b0e22b6a-4cb3-4a3d-b674-e8fa1b17c246",
+    "d05cf153-8595-426d-96ed-bafeaca04bae"
    ]
   }
  },
@@ -2678,85 +2448,7 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    171
-   ]
-  }
- },
- {
-  "model": "bookchat.author",
-  "author_id": "000f8452-8060-4c25-9556-6ffbab1b3eeb",
-  "fields": {
-   "name": "Selma Lagerlöf",
-   "bio": {
-    "type": "/type/text",
-    "value": "Swedish writer of fiction, Nobel Prize winner in 1909."
-   },
-   "birth_date": "1858",
-   "death_date": "1940",
-   "links": [
-    {
-     "url": "http://sv.wikipedia.org/wiki/Selma_Lagerl%C3%B6f",
-     "type": {
-      "key": "/type/link"
-     },
-     "title": "Swedish Wikipedia"
-    },
-    {
-     "url": "http://runeberg.org/authors/lagerlof.html",
-     "type": {
-      "key": "/type/link"
-     },
-     "title": "Project Runeberg"
-    }
-   ],
-   "titles": []
-  }
- },
- {
-  "model": "bookchat.author",
-  "author_id": "28b4f71c-a13e-43e7-be23-33658874200d",
-  "fields": {
-   "name": "Carlos Ruiz Zafón",
-   "bio": "Mi afición a los dragones viene de largo. Barcelona es ciudad de dragones, que adornan o vigilan muchas de sus fachadas, y me temo que yo soy uno de ellos. Quizás por eso, por solidaridad con el pequeño monstruo, hace ya muchos años que los colecciono y les ofrezco refugio en mi casa, dragonera al uso. Al día de hoy ya son más de 400 criaturas dragonas las que hacen mi censo, que aumenta cada mes. Además de haber nacido en el año, por supuesto, del dragón, mis vínculos con estas bestias verdes que respiran fuego son numerosos. Somos criaturas nocturnas, aficionadas a las tinieblas, no particularmente sociables, poco amigas de hidalgos y caballeros andantes y difíciles de conocer.\r\n([source][1])\r\n\r\n\r\n  [1]: http://www.carlosruizzafon.com/es/carlos-ruiz-zafon.php",
-   "birth_date": "25 September 1964",
-   "death_date": "19 June 2020",
-   "links": [
-    {
-     "title": "carlosruizzafon.com",
-     "url": "http://www.carlosruizzafon.com",
-     "type": {
-      "key": "/type/link"
-     }
-    },
-    {
-     "title": "Official page",
-     "url": "http://www.carlosruizzafon.com/",
-     "type": {
-      "key": "/type/link"
-     }
-    },
-    {
-     "url": "http://en.wikipedia.org/wiki/Carlos_Ruiz_Zaf%C3%B3n",
-     "title": "Wikipedia Entry",
-     "type": {
-      "key": "/type/link"
-     }
-    }
-   ],
-   "titles": []
-  }
- },
- {
-  "model": "bookchat.author",
-  "author_id": "fa4a95a8-f94d-4dcc-8165-6844fb242fce",
-  "fields": {
-   "name": "John Bunyan",
-   "bio": "none",
-   "birth_date": "1628",
-   "death_date": "1688",
-   "links": "none",
-   "titles": [
-    178
+    "6d15935b-5ac4-4c65-bc34-c6745811e1fb"
    ]
   }
  },
@@ -2770,20 +2462,8 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    180
+    "1bf65698-cb2d-4930-8a7d-781f418fc994"
    ]
-  }
- },
- {
-  "model": "bookchat.author",
-  "author_id": "f83ff112-9616-48f5-8110-5d6e2bd612de",
-  "fields": {
-   "name": "Scott, W.",
-   "bio": "none",
-   "birth_date": "1846",
-   "death_date": "none",
-   "links": "none",
-   "titles": []
   }
  },
  {
@@ -2796,20 +2476,8 @@
    "death_date": "none",
    "links": "none",
    "titles": [
-    185
+    "e2486da4-e2db-4d26-a5f0-077299e1757d"
    ]
-  }
- },
- {
-  "model": "bookchat.author",
-  "author_id": "eb1e6eb2-520a-4065-8119-f7b0d82b980d",
-  "fields": {
-   "name": "G. K Chesterton",
-   "bio": "none",
-   "birth_date": "none",
-   "death_date": "none",
-   "links": "none",
-   "titles": []
   }
  },
  {
@@ -2851,7 +2519,7 @@
     }
    ],
    "titles": [
-    191
+    "0145c8b2-22d2-40fd-bb3e-9d27fd33a42a"
    ]
   }
  },
@@ -2887,28 +2555,8 @@
     }
    ],
    "titles": [
-    193
+    "4e8c4b3d-2fe2-4c3f-83ac-f2175ebfbbd8"
    ]
-  }
- },
- {
-  "model": "bookchat.author",
-  "author_id": "e1e51e3a-0b0d-4f9e-883b-797bb0660627",
-  "fields": {
-   "name": "Lucy Maud Montgomery",
-   "bio": "Lucy Maud Montgomery CBE, (called \"Maud\" by family and friends) and publicly known as L.M. Montgomery was a Canadian author, best known for a series of novels beginning with *Anne of Green Gables*, published in 1908.\r\n\r\nOnce published, *Anne of Green Gables* was an immediate success. The central character, Anne, an orphaned girl who was adopted by a a sister and brother duo of Marilla and Matthew, made Montgomery famous in her lifetime and gave her an international following. The first novel was followed by a series of sequels with Anne as the central character. The novels became the basis for the highly acclaimed 1985 CBC television miniseries, *Anne of Green Gables* and several other television movies and programs, including Road to Avonlea, which ran in Canada and the U.S. from 1990-1996.She also wrote a couple of other short series of books; 'Chronicles of Avonlea', 'Further Chronicles of Avonlea', 'The Story Girl' (the sequel to it was 'The Golden Road') , 'The Blue Castle' are some of the other books that she has written..She also wrote a 3 book series namely, 'Emily of New Moon', 'Emily Climbs' and 'Emily's Quest' (a trilogy).She also wrote, 'Akin to Anne', 'Kilmeny of the Orchard', 'Jane of Lantern Hill' and 'The Blythe's' are quoted ..she also wrote short stories compilations..'At the Alter', a matrimonial tales collection and tales of the sea were some of the books of short stories she has written..A book that has not been followed by a sequel is 'Magic for Marigold'...Another book series by the famous Montgomery consists of 'Pat of Silver Bush'  and 'Mistress Pat'.",
-   "birth_date": "1874",
-   "death_date": "1942.",
-   "links": [
-    {
-     "title": "LibriVox audio books",
-     "url": "http://librivox.org/newcatalog/search_advanced.php?author=Lucy+Maud+Montgomery&status=complete&action=Search",
-     "type": {
-      "key": "/type/link"
-     }
-    }
-   ],
-   "titles": []
   }
  },
  {
@@ -2932,7 +2580,7 @@
     }
    ],
    "titles": [
-    200
+    "720ca19c-ff05-44a2-bd42-e68140d8e000"
    ]
   }
  }

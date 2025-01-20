@@ -1,0 +1,490 @@
+[
+ {
+  "birth_date": "1981-04-14",
+  "remote_ids": {
+   "wikidata": "Q121091992"
+  },
+  "key": "/authors/OL7825177A",
+  "source_records": [
+   "bwb:9786073901802",
+   "bwb:9781649377005",
+   "bwb:9780349441535"
+  ],
+  "type": {
+   "key": "/type/author"
+  },
+  "name": "Rebecca Yarros",
+  "latest_revision": 5,
+  "revision": 5,
+  "created": {
+   "type": "/type/datetime",
+   "value": "2020-03-10T14:12:52.572001"
+  },
+  "last_modified": {
+   "type": "/type/datetime",
+   "value": "2024-03-27T22:44:59.997453"
+  }
+ },
+ {
+  "name": "Various Authors",
+  "personal_name": "VARIOUS AUTHOR",
+  "alternate_names": [
+   "Authors Various Authors",
+   "VARIOUS AUTHORS",
+   "Various authors",
+   "Various Chapter Authors",
+   "various authors",
+   "Various authors.",
+   "Various, Authors",
+   "Various Celebrated Authors",
+   "Various Non-Fiction Authors",
+   "by Various Authors",
+   "Anthology: various authors",
+   "Various Authors By",
+   "A Compendium of Various Authors",
+   "Compendium of Various Authors",
+   "Compendium of various authors",
+   "Various Illustrators Various Authors",
+   "Various Authors & Artists",
+   "VARIOUS AUTHOR",
+   "Various Authorities",
+   "Various Aut.",
+   "Various Aut",
+   "Various AUTORES"
+  ],
+  "key": "/authors/OL2734614A",
+  "type": {
+   "key": "/type/author"
+  },
+  "latest_revision": 8,
+  "revision": 8,
+  "created": {
+   "type": "/type/datetime",
+   "value": "2008-04-29T13:35:46.876380"
+  },
+  "last_modified": {
+   "type": "/type/datetime",
+   "value": "2024-04-29T13:12:32.467368"
+  }
+ },
+ {
+  "name": "Lyle McDonald",
+  "last_modified": {
+   "type": "/type/datetime",
+   "value": "2008-04-30 06:33:27.187047"
+  },
+  "key": "/authors/OL3016977A",
+  "type": {
+   "key": "/type/author"
+  },
+  "id": 11588363,
+  "revision": 1
+ },
+ {
+  "type": {
+   "key": "/type/author"
+  },
+  "name": "Mai Corland",
+  "key": "/authors/OL13533527A",
+  "source_records": [
+   "bwb:9781649376985"
+  ],
+  "latest_revision": 1,
+  "revision": 1,
+  "created": {
+   "type": "/type/datetime",
+   "value": "2024-01-31T05:58:08.979383"
+  },
+  "last_modified": {
+   "type": "/type/datetime",
+   "value": "2024-01-31T05:58:08.979383"
+  }
+ },
+ {
+  "name": "Lisa Wingate",
+  "personal_name": "Lisa Wingate",
+  "last_modified": {
+   "type": "/type/datetime",
+   "value": "2008-09-07 14:57:23.918036"
+  },
+  "key": "/authors/OL1387677A",
+  "type": {
+   "key": "/type/author"
+  },
+  "id": 4676235,
+  "revision": 2
+ },
+ {
+  "name": "Liz Moore",
+  "created": {
+   "type": "/type/datetime",
+   "value": "2009-02-18T17:21:45.605483"
+  },
+  "personal_name": "Liz Moore",
+  "last_modified": {
+   "type": "/type/datetime",
+   "value": "2009-02-18T17:21:45.605483"
+  },
+  "key": "/authors/OL6591309A",
+  "birth_date": "1983",
+  "type": {
+   "key": "/type/author"
+  },
+  "id": 33857479,
+  "revision": 1
+ },
+ {
+  "bio": "James Brendan Patterson (born March 22, 1947) is an American author. Among his works are the Alex Cross, Michael Bennett, Women's Murder Club, Maximum Ride, Daniel X, NYPD Red, Witch & Wizard, Private and Middle School series, as well as many stand-alone thrillers, non-fiction, and romance novels. His books have sold more than 425 million copies, and he was the first person to sell 1 million e-books. In 2016, Patterson topped Forbes's list of highest-paid authors for the third consecutive year, with an income of $95 million. His total income over a decade is estimated at $700 million.\r\n\r\nIn November 2015, Patterson received the Literarian Award from the National Book Foundation. Patterson has donated millions of dollars in grants and scholarship to various universities, teachers' colleges, independent bookstores, school libraries, and college students to promote literacy. [source](https://en.wikipedia.org/wiki/James_Patterson)",
+  "name": "James Patterson",
+  "photos": [
+   6278036,
+   -1
+  ],
+  "remote_ids": {
+   "viaf": "22272314",
+   "wikidata": "Q311671",
+   "isni": "0000000121238331"
+  },
+  "source_records": [
+   "bwb:9780755322053",
+   "amazon:0755397592",
+   "ia:souffleleventrom0000patt",
+   "promise:bwb_daily_pallets_2020-12-14",
+   "promise:bwb_daily_pallets_2020-07-30",
+   "amazon:0316133485",
+   "amazon:1619697734",
+   "amazon:6059809901",
+   "amazon:6059961711",
+   "amazon:1846052580",
+   "promise:bwb_daily_pallets_2022-07-11",
+   "promise:bwb_daily_pallets_2022-03-17",
+   "promise:bwb_daily_pallets_2021-08-26",
+   "promise:bwb_daily_pallets_2021-04-05",
+   "promise:bwb_daily_pallets_2021-04-01",
+   "promise:bwb_daily_pallets_2021-03-08",
+   "promise:bwb_daily_pallets_2021-02-08",
+   "promise:bwb_daily_pallets_2021-02-03",
+   "promise:bwb_daily_pallets_2021-01-13",
+   "promise:bwb_daily_pallets_2020-07-07",
+   "promise:bwb_daily_pallets_2020-06-04",
+   "promise:bwb_daily_pallets_2020-04-09",
+   "promise:bwb_daily_pallets_2020-04-02",
+   "promise:bwb_daily_pallets_2022-08-13",
+   "promise:bwb_daily_pallets_2021-08-19",
+   "promise:bwb_daily_pallets_2021-07-26",
+   "promise:bwb_daily_pallets_2021-06-17",
+   "promise:bwb_daily_pallets_2021-06-03",
+   "promise:bwb_daily_pallets_2021-02-17",
+   "promise:bwb_daily_pallets_2021-02-02",
+   "promise:bwb_daily_pallets_2020-11-24",
+   "amazon:0755349423",
+   "amazon:1780895216",
+   "amazon:178653102X",
+   "amazon:0755352858",
+   "amazon:075539755X",
+   "amazon:0316226157",
+   "amazon:9604614827",
+   "promise:bwb_daily_pallets_2021-09-14",
+   "amazon:0759504288",
+   "amazon:0099543672",
+   "amazon:0545638666",
+   "amazon:1786530139",
+   "promise:bwb_daily_pallets_2022-09-12",
+   "promise:bwb_daily_pallets_2022-09-05",
+   "promise:bwb_daily_pallets_2022-04-20",
+   "promise:bwb_daily_pallets_2021-04-19",
+   "promise:bwb_daily_pallets_2021-04-16",
+   "promise:bwb_daily_pallets_2020-09-09",
+   "promise:bwb_daily_pallets_2022-09-07",
+   "promise:bwb_daily_pallets_2021-04-23",
+   "promise:bwb_daily_pallets_2021-03-17",
+   "promise:bwb_daily_pallets_2021-02-18",
+   "promise:bwb_daily_pallets_2021-02-16",
+   "promise:bwb_daily_pallets_2022-05-23",
+   "amazon:0446576204",
+   "promise:bwb_daily_pallets_2021-01-28",
+   "promise:bwb_daily_pallets_2021-02-11",
+   "amazon:2253123072",
+   "promise:bwb_daily_pallets_2021-08-13",
+   "ia:guiltywiveslustm0000patt",
+   "promise:bwb_daily_pallets_2021-03-30",
+   "promise:bwb_daily_pallets_2023-02-22:P8-AXG-096",
+   "promise:bwb_daily_pallets_2023-02-02:W8-ABM-617",
+   "promise:bwb_daily_pallets_2023-01-26:W8-BQU-430",
+   "promise:bwb_daily_pallets_2022-10-20:KR-436-799",
+   "promise:bwb_daily_pallets_2022-10-19:KR-436-801",
+   "promise:bwb_daily_pallets_2022-10-17:O8-BBZ-672",
+   "promise:bwb_daily_pallets_2022-08-29:W7-CYX-607",
+   "promise:bwb_daily_pallets_2022-08-13:036-ABB-163",
+   "promise:bwb_daily_pallets_2022-08-01:O8-CJV-280",
+   "promise:bwb_daily_pallets_2022-05-31:O8-BHZ-472",
+   "promise:bwb_daily_pallets_2021-05-19:KO-448-695",
+   "promise:bwb_daily_pallets_2021-05-10:ko-767-824",
+   "promise:bwb_daily_pallets_2021-04-27:P7-BJW-528",
+   "promise:bwb_daily_pallets_2021-01-13:KO-870-390",
+   "promise:bwb_daily_pallets_2020-12-22:P6-ASD-024",
+   "amazon:0099564629"
+  ],
+  "birth_date": "22 March 1947 Newburgh, Orange County",
+  "type": {
+   "key": "/type/author"
+  },
+  "links": [
+   {
+    "title": "Author site",
+    "url": "https://www.jamespatterson.com/",
+    "type": {
+     "key": "/type/link"
+    }
+   },
+   {
+    "title": "publisher",
+    "url": "https://www.penguin.co.uk/authors/165198/james-patterson",
+    "type": {
+     "key": "/type/link"
+    }
+   },
+   {
+    "title": "author's site subdomain for kids",
+    "url": "https://kids.jamespatterson.com/",
+    "type": {
+     "key": "/type/link"
+    }
+   }
+  ],
+  "key": "/authors/OL22258A",
+  "title": "1947-",
+  "alternate_names": [
+   "James Brendan Patterson",
+   "James B. Patterson",
+   "JAMES PATTERSON",
+   "James PATTERSON",
+   "james patterson",
+   "james-patterson",
+   "James Patterson..",
+   "James. Patterson",
+   "James Patterson (editor)",
+   "James Patterson (Editor)",
+   "JAMES. PATTERSON",
+   "Patterson, James",
+   "Patterson James",
+   "Patterson, James 1947-",
+   "Patterson, James, 1947-",
+   "patterson-james",
+   "PATTERSON,JAMES",
+   "PATTERSON JAMES (author)",
+   "patterson james",
+   "Jamese Patterson",
+   "PATTERSON",
+   "James Patterson DENG",
+   "Patterson D.",
+   "JamesPatterson",
+   "Patterson, J",
+   "J Patterson",
+   "Patterson",
+   "Patterson, James (James B.), 1947-",
+   "PATTERSON, JAMES",
+   "Patterson, James, Hayley, Elizabeth",
+   "James Patterson Ned Rust",
+   "Maxine Paetro James Patterson",
+   "James (and Michael Ledwidge) Patterson",
+   "James (with Michael Ledwidge) Patterson",
+   "Patterson, James, Grabenstein, Chris",
+   "Patterson, James; De Jonge, Peter",
+   "By (author) James Patterson",
+   "Patterson, James, Gross, Andrew",
+   "Patterson, James; Ledwidge, Michael",
+   "Ned Rust James Patterson",
+   "Patterson, James; Paetro, Maxine",
+   "Patterson, James, Rust, Ned",
+   "JAMES PATTERSON / ANDREW GROSS",
+   "Patterson, James, Karp, Marshall",
+   "James Patterson,James Patterson"
+  ],
+  "personal_name": "Patterson, James",
+  "latest_revision": 42,
+  "revision": 42,
+  "created": {
+   "type": "/type/datetime",
+   "value": "2008-04-01T03:28:50.625462"
+  },
+  "last_modified": {
+   "type": "/type/datetime",
+   "value": "2024-03-26T20:07:07.891988"
+  }
+ },
+ {
+  "type": {
+   "key": "/type/author"
+  },
+  "name": "Alison Espach",
+  "key": "/authors/OL9351232A",
+  "source_records": [
+   "amazon:1439191867"
+  ],
+  "latest_revision": 1,
+  "revision": 1,
+  "created": {
+   "type": "/type/datetime",
+   "value": "2021-08-05T15:20:38.636305"
+  },
+  "last_modified": {
+   "type": "/type/datetime",
+   "value": "2021-08-05T15:20:38.636305"
+  }
+ },
+ {
+  "birth_date": "1981-04-14",
+  "remote_ids": {
+   "wikidata": "Q121091992"
+  },
+  "key": "/authors/OL7825177A",
+  "source_records": [
+   "bwb:9786073901802",
+   "bwb:9781649377005",
+   "bwb:9780349441535"
+  ],
+  "type": {
+   "key": "/type/author"
+  },
+  "name": "Rebecca Yarros",
+  "latest_revision": 5,
+  "revision": 5,
+  "created": {
+   "type": "/type/datetime",
+   "value": "2020-03-10T14:12:52.572001"
+  },
+  "last_modified": {
+   "type": "/type/datetime",
+   "value": "2024-03-27T22:44:59.997453"
+  }
+ },
+ {
+  "source_records": [
+   "amazon:9123764198",
+   "bwb:9780571367863",
+   "amazon:9123926058",
+   "bwb:9780374605438",
+   "bwb:9780571354641",
+   "amazon:9123979283",
+   "promise:bwb_daily_pallets_2022-09-12:W7-CJX-503",
+   "bwb:9780374602635"
+  ],
+  "name": "Sally Rooney",
+  "remote_ids": {
+   "wikidata": "Q54861296",
+   "isni": "0000000474213818",
+   "viaf": "49149912708206212971"
+  },
+  "type": {
+   "key": "/type/author"
+  },
+  "personal_name": "Sally Rooney",
+  "key": "/authors/OL7919580A",
+  "birth_date": "1991",
+  "latest_revision": 8,
+  "revision": 8,
+  "created": {
+   "type": "/type/datetime",
+   "value": "2020-05-20T22:46:52.264326"
+  },
+  "last_modified": {
+   "type": "/type/datetime",
+   "value": "2024-09-03T03:21:14.795827"
+  }
+ },
+ {
+  "name": "Chris Whitaker",
+  "created": {
+   "type": "/type/datetime",
+   "value": "2020-06-14T02:40:30.713964"
+  },
+  "last_modified": {
+   "type": "/type/datetime",
+   "value": "2020-06-14T02:40:30.713964"
+  },
+  "latest_revision": 1,
+  "key": "/authors/OL7978029A",
+  "type": {
+   "key": "/type/author"
+  },
+  "revision": 1
+ },
+ {
+  "type": {
+   "key": "/type/author"
+  },
+  "name": "Emma Knight",
+  "key": "/authors/OL9080345A",
+  "source_records": [
+   "amazon:172134134X"
+  ],
+  "latest_revision": 1,
+  "revision": 1,
+  "created": {
+   "type": "/type/datetime",
+   "value": "2021-01-04T06:39:58.385765"
+  },
+  "last_modified": {
+   "type": "/type/datetime",
+   "value": "2021-01-04T06:39:58.385765"
+  }
+ },
+ {
+  "name": "Fiona Davis",
+  "created": {
+   "type": "/type/datetime",
+   "value": "2016-10-14T06:41:18.396655"
+  },
+  "last_modified": {
+   "type": "/type/datetime",
+   "value": "2016-10-14T06:41:18.396655"
+  },
+  "latest_revision": 1,
+  "key": "/authors/OL7311103A",
+  "type": {
+   "key": "/type/author"
+  },
+  "revision": 1
+ },
+ {
+  "type": {
+   "key": "/type/author"
+  },
+  "name": "Shelby Van Pelt",
+  "key": "/authors/OL9599807A",
+  "source_records": [
+   "amazon:0063204150"
+  ],
+  "latest_revision": 1,
+  "revision": 1,
+  "created": {
+   "type": "/type/datetime",
+   "value": "2021-09-29T15:30:46.231260"
+  },
+  "last_modified": {
+   "type": "/type/datetime",
+   "value": "2021-09-29T15:30:46.231260"
+  }
+ },
+ {
+  "type": {
+   "key": "/type/author"
+  },
+  "name": "Nicholas Sparks",
+  "key": "/authors/OL10132234A",
+  "source_records": [
+   "amazon:1538709805"
+  ],
+  "latest_revision": 1,
+  "revision": 1,
+  "created": {
+   "type": "/type/datetime",
+   "value": "2022-01-04T14:08:17.478406"
+  },
+  "last_modified": {
+   "type": "/type/datetime",
+   "value": "2022-01-04T14:08:17.478406"
+  }
+ }
+]
