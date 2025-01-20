@@ -2,6 +2,7 @@ import urllib.parse
 import ssl, json, requests
 from pprint import pprint
 import uuid
+import unicodedata
 
 #Ignore SSL Certificate Errors
 
@@ -13,21 +14,45 @@ new_uuid = uuid.uuid4()
 # print(new_uuid)
 
 
-FICTION_TITLES = []
-with open('./fiction_titles.json', 'r') as ft:
+def normalize_name(name):
+    return unicodedata.normalize("NFC", name.strip())
+
+titleID_lookup = {}
+with open('./fiction_titles.json', 'r', encoding='utf-8') as ft:
     content = ft.read()
     titles = json.loads(content)
     for title in titles:
-        title_id = str(uuid.uuid4())
-        title['title_id'] = title_id
-        print(title)
-        FICTION_TITLES.append(title)
+        id = title['title_id']
+        authors = title['fields']['authors']
+        for author in authors:
+            author = normalize_name(author)
+            if author not in titleID_lookup:
+                titleID_lookup[author] = [id]
+            else:
+                if id not in titleID_lookup[author]:
+                    titleID_lookup[author] = [*titleID_lookup[author], id] 
+
+
         
+# print(titleID_lookup)
+AUTHORS = [] 
 
-print(FICTION_TITLES)
+with open('./fiction_authors.json' ,'r', encoding='utf-8') as fa:
+    content = fa.read()
+    authors = json.loads(content)
+    for author in authors:
+        name = normalize_name(author['fields']['name'])
+        if name in titleID_lookup and name != 'None None':
+            author['fields']['titles'] = titleID_lookup[name]
+            AUTHORS.append(author)
+        else:
+            continue
 
-with open('./fiction_titles.json', 'w') as fts:
-    string = json.dumps(FICTION_TITLES, indent=1, ensure_ascii=False)
-    fts.write(string)
+print(AUTHORS)
+
+
+# with open('./fiction_authors.json', '') as fts:
+#     string = json.dumps(AUTHORS, indent=1, ensure_ascii=False)
+#     fts.write(string)
 
 
