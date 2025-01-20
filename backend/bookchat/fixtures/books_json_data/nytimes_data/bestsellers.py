@@ -1,6 +1,8 @@
 import ssl, json, requests
 import concurrent.futures
 from requests.exceptions import RequestException
+import uuid
+import unicodedata
 
 
 
@@ -85,28 +87,27 @@ GOOGLE_API = 'https://www.googleapis.com/books/v1/volumes'
 
 TITLES = []
 
-def create_title(b):
-    new_title = {}
-    new_title['model'] = 'bookchat.book'
-    new_title['title_id'] = title_id
-    new_title['fields'] = {}
-    new_title['fields']['genres'] = 18
-    keys = ['title', 'authors', 'publisher', 'description', 'industryIdentifiers', 'averageRating', 'ratingsCount', 'imageLinks', 'pageCount', 'categories']
-    for key in keys:
-        new_title['fields'][key] = 'None' if key not in b else b[key]
-    return new_title
+# def create_title(b):
+#     new_title = {}
+#     new_title['model'] = 'bookchat.book'
+#     new_title['title_id'] = title_id
+#     new_title['fields'] = {}
+#     new_title['fields']['genres'] = 18
+#     keys = ['title', 'authors', 'publisher', 'description', 'industryIdentifiers', 'averageRating', 'ratingsCount', 'imageLinks', 'pageCount', 'categories']
+#     for key in keys:
+#         new_title['fields'][key] = 'None' if key not in b else b[key]
+#     return new_title
 
-with open('./bestseller.json', 'r') as bs:
+with open('./bestseller_titles.json', 'r') as bs:
     content = bs.read()
     bestsellers = json.loads(content)
-    title_id = 201
+    title_id = str(uuid.uuid4())
     for bk in bestsellers:
-        # print('book:', bk)
-        volumeInfo = bk['volumeInfo']
-        print('volume info:', volumeInfo)
-        curr_bs = create_title(volumeInfo)
-        TITLES.append(curr_bs)
-        title_id += 1
+        bk['title_id'] = title_id
+        TITLES.append(bk)
+ 
+    
+       
 
 with open('./bestseller_titles.json', 'w', encoding='utf-8') as titles_list:
     string = json.dumps(TITLES, indent = 1, ensure_ascii=False)
