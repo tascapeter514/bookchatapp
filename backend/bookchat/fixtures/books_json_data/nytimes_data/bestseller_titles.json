@@ -1,0 +1,489 @@
+[
+ {
+  "model": "bookchat.book",
+  "title_id": 201,
+  "fields": {
+   "genres": 18,
+   "title": "Iron Flame",
+   "authors": [
+    "Rebecca Yarros"
+   ],
+   "publisher": "Hachette UK",
+   "description": "The instant number one Sunday Times bestseller and thrilling sequel to the global phenomenon, Fourth Wing! THE IRON FLAME PAPERBACK EDITION INCLUDES A BRAND NEW CHAPTER FROM XADEN'S POINT OF VIEW! 'Yarros is the true inheritor of Harry Potter and inspires Hunger Games levels of devotion' Guardian 'Fear not, levels of fighting, rebelliousness and all-round sexiness are still sky-high' Daily Mail 'Iron Flame is on course to set the world alight' Glamour __________________________________________ SECRETS. SACRIFICE. SURVIVAL. Against all odds, Violet Sorrengail made it through her first year at Basgiath War College, but now, the real training begins. The stakes are higher than ever, and a determination to survive won't be enough this time. When a powerful new enemy threatens everything she cares about, including the man she loves, Violet must do whatever it takes to keep their secrets safe. One wrong move could have horrifying consequences - and as the web of lies spun by those in charge starts to unravel, nothing, not even dragon fire, may be enough to save them in the end. THE DEADLY SECOND YEAR AT BASGIATH AWAITS *THE STORM IS COMING . . . PRE-ORDER ONYX STORM TODAY. THE EPIC NEXT INSTALLMENT LANDS 21.01.2025* __________________________________________ MILLIONS OF READERS HAVE ALREADY GIVEN THE EMPYREAN SERIES FIVE STARS. 'Pure escapism - think Hunger Games meets Fifty Shades' The Sun 'We weren't expecting to become obsessed . . . but we very much are and we're not alone' Sunday Times Style 'This book contains an addictive, drug like essence that will make you relinquish all responsibility' Glamour 'Yarros had me hooked from the first chapter' Mail on Sunday 'The new publishing sensation' Daily Mail 'I couldn't put it down!' Millie Bobby Brown 'Throw in an enemies-to-lovers plotline, some life-threatening trials and the threat of war in the outside world, and you've got yourself a deliciously gripping dish, which I downed in one sitting' Stylist '2024 is the Year of the Dragon . . . Dive into a fantasy narrative featuring these mythical, winged creatures' Pop Sugar 'If I can convince you to read one book I recommend it would be this one' 'I didn't sleep, I didn't eat, and when I finished, I had the overwhelming urge to just start it all over again' 'There are some stories you read and enjoy but every so often you come across one that just obliterates everything and takes over your entire being within a few pages and becomes your world and personality. Well, this is the one' 'The world building in this was phenomenal. I lived, breathed and became a part of the college' 'You know when you finish a book, and it leaves an ache in your chest because it was so good, and now it's over? That's exactly how I feel after finishing Fourth Wing' OTHER BOOKS IN THE EMPYREAN SERIES: - FOURTH WING - IRON FLAME - ONYX STORM (21.01.2025 - available for pre-order now)",
+   "industryIdentifiers": [
+    {
+     "type": "ISBN_13",
+     "identifier": "9780349437040"
+    },
+    {
+     "type": "ISBN_10",
+     "identifier": "0349437041"
+    }
+   ],
+   "averageRating": "None",
+   "ratingsCount": "None",
+   "imageLinks": {
+    "smallThumbnail": "http://books.google.com/books/content?id=hEKjEAAAQBAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+    "thumbnail": "http://books.google.com/books/content?id=hEKjEAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+   },
+   "pageCount": 813,
+   "categories": [
+    "Fiction"
+   ]
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "title_id": 202,
+  "fields": {
+   "genres": 18,
+   "title": "Holy Bible (NIV)",
+   "authors": [
+    "Various Authors,"
+   ],
+   "publisher": "Zondervan",
+   "description": "The NIV is the world's best-selling modern translation, with over 150 million copies in print since its first full publication in 1978. This highly accurate and smooth-reading version of the Bible in modern English has the largest library of printed and electronic support material of any modern translation.",
+   "industryIdentifiers": [
+    {
+     "type": "ISBN_13",
+     "identifier": "9780310294146"
+    },
+    {
+     "type": "ISBN_10",
+     "identifier": "0310294142"
+    }
+   ],
+   "averageRating": 5,
+   "ratingsCount": 2,
+   "imageLinks": {
+    "smallThumbnail": "http://books.google.com/books/content?id=wRMuIPe269gC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+    "thumbnail": "http://books.google.com/books/content?id=wRMuIPe269gC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+   },
+   "pageCount": 6793,
+   "categories": [
+    "Bibles"
+   ]
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "title_id": 203,
+  "fields": {
+   "genres": 18,
+   "title": "The Women's Book",
+   "authors": [
+    "Lyle McDonald"
+   ],
+   "publisher": "None",
+   "description": "None",
+   "industryIdentifiers": [
+    {
+     "type": "ISBN_10",
+     "identifier": "0967145694"
+    },
+    {
+     "type": "ISBN_13",
+     "identifier": "9780967145693"
+    }
+   ],
+   "averageRating": "None",
+   "ratingsCount": "None",
+   "imageLinks": "None",
+   "pageCount": 428,
+   "categories": "None"
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "title_id": 204,
+  "fields": {
+   "genres": 18,
+   "title": "Four Ruined Realms",
+   "authors": [
+    "Mai Corland"
+   ],
+   "publisher": "Bonnier Zaffre Ltd.",
+   "description": "The lies are bigger and the plots more treacherous when your favourite backstabbers return in the mind-blowing sequel to instant Sunday Times and New York Times bestseller Mai Corland's epic adventure fantasy Five Broken Blades **AVAILABLE TO PRE-ORDER NOW** The King of Yusan may be the greatest liar of them all. His sister's ring is in his sights, and he will do anything to get what he wants. Even manipulating the five blades to steal it... Bonded by deceit, the blades must rely on their skills to pull off King Joon's pursuit or risk his legendary wrath. A foreign rule of law stands between them and Quilimar, the Queen of Khitan. Now they have one month to steal the powerful Golden Ring of the Dragon Lord. But that impossible task might be easier than trusting one another, even though their lives, their families, and the realms depend on it. They can all agree on one thing: the king can't win. But can they beat him at his own game? Because for the blades, this time it's not just personal, it's revenge. Lies may have torn them apart, but now vengeance will bring them together. The lies have only just begun... PRAISE FOR FIVE BROKEN BLADES: 'This dazzling fantasy has it all: a richly developed world, a captivating ensemble cast, and a twisty, action-packed quest' KAREN MCMANUS, #1 NYT BESTSELLING AUTHOR OF ONE OF US IS LYING 'Thrilling, addictive, and simply incredible. What a stunning debut!' THEA GUANZON, USA TODAY AND NYT BESTSELLING AUTHOR OF THE HURRICANE WARS 'A gripping, unputdownable read that will keep you on the edge of your seat until the very last page!' LYNETTE NONI, #1 BESTSELLING AUTHOR OF THE PRISON HEALER TRILOGY 'The heist had me guessing until the very last page ... I absolutely loved this book. I couldn't put it down!' NISHA J TULI, AUTHOR OF THE TRIAL OF THE SUN QUEEN '(This book is) everything you want in a unlikely group of untrustworthy bad people getting together to pull of an impossible heist (or in this case, an assassination) story' REBECCA ROANHORSE, AUTHOR OF BLACK SUN",
+   "industryIdentifiers": [
+    {
+     "type": "ISBN_13",
+     "identifier": "9781804188057"
+    },
+    {
+     "type": "ISBN_10",
+     "identifier": "1804188050"
+    }
+   ],
+   "averageRating": "None",
+   "ratingsCount": "None",
+   "imageLinks": {
+    "smallThumbnail": "http://books.google.com/books/content?id=6GwIEQAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+    "thumbnail": "http://books.google.com/books/content?id=6GwIEQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+   },
+   "pageCount": 377,
+   "categories": [
+    "Fiction"
+   ]
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "title_id": 205,
+  "fields": {
+   "genres": 18,
+   "title": "Never Say Never",
+   "authors": [
+    "Lisa Wingate"
+   ],
+   "publisher": "Baker Books",
+   "description": "A sudden shift in a hurricane's course cancels senior citizen Donetta's cruise at the last minute. Thrown together with a young woman named Kai, Donetta leads a group of evacuees back to Daily, Texas, where the charm of the town--and the high school coach--has Kai rethinking her drifter existence. Donetta, on the other hand, is contemplating moving on from her floundering marriage. As more people seek refuge in the small town, can they transition from merely surviving to truly thriving?",
+   "industryIdentifiers": [
+    {
+     "type": "ISBN_13",
+     "identifier": "9781493422531"
+    },
+    {
+     "type": "ISBN_10",
+     "identifier": "1493422537"
+    }
+   ],
+   "averageRating": "None",
+   "ratingsCount": "None",
+   "imageLinks": {
+    "smallThumbnail": "http://books.google.com/books/content?id=jteUDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+    "thumbnail": "http://books.google.com/books/content?id=jteUDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+   },
+   "pageCount": 377,
+   "categories": [
+    "Fiction"
+   ]
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "title_id": 206,
+  "fields": {
+   "genres": 18,
+   "title": "The God of the Woods",
+   "authors": [
+    "Liz Moore"
+   ],
+   "publisher": "Penguin",
+   "description": "ONE OF THE NEW YORK TIMES’S NOTABLE BOOKS OF 2024 A NEW YORK TIMES BEST THRILLER OF 2024 A NEW YORK TIMES BEST CRIME NOVEL OF 2024 PEOPLE MAGAZINE'S #1 BOOK OF THE YEAR A NEW YORK PUBLIC LIBRARY TOP 10 PICK OF 2024 ONE OF NPR’S “BOOKS WE LOVE” 2024 ONE OF TIME MAGAZINE’S “100 MUST-READ BOOKS OF 2024” NAMED A BEST BOOK OF THE YEAR BY: REAL SIMPLE ● OPRAH DAILY ● NEWSWEEK ● VULTURE “Extraordinary . . . Reminds me of Donna Tartt’s 1992 debut, The Secret History . . . I was so thoroughly submerged in a rich fictional world, that for hours I barely came up for air.” —Maureen Corrigan, Fresh Air, NPR “This expertly paced thriller ...has the kineticism of a well-crafted miniseries.” —The New Yorker When a teenager vanishes from her Adirondack summer camp, two worlds collide Early morning, August 1975: a camp counselor discovers an empty bunk. Its occupant, Barbara Van Laar, has gone missing. Barbara isn’t just any thirteen-year-old: she’s the daughter of the family that owns the summer camp and employs most of the region’s residents. And this isn’t the first time a Van Laar child has disappeared. Barbara’s older brother similarly vanished fourteen years ago, never to be found. As a panicked search begins, a thrilling drama unfolds. Chasing down the layered secrets of the Van Laar family and the blue-collar community working in its shadow, Moore’s multi-threaded story invites readers into a rich and gripping dynasty of secrets and second chances. It is Liz Moore’s most ambitious and wide-reaching novel yet.",
+   "industryIdentifiers": [
+    {
+     "type": "ISBN_13",
+     "identifier": "9780593418932"
+    },
+    {
+     "type": "ISBN_10",
+     "identifier": "059341893X"
+    }
+   ],
+   "averageRating": "None",
+   "ratingsCount": "None",
+   "imageLinks": {
+    "smallThumbnail": "http://books.google.com/books/content?id=9NHcEAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+    "thumbnail": "http://books.google.com/books/content?id=9NHcEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+   },
+   "pageCount": 497,
+   "categories": [
+    "Fiction"
+   ]
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "title_id": 207,
+  "fields": {
+   "genres": 18,
+   "title": "Holmes Is Missing",
+   "authors": [
+    "James Patterson",
+    "Brian Sitts"
+   ],
+   "publisher": "Little, Brown",
+   "description": "“Best-selling author James Patterson populates his murder-mystery novels with cold-blooded killers and smart detectives” (USA Today). In Holmes is Missing, PI Brendan Holmes has committed the perfect crime—he’s made himself disappear. Success has come quickly to Holmes, Marple & Poe Investigations. The New York City agency led by three detectives—Brendan Holmes, “the brain,” Margaret Marple, “the eyes,” and Auguste Poe, the “muscle”—with famous names and mysterious pasts is one major case away from cementing its professional reputation. But as a series of child abductions tests the PIs’ legendary skills, the cerebral Holmes’s absence leaves a gaping hole in the agency roster. Only by closing ranks and solving the mystery within can they recover all that’s been lost.",
+   "industryIdentifiers": [
+    {
+     "type": "ISBN_13",
+     "identifier": "9780316569965"
+    },
+    {
+     "type": "ISBN_10",
+     "identifier": "0316569968"
+    }
+   ],
+   "averageRating": "None",
+   "ratingsCount": "None",
+   "imageLinks": {
+    "smallThumbnail": "http://books.google.com/books/content?id=_jkGEQAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+    "thumbnail": "http://books.google.com/books/content?id=_jkGEQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+   },
+   "pageCount": 297,
+   "categories": [
+    "Fiction"
+   ]
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "title_id": 208,
+  "fields": {
+   "genres": 18,
+   "title": "The Wedding People",
+   "authors": [
+    "Alison Espach"
+   ],
+   "publisher": "Henry Holt and Company",
+   "description": "A NEW YORK TIMES BESTSELLER A Today Show #ReadwithJenna Book Club Pick A propulsive and uncommonly wise novel about one unexpected wedding guest and the surprising people who help her start anew. It’s a beautiful day in Newport, Rhode Island, when Phoebe Stone arrives at the grand Cornwall Inn wearing a green dress and gold heels, not a bag in sight, alone. She's immediately mistaken by everyone in the lobby for one of the wedding people, but she’s actually the only guest at the Cornwall who isn’t here for the big event. Phoebe is here because she’s dreamed of coming for years—she hoped to shuck oysters and take sunset sails with her husband, only now she’s here without him, at rock bottom, and determined to have one last decadent splurge on herself. Meanwhile, the bride has accounted for every detail and every possible disaster the weekend might yield except for, well, Phoebe and Phoebe's plan—which makes it that much more surprising when the two women can’t stop confiding in each other. In turns absurdly funny and devastatingly tender, Alison Espach’s The Wedding People is ultimately an incredibly nuanced and resonant look at the winding paths we can take to places we never imagined—and the chance encounters it sometimes takes to reroute us.",
+   "industryIdentifiers": [
+    {
+     "type": "ISBN_13",
+     "identifier": "9781250899569"
+    },
+    {
+     "type": "ISBN_10",
+     "identifier": "1250899567"
+    }
+   ],
+   "averageRating": "None",
+   "ratingsCount": "None",
+   "imageLinks": {
+    "smallThumbnail": "http://books.google.com/books/content?id=2ZHXEAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+    "thumbnail": "http://books.google.com/books/content?id=2ZHXEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+   },
+   "pageCount": 333,
+   "categories": [
+    "Fiction"
+   ]
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "title_id": 209,
+  "fields": {
+   "genres": 18,
+   "title": "Fourth Wing",
+   "authors": [
+    "Rebecca Yarros"
+   ],
+   "publisher": "Entangled: Red Tower Books",
+   "description": "A #1 New York Times bestseller • TV series in development at MGM Amazon Studios with Michael B. Jordan’s Outlier Society • Amazon Best Books of the Year, #4 • Apple Best Books of the Year 2023 • Barnes & Noble Best Fantasy Book of 2023 • NPR “Books We Love” 2023 • Audible Best Books of 2023 • Hudson Book of the Year • Google Play Best Books of 2023 • Indigo Best Books of 2023 • Waterstones Book of the Year finalist • Goodreads Choice Award Winner • Newsweek Staffers’ Favorite Books of 2023 • Paste Magazine's Best Books of 2023 \"Suspenseful, sexy, and with incredibly entertaining storytelling, the first in Yarros' Empyrean series will delight fans of romantic, adventure-filled fantasy.\" —Booklist, starred review \"Fourth Wing will have your heart pounding from beginning to end... A fantasy like you've never read before.\" ―#1 New York Times bestselling author Jennifer L. Armentrout Enter the brutal and elite world of a war college for dragon riders from #1 New York Times bestselling author Rebecca Yarros Twenty-year-old Violet Sorrengail was supposed to enter the Scribe Quadrant, living a quiet life among books and history. Now, the commanding general—also known as her tough-as-talons mother—has ordered Violet to join the hundreds of candidates striving to become the elite of Navarre: dragon riders. But when you’re smaller than everyone else and your body is brittle, death is only a heartbeat away...because dragons don’t bond to “fragile” humans. They incinerate them. With fewer dragons willing to bond than cadets, most would kill Violet to better their own chances of success. The rest would kill her just for being her mother’s daughter—like Xaden Riorson, the most powerful and ruthless wingleader in the Riders Quadrant. She’ll need every edge her wits can give her just to see the next sunrise. Yet, with every day that passes, the war outside grows more deadly, the kingdom's protective wards are failing, and the death toll continues to rise. Even worse, Violet begins to suspect leadership is hiding a terrible secret. Friends, enemies, lovers. Everyone at Basgiath War College has an agenda—because once you enter, there are only two ways out: graduate or die. The Empyrean series is best enjoyed in order. Reading Order: Book #1 Fourth Wing Book #2 Iron Flame",
+   "industryIdentifiers": [
+    {
+     "type": "ISBN_13",
+     "identifier": "9781649374080"
+    },
+    {
+     "type": "ISBN_10",
+     "identifier": "1649374089"
+    }
+   ],
+   "averageRating": 5,
+   "ratingsCount": 2,
+   "imageLinks": {
+    "smallThumbnail": "http://books.google.com/books/content?id=E-OLEAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+    "thumbnail": "http://books.google.com/books/content?id=E-OLEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+   },
+   "pageCount": 624,
+   "categories": [
+    "Fiction"
+   ]
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "title_id": 210,
+  "fields": {
+   "genres": 18,
+   "title": "Intermezzo",
+   "authors": [
+    "Sally Rooney"
+   ],
+   "publisher": "Knopf Canada",
+   "description": "An exquisitely moving story about grief, love and family, from the global phenomenon Sally Rooney. Aside from the fact that they are brothers, Peter and Ivan Koubek seem to have little in common. Peter is a Dublin lawyer in his thirties – successful, competent and apparently unassailable. But in the wake of their father’s death, he’s medicating himself to sleep and struggling to manage his relationships with two very different women – his enduring first love, Sylvia, and Naomi, a college student for whom life is one long joke. Ivan is a twenty-two-year-old competitive chess player. He has always seen himself as socially awkward, a loner, the antithesis of his glib elder brother. Now, in the early weeks of his bereavement, Ivan meets Margaret, an older woman emerging from her own turbulent past, and their lives become rapidly and intensely intertwined. For two grieving brothers and the people they love, this is a new interlude – a period of desire, despair and possibility – a chance to find out how much one life might hold inside itself without breaking.",
+   "industryIdentifiers": [
+    {
+     "type": "ISBN_13",
+     "identifier": "9780735281837"
+    },
+    {
+     "type": "ISBN_10",
+     "identifier": "0735281831"
+    }
+   ],
+   "averageRating": "None",
+   "ratingsCount": "None",
+   "imageLinks": {
+    "smallThumbnail": "http://books.google.com/books/content?id=adr3EAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+    "thumbnail": "http://books.google.com/books/content?id=adr3EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+   },
+   "pageCount": 449,
+   "categories": [
+    "Fiction"
+   ]
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "title_id": 211,
+  "fields": {
+   "genres": 18,
+   "title": "All the Colors of the Dark",
+   "authors": [
+    "Chris Whitaker"
+   ],
+   "publisher": "Random House Large Print",
+   "description": "NEW YORK TIMES BESTSELLER • From the author of We Begin at the End comes a soaring thriller and an epic love story that “hits like a sledgehammer . . . an absolutely must-read novel” (Gillian Flynn, author of Gone Girl). Read with Jenna Book Club Pick as Featured on Today The Boston Globe’s #1 Thriller/Mystery of 2024 So Far A Washington Post and Kirkus Reviews Best Book of the Year “Kept me frantically turning the pages and somehow made me cry at the end . . . Brava!”—Kristin Hannah, author of The Women “Melds tense suspense with a powerful exploration of devotion, obsession, and love.”—People (Best New Books) 1975 is a time of change in America. The Vietnam War is ending. Muhammad Ali is fighting Joe Frazier. And in the smalltown of Monta Clare, Missouri, girls are disappearing. When the daughter of a wealthy family is targeted, the most unlikely hero emerges—Patch, a local boy, who saves the girl, and, in doing so, leaves heartache in his wake. Patch and those who love him soon discover that the line between triumph and tragedy has never been finer. And that their search for answers will lead them to truths that could mean losing one another. A missing person mystery, a serial killer thriller, a love story, a unique twist on each, Chris Whitaker has written a novel about what lurks in the shadows of obsession and the blinding light of hope.",
+   "industryIdentifiers": [
+    {
+     "type": "ISBN_13",
+     "identifier": "9780593949009"
+    },
+    {
+     "type": "ISBN_10",
+     "identifier": "0593949005"
+    }
+   ],
+   "averageRating": "None",
+   "ratingsCount": "None",
+   "imageLinks": {
+    "smallThumbnail": "http://books.google.com/books/content?id=bCX-EAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+    "thumbnail": "http://books.google.com/books/content?id=bCX-EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+   },
+   "pageCount": 865,
+   "categories": [
+    "Fiction"
+   ]
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "title_id": 212,
+  "fields": {
+   "genres": 18,
+   "title": "The Life Cycle of the Common Octopus: A Read with Jenna Pick",
+   "authors": [
+    "Emma Knight"
+   ],
+   "publisher": "Penguin Group",
+   "description": "READ WITH JENNA BOOK CLUB PICK AS FEATURED ON TODAY “Undeniably delicious.” —The New York Times “A spellbinding debut about friendship, motherhood, first love, and the choices that bind us. . . I couldn't put it down!” —Carley Fortune, #1 New York Times bestselling author of This Summer Will Be Different A witty, atmospheric, and brilliantly told novel that offers compelling portraits of womanhood, motherhood and female friendship, along with the irresistible intrigue surrounding an extraordinary British family Arriving at the University of Edinburgh for her first term, Pen knows her divorced parents back in Canada are hiding something from her. She believes she’ll find the answer here in Scotland, where an old friend of her father’s—now a famous writer known as Lord Lennox—lives. When she is invited to spend the weekend at Lord Lennox’s centuries-old estate with his enveloping, fascinating family, Pen begins to unravel her parents’ secret, just as she’s falling in love for the first time . . . As Pen experiences the sharp shock of adulthood, she comes to rely on herself for the first time in her life. A rich and rewarding novel of campus life, of sexual awakening, and ultimately, of the many ways women can become mothers in this world, The Life Cycle of the Common Octopus asks to what extent we need to look back in order to move forward.",
+   "industryIdentifiers": [
+    {
+     "type": "ISBN_13",
+     "identifier": "9780593830451"
+    },
+    {
+     "type": "ISBN_10",
+     "identifier": "0593830458"
+    }
+   ],
+   "averageRating": "None",
+   "ratingsCount": "None",
+   "imageLinks": {
+    "smallThumbnail": "http://books.google.com/books/content?id=oTcXEQAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+    "thumbnail": "http://books.google.com/books/content?id=oTcXEQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+   },
+   "pageCount": 385,
+   "categories": [
+    "Fiction"
+   ]
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "title_id": 213,
+  "fields": {
+   "genres": 18,
+   "title": "The Stolen Queen",
+   "authors": [
+    "Fiona Davis"
+   ],
+   "publisher": "Penguin",
+   "description": "From New York Times bestselling author Fiona Davis, an utterly addictive new novel that will transport you from New York City’s most glamorous party to the labyrinth streets of Cairo and back. Egypt, 1936: When anthropology student Charlotte Cross is offered a coveted spot on an archaeological dig in Egypt’s Valley of the Kings, she leaps at the opportunity. That is until an unbearable tragedy strikes. New York City, 1978: Nineteen-year-old Annie Jenkins is thrilled when she lands an opportunity to work for former Vogue fashion editor Diana Vreeland, who’s in the midst of organizing the famous Met Gala, hosted at the museum and known across the city as the “party of the year.” Meanwhile, Charlotte is now leading a quiet life as the associate curator of the Met’s celebrated Department of Egyptian Art. She’s consumed by her research on Hathorkare—a rare female pharaoh dismissed by most other Egyptologists as unimportant. The night of the gala: One of the Egyptian art collection’s most valuable artifacts goes missing, and there are signs Hathorkare’s legendary curse might be reawakening. Annie and Charlotte team up to search for the missing antiquity, and a desperate hunch leads the unlikely duo to one place Charlotte swore she’d never return: Egypt. But if they have any hope of finding the artifact, Charlotte will need to confront the demons of her past—which may mean leading them both directly into danger.",
+   "industryIdentifiers": [
+    {
+     "type": "ISBN_13",
+     "identifier": "9780593474297"
+    },
+    {
+     "type": "ISBN_10",
+     "identifier": "0593474295"
+    }
+   ],
+   "averageRating": "None",
+   "ratingsCount": "None",
+   "imageLinks": {
+    "smallThumbnail": "http://books.google.com/books/content?id=TAIAEQAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+    "thumbnail": "http://books.google.com/books/content?id=TAIAEQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+   },
+   "pageCount": 353,
+   "categories": [
+    "Fiction"
+   ]
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "title_id": 214,
+  "fields": {
+   "genres": 18,
+   "title": "Remarkably Bright Creatures",
+   "authors": [
+    "Shelby Van Pelt"
+   ],
+   "publisher": "HarperCollins",
+   "description": "A Read With Jenna Today Show Book Club Pick! “Remarkably Bright Creatures is a beautiful examination of how loneliness can be transformed, cracked open, with the slightest touch from another living thing.” -- Kevin Wilson, author of Nothing to See Here For fans of A Man Called Ove, a charming, witty and compulsively readable exploration of friendship, reckoning, and hope that traces a widow's unlikely connection with a giant Pacific octopus After Tova Sullivan’s husband died, she began working the night shift at the Sowell Bay Aquarium, mopping floors and tidying up. Keeping busy has always helped her cope, which she’s been doing since her eighteen-year-old son, Erik, mysteriously vanished on a boat in Puget Sound over thirty years ago. Tova becomes acquainted with curmudgeonly Marcellus, a giant Pacific octopus living at the aquarium. Marcellus knows more than anyone can imagine but wouldn’t dream of lifting one of his eight arms for his human captors—until he forms a remarkable friendship with Tova. Ever the detective, Marcellus deduces what happened the night Tova’s son disappeared. And now Marcellus must use every trick his old invertebrate body can muster to unearth the truth for her before it’s too late. Shelby Van Pelt’s debut novel is a gentle reminder that sometimes taking a hard look at the past can help uncover a future that once felt impossible.",
+   "industryIdentifiers": [
+    {
+     "type": "ISBN_13",
+     "identifier": "9780063204171"
+    },
+    {
+     "type": "ISBN_10",
+     "identifier": "0063204177"
+    }
+   ],
+   "averageRating": 5,
+   "ratingsCount": 1,
+   "imageLinks": {
+    "smallThumbnail": "http://books.google.com/books/content?id=g0Q7EAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+    "thumbnail": "http://books.google.com/books/content?id=g0Q7EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+   },
+   "pageCount": 389,
+   "categories": [
+    "Fiction"
+   ]
+  }
+ },
+ {
+  "model": "bookchat.book",
+  "title_id": 215,
+  "fields": {
+   "genres": 18,
+   "title": "Counting Miracles",
+   "authors": [
+    "Nicholas Sparks"
+   ],
+   "publisher": "Random House",
+   "description": "#1 NEW YORK TIMES BESTSELLER • From the acclaimed author of The Longest Ride and The Notebook comes an emotional, powerful novel about wondering if we can change—or even make our peace with—the path we’ve taken. “Sparks is superb at what he does. The setting is postcard perfect. The characters are immensely likable. . . . This is a tidy miracle you can count on.”—The Washington Post Tanner Hughes was raised by his grandparents, following in his grandfather’s military footsteps to become an Army Ranger. His whole life has been spent abroad, and he is the proverbial rolling stone: happiest when off on his next adventure, zero desire to settle down. But when his grandmother passes away, her last words to him are find where you belong. She also drops a bombshell, telling him the name of the father he never knew—and where to find him. Tanner is due at his next posting soon, but his curiosity is piqued, and he sets out for Asheboro, North Carolina, to ask around. He’s been in town less than twenty-four hours when he meets Kaitlyn Cooper, a doctor and single mom. They both feel an immediate connection; Tanner knows Kaitlyn has a story to tell, and he wants to hear it. To Kaitlyn, Tanner is mysterious, exciting—and possibly leaving in just a few weeks. Meanwhile, nearby, eighty-three-year-old Jasper lives alone in a cabin bordering a national forest. With only his old dog, Arlo, for company, he lives quietly, haunted by a tragic accident that took place decades before. When he hears rumors that a white deer has been spotted in the forest—a creature of legend that inspired his father and grandfather—he becomes obsessed with protecting the deer from poachers. As these characters’ fates orbit closer together, none of them is expecting a miracle . . . but that may be exactly what is about to alter their futures forever.",
+   "industryIdentifiers": [
+    {
+     "type": "ISBN_13",
+     "identifier": "9798217013999"
+    }
+   ],
+   "averageRating": "None",
+   "ratingsCount": "None",
+   "imageLinks": {
+    "smallThumbnail": "http://books.google.com/books/content?id=Md0JEQAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+    "thumbnail": "http://books.google.com/books/content?id=Md0JEQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+   },
+   "pageCount": 465,
+   "categories": [
+    "Fiction"
+   ]
+  }
+ }
+]

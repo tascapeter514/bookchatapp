@@ -21,17 +21,12 @@ def create_title(b):
     new_title['title_id'] = title_id
     new_title['fields'] = {}
     # fields = new_title['fields']
-    keys = ['title', 'authors', 'publisher', 'description', 'ISBN Identifiers', 'averageRating', 'ratingsCount', 'imageLinks', 'pageCount', 'categories']
+    keys = ['title', 'authors', 'publisher', 'description', 'industryIdentifiers', 'averageRating', 'ratingsCount', 'imageLinks', 'pageCount', 'categories']
     for key in keys:
         new_title['fields'][key] = 'none' if key not in b else b[key]
     return new_title
 
         
-    
-
-
-
-
 
 PATH = './raw_data/google_books_titles.json'
 

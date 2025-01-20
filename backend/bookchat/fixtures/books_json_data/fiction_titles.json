@@ -1,7 +1,7 @@
 [
  {
   "model": "bookchat.book",
-  "title_id": 1,
+  "title_id": "feee8858-4908-481f-804d-9c5290caa359",
   "fields": {
    "title": "The Plague",
    "authors": [
@@ -19,12 +19,15 @@
    "pageCount": 312,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 2,
+  "title_id": "e0d8c143-9913-46b6-9fb5-1492e791189c",
   "fields": {
    "title": "Future Shock",
    "authors": [
@@ -42,12 +45,15 @@
    "pageCount": 537,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 3,
+  "title_id": "d1e66754-36ad-455f-8227-bf3c14ee564f",
   "fields": {
    "title": "There There",
    "authors": [
@@ -65,12 +71,15 @@
    "pageCount": 256,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 4,
+  "title_id": "d94e1efb-597a-467d-b727-04e56ca7aebd",
   "fields": {
    "title": "If Beale Street Could Talk",
    "authors": [
@@ -88,12 +97,15 @@
    "pageCount": 210,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 5,
+  "title_id": "efc433d8-dea3-46fc-b63c-c9da5db9b818",
   "fields": {
    "title": "My Name Is Asher Lev",
    "authors": [
@@ -111,12 +123,15 @@
    "pageCount": 385,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 6,
+  "title_id": "14747194-12a2-45ce-a9ce-ce00e9b5c8b1",
   "fields": {
    "title": "The Bean Trees",
    "authors": [
@@ -134,12 +149,15 @@
    "pageCount": 340,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 7,
+  "title_id": "7315192a-101a-41cd-9143-8bc6cba21d72",
   "fields": {
    "title": "Ready Player Two",
    "authors": [
@@ -157,12 +175,15 @@
    "pageCount": 385,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 8,
+  "title_id": "7dac59c0-81fd-4aff-878a-2b8b13153aa5",
   "fields": {
    "title": "Bag of Bones",
    "authors": [
@@ -180,12 +201,15 @@
    "pageCount": 756,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 9,
+  "title_id": "db7df8e3-3e3a-4df9-8188-81ea5fbb1577",
   "fields": {
    "title": "Agamemnon's Daughter",
    "authors": [
@@ -203,12 +227,15 @@
    "pageCount": 252,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 10,
+  "title_id": "20292cd4-f787-442c-ac16-4dfd42acdffe",
   "fields": {
    "title": "Sunset Park",
    "authors": [
@@ -226,12 +253,15 @@
    "pageCount": 318,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 11,
+  "title_id": "ac2432a0-a708-4553-b5f6-3f166901c7ac",
   "fields": {
    "title": "For Whom the Bell Tolls",
    "authors": [
@@ -249,12 +279,15 @@
    "pageCount": 576,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 12,
+  "title_id": "f7b7e585-b5f4-40f1-8a68-b71bb44ae93a",
   "fields": {
    "title": "The Darkest Night",
    "authors": [
@@ -272,12 +305,15 @@
    "pageCount": 383,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 13,
+  "title_id": "bc86f3fd-bb2c-4584-8c11-5d98f1e6983e",
   "fields": {
    "title": "Mrs. Dalloway",
    "authors": [
@@ -295,12 +331,15 @@
    "pageCount": 312,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 14,
+  "title_id": "fd0ea5a7-1118-456d-8e01-248e0f07e8f2",
   "fields": {
    "title": "Journey to the Center of the Earth",
    "authors": [
@@ -318,12 +357,15 @@
    "pageCount": 242,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 15,
+  "title_id": "18fece7e-8db3-49be-9524-a51049f294ee",
   "fields": {
    "title": "The Boleyn Inheritance",
    "authors": [
@@ -341,12 +383,15 @@
    "pageCount": 596,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 16,
+  "title_id": "17a9f240-b235-4881-a4ee-854966fc4f89",
   "fields": {
    "title": "Mildred Pierce",
    "authors": [
@@ -364,12 +409,15 @@
    "pageCount": 0,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 17,
+  "title_id": "dc2bdcde-6fc4-47e1-88cc-42b6735df9bf",
   "fields": {
    "title": "Bless Me, Ultima",
    "authors": [
@@ -387,12 +435,15 @@
    "pageCount": 270,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 18,
+  "title_id": "a33734f0-8741-4ac8-a63b-13a3fd2026d9",
   "fields": {
    "title": "The Arabian Nights",
    "authors": "None",
@@ -408,12 +459,15 @@
    "pageCount": 0,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 19,
+  "title_id": "515ff7fa-57d9-430d-bccf-6d399c0f3d1d",
   "fields": {
    "title": "Tortilla Flat",
    "authors": [
@@ -431,12 +485,15 @@
    "pageCount": 228,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 20,
+  "title_id": "11ee6241-5e33-44e2-a907-569679e4b469",
   "fields": {
    "title": "Anathem",
    "authors": [
@@ -454,12 +511,15 @@
    "pageCount": 961,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 21,
+  "title_id": "c87f42b7-c94c-42b6-ad93-a8006aa5eae0",
   "fields": {
    "title": "The Complete Grimm's Fairy Tales",
    "authors": [
@@ -477,12 +537,15 @@
    "pageCount": 878,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 22,
+  "title_id": "c86973e5-33ed-4bd8-91ba-820b7796bfe2",
   "fields": {
    "title": "How to Stop Time",
    "authors": [
@@ -500,12 +563,15 @@
    "pageCount": 352,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 23,
+  "title_id": "b469fa81-e768-4263-9d65-ef62f36e1a10",
   "fields": {
    "title": "I, Tituba, Black Witch of Salem",
    "authors": [
@@ -523,12 +589,15 @@
    "pageCount": 260,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 24,
+  "title_id": "cca21fa8-8b24-4114-800d-74a4e8efa111",
   "fields": {
    "title": "The Complete Stories",
    "authors": [
@@ -546,12 +615,15 @@
    "pageCount": 612,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 25,
+  "title_id": "010a64fb-edcb-46a3-9c58-acc4debd118d",
   "fields": {
    "title": "The Trial",
    "authors": [
@@ -569,12 +641,15 @@
    "pageCount": 345,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 26,
+  "title_id": "07aae38d-e6d6-4dcc-96f4-e07bdd6b0fb5",
   "fields": {
    "title": "Growth of the Soil",
    "authors": [
@@ -592,12 +667,15 @@
    "pageCount": 449,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 27,
+  "title_id": "00c2c3ef-4e5e-4d2a-8418-f092773e0d5e",
   "fields": {
    "title": "The Scarlet Letter",
    "authors": [
@@ -615,12 +693,15 @@
    "pageCount": 264,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 28,
+  "title_id": "52d1ab4d-f598-46dd-962c-f73e948596e4",
   "fields": {
    "title": "Go",
    "authors": [
@@ -638,12 +719,15 @@
    "pageCount": 315,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 29,
+  "title_id": "df41336d-63f4-4ac1-bea4-96837caf6476",
   "fields": {
    "title": "Mysteries",
    "authors": [
@@ -661,12 +745,15 @@
    "pageCount": 356,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 30,
+  "title_id": "acecbdd9-a1cd-415f-868d-05eb627a96a7",
   "fields": {
    "title": "Pudd'nhead Wilson",
    "authors": [
@@ -684,12 +771,15 @@
    "pageCount": 260,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 31,
+  "title_id": "772a64c5-cbae-4e6f-bddc-0d20d44507e7",
   "fields": {
    "title": "The Odyssey of Homer",
    "authors": [
@@ -707,12 +797,15 @@
    "pageCount": 559,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 32,
+  "title_id": "3a042aec-e1a8-4cb9-9041-b2a120278962",
   "fields": {
    "title": "The Pioneers",
    "authors": [
@@ -730,12 +823,15 @@
    "pageCount": 368,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 33,
+  "title_id": "a30efce0-0d90-44e3-9478-aac95d09b179",
   "fields": {
    "title": "The Jungle",
    "authors": [
@@ -753,12 +849,15 @@
    "pageCount": 411,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 34,
+  "title_id": "61f9b41a-5709-46e0-8f79-6934fb880629",
   "fields": {
    "title": "Sister Carrie",
    "authors": [
@@ -776,12 +875,15 @@
    "pageCount": 563,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 35,
+  "title_id": "ed8d4a48-4c6a-4fe8-92e9-8f104fb87beb",
   "fields": {
    "title": "The Vegetarian",
    "authors": [
@@ -799,12 +901,15 @@
    "pageCount": 209,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 36,
+  "title_id": "418a16eb-d0c0-4439-b66f-44cc85f607e9",
   "fields": {
    "title": "The Canterbury Tales",
    "authors": [
@@ -822,12 +927,15 @@
    "pageCount": 0,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 37,
+  "title_id": "0ed34e7a-c4e0-453b-82e4-2254759d4adb",
   "fields": {
    "title": "THE Murder Of Roger Ackroyd",
    "authors": [
@@ -845,12 +953,15 @@
    "pageCount": 314,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 38,
+  "title_id": "e967419f-789a-4fb3-ae2c-c021eb688f1d",
   "fields": {
    "title": "Atlas Shrugged",
    "authors": [
@@ -868,12 +979,15 @@
    "pageCount": 0,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 39,
+  "title_id": "8b099e35-adff-4766-9e99-dbcfb3504777",
   "fields": {
    "title": "Foe",
    "authors": [
@@ -891,12 +1005,15 @@
    "pageCount": 124,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 40,
+  "title_id": "7f99ae3f-cf4b-434d-a136-a60ed59b3d99",
   "fields": {
    "title": "The Life of Insects",
    "authors": [
@@ -914,12 +1031,15 @@
    "pageCount": 196,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 41,
+  "title_id": "80209b69-8403-4dbe-8170-29a60b470788",
   "fields": {
    "title": "Resurrection",
    "authors": [
@@ -937,12 +1057,15 @@
    "pageCount": 578,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 42,
+  "title_id": "79880fb8-6417-46c3-b32f-5b39737a776b",
   "fields": {
    "title": "Ethan Frome",
    "authors": [
@@ -960,12 +1083,15 @@
    "pageCount": 98,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 43,
+  "title_id": "0f69b072-a022-4217-8d42-cc7ef10c87cc",
   "fields": {
    "title": "Taras Bulba",
    "authors": [
@@ -983,12 +1109,15 @@
    "pageCount": 154,
    "categories": [
     "Literary Criticism"
+   ],
+   "genres": [
+    2
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 44,
+  "title_id": "d1ef864e-b2d9-464d-bed9-a5648fb48592",
   "fields": {
    "title": "The Erasers",
    "authors": [
@@ -1006,12 +1135,15 @@
    "pageCount": 264,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 45,
+  "title_id": "e5eb8005-6a63-4727-a0eb-d9f76d90a950",
   "fields": {
    "title": "Time and Again",
    "authors": [
@@ -1029,12 +1161,15 @@
    "pageCount": 512,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 46,
+  "title_id": "232235ef-d4c4-4d75-8cba-a48c20992733",
   "fields": {
    "title": "The Life of Insects",
    "authors": [
@@ -1052,12 +1187,15 @@
    "pageCount": 196,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 47,
+  "title_id": "173077f3-010f-4581-808e-f55f0d255099",
   "fields": {
    "title": "Sir Gawain and the Green Knight",
    "authors": [
@@ -1075,12 +1213,15 @@
    "pageCount": 182,
    "categories": [
     "Poetry"
+   ],
+   "genres": [
+    3
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 48,
+  "title_id": "acb816a2-6ef2-4aa3-9b14-12f598c6b266",
   "fields": {
    "title": "As Brave As You",
    "authors": [
@@ -1098,12 +1239,15 @@
    "pageCount": 21,
    "categories": [
     "Juvenile Fiction"
+   ],
+   "genres": [
+    4
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 49,
+  "title_id": "fbe7339c-a238-4934-b18e-46f6a0bfbe61",
   "fields": {
    "title": "Dreamcatcher",
    "authors": [
@@ -1121,12 +1265,15 @@
    "pageCount": 704,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 50,
+  "title_id": "593762e1-370a-417a-9c37-85ca24d29e3f",
   "fields": {
    "title": "Sometimes a Great Notion",
    "authors": [
@@ -1144,12 +1291,15 @@
    "pageCount": 740,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 51,
+  "title_id": "c94f976f-a449-476c-903c-29df98b78800",
   "fields": {
    "title": "The Fellowship of the Ring",
    "authors": [
@@ -1167,12 +1317,15 @@
    "pageCount": 580,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 52,
+  "title_id": "ab8f7a57-f435-4635-9888-6f194c5f716f",
   "fields": {
    "title": "Hearts In Atlantis",
    "authors": [
@@ -1190,12 +1343,15 @@
    "pageCount": 688,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 53,
+  "title_id": "da61b505-266e-4273-9174-5f500acf3268",
   "fields": {
    "title": "The Civilisation of the Renaissance in Italy",
    "authors": [
@@ -1213,12 +1369,15 @@
    "pageCount": 975,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 54,
+  "title_id": "f3c002a2-7a55-4b97-828d-13b08065ad52",
   "fields": {
    "title": "Swimmy",
    "authors": [
@@ -1236,12 +1395,15 @@
    "pageCount": 36,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 55,
+  "title_id": "470c4de3-d4d6-43b8-b61d-fc45bb604ad3",
   "fields": {
    "title": "When We Cease to Understand the World",
    "authors": [
@@ -1259,12 +1421,15 @@
    "pageCount": 192,
    "categories": [
     "Creative ability in science"
+   ],
+   "genres": [
+    5
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 56,
+  "title_id": "4c99e443-a66a-4bf9-85a5-18503edf0012",
   "fields": {
    "title": "Strange Tales from a Chinese Studio",
    "authors": [
@@ -1282,12 +1447,15 @@
    "pageCount": 306,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 57,
+  "title_id": "422b46ea-ad0e-4993-a5eb-b8ff01d8b4f1",
   "fields": {
    "title": "Pan",
    "authors": [
@@ -1305,12 +1473,15 @@
    "pageCount": 191,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 58,
+  "title_id": "35a90abd-a8df-4c5f-a195-fbc2669b4d1c",
   "fields": {
    "title": "Night Probe!",
    "authors": [
@@ -1328,12 +1499,15 @@
    "pageCount": 364,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 59,
+  "title_id": "25cc9bc5-0b27-4cbd-9e26-63d9b90850dd",
   "fields": {
    "title": "The Swineherd",
    "authors": [
@@ -1351,12 +1525,15 @@
    "pageCount": 36,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 60,
+  "title_id": "a80dd258-a4b4-4c18-b01d-fa61a2e77693",
   "fields": {
    "title": "The Adventures of Tom Sawyer",
    "authors": [
@@ -1374,12 +1551,15 @@
    "pageCount": 282,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 61,
+  "title_id": "63d73bf9-f898-4c14-8b58-7e73b02c5ab9",
   "fields": {
    "title": "The Scarred Woman",
    "authors": [
@@ -1397,12 +1577,15 @@
    "pageCount": 482,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 62,
+  "title_id": "c00fc139-6a33-431b-8ed0-ad1282080e84",
   "fields": {
    "title": "An Antarctic Mystery",
    "authors": [
@@ -1420,12 +1603,15 @@
    "pageCount": 283,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 63,
+  "title_id": "1de6d465-69a5-40d2-a7a0-4e7ffe62e473",
   "fields": {
    "title": "The Picture of Dorian Gray",
    "authors": [
@@ -1443,12 +1629,15 @@
    "pageCount": 188,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 64,
+  "title_id": "e74a2051-2014-420f-a1f0-212c42624687",
   "fields": {
    "title": "Refugee Tales: Volume III",
    "authors": [
@@ -1479,12 +1668,15 @@
    "pageCount": 217,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 65,
+  "title_id": "831934bb-f532-4e58-a160-e8f3961c7b1e",
   "fields": {
    "title": "Ordinary Grace",
    "authors": [
@@ -1502,12 +1694,15 @@
    "pageCount": 320,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 66,
+  "title_id": "2c512929-88f1-4c1d-9bc4-8352967910f8",
   "fields": {
    "title": "Sin and Its Consequences",
    "authors": [
@@ -1525,12 +1720,15 @@
    "pageCount": 274,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 67,
+  "title_id": "5bfd0f8c-d4db-4284-894f-4f68e68a195b",
   "fields": {
    "title": "Fahrenheit 451",
    "authors": [
@@ -1548,12 +1746,15 @@
    "pageCount": 244,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 68,
+  "title_id": "e7fa56b2-eeed-41e5-864c-ae607218d068",
   "fields": {
    "title": "Bartleby, The Scrivener",
    "authors": [
@@ -1571,12 +1772,15 @@
    "pageCount": 44,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 69,
+  "title_id": "a374054a-edb7-4e21-bbd2-936ec525e88d",
   "fields": {
    "title": "The Black Arrow",
    "authors": [
@@ -1594,12 +1798,15 @@
    "pageCount": 0,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 70,
+  "title_id": "9fd15207-4167-4ca9-b03d-7279f85705d1",
   "fields": {
    "title": "Fallen Too Far",
    "authors": [
@@ -1617,12 +1824,15 @@
    "pageCount": 240,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 71,
+  "title_id": "d775ed2d-9be6-4ee6-9c09-e90d0def22d0",
   "fields": {
    "title": "A Study in Scarlet",
    "authors": [
@@ -1640,12 +1850,15 @@
    "pageCount": 164,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 72,
+  "title_id": "1943f33a-8d95-491f-8dc9-5c3033886d12",
   "fields": {
    "title": "Infinite Jest",
    "authors": [
@@ -1660,12 +1873,15 @@
    "pageCount": 0,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 73,
+  "title_id": "b174f44c-fdc0-42e1-9f3b-0333e26efe2c",
   "fields": {
    "title": "I. Asimov",
    "authors": [
@@ -1683,12 +1899,15 @@
    "pageCount": 592,
    "categories": [
     "Biography & Autobiography"
+   ],
+   "genres": [
+    6
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 74,
+  "title_id": "59485c2d-54b7-4164-9347-7b95c63649b3",
   "fields": {
    "title": "Divide and Conquer",
    "authors": [
@@ -1708,12 +1927,15 @@
    "pageCount": 388,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 75,
+  "title_id": "6cf58ec4-7c95-42a3-95a6-be3758b6f4e3",
   "fields": {
    "title": "Candide",
    "authors": [
@@ -1729,12 +1951,17 @@
     "thumbnail": "http://books.google.com/books/content?id=v4jXtAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 50,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 76,
+  "title_id": "3de8871a-34a9-456b-9ce4-dafae3a06764",
   "fields": {
    "title": "A Christmas Carol",
    "authors": [
@@ -1752,12 +1979,15 @@
    "pageCount": 74,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 77,
+  "title_id": "8d3ac18b-ff67-40b6-a0e1-960864bb4460",
   "fields": {
    "title": "Pierre and Luce (Classic Reprint)",
    "authors": [
@@ -1773,12 +2003,17 @@
     "thumbnail": "http://books.google.com/books/content?id=JkIlswEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 148,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 78,
+  "title_id": "4d253fdf-fd98-4ddf-947f-688e0d125d8a",
   "fields": {
    "title": "The Final Problem",
    "authors": [
@@ -1796,12 +2031,15 @@
    "pageCount": 28,
    "categories": [
     "Private investigators"
+   ],
+   "genres": [
+    7
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 79,
+  "title_id": "3c178ede-826d-46e0-948e-cd10df04323a",
   "fields": {
    "title": "Bartleby, the Scrivener",
    "authors": [
@@ -1814,12 +2052,17 @@
    "ratingsCount": "none",
    "imageLinks": "none",
    "pageCount": 45,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 80,
+  "title_id": "9b8d6aea-f3bc-4022-a28f-193c3d6f3cd4",
   "fields": {
    "title": "Solaris",
    "authors": [
@@ -1837,12 +2080,15 @@
    "pageCount": 230,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 81,
+  "title_id": "79f484f3-c2de-4588-b663-79e9a84432e5",
   "fields": {
    "title": "The Final Problem",
    "authors": [
@@ -1860,12 +2106,15 @@
    "pageCount": 28,
    "categories": [
     "Private investigators"
+   ],
+   "genres": [
+    7
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 82,
+  "title_id": "c55bc303-8ed4-4b9c-85bc-531e15aa19f5",
   "fields": {
    "title": "Bartleby, the Scrivener",
    "authors": [
@@ -1878,12 +2127,17 @@
    "ratingsCount": "none",
    "imageLinks": "none",
    "pageCount": 45,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 83,
+  "title_id": "e31d68f1-c212-43c1-91a1-15424d849fdc",
   "fields": {
    "title": "Solaris",
    "authors": [
@@ -1901,12 +2155,15 @@
    "pageCount": 230,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 84,
+  "title_id": "c7a1975d-e13f-457a-ac48-a151fba45875",
   "fields": {
    "title": "Pride and Prejudice",
    "authors": [
@@ -1922,12 +2179,17 @@
     "thumbnail": "http://books.google.com/books/content?id=95QxzgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 364,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 85,
+  "title_id": "0cb480ec-32d3-40a2-9220-278c25a07250",
   "fields": {
    "title": "The Sorrows of Young Werther",
    "authors": [
@@ -1943,12 +2205,17 @@
     "thumbnail": "http://books.google.com/books/content?id=uZGVzAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 90,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 86,
+  "title_id": "a5bd7c26-4826-4605-b694-87a470366e4c",
   "fields": {
    "title": "Moby-Dick",
    "authors": [
@@ -1964,12 +2231,17 @@
     "thumbnail": "http://books.google.com/books/content?id=fyVOzQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 397,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 87,
+  "title_id": "cac967a3-c454-472b-a307-101a420ea0ed",
   "fields": {
    "title": "The Mists of Avalon",
    "authors": [
@@ -1987,12 +2259,15 @@
    "pageCount": 1222,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 88,
+  "title_id": "4c12faa5-07cd-408f-8b46-d582ce928b14",
   "fields": {
    "title": "The Prince and the Pauper",
    "authors": [
@@ -2010,12 +2285,15 @@
    "pageCount": 218,
    "categories": [
     "Juvenile Fiction"
+   ],
+   "genres": [
+    4
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 89,
+  "title_id": "d5b6b42e-306a-4057-ad07-1e4f926556db",
   "fields": {
    "title": "Pride and Prejudice",
    "authors": [
@@ -2031,12 +2309,17 @@
     "thumbnail": "http://books.google.com/books/content?id=VVwoswEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 330,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 90,
+  "title_id": "fde2430d-da98-4d27-8438-b44f0d8f3bdc",
   "fields": {
    "title": "The Dream of the Celt",
    "authors": [
@@ -2054,12 +2337,15 @@
    "pageCount": 455,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 91,
+  "title_id": "2e3e649c-11b0-4a41-8083-6dac9f198f24",
   "fields": {
    "title": "The Uncensored Picture of Dorian Gray",
    "authors": [
@@ -2078,12 +2364,15 @@
    "pageCount": 273,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 92,
+  "title_id": "f2d4c742-ac07-40f3-947f-36f7b8dd18a2",
   "fields": {
    "title": "The Colorado Kid",
    "authors": [
@@ -2101,12 +2390,15 @@
    "pageCount": 179,
    "categories": [
     "Detective and mystery stories"
+   ],
+   "genres": [
+    8
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 93,
+  "title_id": "c3ed92ce-24ac-4910-957f-dd9265e278fc",
   "fields": {
    "title": "The Sea Wolf",
    "authors": [
@@ -2122,12 +2414,17 @@
     "thumbnail": "http://books.google.com/books/content?id=23h0tAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 214,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 94,
+  "title_id": "4ecae1d3-6f25-4a41-94b4-70e13a0bb136",
   "fields": {
    "title": "The Illustrated Man",
    "authors": [
@@ -2143,12 +2440,17 @@
     "thumbnail": "http://books.google.com/books/content?id=J9n6rQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 279,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 95,
+  "title_id": "dac0cf47-8982-443c-a6f3-c1d827d02b27",
   "fields": {
    "title": "The Great Gatsby",
    "authors": [
@@ -2164,12 +2466,17 @@
     "thumbnail": "http://books.google.com/books/content?id=9P9ZuQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 124,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 96,
+  "title_id": "224d310f-3cdf-4b37-8b36-8477514d80b5",
   "fields": {
    "title": "Bartleby, the Scrivener Illustrated",
    "authors": [
@@ -2182,12 +2489,17 @@
    "ratingsCount": "none",
    "imageLinks": "none",
    "pageCount": 65,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 97,
+  "title_id": "471d4a8f-cb55-4433-aac7-e8cbee130dd3",
   "fields": {
    "title": "The Two Towers [Tv Tie-In]: The Lord of the Rings Part Two",
    "authors": [
@@ -2205,12 +2517,15 @@
    "pageCount": 352,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 98,
+  "title_id": "e66978d1-0dc8-41b8-9e39-7405dd8839f8",
   "fields": {
    "title": "Kim .",
    "authors": [
@@ -2228,33 +2543,15 @@
    "pageCount": 174,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 99,
-  "fields": {
-   "title": "The Art of War Annotated",
-   "authors": [
-    "Sun Tzu"
-   ],
-   "publisher": "none",
-   "description": "The Art of War is an ancient Chinese military treatise dating from the Late Spring and Autumn Period (roughly 5th century BC). The work, which is attributed to the ancient Chinese military strategist Sun Tzu (\"Master Sun\", also spelled Sunzi), is composed of 13 chapters. Each one is devoted to an aspect of warfare and how it applies to military strategy and tactics. For almost 1,500 years it was the lead text in an anthology that would be formalised as the Seven Military Classics by Emperor Shenzong of Song in 1080. The Art of War remains the most influential strategy text in East Asian warfare[1] and has influenced both Eastern and Western military thinking, business tactics, legal strategy, lifestyles and beyond.",
-   "ISBN Identifiers": "none",
-   "averageRating": "none",
-   "ratingsCount": "none",
-   "imageLinks": {
-    "smallThumbnail": "http://books.google.com/books/content?id=Izm_zQEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
-    "thumbnail": "http://books.google.com/books/content?id=Izm_zQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-   },
-   "pageCount": 60,
-   "categories": "none"
-  }
- },
- {
-  "model": "bookchat.book",
-  "title_id": 100,
+  "title_id": "3f82ca79-efbb-444f-bec8-baf22d9380f4",
   "fields": {
    "title": "Sister Carrie",
    "authors": [
@@ -2270,12 +2567,17 @@
     "thumbnail": "http://books.google.com/books/content?id=dnj0vAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 498,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 101,
+  "title_id": "357a3cf9-0522-467f-a61c-bf8f6d88db04",
   "fields": {
    "title": "Pride and Prejudice",
    "authors": [
@@ -2291,12 +2593,17 @@
     "thumbnail": "http://books.google.com/books/content?id=KMcijwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 162,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 102,
+  "title_id": "938d5c8c-e3c4-4160-b026-8b947b93348d",
   "fields": {
    "title": "Lifetime",
    "authors": [
@@ -2314,12 +2621,15 @@
    "pageCount": 371,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 103,
+  "title_id": "2a8bed99-9bec-4f85-bbfa-0a4d779e3490",
   "fields": {
    "title": "Jacob's Room",
    "authors": [
@@ -2337,12 +2647,15 @@
    "pageCount": 183,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 104,
+  "title_id": "8c83e503-6ea7-4c10-a2d9-ac6d05ef35f9",
   "fields": {
    "title": "The Road to Oz",
    "authors": [
@@ -2360,12 +2673,15 @@
    "pageCount": 194,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 105,
+  "title_id": "14c1c95e-fd0b-451f-8ddc-09559ba7fb15",
   "fields": {
    "title": "Halo: Evolutions",
    "authors": [
@@ -2386,12 +2702,15 @@
    "pageCount": 532,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 106,
+  "title_id": "d5348110-9029-4611-ab9e-f94358ffef9a",
   "fields": {
    "title": "Under the Dome",
    "authors": [
@@ -2409,12 +2728,15 @@
    "pageCount": 0,
    "categories": [
     "Large print books"
+   ],
+   "genres": [
+    9
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 107,
+  "title_id": "a82be634-fd31-4b75-8215-be06839cbcd1",
   "fields": {
    "title": "The Wonderful Wizard of Oz",
    "authors": [
@@ -2430,12 +2752,17 @@
     "thumbnail": "http://books.google.com/books/content?id=zENXswEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 106,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 108,
+  "title_id": "0ae5f3b9-6a6e-42dc-8151-54da75827ed3",
   "fields": {
    "title": "The Festival of Insignificance",
    "authors": [
@@ -2453,12 +2780,15 @@
    "pageCount": 94,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 109,
+  "title_id": "27340366-2f8e-482e-a74d-465b3d56b921",
   "fields": {
    "title": "Pride and Prejudice Annotated",
    "authors": [
@@ -2474,12 +2804,17 @@
     "thumbnail": "http://books.google.com/books/content?id=9QJlzgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 464,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 110,
+  "title_id": "ba2019df-316c-4b2a-8758-dc03b46cde9f",
   "fields": {
    "title": "The Adventures of Pinocchio (Annotated)",
    "authors": [
@@ -2495,12 +2830,17 @@
     "thumbnail": "http://books.google.com/books/content?id=cKEczgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 216,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 111,
+  "title_id": "910ca41c-a965-4b72-b5e0-044f1c40fffc",
   "fields": {
    "title": "Crime and Punishment by Fyodor Dostoyevsky",
    "authors": [
@@ -2516,12 +2856,17 @@
     "thumbnail": "http://books.google.com/books/content?id=jDuNzgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 100,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 112,
+  "title_id": "b2b0d6fd-55b1-4bf5-b567-047f2464fa39",
   "fields": {
    "title": "Redburn",
    "authors": [
@@ -2537,12 +2882,17 @@
     "thumbnail": "http://books.google.com/books/content?id=G9sStAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 232,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 113,
+  "title_id": "a02109a4-3cfd-4780-b76c-03835fb10482",
   "fields": {
    "title": "The Scarlet Letter",
    "authors": [
@@ -2555,12 +2905,17 @@
    "ratingsCount": "none",
    "imageLinks": "none",
    "pageCount": 172,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 114,
+  "title_id": "2d9bac34-9f09-4e06-8b02-e3befa9cf615",
   "fields": {
    "title": "Montezuma's Daughter",
    "authors": [
@@ -2578,12 +2933,15 @@
    "pageCount": 474,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 115,
+  "title_id": "6b26d884-1c44-45db-afb7-bc9fb1d73a99",
   "fields": {
    "title": "The Idiot (Annotated)",
    "authors": [
@@ -2599,12 +2957,17 @@
     "thumbnail": "http://books.google.com/books/content?id=dlWHjwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 556,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 116,
+  "title_id": "e04dfab1-e4ac-4f9b-a636-02de2183898a",
   "fields": {
    "title": "The Picture of Dorian Gray Illustrated",
    "authors": [
@@ -2620,12 +2983,17 @@
     "thumbnail": "http://books.google.com/books/content?id=fxg0zgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 272,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 117,
+  "title_id": "68e19509-ceb9-4202-9f77-b0331643661e",
   "fields": {
    "title": "The Catcher in the Rye",
    "authors": [
@@ -2640,12 +3008,15 @@
    "pageCount": 220,
    "categories": [
     "Fiction in English"
+   ],
+   "genres": [
+    10
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 118,
+  "title_id": "4fbf6a1b-4bcb-4358-bedc-6fb91cd3ac5f",
   "fields": {
    "title": "Frankenstein",
    "authors": [
@@ -2660,12 +3031,15 @@
    "pageCount": 352,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 119,
+  "title_id": "29714482-bcab-4733-b594-c74e772ae0e7",
   "fields": {
    "title": "The Woman in White",
    "authors": [
@@ -2683,12 +3057,15 @@
    "pageCount": 750,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 120,
+  "title_id": "6005edca-80ae-42b7-a6a6-ede13b11aa27",
   "fields": {
    "title": "On The Road",
    "authors": [
@@ -2703,12 +3080,15 @@
    "pageCount": 0,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 121,
+  "title_id": "3b0671e5-0235-4f86-8c6b-a5a1e746493b",
   "fields": {
    "title": "Pride and Prejudice Illustrated",
    "authors": [
@@ -2724,12 +3104,17 @@
     "thumbnail": "http://books.google.com/books/content?id=3qAezgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 386,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 122,
+  "title_id": "f94576b1-3ba7-44c8-acf1-b9ab5010f74c",
   "fields": {
    "title": "Around the Moon (Official Edition)",
    "authors": [
@@ -2745,12 +3130,17 @@
     "thumbnail": "http://books.google.com/books/content?id=ccvAzQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 168,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 123,
+  "title_id": "57002139-48e1-4b3d-927f-887d5709d033",
   "fields": {
    "title": "The Fur Country",
    "authors": [
@@ -2766,12 +3156,17 @@
     "thumbnail": "http://books.google.com/books/content?id=zY5JzwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 0,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 124,
+  "title_id": "39ecdf80-b1e2-4d17-8c00-79971dd5fcff",
   "fields": {
    "title": "Frankenstein",
    "authors": [
@@ -2787,33 +3182,17 @@
     "thumbnail": "http://books.google.com/books/content?id=pXw8MQAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 164,
-   "categories": "none"
-  }
- },
- {
-  "model": "bookchat.book",
-  "title_id": 125,
-  "fields": {
-   "title": "On the Nature of Things",
-   "authors": [
-    "Titus Lucretius Carus"
+   "categories": [
+    "Fiction"
    ],
-   "publisher": "Tredition Classics",
-   "description": "This book is part of the TREDITION CLASSICS series. The creators of this series are united by passion for literature and driven by the intention of making all public domain books available in printed format again - worldwide. At tredition we believe that a great book never goes out of style. Several mostly non-profit literature projects provide content to tredition. To support their good work, tredition donates a portion of the proceeds from each sold copy. As a reader of a TREDITION CLASSICS book, you support our mission to save many of the amazing works of world literature from oblivion.",
-   "ISBN Identifiers": "none",
-   "averageRating": "none",
-   "ratingsCount": "none",
-   "imageLinks": {
-    "smallThumbnail": "http://books.google.com/books/content?id=qzSZuQAACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
-    "thumbnail": "http://books.google.com/books/content?id=qzSZuQAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-   },
-   "pageCount": 198,
-   "categories": "none"
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 126,
+  "title_id": "ffa4fa0e-453e-445f-b127-3539cf5d6739",
   "fields": {
    "title": "The Bazaar of Bad Dreams",
    "authors": [
@@ -2831,30 +3210,15 @@
    "pageCount": 0,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 127,
-  "fields": {
-   "title": "The Art of War Annotated",
-   "authors": [
-    "Niccolò Machiavelli"
-   ],
-   "publisher": "none",
-   "description": "Machiavelli's philosophy is based on his pessimistic view of human nature. He has been called a \"pagan Augustinian\". Aristotle and Plato also called attention to the imperfect nature of man, but Machiavelli rejected their approach. He follows Xenophon more closely. It was Xenophon who took a rational organization, the army, and applied the lessons learned in its construction and operation to the problems of society in general. Machiavelli follows his lead in linking military and civil societies. He goes a step beyond Xenophon when he applies the lessons of military practice to the internal affairs of his civic body. For all his recognition of the failings of human nature, Xenophon could not free himself from the Greek distinction between friend and foe. For him coercion was to be applied to the enemy, and both the army and the polis were to be based on friendship. Machiavelli does not recognize this distinction. To him everyone is a potential enemy, hence the civic rulers must employ the same measures employed by the general to defeat his enemies. This is the reason Machiavelli makes no distinction between the statesman and military commander and why his approach to politics is a military one.Just as the unchanging character of human nature is the stable ingredient which makes the study of history important for the statesman, the presence of man himself at the controls in all human organizations makes the study of his character the basic activity for the successful leader. Machiavelli's state and army are not abstract entities endowed with human characteristics or desires. All decisions are made by men and all evoke reactions in other men. Machiavelli's insistence on this principle is seen in each of the diverse topics included in this study. For him the proper decision to such questions as whether to form alliances or not, when to invade the enemy territory, when to use money, how to acquire and control colonies, how to use \"peace\" offensives, how to organize a community and whether to appease an aggressor or not are all based on an evaluation of the probable reaction of those humans affected by the decision. Likewise, his criteria for the selection of a leader and his precepts to guide the leader's actions in command of an army are based on principles of psychology. The reaction of the army is itself governed by an evaluation of the human material available to the leader. Such considerations as the proper type of soldier, the discipline to be developed, the training program to be followed, the most useful armament, the correct logistical procedures, and the proper role of infantry, cavalry and artillery are all made under the assumption that man has been, is, and always will be the central and essential weapon in war.",
-   "ISBN Identifiers": "none",
-   "averageRating": "none",
-   "ratingsCount": "none",
-   "imageLinks": "none",
-   "pageCount": 184,
-   "categories": "none"
-  }
- },
- {
-  "model": "bookchat.book",
-  "title_id": 128,
+  "title_id": "07b8fc54-c8b7-4e4e-b5ea-40882832b421",
   "fields": {
    "title": "Heart of Darkness by Joseph Conrad (Illustrated)",
    "authors": [
@@ -2872,12 +3236,15 @@
    "pageCount": 148,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 129,
+  "title_id": "d5a61445-c83b-4e2d-9f4c-d72de625dfb3",
   "fields": {
    "title": "Anne of Avonlea",
    "authors": [
@@ -2893,12 +3260,17 @@
     "thumbnail": "http://books.google.com/books/content?id=1ZyStgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 406,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 130,
+  "title_id": "89d9faf6-6bb2-4a02-a443-bc2b2ac8647b",
   "fields": {
    "title": "Anne of Green Gables",
    "authors": [
@@ -2914,12 +3286,17 @@
     "thumbnail": "http://books.google.com/books/content?id=OQhDtAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 160,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 131,
+  "title_id": "ba44e35e-a899-4994-971b-66e1348fb6ac",
   "fields": {
    "title": "Green Wheat",
    "authors": [
@@ -2937,12 +3314,15 @@
    "pageCount": 160,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 132,
+  "title_id": "2fd2b6a3-dab4-41ab-bdc0-dc4e7a2738ef",
   "fields": {
    "title": "Twenty-four Hours in the Life of a Woman",
    "authors": [
@@ -2960,12 +3340,15 @@
    "pageCount": 0,
    "categories": [
     "Emotions"
+   ],
+   "genres": [
+    11
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 133,
+  "title_id": "814f9d7d-1976-444e-b82b-6a0d630057aa",
   "fields": {
    "title": "A Fire Endless",
    "authors": [
@@ -2983,12 +3366,15 @@
    "pageCount": 0,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 134,
+  "title_id": "6562af6c-665c-45a8-b9cc-ec407156823a",
   "fields": {
    "title": "Julius Caesar (Large Print)",
    "authors": [
@@ -3004,12 +3390,17 @@
     "thumbnail": "http://books.google.com/books/content?id=_xdvswEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 140,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 135,
+  "title_id": "c2e9da4b-2c26-4ff8-8494-bae3af2892e3",
   "fields": {
    "title": "The Wonderful Wizard of Oz Illustrated",
    "authors": [
@@ -3025,12 +3416,17 @@
     "thumbnail": "http://books.google.com/books/content?id=0lPazQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 160,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 136,
+  "title_id": "ea92a65c-2873-407c-b736-aad58e1e271d",
   "fields": {
    "title": "Harry Potter and the Deathly Hallows - Slytherin Edition",
    "authors": [
@@ -3048,12 +3444,15 @@
    "pageCount": 640,
    "categories": [
     "Juvenile Fiction"
+   ],
+   "genres": [
+    4
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 137,
+  "title_id": "85ebc13e-6314-4c06-8088-08bd27f5cacb",
   "fields": {
    "title": "Jane Eyre",
    "authors": [
@@ -3071,12 +3470,15 @@
    "pageCount": 488,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 138,
+  "title_id": "bd3db455-e5c7-490d-8e51-40204ccb163b",
   "fields": {
    "title": "Moby Dick",
    "authors": [
@@ -3089,12 +3491,17 @@
    "ratingsCount": "none",
    "imageLinks": "none",
    "pageCount": 448,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 139,
+  "title_id": "aa96c4c1-d639-4a6d-85ac-14d5a3c8d169",
   "fields": {
    "title": "Typee Illustrated",
    "authors": [
@@ -3110,12 +3517,17 @@
     "thumbnail": "http://books.google.com/books/content?id=gJyIzQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 406,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 140,
+  "title_id": "077c13f9-655f-47ff-b330-8920882501b9",
   "fields": {
    "title": "Hunger",
    "authors": [
@@ -3131,12 +3543,17 @@
     "thumbnail": "http://books.google.com/books/content?id=kp7SAQAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 158,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 141,
+  "title_id": "faf515ec-af43-4782-8fd8-9a2594636859",
   "fields": {
    "title": "Quo Vadis",
    "authors": [
@@ -3155,30 +3572,15 @@
    "pageCount": 452,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 142,
-  "fields": {
-   "title": "Second Treatise of Government",
-   "authors": [
-    "John Locke"
-   ],
-   "publisher": "none",
-   "description": "Why buy our paperbacks? Standard Font size of 10 for all books High Quality Paper Fulfilled by Amazon Expedited shipping 30 Days Money Back Guarantee BEWARE of Low-quality sellers Don't buy cheap paperbacks just to save a few dollars. Most of them use low-quality papers & binding. Their pages fall off easily. Some of them even use very small font size of 6 or less to increase their profit margin. It makes their books completely unreadable. How is this book unique? Unabridged (100% Original content) Formatted for e-reader Font adjustments & biography included Illustrated About Second Treatise Of Government by John LockeThe Second Treatise is one of the most important political treatises ever written and one of the most far-reaching in its influence. In his provocative 15-page introduction to this edition, the late eminent political theorist C. B. Macpherson examines Locke's arguments for limited, conditional government, private property, and right of revolution and suggests reasons for the appeal of these arguments in Locke's time and since.",
-   "ISBN Identifiers": "none",
-   "averageRating": "none",
-   "ratingsCount": "none",
-   "imageLinks": "none",
-   "pageCount": 82,
-   "categories": "none"
-  }
- },
- {
-  "model": "bookchat.book",
-  "title_id": 143,
+  "title_id": "a406511a-0472-4f3c-89a0-3686c4c9ca26",
   "fields": {
    "title": "The Trial",
    "authors": [
@@ -3196,12 +3598,15 @@
    "pageCount": 236,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 144,
+  "title_id": "d9528a9c-8912-46fb-b91c-db5d59edc3f5",
   "fields": {
    "title": "The Woman in White",
    "authors": [
@@ -3219,12 +3624,15 @@
    "pageCount": 750,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 145,
+  "title_id": "71b5bcb1-b66e-44d5-b591-ecfb7c073bb9",
   "fields": {
    "title": "Sense and Sensibility",
    "authors": [
@@ -3240,12 +3648,17 @@
     "thumbnail": "http://books.google.com/books/content?id=TrWjtAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 134,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 146,
+  "title_id": "98d4e330-1aa1-4837-a67a-a883a0766243",
   "fields": {
    "title": "Maxims and Reflections",
    "authors": [
@@ -3263,12 +3676,15 @@
    "pageCount": 0,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 147,
+  "title_id": "1900091a-673a-4f89-9ec6-6893ed313faf",
   "fields": {
    "title": "Pygmalion Illustrated",
    "authors": [
@@ -3284,33 +3700,17 @@
     "thumbnail": "http://books.google.com/books/content?id=3M7AzQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 136,
-   "categories": "none"
-  }
- },
- {
-  "model": "bookchat.book",
-  "title_id": 148,
-  "fields": {
-   "title": "John Milton",
-   "authors": [
-    "John Milton"
+   "categories": [
+    "Fiction"
    ],
-   "publisher": "Independently Published",
-   "description": "Paradise Lost is an epic poem in blank verse by the 17th-century English poet John Milton. The first version, published in 1667, consists of ten books with over ten thousand lines of verse. A second edition followed in 1674, arranged into twelve books with minor revisions throughout.",
-   "ISBN Identifiers": "none",
-   "averageRating": "none",
-   "ratingsCount": "none",
-   "imageLinks": {
-    "smallThumbnail": "http://books.google.com/books/content?id=KTT7zQEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
-    "thumbnail": "http://books.google.com/books/content?id=KTT7zQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-   },
-   "pageCount": 330,
-   "categories": "none"
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 149,
+  "title_id": "cbae3182-c74a-4dff-85c7-cbf36e6ebe8a",
   "fields": {
    "title": "The Mysterious Affair at Styles",
    "authors": [
@@ -3326,12 +3726,17 @@
     "thumbnail": "http://books.google.com/books/content?id=jaUgjgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 138,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 150,
+  "title_id": "c3c797ca-7f95-4f32-8cc5-07b5d0989861",
   "fields": {
    "title": "Three Act Tragedy",
    "authors": [
@@ -3349,12 +3754,15 @@
    "pageCount": 264,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 151,
+  "title_id": "634fbd1f-802a-4c0d-8aab-8d5967778018",
   "fields": {
    "title": "Dorothy and the Wizard in Oz Illustrated",
    "authors": [
@@ -3370,12 +3778,17 @@
     "thumbnail": "http://books.google.com/books/content?id=PqVYzgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 164,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 152,
+  "title_id": "12f543c5-8212-4e3d-a5bb-c4b863a69ed6",
   "fields": {
    "title": "The Little Mermaid - The Golden Age of Illustration Series",
    "authors": [
@@ -3393,12 +3806,15 @@
    "pageCount": 136,
    "categories": [
     "Art"
+   ],
+   "genres": [
+    12
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 153,
+  "title_id": "bc646dc8-0514-4113-9c9c-9beb9274e782",
   "fields": {
    "title": "The Jungle Books",
    "authors": [
@@ -3414,12 +3830,17 @@
     "thumbnail": "http://books.google.com/books/content?id=TOgtswEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 112,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 154,
+  "title_id": "62ec13b1-280d-4cec-bdef-21a6ebcd17b9",
   "fields": {
    "title": "On The Road",
    "authors": [
@@ -3434,12 +3855,15 @@
    "pageCount": 0,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 155,
+  "title_id": "1d11b088-d980-492a-a2d3-a83d6290d949",
   "fields": {
    "title": "The Mysterious Affair at Styles Illustrated",
    "authors": [
@@ -3455,12 +3879,17 @@
     "thumbnail": "http://books.google.com/books/content?id=WKSzzAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 226,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 156,
+  "title_id": "724ea5a1-3497-4316-9b0d-2539f38cd868",
   "fields": {
    "title": "The Tinder Box (Illustrated)",
    "authors": [
@@ -3476,12 +3905,17 @@
     "thumbnail": "http://books.google.com/books/content?id=v4qIvQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 38,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 157,
+  "title_id": "4565a690-9d5d-4b0e-aa74-87a58efaae8b",
   "fields": {
    "title": "Make Me",
    "authors": [
@@ -3499,12 +3933,15 @@
    "pageCount": 429,
    "categories": [
     "Creation in art"
+   ],
+   "genres": [
+    13
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 158,
+  "title_id": "527ff113-7323-47ac-9dda-264174d3aa22",
   "fields": {
    "title": "She",
    "authors": [
@@ -3522,12 +3959,15 @@
    "pageCount": 512,
    "categories": [
     "Ayesha (Fictitious character : Haggard)"
+   ],
+   "genres": [
+    14
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 159,
+  "title_id": "f846ef0d-8a85-45c9-a114-450347a4efad",
   "fields": {
    "title": "Pollyanna",
    "authors": [
@@ -3540,12 +3980,17 @@
    "ratingsCount": "none",
    "imageLinks": "none",
    "pageCount": 230,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 160,
+  "title_id": "78c71d27-9469-4596-a36c-e709acb0e9dd",
   "fields": {
    "title": "Peter Pan",
    "authors": [
@@ -3563,12 +4008,15 @@
    "pageCount": 508,
    "categories": [
     "Fantasy fiction"
+   ],
+   "genres": [
+    15
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 161,
+  "title_id": "2678b8e7-52d7-4bab-b8a3-1015e4268db9",
   "fields": {
    "title": "Make Me",
    "authors": [
@@ -3586,12 +4034,15 @@
    "pageCount": 429,
    "categories": [
     "Creation in art"
+   ],
+   "genres": [
+    13
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 162,
+  "title_id": "56798e2d-faa3-463f-b61d-b3294175ff54",
   "fields": {
    "title": "She",
    "authors": [
@@ -3609,12 +4060,15 @@
    "pageCount": 512,
    "categories": [
     "Ayesha (Fictitious character : Haggard)"
+   ],
+   "genres": [
+    14
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 163,
+  "title_id": "0fbd3c55-0367-4222-8536-f561489d1ba7",
   "fields": {
    "title": "Pollyanna",
    "authors": [
@@ -3627,12 +4081,17 @@
    "ratingsCount": "none",
    "imageLinks": "none",
    "pageCount": 230,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 164,
+  "title_id": "a1b0c130-e4e2-4853-84f8-1d38da568558",
   "fields": {
    "title": "The Financier Illustrated",
    "authors": [
@@ -3645,12 +4104,17 @@
    "ratingsCount": "none",
    "imageLinks": "none",
    "pageCount": 680,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 165,
+  "title_id": "8778a6ca-8994-44f6-a88c-2183af308e0d",
   "fields": {
    "title": "Peter Pan",
    "authors": [
@@ -3668,12 +4132,15 @@
    "pageCount": 508,
    "categories": [
     "Fantasy fiction"
+   ],
+   "genres": [
+    15
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 166,
+  "title_id": "c6bb0280-3b78-4673-b92e-5299d9bd5313",
   "fields": {
    "title": "The Jungle Book",
    "authors": [
@@ -3689,12 +4156,17 @@
     "thumbnail": "http://books.google.com/books/content?id=wtUOtQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 140,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 167,
+  "title_id": "6e4e774c-6dee-465a-bbba-411e9ce60767",
   "fields": {
    "title": "The Jungle Book Annotated",
    "authors": [
@@ -3710,12 +4182,17 @@
     "thumbnail": "http://books.google.com/books/content?id=5ulqzgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 174,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 168,
+  "title_id": "aa12ad71-6c70-4c5d-ba49-5c8a38101cd9",
   "fields": {
    "title": "The Jungle Book (100th Anniversary Edition)",
    "authors": [
@@ -3731,12 +4208,17 @@
     "thumbnail": "http://books.google.com/books/content?id=7BWWzQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 196,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 169,
+  "title_id": "3e211181-524b-4070-aec0-947e3929828a",
   "fields": {
    "title": "Thumbelina (Illustrated)",
    "authors": [
@@ -3752,12 +4234,17 @@
     "thumbnail": "http://books.google.com/books/content?id=-LQHvgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 34,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 170,
+  "title_id": "42fc0b1e-918f-4b8c-8838-0b1544932c4a",
   "fields": {
    "title": "Robinson Crusoe Annotated",
    "authors": [
@@ -3770,12 +4257,17 @@
    "ratingsCount": "none",
    "imageLinks": "none",
    "pageCount": 342,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 171,
+  "title_id": "6d15935b-5ac4-4c65-bc34-c6745811e1fb",
   "fields": {
    "title": "The Idiot",
    "authors": [
@@ -3788,12 +4280,17 @@
    "ratingsCount": "none",
    "imageLinks": "none",
    "pageCount": 404,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 172,
+  "title_id": "ae55531f-2046-4883-ae23-ef722257fbd7",
   "fields": {
    "title": "The Miracles of the Antichrist",
    "authors": [
@@ -3811,12 +4308,15 @@
    "pageCount": 388,
    "categories": [
     "Religion"
+   ],
+   "genres": [
+    16
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 173,
+  "title_id": "541c8a5c-d7a5-4fe1-8767-0e1378eda3af",
   "fields": {
    "title": "Pride and Prejudice by Jane Austen",
    "authors": [
@@ -3829,12 +4329,17 @@
    "ratingsCount": "none",
    "imageLinks": "none",
    "pageCount": 319,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 174,
+  "title_id": "6d5f1152-543d-4f4c-9234-7cc906807b68",
   "fields": {
    "title": "The Shadow of the Wind",
    "authors": [
@@ -3852,30 +4357,15 @@
    "pageCount": 553,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 175,
-  "fields": {
-   "title": "The House of the Dead",
-   "authors": [
-    "Fyodor Dostoyevsky"
-   ],
-   "publisher": "none",
-   "description": "none",
-   "ISBN Identifiers": "none",
-   "averageRating": "none",
-   "ratingsCount": "none",
-   "imageLinks": "none",
-   "pageCount": 368,
-   "categories": "none"
-  }
- },
- {
-  "model": "bookchat.book",
-  "title_id": 176,
+  "title_id": "afc1acc9-1744-4744-8f3a-8b7a90f25eb2",
   "fields": {
    "title": "The Memoirs of Sherlock Holmes",
    "authors": [
@@ -3891,12 +4381,17 @@
     "thumbnail": "http://books.google.com/books/content?id=x-1VtAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 228,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 177,
+  "title_id": "b0e22b6a-4cb3-4a3d-b674-e8fa1b17c246",
   "fields": {
    "title": "The Life and Adventures of Robinson Crusoe, of York, Mariner",
    "authors": [
@@ -3914,33 +4409,15 @@
    "pageCount": 260,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 178,
-  "fields": {
-   "title": "The Holy War",
-   "authors": [
-    "John Bunyan"
-   ],
-   "publisher": "Createspace Independent Publishing Platform",
-   "description": "This is John Bunyan's \"other\" book. Famous for his allegory, Pilgrim's Progress, it is not always realised that Bunyan wrote many other books, including Pilgrim's Progress Part 2, and this - The Holy War. The Holy War concerns the town of Mansoul. The ruler of the town is King Shaddai, and he rules Mansoul with his son, Prince Emmanuel. But the people of the town are besieged and then persuaded to rebellion by the evil prince Diabolus. The book concerns how Emmanuel wins back the town of Mansoul. The book works on three levels. It is an allegory of Genesis 3. It is also an allegory of Mark 12. And it is an account of the salvation of sinners, through the work of Jesus Christ, the Son of God. Paul Taylor, the Director of the Mount St Helens Creation Center, has produced this inexpensive paperback edition of this classic novel, which is now in the public domain. This edition contains an introduction and Study Guide, written by Paul Taylor, and the complete text of the novel. Paul is the author of several books, including The Six Days of Genesis, Don't Miss the boat and Where Birds Eat Horses. He and his wife Geraldene have five children. John Bunyan was born near Bedford in 1628. He was saved shortly after the Civil War. His first wife died young. Shortly after his second marriage, Bunyan was arrested and imprisoned for being an unauthorised preacher. He stayed in prison for many years, because he refused to give an undertaking not to preach the Gospel. It was in prison that the ideas for his allegories came to him, and he was able to publish them in the next few years following his eventual release.",
-   "ISBN Identifiers": "none",
-   "averageRating": "none",
-   "ratingsCount": "none",
-   "imageLinks": {
-    "smallThumbnail": "http://books.google.com/books/content?id=0HYxjwEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
-    "thumbnail": "http://books.google.com/books/content?id=0HYxjwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-   },
-   "pageCount": 142,
-   "categories": "none"
-  }
- },
- {
-  "model": "bookchat.book",
-  "title_id": 179,
+  "title_id": "79492e13-1a59-462b-8a93-b3838993c589",
   "fields": {
    "title": "The Happy Prince and Other Tales Annotated",
    "authors": [
@@ -3956,12 +4433,17 @@
     "thumbnail": "http://books.google.com/books/content?id=wZNuzgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 64,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 180,
+  "title_id": "1bf65698-cb2d-4930-8a7d-781f418fc994",
   "fields": {
    "title": "The Canterville Ghost",
    "authors": [
@@ -3978,12 +4460,17 @@
     "thumbnail": "http://books.google.com/books/content?id=sd2JtAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 48,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 181,
+  "title_id": "0767cab5-0c98-480a-9e5b-b6d8df9e3f47",
   "fields": {
    "title": "The Jungle Book",
    "authors": [
@@ -3999,12 +4486,17 @@
     "thumbnail": "http://books.google.com/books/content?id=PAF2zQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 136,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 182,
+  "title_id": "166c2b8f-0df3-4d89-acc5-5ac2ffc27118",
   "fields": {
    "title": "The Importance of Being Earnest",
    "authors": [
@@ -4020,12 +4512,17 @@
     "thumbnail": "http://books.google.com/books/content?id=rFAljwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 52,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 183,
+  "title_id": "b1b0ba0b-3946-4765-bed0-ba830af9c136",
   "fields": {
    "title": "Crooked House",
    "authors": [
@@ -4041,12 +4538,17 @@
     "thumbnail": "http://books.google.com/books/content?id=ITs_zQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 0,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 184,
+  "title_id": "aa981b17-01cc-4b93-8e68-ffd0f98616ef",
   "fields": {
    "title": "Quentin Durward",
    "authors": [
@@ -4062,12 +4564,17 @@
     "thumbnail": "http://books.google.com/books/content?id=YazfoQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 100,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 185,
+  "title_id": "e2486da4-e2db-4d26-a5f0-077299e1757d",
   "fields": {
    "title": "The House of the Seven Gables",
    "authors": [
@@ -4080,12 +4587,17 @@
    "ratingsCount": "none",
    "imageLinks": "none",
    "pageCount": 238,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 186,
+  "title_id": "de50ed4a-6ff9-48ff-b48b-b0882ab4fe9d",
   "fields": {
    "title": "The Hound of the Baskervilles",
    "authors": [
@@ -4100,12 +4612,15 @@
    "pageCount": 173,
    "categories": [
     "Blessing and cursing"
+   ],
+   "genres": [
+    17
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 187,
+  "title_id": "1ca2ce1d-cc42-4fbf-8002-e51cb86ef4c6",
   "fields": {
    "title": "The Man Who Was Thursday",
    "authors": [
@@ -4118,12 +4633,17 @@
    "ratingsCount": "none",
    "imageLinks": "none",
    "pageCount": 226,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 188,
+  "title_id": "ab0ff095-35f3-488f-9c04-176c83ebfdfc",
   "fields": {
    "title": "The Lost World",
    "authors": [
@@ -4139,12 +4659,17 @@
     "thumbnail": "http://books.google.com/books/content?id=_Lw4uQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 198,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 189,
+  "title_id": "a2b9563d-36f1-4e51-a927-0c132c7d14a9",
   "fields": {
    "title": "Anne of Green Gables [illustrated]",
    "authors": [
@@ -4157,12 +4682,17 @@
    "ratingsCount": "none",
    "imageLinks": "none",
    "pageCount": 246,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 190,
+  "title_id": "d05cf153-8595-426d-96ed-bafeaca04bae",
   "fields": {
    "title": "Robinson Crusoe",
    "authors": [
@@ -4180,12 +4710,15 @@
    "pageCount": 288,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 191,
+  "title_id": "0145c8b2-22d2-40fd-bb3e-9d27fd33a42a",
   "fields": {
    "title": "Bel-Ami(Annotated)",
    "authors": [
@@ -4198,12 +4731,17 @@
    "ratingsCount": "none",
    "imageLinks": "none",
    "pageCount": 159,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 192,
+  "title_id": "6ecfc66d-db42-4d66-80a6-01ae696fad46",
   "fields": {
    "title": "Notes from the Underground",
    "authors": [
@@ -4216,12 +4754,17 @@
    "ratingsCount": "none",
    "imageLinks": "none",
    "pageCount": 102,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 193,
+  "title_id": "4e8c4b3d-2fe2-4c3f-83ac-f2175ebfbbd8",
   "fields": {
    "title": "A Portrait of the Artist as a Young Man",
    "authors": [
@@ -4239,12 +4782,15 @@
    "pageCount": 225,
    "categories": [
     "Fiction"
+   ],
+   "genres": [
+    1
    ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 194,
+  "title_id": "d7e976bd-23f0-4429-8f74-2a6b082bb102",
   "fields": {
    "title": "And Then There Were None",
    "authors": [
@@ -4257,12 +4803,17 @@
    "ratingsCount": "none",
    "imageLinks": "none",
    "pageCount": 173,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 195,
+  "title_id": "b9e22ea1-6aef-4501-aa91-73b1098b03c0",
   "fields": {
    "title": "Oliver Twist Illustrated",
    "authors": [
@@ -4278,12 +4829,17 @@
     "thumbnail": "http://books.google.com/books/content?id=giD4zQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 582,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 196,
+  "title_id": "3e216a2f-38e2-4cee-baee-e131234e5f56",
   "fields": {
    "title": "Treasure Island",
    "authors": [
@@ -4299,12 +4855,17 @@
     "thumbnail": "http://books.google.com/books/content?id=B6DHuQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 196,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 197,
+  "title_id": "302fd6be-441a-4537-a60a-ea412cfd44c4",
   "fields": {
    "title": "A Christmas Carol Illustrated",
    "authors": [
@@ -4320,12 +4881,17 @@
     "thumbnail": "http://books.google.com/books/content?id=H0uczQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 116,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 198,
+  "title_id": "ae182d4b-0e94-4ead-a05d-5acc53367a82",
   "fields": {
    "title": "To the Lighthouse",
    "authors": [
@@ -4341,12 +4907,17 @@
     "thumbnail": "http://books.google.com/books/content?id=hQlVxQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
    },
    "pageCount": 402,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 199,
+  "title_id": "1af29d45-0392-41e1-b6b7-fd0aca925b8f",
   "fields": {
    "title": "Anne of the Island",
    "authors": [
@@ -4359,12 +4930,17 @@
    "ratingsCount": "none",
    "imageLinks": "none",
    "pageCount": 70,
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  },
  {
   "model": "bookchat.book",
-  "title_id": 200,
+  "title_id": "720ca19c-ff05-44a2-bd42-e68140d8e000",
   "fields": {
    "title": "Black House",
    "authors": [
@@ -4378,7 +4954,12 @@
    "ratingsCount": "none",
    "imageLinks": "none",
    "pageCount": "none",
-   "categories": "none"
+   "categories": [
+    "Fiction"
+   ],
+   "genres": [
+    1
+   ]
   }
  }
 ]

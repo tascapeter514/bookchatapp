@@ -1,0 +1,128 @@
+[
+ {
+  "model": "bookchat.genre",
+  "genre_id": 1,
+  "fields": {
+   "genre_name": "Fiction"
+  }
+ },
+ {
+  "model": "bookchat.genre",
+  "genre_id": 2,
+  "fields": {
+   "genre_name": "Literary Criticism"
+  }
+ },
+ {
+  "model": "bookchat.genre",
+  "genre_id": 3,
+  "fields": {
+   "genre_name": "Poetry"
+  }
+ },
+ {
+  "model": "bookchat.genre",
+  "genre_id": 4,
+  "fields": {
+   "genre_name": "Juvenile Fiction"
+  }
+ },
+ {
+  "model": "bookchat.genre",
+  "genre_id": 5,
+  "fields": {
+   "genre_name": "Creative ability in science"
+  }
+ },
+ {
+  "model": "bookchat.genre",
+  "genre_id": 6,
+  "fields": {
+   "genre_name": "Biography & Autobiography"
+  }
+ },
+ {
+  "model": "bookchat.genre",
+  "genre_id": 7,
+  "fields": {
+   "genre_name": "Private investigators"
+  }
+ },
+ {
+  "model": "bookchat.genre",
+  "genre_id": 8,
+  "fields": {
+   "genre_name": "Detective and mystery stories"
+  }
+ },
+ {
+  "model": "bookchat.genre",
+  "genre_id": 9,
+  "fields": {
+   "genre_name": "Large print books"
+  }
+ },
+ {
+  "model": "bookchat.genre",
+  "genre_id": 10,
+  "fields": {
+   "genre_name": "Fiction in English"
+  }
+ },
+ {
+  "model": "bookchat.genre",
+  "genre_id": 11,
+  "fields": {
+   "genre_name": "Emotions"
+  }
+ },
+ {
+  "model": "bookchat.genre",
+  "genre_id": 12,
+  "fields": {
+   "genre_name": "Art"
+  }
+ },
+ {
+  "model": "bookchat.genre",
+  "genre_id": 13,
+  "fields": {
+   "genre_name": "Creation in art"
+  }
+ },
+ {
+  "model": "bookchat.genre",
+  "genre_id": 14,
+  "fields": {
+   "genre_name": "Ayesha (Fictitious character : Haggard)"
+  }
+ },
+ {
+  "model": "bookchat.genre",
+  "genre_id": 15,
+  "fields": {
+   "genre_name": "Fantasy fiction"
+  }
+ },
+ {
+  "model": "bookchat.genre",
+  "genre_id": 16,
+  "fields": {
+   "genre_name": "Religion"
+  }
+ },
+ {
+  "model": "bookchat.genre",
+  "genre_id": 17,
+  "fields": {
+   "genre_name": "Blessing and cursing"
+  }
+ },
+ {
+    "model": "bookchat.genre",
+    "genre_id": 18,
+    "fields": {
+     "genre_name": "Best Seller"
+    }
+   }
+]
