@@ -1,7 +1,7 @@
 [
  {
   "model": "bookchat.book",
-  "title_id": "feee8858-4908-481f-804d-9c5290caa359",
+  "pk": "bdfe94a9-c267-4ea3-85c4-173e2cefbad3",
   "fields": {
    "title": "The Plague",
    "authors": [
@@ -36,7 +36,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "e0d8c143-9913-46b6-9fb5-1492e791189c",
+  "pk": "db826c26-71c1-4fec-9ba0-301fd002c9e4",
   "fields": {
    "title": "Future Shock",
    "authors": [
@@ -71,7 +71,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "d1e66754-36ad-455f-8227-bf3c14ee564f",
+  "pk": "c6970f3d-e071-4936-991b-32567e115d06",
   "fields": {
    "title": "There There",
    "authors": [
@@ -106,7 +106,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "d94e1efb-597a-467d-b727-04e56ca7aebd",
+  "pk": "1e98994d-fd57-44e8-a3c7-3a40cb3a7d7c",
   "fields": {
    "title": "If Beale Street Could Talk",
    "authors": [
@@ -141,7 +141,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "efc433d8-dea3-46fc-b63c-c9da5db9b818",
+  "pk": "d2784804-c4f4-4a68-a5c4-97d6e380e34d",
   "fields": {
    "title": "My Name Is Asher Lev",
    "authors": [
@@ -176,7 +176,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "14747194-12a2-45ce-a9ce-ce00e9b5c8b1",
+  "pk": "811db2b5-8b3c-4754-849b-6722703781a1",
   "fields": {
    "title": "The Bean Trees",
    "authors": [
@@ -211,7 +211,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "7315192a-101a-41cd-9143-8bc6cba21d72",
+  "pk": "a582e0de-0727-4db8-b646-511f69a72c7b",
   "fields": {
    "title": "Ready Player Two",
    "authors": [
@@ -246,7 +246,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "7dac59c0-81fd-4aff-878a-2b8b13153aa5",
+  "pk": "2ec3cafa-b316-41c1-a51e-dda50ee46621",
   "fields": {
    "title": "Bag of Bones",
    "authors": [
@@ -281,7 +281,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "db7df8e3-3e3a-4df9-8188-81ea5fbb1577",
+  "pk": "01f44af7-73ae-4cc8-8c90-17da8717f5db",
   "fields": {
    "title": "Agamemnon's Daughter",
    "authors": [
@@ -316,7 +316,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "20292cd4-f787-442c-ac16-4dfd42acdffe",
+  "pk": "c4659fc0-9eda-4125-a864-77ffc89cd1ba",
   "fields": {
    "title": "Sunset Park",
    "authors": [
@@ -351,7 +351,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "ac2432a0-a708-4553-b5f6-3f166901c7ac",
+  "pk": "613502a3-abb6-4e72-a7ba-b1b8af892614",
   "fields": {
    "title": "For Whom the Bell Tolls",
    "authors": [
@@ -386,7 +386,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "f7b7e585-b5f4-40f1-8a68-b71bb44ae93a",
+  "pk": "ccf56d09-79c0-456a-bcfa-7a26a5ea7841",
   "fields": {
    "title": "The Darkest Night",
    "authors": [
@@ -421,7 +421,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "bc86f3fd-bb2c-4584-8c11-5d98f1e6983e",
+  "pk": "30468c3f-f93e-4ccf-868d-ad17c7afe0db",
   "fields": {
    "title": "Mrs. Dalloway",
    "authors": [
@@ -452,7 +452,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "fd0ea5a7-1118-456d-8e01-248e0f07e8f2",
+  "pk": "df6a0796-e7f5-4dff-94aa-5d3720d697f9",
   "fields": {
    "title": "Journey to the Center of the Earth",
    "authors": [
@@ -487,7 +487,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "18fece7e-8db3-49be-9524-a51049f294ee",
+  "pk": "0a230f7e-d0ae-47c4-b2cc-0f561f1d28eb",
   "fields": {
    "title": "The Boleyn Inheritance",
    "authors": [
@@ -522,7 +522,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "17a9f240-b235-4881-a4ee-854966fc4f89",
+  "pk": "3cb996c4-1816-4b46-89c1-548d32afc8bd",
   "fields": {
    "title": "Mildred Pierce",
    "authors": [
@@ -557,7 +557,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "dc2bdcde-6fc4-47e1-88cc-42b6735df9bf",
+  "pk": "108c8315-5696-4467-8d27-b0fcc5057314",
   "fields": {
    "title": "Bless Me, Ultima",
    "authors": [
@@ -588,7 +588,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "a33734f0-8741-4ac8-a63b-13a3fd2026d9",
+  "pk": "9cb701bb-54a2-4b55-9e0d-efc8bd2d2f4e",
   "fields": {
    "title": "The Arabian Nights",
    "authors": "None",
@@ -621,7 +621,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "515ff7fa-57d9-430d-bccf-6d399c0f3d1d",
+  "pk": "cc224f56-c041-4755-af93-052825d9b7b8",
   "fields": {
    "title": "Tortilla Flat",
    "authors": [
@@ -656,7 +656,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "11ee6241-5e33-44e2-a907-569679e4b469",
+  "pk": "b36d91a5-04d7-4ffd-a147-bc8a7d27f9d8",
   "fields": {
    "title": "Anathem",
    "authors": [
@@ -691,7 +691,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "c87f42b7-c94c-42b6-ad93-a8006aa5eae0",
+  "pk": "15369824-64ca-4656-b059-66c8f88b4661",
   "fields": {
    "title": "The Complete Grimm's Fairy Tales",
    "authors": [
@@ -726,7 +726,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "c86973e5-33ed-4bd8-91ba-820b7796bfe2",
+  "pk": "a1fa259f-4b18-4e84-8cc0-0d72c00e4491",
   "fields": {
    "title": "How to Stop Time",
    "authors": [
@@ -761,7 +761,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "b469fa81-e768-4263-9d65-ef62f36e1a10",
+  "pk": "929eecca-0751-4fd8-8a67-360bb15d4946",
   "fields": {
    "title": "I, Tituba, Black Witch of Salem",
    "authors": [
@@ -796,7 +796,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "cca21fa8-8b24-4114-800d-74a4e8efa111",
+  "pk": "ea594e73-b931-47ab-9bca-1759636d5d2b",
   "fields": {
    "title": "The Complete Stories",
    "authors": [
@@ -831,7 +831,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "010a64fb-edcb-46a3-9c58-acc4debd118d",
+  "pk": "fa0b3b1e-4844-4b9b-8ce7-d4f4dc9558e4",
   "fields": {
    "title": "The Trial",
    "authors": [
@@ -866,7 +866,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "07aae38d-e6d6-4dcc-96f4-e07bdd6b0fb5",
+  "pk": "fd946cb6-d69b-43ad-bf32-b91b062041c6",
   "fields": {
    "title": "Growth of the Soil",
    "authors": [
@@ -901,7 +901,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "00c2c3ef-4e5e-4d2a-8418-f092773e0d5e",
+  "pk": "d3469d82-c06b-4c8e-9a62-1ce49bc8247f",
   "fields": {
    "title": "The Scarlet Letter",
    "authors": [
@@ -936,7 +936,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "52d1ab4d-f598-46dd-962c-f73e948596e4",
+  "pk": "6bed874d-c1b7-4828-ae74-adc3c7a08ead",
   "fields": {
    "title": "Go",
    "authors": [
@@ -971,7 +971,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "df41336d-63f4-4ac1-bea4-96837caf6476",
+  "pk": "61d2ee60-5de6-4317-bec3-5f51151191af",
   "fields": {
    "title": "Mysteries",
    "authors": [
@@ -1006,7 +1006,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "acecbdd9-a1cd-415f-868d-05eb627a96a7",
+  "pk": "270b3820-bdd7-4137-ae98-81fd7d592d78",
   "fields": {
    "title": "Pudd'nhead Wilson",
    "authors": [
@@ -1041,7 +1041,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "772a64c5-cbae-4e6f-bddc-0d20d44507e7",
+  "pk": "6dcf15a5-8c23-442d-bf1e-081df7fbe187",
   "fields": {
    "title": "The Odyssey of Homer",
    "authors": [
@@ -1076,7 +1076,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "3a042aec-e1a8-4cb9-9041-b2a120278962",
+  "pk": "26ed73d5-3694-4f9a-9630-9ac7a89cf207",
   "fields": {
    "title": "The Pioneers",
    "authors": [
@@ -1111,7 +1111,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "a30efce0-0d90-44e3-9478-aac95d09b179",
+  "pk": "95584910-9db3-43b2-9a5c-7246717f353f",
   "fields": {
    "title": "The Jungle",
    "authors": [
@@ -1146,7 +1146,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "61f9b41a-5709-46e0-8f79-6934fb880629",
+  "pk": "295ddda4-7625-4165-bbef-412200d4e9d8",
   "fields": {
    "title": "Sister Carrie",
    "authors": [
@@ -1181,7 +1181,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "ed8d4a48-4c6a-4fe8-92e9-8f104fb87beb",
+  "pk": "ee467a06-d3b1-4c8a-b71e-4f37f2630529",
   "fields": {
    "title": "The Vegetarian",
    "authors": [
@@ -1216,7 +1216,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "418a16eb-d0c0-4439-b66f-44cc85f607e9",
+  "pk": "39e92263-5d57-447b-9989-63e56b74c0c3",
   "fields": {
    "title": "The Canterbury Tales",
    "authors": [
@@ -1251,7 +1251,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "0ed34e7a-c4e0-453b-82e4-2254759d4adb",
+  "pk": "339d81cd-a1a8-45ce-8a21-78a928f786ac",
   "fields": {
    "title": "THE Murder Of Roger Ackroyd",
    "authors": [
@@ -1277,7 +1277,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "e967419f-789a-4fb3-ae2c-c021eb688f1d",
+  "pk": "61b6e282-f04a-411e-8c1d-ae9dc27b0f1a",
   "fields": {
    "title": "Atlas Shrugged",
    "authors": [
@@ -1312,7 +1312,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "8b099e35-adff-4766-9e99-dbcfb3504777",
+  "pk": "3744c9e0-86d6-4dd9-bfd5-00dd029acce3",
   "fields": {
    "title": "Foe",
    "authors": [
@@ -1347,7 +1347,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "7f99ae3f-cf4b-434d-a136-a60ed59b3d99",
+  "pk": "21e4e8a9-92ed-4ff6-b597-a587d327f23a",
   "fields": {
    "title": "The Life of Insects",
    "authors": [
@@ -1378,7 +1378,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "80209b69-8403-4dbe-8170-29a60b470788",
+  "pk": "33cde8df-c7ad-4826-8b32-058a38aeccad",
   "fields": {
    "title": "Resurrection",
    "authors": [
@@ -1409,7 +1409,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "79880fb8-6417-46c3-b32f-5b39737a776b",
+  "pk": "a1ce2ecf-7c1a-44c5-8254-dd3c5fb70158",
   "fields": {
    "title": "Ethan Frome",
    "authors": [
@@ -1444,7 +1444,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "0f69b072-a022-4217-8d42-cc7ef10c87cc",
+  "pk": "98e260bd-4a17-4aab-99a5-024a4ed36cf1",
   "fields": {
    "title": "Taras Bulba",
    "authors": [
@@ -1479,7 +1479,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "d1ef864e-b2d9-464d-bed9-a5648fb48592",
+  "pk": "37107ca1-828c-4749-babe-719dabb342ea",
   "fields": {
    "title": "The Erasers",
    "authors": [
@@ -1510,7 +1510,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "e5eb8005-6a63-4727-a0eb-d9f76d90a950",
+  "pk": "3f7a4b26-20df-4c67-9c26-3dcdcce86066",
   "fields": {
    "title": "Time and Again",
    "authors": [
@@ -1545,7 +1545,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "232235ef-d4c4-4d75-8cba-a48c20992733",
+  "pk": "26b081b4-76b7-4db0-8f32-f8bf99ff9a4b",
   "fields": {
    "title": "The Life of Insects",
    "authors": [
@@ -1576,7 +1576,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "173077f3-010f-4581-808e-f55f0d255099",
+  "pk": "acd62e50-840b-4935-87e5-e1e32a904c85",
   "fields": {
    "title": "Sir Gawain and the Green Knight",
    "authors": [
@@ -1611,7 +1611,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "acb816a2-6ef2-4aa3-9b14-12f598c6b266",
+  "pk": "d59debbe-13c7-47c4-aa8b-7ac7aea8735b",
   "fields": {
    "title": "As Brave As You",
    "authors": [
@@ -1646,7 +1646,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "fbe7339c-a238-4934-b18e-46f6a0bfbe61",
+  "pk": "ff0e3615-d078-4ccf-b9ef-853cf1fd0a86",
   "fields": {
    "title": "Dreamcatcher",
    "authors": [
@@ -1681,7 +1681,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "593762e1-370a-417a-9c37-85ca24d29e3f",
+  "pk": "86f270f4-eaee-454e-b485-34492d0aa691",
   "fields": {
    "title": "Sometimes a Great Notion",
    "authors": [
@@ -1716,7 +1716,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "c94f976f-a449-476c-903c-29df98b78800",
+  "pk": "cd33721f-c5a3-4802-9185-dcdeefe8fa5c",
   "fields": {
    "title": "The Fellowship of the Ring",
    "authors": [
@@ -1751,7 +1751,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "ab8f7a57-f435-4635-9888-6f194c5f716f",
+  "pk": "e57accfc-cf2d-4685-ba02-4380973dc8a9",
   "fields": {
    "title": "Hearts In Atlantis",
    "authors": [
@@ -1786,7 +1786,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "da61b505-266e-4273-9174-5f500acf3268",
+  "pk": "49b387e2-a43f-45e8-b504-48f8c8952c3b",
   "fields": {
    "title": "The Civilisation of the Renaissance in Italy",
    "authors": [
@@ -1821,7 +1821,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "f3c002a2-7a55-4b97-828d-13b08065ad52",
+  "pk": "c2c51ce6-3de6-4dae-89e0-bc7e7cea29cd",
   "fields": {
    "title": "Swimmy",
    "authors": [
@@ -1856,7 +1856,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "470c4de3-d4d6-43b8-b61d-fc45bb604ad3",
+  "pk": "f5e40dca-b99f-4a5f-9969-cc2a84dbbba1",
   "fields": {
    "title": "When We Cease to Understand the World",
    "authors": [
@@ -1891,7 +1891,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "4c99e443-a66a-4bf9-85a5-18503edf0012",
+  "pk": "6d756f75-9ec6-419c-91ae-d73f766529c3",
   "fields": {
    "title": "Strange Tales from a Chinese Studio",
    "authors": [
@@ -1926,7 +1926,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "422b46ea-ad0e-4993-a5eb-b8ff01d8b4f1",
+  "pk": "a98374e4-1f8c-4b06-9cdb-4357189ea688",
   "fields": {
    "title": "Pan",
    "authors": [
@@ -1961,7 +1961,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "35a90abd-a8df-4c5f-a195-fbc2669b4d1c",
+  "pk": "d68ee4ca-1c71-4fe6-811d-94c9e9a54a40",
   "fields": {
    "title": "Night Probe!",
    "authors": [
@@ -1996,7 +1996,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "25cc9bc5-0b27-4cbd-9e26-63d9b90850dd",
+  "pk": "fd9f571a-c9ba-4264-b492-6f8df068acb0",
   "fields": {
    "title": "The Swineherd",
    "authors": [
@@ -2031,7 +2031,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "a80dd258-a4b4-4c18-b01d-fa61a2e77693",
+  "pk": "cbd425d2-25ad-42d5-8ded-274bebe8f06d",
   "fields": {
    "title": "The Adventures of Tom Sawyer",
    "authors": [
@@ -2066,7 +2066,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "63d73bf9-f898-4c14-8b58-7e73b02c5ab9",
+  "pk": "72dce1a1-cb71-429e-b99d-6dee55c7aeb7",
   "fields": {
    "title": "The Scarred Woman",
    "authors": [
@@ -2101,7 +2101,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "c00fc139-6a33-431b-8ed0-ad1282080e84",
+  "pk": "674b8e5e-3681-4e05-ba7a-fec88a7d673e",
   "fields": {
    "title": "An Antarctic Mystery",
    "authors": [
@@ -2136,7 +2136,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "1de6d465-69a5-40d2-a7a0-4e7ffe62e473",
+  "pk": "4cf2d927-d469-4198-ad6a-5ba8faecf3c9",
   "fields": {
    "title": "The Picture of Dorian Gray",
    "authors": [
@@ -2171,7 +2171,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "e74a2051-2014-420f-a1f0-212c42624687",
+  "pk": "548ec52e-2663-4d26-873b-69788121df60",
   "fields": {
    "title": "Refugee Tales: Volume III",
    "authors": [
@@ -2219,7 +2219,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "831934bb-f532-4e58-a160-e8f3961c7b1e",
+  "pk": "ddfd4eb6-640a-40c2-a5ea-9d9f793a920e",
   "fields": {
    "title": "Ordinary Grace",
    "authors": [
@@ -2254,7 +2254,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "2c512929-88f1-4c1d-9bc4-8352967910f8",
+  "pk": "7a1b2ea7-354a-4d82-88be-7c772c6f52c6",
   "fields": {
    "title": "Sin and Its Consequences",
    "authors": [
@@ -2289,7 +2289,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "5bfd0f8c-d4db-4284-894f-4f68e68a195b",
+  "pk": "8f2e5bce-6d8b-41f6-be97-3427ed5ec461",
   "fields": {
    "title": "Fahrenheit 451",
    "authors": [
@@ -2324,7 +2324,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "e7fa56b2-eeed-41e5-864c-ae607218d068",
+  "pk": "86dd0e4e-83b8-47dd-b30d-1bcfdf5eaec4",
   "fields": {
    "title": "Bartleby, The Scrivener",
    "authors": [
@@ -2359,7 +2359,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "a374054a-edb7-4e21-bbd2-936ec525e88d",
+  "pk": "415d9914-8e1a-4db4-97e4-be6d03fe5a85",
   "fields": {
    "title": "The Black Arrow",
    "authors": [
@@ -2394,7 +2394,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "9fd15207-4167-4ca9-b03d-7279f85705d1",
+  "pk": "2c2c4354-46fe-4dff-99a3-d4abbdb20de7",
   "fields": {
    "title": "Fallen Too Far",
    "authors": [
@@ -2429,7 +2429,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "d775ed2d-9be6-4ee6-9c09-e90d0def22d0",
+  "pk": "12f72a7d-f102-4171-a8c0-1eaeedc57ec1",
   "fields": {
    "title": "A Study in Scarlet",
    "authors": [
@@ -2464,7 +2464,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "1943f33a-8d95-491f-8dc9-5c3033886d12",
+  "pk": "b4f5840a-5f7c-4970-a4cf-d512477ffa46",
   "fields": {
    "title": "Infinite Jest",
    "authors": [
@@ -2496,7 +2496,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "b174f44c-fdc0-42e1-9f3b-0333e26efe2c",
+  "pk": "769181ca-ae5b-4fe1-bfc3-5ae302b8c85e",
   "fields": {
    "title": "I. Asimov",
    "authors": [
@@ -2527,7 +2527,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "59485c2d-54b7-4164-9347-7b95c63649b3",
+  "pk": "adc503b8-bfec-405c-baeb-c6f42b6e37e1",
   "fields": {
    "title": "Divide and Conquer",
    "authors": [
@@ -2564,7 +2564,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "6cf58ec4-7c95-42a3-95a6-be3758b6f4e3",
+  "pk": "7af79198-28cb-4215-ba57-7d18261334a5",
   "fields": {
    "title": "Candide",
    "authors": [
@@ -2599,7 +2599,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "3de8871a-34a9-456b-9ce4-dafae3a06764",
+  "pk": "9aa3b0b7-0bd9-435f-9d23-19bee064e35e",
   "fields": {
    "title": "A Christmas Carol",
    "authors": [
@@ -2625,7 +2625,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "8d3ac18b-ff67-40b6-a0e1-960864bb4460",
+  "pk": "c68ef996-0c63-45d7-84d3-ce27bce7dee9",
   "fields": {
    "title": "Pierre and Luce (Classic Reprint)",
    "authors": [
@@ -2660,7 +2660,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "4d253fdf-fd98-4ddf-947f-688e0d125d8a",
+  "pk": "1c836924-703e-4574-81be-7eee64db731d",
   "fields": {
    "title": "The Final Problem",
    "authors": [
@@ -2695,7 +2695,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "3c178ede-826d-46e0-948e-cd10df04323a",
+  "pk": "3b5f9e97-3cd2-47ba-8d19-8fe0c52b19a7",
   "fields": {
    "title": "Bartleby, the Scrivener",
    "authors": [
@@ -2727,7 +2727,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "9b8d6aea-f3bc-4022-a28f-193c3d6f3cd4",
+  "pk": "2913d7c7-dffe-4bf2-a19c-3a222f54f98a",
   "fields": {
    "title": "Solaris",
    "authors": [
@@ -2758,7 +2758,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "79f484f3-c2de-4588-b663-79e9a84432e5",
+  "pk": "121b4239-df81-4755-a3e4-0655763badae",
   "fields": {
    "title": "The Final Problem",
    "authors": [
@@ -2793,7 +2793,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "c55bc303-8ed4-4b9c-85bc-531e15aa19f5",
+  "pk": "c059d74d-7b94-4987-9dc7-12dab6a2f7bb",
   "fields": {
    "title": "Bartleby, the Scrivener",
    "authors": [
@@ -2825,7 +2825,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "e31d68f1-c212-43c1-91a1-15424d849fdc",
+  "pk": "780153ce-008b-4d3c-bc6e-95adc9db774d",
   "fields": {
    "title": "Solaris",
    "authors": [
@@ -2856,7 +2856,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "c7a1975d-e13f-457a-ac48-a151fba45875",
+  "pk": "fa5afdd6-077e-43e5-a41b-d8b49a022dc7",
   "fields": {
    "title": "Pride and Prejudice",
    "authors": [
@@ -2891,7 +2891,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "0cb480ec-32d3-40a2-9220-278c25a07250",
+  "pk": "6c0cf2eb-423c-434f-a7a0-05a7104bc0bb",
   "fields": {
    "title": "The Sorrows of Young Werther",
    "authors": [
@@ -2926,7 +2926,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "a5bd7c26-4826-4605-b694-87a470366e4c",
+  "pk": "cff62bf9-2ddd-403f-898a-50d5b0d2ab33",
   "fields": {
    "title": "Moby-Dick",
    "authors": [
@@ -2961,7 +2961,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "cac967a3-c454-472b-a307-101a420ea0ed",
+  "pk": "16719b6c-148c-43c7-908c-4bd592a4855b",
   "fields": {
    "title": "The Mists of Avalon",
    "authors": [
@@ -2996,7 +2996,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "4c12faa5-07cd-408f-8b46-d582ce928b14",
+  "pk": "3eae8909-afdd-418f-9fd9-681ed929796b",
   "fields": {
    "title": "The Prince and the Pauper",
    "authors": [
@@ -3031,7 +3031,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "d5b6b42e-306a-4057-ad07-1e4f926556db",
+  "pk": "476ade74-712d-4e3b-9af0-4437fb5a46c5",
   "fields": {
    "title": "Pride and Prejudice",
    "authors": [
@@ -3066,7 +3066,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "fde2430d-da98-4d27-8438-b44f0d8f3bdc",
+  "pk": "940cb1c7-1d39-4d32-9355-0503eb2d4b11",
   "fields": {
    "title": "The Dream of the Celt",
    "authors": [
@@ -3101,7 +3101,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "2e3e649c-11b0-4a41-8083-6dac9f198f24",
+  "pk": "1ec1ccd1-1ad1-40ff-99c9-0f421fb2a478",
   "fields": {
    "title": "The Uncensored Picture of Dorian Gray",
    "authors": [
@@ -3137,7 +3137,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "f2d4c742-ac07-40f3-947f-36f7b8dd18a2",
+  "pk": "a778ea7d-b267-4868-8da4-cb72bad9032b",
   "fields": {
    "title": "The Colorado Kid",
    "authors": [
@@ -3172,7 +3172,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "c3ed92ce-24ac-4910-957f-dd9265e278fc",
+  "pk": "21d57322-2824-44db-b41f-480f36196032",
   "fields": {
    "title": "The Sea Wolf",
    "authors": [
@@ -3207,7 +3207,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "4ecae1d3-6f25-4a41-94b4-70e13a0bb136",
+  "pk": "3d192961-b1bb-4026-b8f1-59cf60b7f2e3",
   "fields": {
    "title": "The Illustrated Man",
    "authors": [
@@ -3242,7 +3242,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "dac0cf47-8982-443c-a6f3-c1d827d02b27",
+  "pk": "d48ff8b8-e68b-4e97-8fc2-80f147f2c595",
   "fields": {
    "title": "The Great Gatsby",
    "authors": [
@@ -3277,7 +3277,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "224d310f-3cdf-4b37-8b36-8477514d80b5",
+  "pk": "47a6376f-1342-4c52-a31a-29ff566f4e0e",
   "fields": {
    "title": "Bartleby, the Scrivener Illustrated",
    "authors": [
@@ -3305,7 +3305,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "471d4a8f-cb55-4433-aac7-e8cbee130dd3",
+  "pk": "2e605a48-1517-4a69-9e91-16d1d52f3dbb",
   "fields": {
    "title": "The Two Towers [Tv Tie-In]: The Lord of the Rings Part Two",
    "authors": [
@@ -3340,7 +3340,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "e66978d1-0dc8-41b8-9e39-7405dd8839f8",
+  "pk": "a497d803-6e04-40e5-b756-d4e939fc3e4d",
   "fields": {
    "title": "Kim .",
    "authors": [
@@ -3375,7 +3375,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "3f82ca79-efbb-444f-bec8-baf22d9380f4",
+  "pk": "15a54f38-ae7a-4111-ae10-020b5b32a71e",
   "fields": {
    "title": "Sister Carrie",
    "authors": [
@@ -3410,7 +3410,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "357a3cf9-0522-467f-a61c-bf8f6d88db04",
+  "pk": "a82a8ab1-75ef-46da-97b4-826df17e01f3",
   "fields": {
    "title": "Pride and Prejudice",
    "authors": [
@@ -3445,7 +3445,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "938d5c8c-e3c4-4160-b026-8b947b93348d",
+  "pk": "d68d1000-c32b-4da7-af57-060ec135ccd7",
   "fields": {
    "title": "Lifetime",
    "authors": [
@@ -3480,7 +3480,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "2a8bed99-9bec-4f85-bbfa-0a4d779e3490",
+  "pk": "9cb32e0e-36de-4867-a92a-c30fb63c4059",
   "fields": {
    "title": "Jacob's Room",
    "authors": [
@@ -3515,7 +3515,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "8c83e503-6ea7-4c10-a2d9-ac6d05ef35f9",
+  "pk": "2c2f5b69-4629-412a-8b11-6e4ef06932b4",
   "fields": {
    "title": "The Road to Oz",
    "authors": [
@@ -3550,7 +3550,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "14c1c95e-fd0b-451f-8ddc-09559ba7fb15",
+  "pk": "6602c870-29f1-46e5-82da-b137d4eeccd8",
   "fields": {
    "title": "Halo: Evolutions",
    "authors": [
@@ -3588,7 +3588,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "d5348110-9029-4611-ab9e-f94358ffef9a",
+  "pk": "9ee5f181-f8b0-450f-bd30-202d7f9e4e19",
   "fields": {
    "title": "Under the Dome",
    "authors": [
@@ -3623,7 +3623,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "a82be634-fd31-4b75-8215-be06839cbcd1",
+  "pk": "11bb0928-2e6a-465e-b36d-30b2b6f3e1e7",
   "fields": {
    "title": "The Wonderful Wizard of Oz",
    "authors": [
@@ -3658,7 +3658,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "0ae5f3b9-6a6e-42dc-8151-54da75827ed3",
+  "pk": "134c3adb-4556-4c4c-8bc1-f14882eff139",
   "fields": {
    "title": "The Festival of Insignificance",
    "authors": [
@@ -3693,7 +3693,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "27340366-2f8e-482e-a74d-465b3d56b921",
+  "pk": "2c52d522-a64e-4f2c-bf7f-127a5855cf5d",
   "fields": {
    "title": "Pride and Prejudice Annotated",
    "authors": [
@@ -3724,7 +3724,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "ba2019df-316c-4b2a-8758-dc03b46cde9f",
+  "pk": "fa4f38bb-08bd-4109-8092-effb72898d5f",
   "fields": {
    "title": "The Adventures of Pinocchio (Annotated)",
    "authors": [
@@ -3755,7 +3755,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "910ca41c-a965-4b72-b5e0-044f1c40fffc",
+  "pk": "57fd39a3-4dee-42e4-b296-1d1868bd07a6",
   "fields": {
    "title": "Crime and Punishment by Fyodor Dostoyevsky",
    "authors": [
@@ -3786,7 +3786,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "b2b0d6fd-55b1-4bf5-b567-047f2464fa39",
+  "pk": "72671244-c591-4e31-8dd5-5373790a3449",
   "fields": {
    "title": "Redburn",
    "authors": [
@@ -3821,7 +3821,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "a02109a4-3cfd-4780-b76c-03835fb10482",
+  "pk": "4efbf1b8-1a81-4f88-9e8a-e958064972fa",
   "fields": {
    "title": "The Scarlet Letter",
    "authors": [
@@ -3853,7 +3853,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "2d9bac34-9f09-4e06-8b02-e3befa9cf615",
+  "pk": "1de2db97-c2f5-4689-a15a-e8dd01c95e32",
   "fields": {
    "title": "Montezuma's Daughter",
    "authors": [
@@ -3888,7 +3888,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "6b26d884-1c44-45db-afb7-bc9fb1d73a99",
+  "pk": "0e051b47-989b-43cc-a9aa-bfd09349adb5",
   "fields": {
    "title": "The Idiot (Annotated)",
    "authors": [
@@ -3923,7 +3923,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "e04dfab1-e4ac-4f9b-a636-02de2183898a",
+  "pk": "4d01bbd8-2d3f-420e-acd6-bfab1d885aa1",
   "fields": {
    "title": "The Picture of Dorian Gray Illustrated",
    "authors": [
@@ -3954,7 +3954,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "68e19509-ceb9-4202-9f77-b0331643661e",
+  "pk": "56f7ecf3-6834-42c0-9abd-27458fbee134",
   "fields": {
    "title": "The Catcher in the Rye",
    "authors": [
@@ -3986,7 +3986,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "4fbf6a1b-4bcb-4358-bedc-6fb91cd3ac5f",
+  "pk": "29d874e2-d76a-4f89-b768-e3bbe18dbed7",
   "fields": {
    "title": "Frankenstein",
    "authors": [
@@ -4018,7 +4018,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "29714482-bcab-4733-b594-c74e772ae0e7",
+  "pk": "e2496de7-cb2d-4765-9e49-7ae1a023260c",
   "fields": {
    "title": "The Woman in White",
    "authors": [
@@ -4049,7 +4049,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "6005edca-80ae-42b7-a6a6-ede13b11aa27",
+  "pk": "87445483-8c89-4b77-842e-25412c83778b",
   "fields": {
    "title": "On The Road",
    "authors": [
@@ -4081,7 +4081,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "3b0671e5-0235-4f86-8c6b-a5a1e746493b",
+  "pk": "39323b84-b5a5-433e-8dbc-d606886f3bf8",
   "fields": {
    "title": "Pride and Prejudice Illustrated",
    "authors": [
@@ -4112,7 +4112,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "f94576b1-3ba7-44c8-acf1-b9ab5010f74c",
+  "pk": "7e97a4b9-9d67-4a65-83f2-500d4ec28a5b",
   "fields": {
    "title": "Around the Moon (Official Edition)",
    "authors": [
@@ -4143,7 +4143,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "57002139-48e1-4b3d-927f-887d5709d033",
+  "pk": "0ce7e90b-3f85-49d4-ba51-28cc298523de",
   "fields": {
    "title": "The Fur Country",
    "authors": [
@@ -4178,7 +4178,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "39ecdf80-b1e2-4d17-8c00-79971dd5fcff",
+  "pk": "61fd1704-b347-4cc2-a93c-6ae1abe440f8",
   "fields": {
    "title": "Frankenstein",
    "authors": [
@@ -4213,7 +4213,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "ffa4fa0e-453e-445f-b127-3539cf5d6739",
+  "pk": "d4b23c91-31ae-4c77-919c-24162267f1d9",
   "fields": {
    "title": "The Bazaar of Bad Dreams",
    "authors": [
@@ -4248,7 +4248,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "07b8fc54-c8b7-4e4e-b5ea-40882832b421",
+  "pk": "71c9eef8-8159-498e-9e65-daf76421ad61",
   "fields": {
    "title": "Heart of Darkness by Joseph Conrad (Illustrated)",
    "authors": [
@@ -4283,7 +4283,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "d5a61445-c83b-4e2d-9f4c-d72de625dfb3",
+  "pk": "3e7b5d47-3de0-4332-ac6d-112550edff7f",
   "fields": {
    "title": "Anne of Avonlea",
    "authors": [
@@ -4318,7 +4318,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "89d9faf6-6bb2-4a02-a443-bc2b2ac8647b",
+  "pk": "1cbb2354-3513-4a74-a01e-ac678a64346c",
   "fields": {
    "title": "Anne of Green Gables",
    "authors": [
@@ -4353,7 +4353,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "ba44e35e-a899-4994-971b-66e1348fb6ac",
+  "pk": "754b6863-d385-4768-8e08-a6e221e85109",
   "fields": {
    "title": "Green Wheat",
    "authors": [
@@ -4384,7 +4384,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "2fd2b6a3-dab4-41ab-bdc0-dc4e7a2738ef",
+  "pk": "06485fec-5e42-46cd-916a-5bd04f431319",
   "fields": {
    "title": "Twenty-four Hours in the Life of a Woman",
    "authors": [
@@ -4419,7 +4419,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "814f9d7d-1976-444e-b82b-6a0d630057aa",
+  "pk": "022fbfbc-1ca8-4f05-b06a-6300ba25a51b",
   "fields": {
    "title": "A Fire Endless",
    "authors": [
@@ -4454,7 +4454,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "6562af6c-665c-45a8-b9cc-ec407156823a",
+  "pk": "b2b16b97-e38c-4637-84ac-95bca291d278",
   "fields": {
    "title": "Julius Caesar (Large Print)",
    "authors": [
@@ -4489,7 +4489,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "c2e9da4b-2c26-4ff8-8494-bae3af2892e3",
+  "pk": "fb364058-4ac1-49eb-8b41-e729115e5d6b",
   "fields": {
    "title": "The Wonderful Wizard of Oz Illustrated",
    "authors": [
@@ -4520,7 +4520,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "ea92a65c-2873-407c-b736-aad58e1e271d",
+  "pk": "c1f77cc3-90c0-4904-90d0-c41f3a35fa1a",
   "fields": {
    "title": "Harry Potter and the Deathly Hallows - Slytherin Edition",
    "authors": [
@@ -4555,7 +4555,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "85ebc13e-6314-4c06-8088-08bd27f5cacb",
+  "pk": "adf73205-6656-45db-878e-e7423c7d962a",
   "fields": {
    "title": "Jane Eyre",
    "authors": [
@@ -4590,7 +4590,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "bd3db455-e5c7-490d-8e51-40204ccb163b",
+  "pk": "f078ef4b-d5e8-481b-887e-27e85fe4a3e1",
   "fields": {
    "title": "Moby Dick",
    "authors": [
@@ -4622,7 +4622,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "aa96c4c1-d639-4a6d-85ac-14d5a3c8d169",
+  "pk": "c1774f9f-cb05-4cca-ad46-6e7ed4d4a070",
   "fields": {
    "title": "Typee Illustrated",
    "authors": [
@@ -4653,7 +4653,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "077c13f9-655f-47ff-b330-8920882501b9",
+  "pk": "423d7515-962f-4c9b-999d-6e7c1333c3c1",
   "fields": {
    "title": "Hunger",
    "authors": [
@@ -4688,7 +4688,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "faf515ec-af43-4782-8fd8-9a2594636859",
+  "pk": "5159eea5-81a8-42e8-91ad-4760b12d511d",
   "fields": {
    "title": "Quo Vadis",
    "authors": [
@@ -4724,7 +4724,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "a406511a-0472-4f3c-89a0-3686c4c9ca26",
+  "pk": "727bd46d-d56d-4c25-af6a-904e03e04a1a",
   "fields": {
    "title": "The Trial",
    "authors": [
@@ -4759,7 +4759,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "d9528a9c-8912-46fb-b91c-db5d59edc3f5",
+  "pk": "42f9454a-0849-4e06-bc02-34a54ec50fd2",
   "fields": {
    "title": "The Woman in White",
    "authors": [
@@ -4790,7 +4790,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "71b5bcb1-b66e-44d5-b591-ecfb7c073bb9",
+  "pk": "ebd8f04f-ebd2-47e3-b96f-708a71e8af14",
   "fields": {
    "title": "Sense and Sensibility",
    "authors": [
@@ -4825,7 +4825,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "98d4e330-1aa1-4837-a67a-a883a0766243",
+  "pk": "c458ad5c-dc9d-48cf-8f19-683ab36e9147",
   "fields": {
    "title": "Maxims and Reflections",
    "authors": [
@@ -4860,7 +4860,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "1900091a-673a-4f89-9ec6-6893ed313faf",
+  "pk": "5ab05ecf-ce40-417e-82d5-6957e3d24ff2",
   "fields": {
    "title": "Pygmalion Illustrated",
    "authors": [
@@ -4891,7 +4891,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "cbae3182-c74a-4dff-85c7-cbf36e6ebe8a",
+  "pk": "aa88286f-2155-4cbd-acef-fc8968ad6ea8",
   "fields": {
    "title": "The Mysterious Affair at Styles",
    "authors": [
@@ -4926,7 +4926,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "c3c797ca-7f95-4f32-8cc5-07b5d0989861",
+  "pk": "3719bc36-8bca-45aa-b02b-431ab3b57a62",
   "fields": {
    "title": "Three Act Tragedy",
    "authors": [
@@ -4957,7 +4957,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "634fbd1f-802a-4c0d-8aab-8d5967778018",
+  "pk": "75dcc286-98ca-4d5b-ba99-8fada692e5a8",
   "fields": {
    "title": "Dorothy and the Wizard in Oz Illustrated",
    "authors": [
@@ -4988,7 +4988,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "12f543c5-8212-4e3d-a5bb-c4b863a69ed6",
+  "pk": "8d4fcbc1-d9ba-424a-a9a8-9b2fceb0b2c4",
   "fields": {
    "title": "The Little Mermaid - The Golden Age of Illustration Series",
    "authors": [
@@ -5023,7 +5023,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "bc646dc8-0514-4113-9c9c-9beb9274e782",
+  "pk": "12076991-26a4-4285-b55f-23b94125cdcf",
   "fields": {
    "title": "The Jungle Books",
    "authors": [
@@ -5058,7 +5058,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "62ec13b1-280d-4cec-bdef-21a6ebcd17b9",
+  "pk": "c681e21e-ab5b-443e-9ac3-a8f78df0b699",
   "fields": {
    "title": "On The Road",
    "authors": [
@@ -5090,7 +5090,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "1d11b088-d980-492a-a2d3-a83d6290d949",
+  "pk": "c4166114-c448-4876-964e-58eaa45473e4",
   "fields": {
    "title": "The Mysterious Affair at Styles Illustrated",
    "authors": [
@@ -5125,7 +5125,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "724ea5a1-3497-4316-9b0d-2539f38cd868",
+  "pk": "95e8529a-aa31-4eb1-967b-e26d4071e01d",
   "fields": {
    "title": "The Tinder Box (Illustrated)",
    "authors": [
@@ -5160,7 +5160,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "4565a690-9d5d-4b0e-aa74-87a58efaae8b",
+  "pk": "557433db-80b0-4358-bf94-d8bce54c7e6c",
   "fields": {
    "title": "Make Me",
    "authors": [
@@ -5195,7 +5195,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "527ff113-7323-47ac-9dda-264174d3aa22",
+  "pk": "6de7d475-a127-4df7-b34d-f7acc1e47b89",
   "fields": {
    "title": "She",
    "authors": [
@@ -5230,7 +5230,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "f846ef0d-8a85-45c9-a114-450347a4efad",
+  "pk": "d3d9f1bd-5f45-4f86-a8fc-e8903dc2e5a3",
   "fields": {
    "title": "Pollyanna",
    "authors": [
@@ -5262,7 +5262,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "78c71d27-9469-4596-a36c-e709acb0e9dd",
+  "pk": "1873b31a-b6b5-4267-8927-db90a964bd8d",
   "fields": {
    "title": "Peter Pan",
    "authors": [
@@ -5297,7 +5297,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "2678b8e7-52d7-4bab-b8a3-1015e4268db9",
+  "pk": "b6dcfa88-af8b-4912-80b9-c7a98825537b",
   "fields": {
    "title": "Make Me",
    "authors": [
@@ -5332,7 +5332,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "56798e2d-faa3-463f-b61d-b3294175ff54",
+  "pk": "7edd724f-e5fd-491c-9d78-28710857c501",
   "fields": {
    "title": "She",
    "authors": [
@@ -5367,7 +5367,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "0fbd3c55-0367-4222-8536-f561489d1ba7",
+  "pk": "ee965e5b-be86-49b8-af16-ae528d138f87",
   "fields": {
    "title": "Pollyanna",
    "authors": [
@@ -5399,7 +5399,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "a1b0c130-e4e2-4853-84f8-1d38da568558",
+  "pk": "828bf747-00cd-4934-9a8d-0fae580e1df0",
   "fields": {
    "title": "The Financier Illustrated",
    "authors": [
@@ -5427,7 +5427,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "8778a6ca-8994-44f6-a88c-2183af308e0d",
+  "pk": "a48cc3e3-f1bd-4844-89fc-d69da8dbf504",
   "fields": {
    "title": "Peter Pan",
    "authors": [
@@ -5462,7 +5462,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "c6bb0280-3b78-4673-b92e-5299d9bd5313",
+  "pk": "6d03b1b3-9c8f-4a7d-b80d-9f9606ca13f4",
   "fields": {
    "title": "The Jungle Book",
    "authors": [
@@ -5493,7 +5493,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "6e4e774c-6dee-465a-bbba-411e9ce60767",
+  "pk": "285b050a-6e43-46a3-9526-0239b755573f",
   "fields": {
    "title": "The Jungle Book Annotated",
    "authors": [
@@ -5524,7 +5524,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "aa12ad71-6c70-4c5d-ba49-5c8a38101cd9",
+  "pk": "d458476d-f489-4019-99c3-9a6121357efd",
   "fields": {
    "title": "The Jungle Book (100th Anniversary Edition)",
    "authors": [
@@ -5559,7 +5559,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "3e211181-524b-4070-aec0-947e3929828a",
+  "pk": "3c3b2163-2e96-4859-95d6-008f64de4752",
   "fields": {
    "title": "Thumbelina (Illustrated)",
    "authors": [
@@ -5594,7 +5594,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "42fc0b1e-918f-4b8c-8838-0b1544932c4a",
+  "pk": "db5ff528-85ea-4f62-bf43-dd0e4e14a7e8",
   "fields": {
    "title": "Robinson Crusoe Annotated",
    "authors": [
@@ -5622,7 +5622,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "6d15935b-5ac4-4c65-bc34-c6745811e1fb",
+  "pk": "4bb44635-4a9a-44e3-9b8f-bb26e7fd39e3",
   "fields": {
    "title": "The Idiot",
    "authors": [
@@ -5654,7 +5654,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "ae55531f-2046-4883-ae23-ef722257fbd7",
+  "pk": "287f40a3-c979-4ff4-8697-6c4a1cb54222",
   "fields": {
    "title": "The Miracles of the Antichrist",
    "authors": [
@@ -5689,7 +5689,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "541c8a5c-d7a5-4fe1-8767-0e1378eda3af",
+  "pk": "e0ef261e-a4c9-4b00-8f1e-c9747b8dc170",
   "fields": {
    "title": "Pride and Prejudice by Jane Austen",
    "authors": [
@@ -5717,7 +5717,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "6d5f1152-543d-4f4c-9234-7cc906807b68",
+  "pk": "0836a6ee-0c12-4230-bdaf-266e956d1eee",
   "fields": {
    "title": "The Shadow of the Wind",
    "authors": [
@@ -5752,7 +5752,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "afc1acc9-1744-4744-8f3a-8b7a90f25eb2",
+  "pk": "b2a95d7f-81a5-454f-a4b2-2b21d8b6844e",
   "fields": {
    "title": "The Memoirs of Sherlock Holmes",
    "authors": [
@@ -5787,7 +5787,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "b0e22b6a-4cb3-4a3d-b674-e8fa1b17c246",
+  "pk": "8d425e06-8d3a-45f5-8313-613c89d76ec7",
   "fields": {
    "title": "The Life and Adventures of Robinson Crusoe, of York, Mariner",
    "authors": [
@@ -5822,7 +5822,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "79492e13-1a59-462b-8a93-b3838993c589",
+  "pk": "2b73f8d9-c61f-484f-8725-ea0ad3c321c1",
   "fields": {
    "title": "The Happy Prince and Other Tales Annotated",
    "authors": [
@@ -5853,7 +5853,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "1bf65698-cb2d-4930-8a7d-781f418fc994",
+  "pk": "aa0d6a50-61f7-4e37-92dd-a6dd1a7d2960",
   "fields": {
    "title": "The Canterville Ghost",
    "authors": [
@@ -5889,7 +5889,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "0767cab5-0c98-480a-9e5b-b6d8df9e3f47",
+  "pk": "600ca882-200d-438c-a4c1-e74b5f00f28b",
   "fields": {
    "title": "The Jungle Book",
    "authors": [
@@ -5920,7 +5920,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "166c2b8f-0df3-4d89-acc5-5ac2ffc27118",
+  "pk": "df40f354-f36a-4617-9008-67f2253af9a9",
   "fields": {
    "title": "The Importance of Being Earnest",
    "authors": [
@@ -5955,7 +5955,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "b1b0ba0b-3946-4765-bed0-ba830af9c136",
+  "pk": "40b09597-bf60-4599-af49-7cdf629d97e7",
   "fields": {
    "title": "Crooked House",
    "authors": [
@@ -5990,7 +5990,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "aa981b17-01cc-4b93-8e68-ffd0f98616ef",
+  "pk": "29104596-261b-43a9-91b7-0eef846f62e4",
   "fields": {
    "title": "Quentin Durward",
    "authors": [
@@ -6025,7 +6025,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "e2486da4-e2db-4d26-a5f0-077299e1757d",
+  "pk": "003e590c-80b9-4d62-b589-4378426a1509",
   "fields": {
    "title": "The House of the Seven Gables",
    "authors": [
@@ -6057,7 +6057,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "de50ed4a-6ff9-48ff-b48b-b0882ab4fe9d",
+  "pk": "7553064b-ed24-4134-9c90-d8ae20b6671a",
   "fields": {
    "title": "The Hound of the Baskervilles",
    "authors": [
@@ -6089,7 +6089,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "1ca2ce1d-cc42-4fbf-8002-e51cb86ef4c6",
+  "pk": "73780201-27de-458f-9e28-ae009c9a843d",
   "fields": {
    "title": "The Man Who Was Thursday",
    "authors": [
@@ -6117,7 +6117,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "ab0ff095-35f3-488f-9c04-176c83ebfdfc",
+  "pk": "67fa8d5a-0850-4bee-ad3a-1f35d0a90e39",
   "fields": {
    "title": "The Lost World",
    "authors": [
@@ -6152,7 +6152,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "a2b9563d-36f1-4e51-a927-0c132c7d14a9",
+  "pk": "a26c0227-2767-4da9-aa32-e78a8a45a8e0",
   "fields": {
    "title": "Anne of Green Gables [illustrated]",
    "authors": [
@@ -6184,7 +6184,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "d05cf153-8595-426d-96ed-bafeaca04bae",
+  "pk": "2281595c-6d85-412d-97ba-f1fe196ba080",
   "fields": {
    "title": "Robinson Crusoe",
    "authors": [
@@ -6219,7 +6219,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "0145c8b2-22d2-40fd-bb3e-9d27fd33a42a",
+  "pk": "44624cac-53b2-49cd-923c-ba96adbdd0f5",
   "fields": {
    "title": "Bel-Ami(Annotated)",
    "authors": [
@@ -6247,7 +6247,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "6ecfc66d-db42-4d66-80a6-01ae696fad46",
+  "pk": "762280ec-3a9d-4744-a88f-1c9e6825d45e",
   "fields": {
    "title": "Notes from the Underground",
    "authors": [
@@ -6279,7 +6279,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "4e8c4b3d-2fe2-4c3f-83ac-f2175ebfbbd8",
+  "pk": "c210369e-1b7d-4ddf-88dd-2bfaaebe4877",
   "fields": {
    "title": "A Portrait of the Artist as a Young Man",
    "authors": [
@@ -6314,7 +6314,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "d7e976bd-23f0-4429-8f74-2a6b082bb102",
+  "pk": "1c6c434f-743d-4e7d-b1ec-d9aa9d8feca0",
   "fields": {
    "title": "And Then There Were None",
    "authors": [
@@ -6346,7 +6346,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "b9e22ea1-6aef-4501-aa91-73b1098b03c0",
+  "pk": "020b6fda-b877-4fe4-8dc9-55cebaa3d9f0",
   "fields": {
    "title": "Oliver Twist Illustrated",
    "authors": [
@@ -6377,7 +6377,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "3e216a2f-38e2-4cee-baee-e131234e5f56",
+  "pk": "31b7d4e4-bdd0-4140-a989-e17269195a73",
   "fields": {
    "title": "Treasure Island",
    "authors": [
@@ -6412,7 +6412,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "302fd6be-441a-4537-a60a-ea412cfd44c4",
+  "pk": "5c690d5f-43a1-4fc5-8bb5-5bdd5780bde3",
   "fields": {
    "title": "A Christmas Carol Illustrated",
    "authors": [
@@ -6443,7 +6443,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "ae182d4b-0e94-4ead-a05d-5acc53367a82",
+  "pk": "f4d83af6-bfd1-4235-92fc-832ee3e70a63",
   "fields": {
    "title": "To the Lighthouse",
    "authors": [
@@ -6478,7 +6478,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "1af29d45-0392-41e1-b6b7-fd0aca925b8f",
+  "pk": "886085ee-0415-4f5e-b650-4f71d41d0571",
   "fields": {
    "title": "Anne of the Island",
    "authors": [
@@ -6510,7 +6510,7 @@
  },
  {
   "model": "bookchat.book",
-  "title_id": "720ca19c-ff05-44a2-bd42-e68140d8e000",
+  "pk": "cd1b0935-7761-4f28-a726-22d113205799",
   "fields": {
    "title": "Black House",
    "authors": [

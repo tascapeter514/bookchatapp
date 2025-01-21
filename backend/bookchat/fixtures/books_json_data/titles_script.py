@@ -24,23 +24,22 @@ from collections import OrderedDict
 # print(json.dumps(ISBN_lookup_key, indent=4))
 
 
-BESTSELLERS = []
+FICTION_TITLES = []
 with open('./bestseller_titles.json', 'r', encoding='utf-8') as ft:
     content = ft.read()
     titles = json.loads(content)
     for title in titles:
-        pk = str(uuid.uuid4())
-        ordered_title = OrderedDict()
-        ordered_title['model'] = title['model']
-        ordered_title['pk'] = pk
-        ordered_title['fields'] = title['fields']
-        BESTSELLERS.append(ordered_title)
+        # if 'industryIdentifiers' in title['fields']:
+        #     print(title['fields']['title'])
+        title['fields']['ISBN_Identifiers'] = title['fields'].pop("industryIdentifiers")
+        FICTION_TITLES.append(title)
+        
  
         
 
 
 
 with open('./bestseller_titles.json', 'w', encoding='utf-8') as ft:
-    string = json.dumps(BESTSELLERS, ensure_ascii=False, indent=1)
+    string = json.dumps(FICTION_TITLES, ensure_ascii=False, indent=1)
     ft.write(string)
 
