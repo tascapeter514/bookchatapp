@@ -19,18 +19,18 @@
    "pageCount": 813,
    "categories": [
     "Fiction"
+   ],
+   "ISBN_Identifiers": [
+    {
+     "type": "ISBN_13",
+     "identifier": "9780349437040"
+    },
+    {
+     "type": "ISBN_10",
+     "identifier": "0349437041"
+    }
    ]
-  },
-  "ISBN Identifiers": [
-   {
-    "type": "ISBN_13",
-    "identifier": "9780349437040"
-   },
-   {
-    "type": "ISBN_10",
-    "identifier": "0349437041"
-   }
-  ]
+  }
  },
  {
   "model": "bookchat.book",
@@ -52,18 +52,18 @@
    "pageCount": 6793,
    "categories": [
     "Bibles"
+   ],
+   "ISBN_Identifiers": [
+    {
+     "type": "ISBN_13",
+     "identifier": "9780310294146"
+    },
+    {
+     "type": "ISBN_10",
+     "identifier": "0310294142"
+    }
    ]
-  },
-  "ISBN Identifiers": [
-   {
-    "type": "ISBN_13",
-    "identifier": "9780310294146"
-   },
-   {
-    "type": "ISBN_10",
-    "identifier": "0310294142"
-   }
-  ]
+  }
  },
  {
   "model": "bookchat.book",
@@ -80,18 +80,18 @@
    "ratingsCount": 0,
    "imageLinks": "None",
    "pageCount": 428,
-   "categories": "None"
-  },
-  "ISBN Identifiers": [
-   {
-    "type": "ISBN_10",
-    "identifier": "0967145694"
-   },
-   {
-    "type": "ISBN_13",
-    "identifier": "9780967145693"
-   }
-  ]
+   "categories": "None",
+   "ISBN_Identifiers": [
+    {
+     "type": "ISBN_10",
+     "identifier": "0967145694"
+    },
+    {
+     "type": "ISBN_13",
+     "identifier": "9780967145693"
+    }
+   ]
+  }
  },
  {
   "model": "bookchat.book",
@@ -113,18 +113,18 @@
    "pageCount": 377,
    "categories": [
     "Fiction"
+   ],
+   "ISBN_Identifiers": [
+    {
+     "type": "ISBN_13",
+     "identifier": "9781804188057"
+    },
+    {
+     "type": "ISBN_10",
+     "identifier": "1804188050"
+    }
    ]
-  },
-  "ISBN Identifiers": [
-   {
-    "type": "ISBN_13",
-    "identifier": "9781804188057"
-   },
-   {
-    "type": "ISBN_10",
-    "identifier": "1804188050"
-   }
-  ]
+  }
  },
  {
   "model": "bookchat.book",
@@ -146,18 +146,18 @@
    "pageCount": 377,
    "categories": [
     "Fiction"
+   ],
+   "ISBN_Identifiers": [
+    {
+     "type": "ISBN_13",
+     "identifier": "9781493422531"
+    },
+    {
+     "type": "ISBN_10",
+     "identifier": "1493422537"
+    }
    ]
-  },
-  "ISBN Identifiers": [
-   {
-    "type": "ISBN_13",
-    "identifier": "9781493422531"
-   },
-   {
-    "type": "ISBN_10",
-    "identifier": "1493422537"
-   }
-  ]
+  }
  },
  {
   "model": "bookchat.book",
@@ -179,18 +179,18 @@
    "pageCount": 497,
    "categories": [
     "Fiction"
+   ],
+   "ISBN_Identifiers": [
+    {
+     "type": "ISBN_13",
+     "identifier": "9780593418932"
+    },
+    {
+     "type": "ISBN_10",
+     "identifier": "059341893X"
+    }
    ]
-  },
-  "ISBN Identifiers": [
-   {
-    "type": "ISBN_13",
-    "identifier": "9780593418932"
-   },
-   {
-    "type": "ISBN_10",
-    "identifier": "059341893X"
-   }
-  ]
+  }
  },
  {
   "model": "bookchat.book",
@@ -213,18 +213,18 @@
    "pageCount": 297,
    "categories": [
     "Fiction"
+   ],
+   "ISBN_Identifiers": [
+    {
+     "type": "ISBN_13",
+     "identifier": "9780316569965"
+    },
+    {
+     "type": "ISBN_10",
+     "identifier": "0316569968"
+    }
    ]
-  },
-  "ISBN Identifiers": [
-   {
-    "type": "ISBN_13",
-    "identifier": "9780316569965"
-   },
-   {
-    "type": "ISBN_10",
-    "identifier": "0316569968"
-   }
-  ]
+  }
  },
  {
   "model": "bookchat.book",
@@ -246,18 +246,18 @@
    "pageCount": 333,
    "categories": [
     "Fiction"
+   ],
+   "ISBN_Identifiers": [
+    {
+     "type": "ISBN_13",
+     "identifier": "9781250899569"
+    },
+    {
+     "type": "ISBN_10",
+     "identifier": "1250899567"
+    }
    ]
-  },
-  "ISBN Identifiers": [
-   {
-    "type": "ISBN_13",
-    "identifier": "9781250899569"
-   },
-   {
-    "type": "ISBN_10",
-    "identifier": "1250899567"
-   }
-  ]
+  }
  },
  {
   "model": "bookchat.book",
@@ -279,18 +279,18 @@
    "pageCount": 624,
    "categories": [
     "Fiction"
+   ],
+   "ISBN_Identifiers": [
+    {
+     "type": "ISBN_13",
+     "identifier": "9781649374080"
+    },
+    {
+     "type": "ISBN_10",
+     "identifier": "1649374089"
+    }
    ]
-  },
-  "ISBN Identifiers": [
-   {
-    "type": "ISBN_13",
-    "identifier": "9781649374080"
-   },
-   {
-    "type": "ISBN_10",
-    "identifier": "1649374089"
-   }
-  ]
+  }
  },
  {
   "model": "bookchat.book",
@@ -312,18 +312,18 @@
    "pageCount": 449,
    "categories": [
     "Fiction"
+   ],
+   "ISBN_Identifiers": [
+    {
+     "type": "ISBN_13",
+     "identifier": "9780735281837"
+    },
+    {
+     "type": "ISBN_10",
+     "identifier": "0735281831"
+    }
    ]
-  },
-  "ISBN Identifiers": [
-   {
-    "type": "ISBN_13",
-    "identifier": "9780735281837"
-   },
-   {
-    "type": "ISBN_10",
-    "identifier": "0735281831"
-   }
-  ]
+  }
  },
  {
   "model": "bookchat.book",
@@ -345,18 +345,18 @@
    "pageCount": 865,
    "categories": [
     "Fiction"
+   ],
+   "ISBN_Identifiers": [
+    {
+     "type": "ISBN_13",
+     "identifier": "9780593949009"
+    },
+    {
+     "type": "ISBN_10",
+     "identifier": "0593949005"
+    }
    ]
-  },
-  "ISBN Identifiers": [
-   {
-    "type": "ISBN_13",
-    "identifier": "9780593949009"
-   },
-   {
-    "type": "ISBN_10",
-    "identifier": "0593949005"
-   }
-  ]
+  }
  },
  {
   "model": "bookchat.book",
@@ -378,18 +378,18 @@
    "pageCount": 385,
    "categories": [
     "Fiction"
+   ],
+   "ISBN_Identifiers": [
+    {
+     "type": "ISBN_13",
+     "identifier": "9780593830451"
+    },
+    {
+     "type": "ISBN_10",
+     "identifier": "0593830458"
+    }
    ]
-  },
-  "ISBN Identifiers": [
-   {
-    "type": "ISBN_13",
-    "identifier": "9780593830451"
-   },
-   {
-    "type": "ISBN_10",
-    "identifier": "0593830458"
-   }
-  ]
+  }
  },
  {
   "model": "bookchat.book",
@@ -411,18 +411,18 @@
    "pageCount": 353,
    "categories": [
     "Fiction"
+   ],
+   "ISBN_Identifiers": [
+    {
+     "type": "ISBN_13",
+     "identifier": "9780593474297"
+    },
+    {
+     "type": "ISBN_10",
+     "identifier": "0593474295"
+    }
    ]
-  },
-  "ISBN Identifiers": [
-   {
-    "type": "ISBN_13",
-    "identifier": "9780593474297"
-   },
-   {
-    "type": "ISBN_10",
-    "identifier": "0593474295"
-   }
-  ]
+  }
  },
  {
   "model": "bookchat.book",
@@ -444,18 +444,18 @@
    "pageCount": 389,
    "categories": [
     "Fiction"
+   ],
+   "ISBN_Identifiers": [
+    {
+     "type": "ISBN_13",
+     "identifier": "9780063204171"
+    },
+    {
+     "type": "ISBN_10",
+     "identifier": "0063204177"
+    }
    ]
-  },
-  "ISBN Identifiers": [
-   {
-    "type": "ISBN_13",
-    "identifier": "9780063204171"
-   },
-   {
-    "type": "ISBN_10",
-    "identifier": "0063204177"
-   }
-  ]
+  }
  },
  {
   "model": "bookchat.book",
@@ -477,13 +477,13 @@
    "pageCount": 465,
    "categories": [
     "Fiction"
+   ],
+   "ISBN_Identifiers": [
+    {
+     "type": "ISBN_13",
+     "identifier": "9798217013999"
+    }
    ]
-  },
-  "ISBN Identifiers": [
-   {
-    "type": "ISBN_13",
-    "identifier": "9798217013999"
-   }
-  ]
+  }
  }
 ]

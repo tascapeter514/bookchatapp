@@ -21,19 +21,23 @@ import json
 # print(json.dumps(ISBN_lookup_key, indent=4))
 
 
-FICTION_TITLES = []
+BESTSELLERS = []
 with open('./bestseller_titles.json', 'r', encoding='utf-8') as ft:
     content = ft.read()
     titles = json.loads(content)
     for title in titles:
-        print(title)
-        title['ISBN Identifiers'] = title['fields'].pop('industryIdentifiers')
-        FICTION_TITLES.append(title)
+        name = title['fields']['title']
+        # print(name)
+        if "ISBN Identifiers" in title:
+            title['fields']['ISBN_Identifiers'] = title.pop('ISBN Identifiers')
+        BESTSELLERS.append(title)
+        # print(title['fields']['ISBN_Identifiers'])
+        # print(json.dumps(title, indent=4))
         
-# print(json.dumps(FICTION_TITLES[0], indent=4))
+# print(json.dumps(BESTSELLERS, indent=4))
 
 
 with open('./bestseller_titles.json', 'w', encoding='utf-8') as ft:
-    string = json.dumps(FICTION_TITLES, ensure_ascii=False, indent=1)
+    string = json.dumps(BESTSELLERS, ensure_ascii=False, indent=1)
     ft.write(string)
 
