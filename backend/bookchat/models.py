@@ -10,7 +10,7 @@ class Genre(models.Model):
 
 class Book(models.Model):
     title_id = models.UUIDField(primary_key=True)
-    title = models.CharField(max_length=250, unique=True)
+    title = models.CharField(max_length=250)
     authors = models.JSONField(default=list)
     publisher = models.CharField(max_length=128, blank=True, default='Unknown Publisher')
     description = models.TextField(default='No description available', blank=True)
