@@ -1,4 +1,7 @@
 import json
+import uuid
+from collections import OrderedDict
+
 
 
 # PATH = './open_library_data/raw_data/google_books_titles.json'
@@ -26,15 +29,15 @@ with open('./bestseller_titles.json', 'r', encoding='utf-8') as ft:
     content = ft.read()
     titles = json.loads(content)
     for title in titles:
-        name = title['fields']['title']
-        # print(name)
-        if "ISBN Identifiers" in title:
-            title['fields']['ISBN_Identifiers'] = title.pop('ISBN Identifiers')
-        BESTSELLERS.append(title)
-        # print(title['fields']['ISBN_Identifiers'])
-        # print(json.dumps(title, indent=4))
+        pk = str(uuid.uuid4())
+        ordered_title = OrderedDict()
+        ordered_title['model'] = title['model']
+        ordered_title['pk'] = pk
+        ordered_title['fields'] = title['fields']
+        BESTSELLERS.append(ordered_title)
+ 
         
-# print(json.dumps(BESTSELLERS, indent=4))
+
 
 
 with open('./bestseller_titles.json', 'w', encoding='utf-8') as ft:
