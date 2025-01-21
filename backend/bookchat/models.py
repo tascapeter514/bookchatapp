@@ -25,11 +25,11 @@ class Book(models.Model):
 
 
 class Author(models.Model):
-    author_id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=250, unique=True)
+    author_id = models.UUIDField(primary_key=True)
+    name = models.CharField(max_length=250)
     bio = models.TextField(default='No bio available')
-    birth_year = models.CharField(max_length=250)
-    death_year = models.CharField(max_length=250)
+    birth_date = models.CharField(max_length=250, null=True, blank=True)
+    death_date = models.CharField(max_length=250, null=True, blank=True)
     links = models.JSONField()
     titles = models.ManyToManyField(Book, related_name="titles")
 

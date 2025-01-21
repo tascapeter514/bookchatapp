@@ -1,73 +1,72 @@
 [
  {
   "model": "bookchat.author",
-  "author_id": "326154d4-668e-4534-b54d-b77651aab81f",
   "fields": {
    "name": "Rebecca Yarros",
    "bio": "none",
    "birth_date": "1981-04-14",
    "death_date": "none",
    "links": "none"
-  }
+  },
+  "pk": "326154d4-668e-4534-b54d-b77651aab81f"
  },
  {
   "model": "bookchat.author",
-  "author_id": "69e1e9f6-8d71-462f-bd38-bb14cf97d64d",
   "fields": {
    "name": "Various Authors",
    "bio": "none",
    "birth_date": "none",
    "death_date": "none",
    "links": "none"
-  }
+  },
+  "pk": "69e1e9f6-8d71-462f-bd38-bb14cf97d64d"
  },
  {
   "model": "bookchat.author",
-  "author_id": "1b267cb6-c774-4f53-8c1b-32d49d2e83ac",
   "fields": {
    "name": "Lyle McDonald",
    "bio": "none",
    "birth_date": "none",
    "death_date": "none",
    "links": "none"
-  }
+  },
+  "pk": "1b267cb6-c774-4f53-8c1b-32d49d2e83ac"
  },
  {
   "model": "bookchat.author",
-  "author_id": "ffd35995-c829-4e24-b270-3ea778035b9f",
   "fields": {
    "name": "Mai Corland",
    "bio": "none",
    "birth_date": "none",
    "death_date": "none",
    "links": "none"
-  }
+  },
+  "pk": "ffd35995-c829-4e24-b270-3ea778035b9f"
  },
  {
   "model": "bookchat.author",
-  "author_id": "7943bdda-6738-48ff-8c41-42a472377b3a",
   "fields": {
    "name": "Lisa Wingate",
    "bio": "none",
    "birth_date": "none",
    "death_date": "none",
    "links": "none"
-  }
+  },
+  "pk": "7943bdda-6738-48ff-8c41-42a472377b3a"
  },
  {
   "model": "bookchat.author",
-  "author_id": "2aba9625-3f80-4b19-8f6e-abeb213bd91d",
   "fields": {
    "name": "Liz Moore",
    "bio": "none",
    "birth_date": "1983",
    "death_date": "none",
    "links": "none"
-  }
+  },
+  "pk": "2aba9625-3f80-4b19-8f6e-abeb213bd91d"
  },
  {
   "model": "bookchat.author",
-  "author_id": "2e53d611-de22-44be-82c5-d2a0a203aa1d",
   "fields": {
    "name": "James Patterson",
    "bio": "James Brendan Patterson (born March 22, 1947) is an American author. Among his works are the Alex Cross, Michael Bennett, Women's Murder Club, Maximum Ride, Daniel X, NYPD Red, Witch & Wizard, Private and Middle School series, as well as many stand-alone thrillers, non-fiction, and romance novels. His books have sold more than 425 million copies, and he was the first person to sell 1 million e-books. In 2016, Patterson topped Forbes's list of highest-paid authors for the third consecutive year, with an income of $95 million. His total income over a decade is estimated at $700 million.\r\n\r\nIn November 2015, Patterson received the Literarian Award from the National Book Foundation. Patterson has donated millions of dollars in grants and scholarship to various universities, teachers' colleges, independent bookstores, school libraries, and college students to promote literacy. [source](https://en.wikipedia.org/wiki/James_Patterson)",
@@ -96,94 +95,95 @@
      }
     }
    ]
-  }
+  },
+  "pk": "2e53d611-de22-44be-82c5-d2a0a203aa1d"
  },
  {
   "model": "bookchat.author",
-  "author_id": "91ab4801-df3a-4f5f-b965-9e4563625c84",
   "fields": {
    "name": "Alison Espach",
    "bio": "none",
    "birth_date": "none",
    "death_date": "none",
    "links": "none"
-  }
+  },
+  "pk": "91ab4801-df3a-4f5f-b965-9e4563625c84"
  },
  {
   "model": "bookchat.author",
-  "author_id": "c1ea5fe6-6119-4b60-b447-9d2bfa9b92ef",
   "fields": {
    "name": "Rebecca Yarros",
    "bio": "none",
    "birth_date": "1981-04-14",
    "death_date": "none",
    "links": "none"
-  }
+  },
+  "pk": "c1ea5fe6-6119-4b60-b447-9d2bfa9b92ef"
  },
  {
   "model": "bookchat.author",
-  "author_id": "3521dd18-0afe-4dfa-8b8a-5ba70edf1ed9",
   "fields": {
    "name": "Sally Rooney",
    "bio": "none",
    "birth_date": "1991",
    "death_date": "none",
    "links": "none"
-  }
+  },
+  "pk": "3521dd18-0afe-4dfa-8b8a-5ba70edf1ed9"
  },
  {
   "model": "bookchat.author",
-  "author_id": "c3c9800d-5a91-4381-bfc7-ffdb8b44d2cd",
   "fields": {
    "name": "Chris Whitaker",
    "bio": "none",
    "birth_date": "none",
    "death_date": "none",
    "links": "none"
-  }
+  },
+  "pk": "c3c9800d-5a91-4381-bfc7-ffdb8b44d2cd"
  },
  {
   "model": "bookchat.author",
-  "author_id": "45c506ef-ee49-4c0a-b8c8-6cdf8227cc83",
   "fields": {
    "name": "Emma Knight",
    "bio": "none",
    "birth_date": "none",
    "death_date": "none",
    "links": "none"
-  }
+  },
+  "pk": "45c506ef-ee49-4c0a-b8c8-6cdf8227cc83"
  },
  {
   "model": "bookchat.author",
-  "author_id": "1726aae4-66cc-4cf1-bc1d-9e9cc906a75f",
   "fields": {
    "name": "Fiona Davis",
    "bio": "none",
    "birth_date": "none",
    "death_date": "none",
    "links": "none"
-  }
+  },
+  "pk": "1726aae4-66cc-4cf1-bc1d-9e9cc906a75f"
  },
  {
   "model": "bookchat.author",
-  "author_id": "d04eb273-4e7f-4e83-9f07-fbdb6dd4e130",
   "fields": {
    "name": "Shelby Van Pelt",
    "bio": "none",
    "birth_date": "none",
    "death_date": "none",
    "links": "none"
-  }
+  },
+  "pk": "d04eb273-4e7f-4e83-9f07-fbdb6dd4e130"
  },
  {
   "model": "bookchat.author",
-  "author_id": "50e78081-4d8a-42c7-bca7-90c7b1d4da8e",
   "fields": {
    "name": "Nicholas Sparks",
    "bio": "none",
    "birth_date": "none",
    "death_date": "none",
    "links": "none"
-  }
+  },
+  "pk": "50e78081-4d8a-42c7-bca7-90c7b1d4da8e"
  }
 ]
