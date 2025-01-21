@@ -1,23 +1,24 @@
 import json
 
 
+PATH = './open_library_data/raw_data/google_books_titles.json'
+ISBN_lookup_key = {}
+with open(PATH, 'r', encoding='utf-8') as ft:
+    content = ft.read()
+    titles = json.loads(content)
+    for title in titles:
+        title_name = title['title']
+        print(title_name)
+        if 'industryIdentifiers' not in title:
+            ISBN = 'none'
+        else:
+            ISBN = title['industryIdentifiers']
+            
+        ISBN_lookup_key[title_name] = ISBN
 
 
-# BESTSELLERS = []
-# with open('./bestseller_titles.json', 'r', encoding='utf-8') as bs:
-#     content = bs.read()
-#     titles = json.loads(content)
-#     for title in titles:
-#         if title['fields']['averageRating'] == 'None' and title['fields']['ratingsCount'] == 'None':
-#             title['fields']['averageRating'] = 0
-#             title['fields']['ratingsCount'] = 0
-#         elif title['fields']['ratingsCount'] == 'None':
-#             title['fields']['ratingsCount'] = 0
-#         elif title['fields']['averageRating'] == 'None':
-#             title['fields']['averageRating'] = 0
-#         BESTSELLERS.append(title)
 
-# print(json.dumps(BESTSELLERS, indent=4))
+print(json.dumps(ISBN_lookup_key, indent=4))
 
 
 FICTION_TITLES = []
@@ -25,23 +26,13 @@ with open('./fiction_titles.json', 'r', encoding='utf-8') as ft:
     content = ft.read()
     titles = json.loads(content)
     for title in titles:
-        avg_rating = title['fields']['averageRating']
-        rating_count = title['fields']['ratingsCount']
-        if  isinstance(avg_rating, str) and isinstance(rating_count, str):
-            title['fields']['averageRating'] = 0
-            title['fields']['ratingsCount'] = 0
-        elif isinstance(avg_rating, str):
-            title['fields']['ratingsCount'] = 0
-        elif isinstance(rating_count, str):
-            title['fields']['averageRating'] = 0
+        title_name = title['fields']['title']
+        if ISBN_lookup_key[title_name]:
+            title['fields']['ISBN Identifiers'] = ISBN_lookup_key[title_name]
         FICTION_TITLES.append(title)
+        
+# print(json.dumps(FICTION_TITLES[0], indent=4))
 
-
-# print(json.dumps(FICTION_TITLES[10], indent=4))
-
-# with open('./bestseller_titles.json', 'w', encoding='utf-8') as bt:
-#     string = json.dumps(BESTSELLERS, ensure_ascii=False, indent = 1)
-#     bt.write(string)
 
 with open('./fiction_titles.json', 'w', encoding='utf-8') as ft:
     string = json.dumps(FICTION_TITLES, ensure_ascii=False, indent=1)
