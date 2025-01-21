@@ -24,22 +24,31 @@ from collections import OrderedDict
 # print(json.dumps(ISBN_lookup_key, indent=4))
 
 
-AUTHORS = []
-with open('./bestseller_authors.json', 'r', encoding='utf-8') as ft:
+PRIMARY_KEYS = {}
+with open('./books.json', 'r', encoding='utf-8') as ft:
     content = ft.read()
+    titles = json.loads(content)
+    for title in titles:
+        book_title = title['fields']['title']
+        primary_key = title['pk']
+        PRIMARY_KEYS[primary_key] = book_title
+# print(json.dumps(PRIMARY_KEYS, indent=4))
+        
+
+
+# AUTHORS = []
+with open('./fiction_authors.json', 'r', encoding='utf-8') as fa:
+    content = fa.read()
     authors = json.loads(content)
     for author in authors:
-        author['pk'] = author.pop('author_id')
-        AUTHORS.append(author)
+        name = author['fields']['name']
+        titles = author['fields']['titles']
+        for title in titles:
+            if title not in PRIMARY_KEYS:
+                print(name)
+            
 
-        
-        
- 
-        
-
-
-
-with open('./bestseller_authors.json', 'w', encoding='utf-8') as ft:
-    string = json.dumps(AUTHORS, ensure_ascii=False, indent=1)
-    ft.write(string)
+# with open('./fiction_authors.json', 'w', encoding='utf-8') as ft:
+#     string = json.dumps(AUTHORS, ensure_ascii=False, indent=1)
+#     ft.write(string)
 
