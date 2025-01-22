@@ -11,7 +11,6 @@ class Genre(models.Model):
 class Book(models.Model):
     title_id = models.UUIDField(primary_key=True)
     title = models.CharField(max_length=250)
-    authors = models.JSONField(default=list)
     publisher = models.CharField(max_length=128, blank=True, default='Unknown Publisher')
     description = models.TextField(default='No description available', blank=True)
     ISBN_Identifiers = models.JSONField(default=list)
@@ -19,7 +18,6 @@ class Book(models.Model):
     ratingsCount = models.IntegerField(null=True, blank=True, default=0)
     imageLinks = models.JSONField(default=dict, blank=True)
     pageCount = models.IntegerField(null=True, blank=True)
-    categories = models.JSONField(default=list, blank=True)
     # genres = models.OneToManyField(Genre, related_name='titles')
     genres = models.ForeignKey(Genre, on_delete=models.CASCADE, null=True, blank=True)
 

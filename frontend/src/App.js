@@ -4,38 +4,33 @@ import './App.css';
 
 function App() {
 
-  const [myauthors, setmyAuthors] = React.useState([])
+  const [books, setBooks] = React.useState([])
 
 
 
   React.useEffect(() => {
-    fetch('http://localhost:8000/frontend/')
+    fetch('http://localhost:8000/books/')
     .then(res => res.json())
-    .then(data => setmyAuthors(data))
-  })
+    .then(data => setBooks(data))
+  }, [])
 
-  console.log(myauthors)
+  console.log(books)
 
-  const authorElements = myauthors.map(author => {
+  const bookElements = books.map(book => {
     return(
-      <h1>{author.name}</h1>
+      <div>
+        <h1>{book.title}</h1>
+        <img src={book.imageLinks['smallThumbnail']} alt="book-img" />
+      </div>
     )
   })
   return (
    
-
-    
-    
-
-  
-
     <div className="App">
-      <header className="App-header">
+      <main className="App-header">
+        <ol>{bookElements}</ol>
 
-        {/* {myauthors} */}
-        <ol>{authorElements}</ol>
-
-      </header>
+      </main>
     </div>
   );
 }
