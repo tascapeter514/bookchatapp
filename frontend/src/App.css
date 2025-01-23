@@ -8,6 +8,10 @@
   box-sizing: border-box;
 }
 
+.body {
+  overflow-x: hidden;
+}
+
 
 img,
 svg {
@@ -19,6 +23,7 @@ svg {
 
 .book-container {
   position: relative;
+  padding: 1rem;
 }
 
 
@@ -26,17 +31,45 @@ svg {
 .bestseller-group {
   display: grid;
   grid-auto-flow: column;
-  border: 3px solid purple;
-  min-width: 100%;
 }
 
+
 .book-scroller {
-  grid-auto-columns: 100%
+  grid-auto-columns: 100%;
+  padding: 2rem;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  border: 1px solid green;
+  width: 100%;
+  scrollbar-width: none;
 }
 
 .bestseller-group {
-  grid-auto-columns: 1fr;
+  grid-auto-columns: 13%;
+  gap: 1rem;
+
+
+  
+  
 }
+
+.bestseller-element > img {
+  min-height: 100%;
+  inline-size: 100%;
+  object-fit: cover;
+
+}
+
+.snaps-inline {
+  scroll-snap-type: inline mandatory;
+
+}
+
+.snaps-inline > * {
+  scroll-snap-align: start;
+}
+
+
 
 
 

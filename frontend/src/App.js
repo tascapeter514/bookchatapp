@@ -29,7 +29,7 @@ function App() {
       <h2>Check out the latest bestsellers</h2>
       <div className="book-container">
         <div className="book-scroller">
-          <div className="bestseller-group">
+          <div className="bestseller-group snaps-inline">
               {bestsellerElements}
           </div>
         </div>
