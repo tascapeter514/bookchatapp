@@ -4,33 +4,36 @@ import './App.css';
 
 function App() {
 
-  const [books, setBooks] = React.useState([])
+  const [bestsellers, setBestsellers] = React.useState([])
 
 
 
   React.useEffect(() => {
     fetch('http://localhost:8000/books/')
     .then(res => res.json())
-    .then(data => setBooks(data))
+    .then(data => setBestsellers(data))
   }, [])
 
-  console.log(books)
 
-  const bookElements = books.map(book => {
+
+  const bestsellerElements = bestsellers.map(bestseller=> {
     return(
-      <div>
-        <h1>{book.title}</h1>
-        <img src={book.imageLinks['smallThumbnail']} alt="book-img" />
+      <div className='bestseller-element'>
+        <img src={bestseller.imageLinks['smallThumbnail']} alt="bestseller-img" />
       </div>
     )
   })
   return (
    
     <div className="App">
-      <main className="App-header">
-        <ol>{bookElements}</ol>
-
-      </main>
+      <h2>Check out the latest bestsellers</h2>
+      <div className="book-container">
+        <div className="book-scroller">
+          <div className="bestseller-group">
+              {bestsellerElements}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
