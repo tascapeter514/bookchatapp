@@ -14,12 +14,15 @@ def homepage(request):
     return response
 
 def book(request, id):
-    title = list(Book.objects.filter(title_id=id).values())
-    response = JsonResponse(title, safe=False)
-    response.headers['Access-Controll-Allow-Origin'] = 'http://localhost:3000'
-    print("title:", title[0])
-    return response
+    result = Book.objects.filter(title_id=id).first()
+    b = {'book': result}
+    return render(request, 'bookchat/book.html', b)
 
+    
+
+
+    # response = JsonResponse(title, safe=False)
+    # response.headers['Access-Controll-Allow-Origin'] = 'http://localhost:3000'
 
 
 
