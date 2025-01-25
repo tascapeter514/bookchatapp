@@ -19,8 +19,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('books/', views.books, name='books'),
-    path('authors/', views.authors, name='authors'),
-    path('frontend/', views.frontend, name='frontend'),
-    path('genre_list', views.books_by_genre)
+    path('', views.homepage, name='homepage'),
+    path('book/<uuid:id>', views.book, name='book')
+
 ]

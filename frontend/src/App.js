@@ -7,7 +7,7 @@ function App() {
   const [bestsellers, setBestsellers] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:8000/books/')
+    fetch('http://localhost:8000/')
     .then(res => res.json())
     .then(data => setBestsellers(data))
   }, [])
@@ -24,12 +24,10 @@ function App() {
     }
   }
 
-  
-
-  const bestsellerElements = bestsellers.map(bestseller=> {
+  const bestsellerElements = bestsellers.map((bestseller)=> {
     return(
       <li className='bestseller-element' key={bestseller.title_id} >
-        <img src={bestseller.imageLinks['smallThumbnail']} alt="bestseller-img" />
+        <a href={'http://localhost:8000/book/' + bestseller.title_id} ><img src={bestseller.imageLinks['smallThumbnail']} alt="bestseller-img" /></a>
       </li>
     )
   })
