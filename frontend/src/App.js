@@ -13,7 +13,7 @@ function App() {
   }, [])
 
   
-  // const [matches] = useState(window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+  const [matches] = useState(window.matchMedia('(prefers-reduced-motion: reduce)').matches)
   const  [isPlaying, setIsPlaying] = useState(true)
   const animationRef = useRef(null)
 
@@ -43,6 +43,7 @@ function App() {
         <div className="book-scroller"
         onMouseEnter={toggleAnimation}
         onMouseLeave={toggleAnimation}
+        {...(matches ? {'data-animated': true} : {})}
         >
           <ul className="bestseller-list book-scroller__inner" ref={animationRef}>
               {bestsellerElements}
@@ -55,5 +56,5 @@ function App() {
 }
 
 
-// {...(isPlaying ? {'data-animated': true} : {})}
+
 export default App;

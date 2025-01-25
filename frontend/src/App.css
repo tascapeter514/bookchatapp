@@ -50,10 +50,10 @@ li {
   display: flex;
   gap: 1rem;
   flex-wrap: nowrap;
-  animation: scroll 20s linear infinite;
+  /* animation: scroll 20s linear infinite; */
 }
 
-/* .book-scroller[data-animated='true'] {
+.book-scroller[data-animated='true'] {
   overflow: hidden;
   -webkit-mask: linear-gradient(
     90deg,
@@ -68,7 +68,7 @@ li {
 .book-scroller[data-animated='true'] .book-scroller__inner {
   flex-wrap: nowrap;
   animation: scroll 20s linear infinite;
-} */
+}
 
 @keyframes scroll {
   from {
