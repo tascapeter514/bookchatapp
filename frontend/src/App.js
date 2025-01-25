@@ -14,7 +14,15 @@ function App() {
 
   
   // const [matches] = useState(window.matchMedia('(prefers-reduced-motion: reduce)').matches)
-  const  [animationState, setAnimationState] = useState('running')
+  const  [isPlaying, setIsPlaying] = useState(true)
+  const animationRef = useRef(null)
+
+  const toggleAnimation = () => {
+    setIsPlaying(!isPlaying);
+    if (animationRef.current) {
+      animationRef.current.style.animationPlayState = isPlaying ? 'paused' : 'running';
+    }
+  }
 
   
 
@@ -27,19 +35,16 @@ function App() {
   })
 
 
-
-
-
   return (
    
     <div className="App">
       <h2>Check out the latest bestsellers</h2>
       <div className="book-container">
         <div className="book-scroller"
-        
-        
-        {...(animationState ? {'data-animated': true} : {})}>
-          <ul className="bestseller-list book-scroller__inner">
+        onMouseEnter={toggleAnimation}
+        onMouseLeave={toggleAnimation}
+        >
+          <ul className="bestseller-list book-scroller__inner" ref={animationRef}>
               {bestsellerElements}
               {bestsellerElements}
           </ul>
@@ -49,4 +54,6 @@ function App() {
   );
 }
 
+
+// {...(isPlaying ? {'data-animated': true} : {})}
 export default App;

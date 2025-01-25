@@ -33,8 +33,16 @@ li {
 
 .book-scroller {
   max-width: 75%;
-  outline: 3px solid lime;
   margin-inline: auto;
+  overflow: hidden;
+  -webkit-mask: linear-gradient(
+    90deg,
+   transparent,
+   white 20%,
+   white 80%,
+   transparent);
+  mask: linear-gradient(90deg, transparent, white 20%, white 80%,
+  transparent);
 }
 
 .book-scroller__inner {
@@ -42,9 +50,10 @@ li {
   display: flex;
   gap: 1rem;
   flex-wrap: nowrap;
+  animation: scroll 20s linear infinite;
 }
 
-.book-scroller[data-animated='true'] {
+/* .book-scroller[data-animated='true'] {
   overflow: hidden;
   -webkit-mask: linear-gradient(
     90deg,
@@ -59,7 +68,7 @@ li {
 .book-scroller[data-animated='true'] .book-scroller__inner {
   flex-wrap: nowrap;
   animation: scroll 20s linear infinite;
-}
+} */
 
 @keyframes scroll {
   from {
@@ -75,11 +84,7 @@ li {
 }
 
 
-.book-scroller:hover,
-.book-scroller__inner:hover {
-  background-color: red;
 
-}
 
 
 
