@@ -20,6 +20,6 @@ from . import views
 
 urlpatterns = [
     path('', views.homepage, name='homepage'),
-
+    path('book/<uuid:id>', views.book, name='book')
 
 ]
