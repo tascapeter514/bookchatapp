@@ -5,7 +5,7 @@ import './App.css';
 function App() {
 
   const [bestsellers, setBestsellers] = useState([])
-  console.log(bestsellers)
+  
 
   useEffect(() => {
     fetch('http://localhost:8000/')
