@@ -6,10 +6,16 @@
 .book-container {
     position: relative;
     padding: 1rem;
+    border: 1px solid lime;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 1em;
   }
   
   .book-scroller {
-    max-width: 75%;
+    
+    max-width: 50%;
     margin-inline: auto;
     overflow: hidden;
     -webkit-mask: linear-gradient(

@@ -15,10 +15,7 @@ def homepage(request):
     return response
 
 def book(request, id):
-    # result = list(Book.objects.filter(title_id=id).values())
     result = Book.objects.get(title_id=id)
-    print('result:', result)
-    
     response = JsonResponse(model_to_dict(result), safe=False)
     response.headers['Access-Control-Allow-Origin'] = 'http://localhost:3000'
     return response

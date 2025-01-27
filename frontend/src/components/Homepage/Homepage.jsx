@@ -13,9 +13,6 @@ export default function Homepage() {
         .then(data => setBestsellers(data))
     }, [])
 
-
-    
-
   
     const [matches] = useState(window.matchMedia('(prefers-reduced-motion: reduce)').matches)
     const [isPlaying, setIsPlaying] = useState(true)
@@ -41,7 +38,7 @@ export default function Homepage() {
 
     return(
       <div className="book-container">
-        <h2>Check out the latest bestsellers</h2>
+        <h2>Best Sellers</h2>
         <div className="book-scroller"
         onMouseEnter={toggleAnimation}
         onMouseLeave={toggleAnimation}
