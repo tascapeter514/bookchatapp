@@ -15,11 +15,20 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
     """
 
-from django.urls import path
+from django.urls import path, include
+from rest_framework import routers
+from .api import BookViewSet
 from . import views
 
-urlpatterns = [
-    path('', views.homepage, name='homepage'),
-    path('book/<uuid:id>', views.book, name='book')
 
-]
+router = routers.DefaultRouter()
+router.register('api/books', BookViewSet, 'books')
+
+urlpatterns = router.urls
+
+
+# urlpatterns = [
+#     path('', views.homepage, name='homepage'),
+#     path('book/<uuid:id>', views.book, name='book')
+
+# ]
