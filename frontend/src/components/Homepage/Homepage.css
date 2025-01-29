@@ -1,7 +1,7 @@
 
 
 
-/* book scroller */
+/* BOOK SCROLLER */
 
 .book-container {
     position: relative;
@@ -52,6 +52,67 @@
     flex-wrap: nowrap;
     animation: scroll 20s linear infinite;
   }
+
+  .main-content > * {
+    max-width: 500px;
+    margin-inline: auto;
+    margin-top: .5em;
+  }
+
+
+  /* SIGN UP FORM */
+
+  .subtitle-signup {
+    color: red;
+    font-size: 1rem;
+  }
+
+  .hr-signup {
+    border: none;
+    height: 5px;
+    background-color: black;
+    
+  }
+
+  .email-collector {
+    background: #efefef;
+    padding: 2em;
+    /* border: 3px solid black; */
+    width: 80%;
+  }
+
+  label {
+    margin-bottom: .25em;
+    display: inline-block;
+    
+  }
+
+  input {
+    font-family: inherit;
+    text-align: inherit;
+    margin-bottom: .75em;
+    padding: .25em;
+    border: 1px solid #404040;
+    border-radius: 5px;
+
+  }
+
+  .btn {
+    margin-top: .25em;
+    cursor: pointer;
+
+    
+  }
+
+  .btn, input {
+    width: 100%;
+  }
+
+
+
+
+
+
   
   @keyframes scroll {
     from {

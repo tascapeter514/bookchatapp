@@ -38,17 +38,32 @@ export default function Homepage() {
 
     return(
       <div className="book-container">
-        <h2>Best Sellers</h2>
+        
         <div className="book-scroller"
         onMouseEnter={toggleAnimation}
         onMouseLeave={toggleAnimation}
         {...(matches ? {'data-animated': true} : {})}
         >
+        <h2>Best Sellers</h2>
         <ul className="bestseller-list book-scroller__inner" ref={animationRef}>
             {bestsellerElements}
             {bestsellerElements}
         </ul>
         </div>
+        <div className="main-content">
+            <h2>Create a Book Club with your Friends!</h2>
+            <p className='subtitle subtitle-signup'>Register today!</p>
+            <hr className='hr hr-signup'/>
+            <form action="#" method='POST' className='email-collector'>
+                <label htmlFor="userEmail">Email Address: </label>
+                <input type="email" id='userEmail' placeholder='samJohnson@gmail.com' required/>
+                <label htmlFor="userPassword">Password: </label>
+                <input type="password" id='userPassword' placeholder='Enter your password' required/>
+                <button type='submit' className='btn btn-signup'>Register</button>
+            </form>
+        </div>
+
+
       </div>
     )
 }
