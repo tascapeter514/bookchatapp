@@ -6,7 +6,6 @@ export default function Homepage() {
 
     const [bestsellers, setBestsellers] = useState([])
     const [formData, setFormData] = useState({
-        userId: crypto.randomUUID(),
         username: '',
         userPassword: '',
 
