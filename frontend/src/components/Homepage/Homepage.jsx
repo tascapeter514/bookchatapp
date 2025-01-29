@@ -5,10 +5,10 @@ import './Homepage.css'
 export default function Homepage() {
 
     const [bestsellers, setBestsellers] = useState([])
-    const [newUser, setNewUser] = useState({
-        id: '',
-        email: '',
-        password: '',
+    const [formData, setFormData] = useState({
+        userId: crypto.randomUUID(),
+        username: '',
+        userPassword: '',
 
     })
   
@@ -39,16 +39,28 @@ export default function Homepage() {
         )
     })
 
-    function handleSignup(formData) {
-        const username = formData.get('username')
-        console.log(username)
-       
+    console.log(formData)
+    function handleChange(event) {
+        const { name, value, type } = event.target
+        
+        setFormData(prevFormData => {
+            return {
+                ...prevFormData,
+                [name]: value
+            }
+        })
     }
 
-    // fetch('http://localhost:8000/userSignup', {
-    //     method: POST,
-    //     body: formData
-    // })
+    function handleSubmit(event) {
+        event.preventDefault()
+         fetch('http://localhost:8000/userSignup', {
+        method: 'POST',
+        body: JSON.stringify(formData)
+        })
+        event.target.value = ''
+    }
+
+   
 
  
 
@@ -72,11 +84,25 @@ export default function Homepage() {
             <h2>Create a Book Club with your Friends!</h2>
             <p className='subtitle subtitle-signup'>Register today!</p>
             <hr className='hr hr-signup'/>
-            <form action={handleSignup} method='post' className='email-collector'>
+            <form className='email-collector' onSubmit={handleSubmit} method='post'>
                 <label htmlFor="userName">Username: </label>
-                <input type="text" id='username' placeholder='samJohnson514' required/>
+                <input 
+                    type="text" 
+                    id='username' 
+                    placeholder='samJohnson514' 
+                    name='username' 
+                    onChange={handleChange}
+                    value={formData.username} 
+                    required/>
                 <label htmlFor="userPassword">Password: </label>
-                <input type="password" id='userPassword' placeholder='Enter your password' required/>
+                <input 
+                    type="password" 
+                    id='userPassword' 
+                    placeholder='Enter your password' 
+                    name='userPassword' 
+                    onChange={handleChange}
+                    value={formData.userPassword} 
+                    required/>
                 <button className='btn btn-signup'>Register</button>
             </form>
         </div>

@@ -23,6 +23,9 @@ def book(request, id):
 
 def signup(request):
     print(request)
+    response = JsonResponse({'message': 'success'}, safe=False)
+    response.headers['Access-Control-Allow-Origin'] = 'http://localhost:3000'
+    return response
     
     
 
