@@ -5,6 +5,12 @@ import './Homepage.css'
 export default function Homepage() {
 
     const [bestsellers, setBestsellers] = useState([])
+    const [newUser, setNewUser] = useState({
+        id: '',
+        email: '',
+        password: '',
+
+    })
   
 
     useEffect(() => {
@@ -33,6 +39,18 @@ export default function Homepage() {
         )
     })
 
+    function handleSignup(formData) {
+        const username = formData.get('username')
+        console.log(username)
+       
+    }
+
+    // fetch('http://localhost:8000/userSignup', {
+    //     method: POST,
+    //     body: formData
+    // })
+
+ 
 
 
 
@@ -54,12 +72,12 @@ export default function Homepage() {
             <h2>Create a Book Club with your Friends!</h2>
             <p className='subtitle subtitle-signup'>Register today!</p>
             <hr className='hr hr-signup'/>
-            <form action="#" method='POST' className='email-collector'>
-                <label htmlFor="userEmail">Email Address: </label>
-                <input type="email" id='userEmail' placeholder='samJohnson@gmail.com' required/>
+            <form action={handleSignup} method='post' className='email-collector'>
+                <label htmlFor="userName">Username: </label>
+                <input type="text" id='username' placeholder='samJohnson514' required/>
                 <label htmlFor="userPassword">Password: </label>
                 <input type="password" id='userPassword' placeholder='Enter your password' required/>
-                <button type='submit' className='btn btn-signup'>Register</button>
+                <button className='btn btn-signup'>Register</button>
             </form>
         </div>
 

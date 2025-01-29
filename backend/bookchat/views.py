@@ -3,6 +3,7 @@ from .models import Author, Book, Genre
 from django.http import HttpResponse, JsonResponse
 from django.forms.models import model_to_dict
 from django.utils.html import escape
+from django.contrib.auth.models import User
 import json
 
 # Create your views here.
@@ -19,6 +20,13 @@ def book(request, id):
     response = JsonResponse(model_to_dict(result), safe=False)
     response.headers['Access-Control-Allow-Origin'] = 'http://localhost:3000'
     return response
+
+def signup(request):
+    print(request)
+    
+    
+
+
 
     
 
