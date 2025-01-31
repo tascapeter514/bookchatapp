@@ -10,3 +10,8 @@ export interface Book {
     pageCount: number,
     genres: number[]
 }
+
+export interface formData {
+    username: string,
+    password: string,
+}

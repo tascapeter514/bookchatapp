@@ -1,9 +1,11 @@
 import {useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom'
 import './Homepage.css'
-import { Book } from '../../types';
+import { Book, formData } from '../../types';
 
 export default function Homepage() {
+
+   
    
 
 
@@ -25,15 +27,15 @@ export default function Homepage() {
 
   
     const [matches] = useState(window.matchMedia('(prefers-reduced-motion: reduce)').matches)
-    // const [isPlaying, setIsPlaying] = useState(true)
-    const animationRef = useRef(null)
+    const [isPlaying, setIsPlaying] = useState(true)
+    const animationRef = useRef<HTMLUListElement>(null)
 
-    // const toggleAnimation = () => {
-    //     setIsPlaying(!isPlaying);
-    //     if (animationRef.current) {
-    //     animationRef.current.style.animationPlayState = isPlaying ? 'paused' : 'running';
-    //     }
-    // }
+    const toggleAnimation = () => {
+        setIsPlaying(!isPlaying);
+        if (animationRef.current) {
+        animationRef.current.style.animationPlayState = isPlaying ? 'paused' : 'running';
+        }
+    }
 
     const bestsellerElements = bestsellers.map((bestseller: Book)=> {
         return(
@@ -43,39 +45,26 @@ export default function Homepage() {
         )
     })
 
-    // console.log(formData)
-    // function handleChange(event) {
-    //     const { name, value } = event.target
-        
-    //     setFormData(prevFormData => {
-    //         return {
-    //             ...prevFormData,
-    //             [name]: value
-    //         }
-    //     })
-    // }
+  
 
-    // function handleSubmit(event) {
-    //     event.preventDefault()
-    //      fetch('http://localhost:8000/userSignup', {
-    //     method: 'POST',
-    //     body: JSON.stringify(formData)
-    //     })
-    //     event.target.value = ''
-    // }
+    function signUp(formData: formData) {
+        
+         fetch('http://localhost:8000/userSignup', {
+        method: 'POST',
+        body: JSON.stringify(formData)
+        })
+
+        console.log(formData)
+        
+    }
 
    
-
- 
-
-
-
     return(
       <div className="book-container">
         
         <div className="book-scroller"
-        // onMouseEnter={toggleAnimation}
-        // onMouseLeave={toggleAnimation}
+        onMouseEnter={toggleAnimation}
+        onMouseLeave={toggleAnimation}
         {...(matches ? {'data-animated': true} : {})}
         >
         <h2>Best Sellers</h2>
@@ -88,8 +77,8 @@ export default function Homepage() {
             <h2>Create a Book Club with your Friends!</h2>
             <p className='subtitle subtitle-signup'>Register today!</p>
             <hr className='hr hr-signup'/>
-            {/* <form className='email-collector' 
-                // onSubmit={handleSubmit} 
+            <form className='email-collector' 
+                action={signUp as any}
                 method='post'>
                 <label htmlFor="userName">Username: </label>
                 <input 
@@ -97,8 +86,7 @@ export default function Homepage() {
                     id='username' 
                     placeholder='samJohnson514' 
                     name='username' 
-                    onChange={handleChange}
-                    value={formData.username} 
+ 
                     required/>
                 <label htmlFor="userPassword">Password: </label>
                 <input 
@@ -106,11 +94,9 @@ export default function Homepage() {
                     id='userPassword' 
                     placeholder='Enter your password' 
                     name='userPassword' 
-                    onChange={handleChange}
-                    value={formData.userPassword} 
                     required/>
-                <button className='btn btn-signup'>Register</button>
-            </form> */}
+                <button className='btn btn-signup' type='submit'>Register</button>
+            </form>
         </div>
 
 
