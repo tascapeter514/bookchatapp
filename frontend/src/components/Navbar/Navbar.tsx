@@ -6,10 +6,6 @@ import './Navbar.css'
 const Navbar = () => {
     const [showNavbar] = useState(false)
 
-
-
-
-
     return(
         <header>
             <div className="container container-nav">
@@ -26,7 +22,7 @@ const Navbar = () => {
                         <li><Link to='#'>Books</Link></li>
                         <li><Link to='#'>Authors</Link></li>
                         <li><Link to='#'>About</Link></li>
-                        <li><Link to='#'>Log In</Link></li>
+                        <li><Link to='/login'>Log In</Link></li>
                     </ul>
                 </nav>
             </div> {/* .container */}
