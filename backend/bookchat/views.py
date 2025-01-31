@@ -13,17 +13,17 @@ import json
 
 # Create your views here.
 
-def homepage(request):
-    best_sellers = list(Book.objects.filter(genres_id=18).exclude(imageLinks='None').values())
+# def homepage(request):
+#     best_sellers = list(Book.objects.filter(genres_id=18).exclude(imageLinks='None').values())
 
-    response = JsonResponse(best_sellers, safe=False)
-    return response
+#     response = JsonResponse(best_sellers, safe=False)
+#     return response
 
-def book(request, id):
-    result = Book.objects.get(title_id=id)
-    response = JsonResponse(model_to_dict(result), safe=False)
+# def book(request, id):
+#     result = Book.objects.get(title_id=id)
+#     response = JsonResponse(model_to_dict(result), safe=False)
 
-    return response
+#     return response
 
 
 @csrf_exempt
