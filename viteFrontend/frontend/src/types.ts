@@ -1,7 +1,7 @@
 
 export interface formData {
     username: string,
-    password: string,
+    userPassword: string,
 }
 
 export type ISBN_Identifier = {

@@ -4,7 +4,7 @@ import './Navbar.css'
 
 
 const Navbar = () => {
-    const [showNavbar, setShowNavbar] = useState(false)
+    const [showNavbar] = useState(false)
 
 
 

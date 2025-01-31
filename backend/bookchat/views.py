@@ -44,11 +44,7 @@ def signup(request):
 
 
 
-    print(request.body)
-    username = request.POST.get('username')
-    print('username:', username)
-    response = JsonResponse({'message': 'success'}, safe=False)
-    return response
+    
     
     
 

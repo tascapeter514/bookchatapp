@@ -1,7 +1,7 @@
 import {useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom'
 import './Homepage.css'
-import { Book, formData } from '../../types';
+import { Book } from '../../types';
 
 export default function Homepage() {
 
@@ -9,8 +9,7 @@ export default function Homepage() {
    
     const [bestsellers, setBestsellers] = useState<Book[]>([])
 
-  
-    console.log("bestsellers:", bestsellers)
+
     useEffect(() => {
         fetch('http://localhost:8000/')
         .then(res => res.json())
@@ -39,15 +38,26 @@ export default function Homepage() {
 
   
 
-    function signUp(formData: formData) {
+    function signUp(formData: FormData) {
+        const data = Object.fromEntries(formData)
+        console.log('data:', data)
+        
         
          fetch('http://localhost:8000/userSignup', {
         method: 'POST',
-        body: JSON.stringify(formData)
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
         })
+        .then(response => response.json())
+        .then(data => console.log('Response:', data))
+        .catch(error => console.error('Error:', error)); 
 
-        
+        // console.log('form data:', formData)
     }
+
+    
 
    
     return(
