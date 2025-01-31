@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import {useParams } from 'react-router-dom'
-import { Book } from '../../types'
+import { Book, ISBN_Identifier } from '../../types'
 
 export default function Bookpage() {
     const params = useParams();
@@ -11,6 +11,9 @@ export default function Bookpage() {
         .then(res => res.json())
         .then(data => setBook(data))
     }, [params.id])
+
+    console.log('book:', book)
+    
 
     
     return(
@@ -23,8 +26,12 @@ export default function Bookpage() {
                     <button>Add to Bookshelf</button>
                     <p>{book.description}</p>
                     <p>Publisher: {book.publisher}</p>
-                    <p>{book.ISBN_Identifiers[0]['type']}: {book.ISBN_Identifiers[0]['identifier']}</p>
-                    <p>{book.ISBN_Identifiers[1]['type']}: {book.ISBN_Identifiers[1]['identifier']}</p>
+                    <ul>
+                        {book.ISBN_Identifiers.map((obj: ISBN_Identifier, index: number) => (
+                            <li key={index}> {obj.type} : {obj.identifier}</li>
+                        ))}
+
+                    </ul>
                 </div>
 
             ) : <h2>Loading...</h2>}

@@ -7,16 +7,8 @@ export default function Homepage() {
 
    
    
-
-
-
-
     const [bestsellers, setBestsellers] = useState<Book[]>([])
-    // const [formData, setFormData] = useState({
-    //     username: '',
-    //     userPassword: '',
 
-    // })
   
     console.log("bestsellers:", bestsellers)
     useEffect(() => {
@@ -54,7 +46,6 @@ export default function Homepage() {
         body: JSON.stringify(formData)
         })
 
-        console.log(formData)
         
     }
 
