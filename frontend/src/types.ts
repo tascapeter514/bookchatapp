@@ -21,3 +21,5 @@ export interface Book {
     pageCount: number,
     genres: number[]
 }
+
+export const GET_ERRORS = 'GET_ERRORS'
