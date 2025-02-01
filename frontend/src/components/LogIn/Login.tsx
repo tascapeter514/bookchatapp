@@ -9,7 +9,7 @@ export default function Login() {
     // REPEATS SIGN UP FORM LOGIC
     function logIn(formData: FormData) {
         const data = Object.fromEntries(formData)
-        fetch('http://localhost:8000/userLogin', {
+        fetch('http://localhost:8000/api/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -41,7 +41,7 @@ export default function Login() {
                         type="password"
                         id='userPassword-login'
                         placeholder='Enter your password'
-                        name='userPassword-login'
+                        name='password'
                         required />
                     <button className="btn btn-login">Log In</button>
                        

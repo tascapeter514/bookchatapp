@@ -43,13 +43,13 @@ export default function Homepage() {
         console.log('data:', data)
         
         
-         fetch('http://localhost:8000/api/auth/register', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-        })
+        fetch('http://localhost:8000/api/auth/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+            })
         .then(response => response.json())
         .then(data => console.log('Response:', data))
         .catch(error => console.error('Error:', error)); 
