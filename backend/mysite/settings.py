@@ -54,10 +54,11 @@ INSTALLED_APPS = [
     'bookchat',
     'rest_framework',
     'knox',
+    'accounts',
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication')
+    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',)
 }
 
 MIDDLEWARE = [

@@ -6,7 +6,7 @@ import { Book } from '../../types';
 export default function Homepage() {
 
    
-   
+
     const [bestsellers, setBestsellers] = useState<Book[]>([])
 
 
@@ -38,12 +38,12 @@ export default function Homepage() {
 
   
 
-    function signUp(formData: FormData) {
+    function register(formData: FormData) {
         const data = Object.fromEntries(formData)
         console.log('data:', data)
         
         
-         fetch('http://localhost:8000/userSignup', {
+         fetch('http://localhost:8000/api/auth/register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -79,7 +79,7 @@ export default function Homepage() {
             <p className='subtitle subtitle-signup'>Register today!</p>
             <hr className='hr hr-signup'/>
             <form className='email-collector' 
-                action={signUp as any}
+                action={register as any}
                 method='post'>
                 <label htmlFor="userName">Username: </label>
                 <input 
@@ -92,9 +92,9 @@ export default function Homepage() {
                 <label htmlFor="userPassword">Password: </label>
                 <input 
                     type="password" 
-                    id='userPassword' 
+                    id='password' 
                     placeholder='Enter your password' 
-                    name='userPassword' 
+                    name='password' 
                     required/>
                 <button className='btn btn-signup' type='submit'>Register</button>
             </form>

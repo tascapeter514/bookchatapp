@@ -9,6 +9,10 @@ export type ISBN_Identifier = {
     identifier?: string;
 }
 
+// export interface User {
+
+// }
+
 export interface Book {
     title_id: string,
     title: string,

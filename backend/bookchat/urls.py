@@ -22,7 +22,6 @@ router = routers.DefaultRouter()
 router.register('', BestsellerViewSet, 'homepage')
 router.register(r'book', BookViewSet, 'book')
 
-
 urlpatterns = router.urls
 
 
