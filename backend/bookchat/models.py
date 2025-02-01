@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -17,7 +18,7 @@ class Book(models.Model):
     ratingsCount = models.IntegerField(null=True, blank=True, default=0)
     imageLinks = models.JSONField(default=dict, blank=True)
     pageCount = models.IntegerField(null=True, blank=True)
-    # genres = models.OneToManyField(Genre, related_name='titles')
+    readers = models.ManyToManyField(User, related_name='readers', blank=True)
     genres = models.ForeignKey(Genre, on_delete=models.CASCADE, null=True, blank=True)
 
 

@@ -21,3 +21,32 @@ svg {
 li {
   list-style: none;
 }
+
+
+
+label {
+  margin-bottom: .25em;
+  display: inline-block;
+  
+}
+
+input {
+  font-family: inherit;
+  text-align: inherit;
+  margin-bottom: .75em;
+  padding: .25em;
+  border: 1px solid #404040;
+  border-radius: 5px;
+
+}
+
+.btn {
+  margin-top: .25em;
+  cursor: pointer;
+
+  
+}
+
+.btn, input {
+  width: 100%;
+}

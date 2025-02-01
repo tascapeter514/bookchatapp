@@ -29,6 +29,18 @@ class BookViewSet(viewsets.ModelViewSet):
         except ValidationError:
             return Response({'error': 'Invalid UUID format'}, status=400)
         
+
+#BOOKSHELF VIEWSET
+class BookshelfViewSet(viewsets.ModelViewSet):
+    permission_classes = [
+        permissions.IsAuthenticated
+    ]
+
+    def get_queryset(self):
+        return self.request.user.books.all()
+    
+    serializer_class = BookSerializer
+        
     
 
 
