@@ -1,57 +1,60 @@
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-// import { FormEvent, FC } from 'react';
-import { HandleLogin } from './types.ts'
-import { returnErrors } from './messages.tsx'
+import { BrowserRouter } from 'react-router-dom'
+import { useState } from 'react';
+import {  CurrentUser, HandleLogout } from './types.ts'
 import Navbar from './components/Navbar/Navbar.tsx'
-import Homepage from './components/Homepage/Homepage.tsx'
-import Bookpage from './components/Bookpage/Bookpage.tsx'
-import Login from './components/LogIn/Login.tsx'
-import UserDashboard from './components/UserDashboard/UserDashboard.tsx'
-import AuthRequired from './components/common/authRequired.tsx'
+import AppRoutes from './AppRoutes.tsx'
 import './App.css';
+
+
 
 function App() {
 
-  
+  const [currentUser, setCurrentUser] = useState<CurrentUser | null>(null)
 
-    // REPEATS SIGN UP FORM LOGIC
-  const handleLogin: HandleLogin = async (formData) => {
+
+  const isAuthenticated = (): boolean => {
+    const token = localStorage.getItem('authToken');
+    if (!token) {
+      return false
+    } else {
+      return true
+    }
+  }
+
+  const handleLogout: HandleLogout = async () => {
+    console.log('handle logout check')
+    const token = localStorage.getItem('authToken');
     try {
-      const data = Object.fromEntries(formData);
-
-      const response = fetch('http://localhost:8000/api/auth/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    });
-    const result = await (await response).json()
-    console.log('Response:', result)
-
-    } catch (err: any) {
-      returnErrors(err.response.data, err.response.status)
-
+      if (token) {
+        await fetch('http:localhost:8000/api/auth/logout', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization' : `Token ${JSON.parse(token)}`
+          }
+        });
+      }
+    } catch (error) {
+      console.error('Error during logout', error)
+    } finally {
+      // Clear client-side data regardless of server response
+      localStorage.removeItem('authToken')
+      setCurrentUser(null)
     }
   };
 
-
+  
+  console.log('current user:', currentUser)
 
   
+
   return (
     <BrowserRouter>
-      <Navbar></Navbar>
+      <Navbar auth={isAuthenticated} logout={handleLogout}></Navbar>
+      <AppRoutes isAuthenticated={isAuthenticated} currentUser={currentUser} setCurrentUser={setCurrentUser} />
      
-      <Routes>
-        <Route path='/' element={<Homepage />} />
-        <Route path='/book/:id' element={<Bookpage />} />
-        <Route path='/login' element={<Login login={handleLogin} />}></Route>
-        <Route element={<AuthRequired />}>
-            <Route path='/userDashboard' element={<UserDashboard />}></Route>
-        </Route>
-        
-      </Routes>
+      
     </BrowserRouter>
 
 

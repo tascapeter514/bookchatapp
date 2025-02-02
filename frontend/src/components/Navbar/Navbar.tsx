@@ -1,10 +1,34 @@
-import { useState } from 'react'
+import { useState, FC } from 'react'
 import { Link } from 'react-router-dom'
+import { HandleLogout } from '../../types.ts'
 import './Navbar.css'
 
 
-const Navbar = () => {
+interface NavProps {
+    auth: () => boolean,
+    logout: HandleLogout
+}
+
+
+const Navbar: FC<NavProps> = ({auth, logout}) => {
     const [showNavbar] = useState(false)
+    const isAuthenticated = auth()
+
+
+   
+
+    const guestLinks = (
+        <li><Link to='/login'>Log In</Link></li>
+    )
+
+    const authLinks = (
+        <li>
+            <Link to='/userDashboard'>Profile</Link>
+            <button onClick={logout}>Logout</button>
+        </li>
+
+    )
+    
 
     return(
         <header>
@@ -22,7 +46,7 @@ const Navbar = () => {
                         <li><Link to='#'>Books</Link></li>
                         <li><Link to='#'>Authors</Link></li>
                         <li><Link to='#'>About</Link></li>
-                        <li><Link to='/login'>Log In</Link></li>
+                        { isAuthenticated ? authLinks : guestLinks}
                     </ul>
                 </nav>
             </div> {/* .container */}

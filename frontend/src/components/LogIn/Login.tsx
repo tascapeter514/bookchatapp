@@ -1,10 +1,11 @@
 import './Login.css'
 import { FC } from 'react'
-import { HandleLogin } from '../../types'
+import { HandleLogin, CurrentUser } from '../../types'
 
 
 interface LoginProps {
-    login: HandleLogin
+    login: HandleLogin,
+    user: CurrentUser | null
 }
 
 const Login: FC<LoginProps> = ({login}) => {
@@ -36,6 +37,7 @@ const Login: FC<LoginProps> = ({login}) => {
                        
                 </form>
             </div>
+
 
     )
 }
