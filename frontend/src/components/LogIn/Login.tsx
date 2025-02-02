@@ -1,32 +1,21 @@
 import './Login.css'
-import { returnErrors } from '../../messages.tsx'
+import { FC } from 'react'
+import { HandleLogin } from '../../types'
 
 
+interface LoginProps {
+    login: HandleLogin
+}
 
-export default function Login() {
+const Login: FC<LoginProps> = ({login}) => {
 
 
-    // REPEATS SIGN UP FORM LOGIC
-    function logIn(formData: FormData) {
-        const data = Object.fromEntries(formData)
-        fetch('http://localhost:8000/api/auth/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.json())
-        .then(data => console.log('Response', data))
-        .catch(err => returnErrors(err.response.data, err.response.status))
-
-    }
     return(
         <div className="login-container">
             <h2>Log In</h2>
             <hr className='hr hr-login'/>
             <form 
-                action={logIn as any}
+                action={login as any}
                 className='login-form'
                 method='post'>
                     <label htmlFor="username-login">Username: </label>
@@ -50,3 +39,5 @@ export default function Login() {
 
     )
 }
+
+export default Login

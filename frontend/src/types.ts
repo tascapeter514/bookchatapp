@@ -9,9 +9,7 @@ export type ISBN_Identifier = {
     identifier?: string;
 }
 
-// export interface User {
-
-// }
+export type HandleLogin = (formData: FormData) => Promise<void>
 
 export interface Book {
     title_id: string,
