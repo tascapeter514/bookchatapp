@@ -1,0 +1,25 @@
+
+
+.tabs-container {
+    border: 1px solid lime;
+
+}
+
+.tabs_panels {
+    color: white;
+}
+
+#books {
+    background-color: red;
+    border: 1px solid red;
+}
+
+#bookclubs {
+    background-color: blue;
+    border: 1px solid blue;
+}
+
+#settings {
+    background-color: purple;
+    border: 1px solid purple;
+}
