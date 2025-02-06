@@ -1,26 +1,28 @@
 import './UserDashboard.css'
-import { FC, useState } from 'react'
-import { CurrentUser } from '../../types'
+import { FC, useState, useEffect } from 'react'
+import { CurrentUser, Book } from '../../types'
 
 interface dashProps {
     user: CurrentUser | null
 }
 
 const UserDashboard: FC<dashProps> = ({user}) => {
-    console.log('user:', user)
+    // console.log('user:', user)
     
     const [activeTab, setActiveTab] = useState(0)
     const activeUser = localStorage.getItem('currentUser')
-
-
-   const handleCurrentTab = (index: number) => {
+    const switchTab = (index: number) => {
         setActiveTab(index)
-   }
-
-   
-
+    }
+    const [userBooks, setUserBooks] = useState<Book[]>([])
 
 
+   console.log('user books:', userBooks)
+   useEffect(() => {
+    fetch('http://localhost:8000/api/userbookshelf/')
+    .then(res => res.json())
+    .then(data => setUserBooks(data))
+    }, [])
 
     return(
         <div className='dashboard-container'>
@@ -28,15 +30,15 @@ const UserDashboard: FC<dashProps> = ({user}) => {
                 <div className="tabs-container">
                     <ul arial-labelledby='tabs-title'>
                         <li 
-                            onClick={() => handleCurrentTab(0)}
+                            onClick={() => switchTab(0)}
                             className={activeTab === 0 ? 'active' : ""}><a id='tab-1' href="#books">Books</a></li>
-                        <li onClick={() => handleCurrentTab(1)}
+                        <li onClick={() => switchTab(1)}
                             className={activeTab === 1 ? 'active' : ""}><a id='tab-2' href="#bookclubs">BookClubs</a></li>
-                        <li onClick={() => handleCurrentTab(2)}
+                        <li onClick={() => switchTab(2)}
                             className={activeTab === 2 ? 'active' : ""}><a id='tab-3' href="#settings">Settings</a></li>
                     </ul>
                 </div>
-                <div className="tabs_panels flow">
+                <div className="tab-panels-container container-flex">
                     {activeTab === 0 && (
                         <div id='books' aria-labelledby='tab-1'>Books</div>
                     )}

@@ -13,6 +13,14 @@ class BestsellerViewSet(viewsets.ModelViewSet):
     ]
     serializer_class = BookSerializer
 
+#USER BOOKS VIEWSET
+class UserbooksViewSet(viewsets.ModelViewSet):
+    queryset = Book.objects.filter(publisher='Penguin').values()
+    permission_classes = [
+        permissions.AllowAny
+    ]
+    serializer_class = BookSerializer
+
 
 #BOOK VIEWSET
 class BookViewSet(viewsets.ModelViewSet):

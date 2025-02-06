@@ -1,25 +1,81 @@
 
 
+.dashboard-container {
+    display: flex;
+}
+
+
+
+main {
+    width: 70%;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+.sidebar {
+    width: 20%;
+    border: 1px solid purple
+}
+
+
+
+
 .tabs-container {
     border: 1px solid lime;
+    max-width: 600px;
+    padding: .5em;
+    
+
 
 }
 
-.tabs_panels {
+.tabs-container > ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: 1rem;
+    justify-content: center;
+
+}
+
+.tabs-container a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.25rem;
+}
+
+.tabs-container li:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 0.25em;
+    text-underline-offset: 0.25em;
+    color: red;
+}
+
+.tab-panels-container {
     color: white;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: right;
 }
 
 #books {
     background-color: red;
     border: 1px solid red;
+    width: 100%;
 }
 
 #bookclubs {
     background-color: blue;
     border: 1px solid blue;
+    width: 100%;
 }
 
 #settings {
     background-color: purple;
     border: 1px solid purple;
+    width: 100%;
 }

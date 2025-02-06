@@ -16,11 +16,12 @@ Including another URLconf
     """
 
 from rest_framework import routers
-from.api import BestsellerViewSet, BookViewSet
+from.api import BestsellerViewSet, BookViewSet, UserbooksViewSet
 
 router = routers.DefaultRouter()
 router.register('', BestsellerViewSet, 'homepage')
 router.register(r'book', BookViewSet, 'book')
+router.register('api/userbookshelf', UserbooksViewSet, 'userbooks')
 
 urlpatterns = router.urls
 
