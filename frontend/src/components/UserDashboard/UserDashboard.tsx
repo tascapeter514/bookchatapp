@@ -18,11 +18,13 @@ const UserDashboard: FC<dashProps> = ({user}) => {
 
     const userBooksElements = userBooks.map((userBookElement) => {
 
-        return(<li key={userBookElement.title_id}>
+        return(<li key={userBookElement.title_id} className='userBook-element'>
+            <img src={userBookElement.imageLinks['smallThumbnail']} alt="book-cover" />
             <h3>{userBookElement.title}</h3>
-            {userBookElement.authors.map((author) => {
-                return(<li key={author.author_id}>{author.name}</li>)
-            })}
+            <ul>{userBookElement.authors.map((author) => {
+                return(<li className='bookElements-authors' key={author.author_id}>{author.name}</li>)
+            })}</ul>
+            <p>{userBookElement.averageRating}</p>
             
         </li>)
     })

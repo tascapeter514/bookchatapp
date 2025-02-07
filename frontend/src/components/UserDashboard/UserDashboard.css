@@ -60,8 +60,43 @@ main {
     max-width: 900px;
     margin: 0 auto;
     display: flex;
-    justify-content: right;
+    text-align: center;
+    
 }
+
+
+
+.userBook-element {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1em;
+    justify-content: center;
+    /* border: 1px solid purple; */
+}
+
+.userBook-element > * {
+    border: 1px solid lime;
+    max-width: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: .25em;
+}
+
+.userBook-element > ul {
+    width: 100%;
+    padding: 0;
+    
+    
+}
+
+.bookElements-authors {
+    border: 1px solid red;
+    padding: .25em;
+
+}
+
+
 
 #books {
     border: 1px solid red;

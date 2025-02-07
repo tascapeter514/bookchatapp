@@ -15,12 +15,8 @@ class BestsellerViewSet(viewsets.ModelViewSet):
 
 #USER BOOKS VIEWSET
 class UserbooksViewSet(viewsets.ModelViewSet):
-    penguin_titles = Book.objects.filter(publisher='Penguin').prefetch_related('author')
-    sample_author = Author.objects.filter(name='Liz Moore').prefetch_related('titles')
-    for author in sample_author:
-        book_titles = [book.title for book in author.titles.all()]
-        print(book_titles)
-    # print('sample author:', sample_author)
+    penguin_titles = Book.objects.filter(publisher='Penguin').prefetch_related('author').select_related('genres')
+
 
     queryset = penguin_titles
     permission_classes = [
