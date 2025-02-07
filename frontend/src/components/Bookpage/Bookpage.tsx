@@ -12,7 +12,7 @@ export default function Bookpage() {
         .then(data => setBook(data))
     }, [params.id])
 
-    
+    console.log('book:', book)
 
     
     return(

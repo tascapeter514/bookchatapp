@@ -1,5 +1,6 @@
 import './UserDashboard.css'
 import { FC, useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { CurrentUser, Book } from '../../types'
 
 interface dashProps {
@@ -16,20 +17,20 @@ const UserDashboard: FC<dashProps> = ({user}) => {
     }
     const [userBooks, setUserBooks] = useState<Book[]>([])
 
-    const userBooksElements = userBooks.map((userBookElement) => {
+    const userBooksElements = userBooks.map((userBookElement: Book) => {
 
         return(<li key={userBookElement.title_id} className='userBook-element'>
-            <img src={userBookElement.imageLinks['smallThumbnail']} alt="book-cover" />
-            <h3>{userBookElement.title}</h3>
-            <ul>{userBookElement.authors.map((author) => {
-                return(<li className='bookElements-authors' key={author.author_id}>{author.name}</li>)
-            })}</ul>
-            <p>{userBookElement.averageRating}</p>
+                <Link to={`/book/${userBookElement.title_id}`}><img src={userBookElement.imageLinks['smallThumbnail']} alt="book-cover" /></Link>
+                <h3>{userBookElement.title}</h3>
+                <ul>{userBookElement.authors.map((author) => {
+                    return(<li className='bookElements-authors' key={author.author_id}>{author.name}</li>)
+                })}</ul>
+                <p>{userBookElement.averageRating}</p>
             
         </li>)
     })
 
-    console.log('user books elements:', userBooksElements )
+    // console.log('user books elements:', userBooksElements )
 
 
    console.log('user books:', userBooks)
