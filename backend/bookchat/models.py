@@ -31,6 +31,13 @@ class Author(models.Model):
     links = models.JSONField()
     titles = models.ManyToManyField(Book, related_name="author")
 
+class Bookshelf(models.Model):
+    bookshelf_id = models.UUIDField(primary_key=True)
+    name = models.CharField(max_length=300)
+    titles = models.ManyToManyField(Book, related_name='books')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='users')
+
+
 
 
     

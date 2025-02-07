@@ -1,8 +1,8 @@
-from .models import Book, Author
+from .models import Book, Author, Bookshelf
 from rest_framework import viewsets, permissions
 from django.shortcuts import get_object_or_404
 from django.core.exceptions import ValidationError
-from .serializers import BookSerializer, UserBookSerializer
+from .serializers import BookSerializer, UserBookSerializer, BookshelfSerializer
 from rest_framework.response import Response
 
 #BESTSELLER VIEWSET
@@ -44,13 +44,14 @@ class BookViewSet(viewsets.ModelViewSet):
 #BOOKSHELF VIEWSET
 class BookshelfViewSet(viewsets.ModelViewSet):
     permission_classes = [
-        permissions.IsAuthenticated
+        permissions.AllowAny
     ]
 
-    def get_queryset(self):
-        return self.request.user.books.all()
+    def list(self, request):
+        queryset = Bookshelf.objects.select_related('users')
+        print('list queryset:', queryset)
     
-    serializer_class = BookSerializer
+    serializer_class = BookshelfSerializer
 
 
         
