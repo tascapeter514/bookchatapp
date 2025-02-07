@@ -16,6 +16,19 @@ const UserDashboard: FC<dashProps> = ({user}) => {
     }
     const [userBooks, setUserBooks] = useState<Book[]>([])
 
+    const userBooksElements = userBooks.map((userBookElement) => {
+
+        return(<li key={userBookElement.title_id}>
+            <h3>{userBookElement.title}</h3>
+            {userBookElement.authors.map((author) => {
+                return(<li key={author.author_id}>{author.name}</li>)
+            })}
+            
+        </li>)
+    })
+
+    console.log('user books elements:', userBooksElements )
+
 
    console.log('user books:', userBooks)
    useEffect(() => {
@@ -40,7 +53,10 @@ const UserDashboard: FC<dashProps> = ({user}) => {
                 </div>
                 <div className="tab-panels-container container-flex">
                     {activeTab === 0 && (
-                        <div id='books' aria-labelledby='tab-1'>Books</div>
+                        <div id='books' aria-labelledby='tab-1'>
+                            <h2>Books</h2>
+                            <ul>{userBooksElements}</ul>
+                        </div>
                     )}
                     {activeTab === 1 && (
                         <div id='bookclubs' aria-labelledby='tab-2'>BookClubs</div>
@@ -52,6 +68,7 @@ const UserDashboard: FC<dashProps> = ({user}) => {
                         </div>
                     )}
                 </div>
+                
 
             </main>
 

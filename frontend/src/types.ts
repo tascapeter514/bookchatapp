@@ -32,7 +32,10 @@ export interface CurrentUser {
     token: string
 }
 
-
+export type Author = {
+    name: string,
+    author_id: string,
+}
 
 export interface Book {
     title_id: string,
@@ -44,7 +47,8 @@ export interface Book {
     ratingsCount: number,
     imageLinks: {smallThumbnail?: string, thumbnail?: string},
     pageCount: number,
-    genres: number[]
+    genres: number[],
+    authors: Author[]
 }
 
 export const GET_ERRORS = 'GET_ERRORS'

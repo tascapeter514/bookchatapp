@@ -1,8 +1,8 @@
-from .models import Book
+from .models import Book, Author
 from rest_framework import viewsets, permissions
 from django.shortcuts import get_object_or_404
 from django.core.exceptions import ValidationError
-from .serializers import BookSerializer
+from .serializers import BookSerializer, UserBookSerializer
 from rest_framework.response import Response
 
 #BESTSELLER VIEWSET
@@ -15,11 +15,18 @@ class BestsellerViewSet(viewsets.ModelViewSet):
 
 #USER BOOKS VIEWSET
 class UserbooksViewSet(viewsets.ModelViewSet):
-    queryset = Book.objects.filter(publisher='Penguin').values()
+    penguin_titles = Book.objects.filter(publisher='Penguin').prefetch_related('author')
+    sample_author = Author.objects.filter(name='Liz Moore').prefetch_related('titles')
+    for author in sample_author:
+        book_titles = [book.title for book in author.titles.all()]
+        print(book_titles)
+    # print('sample author:', sample_author)
+
+    queryset = penguin_titles
     permission_classes = [
         permissions.AllowAny
     ]
-    serializer_class = BookSerializer
+    serializer_class = UserBookSerializer
 
 
 #BOOK VIEWSET

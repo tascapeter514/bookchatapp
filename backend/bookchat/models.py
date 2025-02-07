@@ -29,7 +29,7 @@ class Author(models.Model):
     birth_date = models.CharField(max_length=250, null=True, blank=True)
     death_date = models.CharField(max_length=250, null=True, blank=True)
     links = models.JSONField()
-    titles = models.ManyToManyField(Book, related_name="titles")
+    titles = models.ManyToManyField(Book, related_name="author")
 
 
 
