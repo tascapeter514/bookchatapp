@@ -20,12 +20,17 @@ const Bookpage: React.FC<bookPageProps> = ({user}) => {
     console.log('book:', book)
 
     function addToBookshelf() {
+        const bookshelf_title = {
+            title_id: book?.title_id
+
+        } 
         try {
-            fetch('http://localhost:8000/api/bookshelf', {
-                method: 'POST',
+            fetch(`http://localhost:8000/api/bookshelf/6968a38d3a1e4e358cc70f680816b859/`, {
+                method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'
-                }
+                },
+                body: JSON.stringify(bookshelf_title)
             })
 
         } catch(err) {

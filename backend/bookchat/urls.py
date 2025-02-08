@@ -22,19 +22,10 @@ router = routers.DefaultRouter()
 router.register('', BestsellerViewSet, 'homepage')
 router.register(r'book', BookViewSet, 'book')
 router.register('api/userbookshelf', UserbooksViewSet, 'userbooks')
-router.register('api/bookshelf', BookshelfViewSet, 'bookshelf' )
+router.register(r'api/bookshelf', BookshelfViewSet, 'bookshelf' )
+
 
 urlpatterns = router.urls
 
 
-
-# from django.urls import path
-# from . import views
-
-# urlpatterns = [
-#     path('', views.homepage, name='homepage'),
-#     path('book/<uuid:id>', views.book, name='book'),
-#     path('userSignup', views.signup, name='signup')
-
-# ]
 

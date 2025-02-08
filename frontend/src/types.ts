@@ -54,6 +54,14 @@ export type Author = {
     author_id: string,
 }
 
+export interface Bookshelf {
+    bookshelf_id: string,
+    name: string,
+    user: number,
+    titles: Book[]
+
+}
+
 export interface Book {
     title_id: string,
     title: string,

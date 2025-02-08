@@ -1,7 +1,7 @@
 import './UserDashboard.css';
 import { FC, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { CurrentUser, Book, ActiveUser } from '../../types';
+import { CurrentUser, Book, ActiveUser, Bookshelf } from '../../types';
 import { v4 as uuidv4 } from 'uuid';
 
 interface dashProps {
@@ -17,6 +17,7 @@ const UserDashboard: FC<dashProps> = ({user}) => {
     const switchTab = (index: number) => {
         setActiveTab(index)
     }
+    const [bookShelves, setBookShelves] = useState<Bookshelf[]>([])
     const [userBooks, setUserBooks] = useState<Book[]>([])
     const [showInput, setShowInput] = useState(false)
 
@@ -34,12 +35,19 @@ const UserDashboard: FC<dashProps> = ({user}) => {
     })
 
     // console.log('user books elements:', userBooksElements )
-//    console.log('user books:', userBooks)
+ 
+   console.log('bookshelves', bookShelves)
    useEffect(() => {
-    fetch('http://localhost:8000/api/userbookshelf/')
+    fetch('http://localhost:8000/api/bookshelf/')
     .then(res => res.json())
-    .then(data => setUserBooks(data))
+    .then(data => {
+        setBookShelves(data)
+        console.log(data[0]['titles'])
+        setUserBooks(data[0]['titles'])
+
+    } )
     }, [])
+
 
     function createBookshelf(formData: FormData) {
         console.log('form data:', formData)
@@ -66,7 +74,7 @@ const UserDashboard: FC<dashProps> = ({user}) => {
             .catch(err => console.error('Failed to create bookshelf', err))
 
         }
-
+  console.log('user books:', userBooks)
     return(
         <div className='dashboard-container'>
             <main>

@@ -2,6 +2,7 @@ from .models import Book, Author, Bookshelf
 from rest_framework import viewsets, permissions
 from django.shortcuts import get_object_or_404
 from django.core.exceptions import ValidationError
+from rest_framework.decorators import action
 from .serializers import BookSerializer, UserBookSerializer, BookshelfSerializer
 from rest_framework.response import Response
 
@@ -44,6 +45,13 @@ class BookViewSet(viewsets.ModelViewSet):
 #BOOKSHELF VIEWSET
 class BookshelfViewSet(viewsets.ModelViewSet):
     serializer_class = BookshelfSerializer
+    queryset = Bookshelf.objects.all()
+
+    def list(self, request):
+        bookshelves = Bookshelf.objects.filter(user_id=8).prefetch_related('titles__author')
+        print('bookshelves:', bookshelves)
+        serializer = self.get_serializer(bookshelves, many=True)
+        return Response(serializer.data)
 
     def perform_create(self, request):
         print('request data:', request.data)
@@ -51,6 +59,26 @@ class BookshelfViewSet(viewsets.ModelViewSet):
         serializer.is_valid(raise_exception=True)
         print('serializer:', serializer)
         bookshelf = serializer.save()
+
+
+    def partial_update(self, request, pk=None):
+        print(request.data)
+        bookshelf = self.get_object()
+        print(bookshelf)
+        title_id = request.data.get('title_id')
+        print(title_id, bookshelf)
+
+        if title_id:
+            try:
+                book = Book.objects.get(title_id=title_id)
+                bookshelf.titles.add(book)
+                bookshelf.save()
+
+            except Book.DoesNotExist:
+                return Response({'error:', 'Book not found'})
+            
+        serializer = self.get_serializer(bookshelf)
+        return Response(serializer.data)
 
 
     
