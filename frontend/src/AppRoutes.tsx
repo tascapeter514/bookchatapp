@@ -59,7 +59,7 @@ const AppRoutes: FC<AppRoutesProps> = ({ currentUser, setCurrentUser, isAuthenti
         <Routes>
             
             <Route path='/' element={<Homepage />} />
-            <Route path='/book/:id' element={<Bookpage />} />
+            <Route path='/book/:id' element={<Bookpage user={currentUser} />} />
             <Route path='/login' element={<Login login={handleLogin} user={currentUser} />}></Route>
             <Route element={<AuthRequired auth={isAuthenticated} />}>
                 <Route path='/userDashboard' element={<UserDashboard user={currentUser} />}></Route>

@@ -1,8 +1,13 @@
 import {useState, useEffect} from 'react'
 import {useParams } from 'react-router-dom'
-import { Book, ISBN_Identifier } from '../../types'
+import { Book, ISBN_Identifier, CurrentUser } from '../../types'
 
-export default function Bookpage() {
+interface bookPageProps {
+    user: CurrentUser | null
+}
+
+
+const Bookpage: React.FC<bookPageProps> = ({user}) => {
     const params = useParams();
     const [book, setBook] = useState<Book | null>(null);
 
@@ -14,6 +19,20 @@ export default function Bookpage() {
 
     console.log('book:', book)
 
+    function addToBookshelf() {
+        try {
+            fetch('http://localhost:8000/api/bookshelf', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+
+        } catch(err) {
+            console.error('Error adding book to bookshelf')
+        }
+    }
+
     
     return(
         
@@ -22,7 +41,7 @@ export default function Bookpage() {
                 <div className="bookpage-detail">
                     <h1>{book.title}</h1>
                     <img src={book.imageLinks['smallThumbnail']} alt="" />
-                    <button>Add to Bookshelf</button>
+                    <button onClick={addToBookshelf}>Add to Bookshelf</button>
                     <p>{book.description}</p>
                     <p>Publisher: {book.publisher}</p>
                     <ul>
@@ -38,3 +57,5 @@ export default function Bookpage() {
 
     )
 }
+
+export default Bookpage

@@ -1,7 +1,8 @@
-import './UserDashboard.css'
-import { FC, useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { CurrentUser, Book } from '../../types'
+import './UserDashboard.css';
+import { FC, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { CurrentUser, Book, ActiveUser } from '../../types';
+import { v4 as uuidv4 } from 'uuid';
 
 interface dashProps {
     user: CurrentUser | null
@@ -11,11 +12,13 @@ const UserDashboard: FC<dashProps> = ({user}) => {
     // console.log('user:', user)
     
     const [activeTab, setActiveTab] = useState(0)
-    const activeUser = localStorage.getItem('currentUser')
+    const storedUser = localStorage.getItem('currentUser')
+    const activeUser: ActiveUser = storedUser ? JSON.parse(storedUser) : null;
     const switchTab = (index: number) => {
         setActiveTab(index)
     }
     const [userBooks, setUserBooks] = useState<Book[]>([])
+    const [showInput, setShowInput] = useState(false)
 
     const userBooksElements = userBooks.map((userBookElement: Book) => {
 
@@ -31,14 +34,38 @@ const UserDashboard: FC<dashProps> = ({user}) => {
     })
 
     // console.log('user books elements:', userBooksElements )
-
-
-   console.log('user books:', userBooks)
+//    console.log('user books:', userBooks)
    useEffect(() => {
     fetch('http://localhost:8000/api/userbookshelf/')
     .then(res => res.json())
     .then(data => setUserBooks(data))
     }, [])
+
+    function createBookshelf(formData: FormData) {
+        console.log('form data:', formData)
+        const bookshelf = {
+            bookshelf_id: uuidv4(),
+            name: formData.get('bookshelfName'),
+            user: activeUser.id
+        }
+        console.log('bookshelf:', bookshelf)
+            fetch('http://localhost:8000/api/bookshelf/', {
+                method: 'POST',
+                headers : {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(bookshelf)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(err => Promise.reject(err))
+                }
+                return response.json()
+            })
+            .then(data => console.log('Bookshelf created successfully', data))
+            .catch(err => console.error('Failed to create bookshelf', err))
+
+        }
 
     return(
         <div className='dashboard-container'>
@@ -67,7 +94,7 @@ const UserDashboard: FC<dashProps> = ({user}) => {
 
                     {activeTab === 2 && (
                         <div id='settings' aria-labelledby='tab-3'>
-                            <p>{activeUser ? JSON.parse(activeUser).username : ''}</p>
+                            <p>{storedUser ? JSON.parse(storedUser).username : ''}</p>
                         </div>
                     )}
                 </div>
@@ -79,6 +106,22 @@ const UserDashboard: FC<dashProps> = ({user}) => {
                 <div className="sidebar-widget">
                     <h2 className='widget-title'></h2>
                     <p className="widget-body"></p>
+                    <button onClick={() => setShowInput(prev => !prev)}>Add a Bookshelf</button>
+                    {showInput ? 
+                    
+                    <form action={createBookshelf as any} method='post'>
+                        <label>Name: <input name='bookshelfName' id='bookshelfInput' onKeyDown={(e) => {
+                            if (e.key === 'Enter') {
+                                
+                            }
+                        
+                        }} required></input></label>
+                        <button type='submit'>Create</button>
+                    </form>
+
+                    
+                    
+                    : ''}
                 </div>
             </aside>
             
@@ -88,14 +131,3 @@ const UserDashboard: FC<dashProps> = ({user}) => {
 
 export default UserDashboard
 
-{/* <article className='article-featured'>
-<h2 article-title></h2>
-<p className="article-info"></p>
-<p className="article-body"></p>
-<a href="" className="article-read-more"></a>
-</article>
-<article className="article-recent">
-<div className="article-recent-main"></div>
-<div className="article-recent-secondary"></div>
-<h2 className='article-title'></h2>
-</article> */}

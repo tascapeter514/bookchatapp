@@ -26,10 +26,16 @@ class UserBookSerializer(serializers.ModelSerializer):
 
 #BOOKSHELF SERIALIZER
 class BookshelfSerializer(serializers.ModelSerializer):
-    book_titles = BookSerializer(source='books', many=True)
 
     class Meta:
         model = Bookshelf
-        fields = ['__all__', 'books']
+        fields = ['bookshelf_id', 'name', 'user']
+
+        def create(self, validated_data):
+            print('data:', validated_data)
+            bookshelf = Bookshelf.objects.create(**validated_data)
+            print(bookshelf)
+
+            
 
 

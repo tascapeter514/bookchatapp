@@ -43,15 +43,19 @@ class BookViewSet(viewsets.ModelViewSet):
 
 #BOOKSHELF VIEWSET
 class BookshelfViewSet(viewsets.ModelViewSet):
-    permission_classes = [
-        permissions.AllowAny
-    ]
-
-    def list(self, request):
-        queryset = Bookshelf.objects.select_related('users')
-        print('list queryset:', queryset)
-    
     serializer_class = BookshelfSerializer
+
+    def perform_create(self, request):
+        print('request data:', request.data)
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        print('serializer:', serializer)
+        bookshelf = serializer.save()
+
+
+    
+    
+    
 
 
         

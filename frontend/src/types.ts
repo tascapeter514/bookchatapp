@@ -32,6 +32,23 @@ export interface CurrentUser {
     token: string
 }
 
+export interface ActiveUser {
+    id: number,
+        password: string,
+        last_login: Date,
+        is_superuser: boolean,
+        username: string,
+        first_name: string,
+        last_name: string,
+        email: string,
+        is_staff: boolean,
+        is_acitve: boolean,
+        date_joined: Date,
+        groups: (number | string)[],
+        user_permissions: (number | string)[],
+
+}
+
 export type Author = {
     name: string,
     author_id: string,
