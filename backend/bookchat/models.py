@@ -42,8 +42,8 @@ class Bookclub(models.Model):
     name = models.CharField(max_length=300)
     members = models.ManyToManyField(User, related_name='members')
     administrator = models.ForeignKey(User, on_delete=models.CASCADE, related_name='administrator')
-    bookshelves = models.ManyToManyField(Bookshelf, null=True, blank=True, related_name='bookshelves')
-    currentRead = models.ManyToManyField(Book, null=True, blank=True)
+    bookshelves = models.ManyToManyField(Bookshelf, blank=True, related_name='bookshelves')
+    currentRead = models.ManyToManyField(Book, blank=True)
 
 
 

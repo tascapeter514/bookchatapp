@@ -1,6 +1,7 @@
 from rest_framework import serializers
-from .models import Book, Genre, Author, Bookshelf
+from .models import Book, Genre, Author, Bookshelf, Bookclub
 from django.contrib.auth.models import User
+from accounts.serializers import UserSerializer
 
 
 
@@ -51,6 +52,31 @@ class BookshelfSerializer(serializers.ModelSerializer):
             if titles_data:
                 bookshelf.titles.set(titles_data)
             return bookshelf
+        
+#BOOKCLUB SERIALIZER
+class BookclubSerializer(serializers.ModelSerializer):
+    bookshelves = BookshelfSerializer(many=True, read_only=True)
+    members = UserSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Bookclub
+        fields = ['bookclub_id', 'name', 'members', 'administrator', 'bookshelves', 'currentRead']
+
+        def create(self, validated_data):
+            print('data:', validated_data)
+            bookshelves_data = validated_data.pop('bookshelves', [])
+            members_data = validated_data.pop('members', [])
+            # currentRead_data = validated_data.pop('currentRead', {})
+            bookclub = Bookclub.objects.create(**validated_data)
+            bookclub.members.set(members_data)
+            bookclub.bookshelves.set(bookshelves_data)
+            # bookclub.currentRead.set(currentRead_data)
+            print('bookclub:', bookclub)
+            return bookclub
+
+        
+
+    
 
 
             

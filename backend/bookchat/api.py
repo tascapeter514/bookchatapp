@@ -1,9 +1,9 @@
-from .models import Book, Author, Bookshelf
+from .models import Book, Author, Bookshelf, Bookclub
 from rest_framework import viewsets, permissions
 from django.shortcuts import get_object_or_404
 from django.core.exceptions import ValidationError
 from rest_framework.decorators import action
-from .serializers import BookSerializer, UserBookSerializer, BookshelfSerializer
+from .serializers import BookSerializer, UserBookSerializer, BookshelfSerializer, BookclubSerializer
 from rest_framework.response import Response
 
 #BESTSELLER VIEWSET
@@ -79,6 +79,16 @@ class BookshelfViewSet(viewsets.ModelViewSet):
             
         serializer = self.get_serializer(bookshelf)
         return Response(serializer.data)
+    
+class BookclubViewSet(viewsets.ModelViewSet):
+    serializer_class = BookclubSerializer
+    queryset = Bookclub.objects.all()
+
+    def perform_create(self, request):
+        print('request data:', request.data)
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        bookclub = serializer.save()
 
 
     
