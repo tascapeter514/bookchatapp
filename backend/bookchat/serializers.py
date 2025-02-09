@@ -13,8 +13,7 @@ class AuthorSerializer(serializers.ModelSerializer):
 #BOOK SERIALIZER
 class BookSerializer(serializers.ModelSerializer):
     authors = AuthorSerializer(source='author', many=True)
-    print('authors:', authors)
-    
+
     class Meta:
         model = Book
         fields = ['title_id', 'title', 'publisher', 'averageRating', 'description', 'imageLinks', 'ratingsCount', 'authors']

@@ -33,7 +33,7 @@ export interface CurrentUser {
 }
 
 export interface ActiveUser {
-    id: number,
+        id: number,
         password: string,
         last_login: Date,
         is_superuser: boolean,
@@ -74,6 +74,16 @@ export interface Book {
     pageCount: number,
     genres: number[],
     authors: Author[]
+}
+
+export interface Bookclub {
+    id: string,
+    name: string,
+    memebers: ActiveUser[],
+    administrator: ActiveUser,
+    bookshelves: Bookshelf[],
+    currentRead: Book
+
 }
 
 export const GET_ERRORS = 'GET_ERRORS'

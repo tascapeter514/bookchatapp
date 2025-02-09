@@ -1,7 +1,7 @@
 import './UserDashboard.css';
 import { FC, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { CurrentUser, Book, ActiveUser, Bookshelf } from '../../types';
+import { CurrentUser, Book, ActiveUser, Bookshelf, Bookclub } from '../../types';
 import { v4 as uuidv4 } from 'uuid';
 
 interface dashProps {
@@ -19,7 +19,9 @@ const UserDashboard: FC<dashProps> = ({user}) => {
     }
     const [bookShelves, setBookShelves] = useState<Bookshelf[]>([])
     const [userBooks, setUserBooks] = useState<Book[]>([])
-    const [showInput, setShowInput] = useState(false)
+    const [showBookshelf, setShowBookshelf] = useState(false)
+    const [showBookclub, setShowBookClub] = useState(false)
+    const [bookclubs, setBookClubs] = useState<Bookclub[]>([])
 
     const userBooksElements = userBooks.map((userBookElement: Book) => {
 
@@ -72,9 +74,37 @@ const UserDashboard: FC<dashProps> = ({user}) => {
             })
             .then(data => console.log('Bookshelf created successfully', data))
             .catch(err => console.error('Failed to create bookshelf', err))
-
         }
   console.log('user books:', userBooks)
+
+        const createBookClub = (formData: FormData) => {
+            console.log('form data:', formData);
+            const bookclub = {
+                id : uuidv4(),
+                name: formData.get('bookClubName'),
+                members: [],
+                administrator: activeUser.id,
+                bookshelves: [],
+                currentRead: {}
+            }
+
+            fetch('http://localhost:8000/api/bookclub/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(bookclub)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(err => Promise.reject(err));
+                }
+                return response.json()
+            })
+            .then(data => console.log('Bookclub created successfully', data))
+            .catch(err => console.error('Failed to create bookshelf', err))   
+        }
+
     return(
         <div className='dashboard-container'>
             <main>
@@ -114,10 +144,10 @@ const UserDashboard: FC<dashProps> = ({user}) => {
                 <div className="sidebar-widget">
                     <h2 className='widget-title'></h2>
                     <p className="widget-body"></p>
-                    <button onClick={() => setShowInput(prev => !prev)}>Add a Bookshelf</button>
-                    {showInput ? 
+                    <button onClick={() => setShowBookshelf(prev => !prev)}>Add a Bookshelf</button>
+                    {showBookshelf ? 
                     
-                    <form action={createBookshelf as any} method='post'>
+                    <form action={createBookshelf as any} method='patch'>
                         <label>Name: <input name='bookshelfName' id='bookshelfInput' onKeyDown={(e) => {
                             if (e.key === 'Enter') {
                                 
@@ -126,10 +156,18 @@ const UserDashboard: FC<dashProps> = ({user}) => {
                         }} required></input></label>
                         <button type='submit'>Create</button>
                     </form>
-
-                    
-                    
                     : ''}
+                </div>
+                <div className="bookclub-submission-container">
+                    <button onClick={() => setShowBookClub(prev => !prev)}>Add a Bookclub</button>
+                    {showBookclub ?
+                        <form action={createBookClub as any} method='post'>
+                            <label><input name='bookClubName' id='bookcClubInput' /></label>
+                            <button type='submit'>Create Book Club</button>
+                        </form> 
+                    
+                
+                            : ''}
                 </div>
             </aside>
             
