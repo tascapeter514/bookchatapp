@@ -17,7 +17,7 @@ const BookclubPage : React.FC<bookclubPageProps> = ({user}) => {
     console.log('parameters:', parameters)
 
     useEffect(() => {
-        fetch(`http://localhost:8000/bookclub/${parameters.id}`)
+        fetch(`http://localhost:8000/api/bookclub/${parameters.id}`)
         .then(res => res.json())
         .then(data => setBookclub(data))
         .catch(err => console.log('There was an error fetching the following bookclub page', err))
