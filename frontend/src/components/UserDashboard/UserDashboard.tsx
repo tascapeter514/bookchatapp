@@ -48,6 +48,17 @@ const UserDashboard: FC<dashProps> = ({user}) => {
         setUserBooks(data[0]['titles'])
 
     } )
+    .catch(err => console.log('There was an error:', err))
+    }, [])
+// ${activeUser.id}/
+    useEffect(() => {
+        fetch(`http://localhost:8000/api/bookclub/${activeUser.id}`)
+        .then(res => res.json())
+        .then(data => {
+            console.log('book club data:', data)
+            setBookClubs(data)
+        })
+        .catch(err => console.log('There was an error:', err))
     }, [])
 
 
@@ -76,6 +87,7 @@ const UserDashboard: FC<dashProps> = ({user}) => {
             .catch(err => console.error('Failed to create bookshelf', err))
         }
 //   console.log('user books:', userBooks)
+        console.log('bookclubs:', bookclubs)
 
         const createBookClub = (formData: FormData) => {
             console.log('form data:', formData);
@@ -149,12 +161,7 @@ const UserDashboard: FC<dashProps> = ({user}) => {
                     {showBookshelf ? 
                     
                     <form action={createBookshelf as any} method='patch'>
-                        <label>Name: <input name='bookshelfName' id='bookshelfInput' onKeyDown={(e) => {
-                            if (e.key === 'Enter') {
-                                
-                            }
-                        
-                        }} required></input></label>
+                        <label>Name: <input name='bookshelfName' id='bookshelfInput' required></input></label>
                         <button type='submit'>Create</button>
                     </form>
                     : ''}

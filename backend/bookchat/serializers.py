@@ -62,17 +62,22 @@ class BookclubSerializer(serializers.ModelSerializer):
         model = Bookclub
         fields = ['bookclub_id', 'name', 'members', 'administrator', 'bookshelves', 'currentRead']
 
+
+        def list(self, validated_data):
+            print('bookclub val data:', validated_data)
+
+
         def create(self, validated_data):
             print('data:', validated_data)
             bookshelves_data = validated_data.pop('bookshelves', [])
             members_data = validated_data.pop('members', [])
-            # currentRead_data = validated_data.pop('currentRead', {})
             bookclub = Bookclub.objects.create(**validated_data)
             bookclub.members.set(members_data)
             bookclub.bookshelves.set(bookshelves_data)
-            # bookclub.currentRead.set(currentRead_data)
-            print('bookclub:', bookclub)
             return bookclub
+        
+        
+
 
         
 

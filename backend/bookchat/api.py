@@ -48,25 +48,22 @@ class BookshelfViewSet(viewsets.ModelViewSet):
     queryset = Bookshelf.objects.all()
 
     def list(self, request):
+
+        # REWRITE TO SPECIFY BOOKSHELF
         bookshelves = Bookshelf.objects.filter(user_id=8).prefetch_related('titles__author')
-        print('bookshelves:', bookshelves)
         serializer = self.get_serializer(bookshelves, many=True)
         return Response(serializer.data)
 
     def perform_create(self, request):
-        print('request data:', request.data)
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        print('serializer:', serializer)
         bookshelf = serializer.save()
 
 
     def partial_update(self, request, pk=None):
-        print(request.data)
         bookshelf = self.get_object()
-        print(bookshelf)
+        # print(bookshelf)
         title_id = request.data.get('title_id')
-        print(title_id, bookshelf)
 
         if title_id:
             try:
@@ -83,9 +80,18 @@ class BookshelfViewSet(viewsets.ModelViewSet):
 class BookclubViewSet(viewsets.ModelViewSet):
     serializer_class = BookclubSerializer
     queryset = Bookclub.objects.all()
+    lookup_field = 'administrator_id'
+
+    def list(self, request):
+        print('book club request data:', request.data)
+        bookclubs = Bookclub.objects.all()
+        print('book clubs:', bookclubs)
+        serializer = self.get_serializer(bookclubs, many=True)
+        return Response(serializer.data)
+        
 
     def perform_create(self, request):
-        print('request data:', request.data)
+        # print('request data:', request.data)
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         bookclub = serializer.save()
