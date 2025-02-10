@@ -10,17 +10,20 @@ interface bookclubPageProps {
 
 
 
-const BookclubPage : React.FC<bookclubPageProps> = () => {
+const BookclubPage : React.FC<bookclubPageProps> = ({user}) => {
     const parameters = useParams()
 
     const [bookclub, setBookclub] = useState<Bookclub | null>(null)
+    console.log('parameters:', parameters)
 
     useEffect(() => {
-        fetch(`http://localhost:8000/bookclub/${params.id}`)
+        fetch(`http://localhost:8000/bookclub/${parameters.id}`)
         .then(res => res.json())
         .then(data => setBookclub(data))
         .catch(err => console.log('There was an error fetching the following bookclub page', err))
     }, [parameters.id])
+
+    console.log('bookclub page:', bookclub)
 
     return(
 

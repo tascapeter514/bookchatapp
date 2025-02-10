@@ -10,6 +10,7 @@ interface bookPageProps {
 const Bookpage: React.FC<bookPageProps> = ({user}) => {
     const params = useParams();
     const [book, setBook] = useState<Book | null>(null);
+    
 
     useEffect(() => {
         fetch(`http://localhost:8000/book/${params.id}`)
@@ -37,6 +38,8 @@ const Bookpage: React.FC<bookPageProps> = ({user}) => {
             console.error('Error adding book to bookshelf')
         }
     }
+
+    console.log('bookpage parameters:', params)
 
     
     return(

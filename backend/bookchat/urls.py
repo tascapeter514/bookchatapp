@@ -23,7 +23,7 @@ router.register('', BestsellerViewSet, 'homepage')
 router.register(r'book', BookViewSet, 'book')
 router.register('api/userbookshelf', UserbooksViewSet, 'userbooks')
 router.register(r'api/bookshelf', BookshelfViewSet, 'bookshelf' )
-router.register(r'api/bookclub', BookclubViewSet, 'bookclub')
+router.register(r'api/bookclub', BookclubViewSet, basename='bookclub')
 
 
 urlpatterns = router.urls

@@ -82,33 +82,22 @@ class BookshelfViewSet(viewsets.ModelViewSet):
 class BookclubViewSet(viewsets.ModelViewSet):
     serializer_class = BookclubSerializer
     queryset = Bookclub.objects.all()
-    # lookup_field = 'pk'
+    lookup_field = 'id'
 
-    # def retrieve(self, request, pk=None):
-    #     try:
-    #         bookclub = get_object_or_404(Bookclub, pk=pk)
-    #         serializer = BookclubSerializer(bookclub)
-    #         return Response(serializer.data)
-    #     except ValidationError:
-    #         return Response({'error': 'Invalid UUID format'}, status=400)
+    def retrieve(self, request, id=None):
+        try:
+            bookclub = get_object_or_404(Bookclub, bookclub_id=id)
+            print('bookclub:', bookclub)
+            serializer = BookclubSerializer(bookclub)
+            return Response(serializer.data)
+        except ValidationError:
+            return Response({'error': 'Invalid UUID format'}, status=400)
 
 
     def get_queryset(self):
         user_id = self.request.query_params.get('user')
         print('user:', user_id)
         return Bookclub.objects.filter(administrator=user_id)
-
-
-        # user_id = kwargs.get('pk')
-        # print('user id:', user_id)
-        # bookclubs = Bookclub.objects.filter(administrator=user_id)
-        
-
-        # serializer = self.get_serializer(bookclubs, many=True)
-        # return Response(serializer.data)
-        
-        
-        
 
     def perform_create(self, request):
         # print('request data:', request.data)
