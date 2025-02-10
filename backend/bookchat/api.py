@@ -8,7 +8,9 @@ from rest_framework.response import Response
 
 #BESTSELLER VIEWSET
 class BestsellerViewSet(viewsets.ModelViewSet):
-    queryset = Book.objects.filter(genres_id=18).exclude(imageLinks='None').values()
+    bestsellers = Book.objects.filter(genres_id=18).exclude(imageLinks='None').prefetch_related('author')
+    # queryset = Book.objects.filter(genres_id=18).exclude(imageLinks='None').values()
+    queryset = bestsellers
     permission_classes = [
         permissions.AllowAny
     ]
@@ -80,14 +82,32 @@ class BookshelfViewSet(viewsets.ModelViewSet):
 class BookclubViewSet(viewsets.ModelViewSet):
     serializer_class = BookclubSerializer
     queryset = Bookclub.objects.all()
-    lookup_field = 'administrator_id'
+    # lookup_field = 'pk'
 
-    def list(self, request):
-        print('book club request data:', request.data)
-        bookclubs = Bookclub.objects.all()
-        print('book clubs:', bookclubs)
-        serializer = self.get_serializer(bookclubs, many=True)
-        return Response(serializer.data)
+    # def retrieve(self, request, pk=None):
+    #     try:
+    #         bookclub = get_object_or_404(Bookclub, pk=pk)
+    #         serializer = BookclubSerializer(bookclub)
+    #         return Response(serializer.data)
+    #     except ValidationError:
+    #         return Response({'error': 'Invalid UUID format'}, status=400)
+
+
+    def get_queryset(self):
+        user_id = self.request.query_params.get('user')
+        print('user:', user_id)
+        return Bookclub.objects.filter(administrator=user_id)
+
+
+        # user_id = kwargs.get('pk')
+        # print('user id:', user_id)
+        # bookclubs = Bookclub.objects.filter(administrator=user_id)
+        
+
+        # serializer = self.get_serializer(bookclubs, many=True)
+        # return Response(serializer.data)
+        
+        
         
 
     def perform_create(self, request):

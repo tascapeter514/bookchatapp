@@ -36,6 +36,17 @@ const UserDashboard: FC<dashProps> = ({user}) => {
         </li>)
     })
 
+    const bookclubElements = bookclubs?.map((bookclub: Bookclub) => {
+        console.log('bookclub id:', bookclub.bookclub_id)
+        return(
+            <Link to={`/bookclub/${bookclub.bookclub_id}`}>
+                <li key={bookclub.bookclub_id}><p>{bookclub.name}</p></li>
+            </Link>
+        ) 
+    })
+
+    // to={`/book/${bestseller.title_id}`}
+
     // console.log('user books elements:', userBooksElements )
  
 //    console.log('bookshelves', bookShelves)
@@ -52,10 +63,10 @@ const UserDashboard: FC<dashProps> = ({user}) => {
     }, [])
 // ${activeUser.id}/
     useEffect(() => {
-        fetch(`http://localhost:8000/api/bookclub/${activeUser.id}`)
+        fetch(`http://localhost:8000/api/bookclub/?user=${activeUser.id}`)
         .then(res => res.json())
         .then(data => {
-            console.log('book club data:', data)
+            // console.log('book club data:', data)
             setBookClubs(data)
         })
         .catch(err => console.log('There was an error:', err))
@@ -90,7 +101,7 @@ const UserDashboard: FC<dashProps> = ({user}) => {
         console.log('bookclubs:', bookclubs)
 
         const createBookClub = (formData: FormData) => {
-            console.log('form data:', formData);
+            // console.log('form data:', formData);
             const bookclub = {
                 bookclub_id : uuidv4(),
                 name: formData.get('bookClubName'),
@@ -99,7 +110,7 @@ const UserDashboard: FC<dashProps> = ({user}) => {
                 bookshelves: [],
                 currentRead: []
             }
-            console.log('bookclub', bookclub)
+            // console.log('bookclub', bookclub)
 
             fetch('http://localhost:8000/api/bookclub/', {
                 method: 'POST',
@@ -117,6 +128,8 @@ const UserDashboard: FC<dashProps> = ({user}) => {
             .then(data => console.log('Bookclub created successfully', data))
             .catch(err => console.error('Failed to create bookshelf', err))   
         }
+
+        
 
     return(
         <div className='dashboard-container'>
@@ -177,6 +190,12 @@ const UserDashboard: FC<dashProps> = ({user}) => {
                 
                             : ''}
                 </div>
+                <br />
+                <hr />
+
+                <h3>Book Clubs</h3>
+                <ul>{ bookclubElements }</ul>
+                    
             </aside>
             
         </div>

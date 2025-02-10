@@ -77,7 +77,7 @@ export interface Book {
 }
 
 export interface Bookclub {
-    id: string,
+    bookclub_id: string,
     name: string,
     memebers: ActiveUser[],
     administrator: ActiveUser,
