@@ -44,6 +44,10 @@ class Bookclub(models.Model):
     administrator = models.ForeignKey(User, on_delete=models.CASCADE, related_name='administrator')
     bookshelves = models.ManyToManyField(Bookshelf, blank=True, related_name='bookshelves')
     currentRead = models.ManyToManyField(Book, blank=True)
+    isPrivate = models.BooleanField(default=True)
+
+# class Membership(models.Model):
+
 
 
 
