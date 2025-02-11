@@ -61,20 +61,16 @@ class BookshelfViewSet(viewsets.ModelViewSet):
         print('user id:', user_id)
         return Bookshelf.objects.filter(user=user_id)
 
-
-
-
-
     def perform_create(self, request):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         bookshelf = serializer.save()
 
-
     def partial_update(self, request, pk=None):
-        bookshelf = self.get_object()
-        # print(bookshelf)
         title_id = request.data.get('title_id')
+        print(id, title_id)
+        bookshelf = get_object_or_404(Bookshelf, bookshelf_id=pk)
+        print(bookshelf)
 
         if title_id:
             try:

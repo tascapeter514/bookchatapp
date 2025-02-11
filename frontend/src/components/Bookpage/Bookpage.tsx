@@ -7,17 +7,6 @@ interface bookPageProps {
 }
 
 
-// useEffect(() => {
-//     fetch(`http://localhost:8000/api/bookshelf/?user=${activeUser.id}`)
-//     .then(res => res.json())
-//     .then(data => {
-//         setBookShelves(data)
-//         console.log(data[0]['titles'])
-//         setUserBooks(data[0]['titles'])
-
-//     } )
-//     .catch(err => console.log('There was an error:', err))
-//     }, [])
 
 const Bookpage: React.FC<bookPageProps> = ({user}) => {
     const storedUser = localStorage.getItem('currentUser')
@@ -46,18 +35,32 @@ const Bookpage: React.FC<bookPageProps> = ({user}) => {
 
     // console.log('book:', book)
 
-    function addToBookshelf() {
-        const bookshelf_title = {
-            title_id: book?.title_id
+    const bookshelfRadioBtns = userBookShelves.map((userBookshelf: Bookshelf) => {
+        return(
+            <li key={userBookshelf.bookshelf_id}>
+                <label>{userBookshelf.name}<input name='bookshelfRadio' type="radio" value={userBookshelf.bookshelf_id} id='bookshelfRadio' /></label>
+            </li>
+        )
+    })
+
+
+
+    function addToBookshelf(formData: FormData) {
+        console.log('form data:', formData)
+        const bookshelf_id = formData.get('bookshelfRadio')
+        console.log('bookshelf id:', bookshelf_id)
+
+        const bookshelfRequest = {
+            title_id: book?.title_id,
 
         } 
         try {
-            fetch(`http://localhost:8000/api/bookshelf/6968a38d3a1e4e358cc70f680816b859/`, {
+            fetch(`http://localhost:8000/api/bookshelf/${bookshelf_id}/`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(bookshelf_title)
+                body: JSON.stringify(bookshelfRequest)
             })
 
         } catch(err) {
@@ -75,10 +78,11 @@ const Bookpage: React.FC<bookPageProps> = ({user}) => {
                 <div className="bookpage-detail">
                     <h1>{book.title}</h1>
                     <img src={book.imageLinks['smallThumbnail']} alt="" />
-                    <button onClick={() => setShowBookshelfForm(true)}>Add to Bookshelf</button>
+                    <button onClick={() => setShowBookshelfForm(prev => !prev)}>Add to Bookshelf</button>
                     {showBookshelfForm ?  
-                        <form action="" className="bookshelf-form">
-                            <ul></ul>
+                        <form action={addToBookshelf as any} className="bookshelf-form" method='patch'>
+                            <ul>{bookshelfRadioBtns}</ul>
+                            <button type='submit'>Submit</button>
                         </form>
 
                         : ''
