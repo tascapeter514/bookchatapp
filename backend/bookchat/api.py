@@ -92,7 +92,6 @@ class BookclubViewSet(viewsets.ModelViewSet):
     def retrieve(self, request, id=None):
         try:
             bookclub = get_object_or_404(Bookclub, bookclub_id=id)
-            print('bookclub:', bookclub)
             serializer = BookclubSerializer(bookclub)
             return Response(serializer.data)
         except ValidationError:

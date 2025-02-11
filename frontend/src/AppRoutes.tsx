@@ -19,6 +19,8 @@ interface AppRoutesProps {
 
 const AppRoutes: FC<AppRoutesProps> = ({ currentUser, setCurrentUser, isAuthenticated }) => {
     const navigate = useNavigate()
+    const localToken = localStorage.getItem('authToken')
+    console.log('local token:', localToken)
     
 
     const handleLogin: HandleLogin = async (formData) => {
@@ -34,11 +36,12 @@ const AppRoutes: FC<AppRoutesProps> = ({ currentUser, setCurrentUser, isAuthenti
         });
         const result = await response.json()
         console.log('result:', result)
+        console.log('token', result.token)
         if (response.ok && result.token) {
           setCurrentUser(result)
           localStorage.setItem('authToken', JSON.stringify(result.token))
           localStorage.setItem('currentUser', JSON.stringify(result.user))
-          navigate('/userDashboard')
+          // navigate('/userDashboard')
     
         } else if (result.non_field_errors) {
           returnErrors(result.non_field_errors[0], response.status)
@@ -63,8 +66,8 @@ const AppRoutes: FC<AppRoutesProps> = ({ currentUser, setCurrentUser, isAuthenti
             <Route path='/book/:id' element={<Bookpage user={currentUser} />} />
             <Route path='/login' element={<Login login={handleLogin} user={currentUser} />}></Route>
             <Route element={<AuthRequired auth={isAuthenticated} />}>
-                <Route path='/userDashboard' element={<UserDashboard user={currentUser} />}></Route>
-                <Route path='/bookclub/:id' element={<BookclubPage user={currentUser}></BookclubPage>}></Route>
+                <Route path='/userDashboard' element={<UserDashboard user={currentUser}  />}></Route>
+                <Route path='/bookclub/:id' element={<BookclubPage user={currentUser} auth={isAuthenticated}></BookclubPage>}></Route>
             </Route>
         
       </Routes>

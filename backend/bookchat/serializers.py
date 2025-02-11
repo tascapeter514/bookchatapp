@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import Book, Genre, Author, Bookshelf, Bookclub
 from django.contrib.auth.models import User
-from accounts.serializers import UserSerializer
+from accounts.serializers import UserSerializer, InvitationSerializer
 
 
 
@@ -55,12 +55,13 @@ class BookshelfSerializer(serializers.ModelSerializer):
         
 #BOOKCLUB SERIALIZER
 class BookclubSerializer(serializers.ModelSerializer):
+    invitations = InvitationSerializer(many=True)
     bookshelves = BookshelfSerializer(many=True, read_only=True)
     members = UserSerializer(many=True, read_only=True)
 
     class Meta:
         model = Bookclub
-        fields = ['bookclub_id', 'name', 'members', 'administrator', 'bookshelves', 'currentRead']
+        fields = ['bookclub_id', 'name', 'members', 'administrator', 'bookshelves', 'currentRead', 'invitations']
 
 
         def list(self, validated_data):

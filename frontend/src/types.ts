@@ -79,7 +79,7 @@ export interface Book {
 export interface Bookclub {
     bookclub_id: string,
     name: string,
-    memebers: ActiveUser[],
+    members: ActiveUser[],
     administrator: ActiveUser,
     bookshelves: Bookshelf[],
     currentRead: Book

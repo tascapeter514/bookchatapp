@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import Profile
+from .models import Profile, Invitation
 from django.contrib.auth import authenticate
 
 
@@ -12,8 +12,6 @@ class ProfileSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-
-
 # USER SERIALIZER
 class UserSerializer(serializers.ModelSerializer):
     profile = ProfileSerializer()
@@ -22,7 +20,7 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
 
         # SWITCH TO ID,USERNAME, EMAIL?
-        fields = '__all__'
+        fields = ['id', 'username', 'profile']
 
 # REGISTER SERIALIZER
 
@@ -52,3 +50,10 @@ class LoginSerializer(serializers.Serializer):
         if user and user.is_active:
             return user
         raise serializers.ValidationError('Incorrect credentials')
+    
+#INVITATION SERIALIZER
+
+class InvitationSerializer(serializers.Serializer):
+    class Meta:
+        model = Invitation
+        fields = '__all__'

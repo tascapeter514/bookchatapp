@@ -40,7 +40,7 @@ class Bookshelf(models.Model):
 class Bookclub(models.Model):
     bookclub_id = models.UUIDField(primary_key=True)
     name = models.CharField(max_length=300)
-    members = models.ManyToManyField(User, related_name='members')
+    members = models.ManyToManyField(User, related_name='bookclubs')
     administrator = models.ForeignKey(User, on_delete=models.CASCADE, related_name='administrator')
     bookshelves = models.ManyToManyField(Bookshelf, blank=True, related_name='bookshelves')
     currentRead = models.ManyToManyField(Book, blank=True)
