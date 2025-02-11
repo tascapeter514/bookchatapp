@@ -47,11 +47,11 @@ const UserDashboard: FC<dashProps> = ({user}) => {
 
     // to={`/book/${bestseller.title_id}`}
 
-    // console.log('user books elements:', userBooksElements )
+
  
    console.log('bookshelves', bookShelves)
    useEffect(() => {
-    fetch('http://localhost:8000/api/bookshelf/')
+    fetch(`http://localhost:8000/api/bookshelf/?user=${activeUser.id}`)
     .then(res => res.json())
     .then(data => {
         setBookShelves(data)
@@ -97,8 +97,8 @@ const UserDashboard: FC<dashProps> = ({user}) => {
             .then(data => console.log('Bookshelf created successfully', data))
             .catch(err => console.error('Failed to create bookshelf', err))
         }
-//   console.log('user books:', userBooks)
-        console.log('bookclubs:', bookclubs)
+  console.log('user books:', userBooks)
+        // console.log('bookclubs:', bookclubs)
 
         const createBookClub = (formData: FormData) => {
             // console.log('form data:', formData);

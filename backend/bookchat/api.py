@@ -49,12 +49,21 @@ class BookshelfViewSet(viewsets.ModelViewSet):
     serializer_class = BookshelfSerializer
     queryset = Bookshelf.objects.all()
 
-    def list(self, request):
+    # def list(self, request):
 
-        # REWRITE TO SPECIFY BOOKSHELF
-        bookshelves = Bookshelf.objects.filter(user_id=8).prefetch_related('titles__author')
-        serializer = self.get_serializer(bookshelves, many=True)
-        return Response(serializer.data)
+    #     # REWRITE TO SPECIFY BOOKSHELF
+    #     bookshelves = Bookshelf.objects.filter(user_id=8).prefetch_related('titles__author')
+    #     serializer = self.get_serializer(bookshelves, many=True)
+    #     return Response(serializer.data)
+
+    def get_queryset(self):
+        user_id = self.request.query_params.get('user')
+        print('user id:', user_id)
+        return Bookshelf.objects.filter(user=user_id)
+
+
+
+
 
     def perform_create(self, request):
         serializer = self.get_serializer(data=request.data)
