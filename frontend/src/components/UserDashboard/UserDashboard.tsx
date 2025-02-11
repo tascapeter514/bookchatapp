@@ -49,7 +49,7 @@ const UserDashboard: FC<dashProps> = ({user}) => {
 
     // console.log('user books elements:', userBooksElements )
  
-//    console.log('bookshelves', bookShelves)
+   console.log('bookshelves', bookShelves)
    useEffect(() => {
     fetch('http://localhost:8000/api/bookshelf/')
     .then(res => res.json())

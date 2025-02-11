@@ -13,7 +13,6 @@ class Profile(models.Model):
     updatedAt = models.DateTimeField(auto_now=True)
     # username = models.CharField(max_length=300)
     profile_pic = models.ImageField(upload_to='profile_pics/', blank=True, null=True)
-    bookclubs = models.ManyToManyField(Bookclub, on_delete=models.CASCADE, related_names='bookclubs')
 
     def __str__(self):
         return f"{self.user.username}'s Profile"
