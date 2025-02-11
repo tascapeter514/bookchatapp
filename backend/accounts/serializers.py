@@ -1,9 +1,23 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
+from .models import Profile
 from django.contrib.auth import authenticate
+
+
+
+#PROFILE SERIALIZER
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = '__all__'
+
+
+
 
 # USER SERIALIZER
 class UserSerializer(serializers.ModelSerializer):
+    profile = ProfileSerializer()
+    
     class Meta:
         model = User
 
