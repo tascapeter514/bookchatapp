@@ -16,7 +16,9 @@ Including another URLconf
     """
 
 from rest_framework import routers
-from.api import BestsellerViewSet, BookViewSet, UserbooksViewSet, BookshelfViewSet, BookclubViewSet
+from .api import BestsellerViewSet, BookViewSet, UserbooksViewSet, BookshelfViewSet, BookclubViewSet, InvitationAPI
+from django.urls import path, include
+
 
 router = routers.DefaultRouter()
 router.register('', BestsellerViewSet, 'homepage')
@@ -26,7 +28,12 @@ router.register(r'api/bookshelf', BookshelfViewSet, basename='bookshelf' )
 router.register(r'api/bookclub', BookclubViewSet, basename='bookclub')
 
 
-urlpatterns = router.urls
+
+urlpatterns = [
+     path('api/sendInvite', InvitationAPI.as_view()),
+     path('api/getInvites', InvitationAPI.as_view()),
+     path('', include(router.urls))
+]
 
 
 

@@ -1,11 +1,8 @@
-from rest_framework import generics, permissions, viewsets, status
-from rest_framework.permissions import IsAuthenticated
+from rest_framework import generics, permissions
 from rest_framework.response import Response
 from knox.models import AuthToken
-from knox.auth import TokenAuthentication
-from .serializers import UserSerializer, RegisterSerializer, LoginSerializer, InvitationSerializer
+from .serializers import UserSerializer, RegisterSerializer, LoginSerializer
 from bookchat.models import Bookclub
-from .models import Invitation
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
 
@@ -90,44 +87,6 @@ class InviteUsersAPI(generics.ListAPIView):
 
 
     
-class InvitationAPI(generics.GenericAPIView):
-    permission_classes = [IsAuthenticated]
-    authentication_classes = [TokenAuthentication]
-    queryset = Invitation.objects.all()
 
-
-    def post(self, request):
-        print("Authorization header:", request.headers.get('Authorization'))
-        print('request user:', request.user)
-        bookclub_id = request.data.get('bookclub_id')
-        invited_user_id = request.data.get('invited_user_id')
-
-        bookclub = get_object_or_404(Bookclub, bookclub_id=bookclub_id)
-        invited_user = get_object_or_404(User, id=invited_user_id)
-
-
-        #only send if user is administrator
-        if request.user != bookclub.administrator:
-            return Response({'error': 'You must be a bookclub administrator to send invitations'})
-        
-        #prevent duplicate invitations
-        if Invitation.objects.filter(bookclub=bookclub, invited_user=invited_user, accepted=False).exists():
-            return Response({'error': 'Invitation already exists'}, status=status.HTTP_400_BAD_REQUEST)
-        
-        invitation = Invitation.objects.create(
-            bookclub=bookclub,
-            invited_user=invited_user,
-            invited_by=request.user
-        )
-
-        return Response(InvitationSerializer(invitation.data), status=status.HTTP_201_CREATED)
-
-    def get(self, request):
-        queryset = self.get_queryset()
-        print('invite queryset:', queryset.values())
-
-        # serializer = InvitationSerializer(queryset, many=True)
-        # print('invite data:', serializer.data)
-        return Response(queryset.values())
 
     

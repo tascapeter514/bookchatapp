@@ -1,7 +1,7 @@
 from rest_framework import serializers
-from .models import Book, Genre, Author, Bookshelf, Bookclub
+from .models import Book, Genre, Author, Bookshelf, Bookclub, Invitation
 from django.contrib.auth.models import User
-from accounts.serializers import UserSerializer, InvitationSerializer
+from accounts.serializers import UserSerializer
 
 
 
@@ -55,7 +55,6 @@ class BookshelfSerializer(serializers.ModelSerializer):
         
 #BOOKCLUB SERIALIZER
 class BookclubSerializer(serializers.ModelSerializer):
-    invitations = InvitationSerializer(many=True, read_only=True, required=False)
     bookshelves = BookshelfSerializer(many=True, read_only=True, required=False)
     currentRead = BookSerializer(read_only=True, required=False)
     members = UserSerializer(many=True, read_only=True, required=False)
@@ -65,6 +64,17 @@ class BookclubSerializer(serializers.ModelSerializer):
     class Meta:
         model = Bookclub
         fields = ['bookclub_id', 'name', 'administrator', 'bookshelves', 'currentRead', 'invitations', 'members']
+
+
+#INVITATION SERIALIZER
+
+class InvitationSerializer(serializers.Serializer):
+    invited_by = UserSerializer(read_only=True)
+    bookclub = serializers.PrimaryKeyRelatedField(queryset=Bookclub.objects.all())
+
+    class Meta:
+        model = Invitation
+        fields = ['invitation_id', 'accepted', 'created_at', 'bookclub', 'invited_by', 'invited_user']
 
 
         

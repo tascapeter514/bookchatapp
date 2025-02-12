@@ -1,10 +1,13 @@
-from .models import Book, Author, Bookshelf, Bookclub
-from rest_framework import viewsets, permissions
+from .models import Book, Author, Bookshelf, Bookclub, Invitation
+from rest_framework import viewsets, permissions, generics, status
+from rest_framework.permissions import IsAuthenticated
+from knox.auth import TokenAuthentication
 from django.shortcuts import get_object_or_404
 from django.core.exceptions import ValidationError
 from rest_framework.decorators import action
-from .serializers import BookSerializer, UserBookSerializer, BookshelfSerializer, BookclubSerializer
+from .serializers import BookSerializer, UserBookSerializer, BookshelfSerializer, BookclubSerializer, InvitationSerializer
 from rest_framework.response import Response
+from django.contrib.auth.models import User
 
 #BESTSELLER VIEWSET
 class BestsellerViewSet(viewsets.ModelViewSet):
@@ -106,6 +109,46 @@ class BookclubViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         bookclub = serializer.save()
         bookclub.members.add(bookclub.administrator)
+
+class InvitationAPI(generics.GenericAPIView):
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
+    queryset = Invitation.objects.all()
+
+
+    def post(self, request):
+        print("Authorization header:", request.headers.get('Authorization'))
+        print('request user:', request.user)
+        bookclub_id = request.data.get('bookclub_id')
+        invited_user_id = request.data.get('invited_user_id')
+
+        bookclub = get_object_or_404(Bookclub, bookclub_id=bookclub_id)
+        invited_user = get_object_or_404(User, id=invited_user_id)
+
+
+        #only send if user is administrator
+        if request.user != bookclub.administrator:
+            return Response({'error': 'You must be a bookclub administrator to send invitations'})
+        
+        #prevent duplicate invitations
+        if Invitation.objects.filter(bookclub=bookclub, invited_user=invited_user, accepted=False).exists():
+            return Response({'error': 'Invitation already exists'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        invitation = Invitation.objects.create(
+            bookclub=bookclub,
+            invited_user=invited_user,
+            invited_by=request.user
+        )
+
+        return Response(InvitationSerializer(invitation).data, status=status.HTTP_201_CREATED)
+
+    def get(self, request):
+        invitations = Invitation.objects.select_related('invited_by')
+        serializer = InvitationSerializer(invitations, many=True)
+        print('invitations:', invitations)
+        print('serializer data:', serializer.data)
+
+        return Response(serializer.data)
 
 
 
