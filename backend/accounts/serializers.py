@@ -9,7 +9,7 @@ from django.contrib.auth import authenticate
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = '__all__'
+        fields = ['user_id', 'bio', 'createdAt', 'updatedAt', 'profile_pic']
 
 
 # USER SERIALIZER

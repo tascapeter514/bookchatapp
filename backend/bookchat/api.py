@@ -103,11 +103,10 @@ class BookclubViewSet(viewsets.ModelViewSet):
         print('user:', user_id)
         return Bookclub.objects.filter(administrator=user_id)
 
-    def perform_create(self, request):
-        # print('request data:', request.data)
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
+    def perform_create(self, serializer):
         bookclub = serializer.save()
+        bookclub.members.add(bookclub.administrator)
+
 
 
     

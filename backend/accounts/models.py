@@ -7,7 +7,7 @@ import uuid
 
 class Profile(models.Model):
     # id = models.UUIDField(primary_key=True)
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile', primary_key=True)
     bio = models.TextField(blank=True)
 
     createdAt = models.DateTimeField(auto_now_add=True)
@@ -45,7 +45,7 @@ class Invitation(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'Invitation for {self.user.username} to join {self.bookclub.name}. Status: {self.status}'
+        return f'Invitation for {self.invited_user} to join {self.bookclub.name}.'
 
 
         

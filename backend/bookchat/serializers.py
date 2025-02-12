@@ -55,27 +55,18 @@ class BookshelfSerializer(serializers.ModelSerializer):
         
 #BOOKCLUB SERIALIZER
 class BookclubSerializer(serializers.ModelSerializer):
-    invitations = InvitationSerializer(many=True)
-    bookshelves = BookshelfSerializer(many=True, read_only=True)
-    members = UserSerializer(many=True, read_only=True)
+    invitations = InvitationSerializer(many=True, read_only=True, required=False)
+    bookshelves = BookshelfSerializer(many=True, read_only=True, required=False)
+    currentRead = BookSerializer(read_only=True, required=False)
+    members = UserSerializer(many=True, read_only=True, required=False)
+
+
 
     class Meta:
         model = Bookclub
-        fields = ['bookclub_id', 'name', 'members', 'administrator', 'bookshelves', 'currentRead', 'invitations']
+        fields = ['bookclub_id', 'name', 'administrator', 'bookshelves', 'currentRead', 'invitations', 'members']
 
 
-        def list(self, validated_data):
-            print('bookclub val data:', validated_data)
-
-
-        def create(self, validated_data):
-            print('data:', validated_data)
-            bookshelves_data = validated_data.pop('bookshelves', [])
-            members_data = validated_data.pop('members', [])
-            bookclub = Bookclub.objects.create(**validated_data)
-            bookclub.members.set(members_data)
-            bookclub.bookshelves.set(bookshelves_data)
-            return bookclub
         
         
 

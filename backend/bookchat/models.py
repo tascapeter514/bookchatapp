@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 # Create your models here.
 
 
@@ -43,10 +44,9 @@ class Bookclub(models.Model):
     members = models.ManyToManyField(User, related_name='bookclubs')
     administrator = models.ForeignKey(User, on_delete=models.CASCADE, related_name='administrator')
     bookshelves = models.ManyToManyField(Bookshelf, blank=True, related_name='bookshelves')
-    currentRead = models.ManyToManyField(Book, blank=True)
+    currentRead = models.ForeignKey(Book, on_delete=models.CASCADE, blank=True, null=True)
     isPrivate = models.BooleanField(default=True)
-
-# class Membership(models.Model):
+    
 
 
 

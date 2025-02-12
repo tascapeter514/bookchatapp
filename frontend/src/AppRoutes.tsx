@@ -41,7 +41,7 @@ const AppRoutes: FC<AppRoutesProps> = ({ currentUser, setCurrentUser, isAuthenti
           setCurrentUser(result)
           localStorage.setItem('authToken', JSON.stringify(result.token))
           localStorage.setItem('currentUser', JSON.stringify(result.user))
-          // navigate('/userDashboard')
+          navigate('/userDashboard')
     
         } else if (result.non_field_errors) {
           returnErrors(result.non_field_errors[0], response.status)

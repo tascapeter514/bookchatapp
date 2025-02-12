@@ -93,6 +93,7 @@ class InviteUsersAPI(generics.ListAPIView):
 class InvitationAPI(generics.GenericAPIView):
     permission_classes = [IsAuthenticated]
     authentication_classes = [TokenAuthentication]
+    queryset = Invitation.objects.all()
 
 
     def post(self, request):
@@ -119,5 +120,14 @@ class InvitationAPI(generics.GenericAPIView):
             invited_by=request.user
         )
 
-        return Response(InvitationSerializer(invitation.data), status=status.HTTP_201_CREATED )
+        return Response(InvitationSerializer(invitation.data), status=status.HTTP_201_CREATED)
+
+    def get(self, request):
+        queryset = self.get_queryset()
+        print('invite queryset:', queryset.values())
+
+        # serializer = InvitationSerializer(queryset, many=True)
+        # print('invite data:', serializer.data)
+        return Response(queryset.values())
+
     

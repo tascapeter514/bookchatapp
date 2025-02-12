@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { CurrentUser, Book, ActiveUser, Bookshelf, Bookclub } from '../../types';
 import { v4 as uuidv4 } from 'uuid';
 
+
 interface dashProps {
     user: CurrentUser | null
 }
@@ -37,7 +38,6 @@ const UserDashboard: FC<dashProps> = ({user}) => {
     })
 
     const bookclubElements = bookclubs?.map((bookclub: Bookclub) => {
-        console.log('bookclub id:', bookclub.bookclub_id)
         return(
             <Link to={`/bookclub/${bookclub.bookclub_id}`}>
                 <li key={bookclub.bookclub_id}><p>{bookclub.name}</p></li>
@@ -45,11 +45,11 @@ const UserDashboard: FC<dashProps> = ({user}) => {
         ) 
     })
 
-    // to={`/book/${bestseller.title_id}`}
+ 
 
 
  
-   console.log('bookshelves', bookShelves)
+
    useEffect(() => {
     fetch(`http://localhost:8000/api/bookshelf/?user=${activeUser.id}`)
     .then(res => res.json())
@@ -61,7 +61,9 @@ const UserDashboard: FC<dashProps> = ({user}) => {
     } )
     .catch(err => console.log('There was an error:', err))
     }, [])
-// ${activeUser.id}/
+
+
+
     useEffect(() => {
         fetch(`http://localhost:8000/api/bookclub/?user=${activeUser.id}`)
         .then(res => res.json())
@@ -70,6 +72,24 @@ const UserDashboard: FC<dashProps> = ({user}) => {
             setBookClubs(data)
         })
         .catch(err => console.log('There was an error:', err))
+    }, [])
+
+    useEffect(() => {
+        const token = localStorage.getItem('authToken')
+        const parsedToken = token ? JSON.parse(token) : null
+        console.log('parsed token:', parsedToken)
+
+
+
+        fetch('http://localhost:8000/api/getInvites', {
+            headers: {
+                'Authorization': `Token ${parsedToken}`
+            }
+            
+        })
+        .then(res => res.json())
+        .then(data => console.log('invite data:', data))
+        .catch(err => console.log('there was an error retrieving the invites:', err))
     }, [])
 
 
@@ -106,11 +126,10 @@ const UserDashboard: FC<dashProps> = ({user}) => {
                 bookclub_id : uuidv4(),
                 name: formData.get('bookClubName'),
                 administrator: activeUser.id,
-                members: [],
                 bookshelves: [],
-                currentRead: []
+                currentRead: [],
             }
-            // console.log('bookclub', bookclub)
+            console.log('bookclub', bookclub)
 
             fetch('http://localhost:8000/api/bookclub/', {
                 method: 'POST',
