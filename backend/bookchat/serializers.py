@@ -63,14 +63,14 @@ class BookclubSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Bookclub
-        fields = ['bookclub_id', 'name', 'administrator', 'bookshelves', 'currentRead', 'invitations', 'members']
+        fields = ['bookclub_id', 'name', 'administrator', 'bookshelves', 'currentRead', 'members']
 
 
 #INVITATION SERIALIZER
 
 class InvitationSerializer(serializers.Serializer):
     invited_by = UserSerializer(read_only=True)
-    bookclub = serializers.PrimaryKeyRelatedField(queryset=Bookclub.objects.all())
+    bookclub = BookclubSerializer(read_only=True)
 
     class Meta:
         model = Invitation

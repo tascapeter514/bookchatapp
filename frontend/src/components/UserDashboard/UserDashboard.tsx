@@ -81,7 +81,7 @@ const UserDashboard: FC<dashProps> = ({user}) => {
 
 
 
-        fetch('http://localhost:8000/api/getInvites', {
+        fetch(`http://localhost:8000/api/getInvites/${activeUser.id}`, {
             headers: {
                 'Authorization': `Token ${parsedToken}`
             }

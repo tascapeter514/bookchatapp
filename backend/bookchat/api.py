@@ -142,8 +142,11 @@ class InvitationAPI(generics.GenericAPIView):
 
         return Response(InvitationSerializer(invitation).data, status=status.HTTP_201_CREATED)
 
-    def get(self, request):
-        invitations = Invitation.objects.select_related('invited_by')
+    def get(self, request, *args, **kwargs):
+        user_id = kwargs.get('id')
+        if user_id:
+            invitations = self.get_queryset().filter(invited_user_id=user_id)
+            print('invitations:', invitations)
         serializer = InvitationSerializer(invitations, many=True)
         print('invitations:', invitations)
         print('serializer data:', serializer.data)
