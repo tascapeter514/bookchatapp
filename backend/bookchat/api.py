@@ -155,8 +155,21 @@ class InvitationAPI(generics.GenericAPIView):
     
     def put(self, request, **kwargs):
         user_id = request.data.get('user_id')
-        print("invitation post:", user_id)
-        return Response({'message': 'invite join check'})
+        bookclub_request_id = request.data.get('bookclub_id')
+
+        bookclub = get_object_or_404(Bookclub, bookclub_id=bookclub_request_id)
+        invitation = get_object_or_404(Invitation, invited_user=user_id)
+        print('put invite:', invitation.accepted)
+        
+
+        bookclub.members.add(user_id)
+        invitation.accepted = True
+        invitation.save()
+        
+
+
+        
+        return Response({'message': "Sucess!"})
 
 
 
