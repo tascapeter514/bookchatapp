@@ -3,7 +3,7 @@ import { FC, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { CurrentUser, Book, ActiveUser, Bookshelf, Bookclub, Invitation } from '../../types';
 import { v4 as uuidv4 } from 'uuid';
-import { Buttons } from '@testing-library/user-event/dist/cjs/system/pointer/buttons.js';
+
 
 
 interface dashProps {
@@ -70,28 +70,6 @@ const UserDashboard: FC<dashProps> = ({user}) => {
         .catch(err => console.log('There was an error in joining your bookclub:', err))
     }
 
-    const invitationElements = invitations?.map((invitation: Invitation) => {
-        const bookclub = invitation['bookclub_to_join']
-        const memberIds = bookclub['members'].map((member) => member['id'])
-        console.log('invitation book club:', bookclub)
-        console.log('invitation members:', memberIds)
-        const invited_by_user = invitation['invited_by_user']
-        let isMember = memberIds.includes(activeUser.id) ? true : false
-        console.log('is member:', isMember)
-        return(
-                <li key={invitation.invitation_id}>
-                    {isMember ? 
-                        <Link to={`/bookclub/${bookclub.bookclub_id}`}><h3>{bookclub.name}</h3></Link>
-                        : <h3>{bookclub.name}</h3> }
-                    <p>{invited_by_user.username}</p>
-                    {isMember ? "" : <button onClick={() => joinBookclub(bookclub)}>Join</button>}
-                </li>
-            
-        )
-    })
-
-
-
    useEffect(() => {
     fetch(`http://localhost:8000/api/bookshelf/?user=${activeUser.id}`)
     .then(res => res.json())
@@ -131,6 +109,55 @@ const UserDashboard: FC<dashProps> = ({user}) => {
     }, [])
 
     console.log('invitations:', invitations)
+
+    // console.log('invitation members:', invitations[5]['bookclub_to_join'].members)
+
+    useEffect(() => {
+        const socket = new WebSocket('ws://localhost:8000/ws/bookchat/joinBookclub');
+
+        socket.onmessage = (event) => {
+            console.log('websocket message received:', event.data)
+            const data = JSON.parse(event.data)
+            console.log('web socket data:', data)
+            if (data.type === 'join_bookclub') {
+                console.log('updated members:', data.updated_members)
+                console.log(data.bookclub_id)
+                console.log("WEB SOCKET CHECK CHECK CHECK")
+
+                setInvitations(prevInvitations => {
+                    const updated = prevInvitations.map(invitation => {
+                        if(invitation.bookclub_to_join.bookclub_id === data.bookclub_id) {
+                            return {
+                                ...invitation,
+                                bookclub_to_join: {
+                                    ...invitation.bookclub_to_join,
+                                    members: data.updated_members
+                                },
+                            };
+                        }
+                        return invitation;
+                    })
+                    console.log('updated invitations:', updated)
+                    // return updated
+
+                    // force render
+
+                        return [...updated]
+
+                })
+                
+
+            }
+        }
+        socket.onopen = () => console.log('Web socket connected')
+        socket.onclose = () => console.log('Web socket disconnected')
+
+        return () => socket.close();
+
+
+
+
+    }, [])
 
 
     function createBookshelf(formData: FormData) {
@@ -185,7 +212,29 @@ const UserDashboard: FC<dashProps> = ({user}) => {
             .catch(err => console.error('Failed to create bookshelf', err))   
         }
 
-
+        const invitationElements = invitations?.map((invitation: Invitation & {isMember?: boolean}) => {
+            const bookclub = invitation['bookclub_to_join']
+            const memberIds = bookclub['members'].map((member) => member['id'])
+            const invited_by_user = invitation['invited_by_user']
+            // const isMember = memberIds.includes(activeUser.id)
+            const isMember = invitation.isMember ?? memberIds.includes(activeUser.id)
+            console.log('is member:', isMember)
+            return(
+                    <li key={invitation.invitation_id}>
+                        {isMember ? 
+                            <Link to={`/bookclub/${bookclub.bookclub_id}`}><h3>{bookclub.name}</h3></Link>
+                            : <h3>{bookclub.name}</h3> }
+                        <p>{invited_by_user.username}</p>
+                        {/* {isMember ? "" : <button onClick={() => joinBookclub(bookclub)}>Join</button>} */}
+    
+                        {!isMember && (
+                            <button onClick={() => joinBookclub(bookclub)}>Join</button>
+    
+                        )}
+                    </li>
+                
+            )
+        })
 
         
 

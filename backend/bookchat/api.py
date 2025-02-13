@@ -8,6 +8,8 @@ from rest_framework.decorators import action
 from .serializers import BookSerializer, UserBookSerializer, BookshelfSerializer, BookclubSerializer, InvitationSerializer
 from rest_framework.response import Response
 from django.contrib.auth.models import User
+from channels.layers import get_channel_layer
+from asgiref.sync import async_to_sync
 
 #BESTSELLER VIEWSET
 class BestsellerViewSet(viewsets.ModelViewSet):
@@ -158,13 +160,32 @@ class InvitationAPI(generics.GenericAPIView):
         bookclub_request_id = request.data.get('bookclub_id')
 
         bookclub = get_object_or_404(Bookclub, bookclub_id=bookclub_request_id)
-        invitation = get_object_or_404(Invitation, invited_user=user_id)
+        invitation = get_object_or_404(Invitation, invited_user=user_id, bookclub_id=bookclub_request_id)
         print('put invite:', invitation.accepted)
         
 
         bookclub.members.add(user_id)
         invitation.accepted = True
         invitation.save()
+
+        updated_members = [
+            {k: v for k, v in member.items() if k not in {'last_login', 'date_joined'}}
+            for member in bookclub.members.values()
+        ]
+        print('updated members:', updated_members)
+
+        channel_layer = get_channel_layer()
+        async_to_sync(channel_layer.group_send)(
+            'join_bookclub',
+            {
+                'type': 'join_bookclub',
+                'updated_members': updated_members,
+                'bookclub_id': request.data.get('bookclub_id')
+            }
+
+        )
+            
+        
         
 
 
