@@ -1,7 +1,7 @@
 import './UserDashboard.css';
 import { FC, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { CurrentUser, Book, ActiveUser, Bookshelf, Bookclub } from '../../types';
+import { CurrentUser, Book, ActiveUser, Bookshelf, Bookclub, Invitation } from '../../types';
 import { v4 as uuidv4 } from 'uuid';
 
 
@@ -23,6 +23,7 @@ const UserDashboard: FC<dashProps> = ({user}) => {
     const [showBookshelf, setShowBookshelf] = useState(false)
     const [showBookclub, setShowBookClub] = useState(false)
     const [bookclubs, setBookClubs] = useState<Bookclub[]>([])
+    const [invitations, setInvitations] = useState<Invitation[]>([])
 
     const userBooksElements = userBooks.map((userBookElement: Book) => {
 
@@ -45,6 +46,14 @@ const UserDashboard: FC<dashProps> = ({user}) => {
         ) 
     })
 
+    // const invitationElements = invitations?.map((invitation: Invitation) => {
+    //     return(
+    //         <li></li>
+    //     )
+    // })
+
+
+
  
 
 
@@ -55,7 +64,6 @@ const UserDashboard: FC<dashProps> = ({user}) => {
     .then(res => res.json())
     .then(data => {
         setBookShelves(data)
-        console.log(data[0]['titles'])
         setUserBooks(data[0]['titles'])
 
     } )
@@ -77,10 +85,7 @@ const UserDashboard: FC<dashProps> = ({user}) => {
     useEffect(() => {
         const token = localStorage.getItem('authToken')
         const parsedToken = token ? JSON.parse(token) : null
-        console.log('parsed token:', parsedToken)
-
-
-
+   
         fetch(`http://localhost:8000/api/getInvites/${activeUser.id}`, {
             headers: {
                 'Authorization': `Token ${parsedToken}`
@@ -88,19 +93,19 @@ const UserDashboard: FC<dashProps> = ({user}) => {
             
         })
         .then(res => res.json())
-        .then(data => console.log('invite data:', data))
+        .then(data => setInvitations(data))
         .catch(err => console.log('there was an error retrieving the invites:', err))
     }, [])
 
+    console.log('invitations:', invitations)
+
 
     function createBookshelf(formData: FormData) {
-        console.log('form data:', formData)
         const bookshelf = {
             bookshelf_id: uuidv4(),
             name: formData.get('bookshelfName'),
             user: activeUser.id
         }
-        console.log('bookshelf:', bookshelf)
             fetch('http://localhost:8000/api/bookshelf/', {
                 method: 'POST',
                 headers : {
@@ -117,11 +122,10 @@ const UserDashboard: FC<dashProps> = ({user}) => {
             .then(data => console.log('Bookshelf created successfully', data))
             .catch(err => console.error('Failed to create bookshelf', err))
         }
-  console.log('user books:', userBooks)
+
         // console.log('bookclubs:', bookclubs)
 
         const createBookClub = (formData: FormData) => {
-            // console.log('form data:', formData);
             const bookclub = {
                 bookclub_id : uuidv4(),
                 name: formData.get('bookClubName'),
@@ -129,7 +133,7 @@ const UserDashboard: FC<dashProps> = ({user}) => {
                 bookshelves: [],
                 currentRead: [],
             }
-            console.log('bookclub', bookclub)
+
 
             fetch('http://localhost:8000/api/bookclub/', {
                 method: 'POST',
@@ -147,6 +151,8 @@ const UserDashboard: FC<dashProps> = ({user}) => {
             .then(data => console.log('Bookclub created successfully', data))
             .catch(err => console.error('Failed to create bookshelf', err))   
         }
+
+
 
         
 
@@ -172,7 +178,10 @@ const UserDashboard: FC<dashProps> = ({user}) => {
                         </div>
                     )}
                     {activeTab === 1 && (
-                        <div id='bookclubs' aria-labelledby='tab-2'>BookClubs</div>
+                        <div id='bookclubs' aria-labelledby='tab-2'>
+                            <h2>Bookclubs</h2>
+                            <ul></ul>
+                        </div>
                     )}
 
                     {activeTab === 2 && (

@@ -145,8 +145,8 @@ class InvitationAPI(generics.GenericAPIView):
     def get(self, request, *args, **kwargs):
         user_id = kwargs.get('id')
         if user_id:
-            invitations = self.get_queryset().filter(invited_user_id=user_id)
-            print('invitations:', invitations)
+            invitations = Invitation.objects.filter(invited_user_id=user_id)
+            print('invitations:', invitations.values())
         serializer = InvitationSerializer(invitations, many=True)
         print('invitations:', invitations)
         print('serializer data:', serializer.data)

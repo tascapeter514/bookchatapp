@@ -68,13 +68,13 @@ class BookclubSerializer(serializers.ModelSerializer):
 
 #INVITATION SERIALIZER
 
-class InvitationSerializer(serializers.Serializer):
-    invited_by = UserSerializer(read_only=True)
-    bookclub = BookclubSerializer(read_only=True)
+class InvitationSerializer(serializers.ModelSerializer):
+    invited_by_user = UserSerializer(source='invited_by')
+    bookclub_to_join = BookclubSerializer(source='bookclub')
 
     class Meta:
         model = Invitation
-        fields = ['invitation_id', 'accepted', 'created_at', 'bookclub', 'invited_by', 'invited_user']
+        fields = ['invitation_id', 'accepted', 'created_at', 'invited_user', 'bookclub_to_join', 'invited_by_user']
 
 
         
