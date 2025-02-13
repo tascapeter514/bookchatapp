@@ -152,6 +152,11 @@ class InvitationAPI(generics.GenericAPIView):
         print('serializer data:', serializer.data)
 
         return Response(serializer.data)
+    
+    def put(self, request, **kwargs):
+        user_id = request.data.get('user_id')
+        print("invitation post:", user_id)
+        return Response({'message': 'invite join check'})
 
 
 

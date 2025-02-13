@@ -62,6 +62,17 @@ export interface Bookshelf {
 
 }
 
+export interface Invitation {
+    invitation_id: string,
+    accepted: boolean,
+    created_at: Date,
+    invited_user: number,
+    bookclub_to_join: Bookclub,
+    invited_by_user: ActiveUser,
+
+
+}
+
 export interface Book {
     title_id: string,
     title: string,

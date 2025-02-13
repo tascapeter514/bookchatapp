@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate
 
 
 
+
 #PROFILE SERIALIZER
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:

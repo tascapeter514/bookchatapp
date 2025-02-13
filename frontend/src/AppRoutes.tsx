@@ -1,5 +1,5 @@
 import { useNavigate, Routes, Route } from 'react-router-dom';
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import { returnErrors } from './messages.tsx';
 import { HandleLogin, CurrentUser } from './types.ts'
 import Homepage from './components/Homepage/Homepage.tsx'
@@ -19,8 +19,8 @@ interface AppRoutesProps {
 
 const AppRoutes: FC<AppRoutesProps> = ({ currentUser, setCurrentUser, isAuthenticated }) => {
     const navigate = useNavigate()
-    const localToken = localStorage.getItem('authToken')
-    console.log('local token:', localToken)
+    const storedUser = localStorage.getItem('currentUser')
+    const activeUser = storedUser ? JSON.parse(storedUser) : null
     
 
     const handleLogin: HandleLogin = async (formData) => {
@@ -55,6 +55,8 @@ const AppRoutes: FC<AppRoutesProps> = ({ currentUser, setCurrentUser, isAuthenti
         }
     };
 
+
+
    
 
 
@@ -67,7 +69,7 @@ const AppRoutes: FC<AppRoutesProps> = ({ currentUser, setCurrentUser, isAuthenti
             <Route path='/login' element={<Login login={handleLogin} user={currentUser} />}></Route>
             <Route element={<AuthRequired auth={isAuthenticated} />}>
                 <Route path='/userDashboard' element={<UserDashboard user={currentUser}  />}></Route>
-                <Route path='/bookclub/:id' element={<BookclubPage user={currentUser} auth={isAuthenticated}></BookclubPage>}></Route>
+                <Route path='/bookclub/:id' element={<BookclubPage user={activeUser} auth={isAuthenticated}></BookclubPage>}></Route>
             </Route>
         
       </Routes>

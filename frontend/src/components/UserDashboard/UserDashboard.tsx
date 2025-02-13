@@ -3,6 +3,7 @@ import { FC, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { CurrentUser, Book, ActiveUser, Bookshelf, Bookclub, Invitation } from '../../types';
 import { v4 as uuidv4 } from 'uuid';
+import { Buttons } from '@testing-library/user-event/dist/cjs/system/pointer/buttons.js';
 
 
 interface dashProps {
@@ -46,18 +47,50 @@ const UserDashboard: FC<dashProps> = ({user}) => {
         ) 
     })
 
-    // const invitationElements = invitations?.map((invitation: Invitation) => {
-    //     return(
-    //         <li></li>
-    //     )
-    // })
+    function joinBookclub(bookclub: Bookclub) {
+
+        const token = localStorage.getItem('authToken')
+        const parsedToken = token ? JSON.parse(token) : null
+
+        const joinReq = {
+            user_id: activeUser.id,
+            bookclub_id: bookclub.bookclub_id
+        }
+
+        fetch(`http://localhost:8000/api/acceptInvite`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Token ${parsedToken}`
+            },
+            body: JSON.stringify(joinReq)
+        })
+        .then(res => res.json())
+        .then(data => console.log(data))
+        .catch(err => console.log('There was an error in joining your bookclub:', err))
+    }
+
+    const invitationElements = invitations?.map((invitation: Invitation) => {
+        const bookclub = invitation['bookclub_to_join']
+        const memberIds = bookclub['members'].map((member) => member['id'])
+        console.log('invitation book club:', bookclub)
+        console.log('invitation members:', memberIds)
+        const invited_by_user = invitation['invited_by_user']
+        let isMember = memberIds.includes(activeUser.id) ? true : false
+        console.log('is member:', isMember)
+        return(
+                <li key={invitation.invitation_id}>
+                    {isMember ? 
+                        <Link to={`/bookclub/${bookclub.bookclub_id}`}><h3>{bookclub.name}</h3></Link>
+                        : <h3>{bookclub.name}</h3> }
+                    <p>{invited_by_user.username}</p>
+                    {isMember ? "" : <button onClick={() => joinBookclub(bookclub)}>Join</button>}
+                </li>
+            
+        )
+    })
 
 
-
- 
-
-
- 
 
    useEffect(() => {
     fetch(`http://localhost:8000/api/bookshelf/?user=${activeUser.id}`)
@@ -180,7 +213,7 @@ const UserDashboard: FC<dashProps> = ({user}) => {
                     {activeTab === 1 && (
                         <div id='bookclubs' aria-labelledby='tab-2'>
                             <h2>Bookclubs</h2>
-                            <ul></ul>
+                            <ul>{invitationElements}</ul>
                         </div>
                     )}
 

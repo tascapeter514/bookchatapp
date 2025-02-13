@@ -32,6 +32,7 @@ router.register(r'api/bookclub', BookclubViewSet, basename='bookclub')
 urlpatterns = [
      path('api/sendInvite', InvitationAPI.as_view()),
      path('api/getInvites/<int:id>', InvitationAPI.as_view(), name='get-invites'),
+     path('api/acceptInvite', InvitationAPI.as_view(), name='accept-invite'),
      path('', include(router.urls))
 ]
 
