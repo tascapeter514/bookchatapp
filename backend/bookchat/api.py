@@ -63,7 +63,7 @@ class BookshelfViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         user_id = self.request.query_params.get('user')
-        print('user id:', user_id)
+        # print('user id:', user_id)
         return Bookshelf.objects.filter(user=user_id)
 
     def perform_create(self, request):
@@ -103,10 +103,40 @@ class BookclubViewSet(viewsets.ModelViewSet):
             return Response({'error': 'Invalid UUID format'}, status=400)
 
 
-    def get_queryset(self):
-        user_id = self.request.query_params.get('user')
-        print('user:', user_id)
-        return Bookclub.objects.filter(administrator=user_id)
+#  channel_layer = get_channel_layer()
+#         async_to_sync(channel_layer.group_send)(
+#             'join_bookclub',
+#             {
+#                 'type': 'join_bookclub',
+#                 'updated_members': updated_members,
+#                 'bookclub_id': request.data.get('bookclub_id')
+#             }
+
+#         )
+
+
+    # def get_queryset(self):
+    #     user_id = self.request.query_params.get('user')
+    #     print('get bookclubs user id:', user_id)
+    #     bookclubs = Bookclub.objects.filter(administrator=user_id)
+    #     updated_bookclubs = [{**bc, 'bookclub_id': str(bc['bookclub_id'])} for bc in bookclubs.values()]
+    #     print('updated bookclubs:', updated_bookclubs)
+
+    #     # print('user:', user_id)
+    #     channel_layer = get_channel_layer()
+    #     async_to_sync(channel_layer.group_send)(
+    #         f'get_bookclubs_{user_id}',
+    #         {
+    #             'type': 'get_bookclubs',
+    #             'updated_bookclubs': updated_bookclubs
+    #         }
+    #     )
+
+
+
+
+
+    #     return
 
     def perform_create(self, serializer):
         bookclub = serializer.save()
@@ -148,10 +178,10 @@ class InvitationAPI(generics.GenericAPIView):
         user_id = kwargs.get('id')
         if user_id:
             invitations = Invitation.objects.filter(invited_user_id=user_id)
-            print('invitations:', invitations.values())
+            # print('invitations:', invitations.values())
         serializer = InvitationSerializer(invitations, many=True)
-        print('invitations:', invitations)
-        print('serializer data:', serializer.data)
+        # print('invitations:', invitations)
+        # print('serializer data:', serializer.data)
 
         return Response(serializer.data)
     
@@ -161,7 +191,6 @@ class InvitationAPI(generics.GenericAPIView):
 
         bookclub = get_object_or_404(Bookclub, bookclub_id=bookclub_request_id)
         invitation = get_object_or_404(Invitation, invited_user=user_id, bookclub_id=bookclub_request_id)
-        print('put invite:', invitation.accepted)
         
 
         bookclub.members.add(user_id)
@@ -172,7 +201,6 @@ class InvitationAPI(generics.GenericAPIView):
             {k: v for k, v in member.items() if k not in {'last_login', 'date_joined'}}
             for member in bookclub.members.values()
         ]
-        print('updated members:', updated_members)
 
         channel_layer = get_channel_layer()
         async_to_sync(channel_layer.group_send)(

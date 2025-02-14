@@ -6,12 +6,9 @@ import { v4 as uuidv4 } from 'uuid';
 
 
 
-interface dashProps {
-    user: CurrentUser | null
-}
 
-const UserDashboard: FC<dashProps> = ({user}) => {
-    // console.log('user:', user)
+const UserDashboard: FC = () => {
+
     
     const [activeTab, setActiveTab] = useState(0)
     const storedUser = localStorage.getItem('currentUser')
@@ -25,6 +22,43 @@ const UserDashboard: FC<dashProps> = ({user}) => {
     const [showBookclub, setShowBookClub] = useState(false)
     const [bookclubs, setBookClubs] = useState<Bookclub[]>([])
     const [invitations, setInvitations] = useState<Invitation[]>([])
+
+
+    useEffect(() => {
+        if (!activeUser?.id) return
+        try {
+            const socket = new WebSocket(`ws://localhost:8000/ws/bookchat/getBookclubs/${activeUser.id}`)
+
+            socket.onmessage = (event) => {
+                console.log('on message test')
+                const data = JSON.parse(event.data)
+                if (data.type === 'get_bookclubs') {
+                    console.log('web socket bookclub data:', data)
+                    setBookClubs(data.bookclubs)
+                    
+
+                }
+                
+            }
+
+            socket.onerror = (error) => {
+                console.error('Websocket error:', error)
+            }
+
+            socket.onopen = () => console.log('Bookclub websocket connected')
+            socket.onclose = () => console.log('Bookclub websocket disconnected')
+
+            return () => socket.close()
+
+
+        } catch (err) {
+            console.error('Failed to initialize Websocket:', err)
+        }
+
+
+        
+
+    }, [activeUser?.id])
 
     const userBooksElements = userBooks.map((userBookElement: Book) => {
 
@@ -83,15 +117,15 @@ const UserDashboard: FC<dashProps> = ({user}) => {
 
 
 
-    useEffect(() => {
-        fetch(`http://localhost:8000/api/bookclub/?user=${activeUser.id}`)
-        .then(res => res.json())
-        .then(data => {
-            // console.log('book club data:', data)
-            setBookClubs(data)
-        })
-        .catch(err => console.log('There was an error:', err))
-    }, [])
+    // useEffect(() => {
+    //     fetch(`http://localhost:8000/api/bookclub/?user=${activeUser.id}`)
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         console.log('book club data:', data)
+    //         setBookClubs(data)
+    //     })
+    //     .catch(err => console.log('There was an error:', err))
+    // }, [])
 
     useEffect(() => {
         const token = localStorage.getItem('authToken')
@@ -108,7 +142,7 @@ const UserDashboard: FC<dashProps> = ({user}) => {
         .catch(err => console.log('there was an error retrieving the invites:', err))
     }, [])
 
-    console.log('invitations:', invitations)
+    // console.log('invitations:', invitations)
 
     // console.log('invitation members:', invitations[5]['bookclub_to_join'].members)
 
@@ -208,7 +242,14 @@ const UserDashboard: FC<dashProps> = ({user}) => {
                 }
                 return response.json()
             })
-            .then(data => console.log('Bookclub created successfully', data))
+            .then(data => {
+                console.log('Bookclub created successfully', data)
+                setBookClubs((prev) => [...prev, data])
+
+            }
+                
+                
+               )
             .catch(err => console.error('Failed to create bookshelf', err))   
         }
 
@@ -218,7 +259,7 @@ const UserDashboard: FC<dashProps> = ({user}) => {
             const invited_by_user = invitation['invited_by_user']
             // const isMember = memberIds.includes(activeUser.id)
             const isMember = invitation.isMember ?? memberIds.includes(activeUser.id)
-            console.log('is member:', isMember)
+            // console.log('is member:', isMember)
             return(
                     <li key={invitation.invitation_id}>
                         {isMember ? 

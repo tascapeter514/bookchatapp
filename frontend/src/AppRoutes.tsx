@@ -8,6 +8,7 @@ import BookclubPage from './components/BookclubPage/BookclubPage.tsx'
 import Login from './components/LogIn/Login.tsx'
 import UserDashboard from './components/UserDashboard/UserDashboard.tsx'
 import AuthRequired from './components/common/authRequired.tsx'
+import ErrorBoundary from './components/common/ErrorBoundary.tsx'
 
 
 interface AppRoutesProps {
@@ -68,7 +69,7 @@ const AppRoutes: FC<AppRoutesProps> = ({ currentUser, setCurrentUser, isAuthenti
             <Route path='/book/:id' element={<Bookpage user={currentUser} />} />
             <Route path='/login' element={<Login login={handleLogin} user={currentUser} />}></Route>
             <Route element={<AuthRequired auth={isAuthenticated} />}>
-                <Route path='/userDashboard' element={<UserDashboard user={currentUser}  />}></Route>
+                <Route path='/userDashboard' element={<ErrorBoundary><UserDashboard  /></ErrorBoundary>}></Route>
                 <Route path='/bookclub/:id' element={<BookclubPage user={activeUser} auth={isAuthenticated}></BookclubPage>}></Route>
             </Route>
         
