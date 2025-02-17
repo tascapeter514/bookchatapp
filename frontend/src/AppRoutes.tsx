@@ -1,7 +1,7 @@
 import { useNavigate, Routes, Route } from 'react-router-dom';
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import { returnErrors } from './messages.tsx';
-import { HandleLogin, CurrentUser } from './types.ts'
+import { HandleLogin } from './types.ts'
 import Homepage from './components/Homepage/Homepage.tsx'
 import Bookpage from './components/Bookpage/Bookpage.tsx'
 import BookclubPage from './components/BookclubPage/BookclubPage.tsx'

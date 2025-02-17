@@ -1,17 +1,15 @@
 import {useState, useEffect} from 'react'
 import {useParams } from 'react-router-dom'
-import { Book, ISBN_Identifier, CurrentUser, Bookshelf, ActiveUser } from '../../types'
-
-interface bookPageProps {
-    user: CurrentUser | null
-}
+import { Book, ISBN_Identifier, Bookshelf, ActiveUser } from '../../types'
 
 
 
-const Bookpage: React.FC<bookPageProps> = ({user}) => {
+
+
+const Bookpage: React.FC = () => {
+
     const storedUser = localStorage.getItem('currentUser')
     const activeUser: ActiveUser = storedUser ? JSON.parse(storedUser) : null;
-
     const params = useParams();
     const [book, setBook] = useState<Book | null>(null);
     const [showBookshelfForm, setShowBookshelfForm] = useState(false)
@@ -22,7 +20,7 @@ const Bookpage: React.FC<bookPageProps> = ({user}) => {
         fetch(`http://localhost:8000/book/${params.id}`)
         .then(res => res.json())
         .then(data => setBook(data))
-    }, [params.id])
+    }, [])
 
     useEffect(() => {
         fetch(`http://localhost:8000/api/bookshelf/?user=${activeUser.id}`)
@@ -31,9 +29,7 @@ const Bookpage: React.FC<bookPageProps> = ({user}) => {
         .catch(err => console.log('There was an error retrieving your bookshelf:', err))
     }, [])
 
-    console.log('user bookshelves:', userBookShelves)
 
-    // console.log('book:', book)
 
     const bookshelfRadioBtns = userBookShelves.map((userBookshelf: Bookshelf) => {
         return(

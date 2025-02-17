@@ -1,22 +1,22 @@
 import { useState, FC } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { HandleLogout, CurrentUser } from '../../types.ts'
+import { HandleLogout } from '../../types.ts'
 import './Navbar.css'
 
 
 interface NavProps {
-    auth: () => boolean,
-    setCurrentUser: React.Dispatch<React.SetStateAction<CurrentUser | null>>;
+    auth: () => boolean
 }
 
 
-const Navbar: FC<NavProps> = ({auth, setCurrentUser}) => {
+const Navbar: FC<NavProps> = ({auth}) => {
+
+  
     const navigate = useNavigate()
     const [showNavbar] = useState(false)
     const isAuthenticated = auth()
 
     const handleLogout: HandleLogout = async () => {
-        console.log('handle logout check')
         const token = localStorage.getItem('authToken');
         try {
           if (token) {
@@ -34,7 +34,6 @@ const Navbar: FC<NavProps> = ({auth, setCurrentUser}) => {
           // Clear client-side data regardless of server response
           localStorage.removeItem('authToken')
           localStorage.removeItem('currentUser')
-          setCurrentUser(null)
           navigate('/login')
         }
       };

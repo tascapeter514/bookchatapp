@@ -1,11 +1,10 @@
 import './Login.css'
 import { FC } from 'react'
-import { HandleLogin, CurrentUser } from '../../types'
+import { HandleLogin } from '../../types'
 
 
 interface LoginProps {
     login: HandleLogin,
-    user: CurrentUser | null
 }
 
 const Login: FC<LoginProps> = ({login}) => {

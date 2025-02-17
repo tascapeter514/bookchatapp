@@ -1,9 +1,12 @@
 import './UserDashboard.css';
 import { FC, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import {  Book, Bookshelf, Bookclub, Invitation } from '../../types';
+import {  Bookclub } from '../../types';
 import { v4 as uuidv4 } from 'uuid';
 import Bookspanel from './components/BooksPanel/BooksPanel'
+import BookclubPanel from './components/BookclubPanel/BookclubPanel';
+import SettingsPanel from './components/SettingsPanel/SettingsPanel';
+import Tabs from './components/Tabs/Tabs'
 
 
 
@@ -14,14 +17,10 @@ const UserDashboard: FC = () => {
     const [activeTab, setActiveTab] = useState(0)
     const storedUser = localStorage.getItem('currentUser')
     const activeUser = storedUser ? JSON.parse(storedUser) : null;
-    const switchTab = (index: number) => {
-        setActiveTab(index)
-    }
-  
+    const [bookclubs, setBookClubs] = useState<Bookclub[]>([])
     const [showBookshelf, setShowBookshelf] = useState(false)
     const [showBookclub, setShowBookClub] = useState(false)
-    const [bookclubs, setBookClubs] = useState<Bookclub[]>([])
-    const [invitations, setInvitations] = useState<Invitation[]>([])
+    
 
 
     useEffect(() => {
@@ -52,41 +51,7 @@ const UserDashboard: FC = () => {
         }
     }, [])
 
-    useEffect(() => {
-        const socket = new WebSocket('ws://localhost:8000/ws/bookchat/joinBookclub');
-
-        socket.onmessage = (event) => {
-            const data = JSON.parse(event.data)
-            if (data.type === 'join_bookclub') {
-
-                setInvitations(prevInvitations => {
-                    const updated = prevInvitations.map(invitation => {
-                        if(invitation.bookclub_to_join.bookclub_id === data.bookclub_id) {
-                            return {
-                                ...invitation,
-                                bookclub_to_join: {
-                                    ...invitation.bookclub_to_join,
-                                    members: data.updated_members
-                                },
-                            };
-                        }
-                        return invitation;
-                    })
-
-
-                        return [...updated]
-
-                })
-                
-
-            }
-        }
-        socket.onopen = () => console.log('Web socket connected')
-        socket.onclose = () => console.log('Web socket disconnected')
-
-        return () => socket.close();                       {/* {isMember ? "" : <button onClick={() => joinBookclub(bookclub)}>Join</button>} */}
-    }, [])
-
+    
   
 
     const bookclubElements = bookclubs?.map((bookclub: Bookclub) => {
@@ -97,52 +62,7 @@ const UserDashboard: FC = () => {
         ) 
     })
 
-    function joinBookclub(bookclub: Bookclub) {
-
-        const token = localStorage.getItem('authToken')
-        const parsedToken = token ? JSON.parse(token) : null
-
-        const joinReq = {
-            user_id: activeUser.id,
-            bookclub_id: bookclub.bookclub_id
-        }
-
-        fetch(`http://localhost:8000/api/acceptInvite`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Token ${parsedToken}`
-            },
-            body: JSON.stringify(joinReq)
-        })
-        .then(res => res.json())
-        .then(data => console.log(data))
-        .catch(err => console.log('There was an error in joining your bookclub:', err))
-    }
-
   
-
-
-
-    useEffect(() => {
-        const token = localStorage.getItem('authToken')
-        const parsedToken = token ? JSON.parse(token) : null
-   
-        fetch(`http://localhost:8000/api/getInvites/${activeUser.id}`, {
-            headers: {
-                'Authorization': `Token ${parsedToken}`
-            }
-            
-        })
-        .then(res => res.json())
-        .then(data => setInvitations(data))
-        .catch(err => console.log('there was an error retrieving the invites:', err))
-    }, [])
-
-
- 
-
-
     function createBookshelf(formData: FormData) {
         const bookshelf = {
             bookshelf_id: uuidv4(),
@@ -201,45 +121,17 @@ const UserDashboard: FC = () => {
             .catch(err => console.error('Failed to create bookshelf', err))   
         }
 
-        const invitationElements = invitations?.map((invitation: Invitation & {isMember?: boolean}) => {
-            const bookclub = invitation['bookclub_to_join']
-            const memberIds = bookclub['members'].map((member) => member['id'])
-            const invited_by_user = invitation['invited_by_user']
-            const isMember = invitation.isMember ?? memberIds.includes(activeUser.id)
-            return(
-                    <li key={invitation.invitation_id}>
-                        {isMember ? 
-                            <Link to={`/bookclub/${bookclub.bookclub_id}`}><h3>{bookclub.name}</h3></Link>
-                            : <h3>{bookclub.name}</h3> }
-                        <p>{invited_by_user.username}</p>
-
-    
-                        {!isMember && (
-                            <button onClick={() => joinBookclub(bookclub)}>Join</button>
-    
-                        )}
-                    </li>
-                
-            )
-        })
+        
 
         console.log('book clubs:', bookclubs)
-        console.log('invites:', invitations)
+
 
     return(
         <div className='dashboard-container'>
             <main>
-                <div className="tabs-container">
-                    <ul arial-labelledby='tabs-title'>
-                        <li 
-                            onClick={() => switchTab(0)}
-                            className={activeTab === 0 ? 'active' : ""}><a id='tab-1' href="#books">Books</a></li>
-                        <li onClick={() => switchTab(1)}
-                            className={activeTab === 1 ? 'active' : ""}><a id='tab-2' href="#bookclubs">BookClubs</a></li>
-                        <li onClick={() => switchTab(2)}
-                            className={activeTab === 2 ? 'active' : ""}><a id='tab-3' href="#settings">Settings</a></li>
-                    </ul>
-                </div>
+
+                <Tabs activeTab={activeTab} setActiveTab={setActiveTab}></Tabs>
+  
                 <div className="tab-panels-container container-flex">
                     {activeTab === 0 && (
 
@@ -247,18 +139,13 @@ const UserDashboard: FC = () => {
                         
                     )}
                     {activeTab === 1 && (
-
-                        <div id='bookclubs' aria-labelledby='tab-2'>
-                            <h2>Bookclubs</h2>
-                            <ul>{invitationElements}</ul>
-                        </div>
-                        
+                        <BookclubPanel user={activeUser}></BookclubPanel>
                     )}
 
                     {activeTab === 2 && (
-                        <div id='settings' aria-labelledby='tab-3'>
-                            <p>{storedUser ? JSON.parse(storedUser).username : ''}</p>
-                        </div>
+
+                        <SettingsPanel user={activeUser}></SettingsPanel>  
+
                     )}
                 </div>
                 

@@ -11,11 +11,9 @@ interface bookclubPageProps {
 
 
 const BookclubPage : React.FC<bookclubPageProps> = () => {
-    const parameters = useParams()
-
-    const storedUser = localStorage.getItem('currentUser')
-    const currentUser = storedUser ? JSON.parse(storedUser) : null
     
+    
+    const parameters = useParams()
     const currentToken = localStorage.getItem('authToken')
     console.log('current token:', currentToken)
 
