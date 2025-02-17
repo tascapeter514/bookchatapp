@@ -1,12 +1,12 @@
 import './UserDashboard.css';
 import { FC, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import {  Bookclub } from '../../types';
 import { v4 as uuidv4 } from 'uuid';
 import Bookspanel from './components/BooksPanel/BooksPanel'
 import BookclubPanel from './components/BookclubPanel/BookclubPanel';
 import SettingsPanel from './components/SettingsPanel/SettingsPanel';
 import Tabs from './components/Tabs/Tabs'
+import Sidebar from './components/Sidebar/Sidebar'
 
 
 
@@ -18,8 +18,7 @@ const UserDashboard: FC = () => {
     const storedUser = localStorage.getItem('currentUser')
     const activeUser = storedUser ? JSON.parse(storedUser) : null;
     const [bookclubs, setBookClubs] = useState<Bookclub[]>([])
-    const [showBookshelf, setShowBookshelf] = useState(false)
-    const [showBookclub, setShowBookClub] = useState(false)
+
     
 
 
@@ -52,18 +51,8 @@ const UserDashboard: FC = () => {
     }, [])
 
     
-  
 
-    const bookclubElements = bookclubs?.map((bookclub: Bookclub) => {
-        return(
-            <Link to={`/bookclub/${bookclub.bookclub_id}`}>
-                <li key={bookclub.bookclub_id}><p>{bookclub.name}</p></li>
-            </Link>
-        ) 
-    })
-
-  
-    function createBookshelf(formData: FormData) {
+    function createBookshelf(formData: FormData): void {
         const bookshelf = {
             bookshelf_id: uuidv4(),
             name: formData.get('bookshelfName'),
@@ -87,7 +76,7 @@ const UserDashboard: FC = () => {
         }
 
 
-        const createBookClub = (formData: FormData) => {
+        const createBookClub = (formData: FormData): void => {
             const bookclub = {
                 bookclub_id : uuidv4(),
                 name: formData.get('bookClubName'),
@@ -151,38 +140,9 @@ const UserDashboard: FC = () => {
                 
 
             </main>
+            <Sidebar bookclubs={bookclubs} createBookshelf={createBookshelf} createBookClub={createBookClub}></Sidebar>
 
-            <aside className="sidebar">
-                <div className="sidebar-widget">
-                    <h2 className='widget-title'></h2>
-                    <p className="widget-body"></p>
-                    <button onClick={() => setShowBookshelf(prev => !prev)}>Add a Bookshelf</button>
-                    {showBookshelf ? 
-                    
-                    <form action={createBookshelf as any} method='patch'>
-                        <label>Name: <input name='bookshelfName' id='bookshelfInput' required></input></label>
-                        <button type='submit'>Create</button>
-                    </form>
-                    : ''}
-                </div>
-                <div className="bookclub-submission-container">
-                    <button onClick={() => setShowBookClub(prev => !prev)}>Add a Bookclub</button>
-                    {showBookclub ?
-                        <form action={createBookClub as any} method='post'>
-                            <label><input name='bookClubName' id='bookcClubInput' /></label>
-                            <button type='submit'>Create Book Club</button>
-                        </form> 
-                    
-                
-                            : ''}
-                </div>
-                <br />
-                <hr />
 
-                <h3>Book Clubs</h3>
-                <ul>{ bookclubElements }</ul>
-                    
-            </aside>
             
         </div>
     )
