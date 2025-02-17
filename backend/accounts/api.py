@@ -40,22 +40,6 @@ class LoginAPI(generics.GenericAPIView):
         })
 
 
-# class BookclubViewSet(viewsets.ModelViewSet):
-#     serializer_class = BookclubSerializer
-#     queryset = Bookclub.objects.all()
-#     lookup_field = 'id'
-
-#     def retrieve(self, request, id=None):
-#         try:
-#             bookclub = get_object_or_404(Bookclub, bookclub_id=id)
-#             print('bookclub:', bookclub)
-#             serializer = BookclubSerializer(bookclub)
-#             return Response(serializer.data)
-#         except ValidationError:
-#             return Response({'error': 'Invalid UUID format'}, status=400)
-
-
-# GET USER API
 
 class UserAPI(generics.RetrieveAPIView):
     permission_classes = [

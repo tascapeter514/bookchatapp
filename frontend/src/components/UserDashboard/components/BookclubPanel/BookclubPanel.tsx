@@ -13,6 +13,7 @@ const BookclubPanel: React.FC<BookclubPanelProps> = ({user}) => {
 
 
     const [invitations, setInvitations] = useState<Invitation[]>([])
+    
 
 
     useEffect(() => {
@@ -120,10 +121,6 @@ const BookclubPanel: React.FC<BookclubPanelProps> = ({user}) => {
             <h2>Bookclubs</h2>
             <ul>{invitationElements}</ul>
         </div>
-
-
-
-
     )
 }
 

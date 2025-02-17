@@ -1,5 +1,5 @@
 import { useNavigate, Routes, Route } from 'react-router-dom';
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { returnErrors } from './messages.tsx';
 import { HandleLogin } from './types.ts'
 import Homepage from './components/Homepage/Homepage.tsx'
@@ -51,6 +51,31 @@ const AppRoutes: FC<AppRoutesProps> = ({isAuthenticated }) => {
     
         }
     };
+
+
+    useEffect(() => {
+      if (!activeUser?.id) return
+      const fetchBookClubs = async () => {
+        try {
+          const response = await fetch(`http://localhost:8000/api/getBookclubMemberships/${activeUser.id}`)
+          console.log('member bookclubs response:', response)
+          if (response.ok) {
+            const data = response.json()
+            console.log('bookclub memberships data:', data)
+          }
+          
+        } catch (err) {
+          console.error(`Network error: ${err}`)
+        }
+      }
+  
+      fetchBookClubs();
+  
+  
+  
+    }, []);
+
+
 
 
 

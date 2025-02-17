@@ -6,13 +6,10 @@ from bookchat.models import Bookclub
 # Create your models here.
 
 class Profile(models.Model):
-    # id = models.UUIDField(primary_key=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile', primary_key=True)
     bio = models.TextField(blank=True)
-
     createdAt = models.DateTimeField(auto_now_add=True)
     updatedAt = models.DateTimeField(auto_now=True)
-    # username = models.CharField(max_length=300)
     profile_pic = models.ImageField(upload_to='profile_pics/', blank=True, null=True)
 
     def __str__(self):
