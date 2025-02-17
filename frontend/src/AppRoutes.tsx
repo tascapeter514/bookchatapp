@@ -12,13 +12,12 @@ import ErrorBoundary from './components/common/ErrorBoundary.tsx'
 
 
 interface AppRoutesProps {
-    currentUser: CurrentUser | null,
-    setCurrentUser: React.Dispatch<React.SetStateAction<CurrentUser | null>>;
     isAuthenticated: () => boolean,
 }
 
 
-const AppRoutes: FC<AppRoutesProps> = ({ currentUser, setCurrentUser, isAuthenticated }) => {
+const AppRoutes: FC<AppRoutesProps> = ({isAuthenticated }) => {
+
     const navigate = useNavigate()
     const storedUser = localStorage.getItem('currentUser')
     const activeUser = storedUser ? JSON.parse(storedUser) : null
@@ -36,10 +35,7 @@ const AppRoutes: FC<AppRoutesProps> = ({ currentUser, setCurrentUser, isAuthenti
             body: JSON.stringify(data)
         });
         const result = await response.json()
-        console.log('result:', result)
-        console.log('token', result.token)
         if (response.ok && result.token) {
-          setCurrentUser(result)
           localStorage.setItem('authToken', JSON.stringify(result.token))
           localStorage.setItem('currentUser', JSON.stringify(result.user))
           navigate('/userDashboard')
@@ -66,11 +62,11 @@ const AppRoutes: FC<AppRoutesProps> = ({ currentUser, setCurrentUser, isAuthenti
         <Routes>
             
             <Route path='/' element={<Homepage />} />
-            <Route path='/book/:id' element={<Bookpage user={currentUser} />} />
-            <Route path='/login' element={<Login login={handleLogin} user={currentUser} />}></Route>
+            <Route path='/book/:id' element={<Bookpage />} />
+            <Route path='/login' element={<Login login={handleLogin} />}></Route>
             <Route element={<AuthRequired auth={isAuthenticated} />}>
                 <Route path='/userDashboard' element={<ErrorBoundary><UserDashboard  /></ErrorBoundary>}></Route>
-                <Route path='/bookclub/:id' element={<BookclubPage user={activeUser} auth={isAuthenticated}></BookclubPage>}></Route>
+                <Route path='/bookclub/:id' element={<BookclubPage auth={isAuthenticated}></BookclubPage>}></Route>
             </Route>
         
       </Routes>

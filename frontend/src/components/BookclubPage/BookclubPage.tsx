@@ -1,11 +1,10 @@
 import './BookclubPage.css'
 import {useState, useEffect} from 'react'
 import {useParams } from 'react-router-dom'
-import {CurrentUser, Bookclub, ActiveUser} from '../../types'
+import { Bookclub, ActiveUser} from '../../types'
 
 
 interface bookclubPageProps {
-    user: CurrentUser | null,
     auth: () => boolean,
 }
 
@@ -14,8 +13,9 @@ interface bookclubPageProps {
 const BookclubPage : React.FC<bookclubPageProps> = () => {
     const parameters = useParams()
 
-    const currentUser = localStorage.getItem('currentUser')
-    console.log('current user:', currentUser)
+    const storedUser = localStorage.getItem('currentUser')
+    const currentUser = storedUser ? JSON.parse(storedUser) : null
+    
     const currentToken = localStorage.getItem('authToken')
     console.log('current token:', currentToken)
 
@@ -24,16 +24,16 @@ const BookclubPage : React.FC<bookclubPageProps> = () => {
     const [bookclub, setBookclub] = useState<Bookclub | null>(null)
     const [inviteUsers, setInviteUsers] = useState<ActiveUser[]>([])
     const [showInvite, setShowInvite] = useState(false)
-    console.log('parameters:', parameters)
 
+//
     useEffect(() => {
         fetch(`http://localhost:8000/api/bookclub/${parameters.id}`)
         .then(res => res.json())
         .then(data => setBookclub(data))
         .catch(err => console.log('There was an error fetching the following bookclub page', err))
-    }, [parameters.id])
+    }, [])
 
-    console.log('bookclub page:', bookclub)
+
     const bookclubMembers = bookclub?.members.map((member) => {
         return(<li key={member.id}>{member.username}</li>)
     })
@@ -48,9 +48,6 @@ const BookclubPage : React.FC<bookclubPageProps> = () => {
 
     })
 
-{/* <label>{userBookshelf.name}<input name='bookshelfRadio' type="radio" value={userBookshelf.bookshelf_id} id='bookshelfRadio' /></label> */}
-    console.log('invite users:', inviteUsers)
-   
 
     const getNonMembers = () => {
         setShowInvite(prev => !prev)
@@ -127,13 +124,3 @@ const BookclubPage : React.FC<bookclubPageProps> = () => {
 
 
 export default BookclubPage
-
-// {showBookshelfForm ?  
-//     <form action={addToBookshelf as any} className="bookshelf-form" method='patch'>
-//         <ul>{bookshelfRadioBtns}</ul>
-//         <button type='submit'>Submit</button>
-//     </form>
-
-//     : ''
-
-// }
