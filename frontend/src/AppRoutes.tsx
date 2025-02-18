@@ -1,7 +1,7 @@
 import { useNavigate, Routes, Route } from 'react-router-dom';
-import { FC, useEffect } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { returnErrors } from './messages.tsx';
-import { HandleLogin } from './types.ts'
+import { HandleLogin, Invitation, Bookclub } from './types.ts'
 import Homepage from './components/Homepage/Homepage.tsx'
 import Bookpage from './components/Bookpage/Bookpage.tsx'
 import BookclubPage from './components/BookclubPage/BookclubPage.tsx'
@@ -21,6 +21,9 @@ const AppRoutes: FC<AppRoutesProps> = ({isAuthenticated }) => {
     const navigate = useNavigate()
     const storedUser = localStorage.getItem('currentUser')
     const activeUser = storedUser ? JSON.parse(storedUser) : null
+    const [invites, setInvites] = useState<Invitation[]>([])
+    const [userBookclubs, setUserBookclubs] = useState<Bookclub[]>([])
+
     
 
     const handleLogin: HandleLogin = async (formData) => {
@@ -55,25 +58,62 @@ const AppRoutes: FC<AppRoutesProps> = ({isAuthenticated }) => {
 
     useEffect(() => {
       if (!activeUser?.id) return
-      const fetchBookClubs = async () => {
-        try {
-          const response = await fetch(`http://localhost:8000/api/getBookclubMemberships/${activeUser.id}`)
-          console.log('member bookclubs response:', response)
-          if (response.ok) {
-            const data = response.json()
-            console.log('bookclub memberships data:', data)
+      try {
+          const socket = new WebSocket(`ws://localhost:8000/ws/bookchat/getBookclubs/${activeUser.id}`)
+
+          socket.onmessage = (event) => {
+              const data = JSON.parse(event.data)
+              if (data.type === 'get_bookclubs') {
+                setUserBookclubs(data.bookclubs)
+              }
+              
           }
-          
-        } catch (err) {
-          console.error(`Network error: ${err}`)
-        }
+
+          socket.onerror = (error) => {
+              console.error('Websocket error:', error)
+          }
+
+          socket.onopen = () => console.log('Bookclub websocket connected')
+          socket.onclose = () => console.log('Bookclub websocket disconnected')
+
+          return () => socket.close()
+
+
+      } catch (err) {
+          console.error('Failed to initialize Websocket:', err)
       }
-  
-      fetchBookClubs();
-  
-  
-  
-    }, []);
+  }, [])
+
+    console.log('user bookclubs: ', userBookclubs)
+
+    useEffect(() => {
+      if (!activeUser?.id) return;
+      try {
+        const socket = new WebSocket(`ws://localhost:8000/ws/bookchat/getUserInvites/${activeUser.id}`)
+
+        socket.onmessage = (event) => {
+          const data = JSON.parse(event.data)
+          console.log('user invites data:', data)
+          if (data.type === 'get_invites') {
+            console.log('get user invites:', data.user_invites)
+            setInvites(data.user_invites)
+          }
+
+        }
+
+        socket.onerror = (error) => {
+          console.error('User Invite Websocket error:', error)
+        }
+
+        socket.onopen = () => console.log('User Invite Websocket Connected')
+        socket.onclose = () => console.log('User Invite Websocket disconnected')
+
+        return () => socket.close()
+
+      } catch(err) {
+        console.error("Failed to initialize invitations websocket", err)
+      }
+    }, [])
 
 
 
@@ -90,8 +130,11 @@ const AppRoutes: FC<AppRoutesProps> = ({isAuthenticated }) => {
             <Route path='/book/:id' element={<Bookpage />} />
             <Route path='/login' element={<Login login={handleLogin} />}></Route>
             <Route element={<AuthRequired auth={isAuthenticated} />}>
-                <Route path='/userDashboard' element={<ErrorBoundary><UserDashboard  /></ErrorBoundary>}></Route>
-                <Route path='/bookclub/:id' element={<BookclubPage auth={isAuthenticated}></BookclubPage>}></Route>
+                <Route path='/userDashboard' element={<ErrorBoundary><UserDashboard 
+                  userBookclubs={userBookclubs}
+                  setUserBookclubs={setUserBookclubs} 
+                  userInvites={invites}  /></ErrorBoundary>}></Route>
+                <Route path='/bookclub/:id' element={<BookclubPage userBookclubs={userBookclubs}></BookclubPage>}></Route>
             </Route>
         
       </Routes>

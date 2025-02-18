@@ -6,24 +6,26 @@ import { Bookclub } from '../../../../types'
 
 
 interface SidebarProps {
-    bookclubs: Bookclub[],
+    userBookclubs: Bookclub[],
     createBookshelf: (formData: FormData) => void,
     createBookClub: (formData: FormData) => void,
 }
 
 
-const Sidebar: React.FC<SidebarProps> = ({bookclubs, createBookshelf, createBookClub}) => {
+const Sidebar: React.FC<SidebarProps> = ({userBookclubs, createBookshelf, createBookClub}) => {
 
     const [showBookshelf, setShowBookshelf] = useState(false)
     const [showBookclub, setShowBookClub] = useState(false)
 
-    const bookclubElements = bookclubs?.map((bookclub: Bookclub) => {
+    const bookclubElements = userBookclubs?.map((bookclub: Bookclub) => {
         return(
             <Link to={`/bookclub/${bookclub.bookclub_id}`}>
                 <li key={bookclub.bookclub_id}><p>{bookclub.name}</p></li>
             </Link>
         ) 
     })
+
+    console.log('user bookclubs sidebar:', userBookclubs)
     
     
     

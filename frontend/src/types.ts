@@ -67,8 +67,8 @@ export interface Invitation {
     accepted: boolean,
     created_at: Date,
     invited_user: number,
-    bookclub_to_join: Bookclub,
-    invited_by_user: ActiveUser,
+    bookclub: {id: string, name: string}
+    invited_by: string,
 
 
 }

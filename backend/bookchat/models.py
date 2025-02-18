@@ -72,7 +72,6 @@ class Invitation(models.Model):
     invited_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='bookclub_invitations')
     invited_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sent_invitations')
     accepted = models.BooleanField(default=False)
-
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

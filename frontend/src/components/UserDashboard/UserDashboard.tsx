@@ -1,6 +1,6 @@
 import './UserDashboard.css';
-import { FC, useState, useEffect } from 'react';
-import {  Bookclub } from '../../types';
+import { FC, useState, Dispatch, SetStateAction } from 'react';
+import {  Bookclub, Invitation } from '../../types';
 import { v4 as uuidv4 } from 'uuid';
 import Bookspanel from './components/BooksPanel/BooksPanel'
 import BookclubPanel from './components/BookclubPanel/BookclubPanel';
@@ -9,46 +9,25 @@ import Tabs from './components/Tabs/Tabs'
 import Sidebar from './components/Sidebar/Sidebar'
 
 
+interface UserDashboardProps {
+    userInvites: Invitation[],
+    userBookclubs: Bookclub[],
+    setUserBookclubs: Dispatch<SetStateAction<Bookclub[]>>
+}
 
 
-const UserDashboard: FC = () => {
+
+const UserDashboard: FC<UserDashboardProps> = ({userInvites, userBookclubs, setUserBookclubs}) => {
 
     
     const [activeTab, setActiveTab] = useState(0)
     const storedUser = localStorage.getItem('currentUser')
     const activeUser = storedUser ? JSON.parse(storedUser) : null;
-    const [bookclubs, setBookClubs] = useState<Bookclub[]>([])
 
     
 
 
-    useEffect(() => {
-        if (!activeUser?.id) return
-        try {
-            const socket = new WebSocket(`ws://localhost:8000/ws/bookchat/getBookclubs/${activeUser.id}`)
 
-            socket.onmessage = (event) => {
-                const data = JSON.parse(event.data)
-                if (data.type === 'get_bookclubs') {
-                    setBookClubs(data.bookclubs)
-                }
-                
-            }
-
-            socket.onerror = (error) => {
-                console.error('Websocket error:', error)
-            }
-
-            socket.onopen = () => console.log('Bookclub websocket connected')
-            socket.onclose = () => console.log('Bookclub websocket disconnected')
-
-            return () => socket.close()
-
-
-        } catch (err) {
-            console.error('Failed to initialize Websocket:', err)
-        }
-    }, [])
 
     
 
@@ -101,8 +80,7 @@ const UserDashboard: FC = () => {
             })
             .then(data => {
                 console.log('Bookclub created successfully', data)
-                setBookClubs((prev) => [...prev, data])
-
+                setUserBookclubs((prev) => [...prev, data])
             }
                 
                 
@@ -111,8 +89,6 @@ const UserDashboard: FC = () => {
         }
 
         
-
-        console.log('book clubs:', bookclubs)
 
 
     return(
@@ -128,7 +104,7 @@ const UserDashboard: FC = () => {
                         
                     )}
                     {activeTab === 1 && (
-                        <BookclubPanel user={activeUser}></BookclubPanel>
+                        <BookclubPanel user={activeUser} userInvites={userInvites}></BookclubPanel>
                     )}
 
                     {activeTab === 2 && (
@@ -140,7 +116,7 @@ const UserDashboard: FC = () => {
                 
 
             </main>
-            <Sidebar bookclubs={bookclubs} createBookshelf={createBookshelf} createBookClub={createBookClub}></Sidebar>
+            <Sidebar userBookclubs={userBookclubs} createBookshelf={createBookshelf} createBookClub={createBookClub}></Sidebar>
 
 
             

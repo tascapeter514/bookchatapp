@@ -69,12 +69,22 @@ class BookclubSerializer(serializers.ModelSerializer):
 #INVITATION SERIALIZER
 
 class InvitationSerializer(serializers.ModelSerializer):
-    invited_by_user = UserSerializer(source='invited_by')
-    bookclub_to_join = BookclubSerializer(source='bookclub')
+    invited_by = serializers.SlugRelatedField(
+        queryset=User.objects.all(),
+        slug_field='username'
+    )
+    bookclub = serializers.SerializerMethodField()
 
     class Meta:
         model = Invitation
-        fields = ['invitation_id', 'accepted', 'created_at', 'invited_user', 'bookclub_to_join', 'invited_by_user']
+        fields = ['invitation_id', 'accepted', 'created_at', 'invited_user', 'bookclub',  'invited_by']
+
+    def get_bookclub(self, obj):
+        return {
+            'id': str(obj.bookclub.bookclub_id),
+            'name': obj.bookclub.name
+        }
+
 
 
         

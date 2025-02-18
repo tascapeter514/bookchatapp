@@ -5,25 +5,28 @@ import { Bookclub, ActiveUser} from '../../types'
 
 
 interface bookclubPageProps {
-    auth: () => boolean,
+    userBookclubs: Bookclub[]
 }
 
 
 
-const BookclubPage : React.FC<bookclubPageProps> = () => {
+const BookclubPage : React.FC<bookclubPageProps> = ({userBookclubs}) => {
     
-    
+    const [isMember, setIsMember] = useState(false)
     const parameters = useParams()
+
+    useEffect(() => {
+        const membership = userBookclubs.map((userBookclub: Bookclub) => userBookclub.bookclub_id).some(userBookclubId => userBookclubId === parameters.id)
+        membership ? setIsMember(true): setIsMember(false)
+    }, [userBookclubs])
+
     const currentToken = localStorage.getItem('authToken')
-    console.log('current token:', currentToken)
-
-    
-
     const [bookclub, setBookclub] = useState<Bookclub | null>(null)
     const [inviteUsers, setInviteUsers] = useState<ActiveUser[]>([])
     const [showInvite, setShowInvite] = useState(false)
 
-//
+
+
     useEffect(() => {
         fetch(`http://localhost:8000/api/bookclub/${parameters.id}`)
         .then(res => res.json())
@@ -96,26 +99,37 @@ const BookclubPage : React.FC<bookclubPageProps> = () => {
     }
 
     return(
+            <div className='bookclub-container'>
+                {isMember && (
+                    <div>
+                    <h2>Welcome to the {bookclub?.name}</h2>
 
-        <div className='bookclub-container'>
-            <h2>Welcome to the {bookclub?.name}</h2>
+                    <aside>
+                    
+                        <h3>Members</h3>
+                        <ul>{bookclubMembers}</ul>
+                        <br />
+                        <hr />
+                        <button onClick={getNonMembers}>Invite Users</button>
+                        {showInvite ?
+                            <form action={sendInvite as any} className="invite-form" method='post'>
+                                <ul>{nonMembers}</ul>
+                                <button type='submit'>Submit</button>
+                    
+                            </form>
+                            : ''}
+                    
+                    </aside>
+                    </div>
+                )}
 
-            <aside>
-                <h3>Members</h3>
-                <ul>{bookclubMembers}</ul>
-                <br />
-                <hr />
-                <button onClick={getNonMembers}>Invite Users</button>
-                {showInvite ?
-                    <form action={sendInvite as any} className="invite-form" method='post'>
-                        <ul>{nonMembers}</ul>
-                        <button type='submit'>Submit</button>
-
-                    </form>
-                    : ''}
-
-            </aside>
-        </div>
+                {!isMember && (
+                    <div>
+                        <h1>We're sorry.</h1>
+                        <p>You must be a member to view the book club.</p>
+                    </div>
+                ) }
+                </div>
         
     )
 }
