@@ -84,6 +84,15 @@ class InvitationSerializer(serializers.ModelSerializer):
             'id': str(obj.bookclub.bookclub_id),
             'name': obj.bookclub.name
         }
+    
+class UserDataSerializer(serializers.ModelSerializer):
+    bookshelves = BookshelfSerializer(many=True, read_only=True)
+    bookclubs = BookclubSerializer(many=True, read_only=True)
+    invitations = InvitationSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = User
+        fields = ['bookshelves', 'bookclubs', 'invitations']
 
 
 

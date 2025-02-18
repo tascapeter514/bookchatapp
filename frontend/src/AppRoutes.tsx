@@ -55,7 +55,37 @@ const AppRoutes: FC<AppRoutesProps> = ({isAuthenticated }) => {
         }
     };
 
+    useEffect(() => {
+      if (!activeUser?.id) return
 
+      try {
+        const socket = new WebSocket(`ws://localhost:8000/ws/userData/${activeUser.id}`)
+
+        socket.onmessage = (event) => {
+          const data = JSON.parse(event.data);
+          console.log('user data web socket data:', data)
+          if (data.type === 'get_user_data') {
+            console.log('web socket user data:', data.user_data)
+          }
+        }
+
+        socket.onerror = (error) => {
+          console.error('User data websocket error', error)
+        }
+
+        socket.onopen = () => console.log('User data websocket connected')
+        socket.onclose = () => console.log('User data websocket disconnected')
+
+        return () => socket.close()
+
+
+      } catch (err) {
+        console.log('Failed to initalize Websocket:', err)
+      }
+
+
+
+    })
     useEffect(() => {
       if (!activeUser?.id) return
       try {

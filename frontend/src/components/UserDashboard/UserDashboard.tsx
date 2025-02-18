@@ -24,13 +24,6 @@ const UserDashboard: FC<UserDashboardProps> = ({userInvites, userBookclubs, setU
     const storedUser = localStorage.getItem('currentUser')
     const activeUser = storedUser ? JSON.parse(storedUser) : null;
 
-    
-
-
-
-
-    
-
     function createBookshelf(formData: FormData): void {
         const bookshelf = {
             bookshelf_id: uuidv4(),
