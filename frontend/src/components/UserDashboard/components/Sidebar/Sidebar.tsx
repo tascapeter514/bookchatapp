@@ -11,10 +11,8 @@ import { userData } from '../../../../components/common/UserContext'
 
 const Sidebar: React.FC = () => {
 
-    const {userBookclubs, setUserBookclubs, userBookshelves, setUserBookshelves } = userData()
+    const {userBookclubs, userBookshelves, activeUser, setUserBookclubs, setUserBookshelves } = userData()
 
-    const storedUser = localStorage.getItem('currentUser')
-    const activeUser = storedUser ? JSON.parse(storedUser) : null;
 
 
 

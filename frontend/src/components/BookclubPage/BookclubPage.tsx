@@ -20,8 +20,6 @@ const BookclubPage : React.FC = () => {
         const membership = userBookclubs.map((userBookclub: Bookclub) => userBookclub.bookclub_id).some(userBookclubId => userBookclubId === parameters.id)
         membership ? setIsMember(true): setIsMember(false)
     }, [userBookclubs])
-
-    const currentToken = localStorage.getItem('authToken')
     const [bookclub, setBookclub] = useState<Bookclub | null>(null)
     const [inviteUsers, setInviteUsers] = useState<ActiveUser[]>([])
     const [showInvite, setShowInvite] = useState(false)

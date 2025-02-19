@@ -13,39 +13,41 @@ export type HandleLogin = (formData: FormData) => Promise<void>
 export type HandleLogout = () => Promise<void>
 
 
-export interface CurrentUser {
-    user: {
-        id: number,
-        password: string,
-        last_login: Date,
-        is_superuser: boolean,
-        username: string,
-        first_name: string,
-        last_name: string,
-        email: string,
-        is_staff: boolean,
-        is_acitve: boolean,
-        date_joined: Date,
-        groups: (number | string)[],
-        user_permissions: (number | string)[],
-    },
-    token: string
-}
+export type AuthToken = string
+
+// export interface CurrentUser {
+//     user: {
+//         id: number,
+//         password: string,
+//         last_login: Date,
+//         is_superuser: boolean,
+//         username: string,
+//         first_name: string,
+//         last_name: string,
+//         email: string,
+//         is_staff: boolean,
+//         is_acitve: boolean,
+//         date_joined: Date,
+//         groups: (number | string)[],
+//         user_permissions: (number | string)[],
+//     },
+//     token: string
+// }
 
 export interface ActiveUser {
         id: number,
         password: string,
-        last_login: Date,
-        is_superuser: boolean,
+        // last_login: Date,
+        // is_superuser: boolean,
         username: string,
         first_name: string,
         last_name: string,
         email: string,
-        is_staff: boolean,
-        is_acitve: boolean,
-        date_joined: Date,
-        groups: (number | string)[],
-        user_permissions: (number | string)[],
+        // is_staff: boolean,
+        // is_active: boolean,
+        // date_joined: Date,
+        // groups: (number | string)[],
+        // user_permissions: (number | string)[],
 
 }
 

@@ -1,7 +1,5 @@
-import { useNavigate, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { FC } from 'react'
-import { returnErrors } from './messages.tsx';
-import { HandleLogin } from './types.ts'
 import Homepage from './components/Homepage/Homepage.tsx'
 import Bookpage from './components/Bookpage/Bookpage.tsx'
 import BookclubPage from './components/BookclubPage/BookclubPage.tsx'
@@ -19,43 +17,7 @@ interface AppRoutesProps {
 
 const AppRoutes: FC<AppRoutesProps> = ({isAuthenticated }) => {
 
-    const navigate = useNavigate()
-    const storedUser = localStorage.getItem('currentUser')
-    const activeUser = storedUser ? JSON.parse(storedUser) : null
-
-    const handleLogin: HandleLogin = async (formData) => {
-        try {
-          const data = Object.fromEntries(formData);
     
-          const response = await fetch('http://localhost:8000/api/auth/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        });
-        const result = await response.json()
-        if (response.ok && result.token) {
-          localStorage.setItem('authToken', JSON.stringify(result.token))
-          localStorage.setItem('currentUser', JSON.stringify(result.user))
-          navigate('/userDashboard')
-    
-        } else if (result.non_field_errors) {
-          returnErrors(result.non_field_errors[0], response.status)
-        } else {
-          returnErrors('An unexpected error occured.', response.status)
-        }
-    
-        } catch (err: any) {
-          returnErrors(err.response.data, err.response.status)
-    
-        }
-    };
-
-    
-
-   
-
 
     return(
         
@@ -63,7 +25,7 @@ const AppRoutes: FC<AppRoutesProps> = ({isAuthenticated }) => {
             
             <Route path='/' element={<Homepage />} />
             <Route path='/book/:id' element={<Bookpage />} />
-            <Route path='/login' element={<Login login={handleLogin} />}></Route>
+            <Route path='/login' element={<Login />}></Route>
             <Route element={<AuthRequired auth={isAuthenticated} />}>
                 <Route path='/userDashboard' element={<ErrorBoundary><UserDataProvider><UserDashboard 
                    /></UserDataProvider></ErrorBoundary>}></Route>

@@ -1,5 +1,7 @@
 import {createContext, useEffect, useState, Dispatch, SetStateAction, ReactNode, useContext} from 'react'
-import { Bookclub, Invitation, Bookshelf } from '../../types'
+import { useNavigate } from 'react-router-dom'
+import { Bookclub, Invitation, Bookshelf, HandleLogin, ActiveUser, AuthToken } from '../../types'
+import { returnErrors } from '../../messages.tsx';
 
 
 
@@ -7,9 +9,12 @@ interface UserContextProps {
     userBookclubs: Bookclub[],
     userInvites: Invitation[],
     userBookshelves: Bookshelf[],
+    activeUser: ActiveUser,
+    activeUserToken: AuthToken,
     setUserBookclubs: Dispatch<SetStateAction<Bookclub[]>>,
     setUserInvites: Dispatch<SetStateAction<Invitation[]>>,
-    setUserBookshelves: Dispatch<SetStateAction<Bookshelf[]>>
+    setUserBookshelves: Dispatch<SetStateAction<Bookshelf[]>>,
+    handleLogin: HandleLogin
 }
 
 
@@ -22,24 +27,76 @@ export const UserContext = createContext<UserContextProps>({
     userBookclubs: [],
     userInvites: [],
     userBookshelves: [],
+    activeUser: {
+        id: 0,
+        password: '',
+        username: '',
+        first_name: '',
+        last_name: '',
+        email: ''
+    },
+    activeUserToken: '',
     setUserBookclubs: () => [],
     setUserInvites: () => [],
-    setUserBookshelves: () => []
+    setUserBookshelves: () => [],
+    handleLogin: async () => {}
 });
 
 const UserDataProvider: React.FC<UserProviderProps> = ({ children }: UserProviderProps) => {
 
-
-    const storedUser = localStorage.getItem('currentUser')
-    const activeUser = storedUser ? JSON.parse(storedUser) : null;
+    const navigate = useNavigate()
     const [userBookclubs, setUserBookclubs] = useState<Bookclub[]>([])
     const [userInvites, setUserInvites] = useState<Invitation[]>([])
     const [userBookshelves, setUserBookshelves] = useState<Bookshelf[]>([])
+    const [activeUser, setActiveUser] = useState<ActiveUser>({
+        id: 0,
+        password: '',
+        username: '',
+        first_name: '',
+        last_name: '',
+        email: ''
+    })
+    const [activeUserToken, setActiveUserToken] = useState<AuthToken>('')
+
+
+    const handleLogin: HandleLogin = async (formData) => {
+        try {
+          const data = Object.fromEntries(formData);
+    
+          const response = await fetch('http://localhost:8000/api/auth/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+        const result = await response.json()
+        if (response.ok && result.token) {
+          console.log('result user:', result.user)
+          sessionStorage.setItem('authToken', JSON.stringify(result.token))
+          sessionStorage.setItem('currentUser', JSON.stringify(result.user))
+          navigate('/userDashboard')
+    
+        } else if (result.non_field_errors) {
+          returnErrors(result.non_field_errors[0], response.status)
+        } else {
+          returnErrors('An unexpected error occured.', response.status)
+        }
+    
+        } catch (err: any) {
+          returnErrors(err.response.data, err.response.status)
+    
+        }
+    };
+
 
     useEffect(() => {
         const storedBookclubs = sessionStorage.getItem('userBookclubs')
         const storedInvites = sessionStorage.getItem('userInvites')
         const storedBookshelves = sessionStorage.getItem('userBookshelves')
+        const storedUser = sessionStorage.getItem('currentUser')
+        const storedToken = sessionStorage.getItem('authToken')
+        
 
         if (storedBookclubs) {
             setUserBookclubs(JSON.parse(storedBookclubs))
@@ -51,6 +108,14 @@ const UserDataProvider: React.FC<UserProviderProps> = ({ children }: UserProvide
 
         if (storedBookshelves) {
             setUserBookshelves(JSON.parse(storedBookshelves))
+        }
+
+        if (storedUser) {
+            setActiveUser(JSON.parse(storedUser))
+        }
+
+        if (storedToken) {
+            setActiveUserToken(storedToken)
         }
 
 
@@ -93,11 +158,11 @@ const UserDataProvider: React.FC<UserProviderProps> = ({ children }: UserProvide
   
   
   
-      }, [userBookclubs, userInvites, userBookshelves])
+      }, [userBookclubs, userInvites, userBookshelves, activeUser, activeUserToken])
 
       return (
         <UserContext.Provider
-            value={{userBookclubs, userInvites, userBookshelves, setUserBookclubs, setUserInvites, setUserBookshelves}}>
+            value={{userBookclubs, userInvites, userBookshelves, activeUser, activeUserToken, setUserBookclubs, setUserInvites, setUserBookshelves, handleLogin}}>
 
                 {children}
 

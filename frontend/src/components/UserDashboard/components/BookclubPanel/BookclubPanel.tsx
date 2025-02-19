@@ -1,6 +1,6 @@
 import './BookclubPanel.css'
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import { userData } from '../../../common/UserContext.tsx'
 import { Invitation} from '../../../../types.ts'
 
 
@@ -10,19 +10,12 @@ import { Invitation} from '../../../../types.ts'
 const BookclubPanel: React.FC = () => {
 
 
+    const { activeUser, activeUserToken, userInvites, setUserInvites } = userData()
 
-    const storedUser = localStorage.getItem('currentUser')
-    const activeUser = storedUser ? JSON.parse(storedUser) : null;
-    const sessionInvites = sessionStorage.getItem('userInvites')
-    const invites = sessionInvites ? JSON.parse(sessionInvites) : null
-    const [userInvites, setUserInvites] = useState<Invitation[]>(invites)
 
 
 
     function joinBookclub(bookclub: {id: string, name: string}) {
-
-        const token = localStorage.getItem('authToken')
-        const parsedToken = token ? JSON.parse(token) : null
 
         const joinReq = {
             user_id: activeUser.id,
@@ -33,7 +26,7 @@ const BookclubPanel: React.FC = () => {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Token ${parsedToken}`
+                'Authorization': `Token ${activeUserToken}`
             },
             body: JSON.stringify(joinReq)
         })

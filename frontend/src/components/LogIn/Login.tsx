@@ -1,13 +1,13 @@
 import './Login.css'
 import { FC } from 'react'
-import { HandleLogin } from '../../types'
+import { userData } from '../common/UserContext'
 
 
-interface LoginProps {
-    login: HandleLogin,
-}
 
-const Login: FC<LoginProps> = ({login}) => {
+
+const Login: FC = () => {
+
+    const { handleLogin } = userData()
 
 
     return(
@@ -15,7 +15,7 @@ const Login: FC<LoginProps> = ({login}) => {
             <h2>Log In</h2>
             <hr className='hr hr-login'/>
             <form 
-                action={login as any}
+                action={handleLogin as any}
                 className='login-form'
                 method='post'>
                     <label htmlFor="username-login">Username: </label>

@@ -1,6 +1,7 @@
 import { useState, FC } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { HandleLogout } from '../../types.ts'
+import { userData } from '../common/UserContext.tsx'
 import './Navbar.css'
 
 
@@ -10,6 +11,8 @@ interface NavProps {
 
 
 const Navbar: FC<NavProps> = ({auth}) => {
+
+  const {activeUserToken} = userData()
 
   
     const navigate = useNavigate()
@@ -24,7 +27,7 @@ const Navbar: FC<NavProps> = ({auth}) => {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
-                'Authorization' : `Token ${JSON.parse(token)}`
+                'Authorization' : `Token ${activeUserToken}`
               }
             });
           }
@@ -32,8 +35,8 @@ const Navbar: FC<NavProps> = ({auth}) => {
           console.error('Error during logout', error)
         } finally {
           // Clear client-side data regardless of server response
-          localStorage.removeItem('authToken')
-          localStorage.removeItem('currentUser')
+          sessionStorage.removeItem('authToken')
+          sessionStorage.removeItem('currentUser')
           navigate('/login')
         }
       };
@@ -71,7 +74,7 @@ const Navbar: FC<NavProps> = ({auth}) => {
                         { isAuthenticated ? authLinks : guestLinks}
                     </ul>
                 </nav>
-            </div> {/* .container */}
+            </div> 
       </header>
     )
 }

@@ -15,8 +15,6 @@ const BooksPanel: React.FC = () => {
     const titles = userBookshelves.map((userBookshelf: Bookshelf) => userBookshelf.titles).flat()
    
 
-    // const [userBooks, setUserBooks] = useState<Book[]>(titles)
-
       const userBooksElements = titles.map((userBookElement: Book) => {
         return(<li key={userBookElement.title_id} className='userBook-element'>
                 <Link to={`/book/${userBookElement.title_id}`}><img src={userBookElement.imageLinks['smallThumbnail']} alt="book-cover" /></Link>
