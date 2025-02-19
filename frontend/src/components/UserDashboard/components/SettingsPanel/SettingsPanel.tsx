@@ -1,19 +1,24 @@
 import './SettingsPanel.css'
-import {ActiveUser} from '../../../../types'
+import { userData } from '../../../common/UserContext'
 
 
 
-interface SettingsPanelProps {
-    user: ActiveUser
-}
 
 
 
-const SettingsPanel: React.FC<SettingsPanelProps> = ({user}) => {
+
+const SettingsPanel: React.FC = () => {
+    
+    const { activeUser } = userData()
+
+    console.log('settings active user:', activeUser)
+
+
+
     return(
 
         <div id='settings' aria-labelledby='tab-3'>
-            <p>{ user.username }</p>
+            <p>{ activeUser.username }</p>
         </div>
     )
 }

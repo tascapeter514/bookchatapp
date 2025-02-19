@@ -7,29 +7,26 @@ import Login from './components/LogIn/Login.tsx'
 import UserDashboard from './components/UserDashboard/UserDashboard.tsx'
 import AuthRequired from './components/common/authRequired.tsx'
 import ErrorBoundary from './components/common/ErrorBoundary.tsx'
-import UserDataProvider from './components/common/UserContext.tsx'
 
 
-interface AppRoutesProps {
-    isAuthenticated: () => boolean,
-}
 
 
-const AppRoutes: FC<AppRoutesProps> = ({isAuthenticated }) => {
+
+
+const AppRoutes: FC = () => {
 
     
 
     return(
         
         <Routes>
-            
             <Route path='/' element={<Homepage />} />
             <Route path='/book/:id' element={<Bookpage />} />
             <Route path='/login' element={<Login />}></Route>
-            <Route element={<AuthRequired auth={isAuthenticated} />}>
-                <Route path='/userDashboard' element={<ErrorBoundary><UserDataProvider><UserDashboard 
-                   /></UserDataProvider></ErrorBoundary>}></Route>
-                <Route path='/bookclub/:id' element={<UserDataProvider><BookclubPage></BookclubPage></UserDataProvider>}></Route>
+            <Route element={<AuthRequired />}>
+                <Route path='/userDashboard' element={<ErrorBoundary><UserDashboard 
+                   /></ErrorBoundary>}></Route>
+                <Route path='/bookclub/:id' element={<BookclubPage></BookclubPage>}></Route>
             </Route>
         
       </Routes>

@@ -5,19 +5,18 @@ import { userData } from '../common/UserContext.tsx'
 import './Navbar.css'
 
 
-interface NavProps {
-    auth: () => boolean
-}
 
 
-const Navbar: FC<NavProps> = ({auth}) => {
 
-  const {activeUserToken} = userData()
+const Navbar: FC = () => {
+
+  const {activeUserToken, setActiveUserToken} = userData()
 
   
+
     const navigate = useNavigate()
     const [showNavbar] = useState(false)
-    const isAuthenticated = auth()
+
 
     const handleLogout: HandleLogout = async () => {
         const token = localStorage.getItem('authToken');
@@ -35,6 +34,7 @@ const Navbar: FC<NavProps> = ({auth}) => {
           console.error('Error during logout', error)
         } finally {
           // Clear client-side data regardless of server response
+          setActiveUserToken('')
           sessionStorage.removeItem('authToken')
           sessionStorage.removeItem('currentUser')
           navigate('/login')
@@ -48,11 +48,13 @@ const Navbar: FC<NavProps> = ({auth}) => {
 
     const authLinks = (
         <li>
-            <Link to='/userDashboard'>Profile</Link>
-            <button onClick={handleLogout}>Logout</button>
+            <Link className='profile-link' to='/userDashboard'>Profile</Link>
+            <a onClick={handleLogout}>Logout</a>
         </li>
 
     )
+
+
     
 
     return(
@@ -71,7 +73,7 @@ const Navbar: FC<NavProps> = ({auth}) => {
                         <li><Link to='#'>Books</Link></li>
                         <li><Link to='#'>Authors</Link></li>
                         <li><Link to='#'>About</Link></li>
-                        { isAuthenticated ? authLinks : guestLinks}
+                        { activeUserToken ? authLinks : guestLinks}
                     </ul>
                 </nav>
             </div> 

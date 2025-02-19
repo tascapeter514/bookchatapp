@@ -14,40 +14,16 @@ export type HandleLogout = () => Promise<void>
 
 
 export type AuthToken = string
-
-// export interface CurrentUser {
-//     user: {
-//         id: number,
-//         password: string,
-//         last_login: Date,
-//         is_superuser: boolean,
-//         username: string,
-//         first_name: string,
-//         last_name: string,
-//         email: string,
-//         is_staff: boolean,
-//         is_acitve: boolean,
-//         date_joined: Date,
-//         groups: (number | string)[],
-//         user_permissions: (number | string)[],
-//     },
-//     token: string
-// }
-
+export type Profile = {bio: string, profile_pic?: File}
 export interface ActiveUser {
         id: number,
         password: string,
-        // last_login: Date,
-        // is_superuser: boolean,
         username: string,
         first_name: string,
         last_name: string,
         email: string,
-        // is_staff: boolean,
-        // is_active: boolean,
-        // date_joined: Date,
-        // groups: (number | string)[],
-        // user_permissions: (number | string)[],
+        profile: Profile 
+
 
 }
 

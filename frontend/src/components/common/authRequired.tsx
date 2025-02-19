@@ -1,19 +1,19 @@
 import { FC } from 'react'
 import { Outlet, Navigate } from 'react-router-dom'
-// import { CurrentUser } from '../../types'
+import { userData } from './UserContext'
 
 
-interface AuthRequiredProps {
-    auth: () => boolean,
-}
 
 
-const AuthRequired: FC<AuthRequiredProps> = ( { auth } ) => {
+
+const AuthRequired: FC = (  ) => {
     // Check the authenticated status of the user
     // If they're not authenticated send user to the login page
     // if they are authenticated render the outlet
 
-    const isAuthenticated = auth()
+    const { activeUserToken } = userData()
+
+    const isAuthenticated = activeUserToken ? true : false
 
     if (!isAuthenticated) {
         return <Navigate to='/login' />

@@ -5,18 +5,13 @@ import BookclubPanel from './components/BookclubPanel/BookclubPanel';
 import SettingsPanel from './components/SettingsPanel/SettingsPanel';
 import Tabs from './components/Tabs/Tabs'
 import Sidebar from './components/Sidebar/Sidebar'
-import { userData } from '../common/UserContext'
-
-
-
-
 
 
 const UserDashboard: FC = () => {
 
     
     const [activeTab, setActiveTab] = useState(0)
-    const { activeUser } = userData()
+
 
 
 
@@ -38,7 +33,7 @@ const UserDashboard: FC = () => {
 
                     {activeTab === 2 && (
 
-                        <SettingsPanel user={activeUser}></SettingsPanel>  
+                        <SettingsPanel></SettingsPanel>  
 
                     )}
                 </div>

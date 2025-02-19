@@ -105,8 +105,6 @@ const Sidebar: React.FC = () => {
         )
     })
 
-    console.log('sidebar bookclubs:', userBookclubs)
-
     
     
     

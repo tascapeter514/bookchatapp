@@ -2,35 +2,19 @@
 import { BrowserRouter } from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar.tsx'
 import AppRoutes from './AppRoutes.tsx'
+import UserDataProvider  from './components/common/UserContext.tsx'
 import './App.css';
 
 
 
 function App() {
 
-
-
-
-  const isAuthenticated = (): boolean => {
-    const token = localStorage.getItem('authToken');
-    if (!token) {
-      return false
-    } else {
-      return true
-    }
-  }
-
-
-  
-
-
-
-  
-
   return (
     <BrowserRouter>
-      <Navbar auth={isAuthenticated}></Navbar>
-      <AppRoutes isAuthenticated={isAuthenticated} />
+     <UserDataProvider>
+      <Navbar />
+      <AppRoutes  />
+      </UserDataProvider>
     </BrowserRouter>
 
 

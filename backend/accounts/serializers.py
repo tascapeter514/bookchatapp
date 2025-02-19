@@ -11,7 +11,7 @@ from django.contrib.auth import authenticate
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = ['user_id', 'bio', 'createdAt', 'updatedAt', 'profile_pic']
+        fields = [ 'bio', 'profile_pic']
 
 
 # USER SERIALIZER
@@ -22,7 +22,7 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
 
         # SWITCH TO ID,USERNAME, EMAIL?
-        fields = ['id', 'username', 'profile']
+        fields = ['id', 'username', 'profile', 'first_name', 'last_name', 'email']
 
 # REGISTER SERIALIZER
 

@@ -14,6 +14,7 @@ interface UserContextProps {
     setUserBookclubs: Dispatch<SetStateAction<Bookclub[]>>,
     setUserInvites: Dispatch<SetStateAction<Invitation[]>>,
     setUserBookshelves: Dispatch<SetStateAction<Bookshelf[]>>,
+    setActiveUserToken: Dispatch<SetStateAction<AuthToken>>,
     handleLogin: HandleLogin
 }
 
@@ -33,12 +34,18 @@ export const UserContext = createContext<UserContextProps>({
         username: '',
         first_name: '',
         last_name: '',
-        email: ''
+        email: '',
+        profile: {
+            bio: '',
+            profile_pic: undefined
+        }
+
     },
     activeUserToken: '',
     setUserBookclubs: () => [],
     setUserInvites: () => [],
     setUserBookshelves: () => [],
+    setActiveUserToken: () => '',
     handleLogin: async () => {}
 });
 
@@ -54,12 +61,18 @@ const UserDataProvider: React.FC<UserProviderProps> = ({ children }: UserProvide
         username: '',
         first_name: '',
         last_name: '',
-        email: ''
+        email: '',
+        profile: {
+            bio: '',
+            profile_pic: undefined
+        }
     })
     const [activeUserToken, setActiveUserToken] = useState<AuthToken>('')
 
 
+
     const handleLogin: HandleLogin = async (formData) => {
+        console.log('handle log in check:', formData)
         try {
           const data = Object.fromEntries(formData);
     
@@ -72,7 +85,8 @@ const UserDataProvider: React.FC<UserProviderProps> = ({ children }: UserProvide
         });
         const result = await response.json()
         if (response.ok && result.token) {
-          console.log('result user:', result.user)
+          setActiveUserToken(result.token)
+          setActiveUser(result.user)
           sessionStorage.setItem('authToken', JSON.stringify(result.token))
           sessionStorage.setItem('currentUser', JSON.stringify(result.user))
           navigate('/userDashboard')
@@ -132,8 +146,6 @@ const UserDataProvider: React.FC<UserProviderProps> = ({ children }: UserProvide
   
           socket.onmessage = (event) => {
             const data = JSON.parse(event.data);
-            console.log('user data web socket data:', data)
-            console.log('APP ROUTES bookshelves:', data.user_data.user_bookshelves)
             if (data.type === 'get_user_data') {
               sessionStorage.setItem('userBookshelves', JSON.stringify(data.user_data.user_bookshelves))
               sessionStorage.setItem('userBookclubs', JSON.stringify(data.user_data.user_bookclubs))
@@ -160,13 +172,11 @@ const UserDataProvider: React.FC<UserProviderProps> = ({ children }: UserProvide
   
       }, [userBookclubs, userInvites, userBookshelves, activeUser, activeUserToken])
 
+
       return (
         <UserContext.Provider
-            value={{userBookclubs, userInvites, userBookshelves, activeUser, activeUserToken, setUserBookclubs, setUserInvites, setUserBookshelves, handleLogin}}>
-
+            value={{userBookclubs, userInvites, userBookshelves, activeUser, activeUserToken, setUserBookclubs, setUserInvites, setUserBookshelves, setActiveUserToken, handleLogin}}>
                 {children}
-
-
         </UserContext.Provider>
       )
 
