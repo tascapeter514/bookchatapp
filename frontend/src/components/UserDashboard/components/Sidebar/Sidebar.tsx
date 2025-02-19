@@ -1,21 +1,66 @@
 import './Sidebar.css'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Bookclub } from '../../../../types'
+import { v4 as uuidv4 } from 'uuid'
+import { Bookclub, Bookshelf } from '../../../../types'
 
 
 
 interface SidebarProps {
-    userBookclubs: Bookclub[],
-    createBookshelf: (formData: FormData) => void,
     createBookClub: (formData: FormData) => void,
 }
 
 
-const Sidebar: React.FC<SidebarProps> = ({userBookclubs, createBookshelf, createBookClub}) => {
+const Sidebar: React.FC<SidebarProps> = ({createBookClub}) => {
+
+
+
+    const storedUser = localStorage.getItem('currentUser')
+    const activeUser = storedUser ? JSON.parse(storedUser) : null;
+    const sessionBookshelves = sessionStorage.getItem('userBookshelves')
+    const sessionBookclubs = sessionStorage.getItem('userBookclubs')
+    const bookshelves = sessionBookshelves ? JSON.parse(sessionBookshelves) : null
+    const bookclubs = sessionBookclubs ? JSON.parse(sessionBookclubs) : null
+    console.log('bookclubs: ', bookclubs)
+
 
     const [showBookshelf, setShowBookshelf] = useState(false)
     const [showBookclub, setShowBookClub] = useState(false)
+
+    const [userBookclubs] = useState(bookclubs)
+    const [userBookshelves, setUserBookshelves] = useState<Bookshelf[]>(bookshelves)
+
+    function createBookshelf(formData: FormData): void {
+        const bookshelf = {
+            bookshelf_id: uuidv4(),
+            name: formData.get('bookshelfName'),
+            user: activeUser.id
+        }
+            fetch('http://localhost:8000/api/bookshelf/', {
+                method: 'POST',
+                headers : {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(bookshelf)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(err => Promise.reject(err))
+                }
+                return response.json()
+            })
+            .then(data => {
+                console.log('Bookshelf created successfully', data)
+                setUserBookshelves((prev) => [...prev, data])
+            })
+            .catch(err => console.error('Failed to create bookshelf', err))
+        }
+
+
+
+
+
+
 
     const bookclubElements = userBookclubs?.map((bookclub: Bookclub) => {
         return(
@@ -25,7 +70,18 @@ const Sidebar: React.FC<SidebarProps> = ({userBookclubs, createBookshelf, create
         ) 
     })
 
-    console.log('user bookclubs sidebar:', userBookclubs)
+    const bookshelfElements = userBookshelves.map((userBookshelf: Bookshelf) => {
+        return(
+            <li key={userBookshelf.bookshelf_id}>
+                <p>{userBookshelf.name}</p>
+
+            </li>
+        )
+    })
+
+    console.log('sidebar bookclubs:', userBookclubs)
+
+    
     
     
     
@@ -64,6 +120,11 @@ const Sidebar: React.FC<SidebarProps> = ({userBookclubs, createBookshelf, create
 
         <h3>Book Clubs</h3>
         <ul>{ bookclubElements }</ul>
+
+        <br />
+        <hr />
+        <h3>Bookshelves</h3>
+        <ul>{ bookshelfElements }</ul>
             
     </aside>
 

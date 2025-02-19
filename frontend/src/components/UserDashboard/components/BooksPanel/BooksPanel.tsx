@@ -1,32 +1,27 @@
 import './BooksPanel.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Book, Bookshelf, ActiveUser } from '../../../../types.ts';
+import { Book, Bookshelf } from '../../../../types.ts';
 
 interface BooksPanelProps {
-    user: ActiveUser
+    userBookshelves: Bookshelf[]
 }
 
 
 
 
-const BooksPanel: React.FC<BooksPanelProps> = ({user}) => {
+const BooksPanel: React.FC<BooksPanelProps> = ({userBookshelves}) => {
 
-    useEffect(() => {
-        fetch(`http://localhost:8000/api/bookshelf/?user=${user.id}`)
-        .then(res => res.json())
-        .then(data => {
-            setBookShelves(data)
-            setUserBooks(data[0]['titles'])
-    
-        } )
-        .catch(err => console.log('There was an error:', err))
-        }, [])
+    console.log('book panel bookshelves:', userBookshelves)
+    const titles = userBookshelves.map((userBookshelf: Bookshelf) => userBookshelf.titles).flat()
+   
 
 
 
-    const [bookShelves, setBookShelves] = useState<Bookshelf[]>([])
-    const [userBooks, setUserBooks] = useState<Book[]>([])
+
+
+    const [bookShelves, setBookShelves] = useState<Bookshelf[]>(userBookshelves)
+    const [userBooks, setUserBooks] = useState<Book[]>(titles)
 
       const userBooksElements = userBooks.map((userBookElement: Book) => {
         return(<li key={userBookElement.title_id} className='userBook-element'>

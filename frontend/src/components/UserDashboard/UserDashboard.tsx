@@ -1,6 +1,6 @@
 import './UserDashboard.css';
-import { FC, useState, Dispatch, SetStateAction } from 'react';
-import {  Bookclub, Invitation } from '../../types';
+import { FC, useState } from 'react';
+import {  Bookclub, Invitation, UserData, Bookshelf } from '../../types';
 import { v4 as uuidv4 } from 'uuid';
 import Bookspanel from './components/BooksPanel/BooksPanel'
 import BookclubPanel from './components/BookclubPanel/BookclubPanel';
@@ -10,19 +10,28 @@ import Sidebar from './components/Sidebar/Sidebar'
 
 
 interface UserDashboardProps {
-    userInvites: Invitation[],
-    userBookclubs: Bookclub[],
-    setUserBookclubs: Dispatch<SetStateAction<Bookclub[]>>
+    userData: UserData
 }
 
 
 
-const UserDashboard: FC<UserDashboardProps> = ({userInvites, userBookclubs, setUserBookclubs}) => {
+const UserDashboard: FC<UserDashboardProps> = ({userData}) => {
 
     
     const [activeTab, setActiveTab] = useState(0)
     const storedUser = localStorage.getItem('currentUser')
     const activeUser = storedUser ? JSON.parse(storedUser) : null;
+
+    const [invites, setInvites] = useState<Invitation[]>(userData.user_invites)
+    const [bookclubs, setBookclubs] = useState<Bookclub[]>(userData.user_bookclubs)
+
+
+
+    
+
+
+
+
 
     function createBookshelf(formData: FormData): void {
         const bookshelf = {
@@ -73,7 +82,7 @@ const UserDashboard: FC<UserDashboardProps> = ({userInvites, userBookclubs, setU
             })
             .then(data => {
                 console.log('Bookclub created successfully', data)
-                setUserBookclubs((prev) => [...prev, data])
+                setBookclubs((prev) => [...prev, data])
             }
                 
                 
@@ -82,6 +91,8 @@ const UserDashboard: FC<UserDashboardProps> = ({userInvites, userBookclubs, setU
         }
 
         
+        console.log('userdashboard invites:', invites)
+        console.log('userdashboard bookclubs:', bookclubs)
 
 
     return(
@@ -93,11 +104,11 @@ const UserDashboard: FC<UserDashboardProps> = ({userInvites, userBookclubs, setU
                 <div className="tab-panels-container container-flex">
                     {activeTab === 0 && (
 
-                        <Bookspanel user={activeUser}></Bookspanel>
+                        <Bookspanel userBookshelves={userData.user_bookshelves}></Bookspanel>
                         
                     )}
                     {activeTab === 1 && (
-                        <BookclubPanel user={activeUser} userInvites={userInvites}></BookclubPanel>
+                        <BookclubPanel user={activeUser} userInvites={invites}></BookclubPanel>
                     )}
 
                     {activeTab === 2 && (
@@ -109,7 +120,7 @@ const UserDashboard: FC<UserDashboardProps> = ({userInvites, userBookclubs, setU
                 
 
             </main>
-            <Sidebar userBookclubs={userBookclubs} createBookshelf={createBookshelf} createBookClub={createBookClub}></Sidebar>
+            <Sidebar createBookshelf={createBookshelf} createBookClub={createBookClub}></Sidebar>
 
 
             
