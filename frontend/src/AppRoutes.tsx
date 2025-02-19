@@ -1,7 +1,7 @@
 import { useNavigate, Routes, Route } from 'react-router-dom';
-import { FC, useEffect, useState } from 'react'
+import { FC } from 'react'
 import { returnErrors } from './messages.tsx';
-import { HandleLogin, UserData } from './types.ts'
+import { HandleLogin } from './types.ts'
 import Homepage from './components/Homepage/Homepage.tsx'
 import Bookpage from './components/Bookpage/Bookpage.tsx'
 import BookclubPage from './components/BookclubPage/BookclubPage.tsx'
@@ -9,6 +9,7 @@ import Login from './components/LogIn/Login.tsx'
 import UserDashboard from './components/UserDashboard/UserDashboard.tsx'
 import AuthRequired from './components/common/authRequired.tsx'
 import ErrorBoundary from './components/common/ErrorBoundary.tsx'
+import UserDataProvider from './components/common/UserContext.tsx'
 
 
 interface AppRoutesProps {
@@ -21,18 +22,6 @@ const AppRoutes: FC<AppRoutesProps> = ({isAuthenticated }) => {
     const navigate = useNavigate()
     const storedUser = localStorage.getItem('currentUser')
     const activeUser = storedUser ? JSON.parse(storedUser) : null
-    const [userData, setUserData] = useState<UserData>({
-      user_bookclubs: [],
-      user_bookshelves: [],
-      user_invites: []
-    })
-
-
-
-
-
-
-    
 
     const handleLogin: HandleLogin = async (formData) => {
         try {
@@ -63,112 +52,8 @@ const AppRoutes: FC<AppRoutesProps> = ({isAuthenticated }) => {
         }
     };
 
-    useEffect(() => {
-      if (!activeUser?.id) return
+    
 
-      try {
-        const socket = new WebSocket(`ws://localhost:8000/ws/userData/${activeUser.id}`)
-
-        socket.onmessage = (event) => {
-          const data = JSON.parse(event.data);
-          console.log('user data web socket data:', data)
-          console.log('APP ROUTES bookshelves:', data.user_data.user_bookshelves)
-          if (data.type === 'get_user_data') {
-            // console.log('web socket user data:', data.user_bookclubs)
-            // setBookclubs(data.user_bookclubs)
-            // setBookshelves(data.user_bookshelves)
-            // setInvites(data.user_invites)
-            setUserData(data.user_data)
-            
-            sessionStorage.setItem('userBookshelves', JSON.stringify(data.user_data.user_bookshelves))
-            sessionStorage.setItem('userBookclubs', JSON.stringify(data.user_data.user_bookclubs))
-            sessionStorage.setItem('userInvites', JSON.stringify(data.user_data.user_invites))
-
-          }
-        }
-
-        socket.onerror = (error) => {
-          console.error('User data websocket error', error)
-        }
-
-        socket.onopen = () => console.log('User data websocket connected')
-        socket.onclose = () => console.log('User data websocket disconnected')
-
-        return () => socket.close()
-
-
-      } catch (err) {
-        console.log('Failed to initalize Websocket:', err)
-      }
-
-
-
-    }, [])
-  //   useEffect(() => {
-  //     if (!activeUser?.id) return
-  //     try {
-  //         const socket = new WebSocket(`ws://localhost:8000/ws/bookchat/getBookclubs/${activeUser.id}`)
-
-  //         socket.onmessage = (event) => {
-  //             const data = JSON.parse(event.data)
-  //             if (data.type === 'get_bookclubs') {
-  //               setUserBookclubs(data.bookclubs)
-  //             }
-              
-  //         }
-
-  //         socket.onerror = (error) => {
-  //             console.error('Websocket error:', error)
-  //         }
-
-  //         socket.onopen = () => console.log('Bookclub websocket connected')
-  //         socket.onclose = () => console.log('Bookclub websocket disconnected')
-
-  //         return () => socket.close()
-
-
-  //     } catch (err) {
-  //         console.error('Failed to initialize Websocket:', err)
-  //     }
-  // }, [])
-
-    // console.log('user bookclubs: ', bookclubs)
-    // console.log('user invites: ', invites)
-    // console.log('user bookshelves: ', bookshelves)
-
-    // useEffect(() => {
-    //   if (!activeUser?.id) return;
-    //   try {
-    //     const socket = new WebSocket(`ws://localhost:8000/ws/bookchat/getUserInvites/${activeUser.id}`)
-
-    //     socket.onmessage = (event) => {
-    //       const data = JSON.parse(event.data)
-    //       console.log('user invites data:', data)
-    //       if (data.type === 'get_invites') {
-    //         console.log('get user invites:', data.user_invites)
-    //         setInvites(data.user_invites)
-    //       }
-
-    //     }
-
-    //     socket.onerror = (error) => {
-    //       console.error('User Invite Websocket error:', error)
-    //     }
-
-    //     socket.onopen = () => console.log('User Invite Websocket Connected')
-    //     socket.onclose = () => console.log('User Invite Websocket disconnected')
-
-    //     return () => socket.close()
-
-    //   } catch(err) {
-    //     console.error("Failed to initialize invitations websocket", err)
-    //   }
-    // }, [])
-
-
-
-
-console.log('user data:', userData)
    
 
 
@@ -180,9 +65,9 @@ console.log('user data:', userData)
             <Route path='/book/:id' element={<Bookpage />} />
             <Route path='/login' element={<Login login={handleLogin} />}></Route>
             <Route element={<AuthRequired auth={isAuthenticated} />}>
-                <Route path='/userDashboard' element={<ErrorBoundary><UserDashboard 
-                  userData={userData} /></ErrorBoundary>}></Route>
-                <Route path='/bookclub/:id' element={<BookclubPage userBookclubs={userData.user_bookclubs}></BookclubPage>}></Route>
+                <Route path='/userDashboard' element={<ErrorBoundary><UserDataProvider><UserDashboard 
+                   /></UserDataProvider></ErrorBoundary>}></Route>
+                <Route path='/bookclub/:id' element={<UserDataProvider><BookclubPage></BookclubPage></UserDataProvider>}></Route>
             </Route>
         
       </Routes>

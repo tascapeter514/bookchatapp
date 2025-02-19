@@ -2,15 +2,16 @@ import './BookclubPage.css'
 import {useState, useEffect} from 'react'
 import {useParams } from 'react-router-dom'
 import { Bookclub, ActiveUser} from '../../types'
-
-
-interface bookclubPageProps {
-    userBookclubs: Bookclub[]
-}
+import { userData } from '../../components/common/UserContext'
 
 
 
-const BookclubPage : React.FC<bookclubPageProps> = ({userBookclubs}) => {
+
+
+
+const BookclubPage : React.FC = () => {
+
+    const { userBookclubs } = userData()
     
     const [isMember, setIsMember] = useState(false)
     const parameters = useParams()

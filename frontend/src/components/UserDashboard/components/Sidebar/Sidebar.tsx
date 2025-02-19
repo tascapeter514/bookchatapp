@@ -3,32 +3,25 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { v4 as uuidv4 } from 'uuid'
 import { Bookclub, Bookshelf } from '../../../../types'
+import { userData } from '../../../../components/common/UserContext'
 
 
 
-interface SidebarProps {
-    createBookClub: (formData: FormData) => void,
-}
 
 
-const Sidebar: React.FC<SidebarProps> = ({createBookClub}) => {
+const Sidebar: React.FC = () => {
 
-
+    const {userBookclubs, setUserBookclubs, userBookshelves, setUserBookshelves } = userData()
 
     const storedUser = localStorage.getItem('currentUser')
     const activeUser = storedUser ? JSON.parse(storedUser) : null;
-    const sessionBookshelves = sessionStorage.getItem('userBookshelves')
-    const sessionBookclubs = sessionStorage.getItem('userBookclubs')
-    const bookshelves = sessionBookshelves ? JSON.parse(sessionBookshelves) : null
-    const bookclubs = sessionBookclubs ? JSON.parse(sessionBookclubs) : null
-    console.log('bookclubs: ', bookclubs)
+
+
 
 
     const [showBookshelf, setShowBookshelf] = useState(false)
     const [showBookclub, setShowBookClub] = useState(false)
 
-    const [userBookclubs] = useState(bookclubs)
-    const [userBookshelves, setUserBookshelves] = useState<Bookshelf[]>(bookshelves)
 
     function createBookshelf(formData: FormData): void {
         const bookshelf = {
@@ -55,6 +48,41 @@ const Sidebar: React.FC<SidebarProps> = ({createBookClub}) => {
             })
             .catch(err => console.error('Failed to create bookshelf', err))
         }
+
+
+        const createBookClub = (formData: FormData): void => {
+            const bookclub = {
+                bookclub_id : uuidv4(),
+                name: formData.get('bookClubName'),
+                administrator: activeUser.id,
+                bookshelves: [],
+                currentRead: [],
+            }
+
+
+            fetch('http://localhost:8000/api/bookclub/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(bookclub)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.json().then(err => Promise.reject(err));
+                }
+                return response.json()
+            })
+            .then(data => {
+                console.log('Bookclub created successfully', data)
+                setUserBookclubs((prev) => [...prev, data])
+            }
+                
+                
+               )
+            .catch(err => console.error('Failed to create bookshelf', err))   
+        }
+
 
 
 

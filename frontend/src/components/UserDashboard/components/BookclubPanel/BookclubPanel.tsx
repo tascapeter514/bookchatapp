@@ -1,18 +1,22 @@
 import './BookclubPanel.css'
 import { Link } from 'react-router-dom'
-import { Invitation, ActiveUser, Bookclub} from '../../../../types.ts'
-
-interface BookclubPanelProps {
-    user: ActiveUser,
-    userInvites: Invitation[],
-}
+import { useState } from 'react'
+import { Invitation} from '../../../../types.ts'
 
 
 
-const BookclubPanel: React.FC<BookclubPanelProps> = ({user, userInvites}) => {
 
 
-    
+const BookclubPanel: React.FC = () => {
+
+
+
+    const storedUser = localStorage.getItem('currentUser')
+    const activeUser = storedUser ? JSON.parse(storedUser) : null;
+    const sessionInvites = sessionStorage.getItem('userInvites')
+    const invites = sessionInvites ? JSON.parse(sessionInvites) : null
+    const [userInvites, setUserInvites] = useState<Invitation[]>(invites)
+
 
 
     function joinBookclub(bookclub: {id: string, name: string}) {
@@ -21,7 +25,7 @@ const BookclubPanel: React.FC<BookclubPanelProps> = ({user, userInvites}) => {
         const parsedToken = token ? JSON.parse(token) : null
 
         const joinReq = {
-            user_id: user.id,
+            user_id: activeUser.id,
             bookclub_id: bookclub.id
         }
 
@@ -34,7 +38,10 @@ const BookclubPanel: React.FC<BookclubPanelProps> = ({user, userInvites}) => {
             body: JSON.stringify(joinReq)
         })
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => {
+            console.log(data)
+            setUserInvites(prev => [...prev, data])
+        })
         .catch(err => console.log('There was an error in joining your bookclub:', err))
     }
 

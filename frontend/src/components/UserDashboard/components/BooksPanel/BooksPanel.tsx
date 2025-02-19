@@ -1,29 +1,23 @@
 import './BooksPanel.css';
-import { useState } from 'react';
+
 import { Link } from 'react-router-dom';
 import { Book, Bookshelf } from '../../../../types.ts';
-
-interface BooksPanelProps {
-    userBookshelves: Bookshelf[]
-}
+import { userData } from '../../../../components/common/UserContext.tsx'
 
 
 
 
-const BooksPanel: React.FC<BooksPanelProps> = ({userBookshelves}) => {
 
-    console.log('book panel bookshelves:', userBookshelves)
+
+const BooksPanel: React.FC = () => {
+
+    const { userBookshelves } = userData()
     const titles = userBookshelves.map((userBookshelf: Bookshelf) => userBookshelf.titles).flat()
    
 
+    // const [userBooks, setUserBooks] = useState<Book[]>(titles)
 
-
-
-
-    const [bookShelves, setBookShelves] = useState<Bookshelf[]>(userBookshelves)
-    const [userBooks, setUserBooks] = useState<Book[]>(titles)
-
-      const userBooksElements = userBooks.map((userBookElement: Book) => {
+      const userBooksElements = titles.map((userBookElement: Book) => {
         return(<li key={userBookElement.title_id} className='userBook-element'>
                 <Link to={`/book/${userBookElement.title_id}`}><img src={userBookElement.imageLinks['smallThumbnail']} alt="book-cover" /></Link>
                 <h3>{userBookElement.title}</h3>
