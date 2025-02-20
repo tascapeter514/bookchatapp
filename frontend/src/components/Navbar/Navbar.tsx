@@ -49,7 +49,7 @@ const Navbar: FC = () => {
     const authLinks = (
         <li>
             <Link className='profile-link' to='/userDashboard'>Profile</Link>
-            <a onClick={handleLogout}>Logout</a>
+            <a className='logout-link' onClick={handleLogout}>Logout</a>
         </li>
 
     )

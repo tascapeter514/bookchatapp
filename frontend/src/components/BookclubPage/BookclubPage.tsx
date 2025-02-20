@@ -17,8 +17,9 @@ const BookclubPage : React.FC = () => {
     const parameters = useParams()
 
     useEffect(() => {
-        const membership = userBookclubs.map((userBookclub: Bookclub) => userBookclub.bookclub_id).some(userBookclubId => userBookclubId === parameters.id)
-        membership ? setIsMember(true): setIsMember(false)
+        setIsMember(isMember => {
+            return isMember = userBookclubs.map((userBookclub: Bookclub) => userBookclub.bookclub_id).some(userBookclubId => userBookclubId === parameters.id)
+        })
     }, [userBookclubs])
     const [bookclub, setBookclub] = useState<Bookclub | null>(null)
     const [inviteUsers, setInviteUsers] = useState<ActiveUser[]>([])

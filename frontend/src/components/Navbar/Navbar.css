@@ -82,6 +82,10 @@ nav a:hover {
     margin-right: 3em;
 }
 
+.logout-link {
+    cursor: pointer;
+}
+
 
 @media (max-width: 675px) {
 
