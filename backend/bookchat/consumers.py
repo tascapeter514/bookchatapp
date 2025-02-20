@@ -1,5 +1,6 @@
 from channels.generic.websocket import WebsocketConsumer, AsyncWebsocketConsumer
 from asgiref.sync import async_to_sync
+from urllib.parse import unquote
 import json
 from .models import Bookclub, Invitation, Bookshelf
 from .serializers import BookclubSerializer, InvitationSerializer, BookshelfSerializer
@@ -17,7 +18,7 @@ class UserDataConsumer(WebsocketConsumer):
         self.accept()
         self.get_user_data()
 
-    def disconnect(self, close_code):
+    def disconnect(self):
         async_to_sync(self.channel_layer.group_discard)(
             self.group_name,
             self.channel_name
@@ -50,7 +51,7 @@ class UserDataConsumer(WebsocketConsumer):
 class SearchDataConsumer(WebsocketConsumer):
     def connect(self):
         self.group_name = 'get_search_query'
-        self.search_term = self.scope['url_route']['kwargs']['searchTerm']
+        self.search_term = unquote(self.scope['url_route']['kwargs']['searchTerm'])
         print('search term:', self.search_term)
 
         async_to_sync(self.channel_layer.group_add)(

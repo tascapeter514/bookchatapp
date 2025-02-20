@@ -40,11 +40,18 @@ const Searchbar: FC = () => {
     const debouncedSearchValue = useDebounce(searchValue, 500)
     
     const fetchSearchData = (value: string) => {
-        const baseUrl = `ws://localhost:8000/ws/search/${value}/`
+
+
+
+        const encodedValue = encodeURIComponent(value)
+
+
+        const path = encodeURI(`ws://localhost:8000/ws/search/${encodedValue}/`)
+        console.log("path:", path)
 
         try {
 
-            const socket = new WebSocket(baseUrl)
+            const socket = new WebSocket(path)
 
             
             socket.onmessage = (event) => {
@@ -71,11 +78,7 @@ const Searchbar: FC = () => {
     }
     
 
-    
 
-    const handleChange = (value: string) => {
-        setSearchValue(value)
-    }
 
     useEffect(() => {
         if (debouncedSearchValue) {
@@ -92,7 +95,7 @@ const Searchbar: FC = () => {
                 <input  
                     placeholder='Type to search...' 
                     value={searchValue} 
-                    onChange={(e) => handleChange(e.target.value)} />
+                    onChange={(e) => setSearchValue(e.target.value)} />
                 <SearchIcon className='search-icon'/>
 
             </div>
