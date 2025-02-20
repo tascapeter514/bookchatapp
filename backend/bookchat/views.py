@@ -21,6 +21,10 @@ def get_member_bookclubs(request, **kwargs):
     serializer = BookclubSerializer(user_bookclubs, many=True)
     return Response(serializer.data)
 
+@api_view(['GET'])
+def get_search_query(request, **kwargs):
+    search_term = kwargs.get('searchTerm')
+
 
 
     

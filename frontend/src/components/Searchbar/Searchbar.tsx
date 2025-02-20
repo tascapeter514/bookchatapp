@@ -36,10 +36,16 @@ const Searchbar: FC = () => {
 
     const [searchValue, setSearchValue] = useState('')
 
-    const debouncedSearchValue = useDebounce(searchValue, 1000)
+    // const debouncedSearchValue = useDebounce(searchValue, 1000)
 
-    const fetchSearchData = (value: string) => {
+    const fetchSearchData = async (value: string) => {
         try {
+            const response = await fetch(`http://localhost:8000/api/search/${value}`)
+
+            if (response.ok) {
+                const data = response.json()
+                console.log('search query data:', data)
+            }
 
         } catch (err) {
             console.error('There was an error with the search connection:', err)
@@ -51,6 +57,8 @@ const Searchbar: FC = () => {
         setSearchValue(value)
         fetchSearchData(value)
     }
+
+    console.log('search value on change:', searchValue)
 
 
     return(
