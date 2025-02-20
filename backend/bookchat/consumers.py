@@ -2,8 +2,9 @@ from channels.generic.websocket import WebsocketConsumer, AsyncWebsocketConsumer
 from asgiref.sync import async_to_sync
 from urllib.parse import unquote
 import json
-from .models import Bookclub, Invitation, Bookshelf
-from .serializers import BookclubSerializer, InvitationSerializer, BookshelfSerializer
+from .models import Bookclub, Invitation, Bookshelf, Book, Author
+from django.db.models import Q
+from .serializers import BookclubSerializer, InvitationSerializer, BookshelfSerializer, SearchQuerySerializer
 
 class UserDataConsumer(WebsocketConsumer):
     def connect(self):
@@ -18,7 +19,7 @@ class UserDataConsumer(WebsocketConsumer):
         self.accept()
         self.get_user_data()
 
-    def disconnect(self):
+    def disconnect(self, close_code):
         async_to_sync(self.channel_layer.group_discard)(
             self.group_name,
             self.channel_name
@@ -63,7 +64,7 @@ class SearchDataConsumer(WebsocketConsumer):
 
         self.get_search_query()
 
-    def disconnect(self):
+    def disconnect(self, close_code):
 
         async_to_sync(self.channel_layer.group_discard)(
             self.group_name,
@@ -72,10 +73,19 @@ class SearchDataConsumer(WebsocketConsumer):
 
     def get_search_query(self):
 
+        results = Book.objects.prefetch_related('author').filter(Q(title__icontains=self.search_term) | Q(author__name__icontains=self.search_term))
+        serializer = SearchQuerySerializer(results, many=True)
+        print('search query serializer data:', serializer.data)
+        
+
+
+
         self.send(text_data=json.dumps({
             'type': 'get_search_query',
             'search_result': f'Success! Your search term, {self.search_term} reached the backend!' 
         }))
 
+
+# .values('title', 'title_id', 'author__name', 'author__author_id')
 
 

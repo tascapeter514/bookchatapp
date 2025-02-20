@@ -94,6 +94,44 @@ class UserDataSerializer(serializers.ModelSerializer):
         model = User
         fields = ['bookshelves', 'bookclubs', 'invitations']
 
+class SearchQuerySerializer(serializers.ModelSerializer):
+    author = serializers.SerializerMethodField()
+
+
+
+    class Meta:
+        model = Book
+        fields = ['author', 'title', 'title_id']
+    
+    def get_author(self, obj):
+        
+        authors = obj.author.all()
+        # print('authors:', authors.values())
+
+        unique_authors = []
+        seen = set()
+
+        for author in authors:
+            if author.author_id not in seen:
+                print(author.name)
+                unique_authors.append({
+                    'id': str(author.author_id),
+                    'name': author.name
+                })
+            seen.add(author.author_id)
+
+        return unique_authors
+
+
+        # return [
+        #     {
+        #         'id': str(author.author_id),
+        #         'name': author.name
+        #     }
+        #     for author in obj.author.all()  # Iterate over all related authors
+        # ]
+
+
 
 
         
