@@ -10,7 +10,7 @@ const SearchIcon: FC<IconProps> = (props) => {
     return  <FaSearch {...props}></FaSearch>
 }
 
-const useDebounce = (value: string, delay: number = 500) => {
+const useDebounce = (value: string, delay: number) => {
     const [debouncedValue, setDebouncedValue] = useState(value);
 
 
@@ -36,29 +36,53 @@ const Searchbar: FC = () => {
 
     const [searchValue, setSearchValue] = useState('')
 
-    // const debouncedSearchValue = useDebounce(searchValue, 1000)
+    
+    const debouncedSearchValue = useDebounce(searchValue, 500)
+    
+    const fetchSearchData = (value: string) => {
+        const baseUrl = `ws://localhost:8000/ws/search/${value}/`
 
-    const fetchSearchData = async (value: string) => {
         try {
-            const response = await fetch(`http://localhost:8000/api/search/${value}`)
 
-            if (response.ok) {
-                const data = response.json()
-                console.log('search query data:', data)
+            const socket = new WebSocket(baseUrl)
+
+            
+            socket.onmessage = (event) => {
+                const data = JSON.parse(event.data);
+                if (data.type === 'get_search_query') {
+                    console.log('web socket search query:', data)
+                }
             }
 
-        } catch (err) {
-            console.error('There was an error with the search connection:', err)
-        }
+            socket.onerror = (error) => {
+                console.error('Websocket search query error:', error)
+            }
 
+            socket.onopen = () => console.log('Search query websocket connected')
+            socket.onclose = () => console.log('Search query websocket disconnected')
+
+            return () => socket.close()
+
+
+        } catch (err) {
+            console.error(`Search websocket failed to initialize: ${err}`)
+        }
+        
     }
+    
+
+    
 
     const handleChange = (value: string) => {
         setSearchValue(value)
-        fetchSearchData(value)
     }
 
-    console.log('search value on change:', searchValue)
+    useEffect(() => {
+        if (debouncedSearchValue) {
+            fetchSearchData(debouncedSearchValue)
+        }
+    }, [debouncedSearchValue])
+
 
 
     return(
@@ -79,3 +103,25 @@ const Searchbar: FC = () => {
 }
 
 export default Searchbar
+
+
+// const fetchSearchData = async (value: string) => {
+//     console.log('fetch check:', value)
+//     const baseUrl = `http://localhost:8000/api/search/${value}`
+    
+
+
+
+//     try {
+//         const response = await fetch(baseUrl)
+
+//         if (response.ok) {
+//             const data = response.json()
+//             console.log('search query data:', data)
+//         }
+
+//     } catch (err) {
+//         console.error('There was an error with the search connection:', err)
+//     }
+
+// }

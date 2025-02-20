@@ -24,6 +24,7 @@ def get_member_bookclubs(request, **kwargs):
 @api_view(['GET'])
 def get_search_query(request, **kwargs):
     search_term = kwargs.get('searchTerm')
+    return Response({'message:', f'Success! Your search query, {search_term}, was successfully sent to the backend!'})
 
 
 

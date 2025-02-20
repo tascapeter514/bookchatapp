@@ -47,48 +47,11 @@ class UserDataConsumer(WebsocketConsumer):
         ))
 
 
-
-
-
-
-
-class BookchatConsumer(WebsocketConsumer):
+class SearchDataConsumer(WebsocketConsumer):
     def connect(self):
-        self.group_name = 'join_bookclub'
-
-        async_to_sync(self.channel_layer.group_add)(
-            self.group_name,
-            self.channel_name
-        )
-        
-        self.accept()
-
-
-
-    def disconnect(self, close_code):
-        async_to_sync(self.channel_layer.group_discard)(
-            self.group_name,
-            self.channel_name
-        )
-
-    def join_bookclub(self, event):
-        print('join bookclub check')
-        udpated_members = event['updated_members']
-        bookclub_id = event['bookclub_id']
-
-        self.send(text_data=json.dumps({
-            'type': 'join_bookclub',
-            'updated_members': udpated_members,
-            'bookclub_id': bookclub_id
-        }))
-
-class BookclubConsumer(WebsocketConsumer):
-    def connect(self):
-
-        self.user_id = self.scope['url_route']['kwargs']['id']
-
-        self.group_name = f"get_bookclubs_{self.user_id}"
-
+        self.group_name = 'get_search_query'
+        self.search_term = self.scope['url_route']['kwargs']['searchTerm']
+        print('search term:', self.search_term)
 
         async_to_sync(self.channel_layer.group_add)(
             self.group_name,
@@ -97,58 +60,21 @@ class BookclubConsumer(WebsocketConsumer):
 
         self.accept()
 
-        self.get_bookclubs()
+        self.get_search_query()
 
-    def disconnect(self, close_code):
+    def disconnect(self):
+
         async_to_sync(self.channel_layer.group_discard)(
             self.group_name,
             self.channel_name
         )
 
-
-    def get_bookclubs(self):
-        bookclubs = Bookclub.objects.filter(administrator=self.user_id)
-        updated_bookclubs = [{**bc, 'bookclub_id': str(bc['bookclub_id'])} for bc in bookclubs.values()]
+    def get_search_query(self):
 
         self.send(text_data=json.dumps({
-            'type': 'get_bookclubs',
-            'bookclubs': updated_bookclubs
+            'type': 'get_search_query',
+            'search_result': f'Success! Your search term, {self.search_term} reached the backend!' 
         }))
 
-
-class InvitesConsumer(WebsocketConsumer):
-    def connect(self):
-        self.user_id = self.scope['url_route']['kwargs']['id']
-
-        self.group_name = f"get_invites_{self.user_id}"
-
-        async_to_sync(self.channel_layer.group_add)(
-            self.group_name,
-            self.channel_name
-        )
-
-        self.accept()
-
-        self.get_invites()
-
-    def disconnect(self, close_code):
-        async_to_sync(self.channel_layer.group_discard)(
-            self.group_name,
-            self.channel_name
-
-        )
-
-    def get_invites(self):
-
-        invitations = Invitation.objects.filter(invited_user_id=self.user_id)
-        # updated_invitations = [{**i, 'bookclub_id': str(i['bookclub_id']), 'invitation_id': str(i['invitation_id']), 'created_at': i['created_at'].isoformat()} for i in invitations.values()]
-
-        serializer = InvitationSerializer(invitations, many=True)
-        print('invite data:', serializer.data)
-
-        self.send(text_data=json.dumps({
-            'type': 'get_invites',
-            'user_invites': serializer.data
-        }))
 
 
