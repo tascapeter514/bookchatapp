@@ -28,7 +28,6 @@ function App() {
                    /></ErrorBoundary>}></Route>
                 <Route path='/bookclub/:id' element={<BookclubPage></BookclubPage>}></Route>
             </Route>
-        
       </Routes>
       </UserDataProvider>
     </BrowserRouter>

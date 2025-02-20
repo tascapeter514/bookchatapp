@@ -2,6 +2,7 @@ import { useState, FC } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { HandleLogout } from '../../types.ts'
 import { userData } from '../common/UserContext.tsx'
+import Searchbar from '../Searchbar/Searchbar.tsx'
 import './Navbar.css'
 
 
@@ -60,10 +61,16 @@ const Navbar: FC = () => {
     return(
         <header>
             <div className="container container-nav">
-                <div className="site-title">
-                <h1>Book Chat</h1>
-                <p className="subtitle">A book club app for book lovers</p>
+                <div className="title-searchbar-wrapper">
+                  <div className="site-title">
+                  <h1>Book Chat</h1>
+                  <p className="subtitle">A book club app for book lovers</p>
+                  </div>
+                  <Searchbar></Searchbar>
                 </div>
+
+
+
                 <button className='mobile-nav-toggle' aria-expanded={showNavbar}>
 
                 </button>
