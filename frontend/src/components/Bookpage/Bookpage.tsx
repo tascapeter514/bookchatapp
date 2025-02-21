@@ -73,7 +73,7 @@ const Bookpage: React.FC = () => {
             {book ? (
                 <div className="bookpage-detail">
                     <h1>{book.title}</h1>
-                    <img src={book.imageLinks['smallThumbnail']} alt="" />
+                    <img src={book.imageLinks['thumbnail']} alt="" />
                     <button onClick={() => setShowBookshelfForm(prev => !prev)}>Add to Bookshelf</button>
                     {showBookshelfForm ?  
                         <form action={addToBookshelf as any} className="bookshelf-form" method='patch'>
