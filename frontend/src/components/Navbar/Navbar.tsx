@@ -1,6 +1,6 @@
-import { useState, FC } from 'react'
+import { useState, FC, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { HandleLogout, Author, Book, Bookclub } from '../../types.ts'
+import { HandleLogout, Author, Book, Bookclub, SearchResultsArray } from '../../types.ts'
 import { userData } from '../common/UserContext.tsx'
 import Searchbar from '../Searchbar/Searchbar.tsx'
 import SearchResults from '../SearchResults/SearchResults.tsx'
@@ -11,25 +11,19 @@ const Navbar: FC = () => {
   const navigate = useNavigate()
   const [showNavbar] = useState(false)
   const {activeUserToken, setActiveUserToken} = userData()
-  // const [searchResults, setSearchResults] = useState<SearchResults[]>([])
-  // const [searchResults, setSearchResults] = useState<SearchResults>({
-  //     book_results: [],
-  //     author_results: [],
-  //     bookclub_results: []
-
-  //   })
-
   const [authorSearchResults, setAuthorSearchResults] = useState<Author[]>([])
   const [bookSearchResults, setBookSearchResults] = useState<Book[]>([])
   const [bookclubSearchResults, setBookclubSearchResults] = useState<Bookclub[]>([])
   const [showSearchResults, setShowSearchResults] = useState(false)
-  const searchResults = [
+  const searchResults: SearchResultsArray = [
     {type: 'author', items: authorSearchResults},
     {type: 'book', items: bookSearchResults},
     {type: 'bookclub', items: bookclubSearchResults}
   ]
 
-  const sortedSearchResults = searchResults.sort((a, b) => a.items.length - b.items.length)
+  const sortedSearchResults = searchResults.sort((a, b) => {
+    return (a.items?.length || 0) - (b.items?.length || 0)
+  })
 
     const handleLogout: HandleLogout = async () => {
         const token = localStorage.getItem('authToken');
@@ -66,26 +60,15 @@ const Navbar: FC = () => {
 
     )
 
-    // const searchResultElements = searchResults.map((searchResult) => {
+    useEffect(() => {
 
-    //   const authorResults = search
+      return () => {
+        setShowSearchResults(false)
+      }
+
+    }, [])
 
 
-
-    //   return(
-    //     <ul className="search-results">
-    //       <li key={searchR}>
-    //         <Link></Link>
-    //       </li>
-
-    //     </ul>
-    //   )
-    // })
-
-    // console.log('search results:', searchResults)
-    console.log('author results:', authorSearchResults)
-    console.log('book results:', bookSearchResults)
-    console.log('bookclub results:', bookclubSearchResults)
 
     return(
         <header>
@@ -101,22 +84,12 @@ const Navbar: FC = () => {
                       setBookSearchResults={setBookSearchResults}
                       setBookclubSearchResults={setBookclubSearchResults}
                       setShowSearchResults={setShowSearchResults}
+                      showSearchResults={showSearchResults}
                     ></Searchbar>
                     {showSearchResults ? 
-                      <SearchResults></SearchResults> : ''
+                      <SearchResults setShowSearchResults={setShowSearchResults} sortedSearchResults={sortedSearchResults}></SearchResults> : ''
                     }
-
-
-
-                    
-
-
-
-                    
-                    {/* <div className='search-results'>SearchResults</div> */}
                   </div>
-                  
-
                 </div>
 
 
@@ -125,7 +98,7 @@ const Navbar: FC = () => {
 
                 </button>
                 <nav>
-                    <ul>
+                    <ul onClick={() => setShowSearchResults(false)}>
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to='#'>Books</Link></li>
                         <li><Link to='#'>Authors</Link></li>

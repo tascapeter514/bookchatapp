@@ -1,6 +1,6 @@
 import './Searchbar.css'
-import { FC, useState, useEffect, Dispatch, SetStateAction } from 'react'
-import { SearchResults, Author, Book, Bookclub } from '../../types'
+import { FC, useState, useEffect, Dispatch, SetStateAction, useRef } from 'react'
+import { Author, Book, Bookclub } from '../../types'
 import { FaSearch } from 'react-icons/fa'
 
 type IconProps = React.ComponentPropsWithoutRef<'svg'>
@@ -33,14 +33,15 @@ interface SearchbarProps {
     setAuthorSearchResults: Dispatch<SetStateAction<Author[]>>,
     setBookSearchResults: Dispatch<SetStateAction<Book[]>>,
     setBookclubSearchResults: Dispatch<SetStateAction<Bookclub[]>>
-    setShowSearchResults: Dispatch<SetStateAction<boolean>>
+    setShowSearchResults: Dispatch<SetStateAction<boolean>>,
+    showSearchResults: boolean
 
 
 
 }
 
 
-const Searchbar: FC<SearchbarProps> = ({setAuthorSearchResults, setBookSearchResults, setBookclubSearchResults, setShowSearchResults}) => {
+const Searchbar: FC<SearchbarProps> = ({setAuthorSearchResults, setBookSearchResults, setBookclubSearchResults, setShowSearchResults, showSearchResults}) => {
 
     const [searchValue, setSearchValue] = useState('')
     const debouncedSearchValue = useDebounce(searchValue, 500)
@@ -79,23 +80,32 @@ const Searchbar: FC<SearchbarProps> = ({setAuthorSearchResults, setBookSearchRes
         }
         
     }
-    
+
     useEffect(() => {
+
         if (debouncedSearchValue) {
             fetchSearchData(debouncedSearchValue)
+        } else {
+            setShowSearchResults(false)
         }
-    }, [debouncedSearchValue])
 
-    if (!searchValue) {
-        setShowSearchResults(false)
-    }
+    }, [debouncedSearchValue ])
+
+    useEffect(() => {
+        if (!showSearchResults) {
+            setSearchValue('')
+        }
+    }, [showSearchResults])
+
+
+    
 
 
 
     return(
 
             <div className="input-wrapper">
-                <input  
+                <input
                     placeholder='Type to search...' 
                     value={searchValue} 
                     onChange={(e) => setSearchValue(e.target.value)} />
