@@ -1,8 +1,9 @@
 import { useState, FC } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { HandleLogout, SearchResults, Author, Book, Bookclub } from '../../types.ts'
+import { HandleLogout, Author, Book, Bookclub } from '../../types.ts'
 import { userData } from '../common/UserContext.tsx'
 import Searchbar from '../Searchbar/Searchbar.tsx'
+import SearchResults from '../SearchResults/SearchResults.tsx'
 import './Navbar.css'
 
 const Navbar: FC = () => {
@@ -21,6 +22,14 @@ const Navbar: FC = () => {
   const [authorSearchResults, setAuthorSearchResults] = useState<Author[]>([])
   const [bookSearchResults, setBookSearchResults] = useState<Book[]>([])
   const [bookclubSearchResults, setBookclubSearchResults] = useState<Bookclub[]>([])
+  const [showSearchResults, setShowSearchResults] = useState(false)
+  const searchResults = [
+    {type: 'author', items: authorSearchResults},
+    {type: 'book', items: bookSearchResults},
+    {type: 'bookclub', items: bookclubSearchResults}
+  ]
+
+  const sortedSearchResults = searchResults.sort((a, b) => a.items.length - b.items.length)
 
     const handleLogout: HandleLogout = async () => {
         const token = localStorage.getItem('authToken');
@@ -86,13 +95,28 @@ const Navbar: FC = () => {
                   <h1>Book Chat</h1>
                   <p className="subtitle">A book club app for book lovers</p>
                   </div>
-                  <Searchbar 
-                    setAuthorSearchResults={setAuthorSearchResults}
-                    setBookSearchResults={setBookSearchResults}
-                    setBookclubSearchResults={setBookclubSearchResults}
+                  <div className="searchBar-searchResults-wrapper">
+                    <Searchbar
+                      setAuthorSearchResults={setAuthorSearchResults}
+                      setBookSearchResults={setBookSearchResults}
+                      setBookclubSearchResults={setBookclubSearchResults}
+                      setShowSearchResults={setShowSearchResults}
+                    ></Searchbar>
+                    {showSearchResults ? 
+                      <SearchResults></SearchResults> : ''
+                    }
+
+
+
+                    
+
+
+
+                    
+                    {/* <div className='search-results'>SearchResults</div> */}
+                  </div>
                   
-                  ></Searchbar>
-                  {/* <div>SearchResults</div> */}
+
                 </div>
 
 

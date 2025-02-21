@@ -29,12 +29,24 @@ header {
 .title-searchbar-wrapper {
     display: flex;
     flex-direction: row;
-
     gap: 1.25rem;
     align-items: center;
-
-
+    border: 1px solid red;
+    justify-content: space-between;
 }
+
+.searchBar-searchResults-wrapper {
+    border: 5px solid purple;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    
+}
+
+/* .search-results {
+    position: absolute;
+} */
 
 
 

@@ -33,13 +33,14 @@ interface SearchbarProps {
     setAuthorSearchResults: Dispatch<SetStateAction<Author[]>>,
     setBookSearchResults: Dispatch<SetStateAction<Book[]>>,
     setBookclubSearchResults: Dispatch<SetStateAction<Bookclub[]>>
+    setShowSearchResults: Dispatch<SetStateAction<boolean>>
 
 
 
 }
 
 
-const Searchbar: FC<SearchbarProps> = ({setAuthorSearchResults, setBookSearchResults, setBookclubSearchResults}) => {
+const Searchbar: FC<SearchbarProps> = ({setAuthorSearchResults, setBookSearchResults, setBookclubSearchResults, setShowSearchResults}) => {
 
     const [searchValue, setSearchValue] = useState('')
     const debouncedSearchValue = useDebounce(searchValue, 500)
@@ -57,10 +58,10 @@ const Searchbar: FC<SearchbarProps> = ({setAuthorSearchResults, setBookSearchRes
                 if (data.type === 'get_search_query') {
                     console.log('web socket search query:', data)
                     // setSearchResults(data.search_results)
-                    console.log('book search data:', data.search_results.book_results)
                     setAuthorSearchResults(data.search_results.author_results);
                     setBookSearchResults(data.search_results.book_results);
                     setBookclubSearchResults(data.search_results.bookclub_results)
+                    setShowSearchResults(true)
                 }
             }
 
@@ -85,6 +86,10 @@ const Searchbar: FC<SearchbarProps> = ({setAuthorSearchResults, setBookSearchRes
         }
     }, [debouncedSearchValue])
 
+    if (!searchValue) {
+        setShowSearchResults(false)
+    }
+
 
 
     return(
@@ -97,6 +102,7 @@ const Searchbar: FC<SearchbarProps> = ({setAuthorSearchResults, setBookSearchRes
                 <SearchIcon className='search-icon'/>
 
             </div>
+            
 
 
 
