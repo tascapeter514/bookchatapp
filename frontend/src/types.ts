@@ -75,6 +75,15 @@ export interface Bookclub {
 
 }
 
+export interface SearchResults {
+        book_results: Book[],
+        author_results: Author[],
+        bookclub_results: Bookclub[]
+
+}
+
+// export type SearchResults = (Author[] | Book[] | Bookclub[])[]
+
 export interface UserData {
     user_bookclubs: Bookclub[],
     user_bookshelves: Bookshelf[],

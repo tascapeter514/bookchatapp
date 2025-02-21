@@ -1,10 +1,9 @@
 import './Searchbar.css'
-import { FC, useState, useEffect } from 'react'
+import { FC, useState, useEffect, Dispatch, SetStateAction } from 'react'
+import { SearchResults, Author, Book, Bookclub } from '../../types'
 import { FaSearch } from 'react-icons/fa'
 
-
 type IconProps = React.ComponentPropsWithoutRef<'svg'>
-
 
 const SearchIcon: FC<IconProps> = (props) => {
     return  <FaSearch {...props}></FaSearch>
@@ -12,7 +11,6 @@ const SearchIcon: FC<IconProps> = (props) => {
 
 const useDebounce = (value: string, delay: number) => {
     const [debouncedValue, setDebouncedValue] = useState(value);
-
 
     useEffect(() => {
         const id = setTimeout(() => {
@@ -30,34 +28,39 @@ const useDebounce = (value: string, delay: number) => {
 }
 
 
+interface SearchbarProps {
+    // setSearchResults: Dispatch<SetStateAction<SearchResults>>
+    setAuthorSearchResults: Dispatch<SetStateAction<Author[]>>,
+    setBookSearchResults: Dispatch<SetStateAction<Book[]>>,
+    setBookclubSearchResults: Dispatch<SetStateAction<Bookclub[]>>
 
 
-const Searchbar: FC = () => {
+
+}
+
+
+const Searchbar: FC<SearchbarProps> = ({setAuthorSearchResults, setBookSearchResults, setBookclubSearchResults}) => {
 
     const [searchValue, setSearchValue] = useState('')
-
-    
     const debouncedSearchValue = useDebounce(searchValue, 500)
     
     const fetchSearchData = (value: string) => {
-
-
-
         const encodedValue = encodeURIComponent(value)
-
-
         const path = encodeURI(`ws://localhost:8000/ws/search/${encodedValue}/`)
-        console.log("path:", path)
 
         try {
 
             const socket = new WebSocket(path)
 
-            
             socket.onmessage = (event) => {
                 const data = JSON.parse(event.data);
                 if (data.type === 'get_search_query') {
                     console.log('web socket search query:', data)
+                    // setSearchResults(data.search_results)
+                    console.log('book search data:', data.search_results.book_results)
+                    setAuthorSearchResults(data.search_results.author_results);
+                    setBookSearchResults(data.search_results.book_results);
+                    setBookclubSearchResults(data.search_results.bookclub_results)
                 }
             }
 
@@ -70,16 +73,12 @@ const Searchbar: FC = () => {
 
             return () => socket.close()
 
-
         } catch (err) {
             console.error(`Search websocket failed to initialize: ${err}`)
         }
         
     }
     
-
-
-
     useEffect(() => {
         if (debouncedSearchValue) {
             fetchSearchData(debouncedSearchValue)
@@ -91,7 +90,6 @@ const Searchbar: FC = () => {
     return(
 
             <div className="input-wrapper">
-            
                 <input  
                     placeholder='Type to search...' 
                     value={searchValue} 
@@ -108,23 +106,3 @@ const Searchbar: FC = () => {
 export default Searchbar
 
 
-// const fetchSearchData = async (value: string) => {
-//     console.log('fetch check:', value)
-//     const baseUrl = `http://localhost:8000/api/search/${value}`
-    
-
-
-
-//     try {
-//         const response = await fetch(baseUrl)
-
-//         if (response.ok) {
-//             const data = response.json()
-//             console.log('search query data:', data)
-//         }
-
-//     } catch (err) {
-//         console.error('There was an error with the search connection:', err)
-//     }
-
-// }

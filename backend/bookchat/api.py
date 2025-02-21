@@ -5,7 +5,7 @@ from knox.auth import TokenAuthentication
 from django.shortcuts import get_object_or_404
 from django.core.exceptions import ValidationError
 from rest_framework.decorators import action
-from .serializers import BookSerializer, UserBookSerializer, BookshelfSerializer, BookclubSerializer, InvitationSerializer
+from .serializers import BookSerializer, BookshelfSerializer, BookclubSerializer, InvitationSerializer
 from rest_framework.response import Response
 from django.contrib.auth.models import User
 from channels.layers import get_channel_layer
@@ -21,16 +21,6 @@ class BestsellerViewSet(viewsets.ModelViewSet):
     ]
     serializer_class = BookSerializer
 
-#USER BOOKS VIEWSET
-class UserbooksViewSet(viewsets.ModelViewSet):
-    penguin_titles = Book.objects.filter(publisher='Penguin').prefetch_related('author').select_related('genres')
-
-
-    queryset = penguin_titles
-    permission_classes = [
-        permissions.AllowAny
-    ]
-    serializer_class = UserBookSerializer
 
 
 #BOOK VIEWSET
@@ -103,40 +93,6 @@ class BookclubViewSet(viewsets.ModelViewSet):
             return Response({'error': 'Invalid UUID format'}, status=400)
 
 
-#  channel_layer = get_channel_layer()
-#         async_to_sync(channel_layer.group_send)(
-#             'join_bookclub',
-#             {
-#                 'type': 'join_bookclub',
-#                 'updated_members': updated_members,
-#                 'bookclub_id': request.data.get('bookclub_id')
-#             }
-
-#         )
-
-
-    # def get_queryset(self):
-    #     user_id = self.request.query_params.get('user')
-    #     print('get bookclubs user id:', user_id)
-    #     bookclubs = Bookclub.objects.filter(administrator=user_id)
-    #     updated_bookclubs = [{**bc, 'bookclub_id': str(bc['bookclub_id'])} for bc in bookclubs.values()]
-    #     print('updated bookclubs:', updated_bookclubs)
-
-    #     # print('user:', user_id)
-    #     channel_layer = get_channel_layer()
-    #     async_to_sync(channel_layer.group_send)(
-    #         f'get_bookclubs_{user_id}',
-    #         {
-    #             'type': 'get_bookclubs',
-    #             'updated_bookclubs': updated_bookclubs
-    #         }
-    #     )
-
-
-
-
-
-    #     return
 
     def perform_create(self, serializer):
         bookclub = serializer.save()

@@ -1,23 +1,26 @@
 import { useState, FC } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { HandleLogout } from '../../types.ts'
+import { HandleLogout, SearchResults, Author, Book, Bookclub } from '../../types.ts'
 import { userData } from '../common/UserContext.tsx'
 import Searchbar from '../Searchbar/Searchbar.tsx'
 import './Navbar.css'
 
-
-
-
-
 const Navbar: FC = () => {
 
+  const navigate = useNavigate()
+  const [showNavbar] = useState(false)
   const {activeUserToken, setActiveUserToken} = userData()
+  // const [searchResults, setSearchResults] = useState<SearchResults[]>([])
+  // const [searchResults, setSearchResults] = useState<SearchResults>({
+  //     book_results: [],
+  //     author_results: [],
+  //     bookclub_results: []
 
-  
+  //   })
 
-    const navigate = useNavigate()
-    const [showNavbar] = useState(false)
-
+  const [authorSearchResults, setAuthorSearchResults] = useState<Author[]>([])
+  const [bookSearchResults, setBookSearchResults] = useState<Book[]>([])
+  const [bookclubSearchResults, setBookclubSearchResults] = useState<Bookclub[]>([])
 
     const handleLogout: HandleLogout = async () => {
         const token = localStorage.getItem('authToken');
@@ -42,7 +45,6 @@ const Navbar: FC = () => {
         }
       };
    
-
     const guestLinks = (
         <li><Link to='/login'>Log In</Link></li>
     )
@@ -55,8 +57,26 @@ const Navbar: FC = () => {
 
     )
 
+    // const searchResultElements = searchResults.map((searchResult) => {
 
-    
+    //   const authorResults = search
+
+
+
+    //   return(
+    //     <ul className="search-results">
+    //       <li key={searchR}>
+    //         <Link></Link>
+    //       </li>
+
+    //     </ul>
+    //   )
+    // })
+
+    // console.log('search results:', searchResults)
+    console.log('author results:', authorSearchResults)
+    console.log('book results:', bookSearchResults)
+    console.log('bookclub results:', bookclubSearchResults)
 
     return(
         <header>
@@ -66,7 +86,13 @@ const Navbar: FC = () => {
                   <h1>Book Chat</h1>
                   <p className="subtitle">A book club app for book lovers</p>
                   </div>
-                  <Searchbar></Searchbar>
+                  <Searchbar 
+                    setAuthorSearchResults={setAuthorSearchResults}
+                    setBookSearchResults={setBookSearchResults}
+                    setBookclubSearchResults={setBookclubSearchResults}
+                  
+                  ></Searchbar>
+                  {/* <div>SearchResults</div> */}
                 </div>
 
 

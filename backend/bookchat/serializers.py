@@ -9,7 +9,19 @@ from accounts.serializers import UserSerializer
 class AuthorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Author
-        fields = ['name', 'author_id']
+        fields = ['name', 'author_id', 'bio', 'links']
+
+    def __init__(self, *args, **kwargs):
+        fields = kwargs.pop('fields', None)
+        super().__init__(*args, **kwargs)
+
+        if fields:
+            allowed = set(fields)
+            existing = set(self.fields.keys())
+
+            for field_name in existing - allowed:
+                self.fields.pop(field_name)
+
 
 #BOOK SERIALIZER
 class BookSerializer(serializers.ModelSerializer):
@@ -19,13 +31,17 @@ class BookSerializer(serializers.ModelSerializer):
         model = Book
         fields = ['title_id', 'title', 'publisher', 'averageRating', 'description', 'ISBN_Identifiers', 'imageLinks', 'ratingsCount', 'authors']
 
-#USERBOOK SERIALIZER
-class UserBookSerializer(serializers.ModelSerializer):
-    authors = AuthorSerializer(many=True)
-    
-    class Meta:
-        model = Book
-        fields = ['title', 'title_id', 'publisher', 'averageRating', 'imageLinks', 'ratingsCount', 'authors']
+    def __init__(self, *args, **kwargs):
+        fields = kwargs.pop('fields', None)
+        super().__init__(*args, **kwargs)
+
+        if fields:
+            allowed = set(fields)
+            existing = set(self.fields.keys())
+
+            for field_name in existing - allowed:
+                self.fields.pop(field_name)
+
 
 #BOOKSHELF SERIALIZER
 class BookshelfSerializer(serializers.ModelSerializer):
@@ -65,6 +81,17 @@ class BookclubSerializer(serializers.ModelSerializer):
         model = Bookclub
         fields = ['bookclub_id', 'name', 'administrator', 'bookshelves', 'currentRead', 'members']
 
+    def __init__(self, *args, **kwargs):
+        fields = kwargs.pop('fields', None)
+        super().__init__(*args, **kwargs)
+
+        if fields:
+            allowed = set(fields)
+            existing = set(self.fields.keys())
+
+            for field_name in existing - allowed:
+                self.fields.pop(field_name)
+
 
 #INVITATION SERIALIZER
 
@@ -93,45 +120,6 @@ class UserDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['bookshelves', 'bookclubs', 'invitations']
-
-class SearchQuerySerializer(serializers.ModelSerializer):
-    author = serializers.SerializerMethodField()
-
-
-
-    class Meta:
-        model = Book
-        fields = ['author', 'title', 'title_id']
-    
-    def get_author(self, obj):
-        
-        authors = obj.author.all()
-        # print('authors:', authors.values())
-
-        unique_authors = []
-        seen = set()
-
-        for author in authors:
-            if author.author_id not in seen:
-                print(author.name)
-                unique_authors.append({
-                    'id': str(author.author_id),
-                    'name': author.name
-                })
-            seen.add(author.author_id)
-
-        return unique_authors
-
-
-        # return [
-        #     {
-        #         'id': str(author.author_id),
-        #         'name': author.name
-        #     }
-        #     for author in obj.author.all()  # Iterate over all related authors
-        # ]
-
-
 
 
         

@@ -4,7 +4,7 @@ from urllib.parse import unquote
 import json
 from .models import Bookclub, Invitation, Bookshelf, Book, Author
 from django.db.models import Q
-from .serializers import BookclubSerializer, InvitationSerializer, BookshelfSerializer, SearchQuerySerializer
+from .serializers import BookclubSerializer, InvitationSerializer, BookshelfSerializer, AuthorSerializer, BookSerializer
 
 class UserDataConsumer(WebsocketConsumer):
     def connect(self):
@@ -73,19 +73,30 @@ class SearchDataConsumer(WebsocketConsumer):
 
     def get_search_query(self):
 
-        results = Book.objects.prefetch_related('author').filter(Q(title__icontains=self.search_term) | Q(author__name__icontains=self.search_term))
-        serializer = SearchQuerySerializer(results, many=True)
-        print('search query serializer data:', serializer.data)
+        book_results = Book.objects.filter(Q(title__icontains=self.search_term) | Q(author__name__icontains=self.search_term))
+        author_results = Author.objects.filter(name__icontains=self.search_term)
+        bookclub_results = Bookclub.objects.filter(name__icontains=self.search_term)
+
+        author_serializer = AuthorSerializer(author_results, many=True, fields=['author_id', 'name'])
+        book_serializer = BookSerializer(book_results, many=True, fields=['title_id', 'title'])
+        bookclub_serializer = BookclubSerializer(bookclub_results, many=True, fields=['bookclub_id', 'name'])
+
+        # self.send(text_data=json.dumps({
+        #     'type': 'get_search_query',
+        #     'search_results': [author_serializer.data, book_serializer.data, bookclub_serializer.data]
+        # }))
+
+
         
-
-
-
         self.send(text_data=json.dumps({
             'type': 'get_search_query',
-            'search_result': f'Success! Your search term, {self.search_term} reached the backend!' 
+            'search_results': {
+                'book_results': book_serializer.data,
+                'author_results': author_serializer.data,
+                'bookclub_results': bookclub_serializer.data
+            }
         }))
 
 
-# .values('title', 'title_id', 'author__name', 'author__author_id')
 
 

@@ -16,7 +16,7 @@ Including another URLconf
     """
 
 from rest_framework import routers
-from .api import BestsellerViewSet, BookViewSet, UserbooksViewSet, BookshelfViewSet, BookclubViewSet, InvitationAPI
+from .api import BestsellerViewSet, BookViewSet, InvitationAPI
 from .views import get_member_bookclubs, get_search_query
 from django.urls import path, include
 
@@ -24,9 +24,6 @@ from django.urls import path, include
 router = routers.DefaultRouter()
 router.register('', BestsellerViewSet, 'homepage')
 router.register(r'book', BookViewSet, 'book')
-router.register('api/userbookshelf', UserbooksViewSet, 'userbooks')
-router.register(r'api/bookshelf', BookshelfViewSet, basename='bookshelf' )
-router.register(r'api/bookclub', BookclubViewSet, basename='bookclub')
 
 
 
