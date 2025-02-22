@@ -5,8 +5,7 @@
 
 .book-container {
     position: relative;
-    padding: 1rem;
-    border: 1px solid lime;
+    padding: 1em;
     display: flex;
     flex-direction: column;
     text-align: center;

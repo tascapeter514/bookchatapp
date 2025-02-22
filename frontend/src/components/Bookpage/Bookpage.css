@@ -1,0 +1,7 @@
+.book-cover {
+    width: 15%;
+    object-fit: cover;
+    filter: contrast(110%) brightness(105%);
+
+
+}

@@ -1,6 +1,8 @@
 import {useState, useEffect} from 'react'
 import {useParams } from 'react-router-dom'
+import { userdata } from '../common/UserContext'
 import { Book, ISBN_Identifier, Bookshelf, ActiveUser } from '../../types'
+import './Bookpage.css'
 
 
 
@@ -14,20 +16,49 @@ const Bookpage: React.FC = () => {
     const [book, setBook] = useState<Book | null>(null);
     const [showBookshelfForm, setShowBookshelfForm] = useState(false)
     const [userBookShelves, setUserBookShelves] = useState<Bookshelf[]>([])
+
     
-
     useEffect(() => {
-        fetch(`http://localhost:8000/book/${params.id}`)
-        .then(res => res.json())
-        .then(data => setBook(data))
-    }, [])
 
-    useEffect(() => {
-        fetch(`http://localhost:8000/api/bookshelf/?user=${activeUser.id}`)
-        .then(res => res.json())
-        .then(data => setUserBookShelves(data))
-        .catch(err => console.log('There was an error retrieving your bookshelf:', err))
-    }, [])
+        try {
+
+            const socket = new WebSocket(`ws://localhost:8000/ws/book/${params.id}`)
+
+            socket.onmessage = (event) => {
+                const data = JSON.parse(event.data)
+                if (data.type === 'get_book_data') {
+                    console.log(data.book_result)
+                    setBook(data.book_result)
+                }
+            }
+
+            socket.onerror = (error) => {
+                console.error('Book data websocket error:', error)
+            }
+
+            socket.onopen = () => console.log('Book data websocket connected')
+            socket.onclose = () => console.log('Book data websocket disconnected')
+
+            return () => socket.close()
+
+        } catch (err) {
+            console.log('Failed to initialize bookpage websocket:', err)
+        }
+
+    }, [params.id])
+
+    // useEffect(() => {
+    //     fetch(`http://localhost:8000/book/${params.id}`)
+    //     .then(res => res.json())
+    //     .then(data => setBook(data))
+    // }, [])
+
+    // useEffect(() => {
+    //     fetch(`http://localhost:8000/api/bookshelf/?user=${activeUser.id}`)
+    //     .then(res => res.json())
+    //     .then(data => setUserBookShelves(data))
+    //     .catch(err => console.log('There was an error retrieving your bookshelf:', err))
+    // }, [])
 
 
 
@@ -73,7 +104,9 @@ const Bookpage: React.FC = () => {
             {book ? (
                 <div className="bookpage-detail">
                     <h1>{book.title}</h1>
-                    <img src={book.imageLinks['thumbnail']} alt="" />
+                    <img className='book-cover' src={book.imageLinks['thumbnail']} alt="" />
+                    <p>{`https://covers.openlibrary.org/b/isbn/${book.ISBN_Identifiers[1]['identifier']}-L.jpg`}</p>
+                    <img src={`https://covers.openlibrary.org/b/isbn/${book.ISBN_Identifiers[1]['identifier']}-L.jpg`} alt="" />
                     <button onClick={() => setShowBookshelfForm(prev => !prev)}>Add to Bookshelf</button>
                     {showBookshelfForm ?  
                         <form action={addToBookshelf as any} className="bookshelf-form" method='patch'>

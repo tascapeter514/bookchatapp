@@ -1,5 +1,5 @@
 import './Searchbar.css'
-import { FC, useState, useEffect, Dispatch, SetStateAction, useRef } from 'react'
+import { FC, useState, useEffect, Dispatch, SetStateAction } from 'react'
 import { Author, Book, Bookclub } from '../../types'
 import { FaSearch } from 'react-icons/fa'
 

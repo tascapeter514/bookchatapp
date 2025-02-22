@@ -81,13 +81,6 @@ class SearchDataConsumer(WebsocketConsumer):
         book_serializer = BookSerializer(book_results, many=True, fields=['title_id', 'title'])
         bookclub_serializer = BookclubSerializer(bookclub_results, many=True, fields=['bookclub_id', 'name'])
 
-        # self.send(text_data=json.dumps({
-        #     'type': 'get_search_query',
-        #     'search_results': [author_serializer.data, book_serializer.data, bookclub_serializer.data]
-        # }))
-
-
-        
         self.send(text_data=json.dumps({
             'type': 'get_search_query',
             'search_results': {
@@ -95,6 +88,38 @@ class SearchDataConsumer(WebsocketConsumer):
                 'author_results': author_serializer.data,
                 'bookclub_results': bookclub_serializer.data
             }
+        }))
+
+class BookDataConsumer(WebsocketConsumer):
+    def connect(self):
+        self.group_name = 'get_book_data'
+        self.book_id = self.scope['url_route']['kwargs']['id']
+
+        async_to_sync(self.channel_layer.group_add)(
+            self.group_name,
+            self.channel_name
+        )
+
+        self.accept()
+        self.get_book_data()
+
+    def disconnect(self, close_code):
+        async_to_sync(self.channel_layer.group_discard)(
+            self.group_name,
+            self.channel_name
+        )
+
+    def get_book_data(self):
+        book = Book.objects.get(title_id=self.book_id)
+
+        serializer = BookSerializer(book)
+
+        print(serializer.data)
+
+
+        self.send(text_data=json.dumps({
+            'type': 'get_book_data',
+            'book_result': serializer.data
         }))
 
 
