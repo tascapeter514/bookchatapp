@@ -9,6 +9,12 @@ export type ISBN_Identifier = {
     identifier?: string;
 }
 
+export type Genre = {
+    genre_id: number,
+    genre_name: string
+}
+
+
 export type HandleLogin = (formData: FormData) => Promise<void>
 export type HandleLogout = () => Promise<void>
 

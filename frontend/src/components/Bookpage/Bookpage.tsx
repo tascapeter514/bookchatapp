@@ -1,11 +1,16 @@
-import {useState, useEffect} from 'react'
-import {useParams } from 'react-router-dom'
+import {useState, useEffect, FC} from 'react'
+import {useParams, Link } from 'react-router-dom'
 import { userData } from '../common/UserContext'
 import { Book, ISBN_Identifier, Bookshelf, ActiveUser, Author } from '../../types'
+import { BsBookmarkPlus } from "react-icons/bs"
 import './Bookpage.css'
 
 
+type IconProps = React.ComponentPropsWithoutRef<'svg'>
 
+const BookmarkIcon: FC<IconProps> = (props) => {
+    return  <BsBookmarkPlus className='bookmark-icon' {...props}></BsBookmarkPlus>
+}
 
 
 const Bookpage: React.FC = () => {
@@ -114,37 +119,49 @@ const Bookpage: React.FC = () => {
                         <div className="book-header-wrapper">
                             <div className="book-details">
                                 <img className='book-cover' src={book.imageLinks['thumbnail']} alt="" />
-                                <span>Add to Bookshelf</span>
+                               <div className="bookshelfBtn-wrapper">
+                                   <BookmarkIcon></BookmarkIcon>
+                                    <span>Add to Bookshelf</span>
+                               </div>
                             
                             </div>
-                            <div className="book-info-wrapper">
+                            <article className="book-info-wrapper">
                                 <h1>{book.title}</h1>
                                 <h3>By <span>{authors?.[0]['name']} </span></h3>
-                                <p>Category: </p>
-                            </div>
+                                <p>Category: <Link to='#' >{book.genres.genre_name}</Link></p>
+                                <button className='add-to-bookClubBtn'>Add to Bookclub</button>
+                            </article>
                         </div>
                     </div>
                     {/* <p>{`https://covers.openlibrary.org/b/isbn/${book.ISBN_Identifiers[1]['identifier']}-L.jpg`}</p> */}
                     {/* <img src={`https://covers.openlibrary.org/b/isbn/${book.ISBN_Identifiers[1]['identifier']}-L.jpg`} alt="" /> */}
                     {/* <button onClick={() => setShowBookshelfForm(prev => !prev)}>Add to Bookshelf</button> */}
-                    {/* {showBookshelfForm ?  
-                        <form action={addToBookshelf as any} className="bookshelf-form" method='patch'>
-                            <ul>{bookshelfRadioBtns}</ul>
-                            <button type='submit'>Submit</button>
-                        </form>
-
-                        : ''
                     
-                    } */}
-                    
-                    <p>{book.description}</p>
-                    <p>Publisher: {book.publisher}</p>
-                    <ul>
-                        {book.ISBN_Identifiers.map((obj: ISBN_Identifier, index: number) => (
-                            <li key={index}> {obj.type} : {obj.identifier}</li>
-                        ))}
-
-                    </ul>
+                    <div className="main-content">
+                        <div className="book-description">
+                            <hr />
+                            <h3>About {book.title}</h3>
+                            <p>{book.description}</p>
+                           
+                        </div>
+                        <div className="author-product-container">
+                            <aside className='author-details'>
+                                <hr />
+                                <h3>About {authors[0].name}</h3>
+                                <p>{authors[0].bio}</p>
+                            </aside>
+                            <aside className="product-details">
+                                <hr />
+                                <h3>Product Details</h3>
+                                <ul>
+                                    {book.ISBN_Identifiers.map((obj: ISBN_Identifier, index: number) => (
+                                        <li key={index}> {obj.type} : {obj.identifier}</li>
+                                    ))}
+                                     <p>Publisher: {book.publisher}</p>
+                                </ul>
+                            </aside>
+                        </div>
+                    </div>
                 </div>
 
             ) : <h2>Loading...</h2>}
