@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 import {useParams } from 'react-router-dom'
-import { userdata } from '../common/UserContext'
-import { Book, ISBN_Identifier, Bookshelf, ActiveUser } from '../../types'
+import { userData } from '../common/UserContext'
+import { Book, ISBN_Identifier, Bookshelf, ActiveUser, Author } from '../../types'
 import './Bookpage.css'
 
 
@@ -10,10 +10,13 @@ import './Bookpage.css'
 
 const Bookpage: React.FC = () => {
 
-    const storedUser = localStorage.getItem('currentUser')
-    const activeUser: ActiveUser = storedUser ? JSON.parse(storedUser) : null;
+
+
+   
     const params = useParams();
     const [book, setBook] = useState<Book | null>(null);
+    const [authors, setAuthors] = useState<Author[] | null>(null)
+    const { activeUser } = userData()
     const [showBookshelfForm, setShowBookshelfForm] = useState(false)
     const [userBookShelves, setUserBookShelves] = useState<Bookshelf[]>([])
 
@@ -27,8 +30,12 @@ const Bookpage: React.FC = () => {
             socket.onmessage = (event) => {
                 const data = JSON.parse(event.data)
                 if (data.type === 'get_book_data') {
-                    console.log(data.book_result)
-                    setBook(data.book_result)
+
+                    const { authors, ...book_result }   = data.book_result
+                    console.log('author data:', authors)
+                    setBook(book_result)
+                    setAuthors(authors)
+                    console.log(book_result)
                 }
             }
 
@@ -103,12 +110,17 @@ const Bookpage: React.FC = () => {
         <div className='bookpage-container'>
             {book ? (
                 <div className="bookpage-detail">
-                    <h1>{book.title}</h1>
-                    <img className='book-cover' src={book.imageLinks['thumbnail']} alt="" />
-                    <p>{`https://covers.openlibrary.org/b/isbn/${book.ISBN_Identifiers[1]['identifier']}-L.jpg`}</p>
-                    <img src={`https://covers.openlibrary.org/b/isbn/${book.ISBN_Identifiers[1]['identifier']}-L.jpg`} alt="" />
-                    <button onClick={() => setShowBookshelfForm(prev => !prev)}>Add to Bookshelf</button>
-                    {showBookshelfForm ?  
+                    <div className="book-header-wrapper">
+                        <img className='book-cover' src={book.imageLinks['thumbnail']} alt="" />
+                        <div className="book-info-wrapper">
+                            <h1>{book.title}</h1>
+                            <h3>By <span>{authors?.[0]['name']} </span></h3>
+                        </div>
+                    </div>
+                    {/* <p>{`https://covers.openlibrary.org/b/isbn/${book.ISBN_Identifiers[1]['identifier']}-L.jpg`}</p> */}
+                    {/* <img src={`https://covers.openlibrary.org/b/isbn/${book.ISBN_Identifiers[1]['identifier']}-L.jpg`} alt="" /> */}
+                    {/* <button onClick={() => setShowBookshelfForm(prev => !prev)}>Add to Bookshelf</button> */}
+                    {/* {showBookshelfForm ?  
                         <form action={addToBookshelf as any} className="bookshelf-form" method='patch'>
                             <ul>{bookshelfRadioBtns}</ul>
                             <button type='submit'>Submit</button>
@@ -116,7 +128,7 @@ const Bookpage: React.FC = () => {
 
                         : ''
                     
-                    }
+                    } */}
                     
                     <p>{book.description}</p>
                     <p>Publisher: {book.publisher}</p>

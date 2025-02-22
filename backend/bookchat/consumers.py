@@ -110,11 +110,9 @@ class BookDataConsumer(WebsocketConsumer):
         )
 
     def get_book_data(self):
-        book = Book.objects.get(title_id=self.book_id)
+        book = Book.objects.prefetch_related('author').get(title_id=self.book_id)
 
         serializer = BookSerializer(book)
-
-        print(serializer.data)
 
 
         self.send(text_data=json.dumps({
