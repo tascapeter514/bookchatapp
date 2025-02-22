@@ -4,6 +4,14 @@ from django.contrib.auth.models import User
 from accounts.serializers import UserSerializer
 
 
+#GENRE SERIALIZER
+class GenreSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Genre
+        fields = ['genre_id', 'genre_name']
+
+
+
 
 #AUTHOR SERIALIZER
 class AuthorSerializer(serializers.ModelSerializer):
@@ -26,10 +34,11 @@ class AuthorSerializer(serializers.ModelSerializer):
 #BOOK SERIALIZER
 class BookSerializer(serializers.ModelSerializer):
     authors = AuthorSerializer(source='author', many=True)
+    genres = GenreSerializer()
 
     class Meta:
         model = Book
-        fields = ['title_id', 'title', 'publisher', 'averageRating', 'description', 'ISBN_Identifiers', 'imageLinks', 'ratingsCount', 'authors']
+        fields = ['title_id', 'title', 'publisher', 'averageRating', 'description', 'ISBN_Identifiers', 'imageLinks', 'ratingsCount', 'authors', 'genres']
 
     def __init__(self, *args, **kwargs):
         fields = kwargs.pop('fields', None)

@@ -110,11 +110,18 @@ const Bookpage: React.FC = () => {
         <div className='bookpage-container'>
             {book ? (
                 <div className="bookpage-detail">
-                    <div className="book-header-wrapper">
-                        <img className='book-cover' src={book.imageLinks['thumbnail']} alt="" />
-                        <div className="book-info-wrapper">
-                            <h1>{book.title}</h1>
-                            <h3>By <span>{authors?.[0]['name']} </span></h3>
+                    <div className="facade">
+                        <div className="book-header-wrapper">
+                            <div className="book-details">
+                                <img className='book-cover' src={book.imageLinks['thumbnail']} alt="" />
+                                <span>Add to Bookshelf</span>
+                            
+                            </div>
+                            <div className="book-info-wrapper">
+                                <h1>{book.title}</h1>
+                                <h3>By <span>{authors?.[0]['name']} </span></h3>
+                                <p>Category: </p>
+                            </div>
                         </div>
                     </div>
                     {/* <p>{`https://covers.openlibrary.org/b/isbn/${book.ISBN_Identifiers[1]['identifier']}-L.jpg`}</p> */}
