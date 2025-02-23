@@ -12,6 +12,22 @@ const BookmarkIcon: FC<IconProps> = (props) => {
     return  <BsBookmarkPlus className='bookmark-icon' {...props}></BsBookmarkPlus>
 }
 
+type DynamicParagraphsProps = {text: string}
+
+const DynamicParagraphs: FC<DynamicParagraphsProps> = ({ text }) => {
+    
+    const paragraphs = text.split('\n');
+    console.log('dynamic paragraphs text:', text)
+
+
+    return (
+        <div>
+            {paragraphs.map((paragraph: string, index: number) => {
+                return <p key={index}> {paragraph}</p>
+            })}
+        </div>
+    )
+}
 
 const Bookpage: React.FC = () => {
 
@@ -141,7 +157,8 @@ const Bookpage: React.FC = () => {
                         <div className="book-description">
                             <hr />
                             <h3>About {book.title}</h3>
-                            <p>{book.description}</p>
+                            <DynamicParagraphs text={book.description}></DynamicParagraphs>
+                            {/* <p>{}</p> */}
                            
                         </div>
                         <div className="author-product-container">
