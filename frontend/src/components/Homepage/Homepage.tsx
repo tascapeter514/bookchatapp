@@ -74,7 +74,7 @@ export default function Homepage() {
             {bestsellerElements}
         </ul>
         </div>
-        <div className="main-content">
+        <div className="homepage-main-content">
             <h2>Create a Book Club with your Friends!</h2>
             <p className='subtitle subtitle-signup'>Register today!</p>
             <hr className='hr hr-signup'/>

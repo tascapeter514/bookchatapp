@@ -3,6 +3,8 @@ import {useState, useEffect} from 'react'
 import {useParams } from 'react-router-dom'
 import { Bookclub, ActiveUser} from '../../types'
 import { userData } from '../../components/common/UserContext'
+import BookclubBackground from './assets/bookclub-background.jpg'
+
 
 
 
@@ -101,26 +103,19 @@ const BookclubPage : React.FC = () => {
     return(
             <div className='bookclub-container'>
                 {isMember && (
-                    <div>
-                    <h2>Welcome to the {bookclub?.name}</h2>
+                    <div className='bookclub-top-facade'>
+                        <div className="bookclub-background">
+                            <img src={BookclubBackground} alt="" />
+                        </div>
+                        
+                        <h2>Bookclub Header</h2>
+                        <div className="members-invite-bar">
+                            <button>+ Invite</button>
+                        </div>
 
-                    <aside>
-                    
-                        <h3>Members</h3>
-                        <ul>{bookclubMembers}</ul>
-                        <br />
-                        <hr />
-                        <button onClick={getNonMembers}>Invite Users</button>
-                        {showInvite ?
-                            <form action={sendInvite as any} className="invite-form" method='post'>
-                                <ul>{nonMembers}</ul>
-                                <button type='submit'>Submit</button>
-                    
-                            </form>
-                            : ''}
-                    
-                    </aside>
-                    </div>
+
+
+                        </div>
                 )}
 
                 {!isMember && (
@@ -136,3 +131,13 @@ const BookclubPage : React.FC = () => {
 
 
 export default BookclubPage
+
+
+{/* <button onClick={getNonMembers}>Invite Users</button>
+                        {showInvite ?
+                            <form action={sendInvite as any} className="invite-form" method='post'>
+                                <ul>{nonMembers}</ul>
+                                <button type='submit'>Submit</button>
+                    
+                            </form>
+                            : ''} */}

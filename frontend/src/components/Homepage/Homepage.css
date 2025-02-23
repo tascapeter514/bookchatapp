@@ -10,6 +10,7 @@
     flex-direction: column;
     text-align: center;
     gap: 1em;
+
   }
   
   .book-scroller {
@@ -52,7 +53,7 @@
     animation: scroll 20s linear infinite;
   }
 
-  .main-content > * {
+  .homepage-main-content > * {
     max-width: 500px;
     margin-inline: auto;
     margin-top: .5em;
