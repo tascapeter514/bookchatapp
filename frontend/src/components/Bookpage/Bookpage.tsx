@@ -115,7 +115,7 @@ const Bookpage: React.FC = () => {
         <div className='bookpage-container'>
             {book ? (
                 <div className="bookpage-detail">
-                    <div className="facade">
+                    <div className="top-facade">
                         <div className="book-header-wrapper">
                             <div className="book-details">
                                 <img className='book-cover' src={book.imageLinks['thumbnail']} alt="" />
@@ -150,15 +150,20 @@ const Bookpage: React.FC = () => {
                                 <h3>About {authors[0].name}</h3>
                                 <p>{authors[0].bio}</p>
                             </aside>
-                            <aside className="product-details">
+                            <aside className="product-details-wrapper">
                                 <hr />
                                 <h3>Product Details</h3>
-                                <ul>
-                                    {book.ISBN_Identifiers.map((obj: ISBN_Identifier, index: number) => (
-                                        <li key={index}> {obj.type} : {obj.identifier}</li>
-                                    ))}
-                                     <p>Publisher: {book.publisher}</p>
-                                </ul>
+                                <div className="product-details-content">
+                                    <p>{book.pageCount} pages</p>
+                                    <p>Published by {book.publisher}</p>
+                                    
+                                    <ul>
+                                        {book.ISBN_Identifiers.map((obj: ISBN_Identifier, index: number) => (
+                                            <li key={index}> {obj.type} : {obj.identifier}</li>
+                                        ))}
+                                    
+                                    </ul>
+                                </div>
                             </aside>
                         </div>
                     </div>

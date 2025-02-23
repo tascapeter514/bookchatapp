@@ -38,7 +38,7 @@ class BookSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Book
-        fields = ['title_id', 'title', 'publisher', 'averageRating', 'description', 'ISBN_Identifiers', 'imageLinks', 'ratingsCount', 'authors', 'genres']
+        fields = ['title_id', 'title', 'publisher', 'pageCount', 'description', 'ISBN_Identifiers', 'imageLinks', 'authors', 'genres']
 
     def __init__(self, *args, **kwargs):
         fields = kwargs.pop('fields', None)
