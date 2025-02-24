@@ -42,19 +42,48 @@
 .header-members-wrapper {
     border: 5px solid red;
     display: flex;
-    gap: .5rem;
     justify-content: space-between;
     
 }
 
 
+.bookclub-top-bar > small {
+    font-size: 1rem;
+}
 
 
 
-.header-members-wrapper > span {
-    font-size: 1.125rem;
+
+.userprofile-icon {
+    color: lightgrey;
+    cursor: pointer;
 
 }
+
+/* .userprofile-container {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+}
+
+.userprofile-container::after {
+    content: "P";
+    position: absolute;
+    font-size: 16px;
+
+    color: grey;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+ 
+} */
+
+
+
 
 .header-members-wrapper > button {
     display: inline-block;
@@ -62,6 +91,6 @@
     border: 3px solid red;
     padding: .25em 1em;
     font-size: 1rem;
-    width: 10%;
+    width: 8%;
     cursor: pointer;
 }

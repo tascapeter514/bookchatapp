@@ -1,12 +1,21 @@
 import './BookclubPage.css'
-import {useState, useEffect} from 'react'
+import {useState, useEffect, FC} from 'react'
 import {useParams } from 'react-router-dom'
 import { Bookclub, ActiveUser} from '../../types'
 import { userData } from '../../components/common/UserContext'
 import BookclubBackground from './assets/bookclub-background.jpg'
+import { FaCircleUser } from 'react-icons/fa6'
 
 
 
+
+type UserProfileIconProps = React.ComponentPropsWithoutRef<'svg'>
+
+const UserProfileIcon: FC<UserProfileIconProps> = (props) => {
+    return  <div className="userprofile-container">
+                <FaCircleUser size={32} className='userprofile-icon' {...props} />
+            </div>
+}
 
 
 
@@ -113,8 +122,10 @@ const BookclubPage : React.FC = () => {
                         </div>
                         <div className="bookclub-top-bar">
                             <h2>{bookclub?.name}</h2>
+                            <small>{bookclub?.members.length} Members</small>
                             <div className="header-members-wrapper">
-                                <span>{bookclub?.members.length} Members</span>
+                                <UserProfileIcon></UserProfileIcon>
+                                
                                 <button>+ Invite</button>
                                 
                                 
