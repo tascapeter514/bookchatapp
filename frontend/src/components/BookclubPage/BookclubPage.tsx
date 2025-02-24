@@ -12,9 +12,7 @@ import { FaCircleUser } from 'react-icons/fa6'
 type UserProfileIconProps = React.ComponentPropsWithoutRef<'svg'>
 
 const UserProfileIcon: FC<UserProfileIconProps> = (props) => {
-    return  <div className="userprofile-container">
-                <FaCircleUser size={32} className='userprofile-icon' {...props} />
-            </div>
+    return  <FaCircleUser size={32} className='userprofile-icon' {...props} />
 }
 
 
@@ -46,28 +44,25 @@ const BookclubPage : React.FC = () => {
     }, [])
 
 
-    const bookclubMembers = bookclub?.members.map((member) => {
-        return(<li key={member.id}>{member.username}</li>)
-    })
-
-    const nonMembers = inviteUsers.map((nonMember) => {
-        return(
-            <li key={nonMember.id}>
-                <label>{nonMember.username} <input name='nonMemberRadio' type="radio" value={nonMember.id} id='nonMemberRadio' /></label>
-
+    const UserProfileElements = bookclub?.members.map(() => {
+        return (
+            <li>
+                <UserProfileIcon></UserProfileIcon>
             </li>
-        )
+            
 
+        )
+            
+        
+        
     })
 
 
-    const getNonMembers = () => {
-        setShowInvite(prev => !prev)
-        fetch(`http://localhost:8000/api/inviteusers/${bookclub?.bookclub_id}`)
-        .then(res => res.json())
-        .then(data => setInviteUsers(data))
-        .catch(err => console.log('There was an error retrieving users:', err))
-    }
+
+    
+
+
+
 
     const sendInvite = async (formData: FormData) => {
         console.log('invite form data:', formData)
@@ -111,6 +106,10 @@ const BookclubPage : React.FC = () => {
 
     console.log('bookclubs:', bookclub)
 
+    
+
+
+
 
 
     return(
@@ -124,7 +123,10 @@ const BookclubPage : React.FC = () => {
                             <h2>{bookclub?.name}</h2>
                             <small>{bookclub?.members.length} Members</small>
                             <div className="header-members-wrapper">
-                                <UserProfileIcon></UserProfileIcon>
+                            <ul className='user-profile-list' style={{gridTemplateColumns: `repeat(${bookclub?.members.length}, 32px)`}}>
+                                {UserProfileElements}
+                            </ul>
+                                
                                 
                                 <button>+ Invite</button>
                                 

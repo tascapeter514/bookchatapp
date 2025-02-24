@@ -51,38 +51,25 @@
     font-size: 1rem;
 }
 
+.user-profile-list {
+    border: 1px solid green;
+    padding: 0;
+    display: grid;
+  
 
+
+    
+
+}
 
 
 .userprofile-icon {
     color: lightgrey;
     cursor: pointer;
+    
+
 
 }
-
-/* .userprofile-container {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-}
-
-.userprofile-container::after {
-    content: "P";
-    position: absolute;
-    font-size: 16px;
-
-    color: grey;
-    top: 52%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
- 
-} */
-
-
 
 
 .header-members-wrapper > button {
