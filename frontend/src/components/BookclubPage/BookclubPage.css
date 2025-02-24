@@ -1,10 +1,9 @@
 .bookclub-container {
-    border: 1px solid red;
+
 }
 
 .bookclub-top-facade {
     width: 100%;
-    border: 3px solid lime;
 }
 
 
@@ -25,7 +24,6 @@
 }
 
 .bookclub-top-bar {
-    border: 1px solid red;
     max-width: 1200px;
     margin: .5em auto 0 auto;
     display: flex;
@@ -34,13 +32,13 @@
 }
 
 .bookclub-top-bar > h2 {
-    border: 1px solid red;
+
     max-width: 1200px;
     font-size: 1.625rem;
 }
 
 .header-members-wrapper {
-    border: 5px solid red;
+
     display: flex;
     justify-content: space-between;
     
@@ -51,34 +49,39 @@
     font-size: 1rem;
 }
 
-/* .user-profile-list {
-    border: 1px solid green;
-    padding: 0;
+.user-profile-list {
+    /* padding: 0; */
     width: 35%;
-    list-style: none
-
-
-}
-
-
-.user-profile-list li {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
     position: relative;
+    padding-left: .7em
+
+
+}
+
+.circle {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+
+
 }
 
 
-.userprofile-icon {
-    color: lightgrey;
-    cursor: pointer;
-    position: absolute;
-
-
-} */
 
 
 .header-members-wrapper > button {
     display: inline-block;
     background-color: transparent;
-    border: 3px solid red;
+    border: 3px solid #FF8C00;
     padding: .25em 1em;
     font-size: 1rem;
     width: 8%;

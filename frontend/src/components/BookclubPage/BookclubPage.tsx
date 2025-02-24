@@ -4,19 +4,11 @@ import {useParams } from 'react-router-dom'
 import { Bookclub, ActiveUser} from '../../types'
 import { userData } from '../../components/common/UserContext'
 import BookclubBackground from './assets/bookclub-background.jpg'
-import { FaCircleUser } from 'react-icons/fa6'
 
 
 
 
-type UserProfileIconProps = {
-    iconIndex: number
-}
 
-const UserProfileIcon: FC<UserProfileIconProps> = (props) => {
-    console.log('user icon props:', props.iconIndex + 101)
-    return  <FaCircleUser size={62} className='userprofile-icon' {...props} style={{zIndex: props.iconIndex + 10001}} />
-}
 
 
 
@@ -47,12 +39,26 @@ const BookclubPage : React.FC = () => {
     }, [])
 
     
-    const UserProfileElements = bookclub?.members.map((_, index) => {
-        console.log('index:', index)
-        
+    const UserProfileIcons = bookclub?.members.map((member, index) => {
+        console.log(bookclub.members)
+
+        const getRandomColor = (index: number) => {
+            const colors = ["#FF6347", "#FFA07A", "#FF8C00", "#FA8072", "8B0000", "#8B0000"]
+            return colors[index]
+
+        }
+
         return (
-            <li key={index} style={{ left: `${index * 35}px`    }}>
-                <UserProfileIcon iconIndex={index}></UserProfileIcon>
+            <li key={index} >
+                <div 
+                    className="circle" 
+                    style={{ marginLeft: `${index - 15}px`,
+                                zIndex: index + 1, 
+                                position: 'relative', 
+                                backgroundColor: '#FF8C00',
+                                border: '2px solid white'
+                            }}
+                    >{member?.username?.charAt(0).toUpperCase()}</div>
             </li>
             
 
@@ -128,9 +134,12 @@ const BookclubPage : React.FC = () => {
                             <h2>{bookclub?.name}</h2>
                             <small>{bookclub?.members.length} Members</small>
                             <div className="header-members-wrapper">
-                            <ul className='user-profile-list' style={{gridTemplateColumns: `repeat(${bookclub?.members.length}, 32px)`}}>
-                                {UserProfileElements}
-                            </ul>
+                            <ul className='user-profile-list' >
+                           
+                           {UserProfileIcons}
+                                
+                        </ul>
+                            
                                 
                                 
                                 <button>+ Invite</button>
@@ -141,6 +150,10 @@ const BookclubPage : React.FC = () => {
                             
                             
                         </div>
+
+                        
+
+                        
 
 
 
