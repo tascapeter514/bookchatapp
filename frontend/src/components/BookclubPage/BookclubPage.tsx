@@ -9,10 +9,13 @@ import { FaCircleUser } from 'react-icons/fa6'
 
 
 
-type UserProfileIconProps = React.ComponentPropsWithoutRef<'svg'>
+type UserProfileIconProps = {
+    iconIndex: number
+}
 
 const UserProfileIcon: FC<UserProfileIconProps> = (props) => {
-    return  <FaCircleUser size={32} className='userprofile-icon' {...props} style={{}} />
+    console.log('user icon props:', props.iconIndex + 101)
+    return  <FaCircleUser size={62} className='userprofile-icon' {...props} style={{zIndex: props.iconIndex + 10001}} />
 }
 
 
@@ -43,11 +46,13 @@ const BookclubPage : React.FC = () => {
         .catch(err => console.log('There was an error fetching the following bookclub page', err))
     }, [])
 
-
+    
     const UserProfileElements = bookclub?.members.map((_, index) => {
+        console.log('index:', index)
+        
         return (
-            <li key={index} style={{ left: `${index * 20}px`}}>
-                <UserProfileIcon></UserProfileIcon>
+            <li key={index} style={{ left: `${index * 35}px`    }}>
+                <UserProfileIcon iconIndex={index}></UserProfileIcon>
             </li>
             
 

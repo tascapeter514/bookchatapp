@@ -51,26 +51,28 @@
     font-size: 1rem;
 }
 
-.user-profile-list {
+/* .user-profile-list {
     border: 1px solid green;
     padding: 0;
-    display: grid;
-    position: relative;
+    width: 35%;
+    list-style: none
 
 
 }
 
 
 .user-profile-list li {
-    position: absolute;
+    position: relative;
 }
 
 
 .userprofile-icon {
     color: lightgrey;
     cursor: pointer;
+    position: absolute;
 
-}
+
+} */
 
 
 .header-members-wrapper > button {
