@@ -55,19 +55,20 @@
     border: 1px solid green;
     padding: 0;
     display: grid;
-  
+    position: relative;
 
 
-    
+}
 
+
+.user-profile-list li {
+    position: absolute;
 }
 
 
 .userprofile-icon {
     color: lightgrey;
     cursor: pointer;
-    
-
 
 }
 

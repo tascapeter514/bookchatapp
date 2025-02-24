@@ -12,7 +12,7 @@ import { FaCircleUser } from 'react-icons/fa6'
 type UserProfileIconProps = React.ComponentPropsWithoutRef<'svg'>
 
 const UserProfileIcon: FC<UserProfileIconProps> = (props) => {
-    return  <FaCircleUser size={32} className='userprofile-icon' {...props} />
+    return  <FaCircleUser size={32} className='userprofile-icon' {...props} style={{}} />
 }
 
 
@@ -44,9 +44,9 @@ const BookclubPage : React.FC = () => {
     }, [])
 
 
-    const UserProfileElements = bookclub?.members.map(() => {
+    const UserProfileElements = bookclub?.members.map((_, index) => {
         return (
-            <li>
+            <li key={index} style={{ left: `${index * 20}px`}}>
                 <UserProfileIcon></UserProfileIcon>
             </li>
             
