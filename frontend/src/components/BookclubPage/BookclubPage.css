@@ -8,21 +8,8 @@
 }
 
 
-.bookclub-top-facade > h2 {
-    border: 1px solid red;
-    max-width: 1200px;
-    margin: .5em auto 0 auto;
-    font-size: 1.625rem;
-}
-
-
-
-
 .bookclub-background {
-
     max-width: 1200px;
-
-
     margin: 0 auto;
 
 }
@@ -37,20 +24,44 @@
 
 }
 
-.members-invite-bar {
+.bookclub-top-bar {
     border: 1px solid red;
     max-width: 1200px;
     margin: .5em auto 0 auto;
-    text-align: right;
+    display: flex;
+    flex-direction: column;
 
 }
 
-.members-invite-bar > button {
+.bookclub-top-bar > h2 {
+    border: 1px solid red;
+    max-width: 1200px;
+    font-size: 1.625rem;
+}
+
+.header-members-wrapper {
+    border: 5px solid red;
+    display: flex;
+    gap: .5rem;
+    justify-content: space-between;
+    
+}
+
+
+
+
+
+.header-members-wrapper > span {
+    font-size: 1.125rem;
+
+}
+
+.header-members-wrapper > button {
     display: inline-block;
     background-color: transparent;
     border: 3px solid red;
-    padding: .5em 1.5em;
-    font-size: 1.125rem;
+    padding: .25em 1em;
+    font-size: 1rem;
     width: 10%;
     cursor: pointer;
 }

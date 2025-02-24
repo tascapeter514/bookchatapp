@@ -17,7 +17,7 @@ Including another URLconf
 
 from rest_framework import routers
 from .api import BestsellerViewSet, BookViewSet, InvitationAPI
-from .views import get_member_bookclubs, get_search_query
+from .views import get_member_bookclubs, get_search_query, get_bookclub
 from django.urls import path, include
 
 
@@ -33,6 +33,7 @@ urlpatterns = [
      path('api/acceptInvite', InvitationAPI.as_view(), name='accept-invite'),
      path('api/getBookclubMemberships/<int:id>', get_member_bookclubs, name='get_member_bookclubs'),
      path('api/search/<str:searchTerm>', get_search_query, name='get_search_query'),
+     path('api/bookclub/<uuid:id>', get_bookclub, name='get_bookclub'),
      path('', include(router.urls))
 ]
 

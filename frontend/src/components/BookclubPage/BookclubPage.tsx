@@ -100,6 +100,10 @@ const BookclubPage : React.FC = () => {
         
     }
 
+    console.log('bookclubs:', bookclub)
+
+
+
     return(
             <div className='bookclub-container'>
                 {isMember && (
@@ -107,10 +111,17 @@ const BookclubPage : React.FC = () => {
                         <div className="bookclub-background">
                             <img src={BookclubBackground} alt="" />
                         </div>
-                        
-                        <h2>Bookclub Header</h2>
-                        <div className="members-invite-bar">
-                            <button>+ Invite</button>
+                        <div className="bookclub-top-bar">
+                            <h2>{bookclub?.name}</h2>
+                            <div className="header-members-wrapper">
+                                <span>{bookclub?.members.length} Members</span>
+                                <button>+ Invite</button>
+                                
+                                
+                            </div>
+                            
+                            
+                            
                         </div>
 
 
