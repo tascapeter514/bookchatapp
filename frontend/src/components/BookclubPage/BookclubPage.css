@@ -1,6 +1,4 @@
-.bookclub-container {
 
-}
 
 .bookclub-top-facade {
     width: 100%;
@@ -57,9 +55,6 @@
     flex-direction: row;
     position: relative;
     padding-left: .7em;
-
-
-
 }
 
 .circle {
@@ -103,3 +98,47 @@
     background-color: white;
     color: orange;
 }
+
+
+
+.tabs-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    /* border: 3px solid red; */
+
+}
+
+.tabs-wrapper hr {
+    margin-block: .5em;
+
+    border: 1px solid lightgrey;
+}
+
+.tabs-bar-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bookclub-searchBtn {
+    display: inline-block;
+    border: 1px solid #FF8C00;
+    padding: .25em 1em;
+    font-size: 1rem;
+    width: auto;
+    cursor: pointer;
+    background-color: #FF8C00;
+    color: white;
+}
+
+.bookclub-panels-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    text-align: center;
+    border: 1px solid orange;
+    
+}
+
+
+

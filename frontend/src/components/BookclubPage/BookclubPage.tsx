@@ -3,19 +3,17 @@ import {useState, useEffect, FC} from 'react'
 import {useParams } from 'react-router-dom'
 import { Bookclub, ActiveUser} from '../../types'
 import { userData } from '../../components/common/UserContext'
+import { SearchIcon } from '../common/Icons'
 import BookclubBackground from './assets/bookclub-background.jpg'
-
-
-
-
-
-
+import Tabs from '../common/Tabs/Tabs'
 
 
 
 const BookclubPage : React.FC = () => {
 
     const { userBookclubs } = userData()
+    const [activeTab, setActiveTab] = useState(0)
+    const tabContents = ['Discussion', 'Bookshelves', 'Current Read']
     
     const [isMember, setIsMember] = useState(false)
     const parameters = useParams()
@@ -40,14 +38,6 @@ const BookclubPage : React.FC = () => {
 
     
     const UserProfileIcons = bookclub?.members.map((member, index) => {
-        console.log(bookclub.members)
-
-        const getRandomColor = (index: number) => {
-            const colors = ["#FF6347", "#FFA07A", "#FF8C00", "#FA8072", "8B0000", "#8B0000"]
-            return colors[index]
-
-        }
-
         return (
             <li key={index} >
                 <div 
@@ -60,91 +50,47 @@ const BookclubPage : React.FC = () => {
                             }}
                     >{member?.username?.charAt(0).toUpperCase()}</div>
             </li>
-            
-
         )
-            
-        
-        
     })
-
-
-
-    
-
-
-
-
-    const sendInvite = async (formData: FormData) => {
-        console.log('invite form data:', formData)
-        const id = formData.get('nonMemberRadio')
-        const inviteReq = {
-            invited_user_id: id,
-            bookclub_id: bookclub?.bookclub_id,
-        }
-
-        const token = localStorage.getItem('authToken')
-        const parsedToken = token ? JSON.parse(token) : null
-
-
-        console.log(`Token ${parsedToken}`)
-        if (!parsedToken) {
-            console.error('No auth token found')
-            return
-        }
-
-        try {
-            const response = await fetch('http://localhost:8000/api/sendInvite', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Token ${parsedToken}`
-                },
-                body: JSON.stringify(inviteReq)
-            })
-
-            const data = await response.json()
-            console.log('Response from server', data)
-
-            if (!response.ok) {
-                throw new Error(data.error || 'Something went wrong')
-            }
-        } catch (error) {
-            console.error('Error sending invitation:', error)
-        }
-        
-    }
-
-    console.log('bookclubs:', bookclub)
-
-    
-
-
-
-
 
     return(
             <div className='bookclub-container'>
                 {isMember && (
-                    <div className='bookclub-top-facade'>
-                        <div className="bookclub-background">
-                            <img src={BookclubBackground} alt="" />
-                        </div>
-                        <div className="bookclub-top-bar">
-                            <h2>{bookclub?.name}</h2>
-                            <small>{bookclub?.members.length} Members</small>
-                            <div className="header-members-wrapper">
-                                <ul className='user-profile-list' >
-                                    {UserProfileIcons} 
-                                </ul>
-                                <div className="member-buttons">
-                                    <button>+ Invite</button>
-                                    <button>Joined</button>
+                    <div className="bookclub-content-wrapper">
+                        <div className='bookclub-top-facade'>
+                            <div className="bookclub-background">
+                                <img src={BookclubBackground} alt="" />
+                            </div>
+                            <div className="bookclub-top-bar">
+                                <h2>{bookclub?.name}</h2>
+                                <small>{bookclub?.members.length} Members</small>
+                                <div className="header-members-wrapper">
+                                    <ul className='user-profile-list' >
+                                        {UserProfileIcons}
+                                    </ul>
+                                    <div className="member-buttons">
+                                        <button>+ Invite</button>
+                                        <button>Joined</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                       
+                        
+                        <div className="tabs-wrapper">
+                            <hr />
+                            
+                            <div className="tabs-bar-wrapper">
+                                <Tabs contents={tabContents} setActiveTab={setActiveTab} activeTab={activeTab}></Tabs>
+                                <button className="bookclub-searchBtn">
+                                    <SearchIcon></SearchIcon>
+                                </button>
+                            </div>
                         </div>
+                        <div className="bookclub-panels-container">
+                            
+                        </div>
+
+                    </div>
                 )}
 
                 {!isMember && (
@@ -170,3 +116,45 @@ export default BookclubPage
                     
                             </form>
                             : ''} */}
+
+
+
+                            // const sendInvite = async (formData: FormData) => {
+                            //     console.log('invite form data:', formData)
+                            //     const id = formData.get('nonMemberRadio')
+                            //     const inviteReq = {
+                            //         invited_user_id: id,
+                            //         bookclub_id: bookclub?.bookclub_id,
+                            //     }
+                        
+                            //     const token = localStorage.getItem('authToken')
+                            //     const parsedToken = token ? JSON.parse(token) : null
+                        
+                        
+                            //     console.log(`Token ${parsedToken}`)
+                            //     if (!parsedToken) {
+                            //         console.error('No auth token found')
+                            //         return
+                            //     }
+                        
+                            //     try {
+                            //         const response = await fetch('http://localhost:8000/api/sendInvite', {
+                            //             method: 'POST',
+                            //             headers: {
+                            //                 'Content-Type': 'application/json',
+                            //                 'Authorization': `Token ${parsedToken}`
+                            //             },
+                            //             body: JSON.stringify(inviteReq)
+                            //         })
+                        
+                            //         const data = await response.json()
+                            //         console.log('Response from server', data)
+                        
+                            //         if (!response.ok) {
+                            //             throw new Error(data.error || 'Something went wrong')
+                            //         }
+                            //     } catch (error) {
+                            //         console.error('Error sending invitation:', error)
+                            //     }
+                                
+                            // }

@@ -1,13 +1,10 @@
 import './Searchbar.css'
 import { FC, useState, useEffect, Dispatch, SetStateAction } from 'react'
 import { Author, Book, Bookclub } from '../../types'
-import { FaSearch } from 'react-icons/fa'
+import {SearchIcon} from '../common/Icons'
 
-type IconProps = React.ComponentPropsWithoutRef<'svg'>
 
-const SearchIcon: FC<IconProps> = (props) => {
-    return  <FaSearch {...props}></FaSearch>
-}
+
 
 const useDebounce = (value: string, delay: number) => {
     const [debouncedValue, setDebouncedValue] = useState(value);

@@ -23,37 +23,7 @@ main {
 
 
 
-.tabs-container {
-    border: 1px solid lime;
-    max-width: 600px;
-    padding: .5em;
-    min-width: 100%;
-    background-color: grey;
-    
 
-
-}
-
-.tabs-container > ul {
-    display: flex;
-    margin: 0;
-    padding: 0;
-    gap: 1rem;
-
-}
-
-.tabs-container a {
-    text-decoration: none;
-    color: black;
-    font-size: 1.25rem;
-}
-
-.tabs-container li:hover {
-    text-decoration: underline;
-    text-decoration-thickness: 0.25em;
-    text-underline-offset: 0.25em;
-    color: red;
-}
 
 .tab-panels-container {
     width: 100%;
