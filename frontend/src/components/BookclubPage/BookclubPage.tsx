@@ -53,6 +53,8 @@ const BookclubPage : React.FC = () => {
         )
     })
 
+    console.log('book clubs data:', bookclub)
+
     return(
             <div className='bookclub-container'>
                 {isMember && (

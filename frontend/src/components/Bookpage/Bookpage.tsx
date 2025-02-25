@@ -4,6 +4,7 @@ import { userData } from '../common/UserContext'
 import { Book, ISBN_Identifier, Bookshelf, ActiveUser, Author } from '../../types'
 import { BsBookmarkPlus } from "react-icons/bs"
 import './Bookpage.css'
+import { DiVim } from 'react-icons/di'
 
 
 type IconProps = React.ComponentPropsWithoutRef<'svg'>
@@ -36,7 +37,7 @@ const Bookpage: React.FC = () => {
                 const data = JSON.parse(event.data)
                 if (data.type === 'get_book_data') {
 
-                    const { authors, ...book_result }   = data.book_result
+                    const { authors, ...book_result } = data.book_result
                     console.log('author data:', authors)
                     setBook(book_result)
                     setAuthors(authors)
@@ -107,7 +108,8 @@ const Bookpage: React.FC = () => {
         }
     }
 
-    console.log('bookpage parameters:', params)
+    // console.log('bookpage parameters:', params)
+    console.log('ISBN length:', typeof book?.ISBN_Identifiers)
 
     
     return(
@@ -149,7 +151,7 @@ const Bookpage: React.FC = () => {
                                 <hr />
                                 <h3>About {authors[0].name}</h3>
                                 <p className='author-text-container'>
-                                    <p>{authors[0].bio}</p><span className="author-link">... <Link to='#'>More about {authors[0].name}</Link></span>
+                                    <p>{authors[0].bio}</p><span className="author-link">... <Link to='#'>More about { authors[0].name } </Link></span>
                                 </p>
 
 
@@ -160,11 +162,16 @@ const Bookpage: React.FC = () => {
                                 <div className="product-details-content">
                                     <p>{book.pageCount} pages</p>
                                     <p>Published by {book.publisher}</p>
-                                    
                                     <ul>
-                                        {book.ISBN_Identifiers.map((obj: ISBN_Identifier, index: number) => (
-                                            <li key={index}> {obj.type} : {obj.identifier}</li>
-                                        ))}
+                                        {typeof book.ISBN_Identifiers === 'object' && 
+
+                                            book.ISBN_Identifiers.map((obj: ISBN_Identifier, index: number) => (
+                                                <li key={index}> {obj.type} : {obj.identifier}</li>
+                                            ))
+                                        
+                                        
+                                        }
+                                       
                                     
                                     </ul>
                                 </div>
