@@ -134,10 +134,9 @@ const BookclubPage : React.FC = () => {
                             <h2>{bookclub?.name}</h2>
                             <small>{bookclub?.members.length} Members</small>
                             <div className="header-members-wrapper">
-                            <ul className='user-profile-list' >
-                           
-                           {UserProfileIcons} 
-                        </ul>
+                                <ul className='user-profile-list' >
+                                    {UserProfileIcons} 
+                                </ul>
                                 <button>+ Invite</button>
                             </div> 
                         </div>

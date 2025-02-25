@@ -38,9 +38,10 @@
 }
 
 .header-members-wrapper {
-
     display: flex;
     justify-content: space-between;
+    border: 1px solid orange;
+    background-color: lightgrey;
 
 
 
@@ -54,15 +55,13 @@
 
 .user-profile-list {
     /* padding: 0; */
-    width: 35%;
+    width: 25%;
     list-style: none;
     display: flex;
     flex-direction: row;
     position: relative;
     padding-left: .7em;
-
-
-
+    border: 1px solid orange;
 
 
 }
@@ -93,10 +92,11 @@
     border: 1px solid #FF8C00;
     padding: .25em 1em;
     font-size: 1rem;
-    width: 8%;
+    width: auto;
     cursor: pointer;
     background-color: #FF8C00;
     color: white;
+
 }
 
 .header-members-wrapper > button:hover {
