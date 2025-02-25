@@ -1,5 +1,5 @@
 import './BookclubPage.css'
-import {useState, useEffect, FC} from 'react'
+import {useState, useEffect, useRef} from 'react'
 import {useParams } from 'react-router-dom'
 import { Bookclub, ActiveUser} from '../../types'
 import { userData } from '../../components/common/UserContext'
@@ -14,6 +14,8 @@ const BookclubPage : React.FC = () => {
     const { userBookclubs } = userData()
     const [activeTab, setActiveTab] = useState(0)
     const tabContents = ['Discussion', 'Bookshelves', 'Current Read']
+
+    const modalRef = useRef<HTMLDialogElement>(null)
     
     const [isMember, setIsMember] = useState(false)
     const parameters = useParams()
@@ -24,10 +26,7 @@ const BookclubPage : React.FC = () => {
         })
     }, [userBookclubs])
     const [bookclub, setBookclub] = useState<Bookclub | null>(null)
-    const [inviteUsers, setInviteUsers] = useState<ActiveUser[]>([])
-    const [showInvite, setShowInvite] = useState(false)
-
-
+  
 
     useEffect(() => {
         fetch(`http://localhost:8000/api/bookclub/${parameters.id}`)
@@ -35,6 +34,16 @@ const BookclubPage : React.FC = () => {
         .then(data => setBookclub(data))
         .catch(err => console.log('There was an error fetching the following bookclub page', err))
     }, [])
+
+    const openModal = () => {
+
+        modalRef.current?.showModal()
+        
+    }
+
+    const closeModal = () => {
+        modalRef.current?.close()
+    }
 
     
     const UserProfileIcons = bookclub?.members.map((member, index) => {
@@ -52,6 +61,10 @@ const BookclubPage : React.FC = () => {
             </li>
         )
     })
+
+    const createBookshelf = () => {
+
+    }
 
     console.log('book clubs data:', bookclub)
 
@@ -98,12 +111,29 @@ const BookclubPage : React.FC = () => {
 
                             {activeTab === 1 && (
                                 <div className="bookshelves-panel">
-                                    <h2>Bookshelves</h2>
+                                    <div className="bookshelves-bar">
+                                        <h2>Bookshelves</h2>
+                                        <button onClick={openModal}>Add Bookshelf</button>
+                                    </div>
+                                    <dialog className="bookshelf-modal" ref={ modalRef } >
+                                        <form action="">
+                                            <input type="text" placeholder='Bookshelf Name' />
+
+                                        </form>
+                                        <div className="button-wrapper">
+                                            <button onClick={closeModal}>Cancel</button>
+                                            <button onClick={createBookshelf}>Create</button>
+                                        </div>
+                                    </dialog>
+                                    <div className="bookshelf-list"> 
+                                    </div>
+
                                 </div>
                             )}
                             {activeTab === 2 && (
                                 <div className="currentRead-panel">
                                     <h2>Current Read</h2>
+                                    
                                 </div>
                             )}
                         </div>
