@@ -121,6 +121,38 @@ class BookDataConsumer(WebsocketConsumer):
             'book_result': serializer.data
         }))
 
+class BookclubDataConsumer(WebsocketConsumer):
+    def connect(self):
+        self.group_name = 'get_bookclub_data'
+        self.bookclub_id = self.scope['url_route']['kwargs']['id']
+
+        async_to_sync(self.channel_layer.group_add)(
+            self.group_name,
+            self.channel_name
+        )
+
+        self.accept()
+        self.get_bookclub_data()
+
+    def disconnect(self, close_code):
+        async_to_sync(self.channel_layer.group_discard)(
+            self.group_name,
+            self.channel_name
+        )
+
+    def get_bookclub_data(self):
+
+        bookclub = Bookclub.objects.get(bookclub_id=self.bookclub_id)
+        serializer = BookclubSerializer(bookclub)
+
+        self.send(text_data=json.dumps({
+            'type': 'get_bookclub_data',
+            'bookclub_data': serializer.data
+        }))
+
+    
+
+
 
 
 

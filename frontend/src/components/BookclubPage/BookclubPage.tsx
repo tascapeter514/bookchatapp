@@ -27,14 +27,36 @@ const BookclubPage : React.FC = () => {
         })
     }, [userBookclubs])
     const [bookclub, setBookclub] = useState<Bookclub | null>(null)
-  
 
     useEffect(() => {
-        fetch(`http://localhost:8000/api/bookclub/${parameters.id}`)
-        .then(res => res.json())
-        .then(data => setBookclub(data))
-        .catch(err => console.log('There was an error fetching the following bookclub page', err))
+
+        try {
+            const socket = new WebSocket(`ws://localhost:8000/ws/bookclub/addBookshelf/${parameters.id}`)
+
+            socket.onmessage = (event) => {
+                const data = JSON.parse(event.data)
+                console.log('web socket data:', data)
+
+                if (data.type == 'get_bookclub_data') {
+                    setBookclub(data.bookclub_data)
+                }
+            }
+
+            socket.onerror = (error) => {
+                console.error('Websocket bookclub data error', error)
+            }
+
+            socket.onopen = () => console.log('Book data websocket connected')
+            socket.onclose = () => console.log('Book data websocket disconnected')
+
+            return () => socket.close()
+
+        } catch(err) {
+            console.error('Bookclub data websocket failed to initialize:', err)
+        }
+
     }, [])
+  
 
     const openModal = () => {
 
