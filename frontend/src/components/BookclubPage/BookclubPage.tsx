@@ -4,6 +4,7 @@ import {useParams } from 'react-router-dom'
 import { Bookclub, ActiveUser} from '../../types'
 import { userData } from '../../components/common/UserContext'
 import { SearchIcon } from '../common/Icons'
+import { v4 as uuidv4 } from 'uuid'
 import BookclubBackground from './assets/bookclub-background.jpg'
 import Tabs from '../common/Tabs/Tabs'
 
@@ -62,7 +63,38 @@ const BookclubPage : React.FC = () => {
         )
     })
 
-    const createBookshelf = () => {
+    const createBookshelf = async (formData: FormData): Promise<void> => {
+        console.log('form data:', formData.get('bookshelfName'))
+
+        const bookshelf = {
+            bookshelf_id: uuidv4(),
+            name: formData.get('bookshelfName'),
+            bookclub_id: bookclub?.bookclub_id
+
+        }
+
+        try {
+            const response = await fetch('http://localhost:8000/api/bookclub/addBookshelf', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(bookshelf)
+            })
+
+            if (response.ok) {
+                const data = response.json()
+                console.log("create bookshelf data:", data)
+            }
+
+
+        } catch(err) {
+            console.error('Error connecting to backend for bookshelf creation:', err)
+        }
+
+        
+
+
 
     }
 
@@ -116,14 +148,15 @@ const BookclubPage : React.FC = () => {
                                         <button onClick={openModal}>Add Bookshelf</button>
                                     </div>
                                     <dialog className="bookshelf-modal" ref={ modalRef } >
-                                        <form action="">
-                                            <input type="text" placeholder='Bookshelf Name' />
+                                        <form action={createBookshelf as unknown as string} method='post'>
+                                            <input type="text" name='bookshelfName' placeholder='Bookshelf Name' required/>
+                                            <div className="button-wrapper">
+                                                <button onClick={closeModal}>Cancel</button>
+                                                <button type='submit'>Create</button>
+                                            </div>
 
                                         </form>
-                                        <div className="button-wrapper">
-                                            <button onClick={closeModal}>Cancel</button>
-                                            <button onClick={createBookshelf}>Create</button>
-                                        </div>
+                                        
                                     </dialog>
                                     <div className="bookshelf-list"> 
                                     </div>

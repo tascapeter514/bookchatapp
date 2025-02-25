@@ -1,10 +1,11 @@
 
-from .models import Author, Book, Bookclub, Genre
+from .models import Author, Book, Bookclub, Bookshelf
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.contrib.auth.models import User
 from .serializers import BookclubSerializer
 from django.http import JsonResponse
+import json
 
 
 
@@ -33,6 +34,25 @@ def get_bookclub(request, **kwargs):
     serializer = BookclubSerializer(bookclub)
 
     return Response(serializer.data)
+
+@api_view(['POST'])
+def add_bookclub_bookshelf(request):
+
+
+    bookshelf_data = json.loads(request.body)
+    bookshelf_id = bookshelf_data['bookshelf_id']
+    bookshelf_name = bookshelf_data['name']
+    bookclub_id = bookshelf_data['bookclub_id']
+    new_bookshelf = Bookshelf.objects.create(bookshelf_id=bookshelf_id, name=bookshelf_name)
+    # print('new bookshelf:', new_bookshelf)
+    bookclub = Bookclub.objects.get(bookclub_id=bookclub_id)
+    bookclub.bookshelves.add(new_bookshelf)
+    print('bookclub:', bookclub.bookshelves)
+    
+    
+
+    return Response({'message:' 'Success! You reached the backend.'})
+
 
 
 
