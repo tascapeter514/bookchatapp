@@ -136,27 +136,11 @@ const BookclubPage : React.FC = () => {
                             <div className="header-members-wrapper">
                             <ul className='user-profile-list' >
                            
-                           {UserProfileIcons}
-                                
+                           {UserProfileIcons} 
                         </ul>
-                            
-                                
-                                
                                 <button>+ Invite</button>
-                                
-                                
-                            </div>
-                            
-                            
-                            
+                            </div> 
                         </div>
-
-                        
-
-                        
-
-
-
                         </div>
                 )}
 
