@@ -137,9 +137,13 @@ const BookclubPage : React.FC = () => {
                                 <ul className='user-profile-list' >
                                     {UserProfileIcons} 
                                 </ul>
-                                <button>+ Invite</button>
-                            </div> 
+                                <div className="member-buttons">
+                                    <button>+ Invite</button>
+                                    <button>Joined</button>
+                                </div>
+                            </div>
                         </div>
+                       
                         </div>
                 )}
 
