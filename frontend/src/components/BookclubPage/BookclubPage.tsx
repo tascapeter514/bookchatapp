@@ -87,7 +87,23 @@ const BookclubPage : React.FC = () => {
                             </div>
                         </div>
                         <div className="bookclub-panels-container">
-                            
+                            {activeTab === 0 && (
+                                <div className="discussion-panel">
+                                    <h2>Discussions</h2>
+
+                                </div>
+                            )}
+
+                            {activeTab === 1 && (
+                                <div className="bookshelves-panel">
+                                    <h2>Bookshelves</h2>
+                                </div>
+                            )}
+                            {activeTab === 2 && (
+                                <div className="currentRead-panel">
+                                    <h2>Current Read</h2>
+                                </div>
+                            )}
                         </div>
 
                     </div>

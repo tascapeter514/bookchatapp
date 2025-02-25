@@ -130,6 +130,12 @@
     color: white;
 }
 
+.bookclub-searchBtn:hover {
+    background-color: white;
+    color: #FF8C00;
+
+}
+
 .bookclub-panels-container {
     width: 100%;
     max-width: 900px;
