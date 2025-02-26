@@ -32,6 +32,7 @@ class Author(models.Model):
     death_date = models.CharField(max_length=250, null=True, blank=True)
     links = models.JSONField()
     titles = models.ManyToManyField(Book, related_name="author")
+    author_photos = models.JSONField(default=list)
 
 class Bookshelf(models.Model):
     bookshelf_id = models.UUIDField(primary_key=True)

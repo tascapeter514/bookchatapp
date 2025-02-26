@@ -1,566 +1,1469 @@
 [
     {
-        "api_id": "OL7825177A",
-        "name": "Rebecca Yarros"
-    },
-    {
-        "api_id": "OL2734614A",
-        "name": "Various Authors"
-    },
-    {
-        "api_id": "OL3016977A",
-        "name": "Lyle McDonald"
-    },
-    {
-        "api_id": "OL13533527A",
-        "name": "Mai Corland"
-    },
-    {
-        "api_id": "OL1387677A",
-        "name": "Lisa Wingate"
-    },
-    {
-        "api_id": "OL6591309A",
-        "name": "Liz Moore"
-    },
-    {
-        "api_id": "OL22258A",
-        "name": "James Patterson"
-    },
-    {
-        "api_id": "OL9351232A",
-        "name": "Alison Espach"
-    },
-    {
-        "api_id": "OL7825177A",
-        "name": "Rebecca Yarros"
-    },
-    {
-        "api_id": "OL7919580A",
-        "name": "Sally Rooney"
-    },
-    {
-        "api_id": "OL7978029A",
-        "name": "Chris Whitaker"
-    },
-    {
-        "api_id": "OL9080345A",
-        "name": "Emma Knight"
-    },
-    {
-        "api_id": "OL7311103A",
-        "name": "Fiona Davis"
-    },
-    {
-        "api_id": "OL9599807A",
-        "name": "Shelby Van Pelt"
-    },
-    {
-        "api_id": "OL10132234A",
-        "name": "Nicholas Sparks"
-    },
-    {
-        "api_id": "OL124171A",
-        "name": "Albert Camus"
-    },
-    {
-        "api_id": "OL433058A",
-        "name": "Alvin Toffler"
-    },
-    {
-        "api_id": "OL7442140A",
-        "name": "Tommy Orange"
-    },
-    {
-        "api_id": "OL391839A",
-        "name": "James Baldwin"
-    },
-    {
-        "api_id": "OL217374A",
-        "name": "Chaim Potok"
-    },
-    {
-        "api_id": "OL221083A",
-        "name": "Barbara Kingsolver"
-    },
-    {
-        "api_id": "OL6941868A",
-        "name": "Ernest Cline"
-    },
-    {
-        "api_id": "OL529440A",
-        "name": "Anthony Stephen King"
-    },
-    {
-        "api_id": "OL86811A",
-        "name": "Ismail Kadare"
-    },
-    {
-        "api_id": "OL190100A",
-        "name": "Paul Auster"
-    },
-    {
-        "api_id": "OL13640A",
-        "name": "Ernest Hemingway"
-    },
-    {
-        "api_id": "OL9120986A",
-        "name": "Gena Showalter"
-    },
-    {
-        "api_id": "OL19450A",
-        "name": "Virginia Woolf"
-    },
-    {
-        "api_id": "OL113611A",
-        "name": "Jules Verne"
-    },
-    {
-        "api_id": "OL31358A",
-        "name": "Philippa Gregory"
-    },
-    {
-        "api_id": "OL580551A",
-        "name": "James M. Cain"
-    },
-    {
-        "api_id": "OL22134A",
-        "name": "Rudolfo A. Anaya"
-    },
-    {
-        "api_id": "OL2140114A",
-        "name": "John Steinbeck IV"
-    },
-    {
-        "api_id": "OL19430A",
-        "name": "Neal Stephenson"
-    },
-    {
-        "api_id": "OL2658408A",
-        "name": "Brothers Grimm"
-    },
-    {
-        "api_id": "OL1416857A",
-        "name": "Matt Haig"
-    },
-    {
-        "api_id": "OL27460A",
-        "name": "Maryse Conde\u0301"
-    },
-    {
-        "api_id": "OL33146A",
-        "name": "Franz Kafka"
-    },
-    {
-        "api_id": "OL41785A",
-        "name": "Knut Hamsun"
-    },
-    {
-        "api_id": "OL26681A",
-        "name": "Nathaniel Hawthorne"
-    },
-    {
-        "api_id": "OL284998A",
-        "name": "John Clellon Holmes"
-    },
-    {
-        "api_id": "OL39524A",
-        "name": "James Fenimore Cooper"
-    },
-    {
-        "api_id": "OL19024A",
-        "name": "Upton Sinclair"
-    },
-    {
-        "api_id": "OL32271A",
-        "name": "Theodore Dreiser"
-    },
-    {
-        "api_id": "OL37436A",
-        "name": "Geoffrey Chaucer"
-    },
-    {
-        "api_id": "OL27695A",
-        "name": "Agatha Christie"
-    },
-    {
-        "api_id": "OL59188A",
-        "name": "Ayn Rand"
-    },
-    {
-        "api_id": "OL7480404A",
-        "name": "Viktor Pelevin"
-    },
-    {
-        "api_id": "OL738926A",
-        "name": "Leo Tolstoy"
-    },
-    {
-        "api_id": "OL20188A",
-        "name": "Edith Wharton"
-    },
-    {
-        "api_id": "OL12686002A",
-        "name": "Nikol\u00e1i V. Gogol"
-    },
-    {
-        "api_id": "OL146592A",
-        "name": "Alain Robbe-Grillet"
-    },
-    {
-        "api_id": "OL266298A",
-        "name": "Jack Finney"
-    },
-    {
-        "api_id": "OL446978A",
-        "name": "J. A. Burrow"
-    },
-    {
-        "api_id": "OL7925750A",
-        "name": "Jason Reynolds"
-    },
-    {
-        "api_id": "OL449110A",
-        "name": "Ken Kesey"
-    },
-    {
-        "api_id": "OL117298A",
-        "name": "Jacob Burckhardt"
-    },
-    {
-        "api_id": "OL10436139A",
-        "name": "Leo Lionni"
-    },
-    {
-        "api_id": "OL68149A",
-        "name": "Pu Songling"
-    },
-    {
-        "api_id": "OL29079A",
-        "name": "Clive Cussler"
-    },
-    {
-        "api_id": "OL6941838A",
-        "name": "Jussi Adler-Olsen"
-    },
-    {
-        "api_id": "OL9700270A",
-        "name": "Oscar Wilde"
-    },
-    {
-        "api_id": "OL1516464A",
-        "name": "Monica Ali"
-    },
-    {
-        "api_id": "OL7413443A",
-        "name": "Lisa Appignanesi"
-    },
-    {
-        "api_id": "OL267830A",
-        "name": "David Constantine"
-    },
-    {
-        "api_id": "OL559804A",
-        "name": "Bernardine Evaristo"
-    },
-    {
-        "api_id": "OL231601A",
-        "name": "Patrick Gale"
-    },
-    {
-        "api_id": "OL722797A",
-        "name": "Abdulrazak Gurnah"
-    },
-    {
-        "api_id": "OL1973369A",
-        "name": "David Herd"
-    },
-    {
-        "api_id": "OL3072784A",
-        "name": "Emma Parsons"
-    },
-    {
-        "api_id": "OL1392494A",
-        "name": "Ian Sansom"
-    },
-    {
-        "api_id": "OL902072A",
-        "name": "Jonathan Skinner"
-    },
-    {
-        "api_id": "OL4808689A",
-        "name": "Gillian Slovo"
-    },
-    {
-        "api_id": "OL8013606A",
-        "name": "Lytton Smith"
-    },
-    {
-        "api_id": "OL5183587A",
-        "name": "Roma Tearne"
-    },
-    {
-        "api_id": "OL2934701A",
-        "name": "Jonathan Wittenberg"
-    },
-    {
-        "api_id": "OL46178A",
-        "name": "William Kent Krueger"
-    },
-    {
-        "api_id": "OL24137A",
-        "name": "Ray Bradbury"
-    },
-    {
-        "api_id": "OL29497A",
-        "name": "Herman Melville"
-    },
-    {
-        "api_id": "OL25963A",
-        "name": "Robert Louis Stevenson"
-    },
-    {
-        "api_id": "OL7172696A",
-        "name": "Abbi Glines"
-    },
-    {
-        "api_id": "OL448939A",
-        "name": "David Foster Wallace"
-    },
-    {
-        "api_id": "OL34221A",
-        "name": "Isaac Asimov"
-    },
-    {
-        "api_id": "OL3127777A",
-        "name": "Tom Clancy"
-    },
-    {
-        "api_id": "OL10434244A",
-        "name": "Steve Pieczenik"
-    },
-    {
-        "api_id": "OL225270A",
-        "name": "Jeff Rovin"
-    },
-    {
-        "api_id": "OL32293A",
-        "name": "Voltaire"
-    },
-    {
-        "api_id": "OL24638A",
-        "name": "Charles Dickens"
-    },
-    {
-        "api_id": "OL15698A",
-        "name": "Romain Rolland"
-    },
-    {
-        "api_id": "OL29655A",
-        "name": "Stanis\u0142aw Lem"
-    },
-    {
-        "api_id": "OL21594A",
-        "name": "Jane Austen"
-    },
-    {
-        "api_id": "OL13193A",
-        "name": "Johann Wolfgang von Goethe"
-    },
-    {
-        "api_id": "OL25926A",
-        "name": "Marion Zimmer Bradley"
-    },
-    {
-        "api_id": "OL74490A",
-        "name": "Mario Vargas Llosa"
-    },
-    {
-        "api_id": "OL6392148A",
-        "name": "Nicholas Frankel"
-    },
-    {
-        "api_id": "OL44633A",
-        "name": "Jack London"
-    },
-    {
-        "api_id": "OL12274938A",
-        "name": "Francis Scott Fitzgerald"
-    },
-    {
-        "api_id": "OL14008371A",
-        "name": "J. R. R. Tolkien"
-    },
-    {
-        "api_id": "OL24461A",
-        "name": "Rudyard Kipling"
-    },
-    {
-        "api_id": "OL2463959A",
-        "name": "Liza Marklund"
-    },
-    {
-        "api_id": "OL13807384A",
-        "name": "Virgina Woolf"
-    },
-    {
-        "api_id": "OL23431A",
-        "name": "L. Frank Baum"
-    },
-    {
-        "api_id": "OL1427700A",
-        "name": "Tobias S. Buckell"
-    },
-    {
-        "api_id": "OL1424335A",
-        "name": "Karen Traviss"
-    },
-    {
-        "api_id": "OL120686A",
-        "name": "Frank O'Connor"
-    },
-    {
-        "api_id": "OL4326321A",
-        "name": "Milan Kundera"
-    },
-    {
-        "api_id": "OL162098A",
-        "name": "Carlo Collodi"
-    },
-    {
-        "api_id": "OL12930919A",
-        "name": "Fyodor Dostoyevsky"
-    },
-    {
-        "api_id": "OL10792481A",
-        "name": "Henry Rider Haggard"
-    },
-    {
-        "api_id": "OL12950353A",
-        "name": "Fyodor Fyodor Dostoyevsky"
-    },
-    {
-        "api_id": "OL12802715A",
-        "name": "Jerome David Salinger"
-    },
-    {
-        "api_id": "OL25342A",
-        "name": "Mary Shelley"
-    },
-    {
-        "api_id": "OL22358A",
-        "name": "Wilkie Collins"
-    },
-    {
-        "api_id": "OL21491A",
-        "name": "Jack Kerouac"
-    },
-    {
-        "api_id": "OL13697881A",
-        "name": "Mary Wollstonecraft Shelley"
-    },
-    {
-        "api_id": "OL19441A",
-        "name": "Joseph Conrad"
-    },
-    {
-        "api_id": "OL3087957A",
-        "name": "Lucy Montgomery"
-    },
-    {
-        "api_id": "OL9256729A",
-        "name": "L. M. Montgomery"
-    },
-    {
-        "api_id": "OL119715A",
-        "name": "Colette"
-    },
-    {
-        "api_id": "OL26439A",
-        "name": "Stefan Zweig"
-    },
-    {
-        "api_id": "OL372281A",
-        "name": "Rebecca Ross"
-    },
-    {
-        "api_id": "OL9388A",
-        "name": "William Shakespeare"
-    },
-    {
-        "api_id": "OL23431A",
-        "name": "L. Frank Baum"
-    },
-    {
-        "api_id": "OL23919A",
-        "name": "J. K. Rowling"
-    },
-    {
-        "api_id": "OL113362A",
-        "name": "Charlotte Bronte\u0308"
-    },
-    {
-        "api_id": "OL13498040A",
-        "name": "Henryk Sienkiewicz"
-    },
-    {
-        "api_id": "OL30526A",
-        "name": "Jeremiah Curtin"
-    },
-    {
-        "api_id": "OL13193A",
-        "name": "Johann Wolfgang von Goethe"
-    },
-    {
-        "api_id": "OL107911A",
-        "name": "George Bernard Shaw"
-    },
-    {
-        "api_id": "OL23431A",
-        "name": "L. Frank Baum"
-    },
-    {
-        "api_id": "OL10433194A",
-        "name": "Hans Christian Anderson"
-    },
-    {
-        "api_id": "OL34328A",
-        "name": "Lee Child"
-    },
-    {
-        "api_id": "OL7433457A",
-        "name": "Eleanor Porter"
-    },
-    {
-        "api_id": "OL13526967A",
-        "name": "James Matthew Barrie"
-    },
-    {
-        "api_id": "OL18283A",
-        "name": "Daniel Defoe"
-    },
-    {
-        "api_id": "OL13214190A",
-        "name": "Fyodor Dostoevsky"
-    },
-    {
-        "api_id": "OL8348584A",
-        "name": "J. V. Editors"
-    },
-    {
-        "api_id": "OL14423002A",
-        "name": "Nathaniel Nathaniel Hawthorne"
-    },
-    {
-        "api_id": "OL29388A",
-        "name": "Guy de Maupassant"
-    },
-    {
-        "api_id": "OL31827A",
-        "name": "James Joyce"
-    },
+        "74778161": {
+            "pageid": 74778161,
+            "ns": 0,
+            "title": "Rebecca Yarros",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/2/2f/NBF2024-rebecca-yarros.jpg",
+                "width": 2460,
+                "height": 3690
+            }
+        }
+    },
+    {
+        "48371954": {
+            "pageid": 48371954,
+            "ns": 0,
+            "title": "Various Authors"
+        }
+    },
+    {
+        "-1": {
+            "ns": 0,
+            "title": "Lyle McDonald",
+            "missing": ""
+        }
+    },
+    {
+        "-1": {
+            "ns": 0,
+            "title": "Mai Corland",
+            "missing": ""
+        }
+    },
+    {
+        "71420073": {
+            "pageid": 71420073,
+            "ns": 0,
+            "title": "Lisa Wingate",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/3/3f/D03_9513_Lisa_Wingate.jpg",
+                "width": 4284,
+                "height": 2844
+            }
+        }
+    },
+    {
+        "77488745": {
+            "pageid": 77488745,
+            "ns": 0,
+            "title": "Liz Moore"
+        }
+    },
+    {
+        "1022756": {
+            "pageid": 1022756,
+            "ns": 0,
+            "title": "James Patterson",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/1/12/James_Patterson_at_the_Library_of_Congress_National_Book_Festival_on_August_24%2C_2024_%28cropped%29.jpg",
+                "width": 1124,
+                "height": 1489
+            }
+        }
+    },
+    {
+        "-1": {
+            "ns": 0,
+            "title": "Alison Espach",
+            "missing": ""
+        }
+    },
+    {
+        "74778161": {
+            "pageid": 74778161,
+            "ns": 0,
+            "title": "Rebecca Yarros",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/2/2f/NBF2024-rebecca-yarros.jpg",
+                "width": 2460,
+                "height": 3690
+            }
+        }
+    },
+    {
+        "57590404": {
+            "pageid": 57590404,
+            "ns": 0,
+            "title": "Sally Rooney",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Sally_Rooney_Signature.svg",
+                "width": 512,
+                "height": 171
+            }
+        }
+    },
+    {
+        "2212341": {
+            "pageid": 2212341,
+            "ns": 0,
+            "title": "Chris Whitaker"
+        }
+    },
     {
-        "api_id": "OL32650A",
-        "name": "Peter Straub"
+        "-1": {
+            "ns": 0,
+            "title": "Emma Knight",
+            "missing": ""
+        }
+    },
+    {
+        "74499809": {
+            "pageid": 74499809,
+            "ns": 0,
+            "title": "Fiona Davis",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/4/43/FionaDavis_NPCBookFair_02Novt2018_%2845650594982%29.jpg",
+                "width": 2699,
+                "height": 1799
+            }
+        }
+    },
+    {
+        "77764267": {
+            "pageid": 77764267,
+            "ns": 0,
+            "title": "Shelby Van Pelt"
+        }
+    },
+    {
+        "679409": {
+            "pageid": 679409,
+            "ns": 0,
+            "title": "Nicholas Sparks",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/a/af/Nicholas-Sparks-Autograph-1-4-06.jpg",
+                "width": 286,
+                "height": 408
+            }
+        }
+    },
+    {
+        "983": {
+            "pageid": 983,
+            "ns": 0,
+            "title": "Albert Camus",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/0/08/Albert_Camus%2C_gagnant_de_prix_Nobel%2C_portrait_en_buste%2C_pos%C3%A9_au_bureau%2C_faisant_face_%C3%A0_gauche%2C_cigarette_de_tabagisme.jpg",
+                "width": 719,
+                "height": 863
+            }
+        }
+    },
+    {
+        "930": {
+            "pageid": 930,
+            "ns": 0,
+            "title": "Alvin Toffler",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Alvin_Toffler_02.jpg",
+                "width": 480,
+                "height": 720
+            }
+        }
+    },
+    {
+        "57627523": {
+            "pageid": 57627523,
+            "ns": 0,
+            "title": "Tommy Orange",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/6/67/Tommy_Orange_2018.jpg",
+                "width": 1041,
+                "height": 1562
+            }
+        }
+    },
+    {
+        "176935": {
+            "pageid": 176935,
+            "ns": 0,
+            "title": "James Baldwin",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/f/f3/James_Baldwin_37_Allan_Warren_%28cropped%29.jpg",
+                "width": 2255,
+                "height": 3015
+            }
+        }
+    },
+    {
+        "63914": {
+            "pageid": 63914,
+            "ns": 0,
+            "title": "Chaim Potok",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/4/42/Chaim_Potok.jpg",
+                "width": 563,
+                "height": 610
+            }
+        }
+    },
+    {
+        "783923": {
+            "pageid": 783923,
+            "ns": 0,
+            "title": "Barbara Kingsolver",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/5/59/Barbara_Kingsolver_%2848684513758%29_%28cropped%29.jpg",
+                "width": 655,
+                "height": 874
+            }
+        }
+    },
+    {
+        "8643352": {
+            "pageid": 8643352,
+            "ns": 0,
+            "title": "Ernest Cline",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/6/6d/NBF2024-ernest-cline.jpg",
+                "width": 3173,
+                "height": 4759
+            }
+        }
+    },
+    {
+        "26954": {
+            "pageid": 26954,
+            "ns": 0,
+            "title": "Stephen King",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/2/24/Stephen_King_at_the_2024_Toronto_International_Film_Festival_2_%28cropped%29.jpg",
+                "width": 1359,
+                "height": 1684
+            }
+        }
+    },
+    {
+        "256668": {
+            "pageid": 256668,
+            "ns": 0,
+            "title": "Ismail Kadare",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/2/24/Ismail_Kadare_%28portret%29.jpg",
+                "width": 611,
+                "height": 706
+            }
+        }
+    },
+    {
+        "25022": {
+            "pageid": 25022,
+            "ns": 0,
+            "title": "Paul Auster",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Paul_Auster_BBF_2010_Shankbone.jpg",
+                "width": 2504,
+                "height": 3340
+            }
+        }
+    },
+    {
+        "9428": {
+            "pageid": 9428,
+            "ns": 0,
+            "title": "Ernest Hemingway",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/2/28/ErnestHemingway.jpg",
+                "width": 1500,
+                "height": 1873
+            }
+        }
+    },
+    {
+        "14277726": {
+            "pageid": 14277726,
+            "ns": 0,
+            "title": "Gena Showalter"
+        }
+    },
+    {
+        "32742": {
+            "pageid": 32742,
+            "ns": 0,
+            "title": "Virginia Woolf",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/0/0b/George_Charles_Beresford_-_Virginia_Woolf_in_1902_-_Restoration.jpg",
+                "width": 2924,
+                "height": 3994
+            }
+        }
+    },
+    {
+        "15770": {
+            "pageid": 15770,
+            "ns": 0,
+            "title": "Jules Verne",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Jules_Verne_by_%C3%89tienne_Carjat.jpg",
+                "width": 2029,
+                "height": 2879
+            }
+        }
+    },
+    {
+        "202995": {
+            "pageid": 202995,
+            "ns": 0,
+            "title": "Philippa Gregory",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Philippa_gregory_2011.jpg",
+                "width": 750,
+                "height": 1000
+            }
+        }
+    },
+    {
+        "234478": {
+            "pageid": 234478,
+            "ns": 0,
+            "title": "James M. Cain",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/0/08/James-M.-Cain-1938.jpg",
+                "width": 3840,
+                "height": 5140
+            }
+        }
+    },
+    {
+        "1464774": {
+            "pageid": 1464774,
+            "ns": 0,
+            "title": "Rudolfo A. Anaya"
+        }
+    },
+    {
+        "15825": {
+            "pageid": 15825,
+            "ns": 0,
+            "title": "John Steinbeck",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/d/d7/John_Steinbeck_1939_%28cropped%29.jpg",
+                "width": 850,
+                "height": 1020
+            }
+        }
+    },
+    {
+        "21443": {
+            "pageid": 21443,
+            "ns": 0,
+            "title": "Neal Stephenson",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/8/85/Neal_Stephenson_in_2019_A_021.jpg",
+                "width": 2488,
+                "height": 3732
+            }
+        }
+    },
+    {
+        "41971": {
+            "pageid": 41971,
+            "ns": 0,
+            "title": "Brothers Grimm",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Grimm.jpg",
+                "width": 694,
+                "height": 799
+            }
+        }
+    },
+    {
+        "9345295": {
+            "pageid": 9345295,
+            "ns": 0,
+            "title": "Matt Haig",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Matt_Haig_at_the_2024_Edinburgh_International_Book_Festival_%28cropped%29.jpg",
+                "width": 1472,
+                "height": 1816
+            }
+        }
+    },
+    {
+        "2173617": {
+            "pageid": 2173617,
+            "ns": 0,
+            "title": "Maryse Cond\u00e9",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/7/7a/MaryseConde2006.jpg",
+                "width": 600,
+                "height": 895
+            }
+        }
+    },
+    {
+        "10858": {
+            "pageid": 10858,
+            "ns": 0,
+            "title": "Franz Kafka",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/2/26/Franz_Kafka%2C_1923.jpg",
+                "width": 1992,
+                "height": 2656
+            }
+        }
+    },
+    {
+        "17461": {
+            "pageid": 17461,
+            "ns": 0,
+            "title": "Knut Hamsun",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/4/41/Hamsun_bldsa_HA0341.jpg",
+                "width": 2294,
+                "height": 3300
+            }
+        }
+    },
+    {
+        "21787": {
+            "pageid": 21787,
+            "ns": 0,
+            "title": "Nathaniel Hawthorne",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Nathaniel_Hawthorne_by_Brady%2C_1860-64.jpg",
+                "width": 1262,
+                "height": 1768
+            }
+        }
+    },
+    {
+        "1600699": {
+            "pageid": 1600699,
+            "ns": 0,
+            "title": "John Clellon Holmes"
+        }
+    },
+    {
+        "205814": {
+            "pageid": 205814,
+            "ns": 0,
+            "title": "James Fenimore Cooper",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/9/9f/James_Fenimore_Cooper_by_Brady.jpg",
+                "width": 600,
+                "height": 764
+            }
+        }
+    },
+    {
+        "95477": {
+            "pageid": 95477,
+            "ns": 0,
+            "title": "Upton Sinclair",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/2/21/Upton_Sinclair_LCCN2014686178_cropped2.tif",
+                "width": 3219,
+                "height": 3566
+            }
+        }
+    },
+    {
+        "44213": {
+            "pageid": 44213,
+            "ns": 0,
+            "title": "Theodore Dreiser",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/5/5a/Theodore_Dreiser.jpg",
+                "width": 1057,
+                "height": 1472
+            }
+        }
+    },
+    {
+        "12787": {
+            "pageid": 12787,
+            "ns": 0,
+            "title": "Geoffrey Chaucer",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/5/57/Chaucer_manuscrit_portrait_%28d%C3%A9tail%29.jpeg",
+                "width": 495,
+                "height": 677
+            }
+        }
+    },
+    {
+        "984": {
+            "pageid": 984,
+            "ns": 0,
+            "title": "Agatha Christie",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Agatha_Christie.png",
+                "width": 347,
+                "height": 397
+            }
+        }
+    },
+    {
+        "339": {
+            "pageid": 339,
+            "ns": 0,
+            "title": "Ayn Rand",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Ayn_Rand_%281943_Talbot_portrait%29.jpg",
+                "width": 831,
+                "height": 1008
+            }
+        }
+    },
+    {
+        "653501": {
+            "pageid": 653501,
+            "ns": 0,
+            "title": "Viktor Pelevin"
+        }
+    },
+    {
+        "18622119": {
+            "pageid": 18622119,
+            "ns": 0,
+            "title": "Leo Tolstoy",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/1/1c/L._N._Tolstoy%2C_by_Prokudin-Gorsky_%28cropped%29.jpg",
+                "width": 569,
+                "height": 745
+            }
+        }
+    },
+    {
+        "160180": {
+            "pageid": 160180,
+            "ns": 0,
+            "title": "Edith Wharton",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/5/52/Edith_Newbold_Jones_Wharton_%28cropped_02%29.jpg",
+                "width": 2102,
+                "height": 3132
+            }
+        }
+    },
+    {
+        "-1": {
+            "ns": 0,
+            "title": "Nikol\u00e1i V. Gogol",
+            "missing": ""
+        }
+    },
+    {
+        "671962": {
+            "pageid": 671962,
+            "ns": 0,
+            "title": "Alain Robbe-Grillet",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/6/69/Alain_Robbe-Grillet_%28cropped%29.jpg",
+                "width": 341,
+                "height": 400
+            }
+        }
+    },
+    {
+        "510330": {
+            "pageid": 510330,
+            "ns": 0,
+            "title": "Jack Finney"
+        }
+    },
+    {
+        "-1": {
+            "ns": 0,
+            "title": "J. A. Burrow",
+            "missing": ""
+        }
+    },
+    {
+        "54232186": {
+            "pageid": 54232186,
+            "ns": 0,
+            "title": "Jason Reynolds",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/0/08/Jason_Reynolds_%2849395922668%29.jpg",
+                "width": 2571,
+                "height": 3600
+            }
+        }
+    },
+    {
+        "17257": {
+            "pageid": 17257,
+            "ns": 0,
+            "title": "Ken Kesey"
+        }
+    },
+    {
+        "312772": {
+            "pageid": 312772,
+            "ns": 0,
+            "title": "Jacob Burckhardt",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/2/20/Jacburc2.gif",
+                "width": 223,
+                "height": 264
+            }
+        }
+    },
+    {
+        "2379122": {
+            "pageid": 2379122,
+            "ns": 0,
+            "title": "Leo Lionni",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Craftsman%27s_World_Leo_Lionni-107.jpg",
+                "width": 261,
+                "height": 331
+            }
+        }
+    },
+    {
+        "558048": {
+            "pageid": 558048,
+            "ns": 0,
+            "title": "Pu Songling",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Pu_Songling.jpg",
+                "width": 386,
+                "height": 379
+            }
+        }
+    },
+    {
+        "358192": {
+            "pageid": 358192,
+            "ns": 0,
+            "title": "Clive Cussler",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/b/b6/Clive_Cussler_NUMA.jpg",
+                "width": 640,
+                "height": 430
+            }
+        }
+    },
+    {
+        "27204494": {
+            "pageid": 27204494,
+            "ns": 0,
+            "title": "Jussi Adler-Olsen",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/0/02/Jussi_Adler-Olsen.jpg",
+                "width": 2498,
+                "height": 3449
+            }
+        }
+    },
+    {
+        "22614": {
+            "pageid": 22614,
+            "ns": 0,
+            "title": "Oscar Wilde",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/4/44/Oscar_Wilde_by_Napoleon_Sarony._Three-quarter-length_photograph%2C_seated.jpg",
+                "width": 2502,
+                "height": 4146
+            }
+        }
+    },
+    {
+        "1942824": {
+            "pageid": 1942824,
+            "ns": 0,
+            "title": "Monica Ali",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Monica_ali_2023_1.jpg",
+                "width": 1133,
+                "height": 1284
+            }
+        }
+    },
+    {
+        "2667787": {
+            "pageid": 2667787,
+            "ns": 0,
+            "title": "Lisa Appignanesi",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Lisa_Appignanesi_presenting_Golden_PEN.jpg",
+                "width": 688,
+                "height": 706
+            }
+        }
+    },
+    {
+        "11720637": {
+            "pageid": 11720637,
+            "ns": 0,
+            "title": "David Constantine",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/2/23/David_Constantine_at_Durham_Book_Festival.jpg",
+                "width": 2192,
+                "height": 2742
+            }
+        }
+    },
+    {
+        "18892471": {
+            "pageid": 18892471,
+            "ns": 0,
+            "title": "Bernardine Evaristo",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Bernardine_Evaristo_Photo.jpg",
+                "width": 2658,
+                "height": 3596
+            }
+        }
+    },
+    {
+        "2511530": {
+            "pageid": 2511530,
+            "ns": 0,
+            "title": "Patrick Gale"
+        }
+    },
+    {
+        "14597934": {
+            "pageid": 14597934,
+            "ns": 0,
+            "title": "Abdulrazak Gurnah",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/2/21/%E0%A6%97%E0%A7%81%E0%A6%B0%E0%A6%A8%E0%A6%BE%E0%A6%B9-%E0%A6%A2%E0%A6%BE%E0%A6%95%E0%A6%BE-%E0%A7%A8%E0%A7%A6%E0%A7%A8%E0%A7%A9.JPG",
+                "width": 714,
+                "height": 953
+            }
+        }
+    },
+    {
+        "2279647": {
+            "pageid": 2279647,
+            "ns": 0,
+            "title": "David Herd"
+        }
+    },
+    {
+        "-1": {
+            "ns": 0,
+            "title": "Emma Parsons",
+            "missing": ""
+        }
+    },
+    {
+        "26570968": {
+            "pageid": 26570968,
+            "ns": 0,
+            "title": "Ian Sansom",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/7/70/Ian_Sansom_.jpg",
+                "width": 768,
+                "height": 1024
+            }
+        }
+    },
+    {
+        "3886736": {
+            "pageid": 3886736,
+            "ns": 0,
+            "title": "Jonathan Skinner"
+        }
+    },
+    {
+        "2625151": {
+            "pageid": 2625151,
+            "ns": 0,
+            "title": "Gillian Slovo",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/9/92/Gillian_Slovo_presenting_Golden_PEN_award.jpg",
+                "width": 649,
+                "height": 706
+            }
+        }
+    },
+    {
+        "25104666": {
+            "pageid": 25104666,
+            "ns": 0,
+            "title": "Lytton Smith"
+        }
+    },
+    {
+        "14849122": {
+            "pageid": 14849122,
+            "ns": 0,
+            "title": "Roma Tearne"
+        }
+    },
+    {
+        "22047232": {
+            "pageid": 22047232,
+            "ns": 0,
+            "title": "Jonathan Wittenberg"
+        }
+    },
+    {
+        "17502121": {
+            "pageid": 17502121,
+            "ns": 0,
+            "title": "William Kent Krueger",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/4/4c/William_Kent_Krueger_at_Common_Good_Books_-_cropped.jpg",
+                "width": 2880,
+                "height": 3600
+            }
+        }
+    },
+    {
+        "26181": {
+            "pageid": 26181,
+            "ns": 0,
+            "title": "Ray Bradbury",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/6/69/Ray_Bradbury_%281975%29_-cropped-.jpg",
+                "width": 1056,
+                "height": 1296
+            }
+        }
+    },
+    {
+        "13623": {
+            "pageid": 13623,
+            "ns": 0,
+            "title": "Herman Melville",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Herman_Melville_by_Joseph_O_Eaton.jpg",
+                "width": 1461,
+                "height": 1801
+            }
+        }
+    },
+    {
+        "26444": {
+            "pageid": 26444,
+            "ns": 0,
+            "title": "Robert Louis Stevenson",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Robert_Louis_Stevenson_by_Henry_Walter_Barnett_bw.jpg",
+                "width": 1066,
+                "height": 1422
+            }
+        }
+    },
+    {
+        "40229554": {
+            "pageid": 40229554,
+            "ns": 0,
+            "title": "Abbi Glines"
+        }
+    },
+    {
+        "45368": {
+            "pageid": 45368,
+            "ns": 0,
+            "title": "David Foster Wallace",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/e/ea/David_Foster_Wallace.jpg",
+                "width": 1113,
+                "height": 888
+            }
+        }
+    },
+    {
+        "14573": {
+            "pageid": 14573,
+            "ns": 0,
+            "title": "Isaac Asimov",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/3/34/Isaac.Asimov01.jpg",
+                "width": 2530,
+                "height": 3671
+            }
+        }
+    },
+    {
+        "30265": {
+            "pageid": 30265,
+            "ns": 0,
+            "title": "Tom Clancy",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/9/98/Tom_Clancy_at_Burns_Library_cropped.jpg",
+                "width": 560,
+                "height": 720
+            }
+        }
+    },
+    {
+        "29526687": {
+            "pageid": 29526687,
+            "ns": 0,
+            "title": "Steve Pieczenik",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/9/90/Steve_Pieczenik.jpg",
+                "width": 353,
+                "height": 353
+            }
+        }
+    },
+    {
+        "3161683": {
+            "pageid": 3161683,
+            "ns": 0,
+            "title": "Jeff Rovin"
+        }
+    },
+    {
+        "32375": {
+            "pageid": 32375,
+            "ns": 0,
+            "title": "Voltaire",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/4/40/Atelier_de_Nicolas_de_Largilli%C3%A8re%2C_portrait_de_Voltaire%2C_d%C3%A9tail_%28mus%C3%A9e_Carnavalet%29_-001.jpg",
+                "width": 4000,
+                "height": 5000
+            }
+        }
+    },
+    {
+        "5884": {
+            "pageid": 5884,
+            "ns": 0,
+            "title": "Charles Dickens",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/a/aa/Dickens_Gurney_head.jpg",
+                "width": 814,
+                "height": 1190
+            }
+        }
+    },
+    {
+        "236590": {
+            "pageid": 236590,
+            "ns": 0,
+            "title": "Romain Rolland",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/2/29/Romain_Rolland_de_face_au_balcon%2C_Meurisse%2C_1914_retouche.jpg",
+                "width": 1232,
+                "height": 1696
+            }
+        }
+    },
+    {
+        "26790": {
+            "pageid": 26790,
+            "ns": 0,
+            "title": "Stanis\u0142aw Lem",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/2/26/St_Lem_resize.jpg",
+                "width": 1012,
+                "height": 1296
+            }
+        }
+    },
+    {
+        "15782": {
+            "pageid": 15782,
+            "ns": 0,
+            "title": "Jane Austen",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/c/cc/CassandraAusten-JaneAusten%28c.1810%29_hires.jpg",
+                "width": 2400,
+                "height": 3096
+            }
+        }
+    },
+    {
+        "19242322": {
+            "pageid": 19242322,
+            "ns": 0,
+            "title": "Johann Wolfgang von Goethe",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Goethe_%28Stieler_1828%29.jpg",
+                "width": 1972,
+                "height": 2432
+            }
+        }
+    },
+    {
+        "53210": {
+            "pageid": 53210,
+            "ns": 0,
+            "title": "Marion Zimmer Bradley"
+        }
+    },
+    {
+        "163278": {
+            "pageid": 163278,
+            "ns": 0,
+            "title": "Mario Vargas Llosa",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/b/bf/Mario_Vargas_Llosa_%28crop_2%29.jpg",
+                "width": 976,
+                "height": 1291
+            }
+        }
+    },
+    {
+        "-1": {
+            "ns": 0,
+            "title": "Nicholas Frankel",
+            "missing": ""
+        }
+    },
+    {
+        "42978": {
+            "pageid": 42978,
+            "ns": 0,
+            "title": "Jack London",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Jack_London_young.jpg",
+                "width": 1469,
+                "height": 1933
+            }
+        }
+    },
+    {
+        "296110": {
+            "pageid": 296110,
+            "ns": 0,
+            "title": "Francis Scott Fitzgerald"
+        }
+    },
+    {
+        "15872": {
+            "pageid": 15872,
+            "ns": 0,
+            "title": "J. R. R. Tolkien",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/d/d4/J._R._R._Tolkien%2C_ca._1925.jpg",
+                "width": 1800,
+                "height": 2400
+            }
+        }
+    },
+    {
+        "26308": {
+            "pageid": 26308,
+            "ns": 0,
+            "title": "Rudyard Kipling",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/1/1c/Rudyard_Kipling_%28portrait%29.jpg",
+                "width": 1269,
+                "height": 1689
+            }
+        }
+    },
+    {
+        "2544279": {
+            "pageid": 2544279,
+            "ns": 0,
+            "title": "Liza Marklund",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/3/3a/A_26_0196_%289725646251%29.jpg",
+                "width": 570,
+                "height": 800
+            }
+        }
+    },
+    {
+        "-1": {
+            "ns": 0,
+            "title": "Virgina Woolf",
+            "missing": ""
+        }
+    },
+    {
+        "18188": {
+            "pageid": 18188,
+            "ns": 0,
+            "title": "L. Frank Baum",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/6/69/L._Frank_Baum_%281911%29.jpg",
+                "width": 3716,
+                "height": 4527
+            }
+        }
+    },
+    {
+        "76307049": {
+            "pageid": 76307049,
+            "ns": 0,
+            "title": "Tobias S. Buckell"
+        }
+    },
+    {
+        "2752188": {
+            "pageid": 2752188,
+            "ns": 0,
+            "title": "Karen Traviss"
+        }
+    },
+    {
+        "520236": {
+            "pageid": 520236,
+            "ns": 0,
+            "title": "Frank O'Connor"
+        }
+    },
+    {
+        "36679": {
+            "pageid": 36679,
+            "ns": 0,
+            "title": "Milan Kundera",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/8/87/Milan_Kundera_redux.jpg",
+                "width": 957,
+                "height": 1016
+            }
+        }
+    },
+    {
+        "7437": {
+            "pageid": 7437,
+            "ns": 0,
+            "title": "Carlo Collodi",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/6/60/Carlo_Collodi.jpg",
+                "width": 676,
+                "height": 868
+            }
+        }
+    },
+    {
+        "56790547": {
+            "pageid": 56790547,
+            "ns": 0,
+            "title": "Fyodor Dostoyevsky"
+        }
+    },
+    {
+        "27749137": {
+            "pageid": 27749137,
+            "ns": 0,
+            "title": "Henry Rider Haggard"
+        }
+    },
+    {
+        "-1": {
+            "ns": 0,
+            "title": "Fyodor Fyodor Dostoyevsky",
+            "missing": ""
+        }
+    },
+    {
+        "693738": {
+            "pageid": 693738,
+            "ns": 0,
+            "title": "Jerome David Salinger"
+        }
+    },
+    {
+        "27885687": {
+            "pageid": 27885687,
+            "ns": 0,
+            "title": "Mary Shelley",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Mary_Wollstonecraft_Shelley_Rothwell.tif",
+                "width": 1733,
+                "height": 2109
+            }
+        }
+    },
+    {
+        "161275": {
+            "pageid": 161275,
+            "ns": 0,
+            "title": "Wilkie Collins",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Wilkie_Collins_by_Cundall%2C_Downes_%26_Co_%28cropped%29.jpg",
+                "width": 1290,
+                "height": 1923
+            }
+        }
+    },
+    {
+        "15890": {
+            "pageid": 15890,
+            "ns": 0,
+            "title": "Jack Kerouac",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/3/37/Kerouac_by_Palumbo_2_%28cropped%29.png",
+                "width": 388,
+                "height": 518
+            }
+        }
+    },
+    {
+        "27885710": {
+            "pageid": 27885710,
+            "ns": 0,
+            "title": "Mary Wollstonecraft Shelley"
+        }
+    },
+    {
+        "15823": {
+            "pageid": 15823,
+            "ns": 0,
+            "title": "Joseph Conrad",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Joseph_Conrad-remastered_to_black_and_white.png",
+                "width": 1067,
+                "height": 1466
+            }
+        }
+    },
+    {
+        "1590939": {
+            "pageid": 1590939,
+            "ns": 0,
+            "title": "Lucy Montgomery"
+        }
+    },
+    {
+        "65871": {
+            "pageid": 65871,
+            "ns": 0,
+            "title": "L. M. Montgomery"
+        }
+    },
+    {
+        "6928": {
+            "pageid": 6928,
+            "ns": 0,
+            "title": "Colette",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/2/22/Colette_-_photo_Henri_Manuel.jpg",
+                "width": 805,
+                "height": 1080
+            }
+        }
+    },
+    {
+        "100224": {
+            "pageid": 100224,
+            "ns": 0,
+            "title": "Stefan Zweig",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Stefan_Zweig2.png",
+                "width": 216,
+                "height": 192
+            }
+        }
+    },
+    {
+        "75816012": {
+            "pageid": 75816012,
+            "ns": 0,
+            "title": "Rebecca Ross"
+        }
+    },
+    {
+        "32897": {
+            "pageid": 32897,
+            "ns": 0,
+            "title": "William Shakespeare",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/2/21/William_Shakespeare_by_John_Taylor%2C_edited.jpg",
+                "width": 2400,
+                "height": 3059
+            }
+        }
+    },
+    {
+        "18188": {
+            "pageid": 18188,
+            "ns": 0,
+            "title": "L. Frank Baum",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/6/69/L._Frank_Baum_%281911%29.jpg",
+                "width": 3716,
+                "height": 4527
+            }
+        }
+    },
+    {
+        "16027": {
+            "pageid": 16027,
+            "ns": 0,
+            "title": "J. K. Rowling",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/5/5d/J._K._Rowling_2010.jpg",
+                "width": 1373,
+                "height": 1693
+            }
+        }
+    },
+    {
+        "6532": {
+            "pageid": 6532,
+            "ns": 0,
+            "title": "Charlotte Bront\u00eb",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/3/3a/CBRichmond.png",
+                "width": 200,
+                "height": 286
+            }
+        }
+    },
+    {
+        "13433": {
+            "pageid": 13433,
+            "ns": 0,
+            "title": "Henryk Sienkiewicz",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/5/54/Henryk_Sienkiewicz_ca_1885_%2845871548%29_%28cropped%29.jpg",
+                "width": 1264,
+                "height": 1754
+            }
+        }
+    },
+    {
+        "7139297": {
+            "pageid": 7139297,
+            "ns": 0,
+            "title": "Jeremiah Curtin",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Curtin_Jeremaiah_Bealoides%281942%29.png",
+                "width": 1316,
+                "height": 1633
+            }
+        }
+    },
+    {
+        "19242322": {
+            "pageid": 19242322,
+            "ns": 0,
+            "title": "Johann Wolfgang von Goethe",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Goethe_%28Stieler_1828%29.jpg",
+                "width": 1972,
+                "height": 2432
+            }
+        }
+    },
+    {
+        "12855": {
+            "pageid": 12855,
+            "ns": 0,
+            "title": "George Bernard Shaw",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/en/3/30/Bernard-Shaw-ILN-1911-original.jpg",
+                "width": 2228,
+                "height": 3134
+            }
+        }
+    },
+    {
+        "18188": {
+            "pageid": 18188,
+            "ns": 0,
+            "title": "L. Frank Baum",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/6/69/L._Frank_Baum_%281911%29.jpg",
+                "width": 3716,
+                "height": 4527
+            }
+        }
+    },
+    {
+        "50183": {
+            "pageid": 50183,
+            "ns": 0,
+            "title": "Hans Christian Anderson"
+        }
+    },
+    {
+        "1256799": {
+            "pageid": 1256799,
+            "ns": 0,
+            "title": "Lee Child",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Lee_Child%2C_Bouchercon_2010.jpg",
+                "width": 2772,
+                "height": 2589
+            }
+        }
+    },
+    {
+        "1137991": {
+            "pageid": 1137991,
+            "ns": 0,
+            "title": "Eleanor Porter"
+        }
+    },
+    {
+        "141929": {
+            "pageid": 141929,
+            "ns": 0,
+            "title": "James Matthew Barrie"
+        }
+    },
+    {
+        "8193": {
+            "pageid": 8193,
+            "ns": 0,
+            "title": "Daniel Defoe",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/a/a3/Daniel_Defoe_Kneller_Style.jpg",
+                "width": 2000,
+                "height": 2391
+            }
+        }
+    },
+    {
+        "11625": {
+            "pageid": 11625,
+            "ns": 0,
+            "title": "Fyodor Dostoevsky",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/7/78/Vasily_Perov_-_%D0%9F%D0%BE%D1%80%D1%82%D1%80%D0%B5%D1%82_%D0%A4.%D0%9C.%D0%94%D0%BE%D1%81%D1%82%D0%BE%D0%B5%D0%B2%D1%81%D0%BA%D0%BE%D0%B3%D0%BE_-_Google_Art_Project.jpg",
+                "width": 3200,
+                "height": 4000
+            }
+        }
+    },
+    {
+        "-1": {
+            "ns": 0,
+            "title": "J. V. Editors",
+            "missing": ""
+        }
+    },
+    {
+        "-1": {
+            "ns": 0,
+            "title": "Nathaniel Nathaniel Hawthorne",
+            "missing": ""
+        }
+    },
+    {
+        "12274": {
+            "pageid": 12274,
+            "ns": 0,
+            "title": "Guy de Maupassant",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/8/81/Maupassant_par_Nadar.jpg",
+                "width": 2404,
+                "height": 3385
+            }
+        }
+    },
+    {
+        "15600": {
+            "pageid": 15600,
+            "ns": 0,
+            "title": "James Joyce",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/1/1e/Revolutionary_Joyce_Better_Contrast.jpg",
+                "width": 570,
+                "height": 764
+            }
+        }
+    },
+    {
+        "288128": {
+            "pageid": 288128,
+            "ns": 0,
+            "title": "Peter Straub",
+            "original": {
+                "source": "https://upload.wikimedia.org/wikipedia/commons/3/38/Peter_Straub.jpg",
+                "width": 532,
+                "height": 800
+            }
+        }
     }
 ]
