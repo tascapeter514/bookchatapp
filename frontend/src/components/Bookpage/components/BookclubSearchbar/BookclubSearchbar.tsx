@@ -1,51 +1,25 @@
-import './Searchbar.css'
-import { FC, useState, useEffect, Dispatch, SetStateAction } from 'react'
-import { Author, Book, Bookclub } from '../../types'
-import {SearchIcon} from '../common/Icons'
+import './BookclubSearchbar.css'
+import {FC, useState, useEffect, Dispatch, SetStateAction} from 'react'
+import { Bookclub } from '../../../../types'
+import { SearchIcon } from '../../../common/Icons'
+import { useDebounce } from '../../../Searchbar/Searchbar'
 
-
-
-
-export const useDebounce = (value: string, delay: number) => {
-    const [debouncedValue, setDebouncedValue] = useState(value);
-
-    useEffect(() => {
-        const id = setTimeout(() => {
-            console.log('setting new timeout')
-            setDebouncedValue(value)
-        }, delay)
-
-        return () => {
-
-            console.log('clearing timeout')
-            clearTimeout(id)
-        }
-    }, [value, delay])
-    return debouncedValue
-}
-
-
-interface SearchbarProps {
-    // setSearchResults: Dispatch<SetStateAction<SearchResults>>
-    setAuthorSearchResults: Dispatch<SetStateAction<Author[]>>,
-    setBookSearchResults: Dispatch<SetStateAction<Book[]>>,
-    setBookclubSearchResults: Dispatch<SetStateAction<Bookclub[]>>
+interface BookclubSearchbarProps {
+    setBookclubSearchResults: Dispatch<SetStateAction<Bookclub[]>>,
     setShowSearchResults: Dispatch<SetStateAction<boolean>>,
     showSearchResults: boolean
 
-
-
 }
 
 
-const Searchbar: FC<SearchbarProps> = ({setAuthorSearchResults, setBookSearchResults, setBookclubSearchResults, setShowSearchResults, showSearchResults}) => {
-
+const BookclubSearchbar: FC<BookclubSearchbarProps> = ({setBookclubSearchResults, setShowSearchResults, showSearchResults}) => {
     const [searchValue, setSearchValue] = useState('')
     const debouncedSearchValue = useDebounce(searchValue, 500)
-    
+
+
     const fetchSearchData = (value: string) => {
         const encodedValue = encodeURIComponent(value)
-        const path = encodeURI(`ws://localhost:8000/ws/search/${encodedValue}/`)
+        const path = encodeURI(`ws://localhost:8000/ws/bookclubsearch/${encodedValue}/`)
 
         try {
 
@@ -55,9 +29,6 @@ const Searchbar: FC<SearchbarProps> = ({setAuthorSearchResults, setBookSearchRes
                 const data = JSON.parse(event.data);
                 if (data.type === 'get_search_query') {
                     console.log('web socket search query:', data)
-                    // setSearchResults(data.search_results)
-                    setAuthorSearchResults(data.search_results.author_results);
-                    setBookSearchResults(data.search_results.book_results);
                     setBookclubSearchResults(data.search_results.bookclub_results)
                     setShowSearchResults(true)
                 }
@@ -94,28 +65,23 @@ const Searchbar: FC<SearchbarProps> = ({setAuthorSearchResults, setBookSearchRes
         }
     }, [showSearchResults])
 
-
-    
-
-
-
     return(
-
-            <div className="input-wrapper">
+        <div className="bookclub-input-wrapper">
                 <input
-                    placeholder='Type to search...' 
+                    name='bookclubName'
+                    placeholder='Enter a Bookclub Name' 
                     value={searchValue} 
-                    onChange={(e) => setSearchValue(e.target.value)} />
+                    onChange={(e) => setSearchValue(e.target.value)}
+                    required />
                 <SearchIcon className='search-icon'/>
 
-            </div>
-            
-
-
+        </div>
 
     )
+
+
 }
 
-export default Searchbar
+export default BookclubSearchbar
 
 

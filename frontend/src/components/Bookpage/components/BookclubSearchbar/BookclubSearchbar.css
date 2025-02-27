@@ -1,0 +1,38 @@
+.bookclub-input-wrapper {
+    background-color: white;
+    width: 100%;
+    border-radius: 10px;
+    height: 2rem;
+    padding: 0 .5em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid black;
+}
+
+
+
+
+.search-icon {
+    color: black;
+}
+
+.bookclub-input-wrapper > input {
+    background-color: transparent;
+    border: 0;
+    height: 100%;
+    font-size: 1rem;
+    margin: 0;
+    outline: none;
+    width: 100%;
+    font-size: 1rem;
+    
+
+}
+
+
+
+.input-wrapper > input:focus::placeholder {
+    color: transparent;
+
+}

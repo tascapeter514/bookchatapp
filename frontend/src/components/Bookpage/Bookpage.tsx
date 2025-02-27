@@ -1,10 +1,11 @@
-import {useState, useEffect, FC} from 'react'
+import {useState, useEffect, FC, useRef} from 'react'
 import {useParams, Link } from 'react-router-dom'
 import { userData } from '../common/UserContext'
-import { Book, ISBN_Identifier, Bookshelf, ActiveUser, Author } from '../../types'
+import { Book, ISBN_Identifier, Bookshelf, ActiveUser, Author, Bookclub, SearchResultsArray } from '../../types'
 import { BsBookmarkPlus } from "react-icons/bs"
+import  BookclubSearchbar  from './components/BookclubSearchbar/BookclubSearchbar'
+import BookclubSearchResults from './components/BookclubSearchbar/BookclubSearchResults'
 import './Bookpage.css'
-import { DiVim } from 'react-icons/di'
 
 
 type IconProps = React.ComponentPropsWithoutRef<'svg'>
@@ -22,9 +23,21 @@ const Bookpage: React.FC = () => {
     const params = useParams();
     const [book, setBook] = useState<Book | null>(null);
     const [authors, setAuthors] = useState<Author[] | null>(null)
+    const [isModalOpen, setIsModalOpen] = useState(false)
+    const [bookclubSearchResults, setBookclubSearchResults] = useState<Bookclub[]>([])
+    const [showSearchResults, setShowSearchResults] = useState(false)
     const { activeUser } = userData()
     const [showBookshelfForm, setShowBookshelfForm] = useState(false)
     const [userBookShelves, setUserBookShelves] = useState<Bookshelf[]>([])
+    const modalRef = useRef<HTMLDialogElement>(null)
+
+    const searchResults: SearchResultsArray = [
+        {type: 'bookclub', items: bookclubSearchResults}
+      ]
+    
+      const sortedSearchResults = searchResults.sort((a, b) => {
+        return (a.items?.length || 0) - (b.items?.length || 0)
+      })
 
     
     useEffect(() => {
@@ -109,7 +122,19 @@ const Bookpage: React.FC = () => {
     }
 
     // console.log('bookpage parameters:', params)
-    console.log('ISBN length:', typeof book?.ISBN_Identifiers)
+
+    const openModal = () => {
+        setIsModalOpen(true)
+
+        modalRef.current?.showModal()
+        
+    }
+
+    const closeModal = () => {
+        setIsModalOpen(false)
+        modalRef.current?.close()
+    }
+
 
     
     return(
@@ -125,19 +150,37 @@ const Bookpage: React.FC = () => {
                                    <BookmarkIcon></BookmarkIcon>
                                     <span>Add to Bookshelf</span>
                                </div>
+                              
                             
                             </div>
                             <article className="book-info-wrapper">
                                 <h1>{book.title}</h1>
                                 <h3>By <span>{authors?.[0]['name']} </span></h3>
                                 <p>Category: <Link to='#' >{book.genres.genre_name}</Link></p>
-                                <button className='add-to-bookClubBtn'>Add to Bookclub</button>
+                                <button
+                                    onClick={openModal} 
+                                    
+                                    className='add-to-bookClubBtn'>Add to Bookclub</button>
                             </article>
+                            <dialog className={`addToBookclub-modal ${isModalOpen ? 'show' : ''}`} ref={modalRef}>
+                                <BookclubSearchbar
+                                    setBookclubSearchResults={setBookclubSearchResults}
+                                    setShowSearchResults={setShowSearchResults} 
+                                    showSearchResults={showSearchResults}
+                                    ></BookclubSearchbar>
+
+                            {showSearchResults ? <BookclubSearchResults 
+                                    setShowSearchResults={setShowSearchResults} 
+                                    sortedSearchResults={sortedSearchResults}></BookclubSearchResults> : '' }
+                               
+                                
+                                <div className="button-wrapper">
+                                    <button onClick={closeModal}>Cancel</button>
+                                </div>
+
+                            </dialog>
                         </div>
                     </div>
-                    {/* <p>{`https://covers.openlibrary.org/b/isbn/${book.ISBN_Identifiers[1]['identifier']}-L.jpg`}</p> */}
-                    {/* <img src={`https://covers.openlibrary.org/b/isbn/${book.ISBN_Identifiers[1]['identifier']}-L.jpg`} alt="" /> */}
-                    {/* <button onClick={() => setShowBookshelfForm(prev => !prev)}>Add to Bookshelf</button> */}
                     
                     <div className="main-content">
                         <div className="book-description">

@@ -90,6 +90,44 @@ class SearchDataConsumer(WebsocketConsumer):
             }
         }))
 
+
+class BookclubSearchConsumer(WebsocketConsumer):
+    def connect(self):
+        self.group_name = 'get_bookclub_query'
+        self.search_term = unquote(self.scope['url_route']['kwargs']['searchTerm'])
+        print('search term:', self.search_term)
+
+        async_to_sync(self.channel_layer.group_add)(
+            self.group_name,
+            self.channel_name
+        )
+
+        self.accept()
+
+        self.get_bookclub_query()
+
+    def disconnect(self, close_code):
+
+        async_to_sync(self.channel_layer.group_discard)(
+            self.group_name,
+            self.channel_name
+        )
+
+    def get_search_query(self):
+
+
+        bookclub_results = Bookclub.objects.filter(name__icontains=self.search_term)
+
+        bookclub_serializer = BookclubSerializer(bookclub_results, many=True, fields=['bookclub_id', 'name'])
+
+        self.send(text_data=json.dumps({
+            'type': 'get_bookclub_query',
+            'search_results': {
+ 
+                'bookclub_results': bookclub_serializer.data
+            }
+        }))
+
 class BookDataConsumer(WebsocketConsumer):
     def connect(self):
         self.group_name = 'get_book_data'
