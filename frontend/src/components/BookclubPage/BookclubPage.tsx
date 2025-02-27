@@ -1,7 +1,7 @@
 import './BookclubPage.css'
 import {useState, useEffect, useRef} from 'react'
 import {useParams } from 'react-router-dom'
-import { Bookclub, ActiveUser} from '../../types'
+import { Bookclub } from '../../types'
 import { userData } from '../../components/common/UserContext'
 import { SearchIcon, ArrowLeftIcon } from '../common/Icons'
 import { v4 as uuidv4 } from 'uuid'
@@ -14,6 +14,7 @@ const BookclubPage : React.FC = () => {
 
     const { userBookclubs } = userData()
     const [activeTab, setActiveTab] = useState(0)
+    const [activePanel, setActivePanel] = useState(false)
     const tabContents = ['Discussion', 'Bookshelves', 'Current Read']
 
     const modalRef = useRef<HTMLDialogElement>(null)
@@ -114,10 +115,10 @@ const BookclubPage : React.FC = () => {
         } catch(err) {
             console.error('Error connecting to backend for bookshelf creation:', err)
         }
+    }
 
-        
-
-
+    const toggleAccordion = () => {
+        setActivePanel(prev => !prev)
 
     }
 
@@ -182,13 +183,14 @@ const BookclubPage : React.FC = () => {
                                         
                                     </dialog>
                                     <div className="bookshelf-list"> 
-                                        <div className="accordion">
-                                            <div className="accordion-panel">
+                                        <div className="accordion" >
+                                            <div className="accordion-panel" >
                                                 <h2 id='panel1-heading'>
                                                     <button
                                                         className='accordion-trigger'
                                                         aria-controls='panel1-content'
-                                                        aria-expanded='true' 
+                                                        aria-expanded={activePanel}
+                                                        onClick={toggleAccordion} 
                                                     >
                                                         <span id='panel1-title'>{bookclub?.bookshelves[0].name}</span>
                                                         <div className="accordion-icon">
@@ -203,9 +205,7 @@ const BookclubPage : React.FC = () => {
                                                     aria-hidden='true'
                                                     role='region'>
                                                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut soluta asperiores impedit et molestias voluptates culpa maxime nulla officia expedita numquam, reiciendis quae minima quaerat debitis quia cupiditate eveniet nesciunt.</p>
-
-
-                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
