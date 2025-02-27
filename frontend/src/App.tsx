@@ -22,6 +22,7 @@ function App() {
       <Routes>
             <Route path='/' element={<Homepage />} />
             <Route path='/book/:id' element={<Bookpage />} />
+            <Route path='/author/:id'></Route>
             <Route path='/login' element={<Login />}></Route>
             <Route element={<AuthRequired />}>
                 <Route path='/userDashboard' element={<ErrorBoundary><UserDashboard 

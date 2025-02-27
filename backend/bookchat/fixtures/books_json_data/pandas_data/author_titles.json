@@ -1,0 +1,27 @@
+[
+    
+    {
+        "model": "bookchat.book",
+        "title_id": "0847e0bc-90ff-4bf7-94a6-b2c622351db5",
+        "fields": {
+            "ISBN_Identifiers": [
+                {
+                    "type": "ISBN_13",
+                    "identifier": "9781101199831"
+                },
+                {
+                    "type": "ISBN_10",
+                    "identifier": "1101199830"
+                }
+            ],
+            "description": "Set partly in America, which Dickens had visited in 1842, the novel includes a searing satire on the United States. Martin Chuzzlewit is the story of two Chuzzlewits, Martin and Jonas, who have inherited the characteristic Chuzzlewit selfishness. It contrasts their diverse fates of moral redemption and worldly success for one, with increasingly desperate crime for the other. This powerful black comedy involves hypocrisy, greed and blackmail, as well as the most famous of Dickens's grotesques, Mrs Gamp. In her introduction to this new Penguin Classics edition, Patricia Ingham discusses how, in writing a story that was only meant to 'recommend goodness and innocence', Dickens succeeded in exploring 'the intertwining of moral sensibility and brutality.'",
+            "imageLinks": {
+                "smallThumbnail": "http://books.google.com/books/content?id=f4uDt8UTgHwC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+                "thumbnail": "http://books.google.com/books/content?id=f4uDt8UTgHwC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+            },
+            "pageCount": 868,
+            "publisher": "Penguin",
+            "title": "Martin Chuzzlewit"
+        }
+    }
+]

@@ -3,7 +3,7 @@ import {useState, useEffect, useRef} from 'react'
 import {useParams } from 'react-router-dom'
 import { Bookclub, ActiveUser} from '../../types'
 import { userData } from '../../components/common/UserContext'
-import { SearchIcon } from '../common/Icons'
+import { SearchIcon, ArrowLeftIcon } from '../common/Icons'
 import { v4 as uuidv4 } from 'uuid'
 import BookclubBackground from './assets/bookclub-background.jpg'
 import Tabs from '../common/Tabs/Tabs'
@@ -27,6 +27,7 @@ const BookclubPage : React.FC = () => {
         })
     }, [userBookclubs])
     const [bookclub, setBookclub] = useState<Bookclub | null>(null)
+    
 
     useEffect(() => {
 
@@ -181,6 +182,32 @@ const BookclubPage : React.FC = () => {
                                         
                                     </dialog>
                                     <div className="bookshelf-list"> 
+                                        <div className="accordion">
+                                            <div className="accordion-panel">
+                                                <h2 id='panel1-heading'>
+                                                    <button
+                                                        className='accordion-trigger'
+                                                        aria-controls='panel1-content'
+                                                        aria-expanded='true' 
+                                                    >
+                                                        <span id='panel1-title'>{bookclub?.bookshelves[0].name}</span>
+                                                        <div className="accordion-icon">
+                                                            <ArrowLeftIcon></ArrowLeftIcon>
+                                                        </div>
+                                                    </button>
+                                                </h2>
+                                                <div 
+                                                    className='accordion-content' 
+                                                    id='panel1-content'
+                                                    aria-labelledby='panel1-heading'
+                                                    aria-hidden='true'
+                                                    role='region'>
+                                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut soluta asperiores impedit et molestias voluptates culpa maxime nulla officia expedita numquam, reiciendis quae minima quaerat debitis quia cupiditate eveniet nesciunt.</p>
+
+
+                                                    </div>
+                                            </div>
+                                        </div>
                                     </div>
 
                                 </div>

@@ -204,6 +204,42 @@
 
 }
 
+.bookshelf-list {
+    border: 5px solid green;
+    padding-inline: 1rem;
+}
+
+.accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.accordion-panel {
+    position: relative;
+}
+
+.accordion-trigger {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.accordion-icon {
+    width: 1.5rem;
+    aspect-ratio: 1 / 1;
+    background-color: orange;
+    color: white;
+    /* border-radius: 50%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
 
 
 
