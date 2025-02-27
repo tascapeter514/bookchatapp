@@ -15,6 +15,7 @@ const BookclubPage : React.FC = () => {
     const { userBookclubs } = userData()
     const [activeTab, setActiveTab] = useState(0)
     const [activePanel, setActivePanel] = useState(false)
+    const [isRotated, setIsRotated] = useState(false)
     const tabContents = ['Discussion', 'Bookshelves', 'Current Read']
 
     const modalRef = useRef<HTMLDialogElement>(null)
@@ -119,6 +120,7 @@ const BookclubPage : React.FC = () => {
 
     const toggleAccordion = () => {
         setActivePanel(prev => !prev)
+        setIsRotated(prev => !prev)
 
     }
 
@@ -190,11 +192,11 @@ const BookclubPage : React.FC = () => {
                                                         className='accordion-trigger'
                                                         aria-controls='panel1-content'
                                                         aria-expanded={activePanel}
-                                                        onClick={toggleAccordion} 
+                                                         
                                                     >
                                                         <span id='panel1-title'>{bookclub?.bookshelves[0].name}</span>
-                                                        <div className="accordion-icon">
-                                                            <ArrowLeftIcon></ArrowLeftIcon>
+                                                        <div className="accordion-icon" onClick={toggleAccordion}>
+                                                            <ArrowLeftIcon isRotated={isRotated}></ArrowLeftIcon>
                                                         </div>
                                                     </button>
                                                 </h2>
