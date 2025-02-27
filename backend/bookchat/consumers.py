@@ -113,7 +113,7 @@ class BookclubSearchConsumer(WebsocketConsumer):
             self.channel_name
         )
 
-    def get_search_query(self):
+    def get_bookclub_query(self):
 
 
         bookclub_results = Bookclub.objects.filter(name__icontains=self.search_term)
