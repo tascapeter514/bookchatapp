@@ -31,13 +31,7 @@ const Bookpage: React.FC = () => {
     const [userBookShelves, setUserBookShelves] = useState<Bookshelf[]>([])
     const modalRef = useRef<HTMLDialogElement>(null)
 
-    const searchResults: SearchResultsArray = [
-        {type: 'bookclub', items: bookclubSearchResults}
-      ]
-    
-      const sortedSearchResults = searchResults.sort((a, b) => {
-        return (a.items?.length || 0) - (b.items?.length || 0)
-      })
+   
 
     
     useEffect(() => {
@@ -171,7 +165,7 @@ const Bookpage: React.FC = () => {
 
                             {showSearchResults ? <BookclubSearchResults 
                                     setShowSearchResults={setShowSearchResults} 
-                                    sortedSearchResults={sortedSearchResults}></BookclubSearchResults> : '' }
+                                    bookclubSearchResults={bookclubSearchResults}></BookclubSearchResults> : '' }
                                
                                 
                                 <div className="button-wrapper">

@@ -27,7 +27,7 @@ const BookclubSearchbar: FC<BookclubSearchbarProps> = ({setBookclubSearchResults
 
             socket.onmessage = (event) => {
                 const data = JSON.parse(event.data);
-                if (data.type === 'get_search_query') {
+                if (data.type === 'get_bookclub_query') {
                     console.log('web socket search query:', data)
                     setBookclubSearchResults(data.search_results.bookclub_results)
                     setShowSearchResults(true)
