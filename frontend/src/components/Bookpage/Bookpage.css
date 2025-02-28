@@ -103,16 +103,53 @@
     background-color: white;
     border-radius: 3px;
     border: 2px solid black;
-    position: absolute;
     margin: auto;
-    
+    width: 100%;
+    max-width: 764px;
+   
 }
 
 .addToBookclub-modal.show {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+}
 
+.addToBookclub-modal.show > h3 {
+    text-align: center;
+    font-size: 1.25rem;
+}
+
+.addToBookclub-modal.show button {
+    width: 100%;
+    max-width: 81px;
+}
+
+.bookclub-results-content {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid red;
+    justify-content: space-between;
+    width: 100%;
+
+}
+
+.suggested-search-results {
+    padding: .25em;
+
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+
+.bookclub-bookshelves {
+    border: 1px solid blue;
+    background-color: lightgrey;
+    width: 100%;
+    max-width: 284px;
 }
 
 

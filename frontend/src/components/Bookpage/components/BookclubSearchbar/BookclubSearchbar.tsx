@@ -1,25 +1,25 @@
 import './BookclubSearchbar.css'
-import {FC, useState, useEffect, Dispatch, SetStateAction} from 'react'
+import {FC, useEffect, Dispatch, SetStateAction} from 'react'
 import { Bookclub } from '../../../../types'
 import { SearchIcon } from '../../../common/Icons'
-import { useDebounce } from '../../../Searchbar/Searchbar'
 
 interface BookclubSearchbarProps {
     setBookclubSearchResults: Dispatch<SetStateAction<Bookclub[]>>,
-    setShowSearchResults: Dispatch<SetStateAction<boolean>>,
-    showSearchResults: boolean
+    setSearchValue: Dispatch<SetStateAction<string>>,
+    isModalOpen: boolean,
+    searchValue: string
 
 }
 
 
-const BookclubSearchbar: FC<BookclubSearchbarProps> = ({setBookclubSearchResults, setShowSearchResults, showSearchResults}) => {
-    const [searchValue, setSearchValue] = useState('')
-    const debouncedSearchValue = useDebounce(searchValue, 500)
+const BookclubSearchbar: FC<BookclubSearchbarProps> = ({setBookclubSearchResults, isModalOpen, setSearchValue, searchValue }) => {
+    
 
 
-    const fetchSearchData = (value: string) => {
-        const encodedValue = encodeURIComponent(value)
-        const path = encodeURI(`ws://localhost:8000/ws/bookclubsearch/${encodedValue}/`)
+    const fetchBookclubData = () => {
+        console.log('bookclub websocket check')
+
+        const path = `ws://localhost:8000/ws/search/bookclubs/all`
 
         try {
 
@@ -30,7 +30,7 @@ const BookclubSearchbar: FC<BookclubSearchbarProps> = ({setBookclubSearchResults
                 if (data.type === 'get_bookclub_query') {
                     console.log('web socket search query:', data)
                     setBookclubSearchResults(data.search_results.bookclub_results)
-                    setShowSearchResults(true)
+                
                 }
             }
 
@@ -49,21 +49,29 @@ const BookclubSearchbar: FC<BookclubSearchbarProps> = ({setBookclubSearchResults
         
     }
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        if (debouncedSearchValue) {
-            fetchSearchData(debouncedSearchValue)
-        } else {
-            setShowSearchResults(false)
-        }
+    //     if (debouncedSearchValue) {
+    //         fetchSearchData(debouncedSearchValue)
+    //     }
 
-    }, [debouncedSearchValue ])
+    // }, [debouncedSearchValue ])
 
     useEffect(() => {
-        if (!showSearchResults) {
-            setSearchValue('')
-        }
-    }, [showSearchResults])
+
+        console.log('open modal hook check')
+        console.log('is modal open:', isModalOpen)
+
+        fetchBookclubData()
+
+        // if (isModalOpen) {
+        //     fetchBookclubData()
+        // }
+
+        // if (!isModalOpen) {
+        //     setSearchValue('')
+        // }
+    }, [isModalOpen])
 
     return(
         <div className="bookclub-input-wrapper">
@@ -71,7 +79,7 @@ const BookclubSearchbar: FC<BookclubSearchbarProps> = ({setBookclubSearchResults
                     name='bookclubName'
                     placeholder='Enter a Bookclub Name' 
                     value={searchValue} 
-                    onChange={(e) => setSearchValue(e.target.value)}
+                    // onChange={(e) => setSearchValue(e.target.value)}
                     required />
                 <SearchIcon className='search-icon'/>
 

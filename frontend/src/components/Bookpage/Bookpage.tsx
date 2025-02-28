@@ -24,8 +24,8 @@ const Bookpage: React.FC = () => {
     const [book, setBook] = useState<Book | null>(null);
     const [authors, setAuthors] = useState<Author[] | null>(null)
     const [isModalOpen, setIsModalOpen] = useState(false)
+    const [searchValue, setSearchValue] = useState('')
     const [bookclubSearchResults, setBookclubSearchResults] = useState<Bookclub[]>([])
-    const [showSearchResults, setShowSearchResults] = useState(false)
     const { activeUser } = userData()
     const [showBookshelfForm, setShowBookshelfForm] = useState(false)
     const [userBookShelves, setUserBookShelves] = useState<Bookshelf[]>([])
@@ -157,19 +157,26 @@ const Bookpage: React.FC = () => {
                                     className='add-to-bookClubBtn'>Add to Bookclub</button>
                             </article>
                             <dialog className={`addToBookclub-modal ${isModalOpen ? 'show' : ''}`} ref={modalRef}>
-                                <BookclubSearchbar
-                                    setBookclubSearchResults={setBookclubSearchResults}
-                                    setShowSearchResults={setShowSearchResults} 
-                                    showSearchResults={showSearchResults}
-                                    ></BookclubSearchbar>
-
-                            {showSearchResults ? <BookclubSearchResults 
-                                    setShowSearchResults={setShowSearchResults} 
-                                    bookclubSearchResults={bookclubSearchResults}></BookclubSearchResults> : '' }
+                                <h3>Add this book to your bookclub</h3>
+                                    <main className="bookclub-results-content">
+                                        <div className="suggested-search-results">
+                                            <BookclubSearchbar
+                                            setBookclubSearchResults={setBookclubSearchResults}
+                                            setSearchValue={setSearchValue}
+                                            searchValue={searchValue}
+                                            isModalOpen={isModalOpen}
+                                            ></BookclubSearchbar>
+                                            <h3>Suggested</h3>
+                                            <BookclubSearchResults
+                                            bookclubSearchResults={bookclubSearchResults}></BookclubSearchResults>
+                                        </div>
+                                        <aside className='bookclub-bookshelves'>Testing</aside>
+                                    </main>
                                
                                 
                                 <div className="button-wrapper">
                                     <button onClick={closeModal}>Cancel</button>
+                                    <button>Add</button>
                                 </div>
 
                             </dialog>

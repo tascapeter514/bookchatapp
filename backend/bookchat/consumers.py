@@ -94,8 +94,6 @@ class SearchDataConsumer(WebsocketConsumer):
 class BookclubSearchConsumer(WebsocketConsumer):
     def connect(self):
         self.group_name = 'get_bookclub_query'
-        self.search_term = unquote(self.scope['url_route']['kwargs']['searchTerm'])
-        print('search term:', self.search_term)
 
         async_to_sync(self.channel_layer.group_add)(
             self.group_name,
@@ -115,10 +113,12 @@ class BookclubSearchConsumer(WebsocketConsumer):
 
     def get_bookclub_query(self):
 
+        print('get bookclub check')
 
-        bookclub_results = Bookclub.objects.filter(name__icontains=self.search_term)
 
-        bookclub_serializer = BookclubSerializer(bookclub_results, many=True, fields=['bookclub_id', 'name'])
+        bookclub_results = Bookclub.objects.all()
+
+        bookclub_serializer = BookclubSerializer(bookclub_results, many=True, fields=['bookclub_id', 'name', 'bookshelves'])
 
         self.send(text_data=json.dumps({
             'type': 'get_bookclub_query',
