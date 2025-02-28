@@ -18,12 +18,32 @@
 }
 
 .bookclub-result-input {
-    display: block;
+    display: inline-block;
     margin-bottom: 0;
     max-width: 18px;
     cursor: pointer;
     appearance: none;
     height: 18px;
+    position: relative;
+    background-color: white;
+}
+
+/* Style when the radio button is checked */
+.bookclub-result-input:checked {
+    background-color: orange;
+    /* border: 2px solid black; */
+}
+
+/* Create a visible inner dot when checked */
+.bookclub-result-input:checked::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 

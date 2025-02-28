@@ -6,6 +6,7 @@ import { BsBookmarkPlus } from "react-icons/bs"
 import  BookclubSearchbar  from './components/BookclubSearchbar/BookclubSearchbar'
 import BookclubSearchResults from './components/BookclubSearchbar/BookclubSearchResults'
 import './Bookpage.css'
+import { UUIDTypes } from 'uuid'
 
 
 type IconProps = React.ComponentPropsWithoutRef<'svg'>
@@ -129,6 +130,11 @@ const Bookpage: React.FC = () => {
         modalRef.current?.close()
     }
 
+    const showBookshelves = (bookclub_id: string) => {
+        console.log('bookclub id check:', bookclub_id)
+        
+    }
+
 
     
     return(
@@ -169,9 +175,10 @@ const Bookpage: React.FC = () => {
                                             ></BookclubSearchbar>
                                             <h3>Suggested</h3>
                                             <BookclubSearchResults
+                                            showBookshelves={showBookshelves}
                                             bookclubSearchResults={bookclubSearchResults}></BookclubSearchResults>
                                         </div>
-                                        <aside className='bookclub-bookshelves'>Testing</aside>
+                                        <aside className='bookclub-bookshelves'></aside>
                                     </main>
                                
                                 

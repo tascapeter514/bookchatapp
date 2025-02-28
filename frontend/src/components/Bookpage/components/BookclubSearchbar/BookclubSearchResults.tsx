@@ -1,15 +1,23 @@
 import './BookclubSearchResults.css'
-import { FC } from 'react'
+import { FC, useState } from 'react'
 // import { Link } from 'react-router-dom'
 import { Bookclub } from '../../../../types'
 
 
 interface BookclubSearchResultProps {
     bookclubSearchResults: Bookclub[],
+    showBookshelves: (bookclubId: string) => void,
 }
 
 
-const BookclubSearchResults: FC<BookclubSearchResultProps> = ({bookclubSearchResults}) => {
+const BookclubSearchResults: FC<BookclubSearchResultProps> = ({bookclubSearchResults, showBookshelves}) => {
+
+    const [selectedBookclub, setSelectedBookclub] = useState<string | null>(null)
+
+    const handleSelection = (bookclubId: string) => {
+        setSelectedBookclub(bookclubId)
+        showBookshelves(bookclubId)
+    }
 
     const searchResultElements = bookclubSearchResults.map((searchResultElement: Bookclub, index) => {
 
@@ -21,11 +29,15 @@ const BookclubSearchResults: FC<BookclubSearchResultProps> = ({bookclubSearchRes
         return (
             <li key={index} >
 
-                {/* <Link to='#'><span>{searchResultElement.name}</span></Link> */}
-                {/* <input type= "checkbox" >{searchResultElement.name}</input> */}
                 <div className='bookclub-result-wrapper'>
                     <label htmlFor={searchResultElement.name}>{searchResultElement.name}</label>
-                    <input type="radio" className='bookclub-result-input'/>
+                    <input 
+                        type="radio" 
+                        className='bookclub-result-input' 
+                        id={searchResultElement.name}
+                        name='bookclubGroup'
+                        checked={selectedBookclub === searchResultElement.bookclub_id} 
+                        onChange={() => handleSelection(searchResultElement.bookclub_id)}/>
                     
                 </div>
                 
