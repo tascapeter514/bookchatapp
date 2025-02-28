@@ -27,6 +27,7 @@ const Bookpage: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [searchValue, setSearchValue] = useState('')
     const [bookclubSearchResults, setBookclubSearchResults] = useState<Bookclub[]>([])
+    const [currentBookclub, setCurrentBookclub] = useState<Bookclub | null>(null)
     const { activeUser } = userData()
     const [showBookshelfForm, setShowBookshelfForm] = useState(false)
     const [userBookShelves, setUserBookShelves] = useState<Bookshelf[]>([])
@@ -132,7 +133,9 @@ const Bookpage: React.FC = () => {
 
     const showBookshelves = (bookclub_id: string) => {
         console.log('bookclub id check:', bookclub_id)
-        
+        const selectedBookclub = bookclubSearchResults.find((bookclub: Bookclub) => bookclub.bookclub_id === bookclub_id) || null
+        console.log('selected bookclub:', selectedBookclub)
+        setCurrentBookclub(selectedBookclub)
     }
 
 
@@ -178,7 +181,21 @@ const Bookpage: React.FC = () => {
                                             showBookshelves={showBookshelves}
                                             bookclubSearchResults={bookclubSearchResults}></BookclubSearchResults>
                                         </div>
-                                        <aside className='bookclub-bookshelves'></aside>
+                                        <aside className='bookclub-bookshelves'>
+                                            {currentBookclub  ? 
+                                                currentBookclub.bookshelves.length > 0 ? (
+                                                    currentBookclub.bookshelves.map((bookshelf, index) => {
+                                                    
+                                                        {return <li key={index}>{bookshelf.name}</li> }
+                                                    })
+                                                ) : (<span>No bookshelves for this bookclub</span>)
+                                                
+
+                                                
+                                            
+                                            
+                                                : 'No Bookclub Selected'}
+                                        </aside>
                                     </main>
                                
                                 
