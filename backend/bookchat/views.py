@@ -38,7 +38,6 @@ def get_bookclub(request, **kwargs):
 @api_view(['POST'])
 def add_bookclub_bookshelf(request):
 
-
     bookshelf_data = json.loads(request.body)
     bookshelf_id = bookshelf_data['bookshelf_id']
     bookshelf_name = bookshelf_data['name']
@@ -48,10 +47,12 @@ def add_bookclub_bookshelf(request):
     bookclub = Bookclub.objects.get(bookclub_id=bookclub_id)
     bookclub.bookshelves.add(new_bookshelf)
     print('bookclub:', bookclub.bookshelves)
-    
-    
-
     return Response({'message:' 'Success! You reached the backend.'})
+
+@api_view(['PUT'])
+def add_book_to_bookclub(request):
+
+    
 
 
 

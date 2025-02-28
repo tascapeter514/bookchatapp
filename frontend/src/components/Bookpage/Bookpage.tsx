@@ -72,17 +72,14 @@ const Bookpage: React.FC = () => {
 
 
 
-    function addToBookshelf(formData: FormData) {
-        console.log('form data:', formData)
-        const bookshelf_id = formData.get('bookshelfRadio')
-        console.log('bookshelf id:', bookshelf_id)
+    function addToBookshelf(currentBookshelf: Bookshelf) {
+        
 
         const bookshelfRequest = {
-            title_id: book?.title_id,
-
+            book_id: book?.title_id
         } 
         try {
-            fetch(`http://localhost:8000/api/bookshelf/${bookshelf_id}/`, {
+            fetch(`http://localhost:8000/api/bookshelf/addBook/${currentBookshelf.bookshelf_id}/`, {
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'
@@ -182,7 +179,7 @@ const Bookpage: React.FC = () => {
                                 
                                 <div className="button-wrapper">
                                     <button onClick={closeModal}>Cancel</button>
-                                    <button>Add</button>
+                                    <button onClick={() => addToBookshelf(currentBookshelf)}>Add</button>
                                 </div>
 
                             </dialog>

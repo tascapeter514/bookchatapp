@@ -35,6 +35,7 @@ urlpatterns = [
      path('api/search/<str:searchTerm>', get_search_query, name='get_search_query'),
      path('api/bookclub/<uuid:id>', get_bookclub, name='get_bookclub'),
      path('api/bookclub/addBookshelf', add_bookclub_bookshelf, name='add_bookshelf'),
+     path('api/bookclub/addBook/<uuid:id>', add_book_to_bookclub, name='add_book_to_bookclub'),
      path('', include(router.urls))
 ]
 
