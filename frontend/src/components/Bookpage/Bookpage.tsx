@@ -158,6 +158,7 @@ const Bookpage: React.FC = () => {
                             </article>
                             <dialog className={`addToBookclub-modal ${isModalOpen ? 'show' : ''}`} ref={modalRef}>
                                 <h3>Add this book to your bookclub</h3>
+                                <hr />
                                     <main className="bookclub-results-content">
                                         <div className="suggested-search-results">
                                             <BookclubSearchbar
