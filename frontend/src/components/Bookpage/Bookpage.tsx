@@ -6,7 +6,7 @@ import { BsBookmarkPlus } from "react-icons/bs"
 import  BookclubSearchbar  from './components/BookclubSearchbar/BookclubSearchbar'
 import BookclubSearchResults from './components/BookclubSearchbar/BookclubSearchResults'
 import './Bookpage.css'
-import { UUIDTypes } from 'uuid'
+
 
 
 type IconProps = React.ComponentPropsWithoutRef<'svg'>
@@ -28,9 +28,8 @@ const Bookpage: React.FC = () => {
     const [searchValue, setSearchValue] = useState('')
     const [bookclubSearchResults, setBookclubSearchResults] = useState<Bookclub[]>([])
     const [currentBookclub, setCurrentBookclub] = useState<Bookclub | null>(null)
+    const [currentBookshelf, setCurrentBookshelf] = useState<Bookshelf | null>(null)
     const { activeUser } = userData()
-    const [showBookshelfForm, setShowBookshelfForm] = useState(false)
-    const [userBookShelves, setUserBookShelves] = useState<Bookshelf[]>([])
     const modalRef = useRef<HTMLDialogElement>(null)
 
    
@@ -69,28 +68,7 @@ const Bookpage: React.FC = () => {
 
     }, [params.id])
 
-    // useEffect(() => {
-    //     fetch(`http://localhost:8000/book/${params.id}`)
-    //     .then(res => res.json())
-    //     .then(data => setBook(data))
-    // }, [])
 
-    // useEffect(() => {
-    //     fetch(`http://localhost:8000/api/bookshelf/?user=${activeUser.id}`)
-    //     .then(res => res.json())
-    //     .then(data => setUserBookShelves(data))
-    //     .catch(err => console.log('There was an error retrieving your bookshelf:', err))
-    // }, [])
-
-
-
-    const bookshelfRadioBtns = userBookShelves.map((userBookshelf: Bookshelf) => {
-        return(
-            <li key={userBookshelf.bookshelf_id}>
-                <label>{userBookshelf.name}<input name='bookshelfRadio' type="radio" value={userBookshelf.bookshelf_id} id='bookshelfRadio' /></label>
-            </li>
-        )
-    })
 
 
 
@@ -185,15 +163,18 @@ const Bookpage: React.FC = () => {
                                             {currentBookclub  ? 
                                                 currentBookclub.bookshelves.length > 0 ? (
                                                     currentBookclub.bookshelves.map((bookshelf, index) => {
-                                                    
-                                                        {return <li key={index}>{bookshelf.name}</li> }
+                                                        {return <li key={index} className='bookshelf-result'>
+                                                            <label htmlFor={bookshelf.name}>{bookshelf.name}</label>
+                                                            <input 
+                                                                type="radio" 
+                                                                className='bookshelf-input' 
+                                                                id={bookshelf.name}
+                                                                name='bookshelfGroup'
+                                                                checked={currentBookshelf?.bookshelf_id === bookshelf.bookshelf_id} 
+                                                                onClick={() => setCurrentBookshelf(bookshelf)}/>
+                                                        </li> }
                                                     })
                                                 ) : (<span>No bookshelves for this bookclub</span>)
-                                                
-
-                                                
-                                            
-                                            
                                                 : 'No Bookclub Selected'}
                                         </aside>
                                     </main>

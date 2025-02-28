@@ -49,13 +49,7 @@ const BookclubSearchbar: FC<BookclubSearchbarProps> = ({setBookclubSearchResults
         
     }
 
-    // useEffect(() => {
 
-    //     if (debouncedSearchValue) {
-    //         fetchSearchData(debouncedSearchValue)
-    //     }
-
-    // }, [debouncedSearchValue ])
 
     useEffect(() => {
 
@@ -64,13 +58,6 @@ const BookclubSearchbar: FC<BookclubSearchbarProps> = ({setBookclubSearchResults
 
         fetchBookclubData()
 
-        // if (isModalOpen) {
-        //     fetchBookclubData()
-        // }
-
-        // if (!isModalOpen) {
-        //     setSearchValue('')
-        // }
     }, [isModalOpen])
 
     return(
