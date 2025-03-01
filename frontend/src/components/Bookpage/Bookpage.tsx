@@ -1,7 +1,6 @@
 import {useState, useEffect, FC, useRef} from 'react'
 import {useParams, Link } from 'react-router-dom'
-import { userData } from '../common/UserContext'
-import { Book, ISBN_Identifier, Bookshelf, ActiveUser, Author, Bookclub, SearchResultsArray } from '../../types'
+import { Book, ISBN_Identifier, Bookshelf, Author, Bookclub } from '../../types'
 import { BsBookmarkPlus } from "react-icons/bs"
 import  BookclubSearchbar  from './components/BookclubSearchbar/BookclubSearchbar'
 import BookclubSearchResults from './components/BookclubSearchbar/BookclubSearchResults'
@@ -29,7 +28,6 @@ const Bookpage: React.FC = () => {
     const [bookclubSearchResults, setBookclubSearchResults] = useState<Bookclub[]>([])
     const [currentBookclub, setCurrentBookclub] = useState<Bookclub | null>(null)
     const [currentBookshelf, setCurrentBookshelf] = useState<Bookshelf | null>(null)
-    const { activeUser } = userData()
     const modalRef = useRef<HTMLDialogElement>(null)
 
    
@@ -72,15 +70,15 @@ const Bookpage: React.FC = () => {
 
 
 
-    function addToBookshelf(currentBookshelf: Bookshelf) {
+    function addToBookshelf(currentBookshelf: Bookshelf): void {
         
 
         const bookshelfRequest = {
             book_id: book?.title_id
         } 
         try {
-            fetch(`http://localhost:8000/api/bookshelf/addBook/${currentBookshelf.bookshelf_id}/`, {
-                method: 'PATCH',
+            fetch(`http://localhost:8000/api/bookclub/addBook/${currentBookshelf.bookshelf_id}`, {
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -179,7 +177,7 @@ const Bookpage: React.FC = () => {
                                 
                                 <div className="button-wrapper">
                                     <button onClick={closeModal}>Cancel</button>
-                                    <button onClick={() => addToBookshelf(currentBookshelf)}>Add</button>
+                                    <button onClick={() => currentBookshelf && addToBookshelf(currentBookshelf)}>Add</button>
                                 </div>
 
                             </dialog>
@@ -194,15 +192,22 @@ const Bookpage: React.FC = () => {
                            
                         </div>
                         <div className="author-product-container">
-                            <aside className='author-details'>
+
+                            {authors && authors.length > 0 &&  
+
+                                <aside className='author-details'>
                                 <hr />
                                 <h3>About {authors[0].name}</h3>
                                 <p className='author-text-container'>
                                     <p>{authors[0].bio}</p><span className="author-link">... <Link to='#'>More about { authors[0].name } </Link></span>
                                 </p>
+                                </aside>
+                            }
 
 
-                            </aside>
+
+
+                            
                             <aside className="product-details-wrapper">
                                 <hr />
                                 <h3>Product Details</h3>

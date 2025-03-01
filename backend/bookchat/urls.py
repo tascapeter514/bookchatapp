@@ -17,7 +17,7 @@ Including another URLconf
 
 from rest_framework import routers
 from .api import BestsellerViewSet, BookViewSet, InvitationAPI
-from .views import get_member_bookclubs, get_search_query, get_bookclub, add_bookclub_bookshelf
+from .views import *
 from django.urls import path, include
 
 

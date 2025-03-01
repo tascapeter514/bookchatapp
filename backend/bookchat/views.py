@@ -50,9 +50,16 @@ def add_bookclub_bookshelf(request):
     return Response({'message:' 'Success! You reached the backend.'})
 
 @api_view(['PUT'])
-def add_book_to_bookclub(request):
+def add_book_to_bookclub(request, **kwargs):
+    print('put check')
+    bookshelf_id = kwargs['id']
+    book_id = json.loads(request.body)
+    print('ids:', bookshelf_id, book_id)
 
-    
+
+    return Response({'message:' 'Your request to add a book to your bookclub has reached the backend!'})
+
+
 
 
 

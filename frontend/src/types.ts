@@ -36,6 +36,7 @@ export interface ActiveUser {
 export type Author = {
     name: string,
     author_id: string,
+    bio: string
 }
 
 export interface Bookshelf {
@@ -67,7 +68,7 @@ export interface Book {
     ratingsCount: number,
     imageLinks: {smallThumbnail?: string, thumbnail?: string},
     pageCount: number,
-    genres: number[],
+    genres: {genre_id: number, genre_name: string},
     authors: Author[]
 }
 
