@@ -37,7 +37,7 @@ class Author(models.Model):
 class Bookshelf(models.Model):
     bookshelf_id = models.UUIDField(primary_key=True)
     name = models.CharField(max_length=300)
-    titles = models.ManyToManyField(Book, related_name='books')
+    titles = models.ManyToManyField(Book, related_name='bookshelves')
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='users', null=True, blank=True)
 
 class Bookclub(models.Model):

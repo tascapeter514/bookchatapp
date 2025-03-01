@@ -60,13 +60,15 @@ const BookclubSearchbar: FC<BookclubSearchbarProps> = ({setBookclubSearchResults
 
     }, [isModalOpen])
 
+
+    console.log('search value:', searchValue)
     return(
         <div className="bookclub-input-wrapper">
                 <input
                     name='bookclubName'
                     placeholder='Enter a Bookclub Name' 
                     value={searchValue} 
-                    // onChange={(e) => setSearchValue(e.target.value)}
+                    onChange={(e) => setSearchValue(e.target.value)}
                     required />
                 <SearchIcon className='search-icon'/>
 

@@ -70,14 +70,14 @@ const Bookpage: React.FC = () => {
 
 
 
-    function addToBookshelf(currentBookshelf: Bookshelf): void {
+    const addToBookshelf = async (currentBookshelf: Bookshelf): Promise<void> => {
         
 
         const bookshelfRequest = {
             book_id: book?.title_id
         } 
         try {
-            fetch(`http://localhost:8000/api/bookclub/addBook/${currentBookshelf.bookshelf_id}`, {
+            const response = await fetch(`http://localhost:8000/api/bookclub/addBook/${currentBookshelf.bookshelf_id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -85,9 +85,17 @@ const Bookpage: React.FC = () => {
                 body: JSON.stringify(bookshelfRequest)
             })
 
+            if (response.ok) {
+                const data = response.json()
+                console.log('add book to bookclub data:', data)
+            }
+            
+
         } catch(err) {
             console.error('Error adding book to bookshelf')
         }
+
+        closeModal()
     }
 
     // console.log('bookpage parameters:', params)
@@ -151,6 +159,7 @@ const Bookpage: React.FC = () => {
                                             ></BookclubSearchbar>
                                             <h3>Suggested</h3>
                                             <BookclubSearchResults
+                                            searchValue={searchValue}
                                             showBookshelves={showBookshelves}
                                             bookclubSearchResults={bookclubSearchResults}></BookclubSearchResults>
                                         </div>

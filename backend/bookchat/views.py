@@ -3,7 +3,7 @@ from .models import Author, Book, Bookclub, Bookshelf
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.contrib.auth.models import User
-from .serializers import BookclubSerializer
+from .serializers import BookclubSerializer, BookshelfSerializer
 from django.http import JsonResponse
 import json
 
@@ -51,13 +51,21 @@ def add_bookclub_bookshelf(request):
 
 @api_view(['PUT'])
 def add_book_to_bookclub(request, **kwargs):
-    print('put check')
+
     bookshelf_id = kwargs['id']
-    book_id = json.loads(request.body)
-    print('ids:', bookshelf_id, book_id)
+    book_id  = json.loads(request.body)['book_id']
+
+    current_book = Book.objects.get(title_id=book_id)
+    bookshelf = Bookshelf.objects.prefetch_related('titles').get(bookshelf_id=bookshelf_id)
+
+    bookshelf.titles.add(current_book)
+    bookshelf.save()
+
+    serializer = BookshelfSerializer(bookshelf)
+    
 
 
-    return Response({'message:' 'Your request to add a book to your bookclub has reached the backend!'})
+    return Response({bookshelf: serializer.data})
 
 
 

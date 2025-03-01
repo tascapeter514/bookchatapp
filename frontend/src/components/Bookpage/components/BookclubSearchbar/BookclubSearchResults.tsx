@@ -6,10 +6,11 @@ import { Bookclub } from '../../../../types'
 interface BookclubSearchResultProps {
     bookclubSearchResults: Bookclub[],
     showBookshelves: (bookclubId: string) => void,
+    searchValue: string
 }
 
 
-const BookclubSearchResults: FC<BookclubSearchResultProps> = ({bookclubSearchResults, showBookshelves}) => {
+const BookclubSearchResults: FC<BookclubSearchResultProps> = ({bookclubSearchResults, showBookshelves, searchValue}) => {
 
     const [selectedBookclub, setSelectedBookclub] = useState<string | null>(null)
 
@@ -18,7 +19,10 @@ const BookclubSearchResults: FC<BookclubSearchResultProps> = ({bookclubSearchRes
         showBookshelves(bookclubId)
     }
 
-    const searchResultElements = bookclubSearchResults.map((searchResultElement: Bookclub, index) => {
+    // const filteredBookclubResults = bookclubSearchResults.filter(bookclub => bookclub.name.toLowerCase().includes(searchValue))
+    // console.log('filtered search results:', filteredBookclubResults)
+
+    const searchResultElements = bookclubSearchResults.filter(bookclub => bookclub.name.toLowerCase().includes(searchValue)).map((searchResultElement: Bookclub, index) => {
 
 
         if (!searchResultElement) {
