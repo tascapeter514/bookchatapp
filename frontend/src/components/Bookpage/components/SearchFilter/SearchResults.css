@@ -1,4 +1,4 @@
-.bookclub-results-list {
+.search-results-list {
     display: flex;
     flex-direction: column;
     color: black;
@@ -9,7 +9,7 @@
     padding: .25em;
 }
 
-.bookclub-result-wrapper {
+.search-result-wrapper {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -17,7 +17,7 @@
     line-height: 2.5;
 }
 
-.bookclub-result-input {
+.search-result-input {
     display: inline-block;
     margin-bottom: 0;
     max-width: 18px;
@@ -29,13 +29,13 @@
 }
 
 /* Style when the radio button is checked */
-.bookclub-result-input:checked {
+.search-result-input:checked {
     background-color: orange;
     /* border: 2px solid black; */
 }
 
 /* Create a visible inner dot when checked */
-.bookclub-result-input:checked::before {
+.search-result-input:checked::before {
     content: "";
     width: 10px;
     height: 10px;
@@ -47,7 +47,7 @@
 }
 
 
-.bookclub-result-wrapper label {
+.search-result-wrapper label {
 
     width: 100%;
     margin-bottom: 0;

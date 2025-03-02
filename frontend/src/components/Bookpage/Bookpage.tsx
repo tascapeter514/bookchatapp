@@ -21,7 +21,7 @@ const Bookpage: React.FC = () => {
 
 
 
-    const {activeUser, userBookshelves, setUserBookshelves} = userData()
+    const {activeUser, userBookshelves} = userData()
     const params = useParams();
     const [book, setBook] = useState<Book | null>(null);
     const [authors, setAuthors] = useState<Author[] | null>(null)
@@ -31,7 +31,7 @@ const Bookpage: React.FC = () => {
     const [bookclubSearchResults, setBookclubSearchResults] = useState<Bookclub[]>([])
     const [currentBookclub, setCurrentBookclub] = useState<Bookclub | null>(null)
     const [currentBookshelf, setCurrentBookshelf] = useState<Bookshelf | null>(null)
-    const [currentUserBookshelf, setCurrentUserBookshelf] = useState<Bookshelf | null>(null)
+    const [selectedUserBookshelf, setSelectedUserBookshelf] = useState<string | null>(null)
     const [selectedBookclub, setSelectedBookclub] = useState<string | null>(null)
     
 
@@ -78,7 +78,6 @@ const Bookpage: React.FC = () => {
 
     const addToBookshelf = async (currentBookshelf: Bookshelf): Promise<void> => {
         
-
         const bookshelfRequest = {
             book_id: book?.title_id
         } 
@@ -102,6 +101,27 @@ const Bookpage: React.FC = () => {
         }
 
         closeBookclubModal()
+    }
+
+    const addToUserBookshelf = async (selectedUserBookshelf: string) : Promise<void> => {
+        try {
+
+            const response = await fetch(`http://localhost:8000/api/userBookshelf/addBook/${selectedUserBookshelf}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+                
+            })
+
+            if (response.ok) {
+                const data = response.json();
+                console.log('add to user bookshelf data:', data)
+            }
+
+        } catch(err) {
+            console.error('Error adding book to user bookshelf')
+        }
     }
 
     // console.log('bookpage parameters:', params)
@@ -140,6 +160,11 @@ const Bookpage: React.FC = () => {
         showBookshelves(bookclubId)
     }
 
+    const handleUserBookshelfSelection = (bookshelfId: string) => {
+        setSelectedUserBookshelf(bookshelfId)
+
+    }
+
 
     
     return(
@@ -158,15 +183,37 @@ const Bookpage: React.FC = () => {
 
                                     
 
-
+                                    {/* BOOKSHELF MODAL */}
                                     <dialog className={`addToBookshelf-modal ${isBookshelfModalOpen ? 'show': ''}`} ref={bookshelfModalRef}>
+                                        <h3>Add this book to your bookshelf</h3>
+                                        <hr />
                                         {activeUser ? 
-                                            <h3>Add this book to your bookshelf</h3>
+                                            <main className="bookshelf-results-content">
+                                                
+                                                <SearchFilter
+                                                    setSearchValue={setSearchValue}
+                                                    searchValue={searchValue} 
+                                                ></SearchFilter>
+                                                <div className="suggested-search-results">
+                                                    <SearchResults
+                                                        idKey='bookshelf_id'
+                                                        nameKey='name'
+                                                        searchValue={searchValue}
+                                                        searchResults={userBookshelves}
+                                                        handleSelection={handleUserBookshelfSelection}
+                                                        selectedElement={selectedUserBookshelf}
+                                                    
+                                                        ></SearchResults>
+                                                </div>
+                                                
+
+                                            </main>
+                                            
                                         
                                         : <span>You must be logged in to use this feature</span>}
                                         <div className="button-wrapper">
                                             <button onClick={closeBookshelfModal}>Cancel</button>
-                                            <button onClick={() => currentUserBookshelf && addToBookshelf(currentUserBookshelf)}>Add</button>
+                                            <button onClick={() => selectedUserBookshelf && addToUserBookshelf(selectedUserBookshelf)}>Add</button>
                                         </div>
                                     </dialog>
                                </div>

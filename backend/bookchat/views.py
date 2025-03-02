@@ -67,6 +67,15 @@ def add_book_to_bookclub(request, **kwargs):
 
     return Response({bookshelf: serializer.data})
 
+@api_view(['PUT'])
+def add_book_to_user_bookshelf(request, **kwargs):
+
+    bookshelf_id = kwargs['id']
+    print('user bookshelf id:', bookshelf_id)
+
+
+    return Response({'message:' 'Sucess! You reached the user bookshelf backend!'})
+
 
 
 

@@ -32,11 +32,11 @@ const SearchResults = <T,> ({searchResults, handleSelection, selectedElement, se
         return (
             <li key={index} >
 
-                <div className='bookclub-result-wrapper'>
+                <div className='search-result-wrapper'>
                     <label htmlFor={String(searchResultElement[nameKey])}>{String(searchResultElement[nameKey])}</label>
                     <input 
                         type="radio" 
-                        className='bookclub-result-input' 
+                        className='search-result-input' 
                         id={String(searchResultElement[nameKey])}
                         name='bookclubGroup'
                         checked={selectedElement === String(searchResultElement[idKey])} 
@@ -53,7 +53,7 @@ const SearchResults = <T,> ({searchResults, handleSelection, selectedElement, se
 
     
     return (
-        <ul className="bookclub-results-list">
+        <ul className="search-results-list">
             {searchResultElements}
         </ul>
 
