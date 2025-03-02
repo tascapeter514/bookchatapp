@@ -14,14 +14,6 @@ interface searchResultProps<T> {
 const SearchResults = <T,> ({searchResults, handleSelection, selectedElement, searchValue, idKey, nameKey}: searchResultProps<T> ) => {
 
 
-
-    
-
-    console.log('search results search value:', searchValue)
-    console.log('search results bookclubs:', searchResults)
-
-   
-
     const searchResultElements = searchResults.filter(searchResult => String(searchResult[nameKey]).toLowerCase().includes(searchValue.toLowerCase())).map((searchResultElement: T, index) => {
 
 

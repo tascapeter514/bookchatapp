@@ -105,36 +105,36 @@ const UserDataProvider: React.FC<UserProviderProps> = ({ children }: UserProvide
 
 
     useEffect(() => {
-        const storedBookclubs = sessionStorage.getItem('userBookclubs')
-        const storedInvites = sessionStorage.getItem('userInvites')
-        const storedBookshelves = sessionStorage.getItem('userBookshelves')
-        const storedUser = sessionStorage.getItem('currentUser')
-        const storedToken = sessionStorage.getItem('authToken')
-        
+      const storedBookclubs = sessionStorage.getItem('userBookclubs')
+      const storedInvites = sessionStorage.getItem('userInvites')
+      const storedBookshelves = sessionStorage.getItem('userBookshelves')
+      const storedUser = sessionStorage.getItem('currentUser')
+      const storedToken = sessionStorage.getItem('authToken')
+      
 
-        if (storedBookclubs) {
-            setUserBookclubs(JSON.parse(storedBookclubs))
-        }
+      if (storedBookclubs) {
+          setUserBookclubs(JSON.parse(storedBookclubs))
+      }
 
-        if (storedInvites) {
-            setUserInvites(JSON.parse(storedInvites))
-        }
+      if (storedInvites) {
+          setUserInvites(JSON.parse(storedInvites))
+      }
 
-        if (storedBookshelves) {
-            setUserBookshelves(JSON.parse(storedBookshelves))
-        }
+      if (storedBookshelves) {
+          setUserBookshelves(JSON.parse(storedBookshelves))
+      }
 
-        if (storedUser) {
-            setActiveUser(JSON.parse(storedUser))
-        }
+      if (storedUser) {
+          setActiveUser(JSON.parse(storedUser))
+      }
 
-        if (storedToken) {
-            setActiveUserToken(storedToken)
-        }
+      if (storedToken) {
+          setActiveUserToken(storedToken)
+      }
 
 
 
-    }, [])
+  }, [])
 
 
 
@@ -147,9 +147,23 @@ const UserDataProvider: React.FC<UserProviderProps> = ({ children }: UserProvide
           socket.onmessage = (event) => {
             const data = JSON.parse(event.data);
             if (data.type === 'get_user_data') {
-              sessionStorage.setItem('userBookshelves', JSON.stringify(data.user_data.user_bookshelves))
+
+              console.log('check to see if bookshelves update:', data.user_data.user_bookshelves)
+              
+              setUserBookshelves(() => {
+                sessionStorage.setItem('userBookshelves', JSON.stringify(data.user_data.user_bookshelves))
+                return data.user_data.user_bookshelves
+
+              })
+
+
+
               sessionStorage.setItem('userBookclubs', JSON.stringify(data.user_data.user_bookclubs))
+              // setUserBookclubs(data.user_data.user_bookclubs)
+
+
               sessionStorage.setItem('userInvites', JSON.stringify(data.user_data.user_invites))
+              // setUserInvites(data.user_data.user_invites)
   
             }
           }
@@ -170,7 +184,9 @@ const UserDataProvider: React.FC<UserProviderProps> = ({ children }: UserProvide
   
   
   
-      }, [userBookclubs, userInvites, userBookshelves, activeUser, activeUserToken])
+      }, [ activeUser.id])
+
+
 
 
       return (

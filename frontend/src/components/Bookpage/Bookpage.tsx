@@ -21,7 +21,7 @@ const Bookpage: React.FC = () => {
 
 
 
-    const {activeUser, userBookshelves} = userData()
+    const {activeUser, userBookshelves, setUserBookshelves} = userData()
     const params = useParams();
     const [book, setBook] = useState<Book | null>(null);
     const [authors, setAuthors] = useState<Author[] | null>(null)
@@ -52,7 +52,7 @@ const Bookpage: React.FC = () => {
                     setBookclubSearchResults(data.bookclub_results)
 
                     const { authors, ...book_result } = data.book_result
-                    console.log('author data:', authors)
+                    // console.log('author data:', authors)
                     setBook(book_result)
                     setAuthors(authors)
                     console.log(book_result)
@@ -92,8 +92,12 @@ const Bookpage: React.FC = () => {
             })
 
             if (response.ok) {
-                const data = response.json()
+                const data = await response.json()
                 console.log('add book to bookclub data:', data)
+                setUserBookshelves(prev => [...prev, data])
+                closeBookclubModal()
+            } else {
+                console.error('Error adding book to bookshelf:', response.statusText)
             }
             
 
@@ -101,7 +105,7 @@ const Bookpage: React.FC = () => {
             console.error('Error adding book to bookshelf')
         }
 
-        closeBookclubModal()
+      
     }
 
     const addToUserBookshelf = async (selectedUserBookshelf: string) : Promise<void> => {
@@ -165,9 +169,8 @@ const Bookpage: React.FC = () => {
 
 
     const showBookshelves = (bookclub_id: string) => {
-        console.log('bookclub id check:', bookclub_id)
+    
         const selectedBookclub = bookclubSearchResults.find((bookclub: Bookclub) => bookclub.bookclub_id === bookclub_id) || null
-        console.log('selected bookclub:', selectedBookclub)
         setCurrentBookclub(selectedBookclub)
     }
 
@@ -229,7 +232,7 @@ const Bookpage: React.FC = () => {
                                         : <span>You must be logged in to use this feature</span>}
                                         <div className="button-wrapper">
                                             <button onClick={closeBookshelfModal}>Cancel</button>
-                                            <button onClick={() => selectedUserBookshelf && addToUserBookshelf(selectedUserBookshelf)}>Add</button>
+                                            <button onClick={async () => selectedUserBookshelf && await addToUserBookshelf(selectedUserBookshelf)}>Add</button>
                                         </div>
                                     </dialog>
                                </div>
@@ -312,7 +315,7 @@ const Bookpage: React.FC = () => {
                                 <hr />
                                 <h3>About {authors[0].name}</h3>
                                 <p className='author-text-container'>
-                                    <p>{authors[0].bio}</p><span className="author-link">... <Link to='#'>More about { authors[0].name } </Link></span>
+                                    <p>{authors[0].bio}</p><span className="author-link">... <Link to={`/author/${authors[0].author_id}`}>More about { authors[0].name } </Link></span>
                                 </p>
                                 </aside>
                             }

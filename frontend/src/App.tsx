@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar.tsx'
 import Homepage from './components/Homepage/Homepage.tsx'
 import Bookpage from './components/Bookpage/Bookpage.tsx'
+import AuthorPage from './components/AuthorPage/AuthorPage.tsx'
 import BookclubPage from './components/BookclubPage/BookclubPage.tsx'
 import Login from './components/LogIn/Login.tsx'
 import UserDashboard from './components/UserDashboard/UserDashboard.tsx'
@@ -22,7 +23,7 @@ function App() {
       <Routes>
             <Route path='/' element={<Homepage />} />
             <Route path='/book/:id' element={<Bookpage />} />
-            <Route path='/author/:id'></Route>
+            <Route path='/author/:id' element={<AuthorPage />}></Route>
             <Route path='/login' element={<Login />}></Route>
             <Route element={<AuthRequired />}>
                 <Route path='/userDashboard' element={<ErrorBoundary><UserDashboard 

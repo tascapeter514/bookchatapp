@@ -1,5 +1,5 @@
 import './BooksPanel.css';
-
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { Book, Bookshelf } from '../../../../types.ts';
 import { userData } from '../../../../components/common/UserContext.tsx'
@@ -12,9 +12,26 @@ import { userData } from '../../../../components/common/UserContext.tsx'
 const BooksPanel: React.FC = () => {
 
     const { userBookshelves } = userData()
+
+
+
+    useEffect(() => {
+        console.log('user bookshelves:', userBookshelves)
+    }, [userBookshelves]);
+
+
+
+
+
+
+
+
+
     const titles = userBookshelves.map((userBookshelf: Bookshelf) => userBookshelf.titles).flat()
 
-    console.log('user bookshelves:', userBookshelves)
+
+
+    console.log('user titles:', titles)
    
 
       const userBooksElements = titles.map((userBookElement: Book) => {

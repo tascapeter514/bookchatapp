@@ -26,6 +26,7 @@ class UserDataConsumer(WebsocketConsumer):
         )
 
     def get_user_data(self):
+        print('get user data trigger')
         bookclubs = Bookclub.objects.filter(administrator=self.user_id)
         invitations = Invitation.objects.filter(invited_user_id=self.user_id)
         bookshelves = Bookshelf.objects.filter(user=self.user_id)
@@ -113,7 +114,7 @@ class BookclubSearchConsumer(WebsocketConsumer):
 
     def get_bookclub_query(self):
 
-        print('get bookclub check')
+
 
 
         bookclub_results = Bookclub.objects.all()
@@ -161,6 +162,48 @@ class BookDataConsumer(WebsocketConsumer):
             'book_result': book_serializer.data,
             'bookclub_results': bookclub_serializer.data
         }))
+
+class AuthorDataConsumer(WebsocketConsumer):
+    def connect(self):
+        print('author data connection check')
+        self.group_name = 'get_author_data'
+        self.author_id = self.scope['url_route']['kwargs']['id']
+
+        async_to_sync(self.channel_layer.group_add)(
+            self.group_name,
+            self.channel_name
+        )
+
+        
+
+        self.accept()
+        self.get_author_data()
+
+    def disconnect(self, close_code):
+        async_to_sync(self.channel_layer.group_discard)(
+            self.group_name,
+            self.channel_name
+        )
+
+    def get_author_data(self):
+
+        print('author data check')
+
+        author = Author.objects.get(author_id=self.author_id)
+        print(author)
+
+        serializer = AuthorSerializer(author)
+        print(serializer)
+
+        self.send(text_data=json.dumps({
+
+            'type': 'get_author_data',
+            'author_result': serializer.data
+
+        }))
+
+
+
 
 class BookclubDataConsumer(WebsocketConsumer):
     def connect(self):

@@ -4,6 +4,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.contrib.auth.models import User
 from .serializers import BookclubSerializer, BookshelfSerializer
+from channels.layers import get_channel_layer
+from asgiref.sync import async_to_sync
 from django.http import JsonResponse
 from uuid import UUID
 import json
@@ -84,18 +86,31 @@ def add_book_to_user_bookshelf(request, **kwargs):
 
     current_user_bookshelf = current_user.bookshelves.prefetch_related('titles').get(bookshelf_id=bookshelf_id)
 
-    print(current_user_bookshelf.titles.add(current_book))
-    # titles = current_user_bookshelf.titles.all()
-    # print('Bookshelf Titles:', list(titles.values()))
+    current_user_bookshelf.titles.add(current_book)
+
+   
+   
 
     serializer = BookshelfSerializer(current_user_bookshelf)
+
+
+    channel_layer = get_channel_layer()
+    async_to_sync(channel_layer.group_send)(
+            f'user_data_{user_id}',
+            {
+                'type': 'get_user_data',
+                'user_bookshelves': serializer.data
+                
+            }
+
+        )
 
 
 
 
   
 
-    return Response({'userbookshelf': serializer.data})
+    return Response(serializer.data)
 
 
 
