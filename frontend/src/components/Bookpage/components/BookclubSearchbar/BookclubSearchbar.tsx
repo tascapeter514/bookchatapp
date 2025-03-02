@@ -3,16 +3,16 @@ import {FC, useEffect, Dispatch, SetStateAction} from 'react'
 import { Bookclub } from '../../../../types'
 import { SearchIcon } from '../../../common/Icons'
 
-interface BookclubSearchbarProps {
-    setBookclubSearchResults: Dispatch<SetStateAction<Bookclub[]>>,
+interface BookclubSearchbarProps<T> {
+    setSearchResults: Dispatch<SetStateAction<T[]>>,
     setSearchValue: Dispatch<SetStateAction<string>>,
-    isBookclubModalOpen: boolean,
+    isModalOpen: boolean,
     searchValue: string
 
 }
 
 
-const BookclubSearchbar: FC<BookclubSearchbarProps> = ({setBookclubSearchResults, isBookclubModalOpen, setSearchValue, searchValue }) => {
+const BookclubSearchbar  = <T,>({setSearchResults, isModalOpen, setSearchValue, searchValue }: BookclubSearchbarProps<T>) => {
     
 
 
@@ -29,7 +29,7 @@ const BookclubSearchbar: FC<BookclubSearchbarProps> = ({setBookclubSearchResults
                 const data = JSON.parse(event.data);
                 if (data.type === 'get_bookclub_query') {
                     console.log('web socket search query:', data)
-                    setBookclubSearchResults(data.search_results.bookclub_results)
+                    setSearchResults(data.search_results.bookclub_results)
                 
                 }
             }
@@ -54,11 +54,11 @@ const BookclubSearchbar: FC<BookclubSearchbarProps> = ({setBookclubSearchResults
     useEffect(() => {
 
         console.log('open modal hook check')
-        console.log('is modal open:', isBookclubModalOpen)
+        console.log('is modal open:', isModalOpen)
 
         fetchBookclubData()
 
-    }, [isBookclubModalOpen])
+    }, [isModalOpen])
 
 
     console.log('search value:', searchValue)
