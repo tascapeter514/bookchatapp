@@ -50,6 +50,17 @@
     cursor: pointer;
 }
 
+.addToBookshelf-modal {
+
+    background-color: white;
+    border-radius: 3px;
+    border: 2px solid black;
+    margin: auto;
+    width: 100%;
+    max-width: 500px;
+
+}
+
 
 
 .book-info-wrapper {

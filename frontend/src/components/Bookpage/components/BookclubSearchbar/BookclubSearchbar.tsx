@@ -6,13 +6,13 @@ import { SearchIcon } from '../../../common/Icons'
 interface BookclubSearchbarProps {
     setBookclubSearchResults: Dispatch<SetStateAction<Bookclub[]>>,
     setSearchValue: Dispatch<SetStateAction<string>>,
-    isModalOpen: boolean,
+    isBookclubModalOpen: boolean,
     searchValue: string
 
 }
 
 
-const BookclubSearchbar: FC<BookclubSearchbarProps> = ({setBookclubSearchResults, isModalOpen, setSearchValue, searchValue }) => {
+const BookclubSearchbar: FC<BookclubSearchbarProps> = ({setBookclubSearchResults, isBookclubModalOpen, setSearchValue, searchValue }) => {
     
 
 
@@ -54,11 +54,11 @@ const BookclubSearchbar: FC<BookclubSearchbarProps> = ({setBookclubSearchResults
     useEffect(() => {
 
         console.log('open modal hook check')
-        console.log('is modal open:', isModalOpen)
+        console.log('is modal open:', isBookclubModalOpen)
 
         fetchBookclubData()
 
-    }, [isModalOpen])
+    }, [isBookclubModalOpen])
 
 
     console.log('search value:', searchValue)

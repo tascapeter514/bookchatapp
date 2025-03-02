@@ -2,16 +2,18 @@ import {useState, useEffect, FC, useRef} from 'react'
 import {useParams, Link } from 'react-router-dom'
 import { Book, ISBN_Identifier, Bookshelf, Author, Bookclub } from '../../types'
 import { BsBookmarkPlus } from "react-icons/bs"
+import { userData } from '../common/UserContext'
 import  BookclubSearchbar  from './components/BookclubSearchbar/BookclubSearchbar'
 import BookclubSearchResults from './components/BookclubSearchbar/BookclubSearchResults'
 import './Bookpage.css'
+import { SiPanasonic } from 'react-icons/si'
 
 
 
 type IconProps = React.ComponentPropsWithoutRef<'svg'>
 
 const BookmarkIcon: FC<IconProps> = (props) => {
-    return  <BsBookmarkPlus className='bookmark-icon' {...props}></BsBookmarkPlus>
+    return  <BsBookmarkPlus  className='bookmark-icon' {...props}></BsBookmarkPlus>
 }
 
 
@@ -19,20 +21,23 @@ const Bookpage: React.FC = () => {
 
 
 
-   
+    const {activeUser, userBookshelves, setUserBookshelves} = userData()
     const params = useParams();
     const [book, setBook] = useState<Book | null>(null);
     const [authors, setAuthors] = useState<Author[] | null>(null)
-    const [isModalOpen, setIsModalOpen] = useState(false)
+    const [isBookclubModalOpen, setIsBookclubModalOpen] = useState(false)
+    const [isBookshelfModalOpen, setIsBookshelfModalOpen] = useState(false)
     const [searchValue, setSearchValue] = useState('')
     const [bookclubSearchResults, setBookclubSearchResults] = useState<Bookclub[]>([])
     const [currentBookclub, setCurrentBookclub] = useState<Bookclub | null>(null)
     const [currentBookshelf, setCurrentBookshelf] = useState<Bookshelf | null>(null)
-    const modalRef = useRef<HTMLDialogElement>(null)
-
-   
-
+    const [currentUserBookshelf, setCurrentUserBookshelf] = useState<Bookshelf | null>(null)
     
+
+    const bookclubModalRef = useRef<HTMLDialogElement>(null)
+    const bookshelfModalRef = useRef<HTMLDialogElement>(null)
+
+
     useEffect(() => {
 
         try {
@@ -95,22 +100,32 @@ const Bookpage: React.FC = () => {
             console.error('Error adding book to bookshelf')
         }
 
-        closeModal()
+        closeBookclubModal()
     }
 
     // console.log('bookpage parameters:', params)
 
-    const openModal = () => {
-        setIsModalOpen(true)
+    const openBookclubModal = () => {
+        setIsBookclubModalOpen(true)
 
-        modalRef.current?.showModal()
+        bookclubModalRef.current?.showModal()
         
     }
-
-    const closeModal = () => {
-        setIsModalOpen(false)
-        modalRef.current?.close()
+    const closeBookclubModal = () => {
+        setIsBookclubModalOpen(false)
+        bookclubModalRef.current?.close()
     }
+
+    const openBookshelfModal = () => {
+        setIsBookshelfModalOpen(true)
+        bookshelfModalRef.current?.showModal()
+    }
+
+    const closeBookshelfModal = () => {
+        setIsBookshelfModalOpen(false)
+        bookshelfModalRef.current?.close()
+    }
+
 
     const showBookshelves = (bookclub_id: string) => {
         console.log('bookclub id check:', bookclub_id)
@@ -126,13 +141,28 @@ const Bookpage: React.FC = () => {
         <div className='bookpage-container'>
             {book ? (
                 <div className="bookpage-detail">
+                    {/* BOOK INFO COMPONENT */}
                     <div className="top-facade">
                         <div className="book-header-wrapper">
                             <div className="book-details">
                                 <img className='book-cover' src={book.imageLinks['thumbnail']} alt="" />
                                <div className="bookshelfBtn-wrapper">
-                                   <BookmarkIcon></BookmarkIcon>
+                                   <BookmarkIcon onClick={openBookshelfModal}></BookmarkIcon>
                                     <span>Add to Bookshelf</span>
+
+                                    
+
+
+                                    <dialog className={`addToBookshelf-modal ${isBookshelfModalOpen ? 'show': ''}`} ref={bookshelfModalRef}>
+                                        {activeUser ? 
+                                            <h3>Add this book to your bookshelf</h3>
+                                        
+                                        : <span>You must be logged in to use this feature</span>}
+                                        <div className="button-wrapper">
+                                            <button onClick={closeBookshelfModal}>Cancel</button>
+                                            <button onClick={() => currentUserBookshelf && addToBookshelf(currentUserBookshelf)}>Add</button>
+                                        </div>
+                                    </dialog>
                                </div>
                               
                             
@@ -142,11 +172,13 @@ const Bookpage: React.FC = () => {
                                 <h3>By <span>{authors?.[0]['name']} </span></h3>
                                 <p>Category: <Link to='#' >{book.genres.genre_name}</Link></p>
                                 <button
-                                    onClick={openModal} 
+                                    onClick={openBookclubModal} 
                                     
                                     className='add-to-bookClubBtn'>Add to Bookclub</button>
                             </article>
-                            <dialog className={`addToBookclub-modal ${isModalOpen ? 'show' : ''}`} ref={modalRef}>
+
+                            {/* BOOKCLUB MODAL */}
+                            <dialog className={`addToBookclub-modal ${isBookclubModalOpen ? 'show' : ''}`} ref={bookclubModalRef}>
                                 <h3>Add this book to your bookclub</h3>
                                 <hr />
                                     <main className="bookclub-results-content">
@@ -155,7 +187,7 @@ const Bookpage: React.FC = () => {
                                             setBookclubSearchResults={setBookclubSearchResults}
                                             setSearchValue={setSearchValue}
                                             searchValue={searchValue}
-                                            isModalOpen={isModalOpen}
+                                            isBookclubModalOpen={isBookclubModalOpen}
                                             ></BookclubSearchbar>
                                             <h3>Suggested</h3>
                                             <BookclubSearchResults
@@ -185,7 +217,7 @@ const Bookpage: React.FC = () => {
                                
                                 
                                 <div className="button-wrapper">
-                                    <button onClick={closeModal}>Cancel</button>
+                                    <button onClick={closeBookclubModal}>Cancel</button>
                                     <button onClick={() => currentBookshelf && addToBookshelf(currentBookshelf)}>Add</button>
                                 </div>
 
@@ -200,6 +232,8 @@ const Bookpage: React.FC = () => {
                             <p>{book.description}</p>
                            
                         </div>
+
+                        {/* AUTHOR PRODUCT COMPONENT */}
                         <div className="author-product-container">
 
                             {authors && authors.length > 0 &&  
@@ -216,7 +250,7 @@ const Bookpage: React.FC = () => {
 
 
 
-                            
+                            {/* PRODUCT DETAILS COMPONENT */}
                             <aside className="product-details-wrapper">
                                 <hr />
                                 <h3>Product Details</h3>
