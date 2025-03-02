@@ -81,6 +81,7 @@ const Bookpage: React.FC = () => {
         const bookshelfRequest = {
             book_id: book?.title_id
         } 
+
         try {
             const response = await fetch(`http://localhost:8000/api/bookclub/addBook/${currentBookshelf.bookshelf_id}`, {
                 method: 'PUT',
@@ -104,13 +105,24 @@ const Bookpage: React.FC = () => {
     }
 
     const addToUserBookshelf = async (selectedUserBookshelf: string) : Promise<void> => {
+
+        const bookshelfRequest = {
+            book_id: book?.title_id,
+            bookshelf_id: selectedUserBookshelf,
+        } 
+
+
+
+
         try {
 
-            const response = await fetch(`http://localhost:8000/api/userBookshelf/addBook/${selectedUserBookshelf}`, {
+            const response = await fetch(`http://localhost:8000/api/userBookshelf/addBook/${activeUser.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
-                }
+                },
+
+                body: JSON.stringify(bookshelfRequest)
                 
             })
 
@@ -122,6 +134,10 @@ const Bookpage: React.FC = () => {
         } catch(err) {
             console.error('Error adding book to user bookshelf')
         }
+
+        closeBookshelfModal()
+
+
     }
 
     // console.log('bookpage parameters:', params)

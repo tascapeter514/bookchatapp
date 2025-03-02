@@ -36,7 +36,7 @@ urlpatterns = [
      path('api/bookclub/<uuid:id>', get_bookclub, name='get_bookclub'),
      path('api/bookclub/addBookshelf', add_bookclub_bookshelf, name='add_bookshelf'),
      path('api/bookclub/addBook/<uuid:id>', add_book_to_bookclub, name='add_book_to_bookclub'),
-     path('api/userBookshelf/addBook/<uuid:id>', add_book_to_user_bookshelf, name='add_book_to_user_bookshelf'),
+     path('api/userBookshelf/addBook/<int:id>', add_book_to_user_bookshelf, name='add_book_to_user_bookshelf'),
      path('', include(router.urls))
 ]
 

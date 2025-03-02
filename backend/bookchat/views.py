@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from django.contrib.auth.models import User
 from .serializers import BookclubSerializer, BookshelfSerializer
 from django.http import JsonResponse
+from uuid import UUID
 import json
 
 
@@ -69,12 +70,32 @@ def add_book_to_bookclub(request, **kwargs):
 
 @api_view(['PUT'])
 def add_book_to_user_bookshelf(request, **kwargs):
+    print('user bookshelf check')
 
-    bookshelf_id = kwargs['id']
-    print('user bookshelf id:', bookshelf_id)
+    user_id = kwargs['id']
+    book_id  = json.loads(request.body)['book_id']
+    bookshelf_id = UUID(json.loads(request.body)['bookshelf_id'])
 
 
-    return Response({'message:' 'Sucess! You reached the user bookshelf backend!'})
+    # print('user bookshelf id:', bookshelf_id, book_id)
+    current_book = Book.objects.get(title_id=book_id)
+    current_user = User.objects.prefetch_related('bookshelves').get(id=user_id)
+    print('current user bookshelves:', current_user.bookshelves.values())
+
+    current_user_bookshelf = current_user.bookshelves.prefetch_related('titles').get(bookshelf_id=bookshelf_id)
+
+    print(current_user_bookshelf.titles.add(current_book))
+    # titles = current_user_bookshelf.titles.all()
+    # print('Bookshelf Titles:', list(titles.values()))
+
+    serializer = BookshelfSerializer(current_user_bookshelf)
+
+
+
+
+  
+
+    return Response({'userbookshelf': serializer.data})
 
 
 

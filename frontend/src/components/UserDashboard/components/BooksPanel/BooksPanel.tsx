@@ -13,6 +13,8 @@ const BooksPanel: React.FC = () => {
 
     const { userBookshelves } = userData()
     const titles = userBookshelves.map((userBookshelf: Bookshelf) => userBookshelf.titles).flat()
+
+    console.log('user bookshelves:', userBookshelves)
    
 
       const userBooksElements = titles.map((userBookElement: Book) => {
