@@ -4,7 +4,7 @@ import { Book, ISBN_Identifier, Bookshelf, Author, Bookclub } from '../../types'
 import { BsBookmarkPlus } from "react-icons/bs"
 import { userData } from '../common/UserContext'
 import  SearchFilter  from './components/SearchFilter/SearchFilter'
-import BookclubSearchResults from './components/SearchFilter/BookclubSearchResults'
+import SearchResults from './components/SearchFilter/SearchResults'
 import './Bookpage.css'
 
 
@@ -32,6 +32,7 @@ const Bookpage: React.FC = () => {
     const [currentBookclub, setCurrentBookclub] = useState<Bookclub | null>(null)
     const [currentBookshelf, setCurrentBookshelf] = useState<Bookshelf | null>(null)
     const [currentUserBookshelf, setCurrentUserBookshelf] = useState<Bookshelf | null>(null)
+    const [selectedBookclub, setSelectedBookclub] = useState<string | null>(null)
     
 
     const bookclubModalRef = useRef<HTMLDialogElement>(null)
@@ -134,6 +135,11 @@ const Bookpage: React.FC = () => {
         setCurrentBookclub(selectedBookclub)
     }
 
+    const handleBookclubSelection = (bookclubId: string) => {
+        setSelectedBookclub(bookclubId)
+        showBookshelves(bookclubId)
+    }
+
 
     
     return(
@@ -188,10 +194,13 @@ const Bookpage: React.FC = () => {
                                             searchValue={searchValue}
                                             ></SearchFilter>
                                             <h3>Suggested</h3>
-                                            <BookclubSearchResults
+                                            <SearchResults
+                                            idKey='bookclub_id'
+                                            nameKey='name'
                                             searchValue={searchValue}
-                                            showBookshelves={showBookshelves}
-                                            bookclubSearchResults={bookclubSearchResults}></BookclubSearchResults>
+                                            handleSelection={handleBookclubSelection}
+                                            selectedElement={selectedBookclub}
+                                            searchResults={bookclubSearchResults}></SearchResults>
                                         </div>
                                         <aside className='bookclub-bookshelves'>
                                             {currentBookclub  ? 
