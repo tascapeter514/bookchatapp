@@ -3,10 +3,10 @@ import {useParams, Link } from 'react-router-dom'
 import { Book, ISBN_Identifier, Bookshelf, Author, Bookclub } from '../../types'
 import { BsBookmarkPlus } from "react-icons/bs"
 import { userData } from '../common/UserContext'
-import  BookclubSearchbar  from './components/BookclubSearchbar/BookclubSearchbar'
-import BookclubSearchResults from './components/BookclubSearchbar/BookclubSearchResults'
+import  SearchFilter  from './components/SearchFilter/SearchFilter'
+import BookclubSearchResults from './components/SearchFilter/BookclubSearchResults'
 import './Bookpage.css'
-import { SiPanasonic } from 'react-icons/si'
+
 
 
 
@@ -47,6 +47,8 @@ const Bookpage: React.FC = () => {
             socket.onmessage = (event) => {
                 const data = JSON.parse(event.data)
                 if (data.type === 'get_book_data') {
+                    console.log('book club data:', data.bookclub_results)
+                    setBookclubSearchResults(data.bookclub_results)
 
                     const { authors, ...book_result } = data.book_result
                     console.log('author data:', authors)
@@ -70,8 +72,6 @@ const Bookpage: React.FC = () => {
         }
 
     }, [params.id])
-
-
 
 
 
@@ -183,12 +183,10 @@ const Bookpage: React.FC = () => {
                                 <hr />
                                     <main className="bookclub-results-content">
                                         <div className="suggested-search-results">
-                                            <BookclubSearchbar
-                                            setBookclubSearchResults={setBookclubSearchResults}
+                                            <SearchFilter
                                             setSearchValue={setSearchValue}
                                             searchValue={searchValue}
-                                            isBookclubModalOpen={isBookclubModalOpen}
-                                            ></BookclubSearchbar>
+                                            ></SearchFilter>
                                             <h3>Suggested</h3>
                                             <BookclubSearchResults
                                             searchValue={searchValue}

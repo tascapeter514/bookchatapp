@@ -149,14 +149,17 @@ class BookDataConsumer(WebsocketConsumer):
 
     def get_book_data(self):
         book = Book.objects.prefetch_related('author').select_related('genres').get(title_id=self.book_id)
+        bookclubs = Bookclub.objects.all()
 
-        serializer = BookSerializer(book)
-        print(serializer.data)
+        book_serializer = BookSerializer(book)
+        bookclub_serializer = BookclubSerializer(bookclubs, many=True)
+      
 
 
         self.send(text_data=json.dumps({
             'type': 'get_book_data',
-            'book_result': serializer.data
+            'book_result': book_serializer.data,
+            'bookclub_results': bookclub_serializer.data
         }))
 
 class BookclubDataConsumer(WebsocketConsumer):

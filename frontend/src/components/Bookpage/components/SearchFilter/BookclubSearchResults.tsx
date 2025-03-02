@@ -19,10 +19,12 @@ const BookclubSearchResults: FC<BookclubSearchResultProps> = ({bookclubSearchRes
         showBookshelves(bookclubId)
     }
 
-    // const filteredBookclubResults = bookclubSearchResults.filter(bookclub => bookclub.name.toLowerCase().includes(searchValue))
-    // console.log('filtered search results:', filteredBookclubResults)
+    console.log('search results search value:', searchValue)
+    console.log('search results bookclubs:', bookclubSearchResults)
 
-    const searchResultElements = bookclubSearchResults.filter(bookclub => bookclub.name.toLowerCase().includes(searchValue)).map((searchResultElement: Bookclub, index) => {
+   
+
+    const searchResultElements = bookclubSearchResults.filter(bookclub => bookclub.name.toLowerCase().includes(searchValue.toLowerCase())).map((searchResultElement: Bookclub, index) => {
 
 
         if (!searchResultElement) {
