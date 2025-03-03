@@ -193,7 +193,7 @@ class AuthorDataConsumer(WebsocketConsumer):
         print(author)
 
         serializer = AuthorSerializer(author)
-        print(serializer)
+        print('author serialized object:', serializer.data)
 
         self.send(text_data=json.dumps({
 

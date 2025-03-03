@@ -92,6 +92,7 @@ def add_book_to_user_bookshelf(request, **kwargs):
    
 
     serializer = BookshelfSerializer(current_user_bookshelf)
+    
 
 
     channel_layer = get_channel_layer()
