@@ -12,6 +12,8 @@ interface SearchResultProps {
 
 const SearchResults: FC<SearchResultProps> = ({sortedSearchResults, setShowSearchResults}) => {
 
+    console.log('sorted search results:', sortedSearchResults)
+
     const searchResultElements = sortedSearchResults.map((searchResultElement: {type: string, items?: Book[] | Author[] | Bookclub[]}, index) => {
 
         const searchResult = searchResultElement.items
@@ -23,17 +25,14 @@ const SearchResults: FC<SearchResultProps> = ({sortedSearchResults, setShowSearc
         return (
             <li key={index} onClick={() => setShowSearchResults(false)}>
                 <ul className='search-elements-list'>
-                    {searchResult.map((result, resultIndex) => {
+                    {searchResult.map((result) => {
                         if ('title' in result) {
-                            return <li key={result.title_id}>
+                             <li key={result.title_id}>
                                 <Link to={`/book/${result.title_id}`}>{result.title}</Link>
                                 </li>
                             
-                            
-                                
                         } else if ('author_id' in result) {
-                            console.log('search result:', result)
-                            return <li key={result.author_id}>
+                            return  <li key={result.author_id}>
                                         <Link to={`/author/${result.author_id}`}>{result.name}</Link>
                                   </li>
                             
@@ -41,7 +40,7 @@ const SearchResults: FC<SearchResultProps> = ({sortedSearchResults, setShowSearc
 
                         } else if ('bookclub_id' in result) {
 
-                            return <li key={resultIndex}>
+                             <li key={result.bookclub_id}>
                                 <Link to={`/bookclub/${result.bookclub_id}`}>{result.name}</Link></li>
                             
 

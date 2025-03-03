@@ -1,17 +1,18 @@
 .results-list {
     width: 100%;
-    /* background-color: #15202B; */
     background-color: lightgrey;
     display: flex;
     flex-direction: column;
     color: black;
     align-items: center;
+    justify-content: center;
     position: absolute;
     margin-top: 2.5rem;
     box-shadow: 0px 0px 8px #ddd;
     border-radius: 10px;
     max-height: 80px;
     overflow-y: scroll;
+    
 }
 
 .results-list  {

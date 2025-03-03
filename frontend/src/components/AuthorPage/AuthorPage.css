@@ -63,7 +63,6 @@
 }
 
 .authorpage-main-content {
-    border: 1px solid black;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
@@ -71,17 +70,41 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
-
-
 }
 
-.author-book-list {
-    border: 1px solid red;
+.author-books-container {
     display: flex;
     flex-direction: column;
     gap: .5rem;
     width: 100%;
-    max-width: 545px;
+    max-width: 600px;
     
 }
+
+.author-book-list {
+    display: flex;
+    padding: 2em;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.author-book-list > li {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+
+}
+
+.author-book-list img {
+    min-width: 150px;
+    max-width: 150px;
+}
+
+.author-book-list > li span {
+    max-width: 160px;
+    text-align: left;
+    text-wrap: balance;
+    text-decoration: underline;
+    font-weight: bold;
+}
+

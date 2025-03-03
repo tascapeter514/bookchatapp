@@ -6,13 +6,19 @@ import Accordion from '../common/Accordion/Accordion'
 
 const AuthorPage: FC = () => {
 
-    console.log('author page check')
-
     const [author, setAuthor] = useState<Author | null>(null)
     const [books, setBooks] = useState<Book[] | null>(null)
     const params = useParams();
 
-    console.log('author page author:', author)
+
+    const bookElements = books?.map((book) => {
+        return(
+            <li key={book.title_id}>
+                <img src={book.imageLinks.thumbnail} alt="" />
+                <span>{book.title}</span>
+            </li>
+        )
+    })
 
 
 
@@ -55,8 +61,7 @@ const AuthorPage: FC = () => {
 
     }, [params.id])
 
-console.log('books:', books)
-console.log('author:', author)
+
 
     return(
 
@@ -84,9 +89,12 @@ console.log('author:', author)
                     
                     <div className="authorpage-main-content">
                         
-                        <div className="author-book-list">
+                        <div className="author-books-container">
                             <hr />
                             <h3>Books by {author.name}</h3>
+                            <ul className='author-book-list'>
+                                {bookElements}
+                            </ul>
 
 
                         </div>
