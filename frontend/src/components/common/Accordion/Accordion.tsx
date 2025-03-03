@@ -8,13 +8,10 @@ const Accordion: FC<{children: React.ReactNode}> = ({children}) => {
     const [isExpanded, setIsExpanded] = useState(false)
 
     const toggleAccordion = () => {
-        console.log('toggle accordion check')
 
         setIsExpanded(prev => !prev)
 
     }
-
-    console.log('is expanded:', isExpanded)
 
     return(
         <div className="accordion" >

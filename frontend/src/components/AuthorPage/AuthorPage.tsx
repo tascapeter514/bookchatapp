@@ -14,6 +14,10 @@ const AuthorPage: FC = () => {
 
     console.log('author page author:', author)
 
+
+
+
+
     useEffect(() => {
 
         try {
@@ -24,7 +28,13 @@ const AuthorPage: FC = () => {
                 const data = JSON.parse(event.data)
                 if (data.type === 'get_author_data') {
                     console.log('author data on author page:', data)
-                    setAuthor(data.author_result)
+                    console.log('data book result:', data.book_result)
+
+                    const {titles, ...author_result} = data.author_result
+
+
+                    setAuthor(author_result)
+                    setBooks(titles)
                     
                    
                 }
@@ -45,7 +55,8 @@ const AuthorPage: FC = () => {
 
     }, [params.id])
 
-
+console.log('books:', books)
+console.log('author:', author)
 
     return(
 
@@ -71,8 +82,12 @@ const AuthorPage: FC = () => {
                         </div>
                     </div>
                     
-                    <div className="main-content">
+                    <div className="authorpage-main-content">
+                        
                         <div className="author-book-list">
+                            <hr />
+                            <h3>Books by {author.name}</h3>
+
 
                         </div>
                     </div>

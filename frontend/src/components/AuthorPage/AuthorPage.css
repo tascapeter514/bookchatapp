@@ -11,8 +11,7 @@
     margin: 0 auto;
     padding: 2em;
     gap: 3rem;
-    border: 1px solid red;
-    /* border: 1px solid red; */
+
 }
 
 
@@ -61,4 +60,28 @@
 
 .author-info-wrapper > p > span {
     font-weight: 700;
+}
+
+.authorpage-main-content {
+    border: 1px solid black;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+
+}
+
+.author-book-list {
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    width: 100%;
+    max-width: 545px;
+    
 }
