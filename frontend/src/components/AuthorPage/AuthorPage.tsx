@@ -13,9 +13,9 @@ const AuthorPage: FC = () => {
 
     const bookElements = books?.map((book) => {
         return(
-            <li key={book.title_id}>
-                <img src={book.imageLinks.thumbnail} alt="" />
-                <span>{book.title}</span>
+            <li key={book.title_id} className='book-item'>
+                <img src={book.imageLinks.thumbnail} alt="book-thumbnail" className='book-thumbnail' />
+                <span className='book-title'>{book.title}</span>
             </li>
         )
     })
@@ -92,9 +92,23 @@ const AuthorPage: FC = () => {
                         <div className="author-books-container">
                             <hr />
                             <h3>Books by {author.name}</h3>
-                            <ul className='author-book-list'>
-                                {bookElements}
-                            </ul>
+
+                                {books && books.length <= 6 ? (
+                                    <ul className='author-book-list'>
+                                    
+                                    bookElements
+
+                                    </ul>
+                                    
+
+                                ) : (
+                                    <Accordion>
+                                        <ul className="author-book-list">{bookElements}</ul>
+                                    </Accordion>
+
+                                )}
+                                
+                            
 
 
                         </div>

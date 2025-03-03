@@ -77,7 +77,7 @@
     flex-direction: column;
     gap: .5rem;
     width: 100%;
-    max-width: 600px;
+    max-width: 700px;
     
 }
 
@@ -86,21 +86,24 @@
     padding: 2em;
     gap: 1.5rem;
     flex-wrap: wrap;
+    width: 100%;
+
 }
 
-.author-book-list > li {
+
+.book-item {
     display: flex;
     flex-direction: column;
     gap: .5rem;
 
 }
 
-.author-book-list img {
+.book-thumbnail {
     min-width: 150px;
     max-width: 150px;
 }
 
-.author-book-list > li span {
+.book-title{
     max-width: 160px;
     text-align: left;
     text-wrap: balance;
