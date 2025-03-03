@@ -21,7 +21,9 @@
     padding: .75em;
     padding: var(--_panel-padding);
     flex-basis: calc(var(--_panel-padding) + var(--_button-size));
-    transition: flex-basis 500ms
+    transition: flex-basis 500ms;
+    align-items: center;
+
 }
 
 .accordion-panel:has([aria-expanded='true']) {
@@ -56,6 +58,7 @@
     line-height: 30px;
     padding-top: .25em;
     font-weight: 700;
+    text-decoration: underline;
     
 
     
