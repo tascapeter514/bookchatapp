@@ -19,10 +19,10 @@ const Accordion: FC<{children: React.ReactNode}> = ({children}) => {
     return(
         <div className="accordion" >
         <div className="accordion-panel" >
-            <h2 id='panel1-heading'>
+            <h2 id='panel-heading'>
                 <button
                     className='accordion-trigger'
-                    aria-controls='panel1-content'
+                    aria-controls='panel-content'
                     aria-expanded={isExpanded}
                      
                 >
@@ -32,8 +32,8 @@ const Accordion: FC<{children: React.ReactNode}> = ({children}) => {
             </h2>
             <div 
                 className='accordion-content' 
-                id='panel1-content'
-                aria-labelledby='panel1-heading'
+                id='panel-content'
+                aria-labelledby='panel-heading'
                 aria-hidden='true'
                 role='region'>
                     <p>{children}</p>
