@@ -80,7 +80,7 @@
 }
 
 .accordion-content.collapsed {
-    max-height: 2rem; /* Adjust for the desired preview */
+    max-height: 4rem; /* Adjust for the desired preview */
     mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)); /* Fades out */
 }
 
