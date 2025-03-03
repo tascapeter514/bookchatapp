@@ -185,23 +185,23 @@ const BookclubPage : React.FC = () => {
                                         
                                     </dialog>
                                     <div className="bookshelf-list"> 
-                                        <div className="accordion" >
-                                            <div className="accordion-panel" >
+                                        <div className="bc-accordion" >
+                                            <div className="bc-accordion-panel" >
                                                 <h2 id='panel1-heading'>
                                                     <button
-                                                        className='accordion-trigger'
-                                                        aria-controls='panel1-content'
+                                                        className='bc-accordion-trigger'
+                                                        aria-controls='bc-panel1-content'
                                                         aria-expanded={activePanel}
                                                          
                                                     >
-                                                        <span id='panel1-title'>{bookclub?.bookshelves[0].name}</span>
-                                                        <div className="accordion-icon" onClick={toggleAccordion}>
+                                                        <span id='bc-panel1-title'>{bookclub?.bookshelves[0].name}</span>
+                                                        <div className="bc-accordion-icon" onClick={toggleAccordion}>
                                                             <ArrowLeftIcon isRotated={isRotated}></ArrowLeftIcon>
                                                         </div>
                                                     </button>
                                                 </h2>
                                                 <div 
-                                                    className='accordion-content' 
+                                                    className='bc-accordion-content' 
                                                     id='panel1-content'
                                                     aria-labelledby='panel1-heading'
                                                     aria-hidden='true'

@@ -208,7 +208,7 @@
     border: 5px solid green;
 }
 
-.accordion {
+.bc-accordion {
 
     --_button-size: 3rem;
     --_panel-padding: 0.75rem;
@@ -217,11 +217,11 @@
     gap: 1rem;
 }
 
-.accordion * {
+.bc-accordion * {
     margin: 0;
 }
 
-.accordion-panel {
+.bc-accordion-panel {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -234,11 +234,11 @@
     transition: flex-basis 500ms
 }
 
-.accordion-panel:has([aria-expanded='true']) {
+.bc-accordion-panel:has([aria-expanded='true']) {
     flex-basis: clamp(15rem, 40vh, 20rem);
 }
 
-.accordion-trigger {
+.bc-accordion-trigger {
     display: flex;
     flex-direction: row-reverse;
     gap: .5rem;
@@ -254,7 +254,7 @@
     
 }
 
-.accordion-trigger > span {
+.bc-accordion-trigger > span {
     /* border: 1px solid black; */
     display: inline-block;
     text-align: center;
@@ -272,7 +272,7 @@
 
 }
 
-.accordion-icon {
+.bc-accordion-icon {
     width: auto;
     aspect-ratio: 1 / 1;
     background-color: orange;
@@ -284,7 +284,7 @@
     
 }
 
-.icon {
+.al-icon {
     transition: .5s transform ease;
 }
 
@@ -294,13 +294,13 @@
 
 
 
-.accordion-content > p {
+.bc-accordion-content > p {
     transform: translateY(2rem);
     opacity: 0;
     transition: transform 500ms, oacity 500ms;
 }
 
-.accordion-panel:has([aria-expanded='true']) .accordion-content > p {
+.bc-accordion-panel:has([aria-expanded='true']) .accordion-content > p {
     transform: translateY(0rem);
     opacity: 1;
 

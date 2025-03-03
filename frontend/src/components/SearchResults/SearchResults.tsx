@@ -19,30 +19,38 @@ const SearchResults: FC<SearchResultProps> = ({sortedSearchResults, setShowSearc
         if (!searchResult) {
             return null
         }
-
+        
         return (
             <li key={index} onClick={() => setShowSearchResults(false)}>
-                <p>
+                <ul>
                     {searchResult.map((result, resultIndex) => {
                         if ('title' in result) {
-                            return <Link to={`/book/${result.title_id}`}>
-                                        <li key={resultIndex}>{result.title}</li>
-                                    </Link>
+                            return <li key={result.title_id}>
+                                <Link to={`/book/${result.title_id}`}>{result.title}</Link>
+                                </li>
+                            
+                            
                                 
                         } else if ('author_id' in result) {
                             console.log('search result:', result)
-                            return <Link to={`/author/${result.author_id}`}><li key={resultIndex}>{result.name}</li></Link>
+                            return <li key={result.author_id}>
+                                        <Link to={`/author/${result.author_id}`}>{result.name}</Link>
+                                  </li>
+                            
+                            
 
                         } else if ('bookclub_id' in result) {
 
-                            return <Link to={`/bookclub/${result.bookclub_id}`}><li key={resultIndex}>{result.name}</li></Link>
+                            return <li key={resultIndex}>
+                                <Link to={`/bookclub/${result.bookclub_id}`}>{result.name}</Link></li>
+                            
 
                         }
 
                         return null
 
                     })}
-                </p>
+                </ul>
 
             </li>
 
