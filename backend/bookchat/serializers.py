@@ -17,14 +17,9 @@ class GenreSerializer(serializers.ModelSerializer):
 class AuthorSerializer(serializers.ModelSerializer):
     titles = serializers.SerializerMethodField()
     
-
-
-
-
-
     class Meta:
         model = Author
-        fields = ['name', 'author_id', 'bio', 'links', 'titles']
+        fields = ['name', 'author_id', 'bio', 'birth_date', 'death_date', 'titles', 'author_photo']
 
     def __init__(self, *args, **kwargs):
         fields = kwargs.pop('fields', None)

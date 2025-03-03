@@ -49,8 +49,22 @@ const AuthorPage: FC = () => {
     return(
 
         <div className="authorpage-container">
-            <h3>{author?.name}</h3>
-            <h2>Hello World</h2>
+            {author ? (
+                <div className="authorpage-detail">
+                    <div className="top-facade">
+                        <div className="author-header-wrapper">
+                            <div className="author-details">
+                                <img src={author.author_photo} alt="" className="author-cover" />
+                                {/* <p>{author.author_photo}</p> */}
+                            </div>
+                            <article className="author-info-wrapper">
+                                <h1>{author.name}</h1>
+                                <p>{author.bio}</p>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            ) : <h2>Loading...</h2>}
 
         </div>
 

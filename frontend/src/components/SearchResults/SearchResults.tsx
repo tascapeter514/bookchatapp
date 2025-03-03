@@ -29,8 +29,14 @@ const SearchResults: FC<SearchResultProps> = ({sortedSearchResults, setShowSearc
                                         <li key={resultIndex}>{result.title}</li>
                                     </Link>
                                 
-                        } else if ('name' in result) {
-                            return <Link to=""><li key={resultIndex}>{result.name}</li></Link>
+                        } else if ('author_id' in result) {
+                            console.log('search result:', result)
+                            return <Link to={`/author/${result.author_id}`}><li key={resultIndex}>{result.name}</li></Link>
+
+                        } else if ('bookclub_id' in result) {
+
+                            return <Link to={`/bookclub/${result.bookclub_id}`}><li key={resultIndex}>{result.name}</li></Link>
+
                         }
 
                         return null

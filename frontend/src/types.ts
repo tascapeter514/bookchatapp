@@ -36,8 +36,15 @@ export interface ActiveUser {
 export type Author = {
     name: string,
     author_id: string,
-    bio: string
+    bio: string,
+    titles: Book[],
+    author_photo: string,
+    birth_date: string,
+    death_date: string
+
 }
+
+
 
 export interface Bookshelf {
     bookshelf_id: string,
@@ -82,11 +89,6 @@ export interface Bookclub {
 
 }
 
-// export type SearchResults = [
-//     {type: string, items?: Book[] },
-//     {type: string, items?: Author[]},
-//     {type: string, items?: Bookclub[]}
-// ]
 
 export type SearchResultsArray = {
     type: string,
@@ -98,13 +100,6 @@ export type SearchResultsArray = {
 
 
 
-// const searchResults = [
-//     {type: 'author', items: authorSearchResults},
-//     {type: 'book', items: bookSearchResults},
-//     {type: 'bookclub', items: bookclubSearchResults}
-//   ]
-
-// export type SearchResults = (Author[] | Book[] | Bookclub[])[]
 
 export interface UserData {
     user_bookclubs: Bookclub[],

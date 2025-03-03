@@ -34,8 +34,8 @@ const BooksPanel: React.FC = () => {
     console.log('user titles:', titles)
    
 
-      const userBooksElements = titles.map((userBookElement: Book) => {
-        return(<li key={userBookElement.title_id} className='userBook-element'>
+      const userBooksElements = titles.map((userBookElement: Book, index: number) => {
+        return(<li key={index} className='userBook-element'>
                 <Link to={`/book/${userBookElement.title_id}`}><img src={userBookElement.imageLinks['smallThumbnail']} alt="book-cover" /></Link>
                 <h3>{userBookElement.title}</h3>
                 <ul>{userBookElement.authors.map((author) => {
