@@ -11,7 +11,7 @@
     margin: 0 auto;
     padding: 2em;
     gap: 3rem;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 /* .author-details {
@@ -37,13 +37,13 @@
     padding: 2em;
     width: 100%;
     max-width: 600px;
-    max-height: 500px;
+    /* max-height: 500px; */
     display: flex;
     flex-direction: column;
     gap: 1rem;
     text-align: left;
     background-color: white;
-    overflow: scroll;
+    /* overflow: scroll; */
 }
 
 .author-info-wrapper > h1 {
@@ -51,8 +51,12 @@
 
 }
 
-.author-info-wrapper > h1 > span {
+.author-info-wrapper > h1 {
     font-weight: 700;
+}
+
+.author-info-wrapper > h3 {
+    font-size: .825rem;
 }
 
 .author-info-wrapper > p {

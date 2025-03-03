@@ -12,7 +12,7 @@ interface BookSliderProps {
 const BookSlider: FC<BookSliderProps> = ({books}) => {
 
     const [matches] = useState(window.matchMedia('(prefers-reduced-motion: reduce)').matches)
-    const [isPlaying, setIsPlaying] = useState(true)
+    const [isPlaying, setIsPlaying] = useState(false)
     const animationRef = useRef<HTMLUListElement>(null)
 
     const toggleAnimation = () => {

@@ -1,7 +1,7 @@
 
 .book-scroller {
     
-    max-width: 50%;
+    max-width: 800px;
     margin-inline: auto;
     overflow: hidden;
     -webkit-mask: linear-gradient(

@@ -2,6 +2,7 @@ import './AuthorPage.css'
 import { FC, useState, useEffect } from 'react'
 import {  Author, Book } from '../../types'
 import {useParams } from 'react-router-dom'
+import Accordion from '../common/Accordion/Accordion'
 
 const AuthorPage: FC = () => {
 
@@ -58,13 +59,18 @@ const AuthorPage: FC = () => {
 
                            
                             <article className="author-info-wrapper">
-                                <h1>About <span>{author.name}</span></h1>
+                                <h1>{author.name}</h1>
                                 <p>Born on <span>{author.birth_date}</span></p>
                                 <p>Died on <span>{author.death_date}</span></p>
-                                <p>{author.bio}</p>
+                                <hr />
+                                <h3>ABOUT THE AUTHOR </h3>
+                                
+                                <Accordion>{author.bio}</Accordion>
+                                <hr />
                             </article>
                         </div>
                     </div>
+                    
                     <div className="main-content">
                         <div className="author-book-list">
 
