@@ -22,7 +22,7 @@ const SearchResults: FC<SearchResultProps> = ({sortedSearchResults, setShowSearc
         
         return (
             <li key={index} onClick={() => setShowSearchResults(false)}>
-                <ul>
+                <ul className='search-elements-list'>
                     {searchResult.map((result, resultIndex) => {
                         if ('title' in result) {
                             return <li key={result.title_id}>

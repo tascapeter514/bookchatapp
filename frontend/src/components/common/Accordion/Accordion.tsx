@@ -34,8 +34,7 @@ const Accordion: FC<{children: React.ReactNode}> = ({children}) => {
                     aria-expanded={isExpanded}
                      
                 >
-                    <span onClick={toggleAccordion}>See More</span>
-                    
+                <span onClick={toggleAccordion}>See More</span>
             </button>
         </h2>
         </div>
