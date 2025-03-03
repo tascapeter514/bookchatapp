@@ -53,14 +53,21 @@ const AuthorPage: FC = () => {
                 <div className="authorpage-detail">
                     <div className="top-facade">
                         <div className="author-header-wrapper">
-                            <div className="author-details">
+                            
                                 <img src={author.author_photo} alt="" className="author-cover" />
-                                {/* <p>{author.author_photo}</p> */}
-                            </div>
+
+                           
                             <article className="author-info-wrapper">
-                                <h1>{author.name}</h1>
+                                <h1>About <span>{author.name}</span></h1>
+                                <p>Born on <span>{author.birth_date}</span></p>
+                                <p>Died on <span>{author.death_date}</span></p>
                                 <p>{author.bio}</p>
                             </article>
+                        </div>
+                    </div>
+                    <div className="main-content">
+                        <div className="author-book-list">
+
                         </div>
                     </div>
                 </div>

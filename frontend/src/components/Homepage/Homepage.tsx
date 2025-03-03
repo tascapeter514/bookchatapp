@@ -1,5 +1,5 @@
-import {useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom'
+import {useState, useEffect } from 'react';
+import BookSlider from '../common/BookSlider/BookSlider'
 import './Homepage.css'
 import { Book } from '../../types';
 
@@ -17,24 +17,7 @@ export default function Homepage() {
     }, [])
 
   
-    const [matches] = useState(window.matchMedia('(prefers-reduced-motion: reduce)').matches)
-    const [isPlaying, setIsPlaying] = useState(true)
-    const animationRef = useRef<HTMLUListElement>(null)
-
-    const toggleAnimation = () => {
-        setIsPlaying(!isPlaying);
-        if (animationRef.current) {
-        animationRef.current.style.animationPlayState = isPlaying ? 'paused' : 'running';
-        }
-    }
-
-    const bestsellerElements = bestsellers.map((bestseller: Book)=> {
-        return(
-        <li className='bestseller-element' key={bestseller.title_id} >
-            <Link to={`/book/${bestseller.title_id}`}><img src={bestseller.imageLinks['smallThumbnail']} alt="bestseller-img" /></Link>
-        </li>
-        )
-    })
+    
 
   
 
@@ -62,18 +45,9 @@ export default function Homepage() {
    
     return(
       <div className="book-container">
-        
-        <div className="book-scroller"
-        onMouseEnter={toggleAnimation}
-        onMouseLeave={toggleAnimation}
-        {...(matches ? {'data-animated': true} : {})}
-        >
-        <h2>Best Sellers</h2>
-        <ul className="bestseller-list book-scroller__inner" ref={animationRef}>
-            {bestsellerElements}
-            {bestsellerElements}
-        </ul>
-        </div>
+        <h3>Bestsellers</h3>
+        <BookSlider books={bestsellers}></BookSlider>
+
         <div className="homepage-main-content">
             <h2>Create a Book Club with your Friends!</h2>
             <p className='subtitle subtitle-signup'>Register today!</p>
