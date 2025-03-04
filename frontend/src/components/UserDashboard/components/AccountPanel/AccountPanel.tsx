@@ -23,17 +23,30 @@ const AccountPanel: React.FC = () => {
             <h2>Contact Info</h2>
             <form action="" className='contact-info-form'>
                 <div className="form-field">
-                    <label htmlFor=""></label>
-                    <input type="text" />
+                    <label htmlFor="first_name">First Name</label>
+                    <input id='first_name' name='first_name' value={activeUser.first_name} />
                 </div>
                 <div className="form-field">
-                    <label htmlFor=""></label>
-                    <input type="text" />
+                    <label htmlFor="last_name">Last Name</label>
+                    <input id='last_name' name='last_name'  value={activeUser.last_name} />
                 </div>
                 <div className="form-field">
-                    <label htmlFor=""></label>
-                    <input type="text" />
+                    <label htmlFor="email_address">Email</label>
+                    <input id='email_address' name='email_address' value={activeUser.email}  />
                 </div>
+                <button>Save Changes</button>
+            </form>
+            <h2>Change Password</h2>
+            <form action="" className='change-password-form'>
+                <div className="form-field">
+                    <label htmlFor="current-password">Current Password</label>
+                    <input id='current-password' name='current-password'  />
+                </div>
+                <div className="form-field">
+                    <label htmlFor="new_password">New Password</label>
+                    <input id='new_password' name='new_password' />
+                </div>
+                <button>Save Changes</button>
             </form>
         </div>
     )

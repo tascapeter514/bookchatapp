@@ -2,6 +2,7 @@
     border: 1px solid green;
     padding: 1em;
 
+
 }
 
 .account-container > h1 {
@@ -24,15 +25,46 @@
     margin-top: 50px;
     margin-bottom: 50px;
     text-align: center;
-    border: 1px solid black;
     padding: .75em;
     max-width: 400px;
     margin-inline: auto;
     background-color: #f6f6f6;
 }
 
-.contact-info-form {
-    border: 1px solid red;
+.account-container > form {
     max-width: 500px;
     margin-inline: auto;
+}
+
+
+
+.account-container label {
+    top: 0;
+    left: 0;
+    font-size: 1rem;
+    color: rgb(112, 112, 112)
+    
+
+}
+
+.account-container input {
+    border: 0;
+    border-bottom: 1px solid lightgrey;
+    border-radius: 0;
+    font-size: 1.25rem;
+    
+}
+
+.account-container button {
+    display: block;
+    margin-top: 1rem;
+    border: 1px solid #FF8C00;
+    padding: .5em 1em;
+    font-size: 1.25rem;
+    width: auto;
+    cursor: pointer;
+    background-color: #FF8C00;
+    color: white;
+    margin-inline: auto;
+    
 }
