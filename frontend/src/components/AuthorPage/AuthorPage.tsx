@@ -21,46 +21,6 @@ const AuthorPage: FC = () => {
     })
 
 
-
-
-
-    // useEffect(() => {
-
-    //     try {
-
-    //         const socket = new WebSocket(`ws://localhost:8000/ws/author/${params.id}`)
-
-    //         socket.onmessage = (event) => {
-    //             const data = JSON.parse(event.data)
-    //             if (data.type === 'get_author_data') {
-    //                 console.log('author data on author page:', data)
-    //                 console.log('data book result:', data.book_result)
-
-    //                 const {titles, ...author_result} = data.author_result
-
-
-    //                 setAuthor(author_result)
-    //                 setBooks(titles)
-                    
-                   
-    //             }
-    //         }
-
-    //         socket.onerror = (error) => {
-    //             console.error('Author data websocket error:', error)
-    //         }
-
-    //         socket.onopen = () => console.log('Author data websocket connected')
-    //         socket.onclose = () => console.log('Author data websocket disconnected')
-
-    //         return () => socket.close()
-
-    //     } catch (err) {
-    //         console.log('Failed to initialize authorpage websocket:', err)
-    //     }
-
-    // }, [params.id])
-
     useEffect( () => {
 
         const fetchAuthorData = async () => {

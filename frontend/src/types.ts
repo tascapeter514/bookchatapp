@@ -28,7 +28,8 @@ export interface ActiveUser {
         first_name: string,
         last_name: string,
         email: string,
-        profile: Profile 
+        profile: Profile ,
+        date_joined: Date
 
 
 }

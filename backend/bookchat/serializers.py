@@ -19,7 +19,7 @@ class AuthorSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Author
-        fields = ['name', 'author_id', 'bio', 'birth_date', 'death_date', 'titles', 'author_photo']
+        fields = ['name', 'author_id', 'bio', 'birth_date', 'death_date', 'titles', 'author_photo', 'date_joined']
 
     def __init__(self, *args, **kwargs):
         fields = kwargs.pop('fields', None)

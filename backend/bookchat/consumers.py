@@ -163,47 +163,6 @@ class BookDataConsumer(WebsocketConsumer):
             'bookclub_results': bookclub_serializer.data
         }))
 
-class AuthorDataConsumer(WebsocketConsumer):
-    def connect(self):
-        print('author data connection check')
-        self.group_name = 'get_author_data'
-        self.author_id = self.scope['url_route']['kwargs']['id']
-
-        async_to_sync(self.channel_layer.group_add)(
-            self.group_name,
-            self.channel_name
-        )
-
-        
-
-        self.accept()
-        self.get_author_data()
-
-    def disconnect(self, close_code):
-        async_to_sync(self.channel_layer.group_discard)(
-            self.group_name,
-            self.channel_name
-        )
-
-    def get_author_data(self):
-
-        print('author data check')
-
-        author = Author.objects.get(author_id=self.author_id)
-        print(author)
-
-        serializer = AuthorSerializer(author)
-        print('author serialized object:', serializer.data)
-
-        self.send(text_data=json.dumps({
-
-            'type': 'get_author_data',
-            'author_result': serializer.data
-
-        }))
-
-
-
 
 class BookclubDataConsumer(WebsocketConsumer):
     def connect(self):

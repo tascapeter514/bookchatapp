@@ -186,6 +186,8 @@ const UserDataProvider: React.FC<UserProviderProps> = ({ children }: UserProvide
   
       }, [ activeUser.id])
 
+      console.log('active user from user context:', activeUser)
+
 
 
 
