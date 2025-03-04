@@ -65,15 +65,27 @@ const MessagePanel: React.FC = () => {
 
         return(
             <li key={userInvite.invitation_id} className='message-element'>
-                <div className="message-user-wrapper">
-                    <div className="message-profile-icon">{userInvite.invited_by.charAt(0).toUpperCase()}</div>
-                    <span className='message-user-span'>{userInvite.invited_by}</span>
+                <div className="message-header-wrapper">
+                    <div className="message-user-wrapper">
+                        <div className="message-profile-icon">{userInvite.invited_by.charAt(0).toUpperCase()}</div>
+                        <span className='message-user-span'>{userInvite.invited_by}</span>
+                        <span className='message-invitation-span'>has invited you to</span>
+                        <Link to={`/bookclub/${userInvite.bookclub.id}`}><span className='message-bookclub-span'>{userInvite.bookclub.name}</span></Link>
+                    
+                    </div>
+                    <span className='message-date-span'>{day} {month} {year}</span>
                 </div>
-                <span className='message-date-span'>{day} {month} {year}</span>
+                <div className="message-content">
+                    {!userInvite.accepted && (<button className='accept-button' onClick={() => joinBookclub(userInvite.bookclub)}>Accept</button>) }
+
+                </div>
+
                 
                 
-                {!userInvite.accepted && (<button onClick={() => joinBookclub(userInvite.bookclub)}>Accept</button>) }
+                
                 {/* <br /> */}
+                
+                
             </li>
         )
     })

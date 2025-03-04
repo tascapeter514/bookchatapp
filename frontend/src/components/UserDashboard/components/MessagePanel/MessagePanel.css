@@ -1,5 +1,14 @@
 .messages-container {
     padding: 1em;
+    --red: hsl(1, 90%, 64%);
+    --blue: hsl(219, 85%, 26%);
+    --white: hsl(0, 0%, 100%);
+    --very-light-grayish-blue: hsl(210, 60%, 98%);
+    --light-grayish-blue-1: hsl(211, 68%, 94%);
+    --light-grayish-blue-2: hsl(205, 33%, 90%);
+    --grayish-blue: hsl(219, 14%, 63%);
+    --dark-grayish-blue: hsl(219, 12%, 42%);
+    --very-dark-blue: hsl(224, 21%, 14%);
 }
 
 
@@ -41,22 +50,38 @@
 
 .messages-list {
     margin-top: 50px;
-    border: 3px solid red;
     padding: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: .5rem;
 }
 
 .message-element {
-    border: 1px solid blue;
     padding: 1em;
     display: flex;
-    flex-direction: row;
-    max-width: 500px;
+    flex-direction: column;
+    max-width: 700px;
     width: 100%;
     justify-content: space-between;
+    /* background-color: #FFDBBB; */
+    background-color: #f6f6f6;
+    border-radius: 2rem;
+    
+    /* background-color: var(--light-grayish-blue-2); */
+    font-size: 1rem;
+}
+
+.message-header-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.message-element a {
+    text-decoration: none;
 }
 
 .message-user-wrapper {
@@ -64,6 +89,7 @@
     flex-direction: row;
     align-items: center;
     gap: .5rem;
+    /* justify-content: space-between; */
 }
 
 .message-user-span {
@@ -76,4 +102,30 @@
     font-size: 1rem;
     color: rgb(112, 112, 112)
 }
+
+.message-bookclub-span {
+    color: #FF8C00;
+    font-weight: bold;
+}
+
+.message-content {
+    display: flex;
+    justify-content: center;
+    align-items: top;
+    
+}
+
+.accept-button {
+    display: block;
+    border: 1px solid #FF8C00;
+    padding: .5em 1em;
+    font-size: .825rem;
+    width: auto;
+    cursor: pointer;
+    background-color: #FF8C00;
+    color: white;
+
+}
+
+
 
