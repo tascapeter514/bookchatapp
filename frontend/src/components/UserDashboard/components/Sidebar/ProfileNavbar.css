@@ -4,17 +4,19 @@
     border: 1px solid blue;
     width: 100%;
     max-width: 400px;
-    
-  
 
+}
+
+.profile-header {
+    padding: .5em;
 }
 
 .profile-navbar {
     border: 1px solid lime;
-    position: sticky;
+    /* position: sticky; */
     top: 0;
-    max-height: 100svh;
-    background-color: lightgrey;
+    /* max-height: 100svh; */
+    /* background-color: lightgrey; */
 }
 
 .profile-nav-list {
@@ -38,6 +40,7 @@
 .profile-nav-list li.active {
     background: orange;
     position: relative;
+    
 }
 
 .profile-nav-list li.active::before,

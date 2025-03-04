@@ -88,7 +88,7 @@ const AuthorPage: FC = () => {
                                 {books && books.length <= 6 ? (
                                     <ul className='author-book-list'>
                                     
-                                    bookElements
+                                    {bookElements}
 
                                     </ul>
                                     

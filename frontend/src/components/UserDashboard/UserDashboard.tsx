@@ -2,10 +2,9 @@ import './UserDashboard.css';
 import { FC, useState } from 'react';
 import Bookspanel from './components/BooksPanel/BooksPanel'
 import BookclubPanel from './components/BookclubPanel/BookclubPanel';
-import SettingsPanel from './components/SettingsPanel/SettingsPanel';
+import AccountPanel from './components/AccountPanel/AccountPanel';
 import ProfileNavbar from './components/Sidebar/ProfileNavbar'
-import Tabs from '../common/Tabs/Tabs'
-import Sidebar from './components/Sidebar/Sidebar'
+
 
 
 const UserDashboard: FC = () => {
@@ -26,7 +25,7 @@ const UserDashboard: FC = () => {
                 <div className="tab-panels-container container-flex">
                     {activeTab === 0 && (
 
-                        <SettingsPanel></SettingsPanel> 
+                        <AccountPanel></AccountPanel> 
 
                         
                         
@@ -51,6 +50,7 @@ const UserDashboard: FC = () => {
                 
 
             </main>
+            
             <ProfileNavbar activeTab={activeTab} setActiveTab={setActiveTab}></ProfileNavbar>
             {/* <Sidebar></Sidebar> */}
 

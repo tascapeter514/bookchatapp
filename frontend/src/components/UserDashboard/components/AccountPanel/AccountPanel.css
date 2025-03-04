@@ -1,0 +1,38 @@
+.account-container {
+    border: 1px solid green;
+    padding: 1em;
+
+}
+
+.account-container > h1 {
+    text-align: center;
+    font-weight: 700;
+    margin-block: .5rem;
+
+}
+
+.underline {
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    max-width: 76px;
+    border: 3px solid orange;
+    margin-inline: auto;
+
+}
+
+.account-container > h2 {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-align: center;
+    border: 1px solid black;
+    padding: .75em;
+    max-width: 400px;
+    margin-inline: auto;
+    background-color: #f6f6f6;
+}
+
+.contact-info-form {
+    border: 1px solid red;
+    max-width: 500px;
+    margin-inline: auto;
+}
