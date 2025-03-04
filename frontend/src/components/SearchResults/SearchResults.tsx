@@ -27,12 +27,12 @@ const SearchResults: FC<SearchResultProps> = ({sortedSearchResults, setShowSearc
                 <ul className='search-elements-list'>
                     {searchResult.map((result) => {
                         if ('title' in result) {
-                             <li key={result.title_id}>
+                           return  <li key={result.title_id}>
                                 <Link to={`/book/${result.title_id}`}>{result.title}</Link>
                                 </li>
                             
                         } else if ('author_id' in result) {
-                            return  <li key={result.author_id}>
+                            return  <li key={result.author_id} className='author-search-result'>
                                         <Link to={`/author/${result.author_id}`}>{result.name}</Link>
                                   </li>
                             
@@ -40,7 +40,7 @@ const SearchResults: FC<SearchResultProps> = ({sortedSearchResults, setShowSearc
 
                         } else if ('bookclub_id' in result) {
 
-                             <li key={result.bookclub_id}>
+                            return <li key={result.bookclub_id} className='bookclub-search-result'>
                                 <Link to={`/bookclub/${result.bookclub_id}`}>{result.name}</Link></li>
                             
 
