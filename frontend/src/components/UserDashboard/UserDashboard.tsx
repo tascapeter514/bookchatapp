@@ -24,25 +24,30 @@ const UserDashboard: FC = () => {
                 
   
                 <div className="tab-panels-container container-flex">
-                    {/* {activeTab === 0 && (
+                    {activeTab === 0 && (
 
-                        <Bookspanel></Bookspanel>
+                        <SettingsPanel></SettingsPanel> 
+
                         
-                    )} */}
+                        
+                    )}
                     {activeTab === 1 && (
                         <BookclubPanel ></BookclubPanel>
                     )}
 
                     {activeTab === 2 && (
 
-                        <SettingsPanel></SettingsPanel>  
+                        <Bookspanel></Bookspanel>
+                    )}
 
+                    {activeTab === 3 && (
+                        <div className="messages">Messages</div>
                     )}
                 </div>
                 
 
             </main>
-            <ProfileNavbar></ProfileNavbar>
+            <ProfileNavbar activeTab={activeTab} setActiveTab={setActiveTab}></ProfileNavbar>
             {/* <Sidebar></Sidebar> */}
 
 

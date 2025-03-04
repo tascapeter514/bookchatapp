@@ -4,8 +4,8 @@
     margin: 0;
     font-size: 1.25rem;
     display: grid;
-    grid-template-columns: 40rem 1fr;
-    max-width: 1000px;
+    grid-template-columns: 55rem 1fr;
+    max-width: 1200px;
     margin: 0 auto;
     border: 3px solid red;
 }

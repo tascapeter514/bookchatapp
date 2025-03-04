@@ -16,3 +16,30 @@
     max-height: 100svh;
     background-color: lightgrey;
 }
+
+.profile-nav-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 4rem;
+    padding-block: 2rem;
+    font-size: 2rem
+
+}
+
+.profile-nav-list li {
+    padding: 1rem 2rem;
+    margin-right: 1rem;
+    border-radius: 0 100vw 100vw 0;
+
+}
+
+.profile-nav-list li.active {
+    background: orange;
+}
+
+.profile-nav-list a {
+    color: black;
+    text-decoration: none;
+}
