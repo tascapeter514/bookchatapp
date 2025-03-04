@@ -11,7 +11,7 @@ const AccountPanel: React.FC = () => {
     
     const { activeUser } = userData()
 
-    console.log('settings active user:', activeUser)
+
 
 
 

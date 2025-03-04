@@ -7,25 +7,29 @@ interface ProfileNavbarProps {
     activeTab: number,
 }
 
+export function formatDate(dateString: string) {
+    const date = new Date(dateString);
+    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+    
+
+
+    const day = date.getDate();
+    const month = monthNames[date.getMonth()]
+    const year = date.getFullYear()
+
+    return { day, month, year }
+}
+
 const ProfileNavbar = (props: ProfileNavbarProps) => {
 
     const { activeTab, setActiveTab } = props
     const { activeUser } = userData()
 
-    console.log('acitve user:', activeUser)
+    // console.log('acitve user:', activeUser)
 
-    function formatDate(dateString: string) {
-        const date = new Date(dateString);
-        const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-        const monthIndex = date.getMonth() + 1;
+  
 
-
-        const day = date.getDate();
-        const month = monthNames[monthIndex]
-        const year = date.getFullYear()
-
-        return { day, month, year }
-    }
+    
 
     const {day, month, year } = formatDate(activeUser.date_joined)
 
@@ -77,16 +81,5 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
 export default ProfileNavbar
 
 
-{/* <li className="active">
-                        <a href="" aria-current='page'>Account</a>
-                        
-                    </li>
-                    <li>
-                        <a href="">Bookclubs</a>
-                    </li>
-                    <li>
-                        <a href="">Bookshelves</a>
-                    </li>
-                    <li>
-                        <a href="">Messages</a>
-                    </li> */}
+
+
