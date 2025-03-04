@@ -63,7 +63,7 @@ h1 {
 
 
 
-nav {
+.main-navbar {
     display: flex;
     align-items: center;
     /* border: 1px dotted green; */
@@ -72,23 +72,23 @@ nav {
 
 
 
-nav ul {
+.main-navbar-list {
     padding: 0;
     display: flex;
     /* border: 1px solid red; */
 
 }
 
-nav li {
+.main-list-element {
     margin-left: 2.5em;
 }
 
-nav li:first-child {
+.main-list-element:first-child {
     margin-left: 0;
 
 }
 
-nav a {
+.main-navbar a {
     text-decoration: none;
     font-size: 1.25rem;
     color: white;
@@ -98,7 +98,7 @@ nav a {
     display: none;
 }
 
-nav a:hover {
+.main-navbar a:hover {
     color: red;
 }
 
@@ -129,7 +129,7 @@ nav a:hover {
         
     }
 
-    nav {
+    .main-navbar {
         transform: translateX(100%);
         inset: 0 0 0 10%;
         position: fixed;

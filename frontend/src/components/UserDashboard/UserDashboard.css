@@ -1,24 +1,28 @@
 
 
 .dashboard-container {
-    display: flex;
+    margin: 0;
+    font-size: 1.25rem;
+    display: grid;
+    grid-template-columns: 40rem 1fr;
     max-width: 1000px;
     margin: 0 auto;
+    border: 3px solid red;
 }
 
 
 
 main {
-    width: 75%;
+    width: 100%;
     border: 1px solid black;
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
 }
 
-.sidebar {
+/* .sidebar {
     width: 25%;
     border: 1px solid purple
-}
+} */
 
 
 

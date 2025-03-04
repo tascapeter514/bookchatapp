@@ -97,12 +97,12 @@ const Navbar: FC = () => {
                 <button className='mobile-nav-toggle' aria-expanded={showNavbar}>
 
                 </button>
-                <nav>
-                    <ul onClick={() => setShowSearchResults(false)}>
-                        <li><Link to='/'>Home</Link></li>
-                        <li><Link to='#'>Books</Link></li>
-                        <li><Link to='#'>Authors</Link></li>
-                        <li><Link to='#'>About</Link></li>
+                <nav className='main-navbar'>
+                    <ul className='main-navbar-list' onClick={() => setShowSearchResults(false)}>
+                        <li className='main-list-element'><Link to='/'>Home</Link></li>
+                        <li className='main-list-element'><Link to='#'>Books</Link></li>
+                        <li className='main-list-element'><Link to='#'>Authors</Link></li>
+                        <li className='main-list-element'><Link to='#'>About</Link></li>
                         { activeUserToken ? authLinks : guestLinks}
                     </ul>
                 </nav>

@@ -28,20 +28,22 @@ const ProfileNavbar = () => {
     
 
     return(
-        <nav className='profile-navbar'>
+        <div className="navbar-container">
             <div className="profile-header">
-                <h1>Hello {activeUser.first_name}</h1>
+                <h1>Hello {activeUser.first_name}!</h1>
                 <span>Member since {month} {day}, {year}</span>
             </div>
-
-            <ul className='nav-list'>
-                <li className="active">
-                    <a href="">Home</a>
-                </li>
+            <nav className='profile-navbar'>
                 
-
-            </ul>
-        </nav>
+                <ul className='nav-list'>
+                    <li className="active">
+                        <a href="">Profile</a>
+                    </li>
+                    
+            
+                </ul>
+            </nav>
+        </div>
     )
 }
 

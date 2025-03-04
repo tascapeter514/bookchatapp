@@ -29,7 +29,7 @@ export interface ActiveUser {
         last_name: string,
         email: string,
         profile: Profile ,
-        date_joined: Date
+        date_joined: string
 
 
 }
