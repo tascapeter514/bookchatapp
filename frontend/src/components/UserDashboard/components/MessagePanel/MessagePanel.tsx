@@ -1,4 +1,5 @@
 import './MessagePanel.css'
+import Accordion from '../../../common/Accordion/Accordion.tsx'
 import { Link } from 'react-router-dom'
 import { userData } from '../../../common/UserContext.tsx'
 import { Invitation} from '../../../../types.ts'
@@ -15,24 +16,6 @@ const MessagePanel: React.FC = () => {
 
 
     console.log('user invites:', userInvites)
-
-    // const UserProfileIcons = bookclub?.members.map((member, index) => {
-    //     return (
-    //         <li key={index} >
-    //             <div 
-    //                 className="circle" 
-    //                 style={{ marginLeft: `${index - 15}px`,
-    //                             zIndex: index + 1, 
-    //                             position: 'relative', 
-    //                             backgroundColor: '#FF8C00',
-    //                             border: '2px solid white'
-    //                         }}
-    //                 >{member?.username?.charAt(0).toUpperCase()}</div>
-    //         </li>
-    //     )
-    // })
-
-
 
 
     function joinBookclub(bookclub: {id: string, name: string}) {
@@ -77,7 +60,6 @@ const MessagePanel: React.FC = () => {
                 </div>
                 <div className="message-content">
                     {!userInvite.accepted && (<button className='accept-button' onClick={() => joinBookclub(userInvite.bookclub)}>Accept</button>) }
-
                 </div>
 
                 
@@ -97,7 +79,10 @@ const MessagePanel: React.FC = () => {
             <h1>Messages</h1>
             <hr className='underline'/>
             <h2>Invitations</h2>
-            <ul className='messages-list'>{userInvitesElements}</ul>
+            <Accordion>
+                <ul className='messages-list'>{userInvitesElements}</ul>
+            </Accordion>
+            
         </div>
     )
 }

@@ -56,13 +56,14 @@
     justify-content: center;
     align-items: center;
     gap: .5rem;
+    border: 1px solid red;
 }
 
 .message-element {
     padding: 1em;
     display: flex;
     flex-direction: column;
-    max-width: 700px;
+    max-width: 800px;
     width: 100%;
     justify-content: space-between;
     /* background-color: #FFDBBB; */
