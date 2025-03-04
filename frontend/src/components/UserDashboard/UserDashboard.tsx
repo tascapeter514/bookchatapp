@@ -32,7 +32,9 @@ const UserDashboard: FC = () => {
                         
                     )}
                     {activeTab === 1 && (
-                        <BookclubPanel ></BookclubPanel>
+
+                    <div className="messages">Messages</div>
+                        
                     )}
 
                     {activeTab === 2 && (
@@ -41,7 +43,9 @@ const UserDashboard: FC = () => {
                     )}
 
                     {activeTab === 3 && (
-                        <div className="messages">Messages</div>
+
+                        <BookclubPanel ></BookclubPanel>
+                        
                     )}
                 </div>
                 

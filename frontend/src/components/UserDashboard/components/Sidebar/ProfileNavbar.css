@@ -37,6 +37,31 @@
 
 .profile-nav-list li.active {
     background: orange;
+    position: relative
+}
+
+.profile-nav-list li.active::before,
+.profile-nav-list li.active::after {
+    --border-radius: 1rem;
+    content: '';
+    position: absolute;
+    width: var(--border-radius);
+    height: var(--border-radius);
+    left: 0;
+    background: red;
+    /* border-radius: 100vw */
+}
+
+.profile-nav-list li.active::before {
+    top: calc(var(--border-radius) * -1);
+    border-radius: 0 0 0 100vw;
+    box-shadow: -5px 5px 0 5px green;
+
+}
+
+.profile-nav-list li.active::after {
+    bottom: calc(var(--border-radius) * -1);
+
 }
 
 .profile-nav-list a {
