@@ -90,7 +90,16 @@
     flex-direction: row;
     align-items: center;
     gap: .5rem;
+    border: 1px solid red;
+    width: 100%;
     /* justify-content: space-between; */
+}
+
+.message-user-text {
+    border: 1px solid red;
+    display: flex;
+    gap: .5rem;
+    width: 100%;
 }
 
 .message-user-span {
@@ -126,6 +135,30 @@
     background-color: #FF8C00;
     color: white;
 
+}
+
+
+@media (max-width: 900px) {
+
+    .message-user-wrapper {
+        border: 5px solid purple;
+        width: 100%;
+        max-width: 275px;
+    }
+
+
+
+   .message-user-text {
+        border: 1px solid green;
+        flex-direction: column;
+   }
+
+}
+
+@media (max-width: 600px) {
+    .messages-container {
+        padding: 0;
+    }
 }
 
 

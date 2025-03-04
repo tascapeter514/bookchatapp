@@ -51,9 +51,11 @@ const MessagePanel: React.FC = () => {
                 <div className="message-header-wrapper">
                     <div className="message-user-wrapper">
                         <div className="message-profile-icon">{userInvite.invited_by.charAt(0).toUpperCase()}</div>
-                        <span className='message-user-span'>{userInvite.invited_by}</span>
-                        <span className='message-invitation-span'>has invited you to</span>
-                        <Link to={`/bookclub/${userInvite.bookclub.id}`}><span className='message-bookclub-span'>{userInvite.bookclub.name}</span></Link>
+                        <div className="message-user-text">
+                            <span className='message-user-span'>{userInvite.invited_by}</span>
+                            <span className='message-invitation-span'>has invited you to</span>
+                            <Link to={`/bookclub/${userInvite.bookclub.id}`}><span className='message-bookclub-span'>{userInvite.bookclub.name}</span></Link>
+                        </div>
                     
                     </div>
                     <span className='message-date-span'>{day} {month} {year}</span>
