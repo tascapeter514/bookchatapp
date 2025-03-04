@@ -3,7 +3,7 @@ from .models import Author, Book, Bookclub, Bookshelf
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.contrib.auth.models import User
-from .serializers import BookclubSerializer, BookshelfSerializer
+from .serializers import BookclubSerializer, BookshelfSerializer, AuthorSerializer
 from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync
 from django.http import JsonResponse
@@ -37,6 +37,17 @@ def get_bookclub(request, **kwargs):
     serializer = BookclubSerializer(bookclub)
 
     return Response(serializer.data)
+
+@api_view(['GET'])
+def get_author_data(request, **kwargs):
+    id = kwargs['id']
+    print('id:', id)
+
+    author = Author.objects.get(author_id=id)
+    serializer = AuthorSerializer(author)
+
+    return Response(serializer.data)
+
 
 @api_view(['POST'])
 def add_bookclub_bookshelf(request):

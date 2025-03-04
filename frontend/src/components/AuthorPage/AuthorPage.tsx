@@ -24,40 +24,72 @@ const AuthorPage: FC = () => {
 
 
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        try {
+    //     try {
 
-            const socket = new WebSocket(`ws://localhost:8000/ws/author/${params.id}`)
+    //         const socket = new WebSocket(`ws://localhost:8000/ws/author/${params.id}`)
 
-            socket.onmessage = (event) => {
-                const data = JSON.parse(event.data)
-                if (data.type === 'get_author_data') {
-                    console.log('author data on author page:', data)
-                    console.log('data book result:', data.book_result)
+    //         socket.onmessage = (event) => {
+    //             const data = JSON.parse(event.data)
+    //             if (data.type === 'get_author_data') {
+    //                 console.log('author data on author page:', data)
+    //                 console.log('data book result:', data.book_result)
 
-                    const {titles, ...author_result} = data.author_result
+    //                 const {titles, ...author_result} = data.author_result
 
 
-                    setAuthor(author_result)
-                    setBooks(titles)
+    //                 setAuthor(author_result)
+    //                 setBooks(titles)
                     
                    
+    //             }
+    //         }
+
+    //         socket.onerror = (error) => {
+    //             console.error('Author data websocket error:', error)
+    //         }
+
+    //         socket.onopen = () => console.log('Author data websocket connected')
+    //         socket.onclose = () => console.log('Author data websocket disconnected')
+
+    //         return () => socket.close()
+
+    //     } catch (err) {
+    //         console.log('Failed to initialize authorpage websocket:', err)
+    //     }
+
+    // }, [params.id])
+
+    useEffect( () => {
+
+        const fetchAuthorData = async () => {
+            try {
+
+                const response = await fetch(`http://localhost:8000/api/author/${params.id}`)
+    
+                if (response.ok) {
+                    const data = await response.json()
+                    const {titles, ...author_results} = data
+
+                    setBooks(titles)
+                    setAuthor(author_results)
+
+                
+                } else {
+                    console.error('There was an error fetching author data:', response.statusText)
                 }
+    
+    
+            } catch(err) {
+                console.error('There was an error connecting to the backend:', err)
             }
 
-            socket.onerror = (error) => {
-                console.error('Author data websocket error:', error)
-            }
-
-            socket.onopen = () => console.log('Author data websocket connected')
-            socket.onclose = () => console.log('Author data websocket disconnected')
-
-            return () => socket.close()
-
-        } catch (err) {
-            console.log('Failed to initialize authorpage websocket:', err)
         }
+
+        fetchAuthorData()
+
+        
 
     }, [params.id])
 
