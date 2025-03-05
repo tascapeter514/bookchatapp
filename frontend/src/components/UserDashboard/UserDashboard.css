@@ -12,13 +12,15 @@
     position: relative;
 }
 
+.tab-panels-container {
+    width: 100%;
+}
 
 
-main {
+.dashboard-main {
     width: 100%;
     border: 1px solid black;
-    /* display: flex;
-    flex-direction: column; */
+
 }
 
 
@@ -69,3 +71,25 @@ main {
     border: 1px solid purple;
     width: 100%;
 }
+
+@media (max-width: 600px) {
+
+    .dashboard-container {
+        grid-template-columns: minmax(150px, 75%) 1fr;
+    }
+
+}
+
+@media (max-width: 400px) {
+    .dashboard-container {
+
+        /* grid-template-columns: minmax(50px, 45%) 1fr; */
+        max-width: 100%;
+        
+    }
+
+    .userBook-element > * {
+        max-width: 20%;
+    }
+}
+

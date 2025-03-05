@@ -49,7 +49,7 @@ const Navbar: FC = () => {
       };
    
     const guestLinks = (
-        <li><Link to='/login'>Log In</Link></li>
+        <li className='login-link'><Link to='/login'>Log In</Link></li>
     )
 
     const authLinks = (

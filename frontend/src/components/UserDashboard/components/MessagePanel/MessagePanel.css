@@ -1,5 +1,6 @@
 .messages-container {
     padding: 1em;
+    width: 100%;
     --red: hsl(1, 90%, 64%);
     --blue: hsl(219, 85%, 26%);
     --white: hsl(0, 0%, 100%);
@@ -17,6 +18,8 @@
     text-align: center;
     font-weight: 700;
     margin-block: .5rem;
+    border: 1px solid red;
+    width: 100%;
 
 
 }
@@ -29,10 +32,14 @@
     max-width: 400px;
     margin-inline: auto;
     background-color: #f6f6f6;
+    width: 100%;
+    border: 1px solid red;
 }
 
 
 .message-profile-icon {
+    /* width: 100%; */
+    /* max-width: 45px; */
     width: 45px;
     height: 45px;
     border-radius: 50%;
@@ -57,20 +64,20 @@
     align-items: center;
     gap: .5rem;
     border: 1px solid red;
+    width: 100%;
 }
 
 .message-element {
     padding: 1em;
     display: flex;
     flex-direction: column;
-    max-width: 800px;
+    max-width: 700px;
     width: 100%;
     justify-content: space-between;
-    /* background-color: #FFDBBB; */
     background-color: #f6f6f6;
     border-radius: 2rem;
     
-    /* background-color: var(--light-grayish-blue-2); */
+
     font-size: 1rem;
 }
 
@@ -90,9 +97,9 @@
     flex-direction: row;
     align-items: center;
     gap: .5rem;
-    border: 1px solid red;
+    border: 3px solid yellow;
     width: 100%;
-    /* justify-content: space-between; */
+    max-width: 465px;
 }
 
 .message-user-text {
@@ -140,24 +147,63 @@
 
 @media (max-width: 900px) {
 
+    
+
+    .message-element {
+        max-width: 550px;
+        
+    }
+
+
+    .message-header-wrapper {
+        justify-content: space-evenly;
+
+    }
     .message-user-wrapper {
-        border: 5px solid purple;
+        
         width: 100%;
-        max-width: 275px;
+        max-width: 225px;
+        
     }
 
 
 
    .message-user-text {
-        border: 1px solid green;
+        border: 3px solid green;
         flex-direction: column;
+        gap: .25rem;
+        
+        
+    
+        
    }
 
 }
 
 @media (max-width: 600px) {
+
+    /* .messages-list {
+        max-width: 50px;
+    } */
+
     .messages-container {
         padding: 0;
+    }
+
+    .message-profile-icon {
+        width: 35px;
+        height: 35px;
+        font-size: .75rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .message-element {
+        font-size: .75rem
+    }
+
+    .message-date-span {
+        font-size: .75rem;
     }
 }
 

@@ -8,12 +8,14 @@
 
 .profile-header {
     padding: .5em;
+    border: 1px solid green;
+    width: 100%;
 }
 
 .profile-navbar {
     position: sticky;
     top: 0;
-    max-height: 100svh;
+    /* max-height: 100svh; */
 }
 
 .profile-nav-list {
@@ -22,13 +24,14 @@
     list-style: none;
     display: grid;
     gap: 1.5rem;
-    padding-block: 2rem;
-    font-size: 1.5rem
+    padding-block: 2em;
+    font-size: 1.5rem;
+    width: 100%;
 
 }
 
 .profile-nav-list li {
-    padding: 1rem 2rem;
+    padding: 1em 2em;
     margin-right: 1rem;
     border-radius: 0 100vw 100vw 0;
     width: 100%
@@ -78,6 +81,15 @@
 
 
 @media (max-width: 600px) {
+
+    .navbar-container {
+        max-width: 100%;
+    }
+
+   
+
+
+
     .profile-header {
         font-size: 1rem;
     }

@@ -102,6 +102,10 @@ h1 {
     color: red;
 }
 
+.login-link {
+    margin-left: 2.5em
+}
+
 .profile-link {
     margin-right: 2.5em;
     margin-left: 2.5em;

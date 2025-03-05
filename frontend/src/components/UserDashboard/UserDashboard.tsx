@@ -18,7 +18,7 @@ const UserDashboard: FC = () => {
 
     return(
         <div className='dashboard-container'>
-            <main>
+            <main className='dashboard-main'>
 
                 
   
