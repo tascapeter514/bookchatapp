@@ -1,5 +1,6 @@
 import './BookclubsPanel.css'
 import { userData } from '../../../common/UserContext.tsx'
+import Button from '../../../common/Button/Button.tsx'
 
 
 
@@ -60,16 +61,19 @@ const BookclubsPanel = () => {
         return(
             <li className='bookclub-element' key={userBookclub.bookclub_id}>
                 <div className="bookclub-header">
-                    <img className='bookclub-icon' src={`http://localhost:8000${userBookclub.cover_image}`} alt="cover" />
-                    <span>{userBookclub.name}</span>
+                    <img className='bookclub-cover' src={`http://localhost:8000${userBookclub.cover_image}`} alt="cover" />
+                    <div className="bookclub-header-text">
+                        <span className='bookclub-title'>{userBookclub.name}</span>
+                        {weeksSinceVisited === 0 && (<span className='visited-span'>You just visited this week!</span>)}
+                        {weeksSinceVisited === undefined && (<span className='visited-span'>You have yet to visit</span>)}
+                        {weeksSinceVisited !== undefined && weeksSinceVisited > 0 && (<span className='visited-span'>You visited {weeksSinceVisited} weeks ago</span>)}
+                        <ul className='bookclub-icons-list'>{BookclubMemberIcons}</ul>
+                    </div>
                 </div>
-                <span>{userBookclub.members.length} members</span>
-                <ul className='bookclub-icons-list'>{BookclubMemberIcons}</ul>
-                {weeksSinceVisited === 0 && (
-                    <p>You just visited this week!</p>
-                )}
-                {weeksSinceVisited === undefined && (<p>You have yet to visit</p>)}
-                {weeksSinceVisited !== undefined && weeksSinceVisited > 0 && (<p>You visited {weeksSinceVisited} weeks ago</p>)}
+                {/* <span>{userBookclub.members.length} members</span> */}
+                
+               
+                <Button>View Bookclub</Button>
                 
                 
 
