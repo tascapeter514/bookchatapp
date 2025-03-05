@@ -48,6 +48,11 @@ def get_author_data(request, **kwargs):
 
     return Response(serializer.data)
 
+@api_view({'POST'})
+def upload_file(request, **kwargs):
+    id= kwargs['id']
+    bookclub = Bookclub.objects.get(bookclub_id=id)
+
 
 @api_view(['POST'])
 def add_bookclub_bookshelf(request):
