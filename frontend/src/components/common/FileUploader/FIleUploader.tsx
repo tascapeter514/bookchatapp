@@ -1,5 +1,6 @@
 import './FileUploader.css'
 import { ChangeEvent, useState } from 'react'
+import axios from 'axios'
 import Button from '../Button/Button'
 
 
@@ -16,6 +17,7 @@ const FileUploader = (props: FileUploaderProps) => {
 
     const [file, setFile] = useState<File | null>(null)
     const [status, setStatus] = useState<UploadStatus>('idle')
+    const [uploadProgress, setUploadProgress] = useState(0)
 
 
     function handleFileChange(e: ChangeEvent<HTMLInputElement>) {
@@ -37,14 +39,18 @@ const FileUploader = (props: FileUploaderProps) => {
 
         try {
 
-                await fetch(`http://localhost:8000/api/fileUpload${props.id}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
-                
-                body: formData
-            })
+                await axios.post(`http://localhost:8000/api/fileUpload${props.id}`, formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    },
+                    onUploadProgress: (progressEvent) => {
+                        const progress = progressEvent.total ? 
+
+                        Math.round((progressEvent.loaded * 100) / progressEvent.total)
+                        : 0;
+                        setUploadProgress(progress)
+                    }
+                })
 
             setStatus('success')
 
