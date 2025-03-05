@@ -18,7 +18,9 @@ const BookclubPage : React.FC = () => {
     const [activeTab, setActiveTab] = useState(0)
     const [activePanel, setActivePanel] = useState(false)
     const [isRotated, setIsRotated] = useState(false)
+    // const [lastVisited, setLastVisited] = useState(null)
     const tabContents = ['Discussion', 'Bookshelves', 'Current Read']
+
 
     const modalRef = useRef<HTMLDialogElement>(null)
     
@@ -29,6 +31,10 @@ const BookclubPage : React.FC = () => {
         setIsMember(() => {
             return  userBookclubs.map((userBookclub: Bookclub) => userBookclub.bookclub_id).some(userBookclubId => userBookclubId === parameters.id)
         })
+
+        const lastVisited = new Date().toISOString()
+        localStorage.setItem(`lastVisited/${parameters.id}`, lastVisited)
+
     }, [userBookclubs])
     const [bookclub, setBookclub] = useState<Bookclub | null>(null)
     

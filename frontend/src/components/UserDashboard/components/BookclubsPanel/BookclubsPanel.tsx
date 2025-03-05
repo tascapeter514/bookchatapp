@@ -19,6 +19,28 @@ const BookclubsPanel = () => {
 
     const bookclubElements = userBookclubs.map((userBookclub) => {
 
+        const lastVisited = localStorage.getItem(`lastVisited/${userBookclub.bookclub_id}`)
+
+        function weeksAgo(date: string) {
+            if (lastVisited) {
+
+                const now = new Date()
+                const lastVisit = new Date(date)
+
+
+
+                const timeDiff = now.getTime() - lastVisit.getTime()
+                const weeksDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 7))
+                return weeksDiff
+
+            }
+        }
+
+        const weeksSinceVisited = lastVisited ? weeksAgo(lastVisited) : undefined
+        console.log('weeks since visited:', weeksSinceVisited)
+
+
+
         const BookclubMemberIcons = userBookclub.members.map((member, index) => {
             return (
                 <li className='bookclub-member-icon' key={index} >
@@ -43,6 +65,13 @@ const BookclubsPanel = () => {
                 </div>
                 <span>{userBookclub.members.length} members</span>
                 <ul className='bookclub-icons-list'>{BookclubMemberIcons}</ul>
+                {weeksSinceVisited === 0 && (
+                    <p>You just visited this week!</p>
+                )}
+                {weeksSinceVisited === undefined && (<p>You have yet to visit</p>)}
+                {weeksSinceVisited !== undefined && weeksSinceVisited > 0 && (<p>You visited {weeksSinceVisited} weeks ago</p>)}
+                
+                
 
 
             </li>
