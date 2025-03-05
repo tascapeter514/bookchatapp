@@ -51,7 +51,23 @@ def get_author_data(request, **kwargs):
 @api_view(['POST'])
 def upload_file(request, **kwargs):
     id= kwargs['id']
-    bookclub = Bookclub.objects.get(bookclub_id=id)
+    
+    uploaded_file = request.FILES.get('file')
+    if uploaded_file:
+        print(f'File Name:{uploaded_file.name}')
+
+
+
+        bookclub = Bookclub.objects.get(bookclub_id=id)
+        print(bookclub.name)
+        print(bookclub.cover_image)
+
+        bookclub.cover_image = uploaded_file
+        bookclub.save()
+
+        return Response({'message:' 'Cover image uploaded successfully!'})
+    else:
+        return Response({'message': 'No file uploaded!'}, status=400)
 
 
 @api_view(['POST'])

@@ -102,7 +102,7 @@ class BookclubSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Bookclub
-        fields = ['bookclub_id', 'name', 'administrator', 'bookshelves', 'currentRead', 'members']
+        fields = ['bookclub_id', 'name', 'administrator', 'bookshelves', 'currentRead', 'members', 'cover_image']
 
     def __init__(self, *args, **kwargs):
         fields = kwargs.pop('fields', None)
