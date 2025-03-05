@@ -32,9 +32,9 @@ const Accordion: FC<{children: React.ReactNode}> = ({children}) => {
                      
                 >
                 {isExpanded ?  
-                    <span onClick={toggleAccordion}>See Less</span>
+                    <span  onClick={toggleAccordion}>See Less</span>
 
-                :  <span onClick={toggleAccordion}>See More</span>
+                :  <span  onClick={toggleAccordion}>See More</span>
                 }
                 
             </button>

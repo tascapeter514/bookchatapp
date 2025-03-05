@@ -18,7 +18,6 @@
     text-align: center;
     font-weight: 700;
     margin-block: .5rem;
-    border: 1px solid red;
     width: 100%;
 
 
@@ -33,7 +32,6 @@
     margin-inline: auto;
     background-color: #f6f6f6;
     width: 100%;
-    border: 1px solid red;
 }
 
 
@@ -63,7 +61,6 @@
     justify-content: center;
     align-items: center;
     gap: .5rem;
-    border: 1px solid red;
     width: 100%;
 }
 
@@ -97,13 +94,11 @@
     flex-direction: row;
     align-items: center;
     gap: .5rem;
-    border: 3px solid yellow;
     width: 100%;
     max-width: 465px;
 }
 
 .message-user-text {
-    border: 1px solid red;
     display: flex;
     gap: .5rem;
     width: 100%;
@@ -147,10 +142,17 @@
 
 @media (max-width: 900px) {
 
-    
+    .messages-container > h2 {
+        margin-bottom: 5px;
+
+    }
+
+    .messages-list {
+        margin-top: 25px;
+    }
 
     .message-element {
-        max-width: 550px;
+        max-width: 450px;
         
     }
 
@@ -169,7 +171,6 @@
 
 
    .message-user-text {
-        border: 3px solid green;
         flex-direction: column;
         gap: .25rem;
         
@@ -182,18 +183,29 @@
 
 @media (max-width: 600px) {
 
-    /* .messages-list {
-        max-width: 50px;
-    } */
+
 
     .messages-container {
         padding: 0;
     }
 
+    /* .messages-container > h2 {
+        margin-bottom: 25px;
+
+    } */
+
     .message-profile-icon {
         width: 35px;
         height: 35px;
         font-size: .75rem;
+    }
+
+    .accept-button {
+
+        padding: .25em .5em;
+        font-size: .75rem;
+
+
     }
 }
 

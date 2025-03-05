@@ -95,6 +95,12 @@
     mask-image: none;
 }
 
+@media (max-width: 600px) {
+    .accordion-trigger {
+        font-size: 1rem;
+    }
+}
+
 @media (max-width: 415px) {
     .accordion-panel {
         padding-inline: 0;
