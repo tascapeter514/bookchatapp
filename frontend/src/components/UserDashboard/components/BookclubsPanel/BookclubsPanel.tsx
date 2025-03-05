@@ -1,6 +1,6 @@
 import './BookclubsPanel.css'
 import { userData } from '../../../common/UserContext.tsx'
-import BookIcon from '../../../../assets/book-svgrepo-com.svg'
+
 
 
 
@@ -38,7 +38,7 @@ const BookclubsPanel = () => {
         return(
             <li className='bookclub-element' key={userBookclub.bookclub_id}>
                 <div className="bookclub-header">
-                    <img className='bookclub-icon' src={BookIcon} alt="" />
+                    <img className='bookclub-icon' src='' alt="" />
                     <span>{userBookclub.name}</span>
                 </div>
                 <span>{userBookclub.members.length} members</span>

@@ -1,0 +1,15 @@
+.file-container {
+    border: 3px solid lime;
+    width: 100%;
+    max-width: 375px;
+}
+
+
+
+.file-info  {
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    
+}

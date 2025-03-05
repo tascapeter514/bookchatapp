@@ -1,5 +1,6 @@
 import {useState, useEffect } from 'react';
 import BookSlider from '../common/BookSlider/BookSlider'
+import FileUploader from '../common/FileUploader/FIleUploader'
 import './Homepage.css'
 import { Book } from '../../types';
 
@@ -73,6 +74,8 @@ export default function Homepage() {
                 <button className='btn btn-signup' type='submit'>Register</button>
             </form>
         </div>
+
+        <FileUploader></FileUploader>
 
 
 
