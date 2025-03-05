@@ -6,6 +6,8 @@ import { userData } from '../../components/common/UserContext'
 import { SearchIcon, ArrowLeftIcon } from '../common/Icons'
 import { v4 as uuidv4 } from 'uuid'
 import BookclubBackground from './assets/bookclub-background.jpg'
+import FileUploader from '../common/FileUploader/FIleUploader'
+import Button from '../common/Button/Button'
 import Tabs from '../common/Tabs/Tabs'
 
 
@@ -21,11 +23,11 @@ const BookclubPage : React.FC = () => {
     const modalRef = useRef<HTMLDialogElement>(null)
     
     const [isMember, setIsMember] = useState(false)
-    const parameters = useParams()
+    const parameters = useParams<string>()
 
     useEffect(() => {
-        setIsMember(isMember => {
-            return isMember = userBookclubs.map((userBookclub: Bookclub) => userBookclub.bookclub_id).some(userBookclubId => userBookclubId === parameters.id)
+        setIsMember(() => {
+            return  userBookclubs.map((userBookclub: Bookclub) => userBookclub.bookclub_id).some(userBookclubId => userBookclubId === parameters.id)
         })
     }, [userBookclubs])
     const [bookclub, setBookclub] = useState<Bookclub | null>(null)
@@ -126,7 +128,7 @@ const BookclubPage : React.FC = () => {
 
     
 
-    console.log('book clubs data:', bookclub)
+    console.log('BOOKCLUB DATA:', bookclub)
 
     return(
             <div className='bookclub-container'>
@@ -135,10 +137,18 @@ const BookclubPage : React.FC = () => {
                         <div className='bookclub-top-facade'>
                             <div className="bookclub-background">
                                 <img src={BookclubBackground} alt="" />
+                                <Button onClick={openModal}>Change Image</Button>
+                                <dialog className='uploadFile-modal' ref={modalRef}>
+                                    <div>
+                                        <FileUploader id={parameters.id ?? ''}></FileUploader>
+                                        <Button onClick={closeModal}>Cancel</Button>
+                                    </div>
+                                </dialog>
                                 
                             </div>
                             <div className="bookclub-top-bar">
                                 <h2>{bookclub?.name}</h2>
+                                
                                 <small>{bookclub?.members.length} Members</small>
                                 <div className="header-members-wrapper">
                                     <ul className='user-profile-list' >

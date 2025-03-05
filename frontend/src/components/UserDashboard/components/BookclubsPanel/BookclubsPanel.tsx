@@ -38,7 +38,7 @@ const BookclubsPanel = () => {
         return(
             <li className='bookclub-element' key={userBookclub.bookclub_id}>
                 <div className="bookclub-header">
-                    <img className='bookclub-icon' src='' alt="" />
+                    <img className='bookclub-icon' src={`http://localhost:8000${userBookclub.cover_image}`} alt="cover" />
                     <span>{userBookclub.name}</span>
                 </div>
                 <span>{userBookclub.members.length} members</span>

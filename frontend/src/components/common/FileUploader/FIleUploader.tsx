@@ -40,7 +40,7 @@ const FileUploader = (props: FileUploaderProps) => {
 
         try {
 
-                await axios.post(`http://localhost:8000/api/fileUpload${props.id}`, formData, {
+                await axios.post(`http://localhost:8000/api/fileUpload/${props.id}`, formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     },
@@ -100,11 +100,6 @@ const FileUploader = (props: FileUploaderProps) => {
                 </div>
 
             )}
-
-
-
-
-
 
             {file && status !== 'uploading' && (<Button onClick={handleFileUpload}>Upload</Button>)}
             {status === 'success' && (
