@@ -33,6 +33,7 @@ const FileUploader = (props: FileUploaderProps) => {
         if (!file) return;
 
         setStatus('uploading');
+        setUploadProgress(0);
 
         const formData = new FormData();
         formData.append('file', file);
@@ -53,12 +54,14 @@ const FileUploader = (props: FileUploaderProps) => {
                 })
 
             setStatus('success')
+            setUploadProgress(100)
 
 
 
         } catch (err) {
 
             setStatus('error');
+            setUploadProgress(0)
 
         }
 
@@ -75,6 +78,34 @@ const FileUploader = (props: FileUploaderProps) => {
                     <p>Type: {(file.type)}</p>
                 </div>
             )}
+
+            {file && (
+                <div style={{ marginBottom: '0.5rem'}}>
+                    <div 
+                        style={{
+                            height: '0.625rem',
+                            width: '100%',
+                            borderRadius: '9999px',
+                            backgroundColor: '#e5e7eb'
+                        }}>
+                    </div>
+                    <div style={{
+                        height: '100%',
+                        borderRadius: '9999px',
+                        backgroundColor: '#2563eb',
+                        transition: 'width 0.3s ease-in-out',
+                        width: `${uploadProgress}%`
+                    }}></div>
+                    <p style={{fontSize: '0.875rem', color: '#4b5563'}}>{uploadProgress}% uploaded</p>
+                </div>
+
+            )}
+
+
+
+
+
+
             {file && status !== 'uploading' && (<Button onClick={handleFileUpload}>Upload</Button>)}
             {status === 'success' && (
                 <p>

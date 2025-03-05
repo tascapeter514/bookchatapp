@@ -124,11 +124,7 @@ const BookclubPage : React.FC = () => {
 
     }
 
-    const handleFileSelection = (event: string) => {
-
-        console.log(event)
-
-    }
+    
 
     console.log('book clubs data:', bookclub)
 
@@ -139,7 +135,7 @@ const BookclubPage : React.FC = () => {
                         <div className='bookclub-top-facade'>
                             <div className="bookclub-background">
                                 <img src={BookclubBackground} alt="" />
-                                <input className='bookclub-background-fileInput' type="file" onChange={(e) => handleFileSelection(e.target.value)} />
+                                
                             </div>
                             <div className="bookclub-top-bar">
                                 <h2>{bookclub?.name}</h2>
