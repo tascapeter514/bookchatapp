@@ -48,6 +48,7 @@ class Bookclub(models.Model):
     bookshelves = models.ManyToManyField(Bookshelf, blank=True, related_name='bookclub')
     currentRead = models.ForeignKey(Book, on_delete=models.CASCADE, blank=True, null=True)
     isPrivate = models.BooleanField(default=True)
+    cover_image = models.ImageField(null=True, blank=True, upload_to="images/")
 
 
 
