@@ -33,6 +33,7 @@ export const UserContext = createContext<UserContextProps>({
         password: '',
         username: '',
         first_name: '',
+        date_joined: '',
         last_name: '',
         email: '',
         profile: {
@@ -62,6 +63,7 @@ const UserDataProvider: React.FC<UserProviderProps> = ({ children }: UserProvide
         first_name: '',
         last_name: '',
         email: '',
+        date_joined: '',
         profile: {
             bio: '',
             profile_pic: undefined
@@ -186,7 +188,7 @@ const UserDataProvider: React.FC<UserProviderProps> = ({ children }: UserProvide
   
       }, [ activeUser.id])
 
-      console.log('active user from user context:', activeUser)
+  
 
 
 

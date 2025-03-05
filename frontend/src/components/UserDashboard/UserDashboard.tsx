@@ -4,6 +4,7 @@ import Bookspanel from './components/BooksPanel/BooksPanel'
 import MessagePanel from './components/MessagePanel/MessagePanel';
 import AccountPanel from './components/AccountPanel/AccountPanel';
 import ProfileNavbar from './components/Sidebar/ProfileNavbar'
+import BookclubsPanel from './components/BookclubsPanel/BookclubsPanel'
 
 
 
@@ -32,7 +33,11 @@ const UserDashboard: FC = () => {
                     )}
                     {activeTab === 1 && (
 
-                    <div className="messages">Messages</div>
+                        <BookclubsPanel></BookclubsPanel>
+
+                        
+
+                    
                         
                     )}
 
@@ -52,7 +57,7 @@ const UserDashboard: FC = () => {
             </main>
             
             <ProfileNavbar activeTab={activeTab} setActiveTab={setActiveTab}></ProfileNavbar>
-            {/* <Sidebar></Sidebar> */}
+            
 
 
             

@@ -15,7 +15,7 @@ const MessagePanel: React.FC = () => {
     const { activeUser, activeUserToken, userInvites, setUserInvites } = userData()
 
 
-    console.log('user invites:', userInvites)
+
 
 
     function joinBookclub(bookclub: {id: string, name: string}) {
