@@ -62,10 +62,10 @@
 }
 
 .bookshelf-accordion-icon {
-    width: auto;
-    aspect-ratio: 1 / 1;
-    background-color: orange;
-    color: white;
+    width: 25px;
+    /* aspect-ratio: 1 / 1; */
+    background-color: transparent;
+    color: black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -75,12 +75,16 @@
 
 
 
-.arrow-left-icon {
+.right-dropdown-icon {
     transition: .5s transform ease;
+
+
+    border: 1px solid red;
+    color: black;
 }
 
 .rotated {
-    transform: rotate(-90deg);
+    transform: rotate(90deg);
 }
 
 

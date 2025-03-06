@@ -1,12 +1,12 @@
-import './BookshelfAccordion.css'
+import './BookshelfDropdown.css'
 import { useState, ReactNode } from 'react'
-import { ArrowLeftIcon } from '../Icons'
+import { RightDropDownIcon } from '../Icons'
 
 
 type BookshelfAccordionProps = {children: ReactNode}
 
 
-const BookshelfAccordion = ({children}: BookshelfAccordionProps) => {
+const BookshelfDropdown = ({children}: BookshelfAccordionProps) => {
 
     const [activePanel, setActivePanel] = useState(false);
     const [isRotated, setIsRotated] = useState(false);
@@ -33,7 +33,7 @@ const BookshelfAccordion = ({children}: BookshelfAccordionProps) => {
                             className="bookshelf-accordion-icon" 
                             onClick={toggleAccordion}
                         >
-                             <ArrowLeftIcon isRotated={isRotated}></ArrowLeftIcon>
+                             <RightDropDownIcon isRotated={isRotated}></RightDropDownIcon>
                         </div>
                     </button>
                 </h2>
@@ -54,4 +54,4 @@ const BookshelfAccordion = ({children}: BookshelfAccordionProps) => {
 
 }
 
-export default BookshelfAccordion
+export default BookshelfDropdown

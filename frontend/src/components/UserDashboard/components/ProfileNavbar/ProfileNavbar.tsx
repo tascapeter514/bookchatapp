@@ -2,7 +2,7 @@ import { userData } from '../../../common/UserContext'
 import { Dispatch, SetStateAction, useState } from 'react'
 import CreateButton from '../../../common/Buttons/CreateButton/CreateButton'
 import { Bookshelf } from '../../../../types'
-import  BookshelfAccordion  from '../../../common/BookshelfAccordion/BookshelfAccordion'
+import  BookshelfDropdown  from '../../../common/BookshelfDropdown/BookshelfDropdown'
 import './ProfileNavbar.css'
 
 interface ProfileNavbarProps {
@@ -113,7 +113,7 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
                                 {navbarContent}
                             </a>
                         </li>
-                        <BookshelfAccordion><ul className='navbar-bookshelf-list'>{bookshelfElements}</ul></BookshelfAccordion>
+                        <BookshelfDropdown><ul className='navbar-bookshelf-list'>{bookshelfElements}</ul></BookshelfDropdown>
                         <CreateButton>Bookshelf</CreateButton>
                     </div>
                 )} 
