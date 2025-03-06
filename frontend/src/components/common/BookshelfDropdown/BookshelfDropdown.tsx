@@ -9,7 +9,7 @@ type BookshelfAccordionProps = {children: ReactNode}
 const BookshelfDropdown = ({children}: BookshelfAccordionProps) => {
 
     console.log('dropdown children:', children)
-    const [firstChild, secondCHild] = Children.toArray(children)
+    const [firstChild, secondChild] = Children.toArray(children)
 
     const [activePanel, setActivePanel] = useState(false);
     const [isRotated, setIsRotated] = useState(false);
@@ -32,13 +32,14 @@ const BookshelfDropdown = ({children}: BookshelfAccordionProps) => {
                         aria-expanded={activePanel}
                                                          
                     >
+                        {firstChild}
                         <div 
                             className="dropdown-icon" 
                             onClick={toggleAccordion}
-                        >
+                        >   
                              <RightDropDownIcon isRotated={isRotated}></RightDropDownIcon>
                         </div>
-                        {firstChild}
+                        
                         
                         
                     </button>
@@ -50,7 +51,7 @@ const BookshelfDropdown = ({children}: BookshelfAccordionProps) => {
                     aria-hidden='true'
                     role='region'
                 >
-                    {children}
+                    {secondChild}
                     
                 </div>
             </div>

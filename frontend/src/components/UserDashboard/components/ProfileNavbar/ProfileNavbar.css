@@ -100,6 +100,11 @@
     border: 1px solid red;
 }
 
+.navbar-bookshelf-component li {
+    border: 1px solid red;
+    width: 100%;
+}
+
 
 .navbar-bookshelf-list {
     margin-top: 0;
@@ -109,6 +114,10 @@
 
 .navbar-bookshelf-list li {
     font-weight: 400
+}
+
+.tab-3 {
+    border: 1px solid red;
 }
 
 
