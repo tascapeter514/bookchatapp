@@ -104,16 +104,20 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
                 {navbarContent == 'Bookshelves' && (
                     <div className='navbar-bookshelf-component'>
                         <hr className='navbar-line-break' />
-                        <li 
-                            key={navbarIndex}
-                            onClick={ () => setActiveTab(navbarIndex)}
-                            className={activeTab == navbarIndex ? 'active' : ''}
-                        >
-                            <a id={`tab-${navbarIndex}`} href={`#${navbarContent.toLowerCase()}`}>
-                                {navbarContent}
-                            </a>
-                        </li>
-                        <BookshelfDropdown><ul className='navbar-bookshelf-list'>{bookshelfElements}</ul></BookshelfDropdown>
+                        <BookshelfDropdown>
+                            <li
+                                key={navbarIndex}
+                                onClick={ () => setActiveTab(navbarIndex)}
+                                className={activeTab == navbarIndex ? 'active' : ''}
+                            >
+                                <a id={`tab-${navbarIndex}`} href={`#${navbarContent.toLowerCase()}`}>
+                                    {navbarContent}
+                                </a>
+                            </li>
+                            <ul className='navbar-bookshelf-list'>{bookshelfElements}</ul>
+                        </BookshelfDropdown>
+
+                        
                         <CreateButton>Bookshelf</CreateButton>
                     </div>
                 )} 
