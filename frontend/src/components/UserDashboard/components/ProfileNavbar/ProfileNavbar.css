@@ -97,6 +97,7 @@
     gap: .5rem;
     width: 100%;
     align-items: center;
+    border: 1px solid red;
 }
 
 .navbar-bookshelf-list {

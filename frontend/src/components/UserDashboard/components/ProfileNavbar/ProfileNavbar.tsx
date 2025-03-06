@@ -109,19 +109,12 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
                             onClick={ () => setActiveTab(navbarIndex)}
                             className={activeTab == navbarIndex ? 'active' : ''}
                         >
-                                
                             <a id={`tab-${navbarIndex}`} href={`#${navbarContent.toLowerCase()}`}>
                                 {navbarContent}
                             </a>
-                                
                         </li>
-                        <ul className='navbar-bookshelf-list'>
-                            <BookshelfAccordion>{bookshelfElements}</BookshelfAccordion>
-                            
-
-                        </ul>
+                        <BookshelfAccordion><ul className='navbar-bookshelf-list'>{bookshelfElements}</ul></BookshelfAccordion>
                         <CreateButton>Bookshelf</CreateButton>
-
                     </div>
                 )} 
            </>
