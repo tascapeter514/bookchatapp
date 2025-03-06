@@ -3,6 +3,7 @@ import { Dispatch, SetStateAction, useState } from 'react'
 import CreateButton from '../../../common/Buttons/CreateButton/CreateButton'
 import { Bookshelf } from '../../../../types'
 import  BookshelfDropdown  from '../../../common/BookshelfDropdown/BookshelfDropdown'
+import { RightDropDownIcon } from '../../../common/Icons'
 import './ProfileNavbar.css'
 
 interface ProfileNavbarProps {
@@ -30,7 +31,19 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
     const { activeUser, userBookshelves } = userData()
     const {day, month, year } = formatDate(activeUser.date_joined)
     const navbarContents = ['Account', 'Messages', 'Bookclubs', 'Bookshelves']
+    const [isRotated, setIsRotated] = useState(false);
     const bookshelfOffset = navbarContents.length
+
+
+
+    const [activePanel, setActivePanel] = useState(false);
+    
+
+    const toggleAccordion = () => {
+        setActivePanel(prev => !prev)
+        setIsRotated(prev => !prev)
+
+    }
 
     // console.log('profile navbar:', userBookshelves)
 
@@ -104,14 +117,15 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
                 {navbarContent == 'Bookshelves' && (
                     <div className='navbar-bookshelf-component'>
                         <hr className='navbar-line-break' />
-                        <BookshelfDropdown>
+                        <BookshelfDropdown activePanel={activePanel} setActivePanel={setActivePanel}>
                             <li
                                 key={navbarIndex}
                                 onClick={ () => setActiveTab(navbarIndex)}
-                                className={activeTab == navbarIndex ? 'active' : ''}
+                                className={ `navbar-bookshelf-listElement ${activeTab == navbarIndex ? 'active' : ''}`}
                             >
                                 <a id={`tab-${navbarIndex}`} href={`#${navbarContent.toLowerCase()}`}>
                                     {navbarContent}
+                                    <RightDropDownIcon onClick={toggleAccordion} isRotated={isRotated}></RightDropDownIcon>
                                 </a>
                             </li>
                             <ul className='navbar-bookshelf-list'>{bookshelfElements}</ul>
