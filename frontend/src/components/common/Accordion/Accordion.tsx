@@ -3,7 +3,7 @@ import { useState} from 'react'
 
 
 
-const Accordion = (children: React.ReactNode) => {
+const Accordion = ({children}: {children: React.ReactNode}) => {
 
     const [isExpanded, setIsExpanded] = useState(false)
 

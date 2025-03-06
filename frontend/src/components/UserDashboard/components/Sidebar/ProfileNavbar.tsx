@@ -33,7 +33,7 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
 
     const {day, month, year } = formatDate(activeUser.date_joined)
 
-    const navbarContents = ['Account', 'Bookclubs', 'Bookshelves', 'Messages']
+    const navbarContents = ['Account', 'Messages', 'Bookclubs', 'Bookshelves']
 
     const navbarElements = navbarContents.map((navbarContent: string, navbarIndex: number) => {
 
@@ -48,7 +48,7 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
                 </a>
             
 
-        </li>
+            </li>
 
     })
 
@@ -61,7 +61,7 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
     return(
         <div className="navbar-container">
             <div className="profile-header">
-                <h1>Hello {activeUser.first_name}!</h1>
+                <h1>Hi {activeUser.first_name}!</h1>
                 <span>Member since {month} {day}, {year}</span>
             </div>
             <nav className='profile-navbar'>
