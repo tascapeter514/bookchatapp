@@ -3,7 +3,7 @@ import Accordion from '../../../common/Accordion/Accordion.tsx'
 import { Link } from 'react-router-dom'
 import { userData } from '../../../common/UserContext.tsx'
 import { Invitation} from '../../../../types.ts'
-import { formatDate } from '../Sidebar/ProfileNavbar.tsx'
+import { formatDate } from '../ProfileNavbar/ProfileNavbar.tsx'
 
 
 

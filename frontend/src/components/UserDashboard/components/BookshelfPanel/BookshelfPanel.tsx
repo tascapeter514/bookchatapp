@@ -44,6 +44,8 @@ const BookshelfPanel = (props: BookshelfPanelProps) => {
     // })
 
     const bookshelfElements = userBookshelves.map((bookshelf, index) => (
+
+        activeBookshelf === index && 
         <li 
             key={bookshelf.bookshelf_id}
 
@@ -51,6 +53,7 @@ const BookshelfPanel = (props: BookshelfPanelProps) => {
             <h2 className='bookshelf-title'>{bookshelf.name}</h2>
             <BookshelfComponent activeBookshelf={activeBookshelf} bookshelf={bookshelf}></BookshelfComponent>
         </li>
+        
 
     ))
 

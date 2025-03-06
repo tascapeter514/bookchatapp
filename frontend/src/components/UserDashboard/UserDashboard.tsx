@@ -3,8 +3,9 @@ import { useState } from 'react';
 import Bookshelfpanel from './components/BookshelfPanel/BookshelfPanel'
 import MessagePanel from './components/MessagePanel/MessagePanel';
 import AccountPanel from './components/AccountPanel/AccountPanel';
-import ProfileNavbar from './components/Sidebar/ProfileNavbar'
+import ProfileNavbar from './components/ProfileNavbar/ProfileNavbar'
 import BookclubsPanel from './components/BookclubsPanel/BookclubsPanel'
+
 
 const panels = [
     <AccountPanel />,

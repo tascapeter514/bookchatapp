@@ -17,5 +17,5 @@ export type ArrowLeftProps = {
 export const ArrowLeftIcon: FC<ArrowLeftProps> = ({isRotated, ...props}) => {
 
 
-    return <FaArrowLeft className={`al-icon ${isRotated ? 'rotated' : ''}`} {...props}></FaArrowLeft>
+    return <FaArrowLeft className={`arrow-left-icon ${isRotated ? 'rotated' : ''}`} {...props}></FaArrowLeft>
 }

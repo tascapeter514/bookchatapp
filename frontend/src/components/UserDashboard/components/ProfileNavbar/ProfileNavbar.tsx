@@ -2,6 +2,7 @@ import { userData } from '../../../common/UserContext'
 import { Dispatch, SetStateAction, useState } from 'react'
 import CreateButton from '../../../common/Buttons/CreateButton/CreateButton'
 import { Bookshelf } from '../../../../types'
+import  BookshelfAccordion  from '../../../common/BookshelfAccordion/BookshelfAccordion'
 import './ProfileNavbar.css'
 
 interface ProfileNavbarProps {
@@ -15,9 +16,6 @@ interface ProfileNavbarProps {
 export function formatDate(dateString: string) {
     const date = new Date(dateString);
     const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-    
-
-
     const day = date.getDate();
     const month = monthNames[date.getMonth()]
     const year = date.getFullYear()
@@ -118,7 +116,8 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
                                 
                         </li>
                         <ul className='navbar-bookshelf-list'>
-                            {bookshelfElements}
+                            <BookshelfAccordion>{bookshelfElements}</BookshelfAccordion>
+                            
 
                         </ul>
                         <CreateButton>Bookshelf</CreateButton>
