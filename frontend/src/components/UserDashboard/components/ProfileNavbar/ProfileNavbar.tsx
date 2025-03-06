@@ -111,19 +111,19 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
                         </li>
                         <CreateButton>Bookclub</CreateButton>
                         
-                        
+         
                     </> 
                 )}
                 {navbarContent == 'Bookshelves' && (
                     <div className='navbar-bookshelf-component'>
                         <hr className='navbar-line-break' />
-                        <BookshelfDropdown activePanel={activePanel} setActivePanel={setActivePanel}>
+                        <BookshelfDropdown activePanel={activePanel}>
                             <li
                                 key={navbarIndex}
                                 onClick={ () => setActiveTab(navbarIndex)}
                                 className={ `navbar-bookshelf-listElement ${activeTab == navbarIndex ? 'active' : ''}`}
                             >
-                                <a id={`tab-${navbarIndex}`} href={`#${navbarContent.toLowerCase()}`}>
+                                <a className='navbar-bookshelf-link' id={`tab-${navbarIndex}`} href={`#${navbarContent.toLowerCase()}`}>
                                     {navbarContent}
                                     <RightDropDownIcon onClick={toggleAccordion} isRotated={isRotated}></RightDropDownIcon>
                                 </a>

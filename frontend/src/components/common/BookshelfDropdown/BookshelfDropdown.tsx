@@ -1,12 +1,12 @@
 import './BookshelfDropdown.css'
-import { ReactNode, Children, Dispatch, SetStateAction } from 'react'
+import { ReactNode, Children } from 'react'
 
 
 
-type BookshelfAccordionProps = {children: ReactNode, activePanel: boolean, setActivePanel: Dispatch<SetStateAction<number>>}
+type BookshelfAccordionProps = {children: ReactNode, activePanel: boolean}
 
 
-const BookshelfDropdown = ({children, activePanel, setActivePanel}: BookshelfAccordionProps) => {
+const BookshelfDropdown = ({children, activePanel}: BookshelfAccordionProps) => {
 
     console.log('dropdown children:', children)
     const [firstChild, secondChild] = Children.toArray(children)
