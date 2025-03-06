@@ -29,16 +29,18 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
     const { activeUser, userBookshelves } = userData()
     const {day, month, year } = formatDate(activeUser.date_joined)
     const navbarContents = ['Account', 'Messages', 'Bookclubs', 'Bookshelves']
+    const bookshelfOffset = navbarContents.length
 
-    console.log('profile navbar:', userBookshelves)
+    // console.log('profile navbar:', userBookshelves)
 
+    console.log('active tab:', activeTab)
 
     const bookshelfElements = userBookshelves.map((userBookshelf: Bookshelf, userBookshelfIndex: number) => (
 
         <li 
             key={userBookshelf.bookshelf_id}
-            onClick={() => setActiveBookshelf(userBookshelfIndex)}
-            className={activeBookshelf == userBookshelfIndex ? 'active' : ''}
+            onClick={() => setActiveTab(userBookshelfIndex + bookshelfOffset)}
+            className={activeTab == userBookshelfIndex + bookshelfOffset ? 'active' : ''}
         >   
             <a id={`bookshelf-${userBookshelfIndex}`} href={`#${userBookshelf.name.toLowerCase()}`}>
                 {userBookshelf.name}
@@ -48,14 +50,6 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
         </li>
 
     ))
-
-
-    
-
-    
-    
-
-    
 
     const navbarElements = navbarContents.map((navbarContent: string, navbarIndex: number) => {
         return (
@@ -116,6 +110,8 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
            </>
         )
     })
+
+    
 
     
 

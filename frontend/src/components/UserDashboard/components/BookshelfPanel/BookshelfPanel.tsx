@@ -1,8 +1,9 @@
-import './BooksPanel.css';
+import './BookshelfPanel.css';
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { Book, Bookshelf } from '../../../../types.ts';
-import { userData } from '../../../../components/common/UserContext.tsx'
+import { userData } from '../../../common/UserContext.tsx'
+import BookshelfComponent from './components/BookshelfComponent'
 import Header from '../../../common/Header/Header.tsx'
 
 

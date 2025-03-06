@@ -67,7 +67,8 @@
 }
 
 
-.profile-nav-list li.active {
+.profile-nav-list li.active,
+.navbar-bookshelf-list.active {
     background: #D6f6ff;
     position: relative;
     

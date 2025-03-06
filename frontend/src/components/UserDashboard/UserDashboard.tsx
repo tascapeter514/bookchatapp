@@ -1,6 +1,6 @@
 import './UserDashboard.css';
 import { FC, useState } from 'react';
-import Bookspanel from './components/BooksPanel/BooksPanel'
+import Bookshelfpanel from './components/BookshelfPanel/BookshelfPanel'
 import MessagePanel from './components/MessagePanel/MessagePanel';
 import AccountPanel from './components/AccountPanel/AccountPanel';
 import ProfileNavbar from './components/Sidebar/ProfileNavbar'
@@ -50,10 +50,10 @@ const UserDashboard: FC = () => {
                         
                     )}
 
-                    {activeTab === 3 && (
+                    {activeTab >= 3 && (
 
 
-                        <Bookspanel></Bookspanel>
+                        <Bookshelfpanel></Bookshelfpanel>
 
                         
 
