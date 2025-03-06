@@ -4,6 +4,7 @@
     width: 100%;
     max-width: 400px;
     font-family: 'Fort-Bold'
+    
 
      /* --red: hsl(1, 90%, 64%);
     --blue: hsl(219, 85%, 26%);
@@ -65,15 +66,16 @@
 
 }
 
-.profile-nav-list li:hover {
-
-    background: #D6f6ff;
-}
 
 .profile-nav-list li.active {
     background: #D6f6ff;
     position: relative;
     
+}
+
+.profile-nav-list li:hover {
+
+    background: #D6f6ff;
 }
 
 
@@ -86,6 +88,24 @@
     border-top: 1px solid #eee;
     width: 100%;
     max-width: 150px;
+}
+
+.navbar-bookshelf-component {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    width: 100%;
+    align-items: center;
+}
+
+.navbar-bookshelf-list {
+    margin-top: 0;
+    width: 100%;
+    padding: 0;
+}
+
+.navbar-bookshelf-list li {
+    font-weight: 400
 }
 
 
