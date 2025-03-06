@@ -10,20 +10,16 @@ const panels = [
     <AccountPanel />,
     <MessagePanel />,
     <BookclubsPanel />,
-    <Bookshelfpanel />
 ]
 
 const UserDashboard = () => {
 
     
     const [activeTab, setActiveTab] = useState(0)
+    const [activeBookshelf, setActiveBookshelf] = useState<number>(4)
    
     const isBookshelfTab = activeTab >= 3
-    const PanelComponent = () => { return isBookshelfTab ? <Bookshelfpanel /> : panels[activeTab] || null} 
-
-
-
-
+    const PanelComponent = () => { return isBookshelfTab ? <Bookshelfpanel activeBookshelf={activeBookshelf} /> : panels[activeTab] || null} 
 
 
     return(
@@ -41,7 +37,14 @@ const UserDashboard = () => {
 
             </main>
             
-            <ProfileNavbar activeTab={activeTab} setActiveTab={setActiveTab}></ProfileNavbar>
+            <ProfileNavbar 
+                activeTab={activeTab} 
+                setActiveTab={setActiveTab} 
+                activeBookshelf={activeBookshelf}
+                setActiveBookshelf={setActiveBookshelf}
+            >
+
+            </ProfileNavbar>
             
 
 

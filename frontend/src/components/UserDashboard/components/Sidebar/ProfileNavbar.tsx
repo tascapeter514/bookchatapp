@@ -5,8 +5,11 @@ import { Bookshelf } from '../../../../types'
 import './ProfileNavbar.css'
 
 interface ProfileNavbarProps {
-    setActiveTab: Dispatch<SetStateAction<number>>,
     activeTab: number,
+    activeBookshelf: number,
+    setActiveTab: Dispatch<SetStateAction<number>>,
+    setActiveBookshelf: Dispatch<SetStateAction<number>>
+    
 }
 
 export function formatDate(dateString: string) {
@@ -24,8 +27,8 @@ export function formatDate(dateString: string) {
 
 const ProfileNavbar = (props: ProfileNavbarProps) => {
 
-    const { activeTab, setActiveTab } = props
-    const [activeBookshelf, setActiveBookshelf] = useState<number>(0)
+    const { activeTab, setActiveTab, setActiveBookshelf } = props
+   
     const { activeUser, userBookshelves } = userData()
     const {day, month, year } = formatDate(activeUser.date_joined)
     const navbarContents = ['Account', 'Messages', 'Bookclubs', 'Bookshelves']
@@ -33,25 +36,40 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
 
     // console.log('profile navbar:', userBookshelves)
 
-    console.log('active tab:', activeTab)
+    // console.log('active tab:', activeTab)
 
-    const bookshelfElements = userBookshelves.map((userBookshelf: Bookshelf, userBookshelfIndex: number) => (
+    const bookshelfElements = userBookshelves.map((userBookshelf: Bookshelf, userBookshelfIndex: number) => {
+        function handleActiveBookshelf() {
 
-        <li 
-            key={userBookshelf.bookshelf_id}
-            onClick={() => setActiveTab(userBookshelfIndex + bookshelfOffset)}
-            className={activeTab == userBookshelfIndex + bookshelfOffset ? 'active' : ''}
-        >   
-            <a id={`bookshelf-${userBookshelfIndex}`} href={`#${userBookshelf.name.toLowerCase()}`}>
-                {userBookshelf.name}
-            </a>
+            setActiveTab(userBookshelfIndex + bookshelfOffset)
+            setActiveBookshelf(userBookshelfIndex)
+
+        }
+
+        
+        return (
+
+            <li 
+                key={userBookshelf.bookshelf_id}
+                onClick={handleActiveBookshelf}
+                className={activeTab == userBookshelfIndex + bookshelfOffset ? 'active' : ''}
+            >   
+                <a id={`bookshelf-${userBookshelfIndex}`} href={`#${userBookshelf.name.toLowerCase()}`}>
+                    {userBookshelf.name}
+                </a>
 
 
-        </li>
+            </li>
+        )
 
-    ))
+    })
 
     const navbarElements = navbarContents.map((navbarContent: string, navbarIndex: number) => {
+
+        
+
+
+
         return (
             <>
                 {(navbarContent == 'Account' || navbarContent == 'Messages') && (

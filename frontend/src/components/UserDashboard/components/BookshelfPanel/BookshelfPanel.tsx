@@ -8,45 +8,51 @@ import Header from '../../../common/Header/Header.tsx'
 
 
 
+type BookshelfPanelProps = {activeBookshelf: number}
 
 
-
-const BooksPanel: React.FC = () => {
+const BookshelfPanel = (props: BookshelfPanelProps) => {
 
     const { userBookshelves } = userData()
+    const { activeBookshelf } = props
+    
 
 
 
-    useEffect(() => {
-        console.log('user bookshelves:', userBookshelves)
-    }, [userBookshelves]);
+    // useEffect(() => {
+    //     console.log('user bookshelves:', userBookshelves)
+    // }, [userBookshelves]);
+
+
+    // const titles = userBookshelves.map((userBookshelf: Bookshelf) => userBookshelf.titles).flat()
 
 
 
-
-
-
-
-
-
-    const titles = userBookshelves.map((userBookshelf: Bookshelf) => userBookshelf.titles).flat()
-
-
-
-    console.log('user titles:', titles)
+    // console.log('user titles:', titles)
    
 
-      const userBooksElements = titles.map((userBookElement: Book, index: number) => {
-        return(<li key={index} className='userBook-element'>
-                <Link to={`/book/${userBookElement.title_id}`}><img src={userBookElement.imageLinks['smallThumbnail']} alt="book-cover" /></Link>
-                <h3>{userBookElement.title}</h3>
-                <ul>{userBookElement.authors.map((author) => {
-                    return(<li className='bookElements-authors' key={author.author_id}>{author.name}</li>)
-                })}</ul>
-                <p>{userBookElement.averageRating}</p>
+    //   const userBooksElements = titles.map((userBookElement: Book, index: number) => {
+    //     return(<li key={index} className='userBook-element'>
+    //             <Link to={`/book/${userBookElement.title_id}`}><img src={userBookElement.imageLinks['smallThumbnail']} alt="book-cover" /></Link>
+    //             <h3>{userBookElement.title}</h3>
+    //             <ul>{userBookElement.authors.map((author) => {
+    //                 return(<li className='bookElements-authors' key={author.author_id}>{author.name}</li>)
+    //             })}</ul>
+    //             <p>{userBookElement.averageRating}</p>
             
-        </li>)
-    })
+    //     </li>)
+    // })
+
+    const bookshelfElements = userBookshelves.map((bookshelf, index) => (
+        <li 
+            key={bookshelf.bookshelf_id}
+
+        >
+            <h2 className='bookshelf-title'>{bookshelf.name}</h2>
+            <BookshelfComponent activeBookshelf={activeBookshelf} bookshelf={bookshelf}></BookshelfComponent>
+        </li>
+
+    ))
 
 
 
@@ -54,10 +60,10 @@ const BooksPanel: React.FC = () => {
 
         <div className='bookshelves-container' aria-labelledby='tab-1'>
             <Header>Bookshelves</Header>
-            {/* <ul>{userBooksElements}</ul> */}
+            <ul>{bookshelfElements}</ul>
         </div>
 
     )
 }
 
-export default BooksPanel
+export default BookshelfPanel
