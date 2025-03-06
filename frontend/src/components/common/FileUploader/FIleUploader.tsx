@@ -1,7 +1,7 @@
 import './FileUploader.css'
 import { ChangeEvent, useState } from 'react'
 import axios from 'axios'
-import Button from '../Button/Button'
+import Button from '../Buttons/Button/Button'
 
 
 

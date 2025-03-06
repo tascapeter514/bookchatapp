@@ -1,6 +1,6 @@
 import './BookclubsPanel.css'
 import { userData } from '../../../common/UserContext.tsx'
-import Button from '../../../common/Button/Button.tsx'
+import Button from '../../../common/Buttons/Button/Button.tsx'
 
 
 

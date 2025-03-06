@@ -1,5 +1,6 @@
 import { userData } from '../../../common/UserContext'
 import { Dispatch, SetStateAction } from 'react'
+import CreateButton from '../../../common/Buttons/CreateButton/CreateButton'
 import './ProfileNavbar.css'
 
 interface ProfileNavbarProps {
@@ -25,10 +26,13 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
     const { activeTab, setActiveTab } = props
     const { activeUser } = userData()
 
-    // console.log('acitve user:', activeUser)
 
-  
+               
 
+
+    
+
+    
     
 
     const {day, month, year } = formatDate(activeUser.date_joined)
@@ -36,20 +40,41 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
     const navbarContents = ['Account', 'Messages', 'Bookclubs', 'Bookshelves']
 
     const navbarElements = navbarContents.map((navbarContent: string, navbarIndex: number) => {
+        return (
+            <>
+                {(navbarContent == 'Account' || navbarContent == 'Messages') && (
+                    <li 
+                        key={navbarIndex}
+                        onClick={ () => setActiveTab(navbarIndex)}
+                        className={activeTab == navbarIndex ? 'active' : ''}
+                    >
+                        <a id={`tab-${navbarIndex}`} href={`#${navbarContent.toLowerCase()}`}>
+                            {navbarContent}
+                        </a>
+                    </li> 
+                )}
 
-        return <li 
-            key={navbarIndex}
-            onClick={ () => setActiveTab(navbarIndex)}
-            className={activeTab == navbarIndex ? 'active' : ''}
-            >
-
-                <a id={`tab-${navbarIndex}`} href={`#${navbarContent.toLowerCase()}`}>
-                    {navbarContent}
-                </a>
-            
-
-            </li>
-
+                {navbarContent == 'Bookclubs'&& (
+                    <>
+                        <hr className='navbar-line-break' />
+                        <li 
+                            key={navbarIndex}
+                            onClick={ () => setActiveTab(navbarIndex)}
+                            className={activeTab == navbarIndex ? 'active' : ''}
+                        >
+                            
+                            <a id={`tab-${navbarIndex}`} href={`#${navbarContent.toLowerCase()}`}>
+                                {navbarContent}
+                            </a>
+                            
+                        </li>
+                        <CreateButton>Bookclub</CreateButton>
+                        
+                        
+                    </> 
+                )} 
+           </>
+        )
     })
 
     
@@ -69,10 +94,11 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
                 <ul className='profile-nav-list'>
 
                     {navbarElements}
+
+                    <hr className='navbar-line-break' />
                     
-                    
-            
                 </ul>
+                
             </nav>
         </div>
     )

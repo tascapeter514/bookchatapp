@@ -7,7 +7,7 @@ import { SearchIcon, ArrowLeftIcon } from '../common/Icons'
 import { v4 as uuidv4 } from 'uuid'
 import BookclubBackground from './assets/bookclub-background.jpg'
 import FileUploader from '../common/FileUploader/FIleUploader'
-import Button from '../common/Button/Button'
+import Button from '../common/Buttons/Button/Button'
 import Tabs from '../common/Tabs/Tabs'
 
 
