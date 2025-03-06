@@ -1,4 +1,4 @@
-.bookshelf-accordion {
+.dropdown {
 
     --_button-size: 3rem;
     --_panel-padding: 0.75rem;
@@ -8,12 +8,12 @@
     width: 100%;
 }
 
-.bookshelf-accordion * {
+.dropdown * {
     margin: 0;
     
 }
 
-.bookshelf-accordion-panel {
+.dropdown-panel {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -24,11 +24,11 @@
     transition: flex-basis 500ms
 }
 
-.bookshelf-accordion-panel:has([aria-expanded='true']) {
+.dropdown-panel:has([aria-expanded='true']) {
     flex-basis: clamp(15rem, 40vh, 20rem);
 }
 
-.bookshelf-accordion-trigger {
+.dropdown-trigger {
     display: flex;
     flex-direction: row-reverse;
     gap: .5rem;
@@ -43,7 +43,7 @@
     
 }
 
-.bookshelf-accordion-trigger > span {
+.dropdown-trigger > span {
     /* border: 1px solid black; */
     display: inline-block;
     text-align: center;
@@ -61,7 +61,7 @@
 
 }
 
-.bookshelf-accordion-icon {
+.dropdown-icon {
     width: 25px;
     /* aspect-ratio: 1 / 1; */
     background-color: transparent;
@@ -89,13 +89,13 @@
 
 
 
-.bc-accordion-content > p {
+.dropdown-content > p {
     transform: translateY(2rem);
     opacity: 0;
     transition: transform 500ms, oacity 500ms;
 }
 
-.bc-accordion-panel:has([aria-expanded='true']) .accordion-content > p {
+.dropdown-panel:has([aria-expanded='true']) .dropdown-content > p {
     transform: translateY(0rem);
     opacity: 1;
 

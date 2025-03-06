@@ -19,18 +19,18 @@ const BookshelfDropdown = ({children}: BookshelfAccordionProps) => {
 
 
     return (
-        <div className="bookshelf-accordion" >
-            <div className="bookshelf-accordion-panel" >
-                <h2 id='bookshelf-panel-heading'>
+        <div className="dropdown" >
+            <div className="dropdown-panel" >
+                <h2 id='dropdown-panel-heading'>
                     <button
-                        className='bookshelf-accordion-trigger'
-                        aria-controls='bookshelf-panel-content'
+                        className='dropdown-trigger'
+                        aria-controls='dropdown-panel-content'
                         aria-expanded={activePanel}
                                                          
                     >
-                        <span id='bookhself-panel-title'></span>
+                        <span id='dropdown-panel-title'></span>
                         <div 
-                            className="bookshelf-accordion-icon" 
+                            className="dropdown-icon" 
                             onClick={toggleAccordion}
                         >
                              <RightDropDownIcon isRotated={isRotated}></RightDropDownIcon>
@@ -38,9 +38,9 @@ const BookshelfDropdown = ({children}: BookshelfAccordionProps) => {
                     </button>
                 </h2>
                 <div 
-                    className='bookshelf-accordion-content' 
-                    id='bookshelf-panel-content'
-                    aria-labelledby='bookshelf-panel-heading'
+                    className='dropdown-content' 
+                    id='dropdown-panel-content'
+                    aria-labelledby='dropdown-panel-heading'
                     aria-hidden='true'
                     role='region'
                 >
