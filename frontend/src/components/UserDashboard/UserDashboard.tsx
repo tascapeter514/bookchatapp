@@ -1,17 +1,26 @@
 import './UserDashboard.css';
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import Bookshelfpanel from './components/BookshelfPanel/BookshelfPanel'
 import MessagePanel from './components/MessagePanel/MessagePanel';
 import AccountPanel from './components/AccountPanel/AccountPanel';
 import ProfileNavbar from './components/Sidebar/ProfileNavbar'
 import BookclubsPanel from './components/BookclubsPanel/BookclubsPanel'
 
+const panels = [
+    <AccountPanel />,
+    <MessagePanel />,
+    <BookclubsPanel />,
+    <Bookshelfpanel />
+]
 
-
-const UserDashboard: FC = () => {
+const UserDashboard = () => {
 
     
     const [activeTab, setActiveTab] = useState(0)
+   
+    const isBookshelfTab = activeTab >= 3
+    const PanelComponent = () => { return isBookshelfTab ? <Bookshelfpanel /> : panels[activeTab] || null} 
+
 
 
 
@@ -24,42 +33,9 @@ const UserDashboard: FC = () => {
                 
   
                 <div className="tab-panels-container container-flex">
-                    {activeTab === 0 && (
-
-                        <AccountPanel></AccountPanel> 
-
-                        
-                        
-                    )}
-                    {activeTab === 1 && (
-
-                        <MessagePanel ></MessagePanel>
-
-                        
-
-                        
-
+                    <PanelComponent />
                     
-                        
-                    )}
-
-                    {activeTab === 2 && (
-
-                        <BookclubsPanel></BookclubsPanel>
-
-                        
-                    )}
-
-                    {activeTab >= 3 && (
-
-
-                        <Bookshelfpanel></Bookshelfpanel>
-
-                        
-
-                        
-                        
-                    )}
+                  
                 </div>
                 
 
