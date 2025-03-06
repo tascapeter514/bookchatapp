@@ -1,9 +1,9 @@
 import './Accordion.css'
-import {FC, useState} from 'react'
+import { useState} from 'react'
 
 
 
-const Accordion: FC<{children: React.ReactNode}> = ({children}) => {
+const Accordion = (children: React.ReactNode) => {
 
     const [isExpanded, setIsExpanded] = useState(false)
 

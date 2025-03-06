@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { Book, Bookshelf } from '../../../../types.ts';
 import { userData } from '../../../../components/common/UserContext.tsx'
+import Header from '../../../common/Header/Header.tsx'
 
 
 
@@ -50,9 +51,9 @@ const BooksPanel: React.FC = () => {
 
     return(
 
-        <div id='books' aria-labelledby='tab-1'>
-            <h2>Books</h2>
-            <ul>{userBooksElements}</ul>
+        <div className='bookshelves-container' aria-labelledby='tab-1'>
+            <Header>Bookshelves</Header>
+            {/* <ul>{userBooksElements}</ul> */}
         </div>
 
     )

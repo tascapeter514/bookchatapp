@@ -1,0 +1,16 @@
+.header-title {
+    text-align: center;
+    font-weight: 700;
+    margin-block: .5rem;
+
+}
+
+.header-underline {
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    max-width: 76px;
+    border: 3px solid orange;
+    width: 100%;
+
+
+}

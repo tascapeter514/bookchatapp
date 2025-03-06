@@ -18,7 +18,7 @@ const BookclubPage : React.FC = () => {
     const [activeTab, setActiveTab] = useState(0)
     const [activePanel, setActivePanel] = useState(false)
     const [isRotated, setIsRotated] = useState(false)
-    // const [lastVisited, setLastVisited] = useState(null)
+    
     const tabContents = ['Discussion', 'Bookshelves', 'Current Read']
 
 
