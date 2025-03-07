@@ -1,0 +1,23 @@
+
+.bookshelf-container {
+    border: 5px solid green;
+    display: flex;
+}
+
+
+.bookshelf-title-list {
+    display: flex;
+    padding: 0;
+    border: 1px solid lime;
+}
+
+
+
+.book-card {
+    border: 1px solid red;
+    background-repeat: no-repeat;
+    width: 100%;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+}

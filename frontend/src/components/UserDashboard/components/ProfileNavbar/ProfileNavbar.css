@@ -3,8 +3,12 @@
 .navbar-container {
     width: 100%;
     max-width: 400px;
-    font-family: 'Fort-Bold'
-    
+    font-family: 'Fort-Bold';
+    position: absolute;
+    border: 1px solid red;
+    right: 0;
+    z-index: 99999;
+    background-color: white;
 
      /* --red: hsl(1, 90%, 64%);
     --blue: hsl(219, 85%, 26%);
