@@ -23,13 +23,13 @@ const BookshelfComponent = (props: BookshelfProps) => {
                             <LikeIcon></LikeIcon>
                             <DislikeIcon></DislikeIcon>
                         </div>
+                    </div>
+                    <div className="book-card-back">
                         <h3 className="book-card-title">{bookshelfTitle.title}</h3>
                         {bookshelfTitle.authors.map(author => (
                             <li className='card-author-listElement' key={author.author_id}><span className='card-author-name'>{author.name}</span></li>
                         ))}
                         <p className="book-card-ratings">{bookshelfTitle.averageRating} out of {bookshelfTitle.ratingsCount} ratings</p>
-                    </div>
-                    <div className="book-card-back">
                         
                     </div>
                 </article>
