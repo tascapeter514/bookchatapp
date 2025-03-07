@@ -16,13 +16,50 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+    gap: 1rem;
 
 
     padding: 0;
     border: 1px solid lime;
 }
 
+.book-card-listElement {
+    width: 100%;
+    border: 1px solid yellow;
+    
 
+}
+
+.book-card-front {
+    border: 1px solid red;
+    max-width: 260px;
+    font-size: 1rem;
+    
+    
+
+}
+
+.img-overlay {
+    border: 1px solid red;
+    width: 100%;
+    max-width: 260px;
+    display: flex;
+    justify-content: center;
+    padding: 3em;
+    background: rgb(246, 246, 246);
+}
+
+.img-overlay:hover {
+    /* padding-bottom: 10px;
+    overflow: hidden; */
+
+    clip-path: inset(0 0 40px 0);
+}
+
+.book-card-img {
+    width: 100%;
+    min-width: 160px;
+}
 
 
 
