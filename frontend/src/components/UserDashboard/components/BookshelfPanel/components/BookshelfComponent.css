@@ -1,23 +1,31 @@
 
 .bookshelf-container {
     border: 5px solid green;
-    display: flex;
+    display: grid;
+    min-height: 100vh;
+    place-items: center;
+    line-height: 1.6;
+    background-color: white;
+    /* display: flex; */
 }
 
 
 .bookshelf-title-list {
     display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+
     padding: 0;
     border: 1px solid lime;
 }
 
 
 
-.book-card {
-    border: 1px solid red;
-    background-repeat: no-repeat;
-    width: 100%;
-    max-width: 300px;
-    display: flex;
-    flex-direction: column;
-}
+
+
+
+
+

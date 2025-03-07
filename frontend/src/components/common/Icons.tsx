@@ -1,20 +1,22 @@
 import { FaSearch, FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 import { IoMdArrowDropright } from "react-icons/io";
+import { GrLike, GrDislike } from "react-icons/gr";
 
 import { FC } from 'react'
 
+export type ArrowProps = {
+    isRotated: boolean
+} & IconProps
 
 
 
 export type IconProps = React.ComponentPropsWithoutRef<'svg'>
 
-export const SearchIcon: FC<IconProps> = (props) => {
+export const SearchIcon = (props: IconProps) => {
     return  <FaSearch {...props}></FaSearch>
 }
 
-export type ArrowProps = {
-    isRotated: boolean
-} & IconProps
+
 
 export const ArrowLeftIcon = ({isRotated, ...props}: ArrowProps) => {
 
@@ -29,4 +31,14 @@ export const ArrowRightIcon = ({isRotated, ...props}: ArrowProps) => {
 export const RightDropDownIcon = ({isRotated, ...props}: ArrowProps) => {
     return <IoMdArrowDropright className={`right-dropdown-icon ${isRotated ? 'rotated': ''}`} {...props} />
 }
+
+export const LikeIcon = (props: IconProps) => {
+    return <GrLike className='like-icon'  {...props}/>
+}
+
+export const DislikeIcon = (props: IconProps) => {
+    return <GrDislike className='dislike-icon'  {...props}/>
+}
+
+
 
