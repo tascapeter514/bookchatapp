@@ -34,6 +34,7 @@
     border: 5px solid green;
     max-width: 260px;
     font-size: 1rem;
+    position: relative;
     
     
 
@@ -41,45 +42,61 @@
 
 .img-overlay {
 
-
-
     border: 1px solid red;
     width: 100%;
     max-width: 260px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     padding: 3em;
     background: rgb(246, 246, 246);
     clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%); 
-    transition: clip-path 500ms ease;
+    transition: clip-path 2000ms ease;
+    position: relative;
+    overflow: hidden;
+
 }
 
-.img-overlay:hover {
-    clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 0% 90%); 
-}
 
 .book-card-img {
     width: 100%;
     min-width: 160px;
+    transition: transform 500ms ease;
+}
+
+.img-overlay:hover .book-card-img {
+    transform: scale(1.15)
 }
 
 .book-card-buttons {
     border: 1px solid red;
     display: flex;
     gap: 1rem;
+    background: white;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
     transform: translateY(100%);
-    border: 1px solid red;
+    transition: transform 500ms ease;
+}
+
+.img-overlay:hover .book-card-buttons {
+    transform: translateY(0)
 }
 
 .dislike-icon, .like-icon {
     width: 100%;
-    height: 30px;
-    
-    
+    height: 35px;  
 }
 
 .dislike-icon > *, .like-icon > * {
     fill: orange;
+}
+
+.book-card-back {
+    border: 1px solid red;
 }
 
 

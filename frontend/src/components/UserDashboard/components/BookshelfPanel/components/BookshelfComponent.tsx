@@ -17,13 +17,15 @@ const BookshelfComponent = (props: BookshelfProps) => {
     const bookshelfTitles = bookshelf.titles.map((bookshelfTitle) => {
        return <li className='book-card-listElement' key={bookshelfTitle.title_id}>
                 <article className="book-card" >
-                    <div className="book-card-front">
-                        <div className="img-overlay"><img src={bookshelfTitle.imageLinks.thumbnail} alt="book-card-cover" className='book-card-img' /></div>
-                        <div className="book-card-buttons">
-                            <LikeIcon></LikeIcon>
-                            <DislikeIcon></DislikeIcon>
+ 
+                        <div className="img-overlay">
+                            <img src={bookshelfTitle.imageLinks.thumbnail} alt="book-card-cover" className='book-card-img' />
+                            <div className="book-card-buttons">
+                                <LikeIcon></LikeIcon>
+                                <DislikeIcon></DislikeIcon>
+                            </div>
                         </div>
-                    </div>
+                       
                     <div className="book-card-back">
                         <h3 className="book-card-title">{bookshelfTitle.title}</h3>
                         {bookshelfTitle.authors.map(author => (
