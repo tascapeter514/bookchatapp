@@ -22,7 +22,7 @@ const Accordion = ({children}: {children: React.ReactNode}) => {
                 aria-labelledby='panel-heading'
                 aria-hidden='true'
                 role='region'>
-                    <div>{children}</div>
+                    <div className='accordion-children'>{children}</div>
             </div>
             <h2 id='panel-heading'>
                 <button

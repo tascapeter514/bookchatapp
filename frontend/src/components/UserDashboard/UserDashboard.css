@@ -6,7 +6,7 @@
     display: grid;
     grid-template-columns: minmax(250px, 80%) minmax(300px, 20%);
     margin: 0 auto;
-    z-index: 1
+    z-index: 1;
 }
 
 
@@ -17,6 +17,7 @@
 .dashboard-navbar {
     border: 1px solid red;
 }
+
 
 
 .userBook-element {
@@ -49,22 +50,6 @@
 
 }
 
-
-
-/* #books {
-    border: 1px solid red;
-    width: 100%;
-}
-
-#bookclubs {
-    border: 1px solid blue;
-    width: 100%;
-}
-
-#settings {
-    border: 1px solid purple;
-    width: 100%;
-} */
 
 
 @media (max-width: 900px) {

@@ -1,6 +1,10 @@
 .messages-container {
     padding: 1em;
     width: 100%;
+    border: 1px solid green;
+    overflow: hidden;
+    height: 100%;
+    
     
 }
 
@@ -46,7 +50,7 @@
 }
 
 .messages-list {
-    margin-top: 50px;
+    /* margin-top: 50px; */
     padding: 0;
     display: flex;
     flex-direction: column;
@@ -54,6 +58,8 @@
     align-items: center;
     gap: .5rem;
     width: 100%;
+    border: 3px solid green;
+
 }
 
 .message-element {

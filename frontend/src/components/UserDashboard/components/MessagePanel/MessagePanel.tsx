@@ -78,7 +78,7 @@ const MessagePanel: React.FC = () => {
 
 
     return(
-        <div id='bookclubs' className='messages-container' aria-labelledby='tab-2'>
+        <div id='messages' className='messages-container' aria-labelledby='tab-2'>
             <Header>Messages</Header>
             
             <h2>Invitations</h2>

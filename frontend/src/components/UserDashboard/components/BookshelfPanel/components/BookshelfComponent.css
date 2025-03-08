@@ -1,7 +1,7 @@
 
 .bookshelf-container {
     display: grid;
-    min-height: 100vh;
+    /* min-height: 100vh; */
     place-items: center;
     line-height: 1.6;
     background-color: white;
