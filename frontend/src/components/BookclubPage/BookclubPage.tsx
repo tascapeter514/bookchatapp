@@ -22,7 +22,8 @@ const BookclubPage : React.FC = () => {
     const tabContents = ['Discussion', 'Bookshelves', 'Current Read']
 
 
-    const modalRef = useRef<HTMLDialogElement>(null)
+    const bookshelfRef = useRef<HTMLDialogElement>(null)
+    const uploadFileRef = useRef<HTMLDialogElement>(null)
     
     const [isMember, setIsMember] = useState(false)
     const parameters = useParams<string>()
@@ -69,15 +70,12 @@ const BookclubPage : React.FC = () => {
     }, [])
   
 
-    const openModal = () => {
-
-        modalRef.current?.showModal()
+    const openBookshelfModal = () => bookshelfRef.current?.showModal()
+    const closeBookshelfModal = () => bookshelfRef.current?.close()
+    const openImageModal = () => uploadFileRef.current?.showModal()
+    const closeImageModal = () => uploadFileRef.current?.close()
         
-    }
-
-    const closeModal = () => {
-        modalRef.current?.close()
-    }
+    
 
     
     const UserProfileIcons = bookclub?.members.map((member, index) => {
@@ -143,11 +141,11 @@ const BookclubPage : React.FC = () => {
                         <div className='bookclub-top-facade'>
                             <div className="bookclub-background">
                                 <img src={BookclubBackground} alt="" />
-                                <Button onClick={openModal}>Change Image</Button>
-                                <dialog className='uploadFile-modal' ref={modalRef}>
+                                <Button onClick={openImageModal}>Change Image</Button>
+                                <dialog className='uploadFile-modal' ref={uploadFileRef}>
                                     <div>
                                         <FileUploader id={parameters.id ?? ''}></FileUploader>
-                                        <Button onClick={closeModal}>Cancel</Button>
+                                        <Button onClick={closeImageModal}>Cancel</Button>
                                     </div>
                                 </dialog>
                                 
@@ -190,13 +188,13 @@ const BookclubPage : React.FC = () => {
                                 <div className="bookshelves-panel">
                                     <div className="bookshelves-bar">
                                         <h2>Bookshelves</h2>
-                                        <button onClick={openModal}>Add Bookshelf</button>
+                                        <button onClick={openBookshelfModal}>Add Bookshelf</button>
                                     </div>
-                                    <dialog className="bookshelf-modal" ref={ modalRef } >
+                                    <dialog className="bookshelf-modal" ref={ bookshelfRef } >
                                         <form action={createBookshelf as unknown as string} method='post'>
                                             <input type="text" name='bookshelfName' placeholder='Bookshelf Name' required/>
                                             <div className="button-wrapper">
-                                                <button onClick={closeModal}>Cancel</button>
+                                                <button onClick={closeBookshelfModal}>Cancel</button>
                                                 <button type='submit'>Create</button>
                                             </div>
 
