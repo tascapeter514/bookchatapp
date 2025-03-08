@@ -25,27 +25,23 @@ const UserDashboard = () => {
 
     return(
         <div className='dashboard-container'>
+
             <main className='dashboard-main'>
-
-                
-  
-                
+            <button className='dashboardNavbar-mobile-toggle'>Profile</button>
                     <PanelComponent />
-                    
-                  
-             
-                
-
             </main>
-            
-            <ProfileNavbar 
-                activeTab={activeTab} 
-                setActiveTab={setActiveTab} 
-                activeBookshelf={activeBookshelf}
-                setActiveBookshelf={setActiveBookshelf}
-            >
+            <aside className='dashboard-navbar'>
+                <ProfileNavbar 
+                    activeTab={activeTab} 
+                    setActiveTab={setActiveTab} 
+                    activeBookshelf={activeBookshelf}
+                    setActiveBookshelf={setActiveBookshelf}
+                >
 
-            </ProfileNavbar>
+                </ProfileNavbar>
+            </aside>
+            
+          
             
 
 

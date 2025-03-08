@@ -2,13 +2,13 @@
 
 .navbar-container {
     width: 100%;
-    max-width: 400px;
+    /* max-width: 400px; */
     font-family: 'Fort-Bold';
-    position: absolute;
-    border: 1px solid red;
+    /* position: absolute;
     right: 0;
-    z-index: 99999;
+    z-index: 99999; */
     background-color: white;
+
 
      /* --red: hsl(1, 90%, 64%);
     --blue: hsl(219, 85%, 26%);
@@ -40,7 +40,6 @@
 }
 
 .profile-navbar {
-    position: sticky;
     top: 0;
     /* max-height: 100svh; */
 }
@@ -58,6 +57,7 @@
     flex-direction: column;
     align-items: center;
 
+
 }
 
 .profile-nav-list li {
@@ -67,6 +67,7 @@
     font-weight: bold;
  
     text-align: center;
+
 
 }
 
