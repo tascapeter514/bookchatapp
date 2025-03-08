@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { userData } from '../../../common/UserContext.tsx'
 import { Invitation} from '../../../../types.ts'
 import { formatDate } from '../ProfileNavbar/ProfileNavbar.tsx'
+import Header from '../../../common/Header/Header.tsx'
 
 
 
@@ -78,8 +79,8 @@ const MessagePanel: React.FC = () => {
 
     return(
         <div id='bookclubs' className='messages-container' aria-labelledby='tab-2'>
-            <h1>Messages</h1>
-            <hr className='underline'/>
+            <Header>Messages</Header>
+            
             <h2>Invitations</h2>
             <Accordion>
                 <ul className='messages-list'>{userInvitesElements}</ul>
