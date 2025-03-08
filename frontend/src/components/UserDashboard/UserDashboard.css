@@ -14,6 +14,12 @@
     display: none;
 }
 
+.dashboard-navbar {
+    border: 1px solid green;
+    min-height: fit-content;
+
+}
+
 
 
 
@@ -75,12 +81,12 @@
     }
 
     .dashboardNavbar-close-toggle {
-        display: none;
+        /* display: none; */
     }
 
     .dashboardNavbar-mobile-toggle.active {
         background-color: transparent;
-        display: none;
+        /* display: none; */
     }
 
     .dashboardNavbar-close-toggle.active {
@@ -105,14 +111,22 @@
         width: 100%;
         max-width: 500px;
         border: 5px solid red;
-        transform: translateX(100%);
         z-index: 9999;
-        transition: transform 500ms ease;
+        height: fit-content;
+        transform: translateX(100%);
         height: 100%;
     }
 
-    .dashboard-navbar.active {
-        transform: translateX(0)
+    .dashboard-navbar.enter {
+        transform: translateX(0);
+        transition: transform 500ms ease;
+        
+    }
+
+    .dashboard-navbar.exit {
+        transform: translateX(100%);
+        transition: transform 500ms ease;
+
     }
 
   

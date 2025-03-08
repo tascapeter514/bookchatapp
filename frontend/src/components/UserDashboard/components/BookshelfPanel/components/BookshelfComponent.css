@@ -1,8 +1,7 @@
 
 .bookshelf-container {
     display: grid;
-    /* min-height: 100vh; */
-    place-items: center;
+    /* place-items: center; */
     line-height: 1.6;
     background-color: white;
 
@@ -12,14 +11,16 @@
 .bookshelf-title-list {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     padding: 0;
     gap: 1rem;
+
 }
 
 .book-card-listElement {
-    width: 100%;
+    /* width: 100%; */
     max-width: 300px;
+    margin-inline: auto;
 }
 
 .book-card {

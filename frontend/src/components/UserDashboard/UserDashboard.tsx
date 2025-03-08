@@ -17,24 +17,47 @@ const panels = [
 const UserDashboard = () => {
 
     
-    const [activeTab, setActiveTab] = useState(0)
-    const [activeBookshelf, setActiveBookshelf] = useState<number>(4)
-    const [activeNavbar, setActiveNavbar] = useState(false)
+    const [activeTab, setActiveTab] = useState(0);
+    const [activeBookshelf, setActiveBookshelf] = useState<number>(4);
+    // const [activeNavbar, setActiveNavbar] = useState(true);
+    const [showNavbar, setShowNavbar] = useState(false);
+    const [isExiting, setIsExiting] = useState(false)
    
     const isBookshelfTab = activeTab >= 3
     const PanelComponent = () => { return isBookshelfTab ? <Bookshelfpanel activeBookshelf={activeBookshelf} /> : panels[activeTab] || null} 
-    const toggleNavbar = () => setActiveNavbar(prev => !prev)
+    const toggleNavbar = () => {
+        // setActiveNavbar(prev => !prev)
+        setShowNavbar(prev => !prev)
+        if (showNavbar) {
+            setIsExiting(true)
+            setTimeout(() => {
+                setShowNavbar(false)
+                setIsExiting(false)
+            }, 350)
+        } else {
+            setShowNavbar(true)
+        }
+    }
 
 
     return(
         <div className='dashboard-container'>
 
             <main className='dashboard-main'>
-                <button className={`dashboardNavbar-mobile-toggle ${activeNavbar ? 'active' : ''}`} onClick={toggleNavbar}><UserIcon /></button>
+                <button className={`dashboardNavbar-mobile-toggle ${showNavbar ? '' : 'active'}`} onClick={toggleNavbar}><UserIcon /></button>
                     <PanelComponent />
             </main>
-            <aside className={`dashboard-navbar ${activeNavbar ? 'active' : ''}`}>
-                <button className={`dashboardNavbar-close-toggle ${activeNavbar ? 'active' : ''}`} onClick={toggleNavbar}><CloseIcon /></button>
+
+            <aside className={`dashboard-navbar ${showNavbar ? 'enter' : ''} ${isExiting ? 'exit' : ''}`}>
+                <button 
+                        className={`dashboardNavbar-close-toggle ${showNavbar ? 'active' : ''}`}
+                        aria-controls='dashboard-navbar'
+                        aria-expanded={showNavbar} 
+                        onClick={toggleNavbar}
+                    >
+                        <CloseIcon />
+                </button>
+                
                 
                 <ProfileNavbar 
                     activeTab={activeTab} 
