@@ -82,9 +82,8 @@ const MessagePanel: React.FC = () => {
             <Header>Messages</Header>
             
             <h2>Invitations</h2>
-            <Accordion>
-                <ul className='messages-list'>{userInvitesElements}</ul>
-            </Accordion>
+            <ul className='messages-list'>{userInvitesElements}</ul>
+            
             
         </div>
     )

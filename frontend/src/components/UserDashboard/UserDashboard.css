@@ -14,9 +14,6 @@
     display: none;
 }
 
-.dashboard-navbar {
-    border: 1px solid red;
-}
 
 
 
@@ -29,7 +26,6 @@
 }
 
 .userBook-element > * {
-    border: 1px solid lime;
     max-width: 90px;
     display: flex;
     flex-direction: column;
