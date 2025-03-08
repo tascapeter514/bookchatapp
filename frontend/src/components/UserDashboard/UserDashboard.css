@@ -13,13 +13,15 @@
     z-index: 1
 }
 
-.tab-panels-container {
+.panels-container {
     width: 100%;
+    border: 5px solid blue;
 }
 
 
 .dashboard-main {
     width: 100%;
+    border: 5px solid red;
 
 
 }

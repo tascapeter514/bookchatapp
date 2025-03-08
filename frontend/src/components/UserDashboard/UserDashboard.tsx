@@ -29,11 +29,11 @@ const UserDashboard = () => {
 
                 
   
-                <div className="tab-panels-container container-flex">
+                
                     <PanelComponent />
                     
                   
-                </div>
+             
                 
 
             </main>
