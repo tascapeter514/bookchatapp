@@ -51,7 +51,7 @@
 
 
 
-#books {
+/* #books {
     border: 1px solid red;
     width: 100%;
 }
@@ -64,7 +64,7 @@
 #settings {
     border: 1px solid purple;
     width: 100%;
-}
+} */
 
 
 @media (max-width: 900px) {

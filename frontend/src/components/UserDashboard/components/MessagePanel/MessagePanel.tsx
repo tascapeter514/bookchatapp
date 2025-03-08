@@ -68,7 +68,7 @@ const MessagePanel: React.FC = () => {
                 
                 
                 
-                {/* <br /> */}
+             
                 
                 
             </li>
@@ -92,5 +92,3 @@ const MessagePanel: React.FC = () => {
 
 export default MessagePanel
 
-
-{/* <p>{userInvite.invited_by} has invited you to join <Link to={`/bookclub/${userInvite.bookclub.id}`}>{userInvite.bookclub.name}</Link></p> */}
