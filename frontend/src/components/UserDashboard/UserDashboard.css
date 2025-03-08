@@ -5,22 +5,18 @@
     font-size: 1.25rem;
     display: grid;
     grid-template-columns: minmax(250px, 80%) minmax(300px, 20%);
-    /* width: 100%;
-    max-width: 3000px; */
     margin: 0 auto;
-    /* position: relative; */
     z-index: 1
 }
 
 
-.dashboardNavbar-mobile-toggle {
+.dashboardNavbar-mobile-toggle, .dashboardNavbar-close-toggle {
     display: none;
 }
 
-
-
-
-
+.dashboard-navbar {
+    border: 1px solid red;
+}
 
 
 .userBook-element {
@@ -125,11 +121,13 @@
     .dashboard-navbar {
         position: absolute;
         right: 0;
-        width: 50%;
-        border: 1px solid red;
-        height: 200vh;
+        width: 100%;
+        max-width: 500px;
+        border: 5px solid red;
         transform: translateX(100%);
-        z-index: 9999
+        z-index: 9999;
+        transition: transform 500ms ease;
+        height: 100%;
     }
 
     .dashboard-navbar.active {
