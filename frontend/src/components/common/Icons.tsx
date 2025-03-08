@@ -32,7 +32,7 @@ export const DislikeIcon = (props: IconProps) => <GrDislike className='dislike-i
 
 export const UserIcon = (props: IconProps) => <FaUser className='user-icon' {...props} />
 
-export const CloseIcon = (props: IconProps) => <IoIosCloseCircle {...props} />
+export const CloseIcon = (props: IconProps) => <IoIosCloseCircle className='close-icon' {...props} />
 
 
 

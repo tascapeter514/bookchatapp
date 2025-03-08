@@ -85,7 +85,7 @@
         z-index: 1;
     }
 
-    .dashboardNavbar-mobile-toggle {
+    .dashboardNavbar-mobile-toggle, .dashboardNavbar-close-toggle  {
         display: block;
         position: absolute;
         right: 1.5em;
@@ -97,20 +97,28 @@
         cursor: pointer;
     }
 
+    .dashboardNavbar-close-toggle {
+        display: none;
+    }
+
     .dashboardNavbar-mobile-toggle.active {
-        background-color: blue;
-
+        background-color: transparent;
+        display: none;
     }
 
-    .user-icon {
-        width: 100%;
-        /* border: 1px solid red; */
-        height: auto;
-    
+    .dashboardNavbar-close-toggle.active {
+        display: block;
+        cursor: pointer;
         
+
     }
 
-    .user-icon > * {
+    .user-icon, .close-icon {
+        width: 100%;
+        height: auto;
+    }
+
+    .user-icon, .close-icon > * {
         fill: orange;
     }
 
@@ -120,7 +128,8 @@
         width: 50%;
         border: 1px solid red;
         height: 200vh;
-        transform: translateX(100%)
+        transform: translateX(100%);
+        z-index: 9999
     }
 
     .dashboard-navbar.active {
