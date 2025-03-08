@@ -6,27 +6,23 @@ import { userData } from '../../components/common/UserContext'
 import { SearchIcon, ArrowLeftIcon } from '../common/Icons'
 import { v4 as uuidv4 } from 'uuid'
 import BookclubBackground from './assets/bookclub-background.jpg'
-import FileUploader from '../common/FileUploader/FIleUploader'
 import Button from '../common/Buttons/Button/Button'
 import Tabs from '../common/Tabs/Tabs'
+import FileUploadModal from '../common/Modals/FileUploadModal/FileUploadModal'
 
 
 
-const BookclubPage : React.FC = () => {
+const BookclubPage = () => {
 
     const { userBookclubs } = userData()
     const [activeTab, setActiveTab] = useState(0)
     const [activePanel, setActivePanel] = useState(false)
     const [isRotated, setIsRotated] = useState(false)
-    
     const tabContents = ['Discussion', 'Bookshelves', 'Current Read']
-
-
     const bookshelfRef = useRef<HTMLDialogElement>(null)
     const uploadFileRef = useRef<HTMLDialogElement>(null)
-    
     const [isMember, setIsMember] = useState(false)
-    const parameters = useParams<string>()
+    const parameters = useParams<{id: string}>()
 
     useEffect(() => {
         setIsMember(() => {
@@ -142,12 +138,8 @@ const BookclubPage : React.FC = () => {
                             <div className="bookclub-background">
                                 <img src={BookclubBackground} alt="" />
                                 <Button onClick={openImageModal}>Change Image</Button>
-                                <dialog className='uploadFile-modal' ref={uploadFileRef}>
-                                    <div>
-                                        <FileUploader id={parameters.id ?? ''}></FileUploader>
-                                        <Button onClick={closeImageModal}>Cancel</Button>
-                                    </div>
-                                </dialog>
+                                <FileUploadModal id={parameters.id ?? ''} closeImageModal={closeImageModal} uploadFileRef={uploadFileRef} />
+                                
                                 
                             </div>
                             <div className="bookclub-top-bar">

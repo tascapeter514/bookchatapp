@@ -77,10 +77,7 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
 
     const navbarElements = navbarContents.map((navbarContent: string, navbarIndex: number) => {
 
-        
-
-
-
+    
         return (
             <>
                 {(navbarContent == 'Account' || navbarContent == 'Messages') && (
