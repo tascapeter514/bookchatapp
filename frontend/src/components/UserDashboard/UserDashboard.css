@@ -13,6 +13,10 @@
 }
 
 
+.dashboardNavbar-mobile-toggle {
+    display: none;
+}
+
 
 
 
@@ -74,24 +78,56 @@
         position: relative;
     }
 
+    .dashboard-main {
+        border: 1px solid red;
+        width: 100%;
+        position: relative;
+        z-index: 1;
+    }
+
+    .dashboardNavbar-mobile-toggle {
+        display: block;
+        position: absolute;
+        right: 1.5em;
+        top: 1.5em;
+        width: 35px;
+        height: 35px;
+        border: 0;
+        background: transparent;
+        cursor: pointer;
+    }
+
+    .dashboardNavbar-mobile-toggle.active {
+        background-color: blue;
+
+    }
+
+    .user-icon {
+        width: 100%;
+        /* border: 1px solid red; */
+        height: auto;
+    
+        
+    }
+
+    .user-icon > * {
+        fill: orange;
+    }
+
     .dashboard-navbar {
         position: absolute;
         right: 0;
         width: 50%;
-        z-index: 99999;
+        border: 1px solid red;
+        height: 200vh;
         transform: translateX(100%)
     }
 
-    .dashboard-main {
-        border: 1px solid red;
-        width: 100%;
+    .dashboard-navbar.active {
+        transform: translateX(0)
     }
 
-    .dashboardNavbar-mobile-toggle {
-        position: absolute;
-        right: 1.5em;
-        top: 1.5em;
-    }
+  
     
 }
 
