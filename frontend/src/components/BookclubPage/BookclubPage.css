@@ -17,13 +17,7 @@
     justify-content: space-between;
 }
 
-.bookshelves-subnav {
-    display: none;
-}
 
-.bookshelves-subnav.active {
-    display: block;
-}
 
 
 .bookclub-panels-container {

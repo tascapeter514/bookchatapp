@@ -1,0 +1,7 @@
+.bookshelves-subnav {
+    display: none;
+}
+
+.bookshelves-subnav.active {
+    display: block;
+}

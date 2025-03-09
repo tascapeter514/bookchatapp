@@ -1,14 +1,13 @@
 import './BookclubPage.css'
-import {useState, useEffect, useRef} from 'react'
+import { useState, useEffect } from 'react'
 import {useParams } from 'react-router-dom'
 import { Bookclub } from '../../types'
 import { userData } from '../../components/common/UserContext'
 import { SearchIcon } from '../common/Icons'
-import { v4 as uuidv4 } from 'uuid'
-import BookshelfModal from '../common/Modals/BookshelfModal/BookshelfModal'
 import Button from '../common/Buttons/Button/Button'
 import BookshelfPanel from '../common/BookshelfPanel/BookshelfPanel'
 import CurrentReadPanel from './components/CurrentReadPanel/CurrentReadPanel'
+import SubNavbar from './components/SubNavbar/SubNavbar'
 import TopFacade from './components/TopFacade/TopFacade'
 import Tabs from './components/Tabs/Tabs'
 
@@ -27,12 +26,11 @@ const BookclubPage = () => {
     const [subNav, setSubNav] = useState(false)
 
     const tabContents = ['Bookshelves', 'Current Read']
-    const bookshelfRef = useRef<HTMLDialogElement>(null)
+    
    
     const [isMember, setIsMember] = useState(false)
     const parameters = useParams<{id: string}>()
-    const openBookshelfModal = () => bookshelfRef.current?.showModal()
-    const closeBookshelfModal = () => bookshelfRef.current?.close()
+
 
     
 
@@ -84,35 +82,7 @@ const BookclubPage = () => {
     const PanelComponent = () => panels[activeTab]
   
 
-    const createBookshelf = async (formData: FormData): Promise<void> => {
-        console.log('form data:', formData.get('bookshelfName'))
-
-        const bookshelf = {
-            bookshelf_id: uuidv4(),
-            name: formData.get('bookshelfName'),
-            bookclub_id: bookclub?.bookclub_id
-
-        }
-
-        try {
-            const response = await fetch('http://localhost:8000/api/bookclub/addBookshelf', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(bookshelf)
-            })
-
-            if (response.ok) {
-                const data = response.json()
-                console.log("create bookshelf data:", data)
-            }
-
-
-        } catch(err) {
-            console.error('Error connecting to backend for bookshelf creation:', err)
-        }
-    }
+    
 
     console.log('BOOKCLUB DATA:', bookclub)
 
@@ -121,8 +91,6 @@ const BookclubPage = () => {
                 {isMember && (
                     <div className="bookclub-content-wrapper">
                         <TopFacade id={parameters.id} bookclub={bookclub}></TopFacade>
-                        
-                        
                         <div className="tabs-wrapper">
                             <hr />
                             
@@ -133,19 +101,12 @@ const BookclubPage = () => {
                                     setActiveTab={setActiveTab} 
                                     activeTab={activeTab}
                                 >
-
                                 </Tabs>
                                 <Button><SearchIcon></SearchIcon></Button>
                             </div>
-                            <nav className={`bookshelves-subnav ${subNav ? 'active' : ''}`}>
-                                    <Button onClick={openBookshelfModal}>Add Bookshelf</Button>
-                                    <BookshelfModal 
-                                        bookshelfRef={bookshelfRef}
-                                        closeBookshelfModal={closeBookshelfModal}
-                                        createBookshelf={createBookshelf}
-                                    >
-                                    </BookshelfModal>
-                            </nav>
+                            <SubNavbar subNav={subNav} bookclub={bookclub}></SubNavbar>
+
+                           
                         </div>
                         <div className="bookclub-panels-container">
                             <PanelComponent />
