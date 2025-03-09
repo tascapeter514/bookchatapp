@@ -74,24 +74,6 @@
     gap: 1rem;
 }
 
-.member-buttons > button {
-    display: inline-block;
-    border: 1px solid #FF8C00;
-    padding: .25em 1em;
-    font-size: 1rem;
-    width: auto;
-    cursor: pointer;
-    background-color: #FF8C00;
-    color: white;
-
-}
-
-.member-buttons > button:hover {
-    background-color: white;
-    color: orange;
-}
-
-
 
 .tabs-wrapper {
     max-width: 1200px;

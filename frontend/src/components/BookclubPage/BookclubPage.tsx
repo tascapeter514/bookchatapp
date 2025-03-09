@@ -132,8 +132,8 @@ const BookclubPage = () => {
                                         <ProfileIcons users={bookclub?.members}></ProfileIcons>
                                     </ul>
                                     <div className="member-buttons">
-                                        <button>+ Invite</button>
-                                        <button>Joined</button>
+                                        <Button>+ Invite</Button>
+                                        <Button>Joined</Button>
                                     </div>
                                 </div>
                             </div>

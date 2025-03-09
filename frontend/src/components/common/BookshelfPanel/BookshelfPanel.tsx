@@ -1,8 +1,8 @@
 import './BookshelfPanel.css';
-import { userData } from '../../../common/UserContext.tsx'
-import BookshelfComponent from '../../../common/BookshelfComponent/BookshelfComponent.tsx'
-import Header from '../../../common/Header/Header.tsx'
-import SubHeader from '../../../common/SubHeader/SubHeader.tsx'
+import { userData } from '../UserContext.tsx'
+import BookshelfComponent from '../BookshelfComponent/BookshelfComponent.tsx'
+import Header from '../Header/Header.tsx'
+import SubHeader from '../SubHeader/SubHeader.tsx'
 
 type BookshelfPanelProps = {activeBookshelf: number}
 
