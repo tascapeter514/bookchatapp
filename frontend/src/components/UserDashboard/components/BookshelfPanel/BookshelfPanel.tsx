@@ -1,44 +1,33 @@
 import './BookshelfPanel.css';
 import { userData } from '../../../common/UserContext.tsx'
-import BookshelfComponent from './components/BookshelfComponent'
+import BookshelfComponent from '../../../common/BookshelfComponent/BookshelfComponent.tsx'
 import Header from '../../../common/Header/Header.tsx'
 import SubHeader from '../../../common/SubHeader/SubHeader.tsx'
 
-
-
 type BookshelfPanelProps = {activeBookshelf: number}
-
 
 const BookshelfPanel = (props: BookshelfPanelProps) => {
 
     const { userBookshelves } = userData()
     const { activeBookshelf } = props
     
-
-
     const bookshelfElements = userBookshelves.map((bookshelf, index) => (
-
         activeBookshelf === index && 
-        <li 
-            key={bookshelf.bookshelf_id}
+            <li 
+                key={bookshelf.bookshelf_id}
+                className='bookshelf-listElement'
 
-        >
-            {/* <h2 className='bookshelf-title'>{bookshelf.name}</h2> */}
-            <SubHeader>{bookshelf.name}</SubHeader>
-            <BookshelfComponent activeBookshelf={activeBookshelf} bookshelf={bookshelf}></BookshelfComponent>
-        </li>
-        
-
+            >
+                <SubHeader>{bookshelf.name}</SubHeader>
+                <BookshelfComponent activeBookshelf={activeBookshelf} bookshelf={bookshelf}></BookshelfComponent>
+            </li>
     ))
 
-
-
     return(
-
-        <div className='bookshelves-container' aria-labelledby='tab-1'>
+        <section className='bookshelves-container' aria-labelledby='tab-1'>
             <Header>Bookshelves</Header>
             <ul className='bookshelf-panel-list'>{bookshelfElements}</ul>
-        </div>
+        </section>
 
     )
 }

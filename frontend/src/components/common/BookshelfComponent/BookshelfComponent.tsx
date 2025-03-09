@@ -1,6 +1,6 @@
-import {Bookshelf} from '../../../../../types'
+import {Bookshelf} from '../../../types'
 import './BookshelfComponent.css'
-import { LikeIcon, DislikeIcon } from '../../../../common/Icons'
+import { LikeIcon, DislikeIcon } from '../Icons'
 
 interface BookshelfProps {
     bookshelf: Bookshelf,
@@ -11,8 +11,6 @@ interface BookshelfProps {
 const BookshelfComponent = (props: BookshelfProps) => {
 
     const  {bookshelf } = props
-
-    console.log('bookshelf component data:', bookshelf.titles)
 
     const bookshelfTitles = bookshelf.titles.map((bookshelfTitle) => {
        return <li className='book-card-listElement' key={bookshelfTitle.title_id}>
@@ -46,10 +44,9 @@ const BookshelfComponent = (props: BookshelfProps) => {
 
 
     return(
-        <div className="bookshelf-container">
+        <section className="bookshelf-container">
             <ul className='bookshelf-title-list'>{bookshelfTitles}</ul>
-            
-        </div>
+        </section>
         
     )
 }

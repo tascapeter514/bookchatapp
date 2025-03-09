@@ -5,11 +5,13 @@ import { Bookclub } from '../../types'
 import { userData } from '../../components/common/UserContext'
 import { SearchIcon, ArrowLeftIcon } from '../common/Icons'
 import { v4 as uuidv4 } from 'uuid'
+import BookshelfModal from '../common/Modals/BookshelfModal/BookshelfModal'
 import BookclubBackground from './assets/bookclub-background.jpg'
 import Button from '../common/Buttons/Button/Button'
 import Tabs from '../common/Tabs/Tabs'
 import FileUploadModal from '../common/Modals/FileUploadModal/FileUploadModal'
 import ProfileIcons from '../common/ProfileIcons/ProfileIcons'
+import Header from '../common/Header/Header'
 
 
 
@@ -120,8 +122,6 @@ const BookclubPage = () => {
                                 <img src={BookclubBackground} alt="" />
                                 <Button onClick={openImageModal}>Change Image</Button>
                                 <FileUploadModal id={parameters.id ?? ''} closeImageModal={closeImageModal} uploadFileRef={uploadFileRef} />
-                                
-                                
                             </div>
                             <div className="bookclub-top-bar">
                                 <h2>{bookclub?.name}</h2>
@@ -160,20 +160,17 @@ const BookclubPage = () => {
                             {activeTab === 1 && (
                                 <div className="bookshelves-panel">
                                     <div className="bookshelves-bar">
-                                        <h2>Bookshelves</h2>
-                                        <button onClick={openBookshelfModal}>Add Bookshelf</button>
+                                        <Header>Bookshelves</Header>
+                                        <Button onClick={openBookshelfModal}>Add Bookshelf</Button>
                                     </div>
-                                    <dialog className="bookshelf-modal" ref={ bookshelfRef } >
-                                        <form action={createBookshelf as unknown as string} method='post'>
-                                            <input type="text" name='bookshelfName' placeholder='Bookshelf Name' required/>
-                                            <div className="button-wrapper">
-                                                <button onClick={closeBookshelfModal}>Cancel</button>
-                                                <button type='submit'>Create</button>
-                                            </div>
+                                    <BookshelfModal 
+                                        bookshelfRef={bookshelfRef}
+                                        closeBookshelfModal={closeBookshelfModal}
+                                        createBookshelf={createBookshelf}
+                                    >
 
-                                        </form>
-                                        
-                                    </dialog>
+                                    </BookshelfModal>
+                                   
                                     <div className="bookshelf-list"> 
                                         <div className="bc-accordion" >
                                             <div className="bc-accordion-panel" >

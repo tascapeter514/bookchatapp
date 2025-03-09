@@ -4,12 +4,6 @@ import Header from '../../../common/Header/Header'
 import SubHeader from '../../../common/SubHeader/SubHeader'
 import Button from '../../../common/Buttons/Button/Button'
 
-
-
-
-
-
-
 const AccountPanel = () => {
     
     const { activeUser } = userData()

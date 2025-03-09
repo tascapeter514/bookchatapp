@@ -12,35 +12,23 @@ interface ProfileNavbarProps {
     activeBookshelf: number,
     setActiveTab: Dispatch<SetStateAction<number>>,
     setActiveBookshelf: Dispatch<SetStateAction<number>>
-    
 }
-
-
 
 const ProfileNavbar = (props: ProfileNavbarProps) => {
 
     const { activeTab, setActiveTab, setActiveBookshelf } = props
-   
     const { activeUser, userBookshelves } = userData()
+    const [activePanel, setActivePanel] = useState(false);
+    const [isRotated, setIsRotated] = useState(false);
     const {day, month, year } = formatDate(activeUser.date_joined)
     const navbarContents = ['Account', 'Messages', 'Bookclubs', 'Bookshelves']
-    const [isRotated, setIsRotated] = useState(false);
     const bookshelfOffset = navbarContents.length
-
-
-
-    const [activePanel, setActivePanel] = useState(false);
     
-
     const toggleAccordion = () => {
         setActivePanel(prev => !prev)
         setIsRotated(prev => !prev)
 
     }
-
-    // console.log('profile navbar:', userBookshelves)
-
-    // console.log('active tab:', activeTab)
 
     const bookshelfElements = userBookshelves.map((userBookshelf: Bookshelf, userBookshelfIndex: number) => {
 
@@ -117,8 +105,6 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
                             </li>
                             <ul className='navbar-bookshelf-list'>{bookshelfElements}</ul>
                         </BookshelfDropdown>
-
-                        
                         <CreateButton>Bookshelf</CreateButton>
                     </div>
                 )} 
@@ -133,12 +119,8 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
                 <span>Member since {month} {day}, {year}</span>
             </div>
             <nav className='profile-navbar'>
-                
                 <ul className='profile-nav-list'>
-
                     {navbarElements}
-
-                    
                 </ul>
                 
             </nav>
