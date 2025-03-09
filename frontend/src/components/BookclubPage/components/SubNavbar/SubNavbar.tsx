@@ -52,8 +52,8 @@ const SubNavbar = ({bookclub, subNav}: SubNavbarProps) => {
 
     return (
         <nav className={`bookshelves-subnav ${subNav ? 'active' : ''}`}>
-            <Button onClick={openBookshelfModal}>Add Bookshelf</Button>
             {bookclub?.bookshelves.map(bookshelf => <li key={bookshelf.bookshelf_id}>{bookshelf.name}</li>)}
+            <Button onClick={openBookshelfModal}>Add Bookshelf</Button>
             <BookshelfModal 
                 bookshelfRef={bookshelfRef}
                 closeBookshelfModal={closeBookshelfModal}

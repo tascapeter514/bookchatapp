@@ -21,8 +21,17 @@ const Tabs = ({ activeTab, contents, setActiveTab, setSubNav }: TabsProps) => {
         const toggleDropdown = () => {
             setSubNav(prev => !prev)
             setIsRotated(prev => !prev)
-    
         }
+
+        const toggleTab = () => {
+            setSubNav(false)
+            setIsRotated(prev => !prev)
+            setActiveTab(index)
+
+        }
+
+
+
         return (
             <>
                 {tabContent === 'Bookshelves' && (
@@ -39,15 +48,12 @@ const Tabs = ({ activeTab, contents, setActiveTab, setSubNav }: TabsProps) => {
                             <RightDropDownIcon onClick={toggleDropdown} isRotated={isRotated}></RightDropDownIcon>
 
                         </a>
-                        
-                        
-
                     </li>
                 )}
 
                 {tabContent !== 'Bookshelves' && 
                     <li key={index}                 
-                        onClick={() => setActiveTab(index)}
+                        onClick={toggleTab}
                         className={activeTab === index ? 'active': ''}
                     >
                         <a id={`tab-${index}`} href={`#${tabContent.toLowerCase()}`}>
