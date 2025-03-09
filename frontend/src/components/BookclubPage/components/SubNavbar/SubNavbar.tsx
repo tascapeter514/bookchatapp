@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, Dispatch, SetStateAction } from 'react'
 import { Bookclub } from '../../../../types'
 import BookshelfModal from '../../../common/Modals/BookshelfModal/BookshelfModal'
 import Button from '../../../common/Buttons/Button/Button'
@@ -8,11 +8,12 @@ import './SubNavbar.css'
 
 interface SubNavbarProps {
     bookclub: Bookclub | null,
-    subNav: boolean
+    subNav: boolean,
+    setActiveBookshelf: Dispatch<SetStateAction<number>>
 
 }
 
-const SubNavbar = ({bookclub, subNav}: SubNavbarProps) => {
+const SubNavbar = ({bookclub, subNav, setActiveBookshelf}: SubNavbarProps) => {
 
     const bookshelfRef = useRef<HTMLDialogElement>(null)
     const openBookshelfModal = () => bookshelfRef.current?.showModal()
@@ -52,7 +53,7 @@ const SubNavbar = ({bookclub, subNav}: SubNavbarProps) => {
 
     return (
         <nav className={`bookshelves-subnav ${subNav ? 'active' : ''}`}>
-            {bookclub?.bookshelves.map(bookshelf => <li key={bookshelf.bookshelf_id}>{bookshelf.name}</li>)}
+            <ul className="bookshelf-titles-list">{bookclub?.bookshelves.map(bookshelf => <li key={bookshelf.bookshelf_id}>{bookshelf.name}</li>)}</ul>
             <Button onClick={openBookshelfModal}>Add Bookshelf</Button>
             <BookshelfModal 
                 bookshelfRef={bookshelfRef}

@@ -104,7 +104,7 @@ const BookclubPage = () => {
                                 </Tabs>
                                 <Button><SearchIcon></SearchIcon></Button>
                             </div>
-                            <SubNavbar subNav={subNav} bookclub={bookclub}></SubNavbar>
+                            <SubNavbar subNav={subNav} bookclub={bookclub} setActiveBookshelf={setActiveBookshelf}></SubNavbar>
 
                            
                         </div>

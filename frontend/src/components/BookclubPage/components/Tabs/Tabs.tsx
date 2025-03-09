@@ -25,12 +25,10 @@ const Tabs = ({ activeTab, contents, setActiveTab, setSubNav }: TabsProps) => {
 
         const toggleTab = () => {
             setSubNav(false)
-            setIsRotated(prev => !prev)
+            setIsRotated(false)
             setActiveTab(index)
 
         }
-
-
 
         return (
             <>

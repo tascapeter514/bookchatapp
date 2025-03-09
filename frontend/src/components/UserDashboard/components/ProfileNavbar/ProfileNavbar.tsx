@@ -64,7 +64,7 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
                         onClick={ () => setActiveTab(navbarIndex)}
                         className={activeTab == navbarIndex ? 'active' : ''}
                     >
-                        <a id={`tab-${navbarIndex}`} href={`#${navbarContent.toLowerCase()}`}>
+                        <a id={`link-${navbarIndex}`} href={`#${navbarContent.toLowerCase()}`}>
                             {navbarContent}
                         </a>
                     </li> 
@@ -79,7 +79,7 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
                             className={activeTab == navbarIndex ? 'active' : ''}
                         >
                             
-                            <a id={`tab-${navbarIndex}`} href={`#${navbarContent.toLowerCase()}`}>
+                            <a id={`link-${navbarIndex}`} href={`#${navbarContent.toLowerCase()}`}>
                                 {navbarContent}
                             </a>
                             
@@ -98,7 +98,7 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
                                 onClick={ () => setActiveTab(navbarIndex)}
                                 className={ `navbar-bookshelf-listElement ${activeTab == navbarIndex ? 'active' : ''}`}
                             >
-                                <a className='navbar-bookshelf-link' id={`tab-${navbarIndex}`} href={`#${navbarContent.toLowerCase()}`}>
+                                <a className='navbar-bookshelf-link' id={`link-${navbarIndex}`} href={`#${navbarContent.toLowerCase()}`}>
                                     {navbarContent}
                                     <RightDropDownIcon onClick={toggleDropdown} isRotated={isRotated}></RightDropDownIcon>
                                 </a>

@@ -1,9 +1,23 @@
 .bookshelves-subnav {
     display: none;
+    
+    
+    
+    
 
 }
 
 .bookshelves-subnav.active {
-    display: flex;
+    border: 1px solid red;
+    transition: active 500ms ease;
     
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.bookshelf-titles-list {
+    border: 1px solid red;
+    padding: 0;
+    display: flex;
 }
