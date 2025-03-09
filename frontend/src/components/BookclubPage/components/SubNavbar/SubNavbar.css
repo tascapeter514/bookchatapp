@@ -1,23 +1,32 @@
 .bookshelves-subnav {
-    display: none;
-    
-    
-    
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-110%);
+    transition: transform 500ms ease;
+    padding: .25em;
     
 
 }
 
 .bookshelves-subnav.active {
-    border: 1px solid red;
-    transition: active 500ms ease;
+    transform: translateY(0);
+    transition: transform 500ms ease;
     
-    display: flex;
-    justify-content: space-between;
+    
+    
     
 }
 
 .bookshelf-titles-list {
-    border: 1px solid red;
-    padding: 0;
+    padding: .25em;
     display: flex;
+    width: fit-content;
+    align-items: center;
+    border: 1px solid red;
+    max-width: 400px;
+    overflow: scroll;
+}
+
+.bookshelf-title-listElement {
+    cursor: pointer;
 }

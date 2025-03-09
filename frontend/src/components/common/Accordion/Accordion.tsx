@@ -21,7 +21,8 @@ const Accordion = ({children}: {children: React.ReactNode}) => {
                 id='panel-content'
                 aria-labelledby='panel-heading'
                 aria-hidden='true'
-                role='region'>
+                role='region'
+            >
                     <div className='accordion-children'>{children}</div>
             </div>
             <h2 id='panel-heading'>

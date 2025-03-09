@@ -50,10 +50,28 @@ const SubNavbar = ({bookclub, subNav, setActiveBookshelf}: SubNavbarProps) => {
     }
 
 
+    // id={`link-${navbarIndex}`} href={`#${navbarContent.toLowerCase()}
+//     <li 
+//     key={navbarIndex}
+//     onClick={ () => setActiveTab(navbarIndex)}
+//     className={activeTab == navbarIndex ? 'active' : ''}
+// >
+
+
+
 
     return (
-        <nav className={`bookshelves-subnav ${subNav ? 'active' : ''}`}>
-            <ul className="bookshelf-titles-list">{bookclub?.bookshelves.map(bookshelf => <li key={bookshelf.bookshelf_id}>{bookshelf.name}</li>)}</ul>
+        <nav 
+            id='bookshelves-subnav' 
+            className={`bookshelves-subnav ${subNav ? 'active' : '0'}`}
+            aria-hidden='true'
+        >
+            <ul className="bookshelf-titles-list">
+                {bookclub?.bookshelves.map((bookshelf, index) => 
+                <li key={bookshelf.bookshelf_id} onClick={() => setActiveBookshelf(index)} className='bookshelf-title-listElement'>
+                    {bookshelf.name}
+                </li>)}
+            </ul>
             <Button onClick={openBookshelfModal}>Add Bookshelf</Button>
             <BookshelfModal 
                 bookshelfRef={bookshelfRef}

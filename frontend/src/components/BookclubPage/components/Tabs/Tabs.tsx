@@ -6,12 +6,13 @@ import { RightDropDownIcon } from '../../../common/Icons'
 interface TabsProps {
     activeTab: number,
     contents: string[],
+    subNav: boolean,
     setSubNav: Dispatch<SetStateAction<boolean>>,
     setActiveTab: Dispatch<SetStateAction<number>>
 }
 
 
-const Tabs = ({ activeTab, contents, setActiveTab, setSubNav }: TabsProps) => {
+const Tabs = ({ activeTab, contents, subNav, setActiveTab, setSubNav }: TabsProps) => {
 
     const [isRotated, setIsRotated] = useState(false);
 
@@ -43,7 +44,14 @@ const Tabs = ({ activeTab, contents, setActiveTab, setSubNav }: TabsProps) => {
                             href={`#${tabContent.toLowerCase()}`}
                         >
                             {tabContent}
-                            <RightDropDownIcon onClick={toggleDropdown} isRotated={isRotated}></RightDropDownIcon>
+                            <RightDropDownIcon 
+                                aria-controls='bookshelves-subnav'
+                                aria-expanded={subNav}
+                                onClick={toggleDropdown}
+                                isRotated={isRotated}
+                            >
+
+                                </RightDropDownIcon>
 
                         </a>
                     </li>

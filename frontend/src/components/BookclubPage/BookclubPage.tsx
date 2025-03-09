@@ -96,6 +96,7 @@ const BookclubPage = () => {
                             
                             <div className="tabs-bar-wrapper">
                                 <Tabs
+                                    subNav={subNav}
                                     setSubNav={setSubNav} 
                                     contents={tabContents} 
                                     setActiveTab={setActiveTab} 
@@ -104,7 +105,12 @@ const BookclubPage = () => {
                                 </Tabs>
                                 <Button><SearchIcon></SearchIcon></Button>
                             </div>
-                            <SubNavbar subNav={subNav} bookclub={bookclub} setActiveBookshelf={setActiveBookshelf}></SubNavbar>
+                            <div 
+                                className={`subnav-container ${subNav ? 'active' : ''}`}
+
+                            >
+                                <SubNavbar subNav={subNav} bookclub={bookclub} setActiveBookshelf={setActiveBookshelf}></SubNavbar>
+                            </div>
 
                            
                         </div>
