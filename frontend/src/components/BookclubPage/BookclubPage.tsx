@@ -10,7 +10,7 @@ import BookclubBackground from './assets/bookclub-background.jpg'
 import Button from '../common/Buttons/Button/Button'
 import BookshelfPanel from '../common/BookshelfPanel/BookshelfPanel'
 import CurrentReadPanel from './components/CurrentReadPanel/CurrentReadPanel'
-import Tabs from '../common/Tabs/Tabs'
+import Tabs from './components/Tabs/Tabs'
 import FileUploadModal from '../common/Modals/FileUploadModal/FileUploadModal'
 import ProfileIcons from '../common/ProfileIcons/ProfileIcons'
 import Header from '../common/Header/Header'
@@ -18,18 +18,16 @@ import Header from '../common/Header/Header'
 
 
 
-const panels = [
-    <CurrentReadPanel />,
-    // <BookshelfPanel />
-    
-]
+
 
 const BookclubPage = () => {
 
     const { userBookclubs } = userData()
+    const [bookclub, setBookclub] = useState<Bookclub | null>(null)
+    const [activeBookshelf, setActiveBookshelf] = useState<number>(0)
     const [activeTab, setActiveTab] = useState(0)
-    const [activePanel, setActivePanel] = useState(false)
-    const [isRotated, setIsRotated] = useState(false)
+    const [subNav, setSubNav] = useState(false)
+ 
     const tabContents = ['Bookshelves', 'Current Read']
     const bookshelfRef = useRef<HTMLDialogElement>(null)
     const uploadFileRef = useRef<HTMLDialogElement>(null)
@@ -39,8 +37,7 @@ const BookclubPage = () => {
     const closeBookshelfModal = () => bookshelfRef.current?.close()
     const openImageModal = () => uploadFileRef.current?.showModal()
     const closeImageModal = () => uploadFileRef.current?.close()
-
-    const PanelComponent = ({...props}) => panels[activeTab]
+    
 
     useEffect(() => {
         setIsMember(() => {
@@ -51,7 +48,7 @@ const BookclubPage = () => {
         localStorage.setItem(`lastVisited/${parameters.id}`, lastVisited)
 
     }, [userBookclubs])
-    const [bookclub, setBookclub] = useState<Bookclub | null>(null)
+    
     
 
     useEffect(() => {
@@ -82,6 +79,12 @@ const BookclubPage = () => {
         }
 
     }, [])
+
+    const panels = [
+        <BookshelfPanel activeBookshelf={activeBookshelf} bookshelves={bookclub?.bookshelves} />,
+        <CurrentReadPanel />
+    ]
+    const PanelComponent = () => panels[activeTab]
   
 
     const createBookshelf = async (formData: FormData): Promise<void> => {
@@ -146,11 +149,18 @@ const BookclubPage = () => {
                             <hr />
                             
                             <div className="tabs-bar-wrapper">
-                                <Tabs contents={tabContents} setActiveTab={setActiveTab} activeTab={activeTab}></Tabs>
+                                <Tabs
+                                    setSubNav={setSubNav} 
+                                    contents={tabContents} 
+                                    setActiveTab={setActiveTab} 
+                                    activeTab={activeTab}
+                                >
+
+                                </Tabs>
                                 <Button><SearchIcon></SearchIcon></Button>
                             </div>
-                            <nav className="bookshelves-subnav">
-                                        <Button onClick={openBookshelfModal}>Add Bookshelf</Button>
+                            <nav className={`bookshelves-subnav ${subNav ? 'active' : ''}`}>
+                                    <Button onClick={openBookshelfModal}>Add Bookshelf</Button>
                                     <BookshelfModal 
                                         bookshelfRef={bookshelfRef}
                                         closeBookshelfModal={closeBookshelfModal}
@@ -160,6 +170,7 @@ const BookclubPage = () => {
                             </nav>
                         </div>
                         <div className="bookclub-panels-container">
+                            <PanelComponent />
                                 
                            
                             

@@ -30,3 +30,7 @@
     text-underline-offset: 0.25em;
     color: red;
 }
+
+#tab-0 {
+    display: flex;
+}

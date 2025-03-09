@@ -24,7 +24,7 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
     const navbarContents = ['Account', 'Messages', 'Bookclubs', 'Bookshelves']
     const bookshelfOffset = navbarContents.length
     
-    const toggleAccordion = () => {
+    const toggleDropdown = () => {
         setActivePanel(prev => !prev)
         setIsRotated(prev => !prev)
 
@@ -100,7 +100,7 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
                             >
                                 <a className='navbar-bookshelf-link' id={`tab-${navbarIndex}`} href={`#${navbarContent.toLowerCase()}`}>
                                     {navbarContent}
-                                    <RightDropDownIcon onClick={toggleAccordion} isRotated={isRotated}></RightDropDownIcon>
+                                    <RightDropDownIcon onClick={toggleDropdown} isRotated={isRotated}></RightDropDownIcon>
                                 </a>
                             </li>
                             <ul className='navbar-bookshelf-list'>{bookshelfElements}</ul>

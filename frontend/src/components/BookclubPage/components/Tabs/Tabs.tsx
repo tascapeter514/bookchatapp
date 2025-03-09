@@ -1,0 +1,88 @@
+import './Tabs.css'
+import { Dispatch, SetStateAction, useState } from 'react'
+import { RightDropDownIcon } from '../../../common/Icons'
+
+
+interface TabsProps {
+    activeTab: number,
+    contents: string[],
+    setSubNav: Dispatch<SetStateAction<boolean>>,
+    setActiveTab: Dispatch<SetStateAction<number>>
+}
+
+
+const Tabs = ({ activeTab, contents, setActiveTab, setSubNav }: TabsProps) => {
+
+    const [isRotated, setIsRotated] = useState(false);
+
+
+    const tabElements = contents.map((tabContent: string, index: number) => {
+
+        const toggleDropdown = () => {
+            setSubNav(prev => !prev)
+            setIsRotated(prev => !prev)
+    
+        }
+        return (
+            <>
+                {tabContent === 'Bookshelves' && (
+                    <li 
+                        key={index}
+                        onClick={() => setActiveTab(index)}
+                        className={activeTab === index ? 'active': ''}
+                    >
+                        <a 
+                            id={`tab-${index}`} 
+                            href={`#${tabContent.toLowerCase()}`}
+                        >
+                            {tabContent}
+                            <RightDropDownIcon onClick={toggleDropdown} isRotated={isRotated}></RightDropDownIcon>
+
+                        </a>
+                        
+                        
+
+                    </li>
+                )}
+
+                {tabContent !== 'Bookshelves' && 
+                    <li key={index}                 
+                        onClick={() => setActiveTab(index)}
+                        className={activeTab === index ? 'active': ''}
+                    >
+                        <a id={`tab-${index}`} href={`#${tabContent.toLowerCase()}`}>
+                            {tabContent}
+                        </a>
+                    </li>
+                }
+            
+            
+            
+            </>
+        )
+
+        
+
+    })
+
+ 
+
+    return(
+
+        <div className="tabs-container">
+            <ul arial-labelledby='tabs-title'>
+                {tabElements}
+
+            </ul>
+        </div>
+
+
+
+
+
+    )
+
+}
+
+export default Tabs
+

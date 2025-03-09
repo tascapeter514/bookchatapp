@@ -4,14 +4,14 @@ import BookshelfComponent from '../BookshelfComponent/BookshelfComponent.tsx'
 import Header from '../Header/Header.tsx'
 import SubHeader from '../SubHeader/SubHeader.tsx'
 
-type BookshelfPanelProps = {activeBookshelf: number, bookshelves: Bookshelf[] }
+type BookshelfPanelProps = {activeBookshelf: number, bookshelves: Bookshelf[] | undefined }
 
 const BookshelfPanel = ({activeBookshelf, bookshelves}: BookshelfPanelProps) => {
 
 
   
     
-    const bookshelfElements = bookshelves.map((bookshelf, index) => (
+    const bookshelfElements = bookshelves?.map((bookshelf, index) => (
         activeBookshelf === index && 
             <li 
                 key={bookshelf.bookshelf_id}

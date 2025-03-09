@@ -15,7 +15,6 @@
 }
 
 .dashboard-navbar {
-    border: 1px solid green;
     min-height: fit-content;
 
 }
@@ -47,7 +46,7 @@
 }
 
 .bookElements-authors {
-    border: 1px solid red;
+
     padding: .25em;
 
 }
@@ -80,9 +79,7 @@
         cursor: pointer;
     }
 
-    .dashboardNavbar-close-toggle {
-        /* display: none; */
-    }
+
 
     .dashboardNavbar-mobile-toggle.active {
         background-color: transparent;
@@ -110,7 +107,6 @@
         right: 0;
         width: 100%;
         max-width: 500px;
-        border: 5px solid red;
         z-index: 9999;
         height: fit-content;
         transform: translateX(100%);

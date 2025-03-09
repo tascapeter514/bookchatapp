@@ -4,9 +4,6 @@ import axios from 'axios'
 import Button from '../Buttons/Button/Button'
 
 
-
-
-
 type UploadStatus = 'idle' | 'uploading' | 'success' | 'error'
 
 interface FileUploaderProps {
