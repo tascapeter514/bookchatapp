@@ -11,15 +11,7 @@
 
 }
 
-.uploadFile-modal {
 
-    background-color: white;
-    border-radius: 3px;
-    border: 2px solid black;
-    position: absolute;
-    margin: auto;
-
-}
 
 .bookclub-background > img {
     border-radius: 3px;
@@ -114,12 +106,12 @@
     width: 100%;
     max-width: 1100px;
     margin: 1em auto 0 auto;
-    border: 1px solid orange;
+    border: 5px solid orange;
     
 }
 
 .bookshelves-panel {
-    border: 1px solid red;
+    border: 10px solid red;
 
 
 }
@@ -150,108 +142,6 @@
 
 
 
-
-.bookshelf-list {
-    border: 5px solid green;
-}
-
-.bc-accordion {
-
-    --_button-size: 3rem;
-    --_panel-padding: 0.75rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.bc-accordion * {
-    margin: 0;
-}
-
-.bc-accordion-panel {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-    padding: .75em;
-    padding: var(--_panel-padding);
-    flex-basis: calc(var(--_panel-padding) + var(--_button-size));
-    transition: flex-basis 500ms
-}
-
-.bc-accordion-panel:has([aria-expanded='true']) {
-    flex-basis: clamp(15rem, 40vh, 20rem);
-}
-
-.bc-accordion-trigger {
-    display: flex;
-    flex-direction: row-reverse;
-    gap: .5rem;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;
-    border: 0;
-    font-size: 1.5rem;
-    font-family: inherit;
-    /* border: 1px solid black; */
-    margin-left: auto;
-
-    
-}
-
-.bc-accordion-trigger > span {
-    /* border: 1px solid black; */
-    display: inline-block;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    line-height: 30px;
-    padding-top: .25em;
-    font-weight: 700;
-    
-
-    
-
-}
-
-.bc-accordion-icon {
-    width: auto;
-    aspect-ratio: 1 / 1;
-    background-color: orange;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    
-}
-
-.arrow-left-icon {
-    transition: .5s transform ease;
-}
-
-.rotated {
-    transform: rotate(-90deg);
-}
-
-
-
-.bc-accordion-content > p {
-    transform: translateY(2rem);
-    opacity: 0;
-    transition: transform 500ms, oacity 500ms;
-}
-
-.bc-accordion-panel:has([aria-expanded='true']) .accordion-content > p {
-    transform: translateY(0rem);
-    opacity: 1;
-
-}
 
 
 

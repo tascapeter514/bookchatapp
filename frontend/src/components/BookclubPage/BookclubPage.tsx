@@ -3,11 +3,13 @@ import {useState, useEffect, useRef} from 'react'
 import {useParams } from 'react-router-dom'
 import { Bookclub } from '../../types'
 import { userData } from '../../components/common/UserContext'
-import { SearchIcon, ArrowLeftIcon } from '../common/Icons'
+import { SearchIcon } from '../common/Icons'
 import { v4 as uuidv4 } from 'uuid'
 import BookshelfModal from '../common/Modals/BookshelfModal/BookshelfModal'
 import BookclubBackground from './assets/bookclub-background.jpg'
 import Button from '../common/Buttons/Button/Button'
+import BookshelfPanel from '../common/BookshelfPanel/BookshelfPanel'
+import CurrentReadPanel from './components/CurrentReadPanel/CurrentReadPanel'
 import Tabs from '../common/Tabs/Tabs'
 import FileUploadModal from '../common/Modals/FileUploadModal/FileUploadModal'
 import ProfileIcons from '../common/ProfileIcons/ProfileIcons'
@@ -15,13 +17,20 @@ import Header from '../common/Header/Header'
 
 
 
+
+const panels = [
+    <CurrentReadPanel />,
+    // <BookshelfPanel />
+    
+]
+
 const BookclubPage = () => {
 
     const { userBookclubs } = userData()
     const [activeTab, setActiveTab] = useState(0)
     const [activePanel, setActivePanel] = useState(false)
     const [isRotated, setIsRotated] = useState(false)
-    const tabContents = ['Discussion', 'Bookshelves', 'Current Read']
+    const tabContents = ['Bookshelves', 'Current Read']
     const bookshelfRef = useRef<HTMLDialogElement>(null)
     const uploadFileRef = useRef<HTMLDialogElement>(null)
     const [isMember, setIsMember] = useState(false)
@@ -30,6 +39,8 @@ const BookclubPage = () => {
     const closeBookshelfModal = () => bookshelfRef.current?.close()
     const openImageModal = () => uploadFileRef.current?.showModal()
     const closeImageModal = () => uploadFileRef.current?.close()
+
+    const PanelComponent = ({...props}) => panels[activeTab]
 
     useEffect(() => {
         setIsMember(() => {
@@ -103,14 +114,6 @@ const BookclubPage = () => {
         }
     }
 
-    const toggleAccordion = () => {
-        setActivePanel(prev => !prev)
-        setIsRotated(prev => !prev)
-
-    }
-
-    
-
     console.log('BOOKCLUB DATA:', bookclub)
 
     return(
@@ -148,64 +151,20 @@ const BookclubPage = () => {
                                     <SearchIcon></SearchIcon>
                                 </button>
                             </div>
-                        </div>
-                        <div className="bookclub-panels-container">
-                            {activeTab === 0 && (
-                                <div className="discussion-panel">
-                                    <h2>Discussions</h2>
-
-                                </div>
-                            )}
-
-                            {activeTab === 1 && (
-                                <div className="bookshelves-panel">
-                                    <div className="bookshelves-bar">
-                                        <Header>Bookshelves</Header>
+                            <nav className="bookshelves-subnav">
                                         <Button onClick={openBookshelfModal}>Add Bookshelf</Button>
-                                    </div>
                                     <BookshelfModal 
                                         bookshelfRef={bookshelfRef}
                                         closeBookshelfModal={closeBookshelfModal}
                                         createBookshelf={createBookshelf}
                                     >
                                     </BookshelfModal>
-                                   
-                                    <div className="bookshelf-list"> 
-                                        <div className="bc-accordion" >
-                                            <div className="bc-accordion-panel" >
-                                                <h2 id='panel1-heading'>
-                                                    <button
-                                                        className='bc-accordion-trigger'
-                                                        aria-controls='bc-panel1-content'
-                                                        aria-expanded={activePanel}
-                                                         
-                                                    >
-                                                        <span id='bc-panel1-title'>{bookclub?.bookshelves[0].name}</span>
-                                                        <div className="bc-accordion-icon" onClick={toggleAccordion}>
-                                                            <ArrowLeftIcon isRotated={isRotated}></ArrowLeftIcon>
-                                                        </div>
-                                                    </button>
-                                                </h2>
-                                                <div 
-                                                    className='bc-accordion-content' 
-                                                    id='panel1-content'
-                                                    aria-labelledby='panel1-heading'
-                                                    aria-hidden='true'
-                                                    role='region'>
-                                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut soluta asperiores impedit et molestias voluptates culpa maxime nulla officia expedita numquam, reiciendis quae minima quaerat debitis quia cupiditate eveniet nesciunt.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            )}
-                            {activeTab === 2 && (
-                                <div className="currentRead-panel">
-                                    <h2>Current Read</h2>
-                                    
-                                </div>
-                            )}
+                            </nav>
+                        </div>
+                        <div className="bookclub-panels-container">
+                                
+                           
+                            
                         </div>
 
                     </div>
