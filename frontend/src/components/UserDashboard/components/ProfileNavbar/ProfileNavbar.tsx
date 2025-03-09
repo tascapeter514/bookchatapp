@@ -4,6 +4,7 @@ import CreateButton from '../../../common/Buttons/CreateButton/CreateButton'
 import { Bookshelf } from '../../../../types'
 import  BookshelfDropdown  from '../../../common/BookshelfDropdown/BookshelfDropdown'
 import { RightDropDownIcon } from '../../../common/Icons'
+import { formatDate } from '../../../common/functions'
 import './ProfileNavbar.css'
 
 interface ProfileNavbarProps {
@@ -14,15 +15,7 @@ interface ProfileNavbarProps {
     
 }
 
-export function formatDate(dateString: string) {
-    const date = new Date(dateString);
-    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-    const day = date.getDate();
-    const month = monthNames[date.getMonth()]
-    const year = date.getFullYear()
 
-    return { day, month, year }
-}
 
 const ProfileNavbar = (props: ProfileNavbarProps) => {
 
@@ -50,14 +43,12 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
     // console.log('active tab:', activeTab)
 
     const bookshelfElements = userBookshelves.map((userBookshelf: Bookshelf, userBookshelfIndex: number) => {
-        function handleActiveBookshelf() {
 
+        function handleActiveBookshelf() {
             setActiveTab(userBookshelfIndex + bookshelfOffset)
             setActiveBookshelf(userBookshelfIndex)
-
         }
 
-        
         return (
 
             <li 
@@ -77,7 +68,6 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
 
     const navbarElements = navbarContents.map((navbarContent: string, navbarIndex: number) => {
 
-    
         return (
             <>
                 {(navbarContent == 'Account' || navbarContent == 'Messages') && (
@@ -135,14 +125,6 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
            </>
         )
     })
-
-    
-
-    
-
-    
-
-    
 
     return(
         <div className="navbar-container">

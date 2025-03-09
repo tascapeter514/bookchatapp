@@ -1,23 +1,19 @@
 import './MessagePanel.css'
-import Accordion from '../../../common/Accordion/Accordion.tsx'
 import { Link } from 'react-router-dom'
 import { userData } from '../../../common/UserContext.tsx'
 import { Invitation} from '../../../../types.ts'
-import { formatDate } from '../ProfileNavbar/ProfileNavbar.tsx'
+import { formatDate } from '../../../common/functions.tsx'
 import Header from '../../../common/Header/Header.tsx'
+import SubHeader from '../../../common/SubHeader/SubHeader.tsx'
 
 
 
 
 
-const MessagePanel: React.FC = () => {
+const MessagePanel = () => {
 
 
     const { activeUser, activeUserToken, userInvites, setUserInvites } = userData()
-
-
-
-
 
     function joinBookclub(bookclub: {id: string, name: string}) {
 
@@ -63,14 +59,7 @@ const MessagePanel: React.FC = () => {
                 </div>
                 <div className="message-content">
                     {!userInvite.accepted && (<button className='accept-button' onClick={() => joinBookclub(userInvite.bookclub)}>Accept</button>) }
-                </div>
-
-                
-                
-                
-             
-                
-                
+                </div> 
             </li>
         )
     })
@@ -78,14 +67,11 @@ const MessagePanel: React.FC = () => {
 
 
     return(
-        <div id='messages' className='messages-container' aria-labelledby='tab-2'>
+        <section id='messages' className='messages-container' aria-labelledby='tab-2'>
             <Header>Messages</Header>
-            
-            <h2>Invitations</h2>
+            <SubHeader>Invitations</SubHeader>
             <ul className='messages-list'>{userInvitesElements}</ul>
-            
-            
-        </div>
+        </section>
     )
 }
 

@@ -9,7 +9,6 @@ const Header = ({children}: HeaderProps) => {
         <div className='header'>
             <h1 className='header-title'>{children}</h1>
             <hr className="header-underline" />
-        
         </div>
 
         

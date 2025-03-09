@@ -9,6 +9,7 @@ import BookclubBackground from './assets/bookclub-background.jpg'
 import Button from '../common/Buttons/Button/Button'
 import Tabs from '../common/Tabs/Tabs'
 import FileUploadModal from '../common/Modals/FileUploadModal/FileUploadModal'
+import ProfileIcons from '../common/ProfileIcons/ProfileIcons'
 
 
 
@@ -23,6 +24,10 @@ const BookclubPage = () => {
     const uploadFileRef = useRef<HTMLDialogElement>(null)
     const [isMember, setIsMember] = useState(false)
     const parameters = useParams<{id: string}>()
+    const openBookshelfModal = () => bookshelfRef.current?.showModal()
+    const closeBookshelfModal = () => bookshelfRef.current?.close()
+    const openImageModal = () => uploadFileRef.current?.showModal()
+    const closeImageModal = () => uploadFileRef.current?.close()
 
     useEffect(() => {
         setIsMember(() => {
@@ -65,30 +70,6 @@ const BookclubPage = () => {
 
     }, [])
   
-
-    const openBookshelfModal = () => bookshelfRef.current?.showModal()
-    const closeBookshelfModal = () => bookshelfRef.current?.close()
-    const openImageModal = () => uploadFileRef.current?.showModal()
-    const closeImageModal = () => uploadFileRef.current?.close()
-        
-    
-
-    
-    const UserProfileIcons = bookclub?.members.map((member, index) => {
-        return (
-            <li key={index} >
-                <div 
-                    className="circle" 
-                    style={{ marginLeft: `${index - 15}px`,
-                                zIndex: index + 1, 
-                                position: 'relative', 
-                                backgroundColor: '#FF8C00',
-                                border: '2px solid white'
-                            }}
-                    >{member?.username?.charAt(0).toUpperCase()}</div>
-            </li>
-        )
-    })
 
     const createBookshelf = async (formData: FormData): Promise<void> => {
         console.log('form data:', formData.get('bookshelfName'))
@@ -148,7 +129,7 @@ const BookclubPage = () => {
                                 <small>{bookclub?.members.length} Members</small>
                                 <div className="header-members-wrapper">
                                     <ul className='user-profile-list' >
-                                        {UserProfileIcons}
+                                        <ProfileIcons users={bookclub?.members}></ProfileIcons>
                                     </ul>
                                     <div className="member-buttons">
                                         <button>+ Invite</button>
