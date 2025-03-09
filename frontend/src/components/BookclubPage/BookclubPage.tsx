@@ -6,14 +6,12 @@ import { userData } from '../../components/common/UserContext'
 import { SearchIcon } from '../common/Icons'
 import { v4 as uuidv4 } from 'uuid'
 import BookshelfModal from '../common/Modals/BookshelfModal/BookshelfModal'
-import BookclubBackground from './assets/bookclub-background.jpg'
 import Button from '../common/Buttons/Button/Button'
 import BookshelfPanel from '../common/BookshelfPanel/BookshelfPanel'
 import CurrentReadPanel from './components/CurrentReadPanel/CurrentReadPanel'
+import TopFacade from './components/TopFacade/TopFacade'
 import Tabs from './components/Tabs/Tabs'
-import FileUploadModal from '../common/Modals/FileUploadModal/FileUploadModal'
-import ProfileIcons from '../common/ProfileIcons/ProfileIcons'
-import Header from '../common/Header/Header'
+
 
 
 
@@ -27,16 +25,15 @@ const BookclubPage = () => {
     const [activeBookshelf, setActiveBookshelf] = useState<number>(0)
     const [activeTab, setActiveTab] = useState(0)
     const [subNav, setSubNav] = useState(false)
- 
+
     const tabContents = ['Bookshelves', 'Current Read']
     const bookshelfRef = useRef<HTMLDialogElement>(null)
-    const uploadFileRef = useRef<HTMLDialogElement>(null)
+   
     const [isMember, setIsMember] = useState(false)
     const parameters = useParams<{id: string}>()
     const openBookshelfModal = () => bookshelfRef.current?.showModal()
     const closeBookshelfModal = () => bookshelfRef.current?.close()
-    const openImageModal = () => uploadFileRef.current?.showModal()
-    const closeImageModal = () => uploadFileRef.current?.close()
+
     
 
     useEffect(() => {
@@ -123,27 +120,8 @@ const BookclubPage = () => {
             <div className='bookclub-container'>
                 {isMember && (
                     <div className="bookclub-content-wrapper">
-                        <div className='bookclub-top-facade'>
-                            <div className="bookclub-background">
-                                <img src={BookclubBackground} alt="" />
-                                <Button onClick={openImageModal}>Change Image</Button>
-                                <FileUploadModal id={parameters.id ?? ''} closeImageModal={closeImageModal} uploadFileRef={uploadFileRef} />
-                            </div>
-                            <div className="bookclub-top-bar">
-                                <h2>{bookclub?.name}</h2>
-                                
-                                <small>{bookclub?.members.length} Members</small>
-                                <div className="header-members-wrapper">
-                                    <ul className='user-profile-list' >
-                                        <ProfileIcons users={bookclub?.members}></ProfileIcons>
-                                    </ul>
-                                    <div className="member-buttons">
-                                        <Button>+ Invite</Button>
-                                        <Button>Joined</Button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <TopFacade id={parameters.id} bookclub={bookclub}></TopFacade>
+                        
                         
                         <div className="tabs-wrapper">
                             <hr />
@@ -171,9 +149,6 @@ const BookclubPage = () => {
                         </div>
                         <div className="bookclub-panels-container">
                             <PanelComponent />
-                                
-                           
-                            
                         </div>
 
                     </div>
