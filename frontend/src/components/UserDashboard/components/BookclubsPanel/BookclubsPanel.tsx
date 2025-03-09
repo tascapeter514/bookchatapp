@@ -36,10 +36,10 @@ const BookclubsPanel = () => {
 
 
     return(
-        <main className="bookclubs-container">
+        <section className="bookclubs-container">
             <Header>Bookclubs</Header>
             <ul className='bookclub-list'>{bookclubElements}</ul>
-        </main>
+        </section>
     )
 
 }

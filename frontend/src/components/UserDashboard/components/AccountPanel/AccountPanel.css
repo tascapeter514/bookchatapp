@@ -5,31 +5,6 @@
 
 }
 
-.account-container > h1 {
-    text-align: center;
-    font-weight: 700;
-    margin-block: .5rem;
-
-}
-
-.underline {
-    text-decoration-line: underline;
-    text-decoration-style: solid;
-    max-width: 76px;
-    border: 3px solid orange;
-    margin-inline: auto;
-
-}
-
-.account-container > h2 {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    text-align: center;
-    padding: .75em;
-    max-width: 400px;
-    margin-inline: auto;
-    background-color: #f6f6f6;
-}
 
 .account-container > form {
     max-width: 500px;
@@ -55,16 +30,12 @@
     
 }
 
-.account-container button {
-    display: block;
-    margin-top: 1rem;
-    border: 1px solid #FF8C00;
-    padding: .5em 1em;
+.contact-info-form, .change-password-form {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.contact-info-form > button, .change-password-form > button {
     font-size: 1.25rem;
-    width: auto;
-    cursor: pointer;
-    background-color: #FF8C00;
-    color: white;
-    margin-inline: auto;
-    
 }

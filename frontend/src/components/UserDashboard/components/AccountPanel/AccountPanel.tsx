@@ -1,5 +1,8 @@
 import './AccountPanel.css'
 import { userData } from '../../../common/UserContext'
+import Header from '../../../common/Header/Header'
+import SubHeader from '../../../common/SubHeader/SubHeader'
+import Button from '../../../common/Buttons/Button/Button'
 
 
 
@@ -7,20 +10,15 @@ import { userData } from '../../../common/UserContext'
 
 
 
-const AccountPanel: React.FC = () => {
+const AccountPanel = () => {
     
     const { activeUser } = userData()
 
-
-
-
-
     return(
 
-        <div id='account' className='account-container' aria-labelledby='tab-3'>
-            <h1>Account Details</h1>
-            <hr className="underline" />
-            <h2>Contact Info</h2>
+        <section id='account' className='account-container' aria-labelledby='tab-3'>
+            <Header>Account Details</Header>
+            <SubHeader>Contact Info</SubHeader>
             <form action="" className='contact-info-form'>
                 <div className="form-field">
                     <label htmlFor="first_name">First Name</label>
@@ -34,9 +32,9 @@ const AccountPanel: React.FC = () => {
                     <label htmlFor="email_address">Email</label>
                     <input id='email_address' name='email_address' value={activeUser.email}  />
                 </div>
-                <button>Save Changes</button>
+                <Button>Save Changes</Button>
             </form>
-            <h2>Change Password</h2>
+            <SubHeader>Change Password</SubHeader>
             <form action="" className='change-password-form'>
                 <div className="form-field">
                     <label htmlFor="current-password">Current Password</label>
@@ -46,9 +44,9 @@ const AccountPanel: React.FC = () => {
                     <label htmlFor="new_password">New Password</label>
                     <input id='new_password' name='new_password' />
                 </div>
-                <button>Save Changes</button>
+                <Button>Save Changes</Button>
             </form>
-        </div>
+        </section>
     )
 }
 
