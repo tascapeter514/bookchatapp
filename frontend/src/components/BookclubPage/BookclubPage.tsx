@@ -147,9 +147,7 @@ const BookclubPage = () => {
                             
                             <div className="tabs-bar-wrapper">
                                 <Tabs contents={tabContents} setActiveTab={setActiveTab} activeTab={activeTab}></Tabs>
-                                <button className="bookclub-searchBtn">
-                                    <SearchIcon></SearchIcon>
-                                </button>
+                                <Button><SearchIcon></SearchIcon></Button>
                             </div>
                             <nav className="bookshelves-subnav">
                                         <Button onClick={openBookshelfModal}>Add Bookshelf</Button>
