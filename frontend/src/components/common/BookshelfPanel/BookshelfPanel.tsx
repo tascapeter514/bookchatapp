@@ -1,17 +1,17 @@
 import './BookshelfPanel.css';
-import { userData } from '../UserContext.tsx'
+import { Bookshelf } from '../../../types.ts'
 import BookshelfComponent from '../BookshelfComponent/BookshelfComponent.tsx'
 import Header from '../Header/Header.tsx'
 import SubHeader from '../SubHeader/SubHeader.tsx'
 
-type BookshelfPanelProps = {activeBookshelf: number}
+type BookshelfPanelProps = {activeBookshelf: number, bookshelves: Bookshelf[] }
 
-const BookshelfPanel = (props: BookshelfPanelProps) => {
+const BookshelfPanel = ({activeBookshelf, bookshelves}: BookshelfPanelProps) => {
 
-    const { userBookshelves } = userData()
-    const { activeBookshelf } = props
+
+  
     
-    const bookshelfElements = userBookshelves.map((bookshelf, index) => (
+    const bookshelfElements = bookshelves.map((bookshelf, index) => (
         activeBookshelf === index && 
             <li 
                 key={bookshelf.bookshelf_id}

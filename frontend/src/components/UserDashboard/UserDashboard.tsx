@@ -1,5 +1,6 @@
 import './UserDashboard.css';
 import { useState } from 'react';
+import { userData } from '../common/UserContext'
 import Bookshelfpanel from '../common/BookshelfPanel/BookshelfPanel'
 import MessagePanel from './components/MessagePanel/MessagePanel';
 import AccountPanel from './components/AccountPanel/AccountPanel';
@@ -21,9 +22,11 @@ const UserDashboard = () => {
     const [activeBookshelf, setActiveBookshelf] = useState<number>(4);
     const [showNavbar, setShowNavbar] = useState(false);
     const [isExiting, setIsExiting] = useState(false)
+    const { userBookshelves }   = userData()
    
     const isBookshelfTab = activeTab >= 3
-    const PanelComponent = () => { return isBookshelfTab ? <Bookshelfpanel activeBookshelf={activeBookshelf} /> : panels[activeTab] || null} 
+    const PanelComponent = () =>
+          isBookshelfTab ? <Bookshelfpanel bookshelves={userBookshelves} activeBookshelf={activeBookshelf} /> : panels[activeTab] || null 
     const toggleNavbar = () => {
         setShowNavbar(prev => !prev)
         if (showNavbar) {

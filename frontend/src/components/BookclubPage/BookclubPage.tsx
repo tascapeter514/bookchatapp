@@ -168,7 +168,6 @@ const BookclubPage = () => {
                                         closeBookshelfModal={closeBookshelfModal}
                                         createBookshelf={createBookshelf}
                                     >
-
                                     </BookshelfModal>
                                    
                                     <div className="bookshelf-list"> 
