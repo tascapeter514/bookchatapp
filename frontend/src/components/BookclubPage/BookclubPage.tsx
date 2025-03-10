@@ -1,7 +1,8 @@
 import './BookclubPage.css'
+import axios from 'axios'
 import { useState, useEffect } from 'react'
 import {useParams } from 'react-router-dom'
-import { Bookclub } from '../../types'
+import { Bookclub, Bookshelf } from '../../types'
 import { userData } from '../../components/common/UserContext'
 import { SearchIcon } from '../common/Icons'
 import Button from '../common/Buttons/Button/Button'
@@ -21,9 +22,11 @@ const BookclubPage = () => {
 
     const { userBookclubs } = userData()
     const [bookclub, setBookclub] = useState<Bookclub | null>(null)
+    const [bookshelves, setBookshelves] = useState<Bookshelf[] | null>([])
     const [activeBookshelf, setActiveBookshelf] = useState<number>(0)
     const [activeTab, setActiveTab] = useState(0)
     const [subNav, setSubNav] = useState(false)
+    const [newBookshelf, setNewBookshelf] = useState<string>('')
 
     const tabContents = ['Bookshelves', 'Current Read']
     
@@ -32,31 +35,24 @@ const BookclubPage = () => {
     const parameters = useParams<{id: string}>()
 
 
-    
-
-    useEffect(() => {
-        setIsMember(() => {
-            return  userBookclubs.map((userBookclub: Bookclub) => userBookclub.bookclub_id).some(userBookclubId => userBookclubId === parameters.id)
-        })
-
-        const lastVisited = new Date().toISOString()
-        localStorage.setItem(`lastVisited/${parameters.id}`, lastVisited)
-
-    }, [userBookclubs])
-    
-    
-
     useEffect(() => {
 
         try {
-            const socket = new WebSocket(`ws://localhost:8000/ws/bookclub/addBookshelf/${parameters.id}`)
+            const socket = new WebSocket(`ws://localhost:8000/ws/bookclub/${parameters.id}`)
 
             socket.onmessage = (event) => {
                 const data = JSON.parse(event.data)
                 console.log('web socket data:', data)
 
                 if (data.type == 'get_bookclub_data') {
-                    setBookclub(data.bookclub_data)
+
+                    const  bookshelvesData  = data.bookshelves_data
+                    const bookclubData = data.bookclub_data
+                    console.log('incoming bookshelves:', bookshelvesData);
+                    console.log('incoming bookclub:', bookclubData)
+                    setBookclub(bookclubData)
+                    setBookshelves(bookshelvesData)
+                    
                 }
             }
 
@@ -80,11 +76,66 @@ const BookclubPage = () => {
         <CurrentReadPanel />
     ]
     const PanelComponent = () => panels[activeTab]
-  
+
+    const handleNewBookshelf = (e: string) => {
+        console.log(e)
+        setNewBookshelf(e)
+    }
+
+    useEffect(() => {
+        setIsMember(() => {
+            return  userBookclubs.map((userBookclub: Bookclub) => userBookclub.bookclub_id).some(userBookclubId => userBookclubId === parameters.id)
+        })
+
+        const lastVisited = new Date().toISOString()
+        localStorage.setItem(`lastVisited/${parameters.id}`, lastVisited)
+
+    }, [userBookclubs])
+
+
+    const addBookshelf = async (formData: FormData): Promise<void> => {
+        console.log('form data:', formData.get('bookshelfName'))
+
+        const bookshelfObject = {
+            name: formData.get('bookshelfName'),
+            bookclub_id: parameters.id
+        }
+
+        console.log('bookshelf object:', bookshelfObject)
+
+
+        // const bookshelf = {
+        //     name: formData.get('bookshelfName'),
+        //     bookclub_id: bookclub?.bookclub_id
+        // }
+
+        // try {
+        //     const response = await fetch('http://localhost:8000/api/bookclub/addBookshelf', {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         },
+        //         body: JSON.stringify(bookshelf)
+        //     })
+
+        //     if (response.ok) {
+        //         const data = response.json()
+        //         // ADD BOOKSHELF TO BOOKCLUB BOOKSHELVES
+        //         console.log("create bookshelf data:", data)
+        //     }
+
+
+        // } catch(err) {
+        //     console.error('Error connecting to backend for bookshelf creation:', err)
+        // }
+    }
+    
+   
 
     
 
     console.log('BOOKCLUB DATA:', bookclub)
+    console.log('BOOKSHELVES DATA:', bookshelves)
 
     return(
             <div className='bookclub-container'>
@@ -109,7 +160,16 @@ const BookclubPage = () => {
                                 className={`subnav-container ${subNav ? 'active' : ''}`}
 
                             >
-                                <SubNavbar subNav={subNav} bookclub={bookclub} setActiveBookshelf={setActiveBookshelf}></SubNavbar>
+                                <SubNavbar 
+                                    subNav={subNav} 
+                                    bookshelves={bookshelves}
+                                    setActiveBookshelf={setActiveBookshelf}
+                                    addBookshelf={addBookshelf}
+                                    handleNewBookshelf={handleNewBookshelf}
+                                    newBookshelf={newBookshelf}
+                                    
+                                >
+                                </SubNavbar>
                             </div>
 
                            

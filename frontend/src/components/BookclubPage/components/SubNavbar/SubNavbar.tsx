@@ -1,53 +1,27 @@
-import { useRef, Dispatch, SetStateAction } from 'react'
-import { Bookclub } from '../../../../types'
+import { useRef, Dispatch, SetStateAction, ChangeEvent } from 'react'
+import { Bookshelf } from '../../../../types'
 import BookshelfModal from '../../../common/Modals/BookshelfModal/BookshelfModal'
 import Button from '../../../common/Buttons/Button/Button'
-import { v4 as uuidv4 } from 'uuid'
 import './SubNavbar.css'
 
 
 interface SubNavbarProps {
-    bookclub: Bookclub | null,
+    bookshelves: Bookshelf[] | null,
     subNav: boolean,
-    setActiveBookshelf: Dispatch<SetStateAction<number>>
+    newBookshelf: string,
+    setActiveBookshelf: Dispatch<SetStateAction<number>>,
+    addBookshelf: (formData: FormData) => Promise<void>,
+    handleNewBookshelf: (e: string ) => void
 
 }
 
-const SubNavbar = ({bookclub, subNav, setActiveBookshelf}: SubNavbarProps) => {
+const SubNavbar = ({bookshelves, subNav, setActiveBookshelf, addBookshelf, newBookshelf, handleNewBookshelf}: SubNavbarProps) => {
 
     const bookshelfRef = useRef<HTMLDialogElement>(null)
     const openBookshelfModal = () => bookshelfRef.current?.showModal()
     const closeBookshelfModal = () => bookshelfRef.current?.close()
 
-    const createBookshelf = async (formData: FormData): Promise<void> => {
-        console.log('form data:', formData.get('bookshelfName'))
-
-        const bookshelf = {
-            bookshelf_id: uuidv4(),
-            name: formData.get('bookshelfName'),
-            bookclub_id: bookclub?.bookclub_id
-
-        }
-
-        try {
-            const response = await fetch('http://localhost:8000/api/bookclub/addBookshelf', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(bookshelf)
-            })
-
-            if (response.ok) {
-                const data = response.json()
-                console.log("create bookshelf data:", data)
-            }
-
-
-        } catch(err) {
-            console.error('Error connecting to backend for bookshelf creation:', err)
-        }
-    }
+   
 
 
     // id={`link-${navbarIndex}`} href={`#${navbarContent.toLowerCase()}
@@ -67,7 +41,7 @@ const SubNavbar = ({bookclub, subNav, setActiveBookshelf}: SubNavbarProps) => {
             aria-hidden='true'
         >
             <ul className="bookshelf-titles-list">
-                {bookclub?.bookshelves.map((bookshelf, index) => 
+                {bookshelves?.map((bookshelf, index) => 
                 <li key={bookshelf.bookshelf_id} onClick={() => setActiveBookshelf(index)} className='bookshelf-title-listElement'>
                     {bookshelf.name}
                 </li>)}
@@ -76,7 +50,9 @@ const SubNavbar = ({bookclub, subNav, setActiveBookshelf}: SubNavbarProps) => {
             <BookshelfModal 
                 bookshelfRef={bookshelfRef}
                 closeBookshelfModal={closeBookshelfModal}
-                createBookshelf={createBookshelf}
+                addBookshelf={addBookshelf}
+                newBookshelf={newBookshelf}
+                handleNewBookshelf={handleNewBookshelf}
             >
             </BookshelfModal>
         </nav>

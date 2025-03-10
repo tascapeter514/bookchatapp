@@ -150,7 +150,7 @@ const UserDataProvider: React.FC<UserProviderProps> = ({ children }: UserProvide
             const data = JSON.parse(event.data);
             if (data.type === 'get_user_data') {
 
-              console.log('check to see if bookshelves update:', data.user_data.user_bookshelves)
+              // console.log('check to see if bookshelves update:', data.user_data.user_bookshelves)
               
               setUserBookshelves(() => {
                 sessionStorage.setItem('userBookshelves', JSON.stringify(data.user_data.user_bookshelves))

@@ -186,11 +186,17 @@ class BookclubDataConsumer(WebsocketConsumer):
     def get_bookclub_data(self):
 
         bookclub = Bookclub.objects.get(bookclub_id=self.bookclub_id)
-        serializer = BookclubSerializer(bookclub)
+        bookclub_serializer = BookclubSerializer(bookclub)
+        bookshelves_serializer = BookshelfSerializer(bookclub.bookshelves, many=True)
+
+        print('bookclub serializer', bookclub_serializer.data)
+        print('bookshelf serializer', bookshelves_serializer.data)
+        
 
         self.send(text_data=json.dumps({
             'type': 'get_bookclub_data',
-            'bookclub_data': serializer.data
+            'bookclub_data': bookclub_serializer.data,
+            'bookshelves_data': bookshelves_serializer.data
         }))
 
     
