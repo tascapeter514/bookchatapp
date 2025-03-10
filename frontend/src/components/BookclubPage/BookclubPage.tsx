@@ -119,8 +119,8 @@ const BookclubPage = () => {
 
     
 
-    console.log('BOOKCLUB DATA:', bookclub)
-    console.log('BOOKSHELVES DATA:', bookshelves)
+    // console.log('BOOKCLUB DATA:', bookclub)
+    // console.log('BOOKSHELVES DATA:', bookshelves)
 
     return(
             <div className='bookclub-container'>

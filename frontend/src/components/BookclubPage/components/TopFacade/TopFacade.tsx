@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { Bookclub } from '../../../../types'
 import BookclubBackground from '../../assets/bookclub-background.jpg'
 import FileUploadModal from '../../../common/Modals/FileUploadModal/FileUploadModal'
+import InviteModal from '../InviteModal/InviteModal'
 import ProfileIcons from '../../../common/ProfileIcons/ProfileIcons'
 import Button from '../../../common/Buttons/Button/Button'
 
@@ -43,11 +44,14 @@ const TopFacade = ({bookclub, id}: TopFacadeProps) => {
                     </ul>
                     <div className="member-buttons">
                         <Button
-                            className='bookclub-invite-button'
                             onClick={openInviteModal}
                         >+ Invite</Button>
                         <Button>Joined</Button>
                     </div>
+                    <InviteModal
+                        closeInviteModal={closeInviteModal}
+                        inviteRef={inviteRef}
+                    ></InviteModal>
                 </div>
             </div>
         </div>

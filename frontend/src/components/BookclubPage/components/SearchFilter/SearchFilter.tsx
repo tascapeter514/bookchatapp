@@ -13,7 +13,7 @@ const SearchFilter = ({setSearchValue, searchValue}: SearchFilterProps) => {
     return (
         <div className='inviteUser-searchbar'>
             <input
-
+                className='inviteUser-input'
                 name='userName'
                 placeholder='Search for another user'
                 value={searchValue}

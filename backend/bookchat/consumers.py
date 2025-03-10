@@ -3,6 +3,8 @@ from asgiref.sync import async_to_sync
 from urllib.parse import unquote
 import json
 from .models import Bookclub, Invitation, Bookshelf, Book, Author
+from django.contrib.auth.models import User
+from accounts.serializers import UserSerializer
 from django.db.models import Q
 from .serializers import BookclubSerializer, InvitationSerializer, BookshelfSerializer, AuthorSerializer, BookSerializer
 
@@ -189,8 +191,8 @@ class BookclubDataConsumer(WebsocketConsumer):
         bookclub_serializer = BookclubSerializer(bookclub)
         bookshelves_serializer = BookshelfSerializer(bookclub.bookshelves, many=True)
 
-        print('bookclub serializer', bookclub_serializer.data)
-        print('bookshelf serializer', bookshelves_serializer.data)
+        # print('bookclub serializer', bookclub_serializer.data)
+        # print('bookshelf serializer', bookshelves_serializer.data)
         
 
         self.send(text_data=json.dumps({
@@ -198,6 +200,40 @@ class BookclubDataConsumer(WebsocketConsumer):
             'bookclub_data': bookclub_serializer.data,
             'bookshelves_data': bookshelves_serializer.data
         }))
+
+class UsersConsumer(WebsocketConsumer):
+    def connect(self):
+        self.group_name = 'get_users'
+
+
+        async_to_sync(self.channel_layer.group_add)(
+            self.group_name,
+            self.channel_name
+        )
+
+        self.accept()
+
+        self.get_users()
+
+    def disconnect(self, close_code):
+        async_to_sync(self.channel_layer.group_discard)(
+            self.group_name,
+            self.channel_name
+        )
+
+    def get_users(self):
+        print('get user check')
+
+        users = User.objects.all()
+        users_serializer = UserSerializer(users, many=True)
+
+        print('users serializer:', users_serializer.data)
+
+        self.send(text_data=json.dumps({
+            'type': 'get_users',
+            'users_data': users_serializer.data
+        }))
+
 
     
 

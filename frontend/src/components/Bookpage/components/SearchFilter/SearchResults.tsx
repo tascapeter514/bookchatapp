@@ -3,8 +3,8 @@ import './SearchResults.css'
 
 interface searchResultProps<T> {
     searchResults: T[],
-    handleSelection: (id: string) => void,
-    selectedElement: string | null,
+    handleSelection: (id: string | number) => void,
+    selectedElement: string | number,
     searchValue: string,
     idKey: keyof T;
     nameKey: keyof T;
@@ -33,7 +33,7 @@ const SearchResults = <T,> ({searchResults, handleSelection, selectedElement, se
                         type="radio" 
                         className='search-result-input' 
                         id={String(searchResultElement[nameKey])}
-                        name='bookclubGroup'
+                        name='searchResultsGroup'
                         checked={selectedElement === String(searchResultElement[idKey])} 
                         onChange={() => handleSelection(String(searchResultElement[idKey]))}/>
                     
