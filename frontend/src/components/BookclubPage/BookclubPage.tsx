@@ -23,7 +23,7 @@ const BookclubPage = () => {
 
     const { userBookclubs } = userData()
     const [bookclub, setBookclub] = useState<Bookclub | null>(null)
-    const [bookshelves, setBookshelves] = useState<Bookshelf[] | null>([])
+    const [bookshelves, setBookshelves] = useState<Bookshelf[] | []>([])
     const [activeBookshelf, setActiveBookshelf] = useState<number>(0)
     const [activeTab, setActiveTab] = useState(0)
     const [subNav, setSubNav] = useState(false)
@@ -71,7 +71,7 @@ const BookclubPage = () => {
     }, [])
 
     const panels = [
-        <BookshelfPanel activeBookshelf={activeBookshelf} bookshelves={bookclub?.bookshelves} />,
+        <BookshelfPanel activeBookshelf={activeBookshelf} bookshelves={bookshelves} />,
         <CurrentReadPanel />
     ]
     const PanelComponent = () => panels[activeTab]
@@ -107,6 +107,7 @@ const BookclubPage = () => {
         axios.post('http://localhost:8000/api/bookclub/addBookshelf', bookshelfObject)
             .then(response => {
                 setBookshelves(prev => [...(prev || []), response.data])
+                console.log('bookshelf data response:', response.data)
                 setNewBookshelf('')
             })
             .catch(error => console.log('Your bookshelf was not created:', error))

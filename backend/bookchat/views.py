@@ -74,15 +74,18 @@ def upload_file(request, **kwargs):
 def add_bookclub_bookshelf(request):
 
     bookshelf_data = json.loads(request.body)
-    bookshelf_id = bookshelf_data['bookshelf_id']
-    bookshelf_name = bookshelf_data['name']
-    bookclub_id = bookshelf_data['bookclub_id']
-    new_bookshelf = Bookshelf.objects.create(bookshelf_id=bookshelf_id, name=bookshelf_name)
-    # print('new bookshelf:', new_bookshelf)
+    print(bookshelf_data)
+    bookshelf_id, bookshelf_name, bookclub_id, bookshelf_titles = bookshelf_data.values()
+    
     bookclub = Bookclub.objects.get(bookclub_id=bookclub_id)
+    new_bookshelf = Bookshelf.objects.create(bookshelf_id=bookshelf_id, name=bookshelf_name)
+
     bookclub.bookshelves.add(new_bookshelf)
-    print('bookclub:', bookclub.bookshelves)
-    return Response({'message:' 'Success! You reached the backend.'})
+    bookshelf_serializer = BookshelfSerializer(new_bookshelf)
+
+    print('bookshelf serializer:', bookshelf_serializer.data)
+
+    return Response(bookshelf_serializer.data)
 
 @api_view(['PUT'])
 def add_book_to_bookclub(request, **kwargs):
