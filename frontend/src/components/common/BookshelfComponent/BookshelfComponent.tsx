@@ -12,7 +12,7 @@ const BookshelfComponent = (props: BookshelfProps) => {
 
     const  {bookshelf } = props
 
-    const bookshelfTitles = bookshelf.titles.map((bookshelfTitle) => {
+    const bookshelfTitles = (bookshelf?.titles ?? []).map((bookshelfTitle) => {
        return <li className='book-card-listElement' key={bookshelfTitle.title_id}>
                 <article className="book-card" >
  

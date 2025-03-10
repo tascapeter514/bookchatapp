@@ -50,8 +50,9 @@ export type Author = {
 export interface Bookshelf {
     bookshelf_id: string,
     name: string,
-    user: number,
-    titles: Book[]
+    user?: number,
+    titles?: Book[],
+    bookclub_id?: string
 
 }
 

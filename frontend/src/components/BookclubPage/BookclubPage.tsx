@@ -1,6 +1,7 @@
 import './BookclubPage.css'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 import {useParams } from 'react-router-dom'
 import { Bookclub, Bookshelf } from '../../types'
 import { userData } from '../../components/common/UserContext'
@@ -48,8 +49,6 @@ const BookclubPage = () => {
 
                     const  bookshelvesData  = data.bookshelves_data
                     const bookclubData = data.bookclub_data
-                    console.log('incoming bookshelves:', bookshelvesData);
-                    console.log('incoming bookclub:', bookclubData)
                     setBookclub(bookclubData)
                     setBookshelves(bookshelvesData)
                     
@@ -96,12 +95,25 @@ const BookclubPage = () => {
     const addBookshelf = async (formData: FormData): Promise<void> => {
         console.log('form data:', formData.get('bookshelfName'))
 
-        const bookshelfObject = {
-            name: formData.get('bookshelfName'),
-            bookclub_id: parameters.id
+        const bookshelfObject: Bookshelf = {
+            bookshelf_id: uuidv4(),
+            name: String(formData.get('bookshelfName') || ''),
+            bookclub_id: parameters.id,
+            titles: [],
+
+
         }
 
-        console.log('bookshelf object:', bookshelfObject)
+        axios.post('http://localhost:8000/api/bookclub/addBookshelf', bookshelfObject)
+            .then(response => {
+                setBookshelves(prev => [...(prev || []), response.data])
+                setNewBookshelf('')
+            })
+            .catch(error => console.log('Your bookshelf was not created:', error))
+
+        // console.log('bookshelf object:', bookshelfObject)
+        // setBookshelves(prev => [...(prev || []), bookshelfObject])
+        // setNewBookshelf('')
 
 
         // const bookshelf = {
