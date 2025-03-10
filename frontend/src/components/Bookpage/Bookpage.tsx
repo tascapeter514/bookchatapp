@@ -228,7 +228,7 @@ const Bookpage: React.FC = () => {
                                                         handleSelection={handleUserBookshelfSelection}
                                                         selectedElement={selectedUserBookshelf}
                                                     
-                                                        ></SearchResults>
+                                                    ></SearchResults>
                                                 </div>
                                                 
 

@@ -19,7 +19,8 @@ const SearchFilter  = ({ setSearchValue, searchValue }: BookclubSearchbarProps) 
                     placeholder='Enter a Bookclub Name' 
                     value={searchValue} 
                     onChange={(e) => setSearchValue(e.target.value)}
-                    required />
+                    required 
+                />
                 <SearchIcon className='search-icon'/>
 
         </div>

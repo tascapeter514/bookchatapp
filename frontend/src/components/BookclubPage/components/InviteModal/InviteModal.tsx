@@ -35,6 +35,7 @@ const InviteModal = ({ closeInviteModal, inviteRef }: InviteModalProps) => {
                 const data = JSON.parse(event.data)
                 if (data.type === 'get_users') {
                     console.log('all users:', data.users_data)
+                    setUserSearchResults(data.users_data)
                 }
             }
 
@@ -83,7 +84,7 @@ const InviteModal = ({ closeInviteModal, inviteRef }: InviteModalProps) => {
             </section>
             <div className="button-wrapper">
                 <Button onClick={closeInviteModal}>Cancel</Button>
-                <Button onClick={async () => selectedUser && await inviteUser(selectedUser)}>Add</Button>
+                <Button onClick={async () => selectedUser && await inviteUser(selectedUser)}>Invite</Button>
 
             </div>
         </dialog>

@@ -1,4 +1,6 @@
 import './AccountPanel.css'
+import { ActiveUser } from '../../../../types'
+import { useState } from 'react'
 import { userData } from '../../../common/UserContext'
 import Header from '../../../common/Header/Header'
 import SubHeader from '../../../common/SubHeader/SubHeader'
@@ -7,6 +9,9 @@ import Button from '../../../common/Buttons/Button/Button'
 const AccountPanel = () => {
     
     const { activeUser } = userData()
+    const [user, setUser] = useState<ActiveUser>(activeUser)
+
+    console.log(activeUser)
 
     return(
 
@@ -16,15 +21,15 @@ const AccountPanel = () => {
             <form action="" className='contact-info-form'>
                 <div className="form-field">
                     <label htmlFor="first_name">First Name</label>
-                    <input id='first_name' name='first_name' value={activeUser.first_name} />
+                    <input id='first_name' name='first_name' value={user.first_name} />
                 </div>
                 <div className="form-field">
                     <label htmlFor="last_name">Last Name</label>
-                    <input id='last_name' name='last_name'  value={activeUser.last_name} />
+                    <input id='last_name' name='last_name'  value={user.last_name} />
                 </div>
                 <div className="form-field">
                     <label htmlFor="email_address">Email</label>
-                    <input id='email_address' name='email_address' value={activeUser.email}  />
+                    <input id='email_address' name='email_address' value={user.email}  />
                 </div>
                 <Button>Save Changes</Button>
             </form>
