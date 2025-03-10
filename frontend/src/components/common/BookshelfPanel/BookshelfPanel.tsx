@@ -4,7 +4,7 @@ import BookshelfComponent from '../BookshelfComponent/BookshelfComponent.tsx'
 import Header from '../Header/Header.tsx'
 import SubHeader from '../SubHeader/SubHeader.tsx'
 
-type BookshelfPanelProps = {activeBookshelf: number, bookshelves: Bookshelf[] | undefined }
+type BookshelfPanelProps = {activeBookshelf: number, bookshelves: Bookshelf[] | [] }
 
 const BookshelfPanel = ({activeBookshelf, bookshelves}: BookshelfPanelProps) => {
 

@@ -112,35 +112,7 @@ const BookclubPage = () => {
             })
             .catch(error => console.log('Your bookshelf was not created:', error))
 
-        // console.log('bookshelf object:', bookshelfObject)
-        // setBookshelves(prev => [...(prev || []), bookshelfObject])
-        // setNewBookshelf('')
-
-
-        // const bookshelf = {
-        //     name: formData.get('bookshelfName'),
-        //     bookclub_id: bookclub?.bookclub_id
-        // }
-
-        // try {
-        //     const response = await fetch('http://localhost:8000/api/bookclub/addBookshelf', {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json'
-        //         },
-        //         body: JSON.stringify(bookshelf)
-        //     })
-
-        //     if (response.ok) {
-        //         const data = response.json()
-        //         // ADD BOOKSHELF TO BOOKCLUB BOOKSHELVES
-        //         console.log("create bookshelf data:", data)
-        //     }
-
-
-        // } catch(err) {
-        //     console.error('Error connecting to backend for bookshelf creation:', err)
-        // }
+        
     }
     
    

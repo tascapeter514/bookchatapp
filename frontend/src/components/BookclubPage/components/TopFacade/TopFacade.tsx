@@ -17,8 +17,11 @@ const TopFacade = ({bookclub, id}: TopFacadeProps) => {
 
 
     const uploadFileRef = useRef<HTMLDialogElement>(null)
+    const inviteRef = useRef<HTMLDialogElement>(null)
     const openImageModal = () => uploadFileRef.current?.showModal()
     const closeImageModal = () => uploadFileRef.current?.close()
+    const openInviteModal = () => inviteRef.current?.showModal()
+    const closeInviteModal = () => inviteRef.current?.close()
 
 
 
@@ -39,7 +42,10 @@ const TopFacade = ({bookclub, id}: TopFacadeProps) => {
                         <ProfileIcons users={bookclub?.members}></ProfileIcons>
                     </ul>
                     <div className="member-buttons">
-                        <Button>+ Invite</Button>
+                        <Button
+                            className='bookclub-invite-button'
+                            onClick={openInviteModal}
+                        >+ Invite</Button>
                         <Button>Joined</Button>
                     </div>
                 </div>

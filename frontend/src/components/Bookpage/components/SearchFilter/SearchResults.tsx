@@ -21,6 +21,9 @@ const SearchResults = <T,> ({searchResults, handleSelection, selectedElement, se
             return null
         }
 
+        console.log('selected element:', selectedElement);
+        
+
         return (
             <li key={index} >
 

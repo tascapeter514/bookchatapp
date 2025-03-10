@@ -1,5 +1,5 @@
 import './SearchResults.css'
-import { FC, Dispatch, SetStateAction } from 'react'
+import {  Dispatch, SetStateAction } from 'react'
 import { Link } from 'react-router-dom'
 import { SearchResultsArray, Book, Author, Bookclub } from '../../types'
 
@@ -10,7 +10,7 @@ interface SearchResultProps {
 }
 
 
-const SearchResults: FC<SearchResultProps> = ({sortedSearchResults, setShowSearchResults}) => {
+const SearchResults = ({sortedSearchResults, setShowSearchResults}: SearchResultProps) => {
 
     console.log('sorted search results:', sortedSearchResults)
 

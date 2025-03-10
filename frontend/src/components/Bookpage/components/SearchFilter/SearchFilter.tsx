@@ -1,5 +1,5 @@
 import './SearchFilter.css'
-import { FC, Dispatch, SetStateAction } from 'react'
+import { Dispatch, SetStateAction } from 'react'
 import { SearchIcon } from '../../../common/Icons'
 
 interface BookclubSearchbarProps {
@@ -10,7 +10,7 @@ interface BookclubSearchbarProps {
 }
 
 
-const SearchFilter: FC<BookclubSearchbarProps>  = ({ setSearchValue, searchValue }) => {
+const SearchFilter  = ({ setSearchValue, searchValue }: BookclubSearchbarProps) => {
     
     return(
         <div className="bookclub-input-wrapper">

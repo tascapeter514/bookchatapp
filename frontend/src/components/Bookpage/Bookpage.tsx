@@ -171,10 +171,13 @@ const Bookpage: React.FC = () => {
     const showBookshelves = (bookclub_id: string) => {
     
         const selectedBookclub = bookclubSearchResults.find((bookclub: Bookclub) => bookclub.bookclub_id === bookclub_id) || null
+        console.log('selected bookclub:', selectedBookclub);
+        
         setCurrentBookclub(selectedBookclub)
     }
 
     const handleBookclubSelection = (bookclubId: string) => {
+        console.log('bookclub id:', bookclubId)
         setSelectedBookclub(bookclubId)
         showBookshelves(bookclubId)
     }
@@ -183,8 +186,11 @@ const Bookpage: React.FC = () => {
         setSelectedUserBookshelf(bookshelfId)
 
     }
-
-
+    console.log('current bookclub:', currentBookclub);
+    
+    console.log('current bookclub bookshelves:', currentBookclub?.bookshelves);
+    
+    
     
     return(
         
@@ -266,10 +272,13 @@ const Bookpage: React.FC = () => {
                                             searchValue={searchValue}
                                             handleSelection={handleBookclubSelection}
                                             selectedElement={selectedBookclub}
-                                            searchResults={bookclubSearchResults}></SearchResults>
+                                            searchResults={bookclubSearchResults}
+                                            >
+
+                                            </SearchResults>
                                         </div>
                                         <aside className='bookclub-bookshelves'>
-                                            {currentBookclub  ? 
+                                            {currentBookclub && currentBookclub.bookshelves !== undefined  ? 
                                                 currentBookclub.bookshelves.length > 0 ? (
                                                     currentBookclub.bookshelves.map((bookshelf, index) => {
                                                         {return <li key={index} className='bookshelf-result'>
@@ -314,9 +323,9 @@ const Bookpage: React.FC = () => {
                                 <aside className='author-details'>
                                 <hr />
                                 <h3>About {authors[0].name}</h3>
-                                <p className='author-text-container'>
+                                <div className='author-text-container'>
                                     <p>{authors[0].bio}</p><span className="author-link">... <Link to={`/author/${authors[0].author_id}`}>More about { authors[0].name } </Link></span>
-                                </p>
+                                </div>
                                 </aside>
                             }
 

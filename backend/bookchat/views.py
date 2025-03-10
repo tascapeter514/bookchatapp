@@ -74,7 +74,7 @@ def upload_file(request, **kwargs):
 def add_bookclub_bookshelf(request):
 
     bookshelf_data = json.loads(request.body)
-    print(bookshelf_data)
+
     bookshelf_id, bookshelf_name, bookclub_id, bookshelf_titles = bookshelf_data.values()
     
     bookclub = Bookclub.objects.get(bookclub_id=bookclub_id)
@@ -83,7 +83,7 @@ def add_bookclub_bookshelf(request):
     bookclub.bookshelves.add(new_bookshelf)
     bookshelf_serializer = BookshelfSerializer(new_bookshelf)
 
-    print('bookshelf serializer:', bookshelf_serializer.data)
+    
 
     return Response(bookshelf_serializer.data)
 
