@@ -11,7 +11,7 @@ import './TopFacade.css'
 
 interface TopFacadeProps {
     bookclub: Bookclub | null,
-    id: string | undefined
+    id: string
 }
 
 const TopFacade = ({bookclub, id}: TopFacadeProps) => {
@@ -49,6 +49,7 @@ const TopFacade = ({bookclub, id}: TopFacadeProps) => {
                         <Button>Joined</Button>
                     </div>
                     <InviteModal
+                        id={id}
                         closeInviteModal={closeInviteModal}
                         inviteRef={inviteRef}
                     ></InviteModal>

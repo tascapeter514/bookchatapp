@@ -4,23 +4,29 @@ import { Ref, useState, useEffect } from 'react'
 import SearchFilter from '../../../common/SearchFilter/SearchFilter'
 import SearchFilterResults from '../../../common/SearchFilterResults/SearchFilterResults'
 import Button from '../../../common/Buttons/Button/Button'
+import { userData } from '../../../common/UserContext'
+import { v4 as uuidv4 } from 'uuid';
+import axios from 'axios'
 
 
 
 interface InviteModalProps {
 
     closeInviteModal: () => void,
-    inviteRef: Ref<HTMLDialogElement>
+    inviteRef: Ref<HTMLDialogElement>,
+    id: string
 
 }
 
 
-const InviteModal = ({ closeInviteModal, inviteRef }: InviteModalProps) => {
+const InviteModal = ({ closeInviteModal, inviteRef, id }: InviteModalProps) => {
 
 
     const [searchValue, setSearchValue] = useState('')
     const [userSearchResults, setUserSearchResults] = useState<ActiveUser[]>([])
     const [selectedUser, setSelectedUser] = useState<number | string>('')
+    const { activeUser } = userData()
+
 
     const handleUserSelection = (id: number | string) => {
         setSelectedUser(id)
@@ -57,11 +63,25 @@ const InviteModal = ({ closeInviteModal, inviteRef }: InviteModalProps) => {
     }, [])
 
     const inviteUser = async (selectedUser: number | string): Promise<void> => { 
-        console.log('selected user:', selectedUser) 
+        console.log('selected user:', selectedUser)
+        
+        const invitation = {
+            invitation_id: uuidv4(),
+            accepted: 0,
+            created_at: new Date().toLocaleString(),
+            bookclub_id: id,
+            invited_by_id: activeUser.id,
+            invited_user_id: selectedUser
+        }
+
+        axios.post('http://localhost:8000/api/sendInvite', invitation)
+            .then(response => {
+                console.log(response.data)
+            })
+            .catch(error => console.log('Your invitation was not sent', error))
 
     }
 
-    console.log('user search results:', userSearchResults)
 
 
     return (

@@ -1,4 +1,5 @@
 import './SearchFilterResults.css'
+import {CheckmarkIcon} from '../Icons'
 
 
 
@@ -47,11 +48,14 @@ const SearchFilterResults = <T extends ChildElement,>({ children, searchValue, v
                     <label htmlFor={label}>{label}</label>
                     <input 
                         type="radio"
-                        className='search-result-input'
                         name='searchResultsGroup'
                         checked={selectedElement === childElement.id}
                         onChange={() => handleSelection(childElement.id)}
-                    /> 
+                        className='search-result-input'
+
+                        
+                    />
+                    
                 </li>
             )
         }

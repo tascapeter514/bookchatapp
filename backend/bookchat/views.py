@@ -148,6 +148,15 @@ def add_book_to_user_bookshelf(request, **kwargs):
 
     return Response(serializer.data)
 
+@api_view(['POST'])
+def send_invite(request):
+
+    print('invite request went through')
+    print('request body:', request.body)
+
+
+    return Response({'message': 'Invite object has reached the backend!'})
+
 
 
 
