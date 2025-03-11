@@ -2,7 +2,7 @@ import './InviteModal.css'
 import { ActiveUser } from '../../../../types'
 import { Ref, useState, useEffect } from 'react'
 import SearchFilter from '../../../common/SearchFilter/SearchFilter'
-import SearchResults from '../../../Bookpage/components/SearchFilter/SearchResults'
+import SearchFilterResults from '../../../common/SearchFilterResults/SearchFilterResults'
 import Button from '../../../common/Buttons/Button/Button'
 
 
@@ -61,6 +61,8 @@ const InviteModal = ({ closeInviteModal, inviteRef }: InviteModalProps) => {
 
     }
 
+    console.log('user search results:', userSearchResults)
+
 
     return (
         <dialog className='invite-modal' ref={inviteRef}>
@@ -72,14 +74,18 @@ const InviteModal = ({ closeInviteModal, inviteRef }: InviteModalProps) => {
                     setSearchValue={setSearchValue}
                 />
                 <article className='suggested-user-list'>
-                    {/* <SearchResults
-                        idKey='id'
-                        nameKey='username'
-                        searchResults={userSearchResults}
+                    <SearchFilterResults
+                        variant='user'
+                        searchValue={searchValue}
                         handleSelection={handleUserSelection}
                         selectedElement={selectedUser}
-                        searchValue={searchValue}
-                    /> */}
+
+                    >
+                        {userSearchResults}
+
+                    </SearchFilterResults>
+                    <p></p>
+                    
                 </article>
             </section>
             <div className="button-wrapper">

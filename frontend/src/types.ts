@@ -107,4 +107,8 @@ export interface UserData {
 
 export type Variant = 'bookclub' | 'bookshelf' | 'user'
 
+export type DynamicName<T, V extends Variant> =
+   V extends 'user' ? Extract<keyof T, 'username'> :
+   Extract<keyof T, 'name'>
+
 export const GET_ERRORS = 'GET_ERRORS'

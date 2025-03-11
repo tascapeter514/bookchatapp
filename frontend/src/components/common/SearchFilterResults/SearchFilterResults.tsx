@@ -1,42 +1,62 @@
 import './SearchFilterResults.css'
-import { Variant, DynamicName } from '../../../types'
+import { Variant } from '../../../types'
 
 
-interface SearchFilterResultsProps<T, V extends Variant> {
-    variant: V,
+
+interface ChildElement {
+    name?: string,
+    username?: string,
+    id: string | number
+}
+
+interface SearchFilterResultsProps<T extends ChildElement> {
+    variant: string,
     children: T[],
-    selectedElement: T,
+    selectedElement: string | number,
     searchValue: string,
-    handleSelection: (id: K) => void,
-    name: DynamicName<T, V>,
-    id: Extract<keyof T, string | number>
+    handleSelection: (id: string | number) => void,
+
+    
 
 }
 
 
-const SearchFilterResults = <T, N extends Extract<keyof T, string>>({ children, ...props}: SearchFilterResultsProps<T,  N>) => {
+const SearchFilterResults = <T extends ChildElement,>({ children, searchValue, variant, selectedElement, handleSelection}: SearchFilterResultsProps<T>) => {
 
-    const searchResults = children.filter(child => child[props.name].includes(props.searchValue.toLowerCase())).map((childElement: T) => {
+    console.log('search result variant:', variant)
+
+    const searchResults = children.filter((child: ChildElement) => {
+            return child.name ? child.name.includes(searchValue.toLowerCase()) : child.username?.includes(searchValue.toLowerCase())
+        })
+        .map((childElement: ChildElement) => {
 
         if (!childElement) {
             return null
         }
-    } )
+        
+        return (
+            variant === 'user' && (
+                <li 
+                className='search-result-listElement'
+                key={childElement.id}
+                >
+                    <label htmlFor={childElement.username}>{childElement.username}</label>
+                    <input 
+                        type="radio"
+                        className='search-result-input'
+                        name='searchResultsGroup'
+                        checked={selectedElement === childElement.id}
+                        onChange={() => handleSelection(childElement.id)}
+                    /> 
+                </li>
+            ))
+        
+    })
 
     return (
-        <li 
-            className='search-result-listElement'
-            key={props.id}
-        >
-        <div className="search-result-content">
-            <label htmlFor=""></label>
-        
-        </div>
-
-        </li>
-
-        
-
+        <ul className='search-results-list'>
+            {searchResults}
+        </ul>
     )
 
 }
