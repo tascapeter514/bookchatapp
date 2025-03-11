@@ -1,5 +1,5 @@
 import './SearchFilterResults.css'
-import { Variant } from '../../../types'
+
 
 
 
@@ -34,13 +34,17 @@ const SearchFilterResults = <T extends ChildElement,>({ children, searchValue, v
             return null
         }
         
-        return (
-            variant === 'user' && (
+        if (variant === 'user' || variant === 'bookshelf') {
+
+            const label = variant === 'user' ? childElement.username : childElement.name
+
+
+            return (
                 <li 
                 className='search-result-listElement'
                 key={childElement.id}
                 >
-                    <label htmlFor={childElement.username}>{childElement.username}</label>
+                    <label htmlFor={label}>{label}</label>
                     <input 
                         type="radio"
                         className='search-result-input'
@@ -49,7 +53,15 @@ const SearchFilterResults = <T extends ChildElement,>({ children, searchValue, v
                         onChange={() => handleSelection(childElement.id)}
                     /> 
                 </li>
-            ))
+            )
+        }
+              
+            
+        
+        
+        
+
+            
         
     })
 
