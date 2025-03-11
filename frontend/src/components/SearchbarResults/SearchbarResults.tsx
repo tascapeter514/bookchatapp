@@ -1,4 +1,4 @@
-import './SearchResults.css'
+import './SearchbarResults.css'
 import {  Dispatch, SetStateAction } from 'react'
 import { Link } from 'react-router-dom'
 import { SearchResultsArray, Book, Author, Bookclub } from '../../types'

@@ -4,7 +4,6 @@ import { Book, ISBN_Identifier, Bookshelf, Author, Bookclub } from '../../types'
 import { BsBookmarkPlus } from "react-icons/bs"
 import { userData } from '../common/UserContext'
 import SearchFilter from '../common/SearchFilter/SearchFilter'
-// import  SearchFilter  from './components/SearchFilter/SearchFilter'
 import SearchResults from './components/SearchFilter/SearchResults'
 import './Bookpage.css'
 
