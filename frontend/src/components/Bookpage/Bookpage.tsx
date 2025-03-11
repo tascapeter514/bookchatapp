@@ -3,7 +3,8 @@ import {useParams, Link } from 'react-router-dom'
 import { Book, ISBN_Identifier, Bookshelf, Author, Bookclub } from '../../types'
 import { BsBookmarkPlus } from "react-icons/bs"
 import { userData } from '../common/UserContext'
-import  SearchFilter  from './components/SearchFilter/SearchFilter'
+import SearchFilter from '../common/SearchFilter/SearchFilter'
+// import  SearchFilter  from './components/SearchFilter/SearchFilter'
 import SearchResults from './components/SearchFilter/SearchResults'
 import './Bookpage.css'
 
@@ -262,9 +263,10 @@ const Bookpage: React.FC = () => {
                                     <main className="bookclub-results-content">
                                         <div className="suggested-search-results">
                                             <SearchFilter
-                                            setSearchValue={setSearchValue}
-                                            searchValue={searchValue}
-                                            ></SearchFilter>
+                                                setSearchValue={setSearchValue}
+                                                searchValue={searchValue}
+                                            >
+                                            </SearchFilter>
                                             <h3>Suggested</h3>
                                             <SearchResults
                                             idKey='bookclub_id'

@@ -1,7 +1,8 @@
 import './InviteModal.css'
 import { ActiveUser } from '../../../../types'
 import { Ref, useState, useEffect } from 'react'
-import SearchFilter from '../SearchFilter/SearchFilter'
+// import SearchFilter from '../SearchFilter/SearchFilter'
+import SearchFilter from '../../../common/SearchFilter/SearchFilter'
 import SearchResults from '../../../Bookpage/components/SearchFilter/SearchResults'
 import Button from '../../../common/Buttons/Button/Button'
 
