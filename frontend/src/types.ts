@@ -99,15 +99,12 @@ export type SearchResultsArray = {
 }[]
 
     
-
-
-
-
-
 export interface UserData {
     user_bookclubs: Bookclub[],
     user_bookshelves: Bookshelf[],
     user_invites: Invitation[]
 }
+
+export type Variant = 'bookclub' | 'bookshelf' | 'user'
 
 export const GET_ERRORS = 'GET_ERRORS'
