@@ -55,14 +55,7 @@ const SearchFilterResults = <T extends ChildElement,>({ children, searchValue, v
                 </li>
             )
         }
-              
-            
-        
-        
-        
-
-            
-        
+                
     })
 
     return (

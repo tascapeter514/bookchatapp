@@ -84,7 +84,7 @@ const InviteModal = ({ closeInviteModal, inviteRef }: InviteModalProps) => {
                         {userSearchResults}
 
                     </SearchFilterResults>
-                    <p></p>
+                    
                     
                 </article>
             </section>

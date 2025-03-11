@@ -1,0 +1,46 @@
+.invite-modal {
+    background-color: white;
+    border-radius: 3px;
+    border: 2px solid black;
+    margin: auto;
+}
+
+.invite-modal > hr {
+    border: 1px solid orange;
+    width: 100%;
+}
+
+.invite-modal.show {
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+    align-items: center;
+    
+}
+
+.invite-user-content {
+    padding: .5em;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.suggested-user-list {
+    border: 1px solid lime;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+
+
+.button-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;  
+}
+
+.button-wrapper > button {
+    font-size: 1.125rem;
+
+}
