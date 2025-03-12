@@ -11,18 +11,35 @@ interface SubNavbarProps {
     newBookshelf: string,
     setActiveBookshelf: Dispatch<SetStateAction<number>>,
     addBookshelf: (formData: FormData) => Promise<void>,
-    handleNewBookshelf: (e: string ) => void
+    handleNewBookshelf: (e: string ) => void,
+    setDeleteBookshelf: Dispatch<SetStateAction<string>>
+
 
 }
 
-const SubNavbar = ({bookshelves, subNav, setActiveBookshelf, addBookshelf, newBookshelf, handleNewBookshelf}: SubNavbarProps) => {
+const SubNavbar = ({bookshelves, subNav, setActiveBookshelf, addBookshelf, newBookshelf, handleNewBookshelf, setDeleteBookshelf}: SubNavbarProps) => {
 
     const bookshelfRef = useRef<HTMLDialogElement>(null)
     const openBookshelfModal = () => bookshelfRef.current?.showModal()
     const closeBookshelfModal = () => bookshelfRef.current?.close()
 
+    const bookshelfTitles = bookshelves?.map((bookshelf, index) => {
+
+        const handleActiveBookshelf = (index: number) => {
+
+            setActiveBookshelf(index)
+            // setDeleteBookshelf(bookshelf.bookshelf_id)
+
+        }
+
+        return (
+                <li key={bookshelf.bookshelf_id} onClick={() => handleActiveBookshelf(index)} className='bookshelf-title-listElement'>
+                    {bookshelf.name}
+                </li>
+        )})
 
 
+    
     return (
         <nav 
             id='bookshelves-subnav' 
@@ -30,10 +47,7 @@ const SubNavbar = ({bookshelves, subNav, setActiveBookshelf, addBookshelf, newBo
             aria-hidden='true'
         >
             <ul className="bookshelf-titles-list">
-                {bookshelves?.map((bookshelf, index) => 
-                <li key={bookshelf.bookshelf_id} onClick={() => setActiveBookshelf(index)} className='bookshelf-title-listElement'>
-                    {bookshelf.name}
-                </li>)}
+                {bookshelfTitles}
             </ul>
             <Button onClick={openBookshelfModal}>Add Bookshelf</Button>
             <BookshelfModal 

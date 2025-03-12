@@ -30,6 +30,7 @@ const BookclubPage = () => {
     const [subNav, setSubNav] = useState(false)
     const [newBookshelf, setNewBookshelf] = useState<string>('')
     const [selectedBook, setSelectedBook] = useState<string>('')
+    const [deleteBookshelf, setDeleteBookshelf] = useState<string>('')
 
     const tabContents = ['Bookshelves', 'Current Read']
     
@@ -76,8 +77,49 @@ const BookclubPage = () => {
 
     }, [])
 
+    
+    const deleteTitle = async (book_id: string) => {
+
+        console.log('delete title check')
+
+        try {
+            const response = await axios.delete(`http://localhost:8000/api/book/delete/${book_id}`, {
+                data: {
+                    bookshelf_id: deleteBookshelf
+                }
+            })
+
+            if (response.status == 200) {
+                console.log(response.status)
+                setBookshelves(prevBookshelves => 
+                    prevBookshelves.map(bs => 
+                        bs.bookshelf_id == deleteBookshelf ?
+                        {...bs, titles: bs.titles?.filter(title => title.title_id !== book_id)} : bs
+                    )
+                
+                )
+
+            } else {
+                console.error("Your book delete request encountered an error:", response.statusText)
+            }
+
+            
+
+        } catch(err) {
+            console.log('Your delete request failed to go through:', err)
+        }
+
+
+    }
+
     const panels = [
-        <BookshelfPanel activeBookshelf={activeBookshelf} bookshelves={bookshelves} />,
+        <BookshelfPanel 
+            activeBookshelf={activeBookshelf} 
+            bookshelves={bookshelves} 
+            deleteTitle={deleteTitle}
+            selectedBook={selectedBook}
+            setDeleteBookshelf={setDeleteBookshelf} 
+        />,
         <CurrentReadPanel />
     ]
     const PanelComponent = () => panels[activeTab]
@@ -139,10 +181,6 @@ const BookclubPage = () => {
                         bs.bookshelf_id === bookshelf.bookshelf_id ? response.data : bs
                     )
                 )
-
-
-                
-                
                 closeSearchBooks()
 
             } else {
@@ -155,21 +193,6 @@ const BookclubPage = () => {
     }
 
 
-                // setBookshelves((prevBookshelves) =>
-                //     prevBookshelves.map(bs => 
-                //         bs.bookshelf_id === bookshelf.bookshelf_id
-                //         ? {...bs, }
-                //     )
-                    
-                // ])
-
-    
-    
-   
-
-    
-
-    // console.log('BOOKCLUB DATA:', bookclub)
     console.log('BOOKSHELVES DATA:', bookshelves)
 
     return(
@@ -218,6 +241,7 @@ const BookclubPage = () => {
                                     addBookshelf={addBookshelf}
                                     handleNewBookshelf={handleNewBookshelf}
                                     newBookshelf={newBookshelf}
+                                    setDeleteBookshelf={setDeleteBookshelf}
                                     
                                 >
                                 </SubNavbar>

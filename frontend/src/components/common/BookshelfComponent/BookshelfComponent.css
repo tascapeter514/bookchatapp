@@ -75,21 +75,31 @@
     transform: translateY(0)
 }
 
-.dislike-icon, .like-icon {
+
+
+.dislike-icon, .like-icon{
     width: 100%;
     height: 27px;
     
 }
 
-.dislike-icon > *, .like-icon > * {
+.dislike-icon > *, .like-icon > *, .cancel-icon > * {
     fill: orange;
     cursor: pointer;  
+}
+
+.cancel-icon {
+    height: 27px;
+    width: 100%;
+    max-width: 40px;
+    position: absolute;
+    top: 5px;
+    right: 5px; 
 }
 
 .book-card-back {
     font-size: 1rem;
     flex-grow: 1;
-
 }
 
 

@@ -1,28 +1,44 @@
 import {Bookshelf} from '../../../types'
 import './BookshelfComponent.css'
-import { LikeIcon, DislikeIcon } from '../Icons'
+import { LikeIcon, DislikeIcon, CancelIcon } from '../Icons'
+import { Dispatch, SetStateAction } from 'react'
 
 interface BookshelfProps {
     bookshelf: Bookshelf,
-    activeBookshelf: number
+    activeBookshelf: number,
+    selectedBook: string,
+    deleteTitle: (book_id: string) => Promise<void>,
+    setDeleteBookshelf: Dispatch<SetStateAction<string>>
 }
 
 
-const BookshelfComponent = (props: BookshelfProps) => {
+const BookshelfComponent = ({bookshelf, activeBookshelf, selectedBook, setDeleteBookshelf, deleteTitle}: BookshelfProps) => {
 
-    const  {bookshelf } = props
 
     const bookshelfTitles = (bookshelf?.titles ?? []).map((bookshelfTitle) => {
+
+        const handleDeleteTitle = () => {
+            console.log('handle delete title check')
+
+            setDeleteBookshelf(bookshelf.bookshelf_id)
+
+            deleteTitle(bookshelfTitle.title_id)
+
+        }
+
+
+
        return <li className='book-card-listElement' key={bookshelfTitle.title_id}>
                 <article className="book-card" >
- 
-                        <div className="img-overlay">
-                            <img src={bookshelfTitle.imageLinks.thumbnail} alt="book-card-cover" className='book-card-img' />
-                            <div className="book-card-buttons">
-                                <LikeIcon></LikeIcon>
-                                <DislikeIcon></DislikeIcon>
-                            </div>
+                   
+                    <div className="img-overlay">
+                        <CancelIcon onClick={handleDeleteTitle}></CancelIcon>
+                        <img src={bookshelfTitle.imageLinks.thumbnail} alt="book-card-cover" className='book-card-img' />
+                        <div className="book-card-buttons">
+                            <LikeIcon></LikeIcon>
+                            <DislikeIcon></DislikeIcon>
                         </div>
+                    </div>
                        
                     <div className="book-card-back">
                         <h3 className="book-card-title">{bookshelfTitle.title}</h3>

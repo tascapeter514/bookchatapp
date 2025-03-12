@@ -190,6 +190,31 @@ def send_invite(request):
     return Response(InvitationSerializer(invitation).data, status=status.HTTP_201_CREATED)
 
 
+@api_view(['DELETE'])
+def delete_book(request, **kwargs):
+    book_id = kwargs['id']
+
+
+    bookshelf_id = request.data.get('bookshelf_id')
+
+    print('bookshelf id:', bookshelf_id)
+
+   
+
+    current_bookshelf = Bookshelf.objects.get(bookshelf_id=bookshelf_id)
+    current_book = Book.objects.get(title_id=book_id)
+
+    print('current book:', current_book)
+
+    print('book id:', book_id)
+
+    current_bookshelf.titles.remove(current_book)
+
+    bookshelf_serializer = BookshelfSerializer(current_bookshelf)
+
+    return Response(bookshelf_serializer.data)
+
+
     
 
 

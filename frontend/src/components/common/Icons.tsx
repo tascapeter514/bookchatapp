@@ -1,6 +1,6 @@
 import { FaSearch, FaArrowLeft, FaArrowRight, FaUser } from 'react-icons/fa'
 import { IoMdArrowDropright, IoIosCloseCircle } from "react-icons/io";
-import { ImCheckmark2 } from 'react-icons/im'
+import { ImCheckmark2, ImCancelCircle } from 'react-icons/im'
 import { GrLike, GrDislike } from "react-icons/gr";
 
 
@@ -36,6 +36,8 @@ export const UserIcon = (props: IconProps) => <FaUser className='user-icon' {...
 export const CloseIcon = (props: IconProps) => <IoIosCloseCircle className='close-icon' {...props} />
 
 export const CheckmarkIcon = (props: IconProps) => <ImCheckmark2 className='checkmark-icon' {...props}/>
+
+export const CancelIcon = (props: IconProps) => <ImCancelCircle className='cancel-icon' {...props} />
 
 
 
