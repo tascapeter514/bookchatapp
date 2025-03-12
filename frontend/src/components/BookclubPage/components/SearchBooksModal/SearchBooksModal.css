@@ -3,6 +3,8 @@
     border-radius: 3px;
     border: 2px solid black;
     margin: auto;
+    width: 100%;
+    max-width: 500px;
 }
 
 .search-books-modal > hr {
@@ -26,7 +28,6 @@
 }
 
 .suggested-book-list {
-    border: 1px solid lime;
     display: flex;
     flex-direction: column;
     

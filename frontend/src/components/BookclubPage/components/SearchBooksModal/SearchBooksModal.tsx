@@ -94,9 +94,26 @@ const SearchBooksModal = ({closeModal, modalRef}: SearchBooksModalProps) => {
 
 
                     </BookResults>
-                    
-
                 </article>
+                <aside className='bookclub-bookshelves'>
+                    {selectedBook && currentBookclub.bookshelves !== undefined  ? 
+                        currentBookclub.bookshelves.length > 0 ? (
+                        currentBookclub.bookshelves.map((bookshelf, index) => {
+                        {return <li key={index} className='bookshelf-result'
+                                >
+                                <label htmlFor={bookshelf.name}>{bookshelf.name}</label>
+                                <input 
+                                    type="radio" 
+                                    className='bookshelf-input' 
+                                    id={bookshelf.name}
+                                    name='bookshelfGroup'
+                                    checked={currentBookshelf?.bookshelf_id === bookshelf.bookshelf_id} 
+                                    onClick={() => setCurrentBookshelf(bookshelf)}/>
+                                </li> }
+                        })
+                        ) : (<span>No bookshelves for this bookclub</span>)
+                        : 'No Bookclub Selected'}
+                    </aside>
             </section>
             <div className="button-wrapper">
                 <Button onClick={closeModal}>Cancel</Button>
