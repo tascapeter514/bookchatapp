@@ -95,10 +95,16 @@ def add_bookclub_bookshelf(request):
 def add_book_to_bookclub(request, **kwargs):
 
     bookshelf_id = kwargs['id']
+
+    print('bookshelf_id:', bookshelf_id)
+
+    print(request.body)
+
     book_id  = json.loads(request.body)['book_id']
 
     current_book = Book.objects.get(title_id=book_id)
-    bookshelf = Bookshelf.objects.prefetch_related('titles').get(bookshelf_id=bookshelf_id)
+    bookshelf = Bookshelf.objects.get(bookshelf_id=bookshelf_id)
+    print('bookshelf:', bookshelf)
 
     bookshelf.titles.add(current_book)
     bookshelf.save()
@@ -107,7 +113,7 @@ def add_book_to_bookclub(request, **kwargs):
     
 
 
-    return Response({bookshelf: serializer.data})
+    return Response(serializer.data)
 
 @api_view(['PUT'])
 def add_book_to_user_bookshelf(request, **kwargs):

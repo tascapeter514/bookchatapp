@@ -74,23 +74,23 @@ class BookshelfSerializer(serializers.ModelSerializer):
         model = Bookshelf
         fields = ['bookshelf_id', 'name', 'user', 'titles']
 
-        def list(self, validated_data):
-            print('validated data:', validated_data)
+        # def list(self, validated_data):
+        #     print('validated data:', validated_data)
 
-        def create(self, validated_data):
-            titles_data = validated_data.pop('titles', [])
-            print('data:', validated_data)
-            bookshelf = Bookshelf.objects.create(**validated_data)
-            bookshelf.titles.set(titles_data)
-            print(bookshelf)
-            return bookshelf
+        # def create(self, validated_data):
+        #     titles_data = validated_data.pop('titles', [])
+        #     print('data:', validated_data)
+        #     bookshelf = Bookshelf.objects.create(**validated_data)
+        #     bookshelf.titles.set(titles_data)
+        #     print(bookshelf)
+        #     return bookshelf
         
-        def update(self, bookshelf, validated_data):
-            titles_data = validated_data.get('titles', [])
-            print(titles_data)
-            if titles_data:
-                bookshelf.titles.set(titles_data)
-            return bookshelf
+        # def update(self, bookshelf, validated_data):
+        #     titles_data = validated_data.get('titles', [])
+        #     print(titles_data)
+        #     if titles_data:
+        #         bookshelf.titles.set(titles_data)
+        #     return bookshelf
         
 #BOOKCLUB SERIALIZER
 class BookclubSerializer(serializers.ModelSerializer):

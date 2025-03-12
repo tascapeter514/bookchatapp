@@ -3,6 +3,8 @@
     gap: 1rem;
     padding: 0;
     width: 100%;
+    flex-direction: column;
+    overflow: scroll;
 
 }
 

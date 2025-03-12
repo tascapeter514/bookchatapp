@@ -29,6 +29,7 @@ const BookclubPage = () => {
     const [activeTab, setActiveTab] = useState(0)
     const [subNav, setSubNav] = useState(false)
     const [newBookshelf, setNewBookshelf] = useState<string>('')
+    const [selectedBook, setSelectedBook] = useState<string>('')
 
     const tabContents = ['Bookshelves', 'Current Read']
     
@@ -120,6 +121,48 @@ const BookclubPage = () => {
         
     }
 
+    const addBook = async (bookshelf: Bookshelf) => {
+
+        const bookshelfRequest = {
+            book_id: selectedBook
+        } 
+
+        try {
+            const response = await axios.put(`http://localhost:8000/api/bookclub/addBook/${bookshelf.bookshelf_id}`, bookshelfRequest)
+
+
+            if (response.status == 200) {
+                console.log("axios add book response:", response.data)
+
+                setBookshelves(prevBookshelves => 
+                    prevBookshelves.map(bs =>
+                        bs.bookshelf_id === bookshelf.bookshelf_id ? response.data : bs
+                    )
+                )
+
+
+                
+                
+                closeSearchBooks()
+
+            } else {
+                console.log("There was an error with the response:", response.statusText)
+            }
+            
+        } catch(err) {
+            console.log('There was an error adding your book:', err)
+        }
+    }
+
+
+                // setBookshelves((prevBookshelves) =>
+                //     prevBookshelves.map(bs => 
+                //         bs.bookshelf_id === bookshelf.bookshelf_id
+                //         ? {...bs, }
+                //     )
+                    
+                // ])
+
     
     
    
@@ -127,7 +170,7 @@ const BookclubPage = () => {
     
 
     // console.log('BOOKCLUB DATA:', bookclub)
-    // console.log('BOOKSHELVES DATA:', bookshelves)
+    console.log('BOOKSHELVES DATA:', bookshelves)
 
     return(
             <div className='bookclub-container'>
@@ -155,6 +198,9 @@ const BookclubPage = () => {
                                     modalRef={searchBooksRef}
                                     closeModal={closeSearchBooks}
                                     bookshelves={bookshelves}
+                                    setSelectedBook={setSelectedBook}
+                                    selectedBook={selectedBook}
+                                    addBook={addBook}
                                 
                                 >
 
