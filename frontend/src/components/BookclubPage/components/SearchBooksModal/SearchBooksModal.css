@@ -4,7 +4,7 @@
     border: 2px solid black;
     margin: auto;
     width: 100%;
-    max-width: 500px;
+    max-width: 800px;
 }
 
 .search-books-modal > hr {
@@ -17,18 +17,54 @@
     flex-direction: column;
     gap: .5em;
     align-items: center;
+
     
 }
 
 .search-books-content {
     padding: .5em;
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     gap: .5rem;
+    justify-content: space-between;
 }
 
 .suggested-book-list {
     display: flex;
     flex-direction: column;
+    width: 100%;
     
+}
+
+
+.bookshelves-list {
+    padding: 1em;
+    background-color: lightgrey;
+    width: 100%;
+    max-width: 284px;
+}
+
+.bookshelf-result {
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5em;
+
+}
+
+.bookshelf-result > label {
+    margin-bottom: 0;
+    line-height: 1;
+}
+
+.bookshelf-input {
+    display: inline-block;
+    margin-bottom: 0;
+    max-width: 18px;
+    cursor: pointer;
+    appearance: none;
+    height: 18px;
+    position: relative;
+    background-color: white;
 }

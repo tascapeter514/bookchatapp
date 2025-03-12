@@ -1,6 +1,6 @@
 import Button from '../../../common/Buttons/Button/Button'
 import { Ref, useEffect, useState } from 'react'
-import { Book } from '../../../../types'
+import { Book, Bookshelf } from '../../../../types'
 import BookSearchbar from './BookSearchbar/BookSearchbar'
 import BookResults from './BookResults/BooksResults'
 import './SearchBooksModal.css'
@@ -9,16 +9,18 @@ import './SearchBooksModal.css'
 interface SearchBooksModalProps {
     closeModal: () => void,
     modalRef: Ref<HTMLDialogElement>,
+    bookshelves: Bookshelf[]
 }
 
 
 
-const SearchBooksModal = ({closeModal, modalRef}: SearchBooksModalProps) => {
+const SearchBooksModal = ({closeModal, modalRef, bookshelves}: SearchBooksModalProps) => {
 
     const [bookResults, setBookResults] = useState<Book[]>([])
     const [showBookResults, setShowBookResults] = useState(false)
     const [selectedBook, setSelectedBook] = useState<string>('')
     const [searchValue, setSearchValue] = useState('');
+    const [currentBookshelf, setCurrentBookshelf] = useState<string>('')
 
 
     const handleBookSelection = (id: string) => {
@@ -74,17 +76,17 @@ const SearchBooksModal = ({closeModal, modalRef}: SearchBooksModalProps) => {
             <h3>Add a new title to your bookclub</h3>
             <hr />
             <section className='search-books-content'>
-                <BookSearchbar
-                    setBookResults={setBookResults}
-                    setShowBookResults={setShowBookResults}
-                    showBookResults={showBookResults}
-                    searchValue={searchValue}
-                    setSearchValue={setSearchValue}
-                >
-
-                </BookSearchbar>
                
                 <article className='suggested-book-list'>
+                    <BookSearchbar
+                        setBookResults={setBookResults}
+                        setShowBookResults={setShowBookResults}
+                        showBookResults={showBookResults}
+                        searchValue={searchValue}
+                        setSearchValue={setSearchValue}
+                    >
+
+                    </BookSearchbar>
                     <BookResults
                         selectedElement={selectedBook}
                         handleSelection={handleBookSelection}
@@ -95,10 +97,10 @@ const SearchBooksModal = ({closeModal, modalRef}: SearchBooksModalProps) => {
 
                     </BookResults>
                 </article>
-                <aside className='bookclub-bookshelves'>
-                    {selectedBook && currentBookclub.bookshelves !== undefined  ? 
-                        currentBookclub.bookshelves.length > 0 ? (
-                        currentBookclub.bookshelves.map((bookshelf, index) => {
+                <aside className='bookshelves-list'>
+                    {selectedBook && bookshelves !== undefined  ? 
+                        bookshelves.length > 0 ? (
+                        bookshelves.map((bookshelf, index) => {
                         {return <li key={index} className='bookshelf-result'
                                 >
                                 <label htmlFor={bookshelf.name}>{bookshelf.name}</label>
@@ -107,12 +109,12 @@ const SearchBooksModal = ({closeModal, modalRef}: SearchBooksModalProps) => {
                                     className='bookshelf-input' 
                                     id={bookshelf.name}
                                     name='bookshelfGroup'
-                                    checked={currentBookshelf?.bookshelf_id === bookshelf.bookshelf_id} 
-                                    onClick={() => setCurrentBookshelf(bookshelf)}/>
+                                    checked={currentBookshelf === bookshelf.bookshelf_id} 
+                                    onClick={() => setCurrentBookshelf(bookshelf.bookshelf_id)}/>
                                 </li> }
                         })
-                        ) : (<span>No bookshelves for this bookclub</span>)
-                        : 'No Bookclub Selected'}
+                        ) : (<span>No bookshelves  in your bookclub</span>)
+                        : 'No Book Selected'}
                     </aside>
             </section>
             <div className="button-wrapper">

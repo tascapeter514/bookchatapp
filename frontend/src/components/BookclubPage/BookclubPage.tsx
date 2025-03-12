@@ -154,6 +154,7 @@ const BookclubPage = () => {
                                 <SearchBooksModal
                                     modalRef={searchBooksRef}
                                     closeModal={closeSearchBooks}
+                                    bookshelves={bookshelves}
                                 
                                 >
 

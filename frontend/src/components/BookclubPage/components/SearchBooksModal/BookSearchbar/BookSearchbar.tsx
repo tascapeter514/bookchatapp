@@ -24,10 +24,6 @@ const BookSearchbar = ({setBookResults, setShowBookResults, showBookResults, sea
     const fetchSearchData = (value: string) => {
         const encodedValue = encodeURIComponent(value)
         const path = encodeURI(`ws://localhost:8000/ws/books/${encodedValue}/`)
-
-
-        
-
         try {
 
             const socket = new WebSocket(path)
