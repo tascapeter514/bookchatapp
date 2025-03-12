@@ -1,5 +1,5 @@
 import './Searchbar.css'
-import { FC, useState, useEffect, Dispatch, SetStateAction } from 'react'
+import { useState, useEffect, Dispatch, SetStateAction } from 'react'
 import { Author, Book, Bookclub } from '../../types'
 import {SearchIcon} from '../common/Icons'
 
@@ -38,7 +38,7 @@ interface SearchbarProps {
 }
 
 
-const Searchbar: FC<SearchbarProps> = ({setAuthorSearchResults, setBookSearchResults, setBookclubSearchResults, setShowSearchResults, showSearchResults}) => {
+const Searchbar = ({setAuthorSearchResults, setBookSearchResults, setBookclubSearchResults, setShowSearchResults, showSearchResults}: SearchbarProps) => {
 
     const [searchValue, setSearchValue] = useState('')
     const debouncedSearchValue = useDebounce(searchValue, 500)

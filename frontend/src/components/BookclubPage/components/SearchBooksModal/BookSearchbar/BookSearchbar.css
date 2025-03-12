@@ -1,0 +1,42 @@
+.book-searchbar {
+    background-color: white;
+    width: 100%;
+    border-radius: 10px;
+    height: 2rem;
+    padding: 0 .5em;
+    /* box-shadow: 0 0 8px #ddd; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+
+
+}
+
+
+
+
+.search-icon {
+    color: black;
+}
+
+.search-books-input {
+    /* flex: 0 1 auto; */
+    background-color: transparent;
+    border: none;
+    height: 100%;
+    font-size: 1rem;
+    margin: 0;
+    outline: none;
+    width: 100%;
+    font-size: 1rem;
+    
+
+}
+
+
+
+.search-books-input:focus::placeholder {
+    color: transparent;
+
+}

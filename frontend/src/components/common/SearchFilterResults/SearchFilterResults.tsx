@@ -51,9 +51,7 @@ const SearchFilterResults = <T extends ChildElement,>({ children, searchValue, v
                         name='searchResultsGroup'
                         checked={selectedElement === childElement.id}
                         onChange={() => handleSelection(childElement.id)}
-                        className='search-result-input'
-
-                        
+                        className='search-result-input'  
                     />
                     
                 </li>

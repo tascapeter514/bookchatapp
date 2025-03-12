@@ -1,5 +1,8 @@
 import Button from '../../../common/Buttons/Button/Button'
-import { Ref } from 'react'
+import { Ref, useEffect, useState } from 'react'
+import { Book } from '../../../../types'
+import SearchFilter from '../../../common/SearchFilter/SearchFilter'
+import BookResults from './BookResults/BooksResults'
 import './SearchBooksModal.css'
 
 
@@ -11,6 +14,48 @@ interface SearchBooksModalProps {
 
 
 const SearchBooksModal = ({closeModal, modalRef}: SearchBooksModalProps) => {
+
+    const [bookResults, setBookResults] = useState([])
+    const [searchValue, setSearchValue] = useState('')
+    const [selectedBook, setSelectedBook] = useState<string>('')
+
+
+    const handleBookSelection = (id: string) => {
+        setSelectedBook(id)
+    }
+
+
+    useEffect(() => {
+        try {
+            const socket = new WebSocket(`ws://localhost:8000/ws/books`)
+
+            socket.onmessage = (event) => {
+                const data = JSON.parse(event.data)
+
+                if (data.type == 'get_books_data') {
+                    console.log('BOOKS DATA:', data)
+                    setBookResults(data.books_data)
+
+                    
+                }
+            }
+
+            socket.onerror = (error) => {
+                console.error('Websocket books data error', error)
+            }
+
+            socket.onopen = () => console.log('Books websocket connected')
+            socket.onclose = () => console.log('Books websocket disconnected')
+
+            return () => socket.close()
+
+        } catch(err) {
+            console.error('Books websocket failed to initialize:', err)
+        }
+
+
+
+    }, [])
 
     const addBook = () => {
         return(
@@ -25,7 +70,21 @@ const SearchBooksModal = ({closeModal, modalRef}: SearchBooksModalProps) => {
         <dialog className='search-books-modal' ref={modalRef}>
             <h3>Add a new title to your bookclub</h3>
             <hr />
-            <section className='invite-user-content'>
+            <section className='search-books-content'>
+               
+                <article className='suggested-book-list'>
+                    {/* <BookResults
+                        selectedElement={selectedBook}
+                        searchValue={searchValue}
+                        handleSelection={handleBookSelection}
+                    >
+                        {bookResults}
+
+
+                    </BookResults> */}
+                    
+
+                </article>
             </section>
             <div className="button-wrapper">
                 <Button onClick={closeModal}>Cancel</Button>

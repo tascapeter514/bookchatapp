@@ -234,6 +234,35 @@ class UsersConsumer(WebsocketConsumer):
             'users_data': users_serializer.data
         }))
 
+class BooksDataConsumer(WebsocketConsumer):
+    def connect(self):
+        self.group_name = 'get_books_data'
+
+        async_to_sync(self.channel_layer.group_add)(
+            self.group_name,
+            self.channel_name
+        )
+
+        self.accept()
+        self.get_books_data()
+
+    def disconnect(self, close_code):
+
+        async_to_sync(self.channel_layer.group_discard)(
+            self.group_name,
+            self.channel_name
+        )
+
+    def get_books_data(self):
+        books = Book.objects.all()
+
+        books_serializer = BookSerializer(books, many=True)
+
+        self.send(text_data=json.dumps({
+            'type': 'get_books_data',
+            'books_data': books_serializer.data
+        }))
+
 
     
 
