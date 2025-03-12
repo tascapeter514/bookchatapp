@@ -8,6 +8,6 @@ websocket_urlpatterns = [
     path('ws/book/<str:id>', BookDataConsumer.as_asgi()),
     path('ws/bookclub/<uuid:id>', BookclubDataConsumer.as_asgi()),
     path('ws/users', UsersConsumer.as_asgi()),
-    path('ws/books', BooksDataConsumer.as_asgi())
+    path('ws/books/<str:searchTerm>/', BooksDataConsumer.as_asgi())
     
 ]

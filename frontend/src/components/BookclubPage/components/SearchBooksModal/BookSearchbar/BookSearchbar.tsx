@@ -6,16 +6,18 @@ import { SearchIcon } from '../../../../common/Icons'
 
 
 interface BookSearchbarProps {
-    setBookSearchResults: Dispatch<SetStateAction<Book[]>>,
-    setShowSearchResults: Dispatch<SetStateAction<boolean>>,
-    showSearchResults: boolean
+    setBookResults: Dispatch<SetStateAction<Book[]>>,
+    setShowBookResults: Dispatch<SetStateAction<boolean>>,
+    showBookResults: boolean,
+    searchValue: string,
+    setSearchValue: Dispatch<SetStateAction<string>>
 }
 
 
 
-const BookSearchbar = ({setBookSearchResults, setShowSearchResults, showSearchResults}: BookSearchbarProps) => {
+const BookSearchbar = ({setBookResults, setShowBookResults, showBookResults, searchValue, setSearchValue}: BookSearchbarProps) => {
 
-    const [searchValue, setSearchValue] = useState('');
+    
     const debouncedSearchValue = useDebounce(searchValue, 500);
 
 
@@ -23,17 +25,20 @@ const BookSearchbar = ({setBookSearchResults, setShowSearchResults, showSearchRe
         const encodedValue = encodeURIComponent(value)
         const path = encodeURI(`ws://localhost:8000/ws/books/${encodedValue}/`)
 
+
+        
+
         try {
 
             const socket = new WebSocket(path)
 
             socket.onmessage = (event) => {
                 const data = JSON.parse(event.data);
-                if (data.type === 'get_books_query') {
-                    console.log('book search query:', data)
+                if (data.type === 'get_books_data') {
+                    console.log('book search query:', data.books_data)
                     // setSearchResults(data.search_results)
-                    setBookSearchResults(data.search_results.book_results);
-                    setShowSearchResults(true)
+                    setBookResults(data.books_data);
+                    setShowBookResults(true)
                 }
             }
 
@@ -57,17 +62,16 @@ const BookSearchbar = ({setBookSearchResults, setShowSearchResults, showSearchRe
         if (debouncedSearchValue) {
             fetchSearchData(debouncedSearchValue)
         } else {
-            setShowSearchResults(false)
+            setShowBookResults(false)
         }
 
     }, [debouncedSearchValue ])
 
     useEffect(() => {
-        if (!showSearchResults) {
+        if (!showBookResults) {
             setSearchValue('')
         }
-    }, [showSearchResults])
-
+    }, [showBookResults])
 
 
     return (

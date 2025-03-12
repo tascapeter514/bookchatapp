@@ -14,12 +14,12 @@ interface ChildElement {
 interface BookResultsProps {
     children: Book[],
     selectedElement: string,
-    searchValue: string,
     handleSelection: (id: string) => void,
+    searchValue: string
 }
 
 
-const BookResults = ({children, selectedElement, searchValue, handleSelection}: BookResultsProps) => {
+const BookResults = ({children, selectedElement, handleSelection, searchValue}: BookResultsProps) => {
 
     const bookResults = children.filter((child: ChildElement) => child.title.includes(searchValue)).map((childElement) => {
         if (!childElement) {

@@ -1,7 +1,7 @@
 import Button from '../../../common/Buttons/Button/Button'
 import { Ref, useEffect, useState } from 'react'
 import { Book } from '../../../../types'
-import SearchFilter from '../../../common/SearchFilter/SearchFilter'
+import BookSearchbar from './BookSearchbar/BookSearchbar'
 import BookResults from './BookResults/BooksResults'
 import './SearchBooksModal.css'
 
@@ -15,9 +15,10 @@ interface SearchBooksModalProps {
 
 const SearchBooksModal = ({closeModal, modalRef}: SearchBooksModalProps) => {
 
-    const [bookResults, setBookResults] = useState([])
-    const [searchValue, setSearchValue] = useState('')
+    const [bookResults, setBookResults] = useState<Book[]>([])
+    const [showBookResults, setShowBookResults] = useState(false)
     const [selectedBook, setSelectedBook] = useState<string>('')
+    const [searchValue, setSearchValue] = useState('');
 
 
     const handleBookSelection = (id: string) => {
@@ -25,37 +26,37 @@ const SearchBooksModal = ({closeModal, modalRef}: SearchBooksModalProps) => {
     }
 
 
-    useEffect(() => {
-        try {
-            const socket = new WebSocket(`ws://localhost:8000/ws/books`)
+    // useEffect(() => {
+    //     try {
+    //         const socket = new WebSocket(`ws://localhost:8000/ws/books`)
 
-            socket.onmessage = (event) => {
-                const data = JSON.parse(event.data)
+    //         socket.onmessage = (event) => {
+    //             const data = JSON.parse(event.data)
 
-                if (data.type == 'get_books_data') {
-                    console.log('BOOKS DATA:', data)
-                    setBookResults(data.books_data)
+    //             if (data.type == 'get_books_data') {
+    //                 console.log('BOOKS DATA:', data)
+    //                 setBookResults(data.books_data)
 
                     
-                }
-            }
+    //             }
+    //         }
 
-            socket.onerror = (error) => {
-                console.error('Websocket books data error', error)
-            }
+    //         socket.onerror = (error) => {
+    //             console.error('Websocket books data error', error)
+    //         }
 
-            socket.onopen = () => console.log('Books websocket connected')
-            socket.onclose = () => console.log('Books websocket disconnected')
+    //         socket.onopen = () => console.log('Books websocket connected')
+    //         socket.onclose = () => console.log('Books websocket disconnected')
 
-            return () => socket.close()
+    //         return () => socket.close()
 
-        } catch(err) {
-            console.error('Books websocket failed to initialize:', err)
-        }
+    //     } catch(err) {
+    //         console.error('Books websocket failed to initialize:', err)
+    //     }
 
 
 
-    }, [])
+    // }, [])
 
     const addBook = () => {
         return(
@@ -65,23 +66,34 @@ const SearchBooksModal = ({closeModal, modalRef}: SearchBooksModalProps) => {
         )
     }
 
+    console.log('book results:', bookResults)
+
 
     return (
         <dialog className='search-books-modal' ref={modalRef}>
             <h3>Add a new title to your bookclub</h3>
             <hr />
             <section className='search-books-content'>
+                <BookSearchbar
+                    setBookResults={setBookResults}
+                    setShowBookResults={setShowBookResults}
+                    showBookResults={showBookResults}
+                    searchValue={searchValue}
+                    setSearchValue={setSearchValue}
+                >
+
+                </BookSearchbar>
                
                 <article className='suggested-book-list'>
-                    {/* <BookResults
+                    <BookResults
                         selectedElement={selectedBook}
-                        searchValue={searchValue}
                         handleSelection={handleBookSelection}
+                        searchValue={searchValue}
                     >
                         {bookResults}
 
 
-                    </BookResults> */}
+                    </BookResults>
                     
 
                 </article>
