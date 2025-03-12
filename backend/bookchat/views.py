@@ -1,9 +1,13 @@
 
-from .models import Author, Book, Bookclub, Bookshelf
+from .models import Author, Book, Bookclub, Bookshelf, Invitation
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.contrib.auth.models import User
-from .serializers import BookclubSerializer, BookshelfSerializer, AuthorSerializer
+from rest_framework.permissions import IsAuthenticated
+from rest_framework import status
+from knox.auth import TokenAuthentication
+from django.shortcuts import get_object_or_404
+from .serializers import BookclubSerializer, BookshelfSerializer, AuthorSerializer, InvitationSerializer
 from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync
 from django.http import JsonResponse
@@ -142,20 +146,45 @@ def add_book_to_user_bookshelf(request, **kwargs):
         )
 
 
-
-
-  
-
     return Response(serializer.data)
 
 @api_view(['POST'])
 def send_invite(request):
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
 
-    print('invite request went through')
-    print('request body:', request.body)
+    print('request user:', request.body)
+
+    
+    bookclub_id = request.data.get('bookclub_id')
+    invited_user_id = request.data.get('invited_user_id')
+    invited_by_id = request.data.get('invited_by_id')
 
 
-    return Response({'message': 'Invite object has reached the backend!'})
+    bookclub = get_object_or_404(Bookclub, bookclub_id=bookclub_id)
+    invited_user = get_object_or_404(User, id=invited_user_id)
+    invited_by = get_object_or_404(User, id=invited_by_id)
+    
+
+    
+    #only send if user is administrator
+    if invited_by_id != bookclub.administrator.id:
+        return Response({'error': 'You must be a bookclub administrator to send invitations'})
+        
+    #prevent duplicate invitations
+    if Invitation.objects.filter(bookclub=bookclub, invited_user=invited_user, accepted=False).exists():
+        return Response({'error': 'Invitation already exists'}, status=status.HTTP_400_BAD_REQUEST)
+        
+    invitation = Invitation.objects.create(
+        bookclub=bookclub,
+        invited_user=invited_user,
+        invited_by=invited_by
+    )
+
+    return Response(InvitationSerializer(invitation).data, status=status.HTTP_201_CREATED)
+
+
+    
 
 
 
