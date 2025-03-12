@@ -1,6 +1,6 @@
 import './BookclubPage.css'
 import axios from 'axios'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import {useParams } from 'react-router-dom'
 import { Bookclub, Bookshelf } from '../../types'
@@ -11,6 +11,7 @@ import BookshelfPanel from '../common/BookshelfPanel/BookshelfPanel'
 import CurrentReadPanel from './components/CurrentReadPanel/CurrentReadPanel'
 import SubNavbar from './components/SubNavbar/SubNavbar'
 import TopFacade from './components/TopFacade/TopFacade'
+import SearchBooksModal from './components/SearchBooksModal/SearchBooksModal'
 import Tabs from './components/Tabs/Tabs'
 
 
@@ -34,6 +35,10 @@ const BookclubPage = () => {
    
     const [isMember, setIsMember] = useState(false)
     const parameters = useParams<{id: string}>()
+
+    const searchBooksRef = useRef<HTMLDialogElement>(null)
+    const openSearchBooks = () => searchBooksRef.current?.showModal()
+    const closeSearchBooks = () => searchBooksRef.current?.close()
 
 
     useEffect(() => {
@@ -114,6 +119,8 @@ const BookclubPage = () => {
 
         
     }
+
+    
     
    
 
@@ -126,7 +133,7 @@ const BookclubPage = () => {
             <div className='bookclub-container'>
                 {isMember && (
                     <div className="bookclub-content-wrapper">
-                        <TopFacade id={parameters.id} bookclub={bookclub}></TopFacade>
+                        <TopFacade id={parameters.id ?? ''} bookclub={bookclub}></TopFacade>
                         <div className="tabs-wrapper">
                             <hr />
                             
@@ -139,7 +146,19 @@ const BookclubPage = () => {
                                     activeTab={activeTab}
                                 >
                                 </Tabs>
-                                <Button><SearchIcon></SearchIcon></Button>
+                                <Button
+                                    onClick={openSearchBooks}
+                                >
+                                <SearchIcon></SearchIcon>
+                                </Button>
+                                <SearchBooksModal
+                                    modalRef={searchBooksRef}
+                                    closeModal={closeSearchBooks}
+                                
+                                >
+
+                                </SearchBooksModal>
+                                
                             </div>
                             <div 
                                 className={`subnav-container ${subNav ? 'active' : ''}`}
@@ -181,53 +200,3 @@ const BookclubPage = () => {
 export default BookclubPage
 
 
-{/* <button onClick={getNonMembers}>Invite Users</button>
-                        {showInvite ?
-                            <form action={sendInvite as any} className="invite-form" method='post'>
-                                <ul>{nonMembers}</ul>
-                                <button type='submit'>Submit</button>
-                    
-                            </form>
-                            : ''} */}
-
-
-
-                            // const sendInvite = async (formData: FormData) => {
-                            //     console.log('invite form data:', formData)
-                            //     const id = formData.get('nonMemberRadio')
-                            //     const inviteReq = {
-                            //         invited_user_id: id,
-                            //         bookclub_id: bookclub?.bookclub_id,
-                            //     }
-                        
-                            //     const token = localStorage.getItem('authToken')
-                            //     const parsedToken = token ? JSON.parse(token) : null
-                        
-                        
-                            //     console.log(`Token ${parsedToken}`)
-                            //     if (!parsedToken) {
-                            //         console.error('No auth token found')
-                            //         return
-                            //     }
-                        
-                            //     try {
-                            //         const response = await fetch('http://localhost:8000/api/sendInvite', {
-                            //             method: 'POST',
-                            //             headers: {
-                            //                 'Content-Type': 'application/json',
-                            //                 'Authorization': `Token ${parsedToken}`
-                            //             },
-                            //             body: JSON.stringify(inviteReq)
-                            //         })
-                        
-                            //         const data = await response.json()
-                            //         console.log('Response from server', data)
-                        
-                            //         if (!response.ok) {
-                            //             throw new Error(data.error || 'Something went wrong')
-                            //         }
-                            //     } catch (error) {
-                            //         console.error('Error sending invitation:', error)
-                            //     }
-                                
-                            // }

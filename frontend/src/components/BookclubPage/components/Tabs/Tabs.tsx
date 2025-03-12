@@ -34,6 +34,9 @@ const Tabs = ({ activeTab, contents, subNav, setActiveTab, setSubNav }: TabsProp
         return (
             <>
                 {tabContent === 'Bookshelves' && (
+                    // CHANGE TAB KEYS TO IDS
+
+
                     <li 
                         key={index}
                         onClick={() => setActiveTab(index)}
@@ -51,7 +54,7 @@ const Tabs = ({ activeTab, contents, subNav, setActiveTab, setSubNav }: TabsProp
                                 isRotated={isRotated}
                             >
 
-                                </RightDropDownIcon>
+                            </RightDropDownIcon>
 
                         </a>
                     </li>

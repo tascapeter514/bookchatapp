@@ -21,17 +21,6 @@ const SubNavbar = ({bookshelves, subNav, setActiveBookshelf, addBookshelf, newBo
     const openBookshelfModal = () => bookshelfRef.current?.showModal()
     const closeBookshelfModal = () => bookshelfRef.current?.close()
 
-   
-
-
-    // id={`link-${navbarIndex}`} href={`#${navbarContent.toLowerCase()}
-//     <li 
-//     key={navbarIndex}
-//     onClick={ () => setActiveTab(navbarIndex)}
-//     className={activeTab == navbarIndex ? 'active' : ''}
-// >
-
-
 
 
     return (

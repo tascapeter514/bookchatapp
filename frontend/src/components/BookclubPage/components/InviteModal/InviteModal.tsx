@@ -80,6 +80,8 @@ const InviteModal = ({ closeInviteModal, inviteRef, id }: InviteModalProps) => {
             })
             .catch(error => console.log('Your invitation was not sent', error))
 
+        closeInviteModal()
+
     }
 
 
@@ -119,3 +121,55 @@ const InviteModal = ({ closeInviteModal, inviteRef, id }: InviteModalProps) => {
 }
 
 export default InviteModal
+
+
+{/* <button onClick={getNonMembers}>Invite Users</button>
+                        {showInvite ?
+                            <form action={sendInvite as any} className="invite-form" method='post'>
+                                <ul>{nonMembers}</ul>
+                                <button type='submit'>Submit</button>
+                    
+                            </form>
+                            : ''} */}
+
+
+
+                            // const sendInvite = async (formData: FormData) => {
+                            //     console.log('invite form data:', formData)
+                            //     const id = formData.get('nonMemberRadio')
+                            //     const inviteReq = {
+                            //         invited_user_id: id,
+                            //         bookclub_id: bookclub?.bookclub_id,
+                            //     }
+                        
+                            //     const token = localStorage.getItem('authToken')
+                            //     const parsedToken = token ? JSON.parse(token) : null
+                        
+                        
+                            //     console.log(`Token ${parsedToken}`)
+                            //     if (!parsedToken) {
+                            //         console.error('No auth token found')
+                            //         return
+                            //     }
+                        
+                            //     try {
+                            //         const response = await fetch('http://localhost:8000/api/sendInvite', {
+                            //             method: 'POST',
+                            //             headers: {
+                            //                 'Content-Type': 'application/json',
+                            //                 'Authorization': `Token ${parsedToken}`
+                            //             },
+                            //             body: JSON.stringify(inviteReq)
+                            //         })
+                        
+                            //         const data = await response.json()
+                            //         console.log('Response from server', data)
+                        
+                            //         if (!response.ok) {
+                            //             throw new Error(data.error || 'Something went wrong')
+                            //         }
+                            //     } catch (error) {
+                            //         console.error('Error sending invitation:', error)
+                            //     }
+                                
+                            // }
