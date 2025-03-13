@@ -12,12 +12,12 @@ interface SubNavbarProps {
     setActiveBookshelf: Dispatch<SetStateAction<number>>,
     addBookshelf: (formData: FormData) => Promise<void>,
     handleNewBookshelf: (e: string ) => void,
-    setDeleteBookshelf: Dispatch<SetStateAction<string>>
 
 
 }
 
-const SubNavbar = ({bookshelves, subNav, setActiveBookshelf, addBookshelf, newBookshelf, handleNewBookshelf, setDeleteBookshelf}: SubNavbarProps) => {
+// Add Bookshelf
+const SubNavbar = ({bookshelves, subNav, setActiveBookshelf, addBookshelf, newBookshelf, handleNewBookshelf}: SubNavbarProps) => {
 
     const bookshelfRef = useRef<HTMLDialogElement>(null)
     const openBookshelfModal = () => bookshelfRef.current?.showModal()

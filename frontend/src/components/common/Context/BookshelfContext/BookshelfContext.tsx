@@ -1,0 +1,124 @@
+import { useState, createContext, useContext, Dispatch, SetStateAction, ReactNode, useRef, Ref } from 'react'
+import { bookclubData } from '../BookclubContext/BookclubContext'
+import axios from 'axios'
+
+type ProviderProps = {children: ReactNode}
+
+interface ContextProps {
+    searchBooksRef: Ref<HTMLDialogElement>,
+    openSearchBooks: () => void,
+    closeSearchBooks: () => void,
+    newBookId: string,
+    deletedBookId: string,
+    setNewBookId: Dispatch<SetStateAction<string>>,
+    setDeletedBookId: Dispatch<SetStateAction<string>>,
+    addBook: (book_id: string, bookshelf_id: string) => Promise<void>,
+    deleteBook: (book_id: string, bookshelf_id: string) => Promise<void>
+}
+
+export const BookshelfContext = createContext<ContextProps>({
+    searchBooksRef: null,
+    openSearchBooks: () => null,
+    closeSearchBooks: () => null,
+    newBookId: '',
+    deletedBookId: '',
+    setNewBookId: () => {},
+    setDeletedBookId: () => {},
+    addBook: async () => {},
+    deleteBook: async () => {}
+
+})
+
+const BookshelfProvider = ({ children }: ProviderProps) => {
+
+    const { setBookshelves } = bookclubData()
+    const searchBooksRef = useRef<HTMLDialogElement>(null)
+    const openSearchBooks = () => searchBooksRef.current?.showModal()
+    const closeSearchBooks = () => searchBooksRef.current?.close()
+    const [newBookId, setNewBookId] = useState<string>('')
+    const [deletedBookId, setDeletedBookId] = useState<string>('')
+
+    const deleteBook = async (book_id: string, bookshelf_id: string) => {
+
+        console.log('delete title check')
+
+        try {
+            const response = await axios.delete(`http://localhost:8000/api/book/delete/${book_id}`, {
+                data: {
+                    bookshelf_id: bookshelf_id
+                }
+            })
+
+            if (response.status == 200) {
+                console.log(response.status)
+                setBookshelves(prevBookshelves => 
+                    prevBookshelves.map(bs => 
+                        bs.bookshelf_id == bookshelf_id ?
+                        {...bs, titles: bs.titles?.filter(title => title.title_id !== book_id)} : bs
+                    )
+                
+                )
+
+            } else {
+                console.error("Your book delete request encountered an error:", response.statusText)
+            }
+
+            
+
+        } catch(err) {
+            console.log('Your delete request failed to go through:', err)
+        }
+
+
+    }
+
+
+
+
+    const addBook = async (book_id: string, bookshelf_id: string) => {
+
+        const bookshelfRequest = {
+            book_id: book_id
+        } 
+
+        try {
+            const response = await axios.put(`http://localhost:8000/api/bookclub/addBook/${bookshelf_id}`, bookshelfRequest)
+
+
+            if (response.status == 200) {
+                console.log("axios add book response:", response.data)
+
+                setBookshelves(prevBookshelves => 
+                    prevBookshelves.map(bs =>
+                        bs.bookshelf_id === bookshelf_id ? response.data : bs
+                    )
+                )
+                // closeSearchBooks()
+
+            } else {
+                console.log("There was an error with the response:", response.statusText)
+            }
+            
+        } catch(err) {
+            console.log('There was an error adding your book:', err)
+        }
+    }
+
+
+
+    return (
+        <BookshelfContext.Provider value={{searchBooksRef, openSearchBooks, closeSearchBooks,
+            newBookId, deletedBookId, setNewBookId, setDeletedBookId, addBook, deleteBook
+        }}
+        >
+            {children}
+
+        </BookshelfContext.Provider>
+    )
+
+
+}
+
+export default BookshelfProvider
+
+export const bookshelfData = () => useContext(BookshelfContext)

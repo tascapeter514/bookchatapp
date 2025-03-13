@@ -2,7 +2,6 @@ import './BookclubPage.css'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { v4 as uuidv4 } from 'uuid'
-// import {useParams } from 'react-router-dom'
 import { Bookclub, Bookshelf } from '../../types'
 import { userData } from '../../components/common/Context/UserContext/UserContext'
 import { bookclubData } from '../../components/common/Context/BookclubContext/BookclubContext'
@@ -10,21 +9,20 @@ import BookshelfPanel from '../common/BookshelfPanel/BookshelfPanel'
 import CurrentReadPanel from './components/CurrentReadPanel/CurrentReadPanel'
 import SubNavbar from './components/SubNavbar/SubNavbar'
 import TopFacade from './components/TopFacade/TopFacade'
-// import SearchBooksModal from '../common/BookshelfPanel/components/SearchBooksModal/SearchBooksModal'
+import BookshelfProvider from '../common/Context/BookshelfContext/BookshelfContext'
+
 import Tabs from './components/Tabs/Tabs'
 
 const BookclubPage = () => {
 
     const { userBookclubs } = userData()
-
     const { bookclub, bookshelves, parameters, setBookshelves } = bookclubData()
-
     const [activeBookshelf, setActiveBookshelf] = useState<number>(0)
     const [activeTab, setActiveTab] = useState(0)
     const [subNav, setSubNav] = useState(false)
     const [newBookshelf, setNewBookshelf] = useState<string>('')
     
-    const [deleteBookshelf, setDeleteBookshelf] = useState<string>('')
+    
 
     const tabContents = ['Bookshelves', 'Current Read']
     
@@ -36,48 +34,12 @@ const BookclubPage = () => {
 
 
     
-    const deleteTitle = async (book_id: string) => {
-
-        console.log('delete title check')
-
-        try {
-            const response = await axios.delete(`http://localhost:8000/api/book/delete/${book_id}`, {
-                data: {
-                    bookshelf_id: deleteBookshelf
-                }
-            })
-
-            if (response.status == 200) {
-                console.log(response.status)
-                setBookshelves(prevBookshelves => 
-                    prevBookshelves.map(bs => 
-                        bs.bookshelf_id == deleteBookshelf ?
-                        {...bs, titles: bs.titles?.filter(title => title.title_id !== book_id)} : bs
-                    )
-                
-                )
-
-            } else {
-                console.error("Your book delete request encountered an error:", response.statusText)
-            }
-
-            
-
-        } catch(err) {
-            console.log('Your delete request failed to go through:', err)
-        }
-
-
-    }
+    
 // MIGRATE DELETE TO BOOKSHELF PANEL
     const panels = [
         <BookshelfPanel 
             activeBookshelf={activeBookshelf} 
-            bookshelves={bookshelves} 
-            deleteTitle={deleteTitle}
-            // selectedBook={newBookId}
-            setBookshelves={setBookshelves}
-            setDeleteBookshelf={setDeleteBookshelf} 
+            bookshelves={bookshelves}
         />,
         <CurrentReadPanel />
     ]
@@ -167,7 +129,9 @@ const BookclubPage = () => {
                            
                         </div>
                         <div className="bookclub-panels-container">
-                            <PanelComponent />
+                            <BookshelfProvider>
+                                <PanelComponent />
+                            </BookshelfProvider>
                         </div>
 
                     </div>
