@@ -12,7 +12,7 @@ export type ArrowProps = {
 
 export type IconProps = React.ComponentPropsWithoutRef<'svg'>
 
-export const SearchIcon = (props: IconProps) => <FaSearch {...props} />
+export const SearchIcon = (props: IconProps) => <FaSearch className='search-icon' {...props} />
 
 export const ArrowLeftIcon = ({isRotated, ...props}: ArrowProps) => 
     <FaArrowLeft className={`arrow-left-icon ${isRotated ? 'rotated' : ''}`} {...props} />

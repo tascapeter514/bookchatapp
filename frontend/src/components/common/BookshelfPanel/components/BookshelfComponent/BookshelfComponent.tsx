@@ -1,18 +1,20 @@
-import {Bookshelf} from '../../../types'
+import {Bookshelf} from '../../../../../types'
 import './BookshelfComponent.css'
-import { LikeIcon, DislikeIcon, CancelIcon } from '../Icons'
+import { LikeIcon, DislikeIcon, CancelIcon } from '../../../Icons'
 import { Dispatch, SetStateAction } from 'react'
 
 interface BookshelfProps {
     bookshelf: Bookshelf,
     activeBookshelf: number,
-    selectedBook: string,
     deleteTitle: (book_id: string) => Promise<void>,
     setDeleteBookshelf: Dispatch<SetStateAction<string>>
 }
 
 
-const BookshelfComponent = ({bookshelf, activeBookshelf, selectedBook, setDeleteBookshelf, deleteTitle}: BookshelfProps) => {
+const BookshelfComponent = ({bookshelf, activeBookshelf, setDeleteBookshelf, deleteTitle}: BookshelfProps) => {
+
+    
+
 
 
     const bookshelfTitles = (bookshelf?.titles ?? []).map((bookshelfTitle) => {

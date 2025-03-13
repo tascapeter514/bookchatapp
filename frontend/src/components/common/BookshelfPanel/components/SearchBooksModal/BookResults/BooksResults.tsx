@@ -1,5 +1,5 @@
 import './BookResults.css'
-import { Book } from '../../../../../types'
+import { Book } from '../../../../../../types'
 
 
 

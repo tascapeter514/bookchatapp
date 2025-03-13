@@ -1,25 +1,23 @@
 import './BookclubPage.css'
 import axios from 'axios'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 // import {useParams } from 'react-router-dom'
 import { Bookclub, Bookshelf } from '../../types'
 import { userData } from '../../components/common/Context/UserContext/UserContext'
 import { bookclubData } from '../../components/common/Context/BookclubContext/BookclubContext'
-import { SearchIcon } from '../common/Icons'
-import Button from '../common/Buttons/Button/Button'
 import BookshelfPanel from '../common/BookshelfPanel/BookshelfPanel'
 import CurrentReadPanel from './components/CurrentReadPanel/CurrentReadPanel'
 import SubNavbar from './components/SubNavbar/SubNavbar'
 import TopFacade from './components/TopFacade/TopFacade'
-import SearchBooksModal from './components/SearchBooksModal/SearchBooksModal'
+// import SearchBooksModal from '../common/BookshelfPanel/components/SearchBooksModal/SearchBooksModal'
 import Tabs from './components/Tabs/Tabs'
 
 const BookclubPage = () => {
 
     const { userBookclubs } = userData()
 
-    const { bookclub, bookshelves, parameters, newBookId, setBookshelves, setNewBookId, addBook } = bookclubData()
+    const { bookclub, bookshelves, parameters, setBookshelves } = bookclubData()
 
     const [activeBookshelf, setActiveBookshelf] = useState<number>(0)
     const [activeTab, setActiveTab] = useState(0)
@@ -33,10 +31,6 @@ const BookclubPage = () => {
    
     const [isMember, setIsMember] = useState(false)
     
-
-    const searchBooksRef = useRef<HTMLDialogElement>(null)
-    const openSearchBooks = () => searchBooksRef.current?.showModal()
-    const closeSearchBooks = () => searchBooksRef.current?.close()
 
     console.log('BOOKCLUB DATA:', bookclub)
 
@@ -75,13 +69,14 @@ const BookclubPage = () => {
 
 
     }
-
+// MIGRATE DELETE TO BOOKSHELF PANEL
     const panels = [
         <BookshelfPanel 
             activeBookshelf={activeBookshelf} 
             bookshelves={bookshelves} 
             deleteTitle={deleteTitle}
-            selectedBook={newBookId}
+            // selectedBook={newBookId}
+            setBookshelves={setBookshelves}
             setDeleteBookshelf={setDeleteBookshelf} 
         />,
         <CurrentReadPanel />
@@ -149,22 +144,8 @@ const BookclubPage = () => {
                                     activeTab={activeTab}
                                 >
                                 </Tabs>
-                                <Button
-                                    onClick={openSearchBooks}
-                                >
-                                <SearchIcon></SearchIcon>
-                                </Button>
-                                <SearchBooksModal
-                                    modalRef={searchBooksRef}
-                                    closeModal={closeSearchBooks}
-                                    bookshelves={bookshelves}
-                                    setSelectedBook={setNewBookId}
-                                    selectedBook={newBookId}
-                                    addBook={addBook}
-                                
-                                >
-
-                                </SearchBooksModal>
+                               
+                               
                                 
                             </div>
                             <div 

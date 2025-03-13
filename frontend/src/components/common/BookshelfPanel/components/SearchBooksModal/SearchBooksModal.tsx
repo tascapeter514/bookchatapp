@@ -1,6 +1,6 @@
-import Button from '../../../common/Buttons/Button/Button'
+import Button from '../../../Buttons/Button/Button'
 import { Ref, useState, Dispatch, SetStateAction } from 'react'
-import { Book, Bookshelf } from '../../../../types'
+import { Book, Bookshelf } from '../../../../../types'
 import BookSearchbar from './BookSearchbar/BookSearchbar'
 import BookResults from './BookResults/BooksResults'
 import './SearchBooksModal.css'

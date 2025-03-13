@@ -5,7 +5,30 @@
     justify-content: top;
     padding: 1em;
     justify-content: center;
+    position: relative;
     /* height: 100%; */
+}
+
+.bookshelves-container > .bookchat-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    /* width: 100%;
+    max-width: 50px; */
+}
+
+.bookshelves-container > .bookchat-button > .search-icon {
+    height: 25px;
+    width: 20px;
+    /* border: 1px solid red; */
+}
+
+.bookshelves-container > .bookchat-button > .search-icon > * {
+    fill: white;  
+}
+
+.bookshelves-container > .bookchat-button:hover > .search-icon > * {
+    fill: orange;  
 }
 
 .bookshelf-panel-list {

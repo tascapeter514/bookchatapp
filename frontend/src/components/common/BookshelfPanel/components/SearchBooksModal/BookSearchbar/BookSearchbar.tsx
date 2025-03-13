@@ -1,8 +1,8 @@
 import './BookSearchbar.css'
 import { Dispatch, SetStateAction, useState, useEffect } from 'react'
-import { Book } from '../../../../../types'
-import { useDebounce } from '../../../../Searchbar/Searchbar'
-import { SearchIcon } from '../../../../common/Icons'
+import { Book } from '../../../../../../types'
+import { useDebounce } from '../../../../../Searchbar/Searchbar'
+import { SearchIcon } from '../../../../Icons'
 
 
 interface BookSearchbarProps {
