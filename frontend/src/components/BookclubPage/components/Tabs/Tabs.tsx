@@ -3,9 +3,12 @@ import { Dispatch, SetStateAction, useState } from 'react'
 import { RightDropDownIcon } from '../../../common/Icons'
 
 
+
+type TabContent = {name: string, id: number}
+
 interface TabsProps {
     activeTab: number,
-    contents: [{name: string, id: number}],
+    contents: TabContent[],
     showSubNav: boolean,
     setShowSubNav: Dispatch<SetStateAction<boolean>>,
     setActiveTab: Dispatch<SetStateAction<number>>
