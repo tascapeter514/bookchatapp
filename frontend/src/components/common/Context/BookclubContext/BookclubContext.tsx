@@ -1,4 +1,4 @@
-import { useState, createContext, ReactNode, Dispatch, SetStateAction } from 'react'
+import { useState, createContext, useContext, ReactNode, Dispatch, SetStateAction } from 'react'
 import { Bookclub, Bookshelf, Book } from '../../../../types'
 
 
@@ -11,7 +11,7 @@ interface ContextProps {
     books: Book[],
     setBookclub: Dispatch<SetStateAction<Bookclub>>,
     setBookshelves: Dispatch<SetStateAction<Bookshelf[]>>,
-    setBooks: Dispatch<SetStateAction<Book[]>
+    setBooks: Dispatch<SetStateAction<Book[]>>
 }
 
 
@@ -93,3 +93,5 @@ const BookclubDataProvider = ({ children } : BookclubProviderProps) => {
 }
 
 export default BookclubDataProvider
+
+export const BookclubData = () => useContext(BookclubContext)

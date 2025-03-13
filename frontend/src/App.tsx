@@ -10,6 +10,7 @@ import UserDashboard from './components/UserDashboard/UserDashboard.tsx'
 import AuthRequired from './components/common/authRequired.tsx'
 import ErrorBoundary from './components/common/ErrorBoundary.tsx'
 import UserDataProvider  from './components/common/Context/UserContext/UserContext.tsx'
+import BookclubDataProvider from './components/common/Context/BookclubContext/BookclubContext.tsx'
 import './App.css';
 
 
@@ -28,7 +29,8 @@ function App() {
             <Route element={<AuthRequired />}>
                 <Route path='/userDashboard' element={<ErrorBoundary><UserDashboard 
                    /></ErrorBoundary>}></Route>
-                <Route path='/bookclub/:id' element={<BookclubPage></BookclubPage>}></Route>
+                
+                  <Route path='/bookclub/:id' element={<BookclubDataProvider><BookclubPage /></BookclubDataProvider>}></Route>
             </Route>
       </Routes>
       </UserDataProvider>
