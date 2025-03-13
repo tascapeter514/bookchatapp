@@ -1,4 +1,4 @@
-import { useRef, Dispatch, SetStateAction, ChangeEvent } from 'react'
+import { useRef, Dispatch, SetStateAction } from 'react'
 import { Bookshelf } from '../../../../types'
 import BookshelfModal from '../../../common/Modals/BookshelfModal/BookshelfModal'
 import Button from '../../../common/Buttons/Button/Button'
@@ -8,32 +8,22 @@ import './SubNavbar.css'
 interface SubNavbarProps {
     bookshelves: Bookshelf[] | null,
     subNav: boolean,
-    newBookshelf: string,
     setActiveBookshelf: Dispatch<SetStateAction<number>>,
-    addBookshelf: (formData: FormData) => Promise<void>,
-    handleNewBookshelf: (e: string ) => void,
-
+    
 
 }
 
 // Add Bookshelf
-const SubNavbar = ({bookshelves, subNav, setActiveBookshelf, addBookshelf, newBookshelf, handleNewBookshelf}: SubNavbarProps) => {
-
+const SubNavbar = ({bookshelves, subNav, setActiveBookshelf }: SubNavbarProps) => {
     const bookshelfRef = useRef<HTMLDialogElement>(null)
     const openBookshelfModal = () => bookshelfRef.current?.showModal()
     const closeBookshelfModal = () => bookshelfRef.current?.close()
 
     const bookshelfTitles = bookshelves?.map((bookshelf, index) => {
 
-        const handleActiveBookshelf = (index: number) => {
-
-            setActiveBookshelf(index)
-            // setDeleteBookshelf(bookshelf.bookshelf_id)
-
-        }
 
         return (
-                <li key={bookshelf.bookshelf_id} onClick={() => handleActiveBookshelf(index)} className='bookshelf-title-listElement'>
+                <li key={bookshelf.bookshelf_id} onClick={() => setActiveBookshelf(index)} className='bookshelf-title-listElement'>
                     {bookshelf.name}
                 </li>
         )})
@@ -53,9 +43,6 @@ const SubNavbar = ({bookshelves, subNav, setActiveBookshelf, addBookshelf, newBo
             <BookshelfModal 
                 bookshelfRef={bookshelfRef}
                 closeBookshelfModal={closeBookshelfModal}
-                addBookshelf={addBookshelf}
-                newBookshelf={newBookshelf}
-                handleNewBookshelf={handleNewBookshelf}
             >
             </BookshelfModal>
         </nav>

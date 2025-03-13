@@ -1,20 +1,20 @@
 import './BookshelfModal.css'
 import { Ref } from 'react'
+import { bookclubData } from '../../Context/BookclubContext/BookclubContext'
 import Button from '../../Buttons/Button/Button'
 
 
 
 interface BookshelfModalProps {
     bookshelfRef: Ref<HTMLDialogElement>,
-    newBookshelf: string,
-    closeBookshelfModal: () => void,
-    addBookshelf: (formData: FormData) => Promise<void>,
-    handleNewBookshelf: (e: string ) => void
+    closeBookshelfModal: () => void
 }
 
 
 
-const BookshelfModal = ({bookshelfRef, newBookshelf, closeBookshelfModal, addBookshelf, handleNewBookshelf}: BookshelfModalProps) => {
+const BookshelfModal = ({bookshelfRef, closeBookshelfModal}: BookshelfModalProps) => {
+
+    const { addBookshelf, newBkslfId, setBkslfId } = bookclubData()
 
     return (
         <dialog className="bookshelf-modal" ref={ bookshelfRef } >
@@ -23,8 +23,8 @@ const BookshelfModal = ({bookshelfRef, newBookshelf, closeBookshelfModal, addBoo
                     type="text" 
                     name='bookshelfName' 
                     placeholder='Enter a name for your bookshelf'
-                    value={newBookshelf}
-                    onChange={e => handleNewBookshelf(e.target.value)} 
+                    value={newBkslfId}
+                    onChange={e => setBkslfId(e.target.value)} 
                     required/>
                 <div className="button-wrapper">
                     <Button onClick={closeBookshelfModal}>Cancel</Button>

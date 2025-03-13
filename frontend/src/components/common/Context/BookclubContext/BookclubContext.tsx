@@ -1,5 +1,7 @@
 import { useState, useEffect, createContext, useContext, ReactNode, Dispatch, SetStateAction } from 'react'
 import {useParams } from 'react-router-dom'
+import { v4 as uuidv4 } from 'uuid'
+import axios from 'axios'
 
 import { Bookclub, Bookshelf } from '../../../../types'
 
@@ -11,8 +13,11 @@ interface ContextProps {
     bookclub: Bookclub,
     bookshelves: Bookshelf[],
     parameters: Readonly<Partial<{ id: string; }>>,
+    newBkslfId: string,
     setBookclub: Dispatch<SetStateAction<Bookclub>>,
-    setBookshelves: Dispatch<SetStateAction<Bookshelf[]>>
+    setBookshelves: Dispatch<SetStateAction<Bookshelf[]>>,
+    setBkslfId: Dispatch<SetStateAction<string>>,
+    addBookshelf: (formData: FormData) => Promise<void>
 }
 
 
@@ -42,8 +47,14 @@ export const BookclubContext = createContext<ContextProps>({
     },
     bookshelves: [],
     parameters: {id: ''},
+    newBkslfId: '',
+
     setBookclub: () => {},
-    setBookshelves: () => []
+    setBookshelves: () => [],
+    setBkslfId: () => {},
+    addBookshelf: async () => {}
+
+
 
 })
 
@@ -76,8 +87,10 @@ const BookclubDataProvider = ({ children } : BookclubProviderProps) => {
         cover_image: ''
     })
 
-    const [bookshelves, setBookshelves] = useState<Bookshelf[]>([])
     const parameters = useParams<{id: string}>()
+    const [bookshelves, setBookshelves] = useState<Bookshelf[]>([])
+    const [newBkslfId, setBkslfId] = useState<string>('')
+    
     
     
 
@@ -116,11 +129,34 @@ const BookclubDataProvider = ({ children } : BookclubProviderProps) => {
 
     }, [])
 
+    const addBookshelf = async (formData: FormData): Promise<void> => {
+        console.log('form data:', formData.get('bookshelfName'))
+
+        const bookshelfObject: Bookshelf = {
+            bookshelf_id: uuidv4(),
+            name: String(formData.get('bookshelfName') || ''),
+            bookclub_id: parameters.id,
+            titles: [],
+
+
+        }
+
+        axios.post('http://localhost:8000/api/bookclub/addBookshelf', bookshelfObject)
+            .then(response => {
+                setBookshelves(prev => [...(prev || []), response.data])
+                console.log('bookshelf data response:', response.data)
+                setBkslfId('')
+            })
+            .catch(error => console.log('Your bookshelf was not created:', error))
+
+        
+    }
+
     
 
     return (
         <BookclubContext.Provider
-            value={{bookclub, bookshelves, parameters, setBookclub, setBookshelves}}
+            value={{bookclub, bookshelves, parameters, newBkslfId, setBookclub, setBookshelves, setBkslfId, addBookshelf}}
         >
             {children}
         </BookclubContext.Provider>
