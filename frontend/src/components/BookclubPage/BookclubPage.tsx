@@ -25,10 +25,8 @@ const BookclubPage = () => {
 
     const { userBookclubs } = userData()
 
-    const { bookclub, bookshelves, parameters, setBookclub, setBookshelves } = bookclubData()
+    const { bookclub, bookshelves, parameters, setBookshelves } = bookclubData()
 
-    // const [bookclub, setBookclub] = useState<Bookclub | null>(null)
-    // const [bookshelves, setBookshelves] = useState<Bookshelf[] | []>([])
     const [activeBookshelf, setActiveBookshelf] = useState<number>(0)
     const [activeTab, setActiveTab] = useState(0)
     const [subNav, setSubNav] = useState(false)
