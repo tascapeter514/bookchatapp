@@ -2,6 +2,7 @@ import './BookshelfPanel.css';
 import { Bookshelf } from '../../../types.ts'
 import BookshelfComponent from './components/BookshelfComponent/BookshelfComponent.tsx'
 import SearchBooksModal from './components/SearchBooksModal/SearchBooksModal.tsx'
+import { bookshelfData } from '../Context/BookshelfContext/BookshelfContext.tsx';
 import { SearchIcon } from '../Icons.tsx'
 import Button from '../Buttons/Button/Button.tsx'
 import Header from '../Header/Header.tsx'
@@ -16,8 +17,7 @@ type BookshelfPanelProps = {
 
 const BookshelfPanel = ({activeBookshelf, bookshelves}: BookshelfPanelProps) => {
 
-
-   
+    const { openSearchBooks } = bookshelfData()
 
     const bookshelfElements = bookshelves?.map((bookshelf, index) => (
         activeBookshelf === index && 
@@ -29,7 +29,8 @@ const BookshelfPanel = ({activeBookshelf, bookshelves}: BookshelfPanelProps) => 
                 <SubHeader>{bookshelf.name}</SubHeader>
                 <BookshelfComponent 
                     bookshelf={bookshelf}
-                ></BookshelfComponent>
+                >
+                </BookshelfComponent>
             </li>
     ))
 

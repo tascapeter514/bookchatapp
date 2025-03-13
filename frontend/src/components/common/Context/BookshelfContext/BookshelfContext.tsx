@@ -1,4 +1,4 @@
-import { useState, createContext, useContext, Dispatch, SetStateAction, ReactNode, useRef, Ref } from 'react'
+import { createContext, useContext,  ReactNode, useRef, Ref } from 'react'
 import { bookclubData } from '../BookclubContext/BookclubContext'
 import axios from 'axios'
 
@@ -8,10 +8,6 @@ interface ContextProps {
     searchBooksRef: Ref<HTMLDialogElement>,
     openSearchBooks: () => void,
     closeSearchBooks: () => void,
-    newBookId: string,
-    deletedBookId: string,
-    setNewBookId: Dispatch<SetStateAction<string>>,
-    setDeletedBookId: Dispatch<SetStateAction<string>>,
     addBook: (book_id: string, bookshelf_id: string) => Promise<void>,
     deleteBook: (book_id: string, bookshelf_id: string) => Promise<void>
 }
@@ -20,10 +16,6 @@ export const BookshelfContext = createContext<ContextProps>({
     searchBooksRef: null,
     openSearchBooks: () => null,
     closeSearchBooks: () => null,
-    newBookId: '',
-    deletedBookId: '',
-    setNewBookId: () => {},
-    setDeletedBookId: () => {},
     addBook: async () => {},
     deleteBook: async () => {}
 
@@ -35,8 +27,6 @@ const BookshelfProvider = ({ children }: ProviderProps) => {
     const searchBooksRef = useRef<HTMLDialogElement>(null)
     const openSearchBooks = () => searchBooksRef.current?.showModal()
     const closeSearchBooks = () => searchBooksRef.current?.close()
-    const [newBookId, setNewBookId] = useState<string>('')
-    const [deletedBookId, setDeletedBookId] = useState<string>('')
 
     const deleteBook = async (book_id: string, bookshelf_id: string) => {
 
@@ -108,7 +98,7 @@ const BookshelfProvider = ({ children }: ProviderProps) => {
 
     return (
         <BookshelfContext.Provider value={{searchBooksRef, openSearchBooks, closeSearchBooks,
-            newBookId, deletedBookId, setNewBookId, setDeletedBookId, addBook, deleteBook
+            addBook, deleteBook
         }}
         >
             {children}

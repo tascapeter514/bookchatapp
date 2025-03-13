@@ -13,13 +13,13 @@ interface ChildElement {
 
 interface BookResultsProps {
     children: Book[],
-    selectedElement: string,
-    handleSelection: (id: string) => void,
+    newBookId: string,
+    setNewBookId: (id: string) => void,
     searchValue: string
 }
 
 
-const BookResults = ({children, selectedElement, handleSelection, searchValue}: BookResultsProps) => {
+const BookResults = ({children, newBookId, setNewBookId, searchValue}: BookResultsProps) => {
 
     const bookResults = children.filter((child: ChildElement) => child.title.includes(searchValue)).map((childElement) => {
         if (!childElement) {
@@ -34,8 +34,8 @@ const BookResults = ({children, selectedElement, handleSelection, searchValue}: 
                 <input 
                     type="radio"
                     name='bookResultsGroup'
-                    checked={selectedElement === childElement.title_id}
-                    onChange={() => handleSelection(childElement.title_id)}
+                    checked={newBookId === childElement.title_id}
+                    onChange={() => setNewBookId(childElement.title_id)}
                     className='book-result-input'  
                 />
                 
