@@ -1,35 +1,33 @@
 import './SearchFilterResults.css'
-import {CheckmarkIcon} from '../Icons'
 
 
-
-
-interface ChildElement {
+interface ChildElement<T extends string | number> {
     name?: string,
     username?: string,
-    id: string | number
+    id: T
 }
 
-interface SearchFilterResultsProps<T extends ChildElement> {
+
+interface SearchFilterResultsProps<T extends string | number> {
     variant: string,
-    children: T[],
-    selectedElement: string | number,
+    children: ChildElement<T>[],
+    selectedElement: T,
     searchValue: string,
-    handleSelection: (id: string | number) => void,
-
-    
-
+    handleSelection: (id: T) => void,
 }
 
 
-const SearchFilterResults = <T extends ChildElement,>({ children, searchValue, variant, selectedElement, handleSelection}: SearchFilterResultsProps<T>) => {
+
+
+const SearchFilterResults = <T extends string | number,>(
+    { children, searchValue, variant, selectedElement, handleSelection}: SearchFilterResultsProps<T>) => {
 
     console.log('search result variant:', variant)
 
-    const searchResults = children.filter((child: ChildElement) => {
+    const searchResults = children.filter((child: ChildElement<T>) => {
             return child.name ? child.name.includes(searchValue.toLowerCase()) : child.username?.includes(searchValue.toLowerCase())
         })
-        .map((childElement: ChildElement) => {
+        .map((childElement: ChildElement<T>) => {
 
         if (!childElement) {
             return null

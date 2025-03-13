@@ -23,8 +23,6 @@ const BookclubPage = () => {
     const [activeTab, setActiveTab] = useState(0)
     const [showSubNav, setShowSubNav] = useState(false)
     const [newBookshelf, setNewBookshelf] = useState<string>('')
-    
-
     const tabContents = [{name: 'Bookshelves', id: 0}, {name: 'Current Read', id: 1}]
     
    
@@ -34,8 +32,6 @@ const BookclubPage = () => {
     console.log('BOOKCLUB DATA:', bookclub)
 
 
-    
-    
     const panels = [
         <BookshelfPanel 
             activeBookshelf={activeBookshelf} 
@@ -93,7 +89,7 @@ const BookclubPage = () => {
             <div className='bookclub-container'>
                 {isMember && (
                     <div className="bookclub-content-wrapper">
-                        <TopFacade id={parameters.id ?? ''} bookclub={bookclub}></TopFacade>
+                        <TopFacade></TopFacade>
                         <div className="tabs-wrapper">
                             <hr />
                             

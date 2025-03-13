@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { Bookclub } from '../../../../types'
+import { bookclubData } from '../../../common/Context/BookclubContext/BookclubContext'
 import BookclubBackground from '../../assets/bookclub-background.jpg'
 import FileUploadModal from '../../../common/Modals/FileUploadModal/FileUploadModal'
 import InviteModal from '../InviteModal/InviteModal'
@@ -9,14 +9,12 @@ import Button from '../../../common/Buttons/Button/Button'
 import './TopFacade.css'
 
 
-interface TopFacadeProps {
-    bookclub: Bookclub | null,
-    id: string
-}
-
-const TopFacade = ({bookclub, id}: TopFacadeProps) => {
 
 
+const TopFacade = () => {
+
+    const { bookclub, parameters } = bookclubData()
+    const { id } = parameters
     const uploadFileRef = useRef<HTMLDialogElement>(null)
     const inviteRef = useRef<HTMLDialogElement>(null)
     const openImageModal = () => uploadFileRef.current?.showModal()
@@ -49,7 +47,6 @@ const TopFacade = ({bookclub, id}: TopFacadeProps) => {
                         <Button>Joined</Button>
                     </div>
                     <InviteModal
-                        id={id}
                         closeInviteModal={closeInviteModal}
                         inviteRef={inviteRef}
                     ></InviteModal>

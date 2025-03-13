@@ -2,6 +2,7 @@ import './InviteModal.css'
 import { ActiveUser } from '../../../../types'
 import { Ref, useState, useEffect } from 'react'
 import SearchFilter from '../../../common/SearchFilter/SearchFilter'
+import { bookclubData } from '../../../common/Context/BookclubContext/BookclubContext'
 import SearchFilterResults from '../../../common/SearchFilterResults/SearchFilterResults'
 import Button from '../../../common/Buttons/Button/Button'
 import { userData } from '../../../common/Context/UserContext/UserContext'
@@ -13,23 +14,23 @@ import axios from 'axios'
 interface InviteModalProps {
 
     closeInviteModal: () => void,
-    inviteRef: Ref<HTMLDialogElement>,
-    id: string
+    inviteRef: Ref<HTMLDialogElement>
 
 }
 
 
-const InviteModal = ({ closeInviteModal, inviteRef, id }: InviteModalProps) => {
+const InviteModal = ({ closeInviteModal, inviteRef }: InviteModalProps) => {
 
-
+    const { parameters } = bookclubData()
+    const { id } = parameters
     const [searchValue, setSearchValue] = useState('')
     const [userSearchResults, setUserSearchResults] = useState<ActiveUser[]>([])
-    const [selectedUser, setSelectedUser] = useState<number | string>('')
+    const [newMemberId, setNewMemberId] = useState<number>(NaN)
     const { activeUser } = userData()
 
 
-    const handleUserSelection = (id: number | string) => {
-        setSelectedUser(id)
+    const handleUserSelection = (id: number) => {
+        setNewMemberId(id)
     }
 
     useEffect(() => {
@@ -100,7 +101,7 @@ const InviteModal = ({ closeInviteModal, inviteRef, id }: InviteModalProps) => {
                         variant='user'
                         searchValue={searchValue}
                         handleSelection={handleUserSelection}
-                        selectedElement={selectedUser}
+                        selectedElement={newMemberId}
 
                     >
                         {userSearchResults}
@@ -112,7 +113,7 @@ const InviteModal = ({ closeInviteModal, inviteRef, id }: InviteModalProps) => {
             </section>
             <div className="button-wrapper">
                 <Button onClick={closeInviteModal}>Cancel</Button>
-                <Button onClick={async () => selectedUser && await inviteUser(selectedUser)}>Invite</Button>
+                <Button onClick={async () => newMemberId && await inviteUser(newMemberId)}>Invite</Button>
 
             </div>
         </dialog>
