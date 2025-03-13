@@ -15,23 +15,17 @@ import TopFacade from './components/TopFacade/TopFacade'
 import SearchBooksModal from './components/SearchBooksModal/SearchBooksModal'
 import Tabs from './components/Tabs/Tabs'
 
-
-
-
-
-
-
 const BookclubPage = () => {
 
     const { userBookclubs } = userData()
 
-    const { bookclub, bookshelves, parameters, setBookshelves } = bookclubData()
+    const { bookclub, bookshelves, parameters, newBookId, setBookshelves, setNewBookId, addBook } = bookclubData()
 
     const [activeBookshelf, setActiveBookshelf] = useState<number>(0)
     const [activeTab, setActiveTab] = useState(0)
     const [subNav, setSubNav] = useState(false)
     const [newBookshelf, setNewBookshelf] = useState<string>('')
-    const [selectedBook, setSelectedBook] = useState<string>('')
+    
     const [deleteBookshelf, setDeleteBookshelf] = useState<string>('')
 
     const tabContents = ['Bookshelves', 'Current Read']
@@ -87,7 +81,7 @@ const BookclubPage = () => {
             activeBookshelf={activeBookshelf} 
             bookshelves={bookshelves} 
             deleteTitle={deleteTitle}
-            selectedBook={selectedBook}
+            selectedBook={newBookId}
             setDeleteBookshelf={setDeleteBookshelf} 
         />,
         <CurrentReadPanel />
@@ -133,34 +127,7 @@ const BookclubPage = () => {
         
     }
 
-    const addBook = async (bookshelf: Bookshelf) => {
-
-        const bookshelfRequest = {
-            book_id: selectedBook
-        } 
-
-        try {
-            const response = await axios.put(`http://localhost:8000/api/bookclub/addBook/${bookshelf.bookshelf_id}`, bookshelfRequest)
-
-
-            if (response.status == 200) {
-                console.log("axios add book response:", response.data)
-
-                setBookshelves(prevBookshelves => 
-                    prevBookshelves.map(bs =>
-                        bs.bookshelf_id === bookshelf.bookshelf_id ? response.data : bs
-                    )
-                )
-                closeSearchBooks()
-
-            } else {
-                console.log("There was an error with the response:", response.statusText)
-            }
-            
-        } catch(err) {
-            console.log('There was an error adding your book:', err)
-        }
-    }
+  
 
 
     console.log('BOOKSHELVES DATA:', bookshelves)
@@ -191,8 +158,8 @@ const BookclubPage = () => {
                                     modalRef={searchBooksRef}
                                     closeModal={closeSearchBooks}
                                     bookshelves={bookshelves}
-                                    setSelectedBook={setSelectedBook}
-                                    selectedBook={selectedBook}
+                                    setSelectedBook={setNewBookId}
+                                    selectedBook={newBookId}
                                     addBook={addBook}
                                 
                                 >
@@ -211,7 +178,6 @@ const BookclubPage = () => {
                                     addBookshelf={addBookshelf}
                                     handleNewBookshelf={handleNewBookshelf}
                                     newBookshelf={newBookshelf}
-                                    setDeleteBookshelf={setDeleteBookshelf}
                                     
                                 >
                                 </SubNavbar>

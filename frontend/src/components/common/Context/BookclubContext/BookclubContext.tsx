@@ -1,5 +1,6 @@
 import { useState, useEffect, createContext, useContext, ReactNode, Dispatch, SetStateAction } from 'react'
 import {useParams } from 'react-router-dom'
+import axios from 'axios'
 import { Bookclub, Bookshelf, Book } from '../../../../types'
 
 
@@ -9,11 +10,12 @@ type BookclubProviderProps = {children: ReactNode}
 interface ContextProps {
     bookclub: Bookclub,
     bookshelves: Bookshelf[],
-    books: Book[],
     parameters: Readonly<Partial<{ id: string; }>>,
+    newBookId: string,
     setBookclub: Dispatch<SetStateAction<Bookclub>>,
     setBookshelves: Dispatch<SetStateAction<Bookshelf[]>>,
-    setBooks: Dispatch<SetStateAction<Book[]>>
+    setNewBookId: Dispatch<SetStateAction<string>>,
+    addBook: (bookshelf: Bookshelf) => Promise<void>
 }
 
 
@@ -42,11 +44,12 @@ export const BookclubContext = createContext<ContextProps>({
 
     },
     bookshelves: [],
-    books: [],
     parameters: {id: ''},
+    newBookId: '',
     setBookclub: () => {},
     setBookshelves: () => [],
-    setBooks: () => []
+    setNewBookId: () => '',
+    addBook: async(bookshelf) => {}
 
 })
 
@@ -80,8 +83,9 @@ const BookclubDataProvider = ({ children } : BookclubProviderProps) => {
     })
 
     const [bookshelves, setBookshelves] = useState<Bookshelf[]>([])
-    const [books, setBooks] = useState<Book[]>([])
     const parameters = useParams<{id: string}>()
+    const [newBookId, setNewBookId] = useState<string>('')
+    
 
 
     useEffect(() => {
@@ -118,9 +122,38 @@ const BookclubDataProvider = ({ children } : BookclubProviderProps) => {
 
     }, [])
 
+    const addBook = async (bookshelf: Bookshelf) => {
+
+        const bookshelfRequest = {
+            book_id: newBookId
+        } 
+
+        try {
+            const response = await axios.put(`http://localhost:8000/api/bookclub/addBook/${bookshelf.bookshelf_id}`, bookshelfRequest)
+
+
+            if (response.status == 200) {
+                console.log("axios add book response:", response.data)
+
+                setBookshelves(prevBookshelves => 
+                    prevBookshelves.map(bs =>
+                        bs.bookshelf_id === bookshelf.bookshelf_id ? response.data : bs
+                    )
+                )
+                // closeSearchBooks()
+
+            } else {
+                console.log("There was an error with the response:", response.statusText)
+            }
+            
+        } catch(err) {
+            console.log('There was an error adding your book:', err)
+        }
+    }
+
     return (
         <BookclubContext.Provider
-            value={{bookclub, bookshelves, books, parameters, setBookclub, setBookshelves, setBooks}}
+            value={{bookclub, bookshelves, parameters, newBookId, setBookclub, setBookshelves, setNewBookId, addBook}}
         >
             {children}
         </BookclubContext.Provider>
