@@ -42,13 +42,7 @@ const BookshelfPanel = ({activeBookshelf, bookshelves}: BookshelfPanelProps) => 
                 <SearchIcon></SearchIcon>
             </Button>
              <SearchBooksModal
-                modalRef={searchBooksRef}
-                closeModal={closeSearchBooks}
-                bookshelves={bookshelves}
-                setSelectedBook={setNewBookId}
-                selectedBook={newBookId}
-                addBook={addBook}
-                                
+                bookshelves={bookshelves}                
             >
 
             </SearchBooksModal>
