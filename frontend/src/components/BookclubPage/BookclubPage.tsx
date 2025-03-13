@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import {useParams } from 'react-router-dom'
 import { Bookclub, Bookshelf } from '../../types'
-import { userData } from '../../components/common/UserContext'
+import { userData } from '../../components/common/Context/UserContext/UserContext'
 import { SearchIcon } from '../common/Icons'
 import Button from '../common/Buttons/Button/Button'
 import BookshelfPanel from '../common/BookshelfPanel/BookshelfPanel'
@@ -42,7 +42,7 @@ const BookclubPage = () => {
     const openSearchBooks = () => searchBooksRef.current?.showModal()
     const closeSearchBooks = () => searchBooksRef.current?.close()
 
-
+    console.log('BOOKCLUB DATA:', bookclub)
     useEffect(() => {
 
         try {

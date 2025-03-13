@@ -4,7 +4,7 @@ import { Ref, useState, useEffect } from 'react'
 import SearchFilter from '../../../common/SearchFilter/SearchFilter'
 import SearchFilterResults from '../../../common/SearchFilterResults/SearchFilterResults'
 import Button from '../../../common/Buttons/Button/Button'
-import { userData } from '../../../common/UserContext'
+import { userData } from '../../../common/Context/UserContext/UserContext'
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios'
 

@@ -1,7 +1,7 @@
 import {createContext, useEffect, useState, Dispatch, SetStateAction, ReactNode, useContext} from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Bookclub, Invitation, Bookshelf, HandleLogin, ActiveUser, AuthToken } from '../../types'
-import { returnErrors } from '../../messages.tsx';
+import { Bookclub, Invitation, Bookshelf, HandleLogin, ActiveUser, AuthToken } from '../../../../types.ts'
+import { returnErrors } from '../../../../messages.tsx';
 
 
 
@@ -50,7 +50,7 @@ export const UserContext = createContext<UserContextProps>({
     handleLogin: async () => {}
 });
 
-const UserDataProvider: React.FC<UserProviderProps> = ({ children }: UserProviderProps) => {
+const UserDataProvider = ({ children }: UserProviderProps) => {
 
     const navigate = useNavigate()
     const [userBookclubs, setUserBookclubs] = useState<Bookclub[]>([])

@@ -1,7 +1,7 @@
 import { useState, FC, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { HandleLogout, Author, Book, Bookclub, SearchResultsArray } from '../../types.ts'
-import { userData } from '../common/UserContext.tsx'
+import { userData } from '../common/Context/UserContext/UserContext.tsx'
 import Searchbar from '../Searchbar/Searchbar.tsx'
 import SearchResults from '../SearchbarResults/SearchbarResults.tsx'
 import './Navbar.css'

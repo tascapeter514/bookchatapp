@@ -1,5 +1,5 @@
 import './BookclubsPanel.css'
-import { userData } from '../../../common/UserContext.tsx'
+import { userData } from '../../../common/Context/UserContext/UserContext'
 import { weeksAgo } from '../../../common/functions.tsx'
 import Button from '../../../common/Buttons/Button/Button.tsx'
 import ProfileIcons from '../../../common/ProfileIcons/ProfileIcons.tsx'

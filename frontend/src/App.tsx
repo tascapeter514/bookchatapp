@@ -9,7 +9,7 @@ import Login from './components/LogIn/Login.tsx'
 import UserDashboard from './components/UserDashboard/UserDashboard.tsx'
 import AuthRequired from './components/common/authRequired.tsx'
 import ErrorBoundary from './components/common/ErrorBoundary.tsx'
-import UserDataProvider  from './components/common/UserContext.tsx'
+import UserDataProvider  from './components/common/Context/UserContext/UserContext.tsx'
 import './App.css';
 
 

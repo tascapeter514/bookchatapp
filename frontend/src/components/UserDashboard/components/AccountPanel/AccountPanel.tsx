@@ -1,7 +1,7 @@
 import './AccountPanel.css'
 import { ActiveUser } from '../../../../types'
 import { useState } from 'react'
-import { userData } from '../../../common/UserContext'
+import { userData } from '../../../common/Context/UserContext/UserContext'
 import Header from '../../../common/Header/Header'
 import SubHeader from '../../../common/SubHeader/SubHeader'
 import Button from '../../../common/Buttons/Button/Button'

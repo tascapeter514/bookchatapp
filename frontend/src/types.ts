@@ -85,8 +85,8 @@ export interface Bookclub {
     bookclub_id: string,
     name: string,
     members: ActiveUser[],
-    administrator: ActiveUser,
-    bookshelves: Bookshelf[],
+    administrator: number,
+    bookshelves?: Bookshelf[],
     currentRead: Book,
     cover_image: string
 

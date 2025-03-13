@@ -1,6 +1,6 @@
 import './MessagePanel.css'
 import { Link } from 'react-router-dom'
-import { userData } from '../../../common/UserContext.tsx'
+import { userData } from '../../../common/Context/UserContext/UserContext'
 import { Invitation} from '../../../../types.ts'
 import { formatDate } from '../../../common/functions.tsx'
 import Header from '../../../common/Header/Header.tsx'
