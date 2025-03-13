@@ -2,9 +2,10 @@ import './BookclubPage.css'
 import axios from 'axios'
 import { useState, useEffect, useRef } from 'react'
 import { v4 as uuidv4 } from 'uuid'
-import {useParams } from 'react-router-dom'
+// import {useParams } from 'react-router-dom'
 import { Bookclub, Bookshelf } from '../../types'
 import { userData } from '../../components/common/Context/UserContext/UserContext'
+import { bookclubData } from '../../components/common/Context/BookclubContext/BookclubContext'
 import { SearchIcon } from '../common/Icons'
 import Button from '../common/Buttons/Button/Button'
 import BookshelfPanel from '../common/BookshelfPanel/BookshelfPanel'
@@ -23,8 +24,11 @@ import Tabs from './components/Tabs/Tabs'
 const BookclubPage = () => {
 
     const { userBookclubs } = userData()
-    const [bookclub, setBookclub] = useState<Bookclub | null>(null)
-    const [bookshelves, setBookshelves] = useState<Bookshelf[] | []>([])
+
+    const { bookclub, bookshelves, parameters, setBookclub, setBookshelves } = bookclubData()
+
+    // const [bookclub, setBookclub] = useState<Bookclub | null>(null)
+    // const [bookshelves, setBookshelves] = useState<Bookshelf[] | []>([])
     const [activeBookshelf, setActiveBookshelf] = useState<number>(0)
     const [activeTab, setActiveTab] = useState(0)
     const [subNav, setSubNav] = useState(false)
@@ -36,46 +40,14 @@ const BookclubPage = () => {
     
    
     const [isMember, setIsMember] = useState(false)
-    const parameters = useParams<{id: string}>()
+    
 
     const searchBooksRef = useRef<HTMLDialogElement>(null)
     const openSearchBooks = () => searchBooksRef.current?.showModal()
     const closeSearchBooks = () => searchBooksRef.current?.close()
 
     console.log('BOOKCLUB DATA:', bookclub)
-    useEffect(() => {
 
-        try {
-            const socket = new WebSocket(`ws://localhost:8000/ws/bookclub/${parameters.id}`)
-
-            socket.onmessage = (event) => {
-                const data = JSON.parse(event.data)
-                console.log('web socket data:', data)
-
-                if (data.type == 'get_bookclub_data') {
-
-                    const  bookshelvesData  = data.bookshelves_data
-                    const bookclubData = data.bookclub_data
-                    setBookclub(bookclubData)
-                    setBookshelves(bookshelvesData)
-                    
-                }
-            }
-
-            socket.onerror = (error) => {
-                console.error('Websocket bookclub data error', error)
-            }
-
-            socket.onopen = () => console.log('Book data websocket connected')
-            socket.onclose = () => console.log('Book data websocket disconnected')
-
-            return () => socket.close()
-
-        } catch(err) {
-            console.error('Bookclub data websocket failed to initialize:', err)
-        }
-
-    }, [])
 
     
     const deleteTitle = async (book_id: string) => {
