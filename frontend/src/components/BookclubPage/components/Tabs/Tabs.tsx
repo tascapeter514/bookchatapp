@@ -35,9 +35,8 @@ const Tabs = ({ activeTab, contents, showSubNav, setActiveTab, setShowSubNav }: 
         }
 
         return (
-            <>
+            <ul className='tabs-list'>
                 {tabContent.name === 'Bookshelves' && (
-                    // CHANGE TAB KEYS TO IDS
 
 
                     <li 
@@ -76,7 +75,7 @@ const Tabs = ({ activeTab, contents, showSubNav, setActiveTab, setShowSubNav }: 
             
             
             
-            </>
+            </ul>
         )
 
         
@@ -88,10 +87,7 @@ const Tabs = ({ activeTab, contents, showSubNav, setActiveTab, setShowSubNav }: 
     return(
 
         <div className="tabs-container">
-            <ul arial-labelledby='tabs-title'>
                 {tabElements}
-
-            </ul>
         </div>
 
 

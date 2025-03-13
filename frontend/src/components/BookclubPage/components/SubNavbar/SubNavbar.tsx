@@ -9,12 +9,11 @@ interface SubNavbarProps {
     bookshelves: Bookshelf[] | null,
     subNav: boolean,
     setActiveBookshelf: Dispatch<SetStateAction<number>>,
-    
-
 }
 
-// Add Bookshelf
+
 const SubNavbar = ({bookshelves, subNav, setActiveBookshelf }: SubNavbarProps) => {
+
     const bookshelfRef = useRef<HTMLDialogElement>(null)
     const openBookshelfModal = () => bookshelfRef.current?.showModal()
     const closeBookshelfModal = () => bookshelfRef.current?.close()

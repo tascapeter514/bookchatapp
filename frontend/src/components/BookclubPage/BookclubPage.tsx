@@ -23,9 +23,6 @@ const BookclubPage = () => {
     const tabContents = [{name: 'Bookshelves', id: 0}, {name: 'Current Read', id: 1}]
     const [isMember, setIsMember] = useState(false)
     
-
-
-
     const panels = [
         <BookshelfPanel 
             activeBookshelf={activeBookshelf} 
@@ -53,17 +50,14 @@ const BookclubPage = () => {
                         <TopFacade></TopFacade>
                         <div className="tabs-wrapper">
                             <hr />
-                            
-                            <div className="tabs-bar-wrapper">
-                                <Tabs
-                                    showSubNav={showSubNav}
-                                    setShowSubNav={setShowSubNav} 
-                                    contents={tabContents} 
-                                    setActiveTab={setActiveTab} 
-                                    activeTab={activeTab}
-                                >
+                            <Tabs
+                                showSubNav={showSubNav}
+                                setShowSubNav={setShowSubNav} 
+                                contents={tabContents} 
+                                setActiveTab={setActiveTab} 
+                                activeTab={activeTab}
+                            >
                                 </Tabs>
-                            </div>
                             <div 
                                 className={`subnav-container ${showSubNav ? 'active' : ''}`}
 

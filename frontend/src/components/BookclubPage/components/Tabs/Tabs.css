@@ -5,16 +5,19 @@
     padding: .5em;
     width: 100%;
     background-color: inherit;
+    display: flex;
+    gap: 1rem;
     
 
 
 }
 
-.tabs-container > ul {
+.tabs-list {
     display: flex;
     margin: 0;
     padding: 0;
     gap: 1rem;
+
 
 }
 
