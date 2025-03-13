@@ -5,51 +5,51 @@ import { RightDropDownIcon } from '../../../common/Icons'
 
 interface TabsProps {
     activeTab: number,
-    contents: string[],
-    subNav: boolean,
-    setSubNav: Dispatch<SetStateAction<boolean>>,
+    contents: [{name: string, id: number}],
+    showSubNav: boolean,
+    setShowSubNav: Dispatch<SetStateAction<boolean>>,
     setActiveTab: Dispatch<SetStateAction<number>>
 }
 
 
-const Tabs = ({ activeTab, contents, subNav, setActiveTab, setSubNav }: TabsProps) => {
+const Tabs = ({ activeTab, contents, showSubNav, setActiveTab, setShowSubNav }: TabsProps) => {
 
     const [isRotated, setIsRotated] = useState(false);
 
 
-    const tabElements = contents.map((tabContent: string, index: number) => {
+    const tabElements = contents.map((tabContent: {name: string, id: number}) => {
 
         const toggleDropdown = () => {
-            setSubNav(prev => !prev)
+            setShowSubNav (prev => !prev)
             setIsRotated(prev => !prev)
         }
 
         const toggleTab = () => {
-            setSubNav(false)
+            setShowSubNav (false)
             setIsRotated(false)
-            setActiveTab(index)
+            setActiveTab(tabContent.id)
 
         }
 
         return (
             <>
-                {tabContent === 'Bookshelves' && (
+                {tabContent.name === 'Bookshelves' && (
                     // CHANGE TAB KEYS TO IDS
 
 
                     <li 
-                        key={index}
-                        onClick={() => setActiveTab(index)}
-                        className={activeTab === index ? 'active': ''}
+                        key={tabContent.id}
+                        onClick={() => setActiveTab(tabContent.id)}
+                        className={activeTab === tabContent.id ? 'active': ''}
                     >
                         <a 
-                            id={`tab-${index}`} 
-                            href={`#${tabContent.toLowerCase()}`}
+                            id={`tab-${tabContent.id}`} 
+                            href={`#${tabContent.name.toLowerCase()}`}
                         >
-                            {tabContent}
+                            {tabContent.name}
                             <RightDropDownIcon 
                                 aria-controls='bookshelves-subnav'
-                                aria-expanded={subNav}
+                                aria-expanded={showSubNav}
                                 onClick={toggleDropdown}
                                 isRotated={isRotated}
                             >
@@ -60,13 +60,13 @@ const Tabs = ({ activeTab, contents, subNav, setActiveTab, setSubNav }: TabsProp
                     </li>
                 )}
 
-                {tabContent !== 'Bookshelves' && 
-                    <li key={index}                 
+                {tabContent.name !== 'Bookshelves' && 
+                    <li key={tabContent.id}                 
                         onClick={toggleTab}
-                        className={activeTab === index ? 'active': ''}
+                        className={activeTab === tabContent.id ? 'active': ''}
                     >
-                        <a id={`tab-${index}`} href={`#${tabContent.toLowerCase()}`}>
-                            {tabContent}
+                        <a id={`tab-${tabContent.id}`} href={`#${tabContent.name.toLowerCase()}`}>
+                            {tabContent.name}
                         </a>
                     </li>
                 }

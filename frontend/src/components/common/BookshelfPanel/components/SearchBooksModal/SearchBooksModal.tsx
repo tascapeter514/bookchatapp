@@ -22,12 +22,6 @@ const SearchBooksModal = ({ bookshelves }: SearchBooksModalProps) => {
     const [newBookId, setNewBookId] = useState('')
     const [currBkslfId, setCurrBkslfId] = useState<string>('')
         
-    
-
-
-
-
-
     return (
         <dialog className='search-books-modal' ref={searchBooksRef}>
             <h3>Add a new title to your bookclub</h3>

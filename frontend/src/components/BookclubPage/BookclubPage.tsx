@@ -19,12 +19,11 @@ const BookclubPage = () => {
     const { bookclub, bookshelves, parameters, setBookshelves } = bookclubData()
     const [activeBookshelf, setActiveBookshelf] = useState<number>(0)
     const [activeTab, setActiveTab] = useState(0)
-    const [subNav, setSubNav] = useState(false)
+    const [showSubNav, setShowSubNav] = useState(false)
     const [newBookshelf, setNewBookshelf] = useState<string>('')
     
-    
 
-    const tabContents = ['Bookshelves', 'Current Read']
+    const tabContents = [{name: 'Bookshelves', id: 0}, {name: 'Current Read', id: 1}]
     
    
     const [isMember, setIsMember] = useState(false)
@@ -35,7 +34,6 @@ const BookclubPage = () => {
 
     
     
-// MIGRATE DELETE TO BOOKSHELF PANEL
     const panels = [
         <BookshelfPanel 
             activeBookshelf={activeBookshelf} 
@@ -99,8 +97,8 @@ const BookclubPage = () => {
                             
                             <div className="tabs-bar-wrapper">
                                 <Tabs
-                                    subNav={subNav}
-                                    setSubNav={setSubNav} 
+                                    showSubNav={showSubNav}
+                                    setShowSubNav={setShowSubNav} 
                                     contents={tabContents} 
                                     setActiveTab={setActiveTab} 
                                     activeTab={activeTab}
@@ -111,11 +109,11 @@ const BookclubPage = () => {
                                 
                             </div>
                             <div 
-                                className={`subnav-container ${subNav ? 'active' : ''}`}
+                                className={`subnav-container ${showSubNav ? 'active' : ''}`}
 
                             >
                                 <SubNavbar 
-                                    subNav={subNav} 
+                                    subNav={showSubNav} 
                                     bookshelves={bookshelves}
                                     setActiveBookshelf={setActiveBookshelf}
                                     addBookshelf={addBookshelf}
