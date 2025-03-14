@@ -1,4 +1,4 @@
-import { createContext, useContext,  ReactNode, useRef, Ref, Dispatch } from 'react'
+import { createContext, useContext,  ReactNode, useRef, Ref, useReducer } from 'react'
 import { Bookshelf } from '../../../../types'
 import { bookclubData } from '../BookclubContext/BookclubContext'
 import axios from 'axios'
@@ -24,12 +24,12 @@ export const BookshelfContext = createContext<ContextProps>({
 
 const BookshelfProvider = ({ children }: ProviderProps) => {
     
-    const { setBookshelves } = bookclubData()
+    const { bookshelves, setBookshelves } = bookclubData()
     const searchBooksRef = useRef<HTMLDialogElement>(null)
     const openSearchBooks = () => searchBooksRef.current?.showModal()
     const closeSearchBooks = () => searchBooksRef.current?.close()
 
-
+    const [bookshelfState, dispatch] = useReducer(bookshelfReducer, bookshelves)
 
     const deleteBook = async (book_id: string, bookshelf_id: string) => {
 
@@ -116,21 +116,21 @@ export const bookshelfData = () => useContext(BookshelfContext)
 
 type Action = { type: "ADD", bookshelf: Bookshelf } | { type: "DELETE", bookshelf: Bookshelf, book_id: string} 
  
-function bookshelfReducer(bookshelves: Bookshelf[], action: Action) {
+function bookshelfReducer(bookshelves: Bookshelf[], action: Action)  {
     
     switch (action.type) {
         case "ADD": {
-            return bookshelves.map(bookshelf => {
+            return bookshelves.map(bookshelf => 
 
                 bookshelf.bookshelf_id === action.bookshelf.bookshelf_id ?
                 action.bookshelf : bookshelf  
-            })
+            )
         }
         case "DELETE": {
-            return bookshelves.map(bookshelf => {
+            return bookshelves.map(bookshelf => 
                 bookshelf.bookshelf_id === action.bookshelf.bookshelf_id ?
                 {...bookshelf, titles: bookshelf.titles?.filter(title => title.title_id !== action.book_id)} : bookshelf
-            })
+            )
         }
     
 
