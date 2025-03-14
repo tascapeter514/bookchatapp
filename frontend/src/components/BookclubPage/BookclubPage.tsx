@@ -64,7 +64,6 @@ const BookclubPage = () => {
                             >
                                 <SubNavbar 
                                     subNav={showSubNav} 
-                                    bookshelves={bookshelves}
                                     setActiveBookshelf={setActiveBookshelf}
                                 >
                                 </SubNavbar>

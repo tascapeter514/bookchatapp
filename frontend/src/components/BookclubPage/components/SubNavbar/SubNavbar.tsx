@@ -1,19 +1,19 @@
 import { useRef, Dispatch, SetStateAction } from 'react'
-import { Bookshelf } from '../../../../types'
+import { bookclubData } from '../../../common/Context/BookclubContext/BookclubContext'
 import BookshelfModal from '../../../common/Modals/BookshelfModal/BookshelfModal'
 import Button from '../../../common/Buttons/Button/Button'
 import './SubNavbar.css'
 
 
 interface SubNavbarProps {
-    bookshelves: Bookshelf[] | null,
     subNav: boolean,
     setActiveBookshelf: Dispatch<SetStateAction<number>>,
 }
 
 
-const SubNavbar = ({bookshelves, subNav, setActiveBookshelf }: SubNavbarProps) => {
+const SubNavbar = ({ subNav, setActiveBookshelf }: SubNavbarProps) => {
 
+    const { bookshelves } = bookclubData()
     const bookshelfRef = useRef<HTMLDialogElement>(null)
     const openBookshelfModal = () => bookshelfRef.current?.showModal()
     const closeBookshelfModal = () => bookshelfRef.current?.close()

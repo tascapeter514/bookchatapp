@@ -1,4 +1,5 @@
-import { createContext, useContext,  ReactNode, useRef, Ref } from 'react'
+import { createContext, useContext,  ReactNode, useRef, Ref, Dispatch } from 'react'
+import { Bookshelf } from '../../../../types'
 import { bookclubData } from '../BookclubContext/BookclubContext'
 import axios from 'axios'
 
@@ -27,6 +28,8 @@ const BookshelfProvider = ({ children }: ProviderProps) => {
     const searchBooksRef = useRef<HTMLDialogElement>(null)
     const openSearchBooks = () => searchBooksRef.current?.showModal()
     const closeSearchBooks = () => searchBooksRef.current?.close()
+
+
 
     const deleteBook = async (book_id: string, bookshelf_id: string) => {
 
@@ -62,9 +65,6 @@ const BookshelfProvider = ({ children }: ProviderProps) => {
 
     }
 
-
-
-
     const addBook = async (book_id: string, bookshelf_id: string) => {
 
         const bookshelfRequest = {
@@ -83,7 +83,7 @@ const BookshelfProvider = ({ children }: ProviderProps) => {
                         bs.bookshelf_id === bookshelf_id ? response.data : bs
                     )
                 )
-                // closeSearchBooks()
+                
 
             } else {
                 console.log("There was an error with the response:", response.statusText)
@@ -112,3 +112,34 @@ const BookshelfProvider = ({ children }: ProviderProps) => {
 export default BookshelfProvider
 
 export const bookshelfData = () => useContext(BookshelfContext)
+
+
+type Action = { type: "ADD", bookshelf: Bookshelf } | { type: "DELETE", bookshelf: Bookshelf, book_id: string} 
+ 
+function bookshelfReducer(bookshelves: Bookshelf[], action: Action) {
+    
+    switch (action.type) {
+        case "ADD": {
+            return bookshelves.map(bookshelf => {
+
+                bookshelf.bookshelf_id === action.bookshelf.bookshelf_id ?
+                action.bookshelf : bookshelf  
+            })
+        }
+        case "DELETE": {
+            return bookshelves.map(bookshelf => {
+                bookshelf.bookshelf_id === action.bookshelf.bookshelf_id ?
+                {...bookshelf, titles: bookshelf.titles?.filter(title => title.title_id !== action.book_id)} : bookshelf
+            })
+        }
+    
+
+        default: {
+            throw new Error(`Unknown action: ${(action as {type: string}).type}`)
+        }
+
+        }
+
+    }
+
+
