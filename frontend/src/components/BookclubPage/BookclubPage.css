@@ -9,16 +9,7 @@
     
 }
 
-/* .tabs-wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: .25rem;
-    border: 1px solid lime;
 
-
-} */
 
 .bookclub-content-wrapper hr {
     margin-block: .5em;
@@ -40,14 +31,6 @@
 }
 
 
-
-
-.bookclub-panels-container {
-    width: 100%;
-    max-width: 1100px;
-    margin: 1em auto 0 auto;
-    
-}
 
 
 

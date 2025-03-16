@@ -67,14 +67,10 @@ const BookclubPage = () => {
                                 >
                                 </SubNavbar>
                             </div>
-
-                           
-
-                        <div className="bookclub-panels-container">
                             <BookshelfProvider>
                                 <PanelComponent />
                             </BookshelfProvider>
-                        </div>
+
 
                     </div>
                 )}
