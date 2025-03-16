@@ -1,4 +1,3 @@
-
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar.tsx'
 import Homepage from './components/Homepage/Homepage.tsx'
@@ -11,6 +10,7 @@ import AuthRequired from './components/common/authRequired.tsx'
 import ErrorBoundary from './components/common/ErrorBoundary.tsx'
 import UserDataProvider  from './components/common/Context/UserContext/UserContext.tsx'
 import BookclubDataProvider from './components/common/Context/BookclubContext/BookclubContext.tsx'
+import CheckMembers from './components/common/CheckMembers.tsx'
 import './App.css';
 
 
@@ -30,11 +30,17 @@ function App() {
                 <Route path='/userDashboard' element={<ErrorBoundary><UserDashboard 
                    /></ErrorBoundary>}></Route>
                 
-                  <Route path='/bookclub/:id' element={<BookclubDataProvider><BookclubPage /></BookclubDataProvider>}></Route>
+                  <Route path='/bookclub/:id' element={
+                    <BookclubDataProvider>
+                      <CheckMembers><BookclubPage /></CheckMembers>
+                      </BookclubDataProvider>
+                  }>
+                  </Route>
             </Route>
       </Routes>
       </UserDataProvider>
     </BrowserRouter>
+    
 
 
   );

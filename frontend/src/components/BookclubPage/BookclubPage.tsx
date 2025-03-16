@@ -1,7 +1,7 @@
 import './BookclubPage.css'
 
 import { useState, useEffect } from 'react'
-import { Bookclub } from '../../types'
+import { Bookclub, ActiveUser } from '../../types'
 import { userData } from '../../components/common/Context/UserContext/UserContext'
 import { bookclubData } from '../../components/common/Context/BookclubContext/BookclubContext'
 import BookshelfPanel from '../common/BookshelfPanel/BookshelfPanel'
@@ -15,13 +15,22 @@ import Tabs from './components/Tabs/Tabs'
 
 const BookclubPage = () => {
 
-    const { userBookclubs } = userData()
-    const { bookshelves, parameters } = bookclubData()
+    
+    const { bookshelves, bookclub } = bookclubData()
+    // const [isMember, membershipCheck] = useState(false)
+
+    // membershipCheck(() => {
+    //     return bookclub.members.some((member: ActiveUser) => member.id === activeUser.id)
+    // })
+
+
+
+    
     const [activeTab, setActiveTab] = useState(0)
     const [showSubNav, setShowSubNav] = useState(false)
     const [activeBookshelf, setActiveBookshelf] = useState<number>(0)
     const tabContents = [{name: 'Bookshelves', id: 0}, {name: 'Current Read', id: 1}]
-    const [isMember, setIsMember] = useState(false)
+    
     
     const panels = [
         <BookshelfPanel 
@@ -33,20 +42,23 @@ const BookclubPage = () => {
     const PanelComponent = () => panels[activeTab]
 
 
-    useEffect(() => {
-        setIsMember(() => {
-            return  userBookclubs.map((userBookclub: Bookclub) => userBookclub.bookclub_id).some(userBookclubId => userBookclubId === parameters.id)
-        })
 
-        const lastVisited = new Date().toISOString()
-        localStorage.setItem(`lastVisited/${parameters.id}`, lastVisited)
 
-    }, [userBookclubs])
+    // useEffect(() => {
+    //     setIsMember(() => {
+    //         return  userBookclubs.map((userBookclub: Bookclub) => userBookclub.bookclub_id).some(userBookclubId => userBookclubId === parameters.id)
+    //     })
+
+    //     const lastVisited = new Date().toISOString()
+    //     localStorage.setItem(`lastVisited/${parameters.id}`, lastVisited)
+
+    // }, [userBookclubs])
+
+    console.log('CURRENT BOOKCLUB DATA:', bookclub)
 
     return(
             <div className='bookclub-container'>
-                {isMember && (
-                    <div className="bookclub-content-wrapper">
+                <div className="bookclub-content-wrapper">
                         <TopFacade></TopFacade>
                             <hr />
                             <Tabs
@@ -70,23 +82,28 @@ const BookclubPage = () => {
                             <BookshelfProvider>
                                 <PanelComponent />
                             </BookshelfProvider>
-
-
                     </div>
-                )}
-
-                {!isMember && (
-                    <div>
-                        <h1>We're sorry.</h1>
-                        <p>You must be a member to view the book club.</p>
-                    </div>
-                ) }
-                </div>
+                
+                
+            </div>
         
     )
 }
 
 
 export default BookclubPage
+
+// {isMember && (
+                    
+// )}
+
+// {!isMember && (
+//     <div>
+//         <h1>We're sorry.</h1>
+//         <p>You must be a member to view the book club.</p>
+//     </div>
+// )}
+
+
 
 

@@ -11,10 +11,6 @@
 .bookshelves-subnav.active {
     transform: translateY(0);
     transition: transform 500ms ease;
-    
-    
-    
-    
 }
 
 .bookshelf-titles-list {
