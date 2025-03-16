@@ -7,7 +7,7 @@ import Button from '../../../common/Buttons/Button/Button'
 
 const AccountPanel = () => {
     
-    const { activeUser, updateContact } = userData()
+    const { activeUser, changeContact, changePassword } = userData()
 
     console.log('active user:', activeUser)
 
@@ -19,6 +19,11 @@ const AccountPanel = () => {
         emailAddress: activeUser.email || ''
     })
 
+    const [passwordInfo, setPasswordInfo] = useState({
+        userId: activeUser.id,
+        currentPassword: '',
+        newPassword: ''
+    })
 
     function handleChangeContact(event: ChangeEvent<HTMLInputElement>) {
         const { name, value } = event.target
@@ -28,11 +33,16 @@ const AccountPanel = () => {
             [name]: value
             
         }))
-
-        console.log('change contact event:', event)
     }
 
-    // console.log('contact info:', contact)
+    function handlePasswordChange(event: ChangeEvent<HTMLInputElement>) {
+        const { name, value } = event.target
+
+        setPasswordInfo(prev => ({
+            ...prev,
+            [name]: value
+        }))
+    }
     
 
     return(
@@ -40,7 +50,7 @@ const AccountPanel = () => {
         <section id='account' className='account-container' aria-labelledby='tab-3'>
             <Header>Account Details</Header>
             <SubHeader>Contact Info</SubHeader>
-            <form action={updateContact as any} className='contact-info-form'>
+            <form action={changeContact as any} className='contact-info-form'>
                 <input type="hidden" name='userId' value={contact.userId} />
                 <div className="form-field">
                     <label htmlFor="first_name">First Name</label>
@@ -57,16 +67,29 @@ const AccountPanel = () => {
                 <Button type='submit'>Save Changes</Button>
             </form>
             <SubHeader>Change Password</SubHeader>
-            <form action="" className='change-password-form'>
+            <form action={changePassword as any} className='change-password-form'>
+            <input type="hidden" name='userId' value={passwordInfo.userId} />
                 <div className="form-field">
                     <label htmlFor="current-password">Current Password</label>
-                    <input id='current-password' name='currentPassword' value={activeUser.password} />
+                    <input
+                        type='password' 
+                        id='current-password' 
+                        name='currentPassword' 
+                        value={passwordInfo.currentPassword} 
+                        onChange={handlePasswordChange} 
+                        required/>
+
                 </div>
                 <div className="form-field">
                     <label htmlFor="new_password">New Password</label>
-                    <input id='new_password' name='newPassword' />
+                    <input
+                        type='password'  
+                        id='new_password' 
+                        name='newPassword' 
+                        value={passwordInfo.newPassword} 
+                        onChange={handlePasswordChange} />
                 </div>
-                <Button>Save Changes</Button>
+                <Button type='submit'>Save Changes</Button>
             </form>
         </section>
     )

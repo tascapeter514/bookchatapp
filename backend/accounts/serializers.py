@@ -22,7 +22,7 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
 
         # SWITCH TO ID,USERNAME, EMAIL?
-        fields = ['id', 'username', 'profile', 'first_name', 'last_name', 'email', 'date_joined']
+        fields = ['id', 'username', 'profile', 'first_name', 'last_name', 'email', 'date_joined', 'password']
 
 # REGISTER SERIALIZER
 
