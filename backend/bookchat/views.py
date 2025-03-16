@@ -214,6 +214,14 @@ def delete_book(request, **kwargs):
 
     return Response(bookshelf_serializer.data)
 
+@api_view(['POST'])
+def add_user_bookshelf(request, id):
+    user = User.objects.get(id=id)
+
+@api_view(['POST'])
+def add_user_bookclub(request, id):
+    user = User.objects.get(id=id)
+
 
 
 

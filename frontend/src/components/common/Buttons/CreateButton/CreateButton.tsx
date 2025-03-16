@@ -1,12 +1,14 @@
 import './CreateButton.css'
 
-type CreateButtonProps = {children: string}
+interface CreateButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+    children: string
+}
 
 
-const CreateButton = ({children}: CreateButtonProps) => {
+const CreateButton = ({children, ...props}: CreateButtonProps) => {
     return (
 
-        <button className='create-button'>CREATE {children.toUpperCase()}</button>
+        <button className='create-button' {...props}>CREATE {children.toUpperCase()}</button>
 
     )
 }

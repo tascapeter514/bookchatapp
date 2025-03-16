@@ -7,7 +7,8 @@ import Button from '../../Buttons/Button/Button'
 
 interface BookshelfModalProps {
     bookshelfRef: Ref<HTMLDialogElement>,
-    closeBookshelfModal: () => void
+    closeBookshelfModal: () => void,
+    variant: 'user' | 'bookclub'
 }
 
 

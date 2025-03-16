@@ -40,6 +40,8 @@ urlpatterns = [
      path('api/author/<uuid:id>', get_author_data, name='get_author_data'),
      path('api/fileUpload/<uuid:id>', upload_file, name='upload_file'),
      path('api/book/delete/<uuid:id>', delete_book, name='delete_book'),
+     path('api/user/addBookshelf/<int:id>', add_user_bookshelf, name='add_user_bookshelf'),
+     path('api/user/addBookclub/<int:id>', add_user_bookclub, name='add_user_bookclub'),
      path('', include(router.urls))
 ]
 

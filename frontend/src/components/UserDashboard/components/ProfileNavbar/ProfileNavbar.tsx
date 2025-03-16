@@ -1,8 +1,9 @@
 import { userData } from '../../../common/Context/UserContext/UserContext'
-import { Dispatch, SetStateAction, useState } from 'react'
+import { Dispatch, SetStateAction, useState, useRef } from 'react'
 import CreateButton from '../../../common/Buttons/CreateButton/CreateButton'
 import { Bookshelf } from '../../../../types'
 import  BookshelfDropdown  from '../../../common/BookshelfDropdown/BookshelfDropdown'
+import BookshelfModal from '../../../common/Modals/BookshelfModal/BookshelfModal'
 import { RightDropDownIcon } from '../../../common/Icons'
 import { formatDate } from '../../../common/functions'
 import './ProfileNavbar.css'
@@ -20,6 +21,9 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
     const { activeUser, userBookshelves } = userData()
     const [activePanel, setActivePanel] = useState(false);
     const [isRotated, setIsRotated] = useState(false);
+    const bookshelfRef = useRef<HTMLDialogElement>(null)
+    const openBookshelfModal = () => bookshelfRef.current?.showModal()
+    const closeBookshelfModal = () => bookshelfRef.current?.close()
     const {day, month, year } = formatDate(activeUser.date_joined)
     const navbarContents = ['Account', 'Messages', 'Bookclubs', 'Bookshelves']
     const bookshelfOffset = navbarContents.length
@@ -86,6 +90,7 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
                         </li>
                         <CreateButton>Bookclub</CreateButton>
                         
+                        
          
                     </> 
                 )}
@@ -105,7 +110,8 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
                             </li>
                             <ul className='navbar-bookshelf-list'>{bookshelfElements}</ul>
                         </BookshelfDropdown>
-                        <CreateButton>Bookshelf</CreateButton>
+                        <CreateButton onClick={openBookshelfModal}>Bookshelf</CreateButton>
+                        <BookshelfModal></BookshelfModal>
                     </div>
                 )} 
            </>
