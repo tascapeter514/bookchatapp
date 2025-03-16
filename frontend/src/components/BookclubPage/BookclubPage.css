@@ -1,15 +1,26 @@
+.bookclub-content-wrapper {
+    border: 5px solid purple;
+    max-width: 1200px;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+    
+    
+}
 
-.tabs-wrapper {
+/* .tabs-wrapper {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: .25rem;
+    border: 1px solid lime;
 
 
-}
+} */
 
-.tabs-wrapper hr {
+.bookclub-content-wrapper hr {
     margin-block: .5em;
 
     border: 1px solid lightgrey;

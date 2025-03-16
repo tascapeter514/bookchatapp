@@ -48,7 +48,6 @@ const BookclubPage = () => {
                 {isMember && (
                     <div className="bookclub-content-wrapper">
                         <TopFacade></TopFacade>
-                        <div className="tabs-wrapper">
                             <hr />
                             <Tabs
                                 showSubNav={showSubNav}
@@ -70,7 +69,7 @@ const BookclubPage = () => {
                             </div>
 
                            
-                        </div>
+
                         <div className="bookclub-panels-container">
                             <BookshelfProvider>
                                 <PanelComponent />
