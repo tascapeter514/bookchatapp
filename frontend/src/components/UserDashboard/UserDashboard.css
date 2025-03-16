@@ -10,6 +10,7 @@
 }
 
 
+
 .dashboardNavbar-mobile-toggle, .dashboardNavbar-close-toggle {
     display: none;
 }
@@ -27,7 +28,6 @@
     gap: 1rem;
     margin-bottom: 1em;
     justify-content: center;
-    /* border: 1px solid purple; */
 }
 
 .userBook-element > * {

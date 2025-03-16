@@ -29,6 +29,8 @@ const BookclubPage = () => {
         <CurrentReadPanel />
     ]
     const PanelComponent = () => panels[activeTab]
+
+
     return(
             <div className='bookclub-container'>
                 <div className="bookclub-content-wrapper">
@@ -57,7 +59,7 @@ const BookclubPage = () => {
                     </BookshelfProvider>
                 </div>
             </div>
-        )
+            )
 }
 
 

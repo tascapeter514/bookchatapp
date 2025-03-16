@@ -1,5 +1,6 @@
 import {createContext, useEffect, useState, Dispatch, SetStateAction, ReactNode, useContext} from 'react'
 import { useNavigate } from 'react-router-dom'
+import userService from '../../services/accountInfo.tsx'
 import { Bookclub, Invitation, Bookshelf, HandleLogin, ActiveUser, AuthToken } from '../../../../types.ts'
 import { returnErrors } from '../../../../messages.tsx';
 
@@ -15,7 +16,8 @@ interface UserContextProps {
     setUserInvites: Dispatch<SetStateAction<Invitation[]>>,
     setUserBookshelves: Dispatch<SetStateAction<Bookshelf[]>>,
     setActiveUserToken: Dispatch<SetStateAction<AuthToken>>,
-    handleLogin: HandleLogin
+    handleLogin: HandleLogin,
+    updateContact: (formData: FormData) => Promise<void>
 }
 
 
@@ -47,7 +49,8 @@ export const UserContext = createContext<UserContextProps>({
     setUserInvites: () => [],
     setUserBookshelves: () => [],
     setActiveUserToken: () => '',
-    handleLogin: async () => {}
+    handleLogin: async () => {},
+    updateContact: async () => {}
 });
 
 const UserDataProvider = ({ children }: UserProviderProps) => {
@@ -186,16 +189,45 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
   
   
   
-      }, [ activeUser.id])
+      }, [ activeUser])
+
+      const updateContact = async (formData: FormData) => {
+
+        const id = Number(formData.get('userId'))
+
+        const newContact = {
+            firstName: String(formData.get('firstName')),
+            lastName: String(formData.get('lastName')),
+            emailAddress: String(formData.get('emailAddress'))
+    
+        }
+    
+    
+        try {
+    
+            const response = await userService.update(id, newContact)
+    
+            if (response.status == 200) {
+                console.log('user account response:', response.data)
+                setActiveUser(response.data)
+            } else {
+                console.log("There was an error updating your contact info:", response.statusText)
+                
+            }
+    
+        } catch(err) {
+            console.error("We're sorry. Your request to change your contact info failed to go through")
+            
+        }
+        
+    
+    }
 
   
-
-
-
-
       return (
         <UserContext.Provider
-            value={{userBookclubs, userInvites, userBookshelves, activeUser, activeUserToken, setUserBookclubs, setUserInvites, setUserBookshelves, setActiveUserToken, handleLogin}}>
+            value={{userBookclubs, userInvites, userBookshelves, activeUser, activeUserToken, updateContact, 
+                  setUserBookclubs, setUserInvites, setUserBookshelves, setActiveUserToken, handleLogin}}>
                 {children}
         </UserContext.Provider>
       )

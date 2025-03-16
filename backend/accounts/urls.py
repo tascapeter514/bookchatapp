@@ -2,6 +2,7 @@ from django.urls import path, include
 from .api import RegisterAPI, LoginAPI, UserAPI, InviteUsersAPI
 from knox import views as knox_views
 from rest_framework.routers import DefaultRouter
+from .views import *
 
 
 # router = DefaultRouter()
@@ -16,4 +17,5 @@ urlpatterns = [
     path('api/auth/user', UserAPI.as_view()),
     path('api/auth/logout', knox_views.LogoutView.as_view(), name='knox_logout'),
     path('api/inviteusers/<uuid:bookclub_id>', InviteUsersAPI.as_view()),
+    path('api/user/updateAccount/<int:id>', change_user_contact, name='change_user_contact')
 ]

@@ -1,4 +1,4 @@
-import { createContext, useContext,  ReactNode, useRef, Ref, useReducer } from 'react'
+import { createContext, useContext,  ReactNode, useRef, Ref } from 'react'
 import { Bookshelf } from '../../../../types'
 import { bookclubData } from '../BookclubContext/BookclubContext'
 import axios from 'axios'
@@ -24,16 +24,15 @@ export const BookshelfContext = createContext<ContextProps>({
 
 const BookshelfProvider = ({ children }: ProviderProps) => {
     
-    const { bookshelves, setBookshelves } = bookclubData()
+    const { setBookshelves } = bookclubData()
     const searchBooksRef = useRef<HTMLDialogElement>(null)
     const openSearchBooks = () => searchBooksRef.current?.showModal()
     const closeSearchBooks = () => searchBooksRef.current?.close()
 
-    const [bookshelfState, dispatch] = useReducer(bookshelfReducer, bookshelves)
+
 
     const deleteBook = async (book_id: string, bookshelf_id: string) => {
 
-        console.log('delete title check')
 
         try {
             const response = await axios.delete(`http://localhost:8000/api/book/delete/${book_id}`, {
