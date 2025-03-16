@@ -21,21 +21,6 @@ const CheckMembers = ({ children } : CheckMemberProps) => {
                     <p>You must be a member to view this book club.</p>
                 </div>
     }
-
-   
- 
 }
 
 export default CheckMembers
-
- // const membershipCheck = (WrappedComponent: ComponentType<Props> ) => {
-    //     return (props) => {
-    //         const isMember = bookclub.members.some((member: ActiveUser) => member.id === activeUser.id)
-    //         return isMember ? <WrappedComponent {...props} /> :
-    //             <div>
-    //                 <h1>We're sorry.</h1>
-    //                 <p>You must be a member to view the book club.</p>
-    //             </div>
-
-    //     }
-    // }

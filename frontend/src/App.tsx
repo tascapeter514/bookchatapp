@@ -29,7 +29,6 @@ function App() {
             <Route element={<AuthRequired />}>
                 <Route path='/userDashboard' element={<ErrorBoundary><UserDashboard 
                    /></ErrorBoundary>}></Route>
-                
                   <Route path='/bookclub/:id' element={
                     <BookclubDataProvider>
                       <CheckMembers><BookclubPage /></CheckMembers>

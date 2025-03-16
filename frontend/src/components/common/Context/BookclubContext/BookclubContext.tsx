@@ -1,11 +1,10 @@
 import { useState, useEffect, createContext, useContext, ReactNode, Dispatch, SetStateAction } from 'react'
+import { Bookclub, Bookshelf } from '../../../../types'
 import {useParams } from 'react-router-dom'
-import { ActiveUser } from '../../../../types'
-import { userData } from '../UserContext/UserContext'
 import { v4 as uuidv4 } from 'uuid'
 import axios from 'axios'
 
-import { Bookclub, Bookshelf } from '../../../../types'
+
 
 
 
@@ -93,16 +92,6 @@ const BookclubDataProvider = ({ children } : BookclubProviderProps) => {
     const [bookshelves, setBookshelves] = useState<Bookshelf[]>([])
     const [newBkslfId, setBkslfId] = useState<string>('')
     
-    
-    // const [isMember, membershipCheck] = useState(false)
-
-    // membershipCheck(() => {
-    //     return bookclub.members.some((member: ActiveUser) => member.id === activeUser.id)
-    // })
-    
-    
-
-
     useEffect(() => {
 
         try {
