@@ -6,7 +6,7 @@ import axios from 'axios';
 export default function useAddBookclub(url: string) {
 
     const [loading, setLoading] = useState(false)
-    const [error, setError] = useState<Error | null>(null)
+    const [error, setError] = useState(null)
     // const [data, setData] = useState(null)
    
 
@@ -15,17 +15,27 @@ export default function useAddBookclub(url: string) {
         setLoading(true)
         setError(null);
 
-        axios.post(url, requestData)
-        .then((response) => {
+        try {
+
+            const response = await axios.post(url, requestData)
+
             if (response.status >= 400) {
                 throw new Error('server error')
             }
-            console.log('response data:', response.data)
+
+            console.log("bookclub hook response:", response.data)
             return response.data
+
+        } catch (err: any) {
+            setError(err)
             
-        })
-        .catch((err: Error) => setError(err))
-        .finally(() => setLoading(false))
+        } finally {
+            setLoading(false)
+        }
+
+        
+        
+       
     }, [url])
 
     // console.log('bookclub hook data:', data)

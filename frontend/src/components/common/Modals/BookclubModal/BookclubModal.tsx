@@ -20,7 +20,7 @@ const BookclubModal = ({bookclubfRef, closeBookclubModal}: BookclubModalProps) =
 
 
 
-    const handleSubmit = (e: FormEvent) => {
+    const handleSubmit = async (e: FormEvent) => {
 
         e.preventDefault()
 
@@ -29,10 +29,10 @@ const BookclubModal = ({bookclubfRef, closeBookclubModal}: BookclubModalProps) =
             bookclubName: String(name),
         }
         try {
-            makeRequest(bookclubRequest)
-            .then(response => console.log("handle submit response:", response))
+            const newBookclub = await makeRequest(bookclubRequest)
 
-            
+            console.log('new bookclub:', newBookclub)
+            setUserBookclubs(prev => [...prev, newBookclub])
             
             
             
@@ -45,7 +45,7 @@ const BookclubModal = ({bookclubfRef, closeBookclubModal}: BookclubModalProps) =
     }
 
     if (error) {
-        return <div>An error occurred: {error.message}</div>
+        return <div>An error occurred: {error}</div>
     }
 
     if (loading) {
