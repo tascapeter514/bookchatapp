@@ -8,7 +8,6 @@ type BookshelfAccordionProps = {children: ReactNode, activePanel: boolean}
 
 const BookshelfDropdown = ({children, activePanel}: BookshelfAccordionProps) => {
 
-    console.log('dropdown children:', children)
     const [firstChild, secondChild] = Children.toArray(children)
 
     

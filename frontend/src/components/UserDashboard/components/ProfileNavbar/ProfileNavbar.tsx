@@ -1,6 +1,7 @@
 import { userData } from '../../../common/Context/UserContext/UserContext'
 import { Dispatch, SetStateAction, useState, useRef } from 'react'
 import { addUserBookshelf } from '../../../common/services/user'
+import BookclubModal from '../../../common/Modals/BookclubModal/BookclubModal'
 import CreateButton from '../../../common/Buttons/CreateButton/CreateButton'
 import { Bookshelf } from '../../../../types'
 import  BookshelfDropdown  from '../../../common/BookshelfDropdown/BookshelfDropdown'
@@ -24,8 +25,11 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
     const [activePanel, setActivePanel] = useState(false);
     const [isRotated, setIsRotated] = useState(false);
     const bookshelfRef = useRef<HTMLDialogElement>(null)
+    const bookclubRef = useRef<HTMLDialogElement>(null)
     const openBookshelfModal = () => bookshelfRef.current?.showModal()
     const closeBookshelfModal = () => bookshelfRef.current?.close()
+    const openBookclubModal = () => bookclubRef.current?.showModal()
+    const closeBookclubModal = () => bookclubRef.current?.close()
     const {day, month, year } = formatDate(activeUser.date_joined)
     const navbarContents = ['Account', 'Messages', 'Bookclubs', 'Bookshelves']
     const bookshelfOffset = navbarContents.length
@@ -90,7 +94,14 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
                             </a>
                             
                         </li>
-                        <CreateButton>Bookclub</CreateButton>
+                        <CreateButton onClick={openBookclubModal}>Bookclub</CreateButton>
+                        <BookclubModal
+                            bookclubfRef={bookclubRef}
+                            closeBookclubModal={closeBookclubModal}
+                            
+                        
+                        ></BookclubModal>
+                        
                         
                         
          
