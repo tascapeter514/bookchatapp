@@ -15,30 +15,33 @@ interface BookclubModalProps {
 const BookclubModal = ({bookclubfRef, closeBookclubModal}: BookclubModalProps) => {
 
     const { activeUser, setUserBookclubs } = userData()
-    const { makeRequest, loading, error, data } = useAddBookclub(`http://localhost:8000/api/user/addBookclub/${activeUser.id}`)
+    const { makeRequest, loading, error } = useAddBookclub(`http://localhost:8000/api/user/addBookclub/${activeUser.id}`)
     const [name, setName] = useState<string>('')
 
-    const handleSubmit = async (event: FormEvent<HTMLInputElement>) => {
-        
-        console.log('bookclub modal event:', event)
-        // console.log('bookclub name:', name)
 
 
-        // const bookclubRequest = {
-        //     bookclubId: uuidv4(),
-        //     bookclubName: formData.get('bookclubName'),
-        //     administratorId: Number(activeUser.id)
-        // }
+    const handleSubmit = (e: FormEvent) => {
 
+        e.preventDefault()
 
-        // const response = await makeRequest(bookclubRequest)
+        const bookclubRequest = {
+            bookclubId: uuidv4(),
+            bookclubName: String(name),
+        }
+        try {
+            makeRequest(bookclubRequest)
+            .then(response => console.log("handle submit response:", response))
 
+            
+            
+            
+            
 
+        } catch(err) {
+            console.log('error handling submission:', err)
+        }
 
-
-
-
-
+    
     }
 
     if (error) {
@@ -48,18 +51,24 @@ const BookclubModal = ({bookclubfRef, closeBookclubModal}: BookclubModalProps) =
     if (loading) {
         return <div>Loading...</div>
     }
+
+    // console.log('bookshelf modal hook data:', data)
+
+    
     
 
     return (
         <dialog className="bookclub-modal" ref={  bookclubfRef } >
-            <form action={handleSubmit as any} method='post'>
+            <form onSubmit={handleSubmit} method='post'>
                 <input 
                     type="text" 
-                    name='bookclubName' 
+                    name='bookclubName'
+                    value={name}
+                    onChange={e => setName(e.target.value)} 
                     placeholder='Enter a name for your bookclub'
                     required/>
                 <div className="button-wrapper">
-                    <Button type='button' onClick={closeBookclubModal}>Cancel</Button>
+                    <Button type='button' onClick={() => {setName(''); closeBookclubModal()}}>Cancel</Button>
                     <Button type='submit'>Create</Button>
                 </div>
             </form>
