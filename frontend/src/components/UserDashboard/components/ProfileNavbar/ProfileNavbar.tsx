@@ -1,5 +1,6 @@
 import { userData } from '../../../common/Context/UserContext/UserContext'
 import { Dispatch, SetStateAction, useState, useRef } from 'react'
+import { addUserBookshelf } from '../../../common/services/user'
 import CreateButton from '../../../common/Buttons/CreateButton/CreateButton'
 import { Bookshelf } from '../../../../types'
 import  BookshelfDropdown  from '../../../common/BookshelfDropdown/BookshelfDropdown'
@@ -18,7 +19,8 @@ interface ProfileNavbarProps {
 const ProfileNavbar = (props: ProfileNavbarProps) => {
 
     const { activeTab, setActiveTab, setActiveBookshelf } = props
-    const { activeUser, userBookshelves } = userData()
+    const { activeUser, userBookshelves, addUserBookshelf } = userData()
+    const [newBkslfId, setNewBkslfId] = useState<string>('')
     const [activePanel, setActivePanel] = useState(false);
     const [isRotated, setIsRotated] = useState(false);
     const bookshelfRef = useRef<HTMLDialogElement>(null)
@@ -111,7 +113,13 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
                             <ul className='navbar-bookshelf-list'>{bookshelfElements}</ul>
                         </BookshelfDropdown>
                         <CreateButton onClick={openBookshelfModal}>Bookshelf</CreateButton>
-                        <BookshelfModal></BookshelfModal>
+                        <BookshelfModal
+                            bookshelfRef={bookshelfRef}
+                            closeBookshelfModal={closeBookshelfModal}
+                            addBookshelf={addUserBookshelf}
+                            newBkslfId={newBkslfId}
+                            setBkslfId={setNewBkslfId}
+                        ></BookshelfModal>
                     </div>
                 )} 
            </>

@@ -1,25 +1,29 @@
 import './BookshelfModal.css'
-import { Ref } from 'react'
-import { bookclubData } from '../../Context/BookclubContext/BookclubContext'
+import { Ref, Dispatch, SetStateAction } from 'react'
 import Button from '../../Buttons/Button/Button'
+import { userData } from '../../Context/UserContext/UserContext'
 
 
 
 interface BookshelfModalProps {
     bookshelfRef: Ref<HTMLDialogElement>,
     closeBookshelfModal: () => void,
-    variant: 'user' | 'bookclub'
+    addBookshelf: (formData: FormData) => Promise<void>,
+    newBkslfId: string,
+    setBkslfId: Dispatch<SetStateAction<string>>
 }
 
 
 
-const BookshelfModal = ({bookshelfRef, closeBookshelfModal}: BookshelfModalProps) => {
+const BookshelfModal = ({bookshelfRef, closeBookshelfModal, addBookshelf, newBkslfId, setBkslfId}: BookshelfModalProps) => {
 
-    const { addBookshelf, newBkslfId, setBkslfId } = bookclubData()
+    const { activeUser } = userData()
+    
 
     return (
         <dialog className="bookshelf-modal" ref={ bookshelfRef } >
             <form action={addBookshelf as unknown as string} method='post'>
+            <input type="hidden" name='userId' value={activeUser.id} />
                 <input 
                     type="text" 
                     name='bookshelfName' 
@@ -28,7 +32,7 @@ const BookshelfModal = ({bookshelfRef, closeBookshelfModal}: BookshelfModalProps
                     onChange={e => setBkslfId(e.target.value)} 
                     required/>
                 <div className="button-wrapper">
-                    <Button onClick={closeBookshelfModal}>Cancel</Button>
+                    <Button type='button' onClick={closeBookshelfModal}>Cancel</Button>
                     <Button type='submit'>Create</Button>
                 </div>
             </form>

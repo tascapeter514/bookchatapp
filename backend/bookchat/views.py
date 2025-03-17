@@ -216,24 +216,43 @@ def delete_book(request, **kwargs):
 
 @api_view(['POST'])
 def add_user_bookshelf(request, id):
+    print('add bookshelf check')
     user = User.objects.get(id=id)
+
+    print('request body:', request.data)
+
+    bookshelf_id = request.data.get('bookshelfId')
+    bookshelf_name = request.data.get('bookshelfName')
+
+    new_bookshelf = Bookshelf.objects.create(bookshelf_id=bookshelf_id, name=bookshelf_name)
+    user.bookshelves.add(new_bookshelf)
+
+    bookshelf_serializer = BookshelfSerializer(new_bookshelf)
+
+    return Response(bookshelf_serializer.data)
+
+
 
 @api_view(['POST'])
 def add_user_bookclub(request, id):
     user = User.objects.get(id=id)
 
-
-
-
-
     
 
 
+    # bookshelf_data = json.loads(request.body)
 
+    # bookshelf_id, bookshelf_name, bookclub_id, bookshelf_titles = bookshelf_data.values()
+    
+    # bookclub = Bookclub.objects.get(bookclub_id=bookclub_id)
+    # new_bookshelf = Bookshelf.objects.create(bookshelf_id=bookshelf_id, name=bookshelf_name)
 
-
+    # bookclub.bookshelves.add(new_bookshelf)
+    # bookshelf_serializer = BookshelfSerializer(new_bookshelf)
 
     
+
+    # return Response(bookshelf_serializer.data)
 
 
 

@@ -13,7 +13,7 @@ interface SubNavbarProps {
 
 const SubNavbar = ({ subNav, setActiveBookshelf }: SubNavbarProps) => {
 
-    const { bookshelves } = bookclubData()
+    const { bookshelves, addBookshelf, newBkslfId, setBkslfId } = bookclubData()
     const bookshelfRef = useRef<HTMLDialogElement>(null)
     const openBookshelfModal = () => bookshelfRef.current?.showModal()
     const closeBookshelfModal = () => bookshelfRef.current?.close()
@@ -42,6 +42,9 @@ const SubNavbar = ({ subNav, setActiveBookshelf }: SubNavbarProps) => {
             <BookshelfModal 
                 bookshelfRef={bookshelfRef}
                 closeBookshelfModal={closeBookshelfModal}
+                addBookshelf={addBookshelf}
+                newBkslfId={newBkslfId}
+                setBkslfId={setBkslfId}
             >
             </BookshelfModal>
         </nav>

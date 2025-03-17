@@ -1,6 +1,7 @@
 import {createContext, useEffect, useState, Dispatch, SetStateAction, ReactNode, useContext} from 'react'
 import { useNavigate } from 'react-router-dom'
 import { changeContact, changePassword } from '../../services/user.tsx';
+import { addUserBookshelf } from '../../services/user.tsx';
 import { Bookclub, Invitation, Bookshelf, HandleLogin, ActiveUser, AuthToken } from '../../../../types.ts'
 import { returnErrors } from '../../../../messages.tsx';
 
@@ -18,7 +19,8 @@ interface UserContextProps {
     setActiveUserToken: Dispatch<SetStateAction<AuthToken>>,
     handleLogin: HandleLogin,
     changeContact: (formData: FormData) => Promise<void>,
-    changePassword: (formData: FormData) => Promise<void>
+    changePassword: (formData: FormData) => Promise<void>,
+    addUserBookshelf: (formData: FormData) => Promise<void>
 }
 
 
@@ -52,7 +54,8 @@ export const UserContext = createContext<UserContextProps>({
     setActiveUserToken: () => '',
     handleLogin: async () => {},
     changeContact: async () => {},
-    changePassword: async () => {}
+    changePassword: async () => {},
+    addUserBookshelf: async () => {}
 });
 
 const UserDataProvider = ({ children }: UserProviderProps) => {
@@ -199,7 +202,10 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
             value={{userBookclubs, userInvites, userBookshelves, activeUser, activeUserToken,
                   setUserBookclubs, setUserInvites, setUserBookshelves, setActiveUserToken, handleLogin, 
                   changeContact: (formData) => changeContact(formData, setActiveUser),
-                  changePassword: (formData) => changePassword(formData, setActiveUser)}}>
+                  changePassword: (formData) => changePassword(formData, setActiveUser),
+                  addUserBookshelf: (formData) => addUserBookshelf(formData, setUserBookshelves)
+                  
+                  }}>
                 {children}
         </UserContext.Provider>
       )
