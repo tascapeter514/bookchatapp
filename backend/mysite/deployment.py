@@ -6,6 +6,7 @@ from .settings import BASE_DIR
 ALLOWED_HOSTS = [os.environment['WEBSITE_HOSTNAME']]
 CSRF_TRUSTED_ORIGINS = ['https://'+os.environment['WEBSITE_HOSTNAME']]
 DEBUG = False
+SECRET_KEY = os.environ['MY_SECRET_KEY']
 
 # ADD WHITENOISE MIDDLEWARE
 MIDDLEWARE = [
@@ -33,3 +34,5 @@ STORAGE = {
         "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
     },
 }
+
+STATIC_ROOT = BASE_DIR/'staticfiles'
