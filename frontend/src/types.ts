@@ -11,8 +11,8 @@ export type ISBN_Identifier = {
 }
 
 export type Genre = {
-    genre_id: number,
-    genre_name: string
+    id: number,
+    name: string
 }
 
 
@@ -36,8 +36,8 @@ export interface ActiveUser {
 }
 
 export type Author = {
+    id: number,
     name: string,
-    author_id: string,
     bio: string,
     titles: Book[],
     author_photo: string,
@@ -49,7 +49,7 @@ export type Author = {
 
 
 export interface Bookshelf {
-    bookshelf_id: string,
+    id: number,
     name: string,
     user?: number,
     titles?: Book[],
@@ -58,7 +58,7 @@ export interface Bookshelf {
 }
 
 export interface Invitation {
-    invitation_id: string,
+    id: number,
     accepted: boolean,
     created_at: string,
     invited_user: number,
@@ -69,8 +69,8 @@ export interface Invitation {
 }
 
 export interface Book {
-    title_id: string,
-    title: string,
+    id: number,
+    name: string,
     publisher: string,
     description: string,
     ISBN_Identifiers: ISBN_Identifier[],
@@ -78,12 +78,12 @@ export interface Book {
     ratingsCount: number,
     imageLinks: {smallThumbnail?: string, thumbnail?: string},
     pageCount: number,
-    genres: {genre_id: number, genre_name: string},
+    genres: {id: number, name: string},
     authors: Author[]
 }
 
 export interface Bookclub {
-    bookclub_id: string,
+    id: number,
     name: string,
     members: ActiveUser[],
     administrator: number,

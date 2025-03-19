@@ -8,18 +8,18 @@ from accounts.serializers import UserSerializer
 class GenreSerializer(serializers.ModelSerializer):
     class Meta:
         model = Genre
-        fields = ['genre_id', 'genre_name']
+        fields = ['id', 'name']
 
 
 
 
 #AUTHOR SERIALIZER
 class AuthorSerializer(serializers.ModelSerializer):
-    titles = serializers.SerializerMethodField()
+    books = serializers.SerializerMethodField()
     
     class Meta:
         model = Author
-        fields = ['name', 'author_id', 'bio', 'birth_date', 'death_date', 'titles', 'author_photo']
+        fields = ['name', 'id', 'bio', 'birth_date', 'death_date', 'books', 'author_photo']
 
     def __init__(self, *args, **kwargs):
         fields = kwargs.pop('fields', None)
@@ -32,15 +32,15 @@ class AuthorSerializer(serializers.ModelSerializer):
             for field_name in existing - allowed:
                 self.fields.pop(field_name)
 
-    def get_titles(self, obj):
+    def get_books(self, obj):
         return [
             {
-            'title_id': str(title.title_id),
-            'title': title.title,
-            'description': title.description,
-            'imageLinks': title.imageLinks
+            'id': book.id,
+            'title': book.name,
+            'description': book.description,
+            'imageLinks': book.imageLinks
             }
-            for title in obj.titles.all()
+            for book in obj.books.all()
             
         ]
 
@@ -53,7 +53,7 @@ class BookSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Book
-        fields = ['title_id', 'title', 'publisher', 'pageCount', 'description', 'ISBN_Identifiers', 'imageLinks',
+        fields = ['id', 'name', 'publisher', 'pageCount', 'description', 'ISBN_Identifiers', 'imageLinks',
                    'authors', 'genres', 'ratingsCount', 'averageRating']
 
     def __init__(self, *args, **kwargs):
@@ -74,29 +74,11 @@ class BookshelfSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Bookshelf
-        fields = ['bookshelf_id', 'name', 'user', 'titles']
-
-        # def list(self, validated_data):
-        #     print('validated data:', validated_data)
-
-        # def create(self, validated_data):
-        #     titles_data = validated_data.pop('titles', [])
-        #     print('data:', validated_data)
-        #     bookshelf = Bookshelf.objects.create(**validated_data)
-        #     bookshelf.titles.set(titles_data)
-        #     print(bookshelf)
-        #     return bookshelf
-        
-        # def update(self, bookshelf, validated_data):
-        #     titles_data = validated_data.get('titles', [])
-        #     print(titles_data)
-        #     if titles_data:
-        #         bookshelf.titles.set(titles_data)
-        #     return bookshelf
+        fields = ['id', 'name', 'user', 'books']
         
 #BOOKCLUB SERIALIZER
 class BookclubSerializer(serializers.ModelSerializer):
-    # bookshelves = BookshelfSerializer(many=True, read_only=True, required=False)
+
     currentRead = BookSerializer(read_only=True, required=False)
     members = UserSerializer(many=True, read_only=True, required=False)
 
@@ -104,7 +86,7 @@ class BookclubSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Bookclub
-        fields = ['bookclub_id', 'name', 'administrator', 'currentRead', 'members', 'cover_image']
+        fields = ['id', 'name', 'administrator', 'currentRead', 'members', 'cover_image']
 
     def __init__(self, *args, **kwargs):
         fields = kwargs.pop('fields', None)
@@ -129,11 +111,11 @@ class InvitationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Invitation
-        fields = ['invitation_id', 'accepted', 'created_at', 'invited_user', 'bookclub',  'invited_by']
+        fields = ['id', 'accepted', 'created_at', 'invited_user', 'bookclub',  'invited_by']
 
     def get_bookclub(self, obj):
         return {
-            'id': str(obj.bookclub.bookclub_id),
+            'id': obj.bookclub.id,
             'name': obj.bookclub.name
         }
     
