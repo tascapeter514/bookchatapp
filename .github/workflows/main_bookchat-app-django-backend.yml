@@ -36,10 +36,15 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Debug STATIC_ROOT from deployment.py
+      # - name: Debug STATIC_ROOT from deployment.py
+      #   run: |
+      #     cd backend
+      #     python -c "import importlib.util; spec = importlib.util.spec_from_file_location('deployment', 'backend/deployment.py'); deployment = importlib.util.module_from_spec(spec); spec.loader.exec_module(deployment); print(deployment.STATIC_ROOT)"
+      - name: Debug STATIC_ROOT via Django
         run: |
           cd backend
-          python -c "import importlib.util; spec = importlib.util.spec_from_file_location('deployment', 'backend/deployment.py'); deployment = importlib.util.module_from_spec(spec); spec.loader.exec_module(deployment); print(deployment.STATIC_ROOT)"
+          export DJANGO_SETTINGS_MODULE=deployment  # Ensure deployment.py is used
+          python -c "import django; django.setup(); from django.conf import settings; print(settings.STATIC_ROOT)"
 
 
       
