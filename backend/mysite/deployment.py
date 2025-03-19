@@ -3,17 +3,6 @@ from .settings import *
 from .settings import BASE_DIR
 
 
-# print(f'Deployment.py is being called')
-# print(f'BASE_DIR: {BASE_DIR}')
-# STATIC_ROOT = BASE_DIR/'staticfiles'
-# print(f'STATIC_ROOT:{STATIC_ROOT}')
-
-# if not os.path.exists(STATIC_ROOT):
-#     print(f"Directory {STATIC_ROOT} does not exist!")
-# else:
-#     print(f"Directory {STATIC_ROOT} exists!")
-
-
 
 ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']]
 CSRF_TRUSTED_ORIGINS = ['https://' + os.environ['WEBSITE_HOSTNAME']]
@@ -60,6 +49,6 @@ DATABASES = {
     }
 }
 
-print(f'BASE_DIR: {BASE_DIR}')
+# print(f'BASE_DIR: {BASE_DIR}')
 STATIC_ROOT = BASE_DIR/'staticfiles'
-print(f'STATIC_ROOT:{STATIC_ROOT}')
+# print(f'STATIC_ROOT:{STATIC_ROOT}')
