@@ -22,7 +22,7 @@ const BookshelfPanel = ({activeBookshelf, bookshelves}: BookshelfPanelProps) => 
     const bookshelfElements = bookshelves?.map((bookshelf, index) => (
         activeBookshelf === index && 
             <li 
-                key={bookshelf.bookshelf_id}
+                key={bookshelf.id}
                 className='bookshelf-listElement'
 
             >

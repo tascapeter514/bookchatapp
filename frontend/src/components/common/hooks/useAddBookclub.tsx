@@ -7,7 +7,7 @@ export default function useAddBookclub(url: string) {
 
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
-    // const [data, setData] = useState(null)
+    
    
 
     const makeRequest = useCallback(
@@ -23,7 +23,6 @@ export default function useAddBookclub(url: string) {
                 throw new Error('server error')
             }
 
-            console.log("bookclub hook response:", response.data)
             return response.data
 
         } catch (err: any) {

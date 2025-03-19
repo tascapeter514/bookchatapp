@@ -54,9 +54,9 @@ const BookclubPage = () => {
                         >
                         </SubNavbar>
                     </div>
-                    <BookshelfProvider>
+                    {/* <BookshelfProvider>
                         <PanelComponent />
-                    </BookshelfProvider>
+                    </BookshelfProvider> */}
                 </div>
             </div>
             )

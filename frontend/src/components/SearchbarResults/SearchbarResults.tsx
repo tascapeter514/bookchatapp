@@ -23,21 +23,14 @@ const SearchResults = ({sortedSearchResults, setShowSearchResults}: SearchResult
         if (!searchResult) {
             return null
         }
-
-        // REFACTOR TO ACCOUNT FOR UNIFORM IDS
         
         return (
             
                 <ul className='search-elements-list'>
                     {searchResult.map((result) => {
-
                         return (<li key={result.id} onClick={() => setShowSearchResults(false)}>
                                     <Link to={`/${result.name}/${result.id}`}>{result.name}</Link>
                                 </li>)
-                        
-
-                        
-
                     })}
                 </ul>
 

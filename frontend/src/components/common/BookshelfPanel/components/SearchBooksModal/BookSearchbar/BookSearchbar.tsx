@@ -1,7 +1,7 @@
 import './BookSearchbar.css'
 import { Dispatch, SetStateAction, useState, useEffect } from 'react'
 import { Book } from '../../../../../../types'
-import { useDebounce } from '../../../../../Searchbar/Searchbar'
+import useSearch from '../../../../hooks/useSearch'
 import { SearchIcon } from '../../../../Icons'
 
 
@@ -17,7 +17,7 @@ interface BookSearchbarProps {
 
 const BookSearchbar = ({setBookResults, setShowBookResults, showBookResults, searchValue, setSearchValue}: BookSearchbarProps) => {
 
-    
+    const { useDebounce } = useSearch()
     const debouncedSearchValue = useDebounce(searchValue, 500);
 
 
