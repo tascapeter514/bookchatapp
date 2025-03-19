@@ -40,6 +40,10 @@ jobs:
         run: |
           pwd
           ls -la backend
+      - name: Print environment variables
+        run: |
+          echo "STATIC_ROOT: $STATIC_ROOT"
+          echo "BASE_DIR: $BASE_DIR"
 
   
       - name: Collect static files
