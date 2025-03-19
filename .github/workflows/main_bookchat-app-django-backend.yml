@@ -36,6 +36,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Debug STATIC_ROOT
+        run: |
+          cd backend
+          python -c "from deployment import STATIC_ROOT; print(STATIC_ROOT)"
+
       - name: Collect static files
         run: |
           cd backend
