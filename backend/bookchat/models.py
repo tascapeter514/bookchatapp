@@ -7,12 +7,12 @@ import uuid
 
 
 class Genre(models.Model):
-    genre_id = models.AutoField(primary_key=True)
-    genre_name = models.CharField(max_length=250, unique=True)
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=250, unique=True)
 
 class Book(models.Model):
-    title_id = models.UUIDField(primary_key=True)
-    title = models.CharField(max_length=250)
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=250)
     publisher = models.CharField(max_length=128, blank=True, default='Unknown Publisher')
     description = models.TextField(default='No description available', blank=True)
     ISBN_Identifiers = models.JSONField(default=list)
@@ -25,7 +25,7 @@ class Book(models.Model):
 
 
 class Author(models.Model):
-    author_id = models.UUIDField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=250)
     bio = models.TextField(default='No bio available')
     birth_date = models.CharField(max_length=250, null=True, blank=True)
@@ -35,13 +35,13 @@ class Author(models.Model):
     author_photo = models.TextField(null=True, blank=True)
 
 class Bookshelf(models.Model):
-    bookshelf_id = models.UUIDField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=300)
     titles = models.ManyToManyField(Book, related_name='bookshelves')
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='bookshelves', null=True, blank=True)
 
 class Bookclub(models.Model):
-    bookclub_id = models.UUIDField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=300)
     members = models.ManyToManyField(User, related_name='bookclubs')
     administrator = models.ForeignKey(User, on_delete=models.CASCADE, related_name='administrator')
@@ -69,7 +69,7 @@ class Invitation(models.Model):
     #     default=PENDING
     # )
 
-    invitation_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.AutoField(primary_key=True, default=uuid.uuid4, editable=False)
     bookclub = models.ForeignKey(Bookclub, on_delete=models.CASCADE, related_name='invitations')
     invited_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='bookclub_invitations')
     invited_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sent_invitations')
