@@ -24,24 +24,24 @@ def replace_uuid_with_auto_increment(obj, pk_field="pk", start_value=1):
     return pk_map
 
 # Function to update the 'titles' field in authors
-def update_titles_field(authors, pk_map, title_field="titles"):
-    for author in authors:
-        # Replace UUIDs with corresponding auto-incremented integers
-        updated_titles = [pk_map.get(uuid, uuid) for uuid in author["fields"].get(title_field, [])]
-        author["fields"][title_field] = updated_titles
+# def update_titles_field(authors, pk_map, title_field="titles"):
+#     for author in authors:
+#         # Replace UUIDs with corresponding auto-incremented integers
+#         updated_titles = [pk_map.get(uuid, uuid) for uuid in author["fields"].get(title_field, [])]
+#         author["fields"][title_field] = updated_titles
 
 
 
 # Separate books and authors from the data
-books = [item for item in data if item["model"] == "bookchat.book"]
+# books = [item for item in data if item["model"] == "bookchat.book"]
 authors = [item for item in data if item["model"] == "bookchat.author"]
 
 # Replace UUID pk with auto-incremented integers in books and get the pk mapping
-pk_map = replace_uuid_with_auto_increment(books)
+pk_map = replace_uuid_with_auto_increment(authors)
 
 
 # Update the 'titles' field in authors to match new integer-based pk values
-update_titles_field(authors, pk_map)
+# update_titles_field(authors, pk_map)
 
 
 with open(input_file, 'w', encoding='ascii') as f:
