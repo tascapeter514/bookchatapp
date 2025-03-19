@@ -96,6 +96,8 @@ TEMPLATES = [
 
 # WSGI_APPLICATION = 'mysite.wsgi.application'
 
+STATIC_ROOT = BASE_DIR/'staticfiles'
+
 ASGI_APPLICATION = 'mysite.asgi.application'
 
 #CHANNEL LAYERS
