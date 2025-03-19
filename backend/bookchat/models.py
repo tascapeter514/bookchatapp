@@ -31,13 +31,13 @@ class Author(models.Model):
     birth_date = models.CharField(max_length=250, null=True, blank=True)
     death_date = models.CharField(max_length=250, null=True, blank=True)
     links = models.JSONField()
-    titles = models.ManyToManyField(Book, related_name="author")
+    books = models.ManyToManyField(Book, related_name="author")
     author_photo = models.TextField(null=True, blank=True)
 
 class Bookshelf(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=300)
-    titles = models.ManyToManyField(Book, related_name='bookshelves')
+    books = models.ManyToManyField(Book, related_name='bookshelves')
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='bookshelves', null=True, blank=True)
 
 class Bookclub(models.Model):
