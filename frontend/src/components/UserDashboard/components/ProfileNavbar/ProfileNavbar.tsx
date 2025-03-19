@@ -1,6 +1,5 @@
 import { userData } from '../../../common/Context/UserContext/UserContext'
 import { Dispatch, SetStateAction, useState, useRef } from 'react'
-import { addUserBookshelf } from '../../../common/services/user'
 import BookclubModal from '../../../common/Modals/BookclubModal/BookclubModal'
 import CreateButton from '../../../common/Buttons/CreateButton/CreateButton'
 import { Bookshelf } from '../../../../types'
@@ -50,7 +49,7 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
         return (
 
             <li 
-                key={userBookshelf.bookshelf_id}
+                key={userBookshelf.id}
                 onClick={handleActiveBookshelf}
                 className={activeTab == userBookshelfIndex + bookshelfOffset ? 'active' : ''}
             >   

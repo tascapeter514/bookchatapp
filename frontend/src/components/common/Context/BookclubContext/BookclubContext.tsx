@@ -24,13 +24,13 @@ interface ContextProps {
 
 export const BookclubContext = createContext<ContextProps>({
     bookclub: {
-        bookclub_id: '',
+        id: NaN,
         name: '',
         administrator: NaN,
         members: [],
         currentRead: {
-            title_id: '',
-            title: '',
+            id: NaN,
+            name: '',
             publisher: '',
             description: '',
             ISBN_Identifiers: [],
@@ -39,7 +39,7 @@ export const BookclubContext = createContext<ContextProps>({
             imageLinks: {},
             pageCount: NaN,
             genres: {
-                genre_id: NaN, genre_name: ''
+                id: NaN, name: ''
             },
             authors: []
         },
@@ -66,13 +66,13 @@ export const BookclubDispatchContext = createContext(null)
 const BookclubDataProvider = ({ children } : BookclubProviderProps) => {
 
     const [bookclub, setBookclub] = useState<Bookclub>({
-        bookclub_id: '',
+        id: NaN,
         name: '',
         administrator: NaN,
         members: [],
         currentRead: {
-            title_id: '',
-            title: '',
+            id: NaN,
+            name: '',
             publisher: '',
             description: '',
             ISBN_Identifiers: [],
@@ -81,7 +81,7 @@ const BookclubDataProvider = ({ children } : BookclubProviderProps) => {
             imageLinks: {},
             pageCount: NaN,
             genres: {
-                genre_id: NaN, genre_name: ''
+                id: NaN, name: ''
             },
             authors: []
         },
@@ -130,11 +130,10 @@ const BookclubDataProvider = ({ children } : BookclubProviderProps) => {
     const addBookshelf = async (formData: FormData): Promise<void> => {
         console.log('form data:', formData.get('bookshelfName'))
 
-        const bookshelfObject: Bookshelf = {
-            bookshelf_id: uuidv4(),
+        const bookshelfObject = {
             name: String(formData.get('bookshelfName') || ''),
-            bookclub_id: parameters.id,
-            titles: [],
+            id: parameters.id,
+            books: [],
 
 
         }

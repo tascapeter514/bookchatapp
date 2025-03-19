@@ -14,44 +14,34 @@ const SearchResults = ({sortedSearchResults, setShowSearchResults}: SearchResult
 
     console.log('sorted search results:', sortedSearchResults)
 
-    const searchResultElements = sortedSearchResults.map((searchResultElement: {type: string, items?: Book[] | Author[] | Bookclub[]}, index) => {
+    const searchResultElements = sortedSearchResults.map((searchResultElement: {type: string, items?: Book[] | Author[] | Bookclub[]}) => {
 
         const searchResult = searchResultElement.items
+
+        console.log('search result:', searchResult)
 
         if (!searchResult) {
             return null
         }
+
+        // REFACTOR TO ACCOUNT FOR UNIFORM IDS
         
         return (
-            <li key={index} onClick={() => setShowSearchResults(false)}>
+            
                 <ul className='search-elements-list'>
                     {searchResult.map((result) => {
-                        if ('title' in result) {
-                           return  <li key={result.title_id}>
-                                <Link to={`/book/${result.title_id}`}>{result.title}</Link>
-                                </li>
-                            
-                        } else if ('author_id' in result) {
-                            return  <li key={result.author_id} className='author-search-result'>
-                                        <Link to={`/author/${result.author_id}`}>{result.name}</Link>
-                                  </li>
-                            
-                            
 
-                        } else if ('bookclub_id' in result) {
+                        return (<li key={result.id} onClick={() => setShowSearchResults(false)}>
+                                    <Link to={`/${result.name}/${result.id}`}>{result.name}</Link>
+                                </li>)
+                        
 
-                            return <li key={result.bookclub_id} className='bookclub-search-result'>
-                                <Link to={`/bookclub/${result.bookclub_id}`}>{result.name}</Link></li>
-                            
-
-                        }
-
-                        return null
+                        
 
                     })}
                 </ul>
 
-            </li>
+
 
         )})
 

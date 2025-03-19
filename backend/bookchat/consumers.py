@@ -76,13 +76,13 @@ class SearchDataConsumer(WebsocketConsumer):
 
     def get_search_query(self):
 
-        book_results = Book.objects.filter(Q(title__icontains=self.search_term) | Q(author__name__icontains=self.search_term))
+        book_results = Book.objects.filter(Q(name__icontains=self.search_term) | Q(author__name__icontains=self.search_term))
         author_results = Author.objects.filter(name__icontains=self.search_term)
         bookclub_results = Bookclub.objects.filter(name__icontains=self.search_term)
 
-        author_serializer = AuthorSerializer(author_results, many=True, fields=['author_id', 'name'])
-        book_serializer = BookSerializer(book_results, many=True, fields=['title_id', 'title'])
-        bookclub_serializer = BookclubSerializer(bookclub_results, many=True, fields=['bookclub_id', 'name'])
+        author_serializer = AuthorSerializer(author_results, many=True, fields=['id', 'name'])
+        book_serializer = BookSerializer(book_results, many=True, fields=['id', 'name'])
+        bookclub_serializer = BookclubSerializer(bookclub_results, many=True, fields=['id', 'name'])
 
         
 

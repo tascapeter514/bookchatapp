@@ -24,8 +24,8 @@ const BookSlider: FC<BookSliderProps> = ({books}) => {
 
     const bookElements = books.map((book: Book)=> {
         return(
-        <li className='book-element' key={book.title_id} >
-            <Link to={`/book/${book.title_id}`}><img src={book.imageLinks['smallThumbnail']} alt="bestseller-img" /></Link>
+        <li className='book-element' key={book.id} >
+            <Link to={`/book/${book.id}`}><img src={book.imageLinks['smallThumbnail']} alt="bestseller-img" /></Link>
         </li>
         )
     })
