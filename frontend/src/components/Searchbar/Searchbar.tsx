@@ -8,11 +8,7 @@ import {SearchIcon} from '../common/Icons'
 const Searchbar = () => {
 
 
-    const { searchValue, setSearchValue, searchResults, error } = useSearch()
-    
-    console.log('searchbar error:', error)
-
-    
+    const { searchValue, setSearchValue, searchResults } = useSearch()
     
     return(
 

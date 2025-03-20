@@ -18,9 +18,11 @@ const SearchResults = ({children}: ResultProps ) => {
       })
 
     
-    const searchResultElements = sortedResults.map((searchResultElement: SearchResult) => {
+    const resultElements = sortedResults.map((resultElement: SearchResult) => {
 
-        const searchResult = searchResultElement.items
+        console.log('search result element:', resultElement)
+
+        const searchResult = resultElement.items
 
         if (!searchResult) {
             return null
@@ -28,8 +30,9 @@ const SearchResults = ({children}: ResultProps ) => {
         
         return (
             searchResult.map((result) => {
-                return (<li key={result.id} >
-                            <Link to={`/${result.name}/${result.id}`}>{result.name}</Link>
+                console.log('result link:', `/${resultElement.type}/${result.id}`)
+                return (<li key={result.name} >
+                            <Link to={`/${resultElement.type}/${result.id}`}>{result.name}</Link>
                         </li>)
             })
             
@@ -39,7 +42,7 @@ const SearchResults = ({children}: ResultProps ) => {
     return (
         <ul className="results-list">
             <hr className='results-divider'/>
-            {noResults ? <p>No results</p> : searchResultElements}
+            {noResults ? <p>No results</p> : resultElements}
         </ul>
 
     )
