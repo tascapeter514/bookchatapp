@@ -2,6 +2,7 @@ import { FaSearch, FaArrowLeft, FaArrowRight, FaUser } from 'react-icons/fa'
 import { IoMdArrowDropright, IoIosCloseCircle } from "react-icons/io";
 import { ImCheckmark2, ImCancelCircle } from 'react-icons/im'
 import { GrLike, GrDislike } from "react-icons/gr";
+import { BsBookmarkPlus } from "react-icons/bs"
 
 
 export type ArrowProps = {
@@ -11,6 +12,8 @@ export type ArrowProps = {
 
 
 export type IconProps = React.ComponentPropsWithoutRef<'svg'>
+
+export const BookmarkIcon = (props: IconProps) => <BsBookmarkPlus  className='bookmark-icon' {...props} />
 
 export const SearchIcon = (props: IconProps) => <FaSearch className='search-icon' {...props} />
 
