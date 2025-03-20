@@ -7,7 +7,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from knox.auth import TokenAuthentication
 from django.shortcuts import get_object_or_404
-from .serializers import BookclubSerializer, BookshelfSerializer, AuthorSerializer, InvitationSerializer
+from .serializers import BookclubSerializer, BookshelfSerializer, AuthorSerializer, InvitationSerializer, BookSerializer
 from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync
 from django.http import JsonResponse
@@ -21,9 +21,15 @@ import json
 
 @api_view(['GET'])
 def get_book(request, id):
-    print('id')
+    print('id:', id)
 
-    return Response({'message:' 'Success! You reached the backend!'})
+    book = Book.objects.get(id=id)
+    if book:
+        book_serializer = BookSerializer(book)
+        return Response(book_serializer.data, status=status.HTTP_200_OK)
+    else:
+        return Response({'message': 'Book not found'}, status=status.HTTP_404_NOT_FOUND)
+
 
 @api_view(['GET'])
 def get_member_bookclubs(request, **kwargs):

@@ -1,194 +1,190 @@
-import {useState, useEffect, FC, useRef} from 'react'
+import {useState, useEffect, useRef, useMemo} from 'react'
 import {useParams, Link } from 'react-router-dom'
 import { Book, ISBN_Identifier, Bookshelf, Author, Bookclub } from '../../types'
-import { BsBookmarkPlus } from "react-icons/bs"
+import { BookmarkIcon } from '../common/Icons'
 import { userData } from '../common/Context/UserContext/UserContext'
+import useGetData from '../common/hooks/useGetData'
 import SearchFilter from '../common/SearchFilter/SearchFilter'
 import SearchResults from './components/SearchFilter/SearchResults'
 import './Bookpage.css'
 
 
-
-
-type IconProps = React.ComponentPropsWithoutRef<'svg'>
-
-const BookmarkIcon: FC<IconProps> = (props) => {
-    return  <BsBookmarkPlus  className='bookmark-icon' {...props}></BsBookmarkPlus>
-}
-
-
 const Bookpage = () => {
 
+    const { id } = useParams();
+    const { makeRequest, error, loading } = useGetData(`http://localhost:8000/api/book/${id}`)
+    const [book, setBook] = useState<Book | null>(null)
+
+    useEffect(() => {
+       const getBook = async () => {
+        try {
+            const bookData = await makeRequest()
+            console.log('book data:', bookData)
+            setBook(bookData)
+        } catch(err) {
+            console.error('Error fetching book:', err)
+        }
+       }
+
+       getBook()
+
+    }, [makeRequest])
+
+    const authorText = (() => {
+        
+        switch (book?.authors.length) {
+            case 0:
+                return 'Unknown Author';
+            case 1:
+                return book.authors[0].name
+            case 2:
+                return book.authors.join(' and ')
+            case 3:
+                return book.authors.slice(0, 3).join(', ')
+            case 4:
+                return `${book.authors.slice(0, 3).join(', ')} and others`;
+        }
+    })()
 
 
-    const {activeUser, userBookshelves, setUserBookshelves} = userData()
-    const params = useParams();
-    const [book, setBook] = useState<Book | null>(null);
-    const [authors, setAuthors] = useState<Author[] | null>(null)
-    const [isBookclubModalOpen, setIsBookclubModalOpen] = useState(false)
-    const [isBookshelfModalOpen, setIsBookshelfModalOpen] = useState(false)
-    const [searchValue, setSearchValue] = useState('')
-    const [bookclubSearchResults, setBookclubSearchResults] = useState<Bookclub[]>([])
-    const [currentBookclub, setCurrentBookclub] = useState<Bookclub | null>(null)
-    const [currentBookshelf, setCurrentBookshelf] = useState<Bookshelf | null>(null)
-    const [selectedUserBookshelf, setSelectedUserBookshelf] = useState<string | null>(null)
-    const [selectedBookclub, setSelectedBookclub] = useState<string | null>(null)
+
+
+
+
+    
+
+
+
+    // const {activeUser, userBookshelves, setUserBookshelves} = userData()
+    // const [isBookclubModalOpen, setIsBookclubModalOpen] = useState(false)
+    // const [isBookshelfModalOpen, setIsBookshelfModalOpen] = useState(false)
+    // const [searchValue, setSearchValue] = useState('')
+    // const [bookclubSearchResults, setBookclubSearchResults] = useState<Bookclub[]>([])
+    // const [currentBookclub, setCurrentBookclub] = useState<Bookclub | null>(null)
+    // const [currentBookshelf, setCurrentBookshelf] = useState<Bookshelf | null>(null)
+    // const [selectedUserBookshelf, setSelectedUserBookshelf] = useState<string | null>(null)
+    // const [selectedBookclub, setSelectedBookclub] = useState<string | null>(null)
     
 
     const bookclubModalRef = useRef<HTMLDialogElement>(null)
-    const bookshelfModalRef = useRef<HTMLDialogElement>(null)
-
-
-    useEffect(() => {
-
-        try {
-
-            const socket = new WebSocket(`ws://localhost:8000/ws/book/${params.id}`)
-
-            socket.onmessage = (event) => {
-                const data = JSON.parse(event.data)
-                if (data.type === 'get_book_data') {
-                    console.log('book club data:', data.bookclub_results)
-                    setBookclubSearchResults(data.bookclub_results)
-
-                    const { authors, ...book_result } = data.book_result
-                    // console.log('author data:', authors)
-                    setBook(book_result)
-                    setAuthors(authors)
-                    console.log(book_result)
-                }
-            }
-
-            socket.onerror = (error) => {
-                console.error('Book data websocket error:', error)
-            }
-
-            socket.onopen = () => console.log('Book data websocket connected')
-            socket.onclose = () => console.log('Book data websocket disconnected')
-
-            return () => socket.close()
-
-        } catch (err) {
-            console.log('Failed to initialize bookpage websocket:', err)
-        }
-
-    }, [params.id])
+    // const bookshelfModalRef = useRef<HTMLDialogElement>(null)
 
 
 
-    const addToBookshelf = async (currentBookshelf: Bookshelf): Promise<void> => {
+
+    // const addToBookshelf = async (currentBookshelf: Bookshelf): Promise<void> => {
         
-        const bookshelfRequest = {
-            book_id: book?.title_id
-        } 
+    //     const bookshelfRequest = {
+    //         book_id: book?.title_id
+    //     } 
 
-        try {
-            const response = await fetch(`http://localhost:8000/api/bookclub/addBook/${currentBookshelf.bookshelf_id}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(bookshelfRequest)
-            })
+    //     try {
+    //         const response = await fetch(`http://localhost:8000/api/bookclub/addBook/${currentBookshelf.bookshelf_id}`, {
+    //             method: 'PUT',
+    //             headers: {
+    //                 'Content-Type': 'application/json'
+    //             },
+    //             body: JSON.stringify(bookshelfRequest)
+    //         })
 
-            if (response.ok) {
-                const data = await response.json()
-                console.log('add book to bookclub data:', data)
-                setUserBookshelves(prev => [...prev, data])
-                closeBookclubModal()
-            } else {
-                console.error('Error adding book to bookshelf:', response.statusText)
-            }
+    //         if (response.ok) {
+    //             const book = await response.json()
+    //             console.log('add book to bookclub book:', book)
+    //             setUserBookshelves(prev => [...prev, book])
+    //             closeBookclubModal()
+    //         } else {
+    //             console.error('Error adding book to bookshelf:', response.statusText)
+    //         }
             
 
-        } catch(err) {
-            console.error('Error adding book to bookshelf')
-        }
+    //     } catch(err) {
+    //         console.error('Error adding book to bookshelf')
+    //     }
 
       
-    }
+    // }
 
-    const addToUserBookshelf = async (selectedUserBookshelf: string) : Promise<void> => {
+    // const addToUserBookshelf = async (selectedUserBookshelf: string) : Promise<void> => {
 
-        const bookshelfRequest = {
-            book_id: book?.title_id,
-            bookshelf_id: selectedUserBookshelf,
-        } 
-
-
+    //     const bookshelfRequest = {
+    //         book_id: book?.title_id,
+    //         bookshelf_id: selectedUserBookshelf,
+    //     } 
 
 
-        try {
 
-            const response = await fetch(`http://localhost:8000/api/userBookshelf/addBook/${activeUser.id}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
 
-                body: JSON.stringify(bookshelfRequest)
+    //     try {
+
+    //         const response = await fetch(`http://localhost:8000/api/userBookshelf/addBook/${activeUser.id}`, {
+    //             method: 'PUT',
+    //             headers: {
+    //                 'Content-Type': 'application/json'
+    //             },
+
+    //             body: JSON.stringify(bookshelfRequest)
                 
-            })
+    //         })
 
-            if (response.ok) {
-                const data = response.json();
-                console.log('add to user bookshelf data:', data)
-            }
+    //         if (response.ok) {
+    //             const book = response.json();
+    //             console.log('add to user bookshelf book:', book)
+    //         }
 
-        } catch(err) {
-            console.error('Error adding book to user bookshelf')
-        }
+    //     } catch(err) {
+    //         console.error('Error adding book to user bookshelf')
+    //     }
 
-        closeBookshelfModal()
+    //     closeBookshelfModal()
 
 
-    }
+    // }
 
     // console.log('bookpage parameters:', params)
 
-    const openBookclubModal = () => {
-        setIsBookclubModalOpen(true)
+    // const openBookclubModal = () => {
+    //     setIsBookclubModalOpen(true)
 
-        bookclubModalRef.current?.showModal()
+    //     bookclubModalRef.current?.showModal()
         
-    }
-    const closeBookclubModal = () => {
-        setIsBookclubModalOpen(false)
-        bookclubModalRef.current?.close()
-    }
+    // }
+    // const closeBookclubModal = () => {
+    //     setIsBookclubModalOpen(false)
+    //     bookclubModalRef.current?.close()
+    // }
 
-    const openBookshelfModal = () => {
-        setIsBookshelfModalOpen(true)
-        bookshelfModalRef.current?.showModal()
-    }
+    // const openBookshelfModal = () => {
+    //     setIsBookshelfModalOpen(true)
+    //     bookshelfModalRef.current?.showModal()
+    // }
 
-    const closeBookshelfModal = () => {
-        setIsBookshelfModalOpen(false)
-        bookshelfModalRef.current?.close()
-    }
+    // const closeBookshelfModal = () => {
+    //     setIsBookshelfModalOpen(false)
+    //     bookshelfModalRef.current?.close()
+    // }
 
 
-    const showBookshelves = (bookclub_id: string) => {
+    // const showBookshelves = (bookclub_id: string) => {
     
-        const selectedBookclub = bookclubSearchResults.find((bookclub: Bookclub) => bookclub.bookclub_id === bookclub_id) || null
-        console.log('selected bookclub:', selectedBookclub);
+    //     const selectedBookclub = bookclubSearchResults.find((bookclub: Bookclub) => bookclub.bookclub_id === bookclub_id) || null
+    //     console.log('selected bookclub:', selectedBookclub);
         
-        setCurrentBookclub(selectedBookclub)
-    }
+    //     setCurrentBookclub(selectedBookclub)
+    // }
 
-    const handleBookclubSelection = (bookclubId: string) => {
-        console.log('bookclub id:', bookclubId)
-        setSelectedBookclub(bookclubId)
-        showBookshelves(bookclubId)
-    }
+    // const handleBookclubSelection = (bookclubId: string) => {
+    //     console.log('bookclub id:', bookclubId)
+    //     setSelectedBookclub(bookclubId)
+    //     showBookshelves(bookclubId)
+    // }
 
-    const handleUserBookshelfSelection = (bookshelfId: string) => {
-        setSelectedUserBookshelf(bookshelfId)
+    // const handleUserBookshelfSelection = (bookshelfId: string) => {
+    //     setSelectedUserBookshelf(bookshelfId)
 
-    }
-    console.log('current bookclub:', currentBookclub);
+    // }
+    // console.log('current bookclub:', currentBookclub);
     
-    console.log('current bookclub bookshelves:', currentBookclub?.bookshelves);
+    // console.log('current bookclub bookshelves:', currentBookclub?.bookshelves);
     
     
     
@@ -203,13 +199,13 @@ const Bookpage = () => {
                             <div className="book-details">
                                 <img className='book-cover' src={book.imageLinks['thumbnail']} alt="" />
                                <div className="bookshelfBtn-wrapper">
-                                   <BookmarkIcon onClick={openBookshelfModal}></BookmarkIcon>
+                                   {/* <BookmarkIcon onClick={openBookshelfModal}></BookmarkIcon> */}
                                     <span>Add to Bookshelf</span>
 
                                     
 
                                     {/* BOOKSHELF MODAL */}
-                                    <dialog className={`addToBookshelf-modal ${isBookshelfModalOpen ? 'show': ''}`} ref={bookshelfModalRef}>
+                                    {/* <dialog className={`addToBookshelf-modal ${isBookshelfModalOpen ? 'show': ''}`} ref={bookshelfModalRef}>
                                         <h3>Add this book to your bookshelf</h3>
                                         <hr />
                                         {activeUser ? 
@@ -240,23 +236,25 @@ const Bookpage = () => {
                                             <button onClick={closeBookshelfModal}>Cancel</button>
                                             <button onClick={async () => selectedUserBookshelf && await addToUserBookshelf(selectedUserBookshelf)}>Add</button>
                                         </div>
-                                    </dialog>
+                                    </dialog> */}
                                </div>
                               
-                            
+                               {/* {book.authors?.[0].name} */}
                             </div>
                             <article className="book-info-wrapper">
-                                <h1>{book.title}</h1>
-                                <h3>By <span>{authors?.[0]['name']} </span></h3>
-                                <p>Category: <Link to='#' >{book.genres.genre_name}</Link></p>
+                                <h1>{book.name}</h1>
+                                <h3>
+                                    By <span> {authorText} </span>
+                                </h3>
+                                <p>Category: <Link to='#' >{book.genres.name}</Link></p>
                                 <button
-                                    onClick={openBookclubModal} 
+                                    // onClick={openBookclubModal} 
                                     
                                     className='add-to-bookClubBtn'>Add to Bookclub</button>
                             </article>
 
                             {/* BOOKCLUB MODAL */}
-                            <dialog className={`addToBookclub-modal ${isBookclubModalOpen ? 'show' : ''}`} ref={bookclubModalRef}>
+                            {/* <dialog className={`addToBookclub-modal ${isBookclubModalOpen ? 'show' : ''}`} ref={bookclubModalRef}>
                                 <h3>Add this book to your bookclub</h3>
                                 <hr />
                                     <main className="bookclub-results-content">
@@ -304,14 +302,14 @@ const Bookpage = () => {
                                     <button onClick={() => currentBookshelf && addToBookshelf(currentBookshelf)}>Add</button>
                                 </div>
 
-                            </dialog>
+                            </dialog> */}
                         </div>
                     </div>
                     
                     <div className="main-content">
                         <div className="book-description">
                             <hr />
-                            <h3>About {book.title}</h3>
+                            <h3>About {book.name}</h3>
                             <p>{book.description}</p>
                            
                         </div>
@@ -319,15 +317,27 @@ const Bookpage = () => {
                         {/* AUTHOR PRODUCT COMPONENT */}
                         <div className="author-product-container">
 
-                            {authors && authors.length > 0 &&  
+                            {book.authors && book.authors.length > 0 &&
+                                book.authors.map((author: Author ) => (
 
-                                <aside className='author-details'>
-                                <hr />
-                                <h3>About {authors[0].name}</h3>
-                                <div className='author-text-container'>
-                                    <p>{authors[0].bio}</p><span className="author-link">... <Link to={`/author/${authors[0].author_id}`}>More about { authors[0].name } </Link></span>
-                                </div>
+                                <aside key={author.id} className='author-details'>
+                                    <hr />
+                                    <h3>About {author.name}</h3>
+                                    <div className='author-text-container'>
+                                        <p>{author.bio}</p>
+                                        <span className="author-link">
+                                            ... <Link to={`/author/${author.id}`}>More about { author.name } </Link>
+                                        </span>
+                                    </div>
                                 </aside>
+
+
+
+                                ))
+
+                                
+
+                                
                             }
 
 
@@ -343,8 +353,8 @@ const Bookpage = () => {
                                     <ul>
                                         {typeof book.ISBN_Identifiers === 'object' && 
 
-                                            book.ISBN_Identifiers.map((obj: ISBN_Identifier, index: number) => (
-                                                <li key={index}> {obj.type} : {obj.identifier}</li>
+                                            book.ISBN_Identifiers.map((obj: ISBN_Identifier) => (
+                                                <li key={obj.identifier}> {obj.type} : {obj.identifier}</li>
                                             ))
                                         
                                         

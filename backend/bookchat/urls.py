@@ -16,7 +16,7 @@ Including another URLconf
     """
 
 from rest_framework import routers
-from .api import BestsellerViewSet, BookViewSet, InvitationAPI
+from .api import BestsellerViewSet, InvitationAPI
 from .views import *
 from django.urls import path, include
 

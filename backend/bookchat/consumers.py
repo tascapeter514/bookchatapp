@@ -134,7 +134,7 @@ class BookclubSearchConsumer(WebsocketConsumer):
             }
         }))
 
-class BookDataConsumer(WebsocketConsumer):
+# class BookDataConsumer(WebsocketConsumer):
     def connect(self):
         self.group_name = 'get_book_data'
         self.book_id = self.scope['url_route']['kwargs']['id']

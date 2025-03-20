@@ -1,8 +1,10 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useCallback } from 'react'
 import axios from 'axios'
 
 
 export default function useGetData(url: string) {
+
+    console.log('url:', url)
     
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
@@ -29,10 +31,6 @@ export default function useGetData(url: string) {
         }
     }, [])
 
-    useEffect(() => {
-        makeRequest()
-        
-    }, [url])
 
     return { makeRequest, loading, error}
 }

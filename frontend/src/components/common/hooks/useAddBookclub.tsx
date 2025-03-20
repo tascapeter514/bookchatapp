@@ -37,7 +37,6 @@ export default function useAddBookclub(url: string) {
        
     }, [url])
 
-    // console.log('bookclub hook data:', data)
 
     return { makeRequest, loading, error}
 
