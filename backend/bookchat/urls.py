@@ -23,16 +23,18 @@ from django.urls import path, include
 
 router = routers.DefaultRouter()
 router.register('', BestsellerViewSet, 'homepage')
-router.register(r'book', BookViewSet, 'book')
 
 
 
 urlpatterns = [
+    # finished routes
+    path('api/book/<int:id>', get_book, name='get-book'),
+
+    # UNFINISHED ROUTES? NEED WORK
      path('api/sendInvite', send_invite, name='send-invite'),
      path('api/getInvites/<int:id>', InvitationAPI.as_view(), name='get-invites'),
      path('api/acceptInvite', InvitationAPI.as_view(), name='accept-invite'),
      path('api/getBookclubMemberships/<int:id>', get_member_bookclubs, name='get_member_bookclubs'),
-     path('api/search/<str:searchTerm>', get_search_query, name='get_search_query'),
     #  path('api/bookclub/<uuid:id>', get_bookclub, name='get_bookclub'),
      path('api/bookclub/addBookshelf', add_bookclub_bookshelf, name='add_bookshelf'),
      path('api/bookclub/addBook/<uuid:id>', add_book_to_bookclub, name='add_book_to_bookclub'),

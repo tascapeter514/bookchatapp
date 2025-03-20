@@ -19,7 +19,11 @@ import json
 
 # Create your views here.
 
+@api_view(['GET'])
+def get_book(request, id):
+    print('id')
 
+    return Response({'message:' 'Success! You reached the backend!'})
 
 @api_view(['GET'])
 def get_member_bookclubs(request, **kwargs):
@@ -29,18 +33,7 @@ def get_member_bookclubs(request, **kwargs):
     serializer = BookclubSerializer(user_bookclubs, many=True)
     return Response(serializer.data)
 
-@api_view(['GET'])
-def get_search_query(request, **kwargs):
-    search_term = kwargs.get('searchTerm')
-    return Response({'message:', f'Success! Your search query, {search_term}, was successfully sent to the backend!'})
 
-# @api_view(['GET'])
-# def get_bookclub(request, **kwargs):
-#     id = kwargs['id']
-#     bookclub = Bookclub.objects.get(bookclub_id=id)
-#     serializer = BookclubSerializer(bookclub)
-
-#     return Response(serializer.data)
 
 @api_view(['GET'])
 def get_author_data(request, **kwargs):

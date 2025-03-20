@@ -17,7 +17,7 @@ const BookmarkIcon: FC<IconProps> = (props) => {
 }
 
 
-const Bookpage: React.FC = () => {
+const Bookpage = () => {
 
 
 

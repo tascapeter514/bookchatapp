@@ -21,22 +21,6 @@ class BestsellerViewSet(viewsets.ModelViewSet):
     ]
     serializer_class = BookSerializer
 
-
-
-#BOOK VIEWSET
-class BookViewSet(viewsets.ModelViewSet):
-    queryset = Book.objects.all()
-    serializer_class = BookSerializer
-    lookup_field = 'id'
-
-
-    def retrieve(self, request, id=None):
-        try:
-            book = get_object_or_404(Book, title_id=id)
-            serializer = BookSerializer(book)
-            return Response(serializer.data)
-        except ValidationError:
-            return Response({'error': 'Invalid UUID format'}, status=400)
         
 
 #BOOKSHELF VIEWSET
