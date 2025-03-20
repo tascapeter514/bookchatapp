@@ -1,7 +1,6 @@
 import './Searchbar.css'
 import SearchbarResults from '../SearchbarResults/SearchbarResults'
 import useSearch from '../common/hooks/useSearch'
-import { SearchData, SearchResult } from '../../types'
 import {SearchIcon} from '../common/Icons'
 
 
@@ -9,17 +8,11 @@ import {SearchIcon} from '../common/Icons'
 const Searchbar = () => {
 
 
-    const { searchValue, setSearchValue, searchResults, error, loading } = useSearch()
+    const { searchValue, setSearchValue, searchResults, error } = useSearch()
     
-
-    // console.log('searchbar results:', searchResults);
-    // console.log('search value:', searchValue);
+    console.log('searchbar error:', error)
 
     
-    
-    
-
-
     
     return(
 
@@ -31,17 +24,12 @@ const Searchbar = () => {
                     onChange={(e) => setSearchValue(e.target.value)}
                 />
                 <SearchIcon className='search-icon'/>
-                {loading && <p>Loading...</p>}
-                {error && <p>Error: {error}</p>}
+
                 {searchValue && searchResults.length > 0 && <SearchbarResults>{searchResults}</SearchbarResults>}
+
                 
                 
             </div>
-            
-            
-
-
-
     )
 }
 

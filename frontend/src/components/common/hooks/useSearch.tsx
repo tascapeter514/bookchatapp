@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 
 export default function useSearch() {
 
@@ -6,23 +7,10 @@ export default function useSearch() {
     const [debouncedValue, setDebouncedValue] = useState('')
     const [searchResults, setSearchResults] = useState([])
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null)
+    const [error, setError] = useState<Error | null>(null)
+    const location = useLocation()
 
-
-        useEffect(() => {
-            const id = setTimeout(() => {
-                console.log('setting new timeout')
-                setDebouncedValue(searchValue)
-            }, 500)
-    
-            return () => {
-    
-                console.log('clearing timeout')
-                clearTimeout(id)
-            }
-        }, [searchValue])
-        
-    
+    // fetch data from backend when search value is active
     const fetchData = useCallback(async (value: string) => {
             if (!value) return
 
@@ -48,8 +36,10 @@ export default function useSearch() {
                     }
                 }
     
-                socket.onerror = (error) => {
-                    console.error('Websocket search query error:', error)
+                socket.onerror = (event) => {
+                    console.error('WebSocket connection failed:', event)
+                    setError(new Error('Search websocket failed to connect'))
+                    socket.close();
                 }
     
                 socket.onopen = () => console.log('Search query websocket connected')
@@ -65,18 +55,43 @@ export default function useSearch() {
             }
             
         }, [])
+
+        // set debounce when search value changes
+        useEffect(() => {
+            const id = setTimeout(() => {
+                console.log('setting new timeout')
+                setDebouncedValue(searchValue)
+            }, 500)
+        
+            return () => {
+                console.log('clearing timeout')
+                clearTimeout(id)
+                }
+            }, [searchValue])
         
         //fetch search data when debounced value changes
         useEffect(() => {
-            fetchData(debouncedValue);
+
+            fetchData(debouncedValue)
+        
+            
         }, [debouncedValue, fetchData])
 
+        // set search value to empty string when location pathname changes
+        useEffect(() => {
+            setSearchValue('')
+
+        }, [location.pathname])
+
+        // set search results to empty array if no search value
         useEffect(() => {
             if (!searchValue) {
                 setSearchResults([])
             }
         }, [searchValue])
 
+        
+    
     return {searchValue, searchResults, setSearchValue, fetchData, error, loading}
 
 

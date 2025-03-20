@@ -1,28 +1,16 @@
-import { useState, FC, useEffect } from 'react'
+import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { HandleLogout, Author, Book, Bookclub, SearchData,} from '../../types.ts'
+import { HandleLogout } from '../../types.ts'
 import { userData } from '../common/Context/UserContext/UserContext.tsx'
 import Searchbar from '../Searchbar/Searchbar.tsx'
-import SearchResults from '../SearchbarResults/SearchbarResults.tsx'
 import './Navbar.css'
 
-const Navbar: FC = () => {
+const Navbar = () => {
 
   const navigate = useNavigate()
   const [showNavbar] = useState(false)
   const {activeUserToken, setActiveUserToken} = userData()
-  const [authorSearchResults, setAuthorSearchResults] = useState<Author[]>([])
-  const [bookSearchResults, setBookSearchResults] = useState<Book[]>([])
-  const [bookclubSearchResults, setBookclubSearchResults] = useState<Bookclub[]>([])
-  const [showSearchResults, setShowSearchResults] = useState(false)
-  const searchResults: SearchData = [
-    {type: 'author', items: authorSearchResults},
-    {type: 'book', items: bookSearchResults},
-    {type: 'bookclub', items: bookclubSearchResults}
-  ]
-
   
-
     const handleLogout: HandleLogout = async () => {
         const token = localStorage.getItem('authToken');
         try {
@@ -58,16 +46,6 @@ const Navbar: FC = () => {
 
     )
 
-    useEffect(() => {
-
-      return () => {
-        setShowSearchResults(false)
-      }
-
-    }, [])
-
-
-
     return(
         <header>
             <div className="container container-nav">
@@ -77,18 +55,7 @@ const Navbar: FC = () => {
                   <p className="subtitle">A book club app for book lovers</p>
                   </div>
                   <div className="searchBar-searchResults-wrapper">
-                    <Searchbar
-                      setAuthorSearchResults={setAuthorSearchResults}
-                      setBookSearchResults={setBookSearchResults}
-                      setBookclubSearchResults={setBookclubSearchResults}
-                      setShowSearchResults={setShowSearchResults}
-                      showSearchResults={showSearchResults}
-                    ></Searchbar>
-                    
-                    
-                    {/* {showSearchResults ? 
-                      <SearchResults setShowSearchResults={setShowSearchResults} sortedSearchResults={sortedSearchResults}></SearchResults> : ''
-                    } */}
+                    <Searchbar></Searchbar>
                   </div>
                 </div>
 
@@ -98,7 +65,7 @@ const Navbar: FC = () => {
 
                 </button>
                 <nav className='main-navbar'>
-                    <ul className='main-navbar-list' onClick={() => setShowSearchResults(false)}>
+                    <ul className='main-navbar-list'>
                         <li className='main-list-element'><Link to='/'>Home</Link></li>
                         <li className='main-list-element'><Link to='#'>Books</Link></li>
                         <li className='main-list-element'><Link to='#'>Authors</Link></li>

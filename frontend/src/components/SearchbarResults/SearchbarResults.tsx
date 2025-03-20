@@ -8,6 +8,7 @@ interface ResultProps {
 }
 
 
+
 const SearchResults = ({children}: ResultProps ) => {
 
     const noResults = children.map((searchResult: SearchResult) => searchResult.items).every(items => items.length < 1)
@@ -16,6 +17,7 @@ const SearchResults = ({children}: ResultProps ) => {
         return (a.items?.length || 0) - (b.items?.length || 0)
       })
 
+    
     const searchResultElements = sortedResults.map((searchResultElement: SearchResult) => {
 
         const searchResult = searchResultElement.items
