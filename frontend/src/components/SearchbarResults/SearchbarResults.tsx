@@ -1,6 +1,6 @@
 import './SearchbarResults.css'
 import { Link } from 'react-router-dom'
-import { SearchData, Book, Author, Bookclub } from '../../types'
+import { SearchData, SearchResult } from '../../types'
 
 
 interface ResultProps {
@@ -9,24 +9,16 @@ interface ResultProps {
 
 
 const SearchResults = ({children}: ResultProps ) => {
-    console.log('children:', children);
-    
-    if (!children) {
-        return <p>No results</p>
-    }
 
-    const sortedSearchResults = children.sort((a, b) => {
-        console.log('sorted search:', a, b);
+    const noResults = children.map((searchResult: SearchResult) => searchResult.items).every(items => items.length < 1)
+    const sortedResults = children.sort((a, b) => {
         
         return (a.items?.length || 0) - (b.items?.length || 0)
       })
-    
-    
-    const searchResultElements = sortedSearchResults.map((searchResultElement: {type: string, items?: Book[] | Author[] | Bookclub[]}) => {
+
+    const searchResultElements = sortedResults.map((searchResultElement: SearchResult) => {
 
         const searchResult = searchResultElement.items
-
-        
 
         if (!searchResult) {
             return null
@@ -34,7 +26,6 @@ const SearchResults = ({children}: ResultProps ) => {
         
         return (
             searchResult.map((result) => {
-                console.log('result:', result.name, result.id)
                 return (<li key={result.id} >
                             <Link to={`/${result.name}/${result.id}`}>{result.name}</Link>
                         </li>)
@@ -46,13 +37,10 @@ const SearchResults = ({children}: ResultProps ) => {
     return (
         <ul className="results-list">
             <hr className='results-divider'/>
-            {searchResultElements}
+            {noResults ? <p>No results</p> : searchResultElements}
         </ul>
 
     )
 }
 
 export default SearchResults
-
-
-// onClick={() => setShowSearchResults(false)}

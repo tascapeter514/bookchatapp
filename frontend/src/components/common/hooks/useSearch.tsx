@@ -41,7 +41,6 @@ export default function useSearch() {
                     const data = JSON.parse(event.data);
                     if (data.type === 'get_search_query') {
                         console.log('WEBSOCKET SEARCH DATA:', data)
-                        // return data
                         setSearchResults(data.search_results)
                         
                         
@@ -71,6 +70,12 @@ export default function useSearch() {
         useEffect(() => {
             fetchData(debouncedValue);
         }, [debouncedValue, fetchData])
+
+        useEffect(() => {
+            if (!searchValue) {
+                setSearchResults([])
+            }
+        }, [searchValue])
 
     return {searchValue, searchResults, setSearchValue, fetchData, error, loading}
 

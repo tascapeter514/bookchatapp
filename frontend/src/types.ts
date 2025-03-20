@@ -93,10 +93,15 @@ export interface Bookclub {
 
 }
 
+export type SearchResult = {
+    type: string,
+    items: Book[] | Author[] | Bookclub[];
+}
+
 
 export type SearchData = {
     type: string,
-    items?: Book[] | Author[] | Bookclub[];
+    items: Book[] | Author[] | Bookclub[];
 }[]
 
     

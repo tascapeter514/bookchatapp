@@ -1,6 +1,6 @@
 import { useState, FC, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { HandleLogout, Author, Book, Bookclub, SearchResultsArray } from '../../types.ts'
+import { HandleLogout, Author, Book, Bookclub, SearchData,} from '../../types.ts'
 import { userData } from '../common/Context/UserContext/UserContext.tsx'
 import Searchbar from '../Searchbar/Searchbar.tsx'
 import SearchResults from '../SearchbarResults/SearchbarResults.tsx'
@@ -15,7 +15,7 @@ const Navbar: FC = () => {
   const [bookSearchResults, setBookSearchResults] = useState<Book[]>([])
   const [bookclubSearchResults, setBookclubSearchResults] = useState<Bookclub[]>([])
   const [showSearchResults, setShowSearchResults] = useState(false)
-  const searchResults: SearchResultsArray = [
+  const searchResults: SearchData = [
     {type: 'author', items: authorSearchResults},
     {type: 'book', items: bookSearchResults},
     {type: 'bookclub', items: bookclubSearchResults}
