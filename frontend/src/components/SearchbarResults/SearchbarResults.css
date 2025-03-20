@@ -1,29 +1,27 @@
 .results-list {
     width: 100%;
-
-    background-color: lightgrey;
+    background-color: whitesmoke;
     display: flex;
     flex-direction: column;
     color: black;
-    align-items: left;
-    justify-content: top;
+    left: 0;
+    top: 2rem;
     position: absolute;
-    margin-top: 2.5rem;
     box-shadow: 0px 0px 8px #ddd;
-    border-radius: 10px;
+    border-radius: 0 0 10px 10px;
     max-height: 90px;
     overflow-y: scroll;
     font-size: 1rem;
-    padding: 0 .5em 0 .5em
-
-    
-    
-}
-
-
-
-.search-elements-list {
     padding: 0 .5em 0 .5em;
-    /* border: 1px solid lime */
+
 }
+
+.results-divider {
+    margin-block: .25rem;
+    
+}
+
+
+
+
 

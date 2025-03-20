@@ -1,29 +1,27 @@
 
 
 .input-wrapper {
-    background-color: white;
+    background-color: whitesmoke;
     width: 100%;
     border-radius: 10px;
     height: 2rem;
     padding: 0 .5em;
-    /* box-shadow: 0 0 8px #ddd; */
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-
-
+    position: relative;
 }
 
+.input-wrapper.active {
+    border-radius: 10px 10px 0 0;
+    
 
-
-
-.search-icon {
-    color: black;
+    
 }
+
 
 .input-wrapper > input {
-    /* flex: 0 1 auto; */
+
     background-color: transparent;
     border: none;
     height: 100%;
@@ -35,8 +33,6 @@
     
 
 }
-
-
 
 .input-wrapper > input:focus::placeholder {
     color: transparent;

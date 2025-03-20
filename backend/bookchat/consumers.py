@@ -84,16 +84,26 @@ class SearchDataConsumer(WebsocketConsumer):
         book_serializer = BookSerializer(book_results, many=True, fields=['id', 'name'])
         bookclub_serializer = BookclubSerializer(bookclub_results, many=True, fields=['id', 'name'])
 
-        
+        search_serializer = [bookclub_serializer.data, author_serializer.data, bookclub_serializer.data]
 
         self.send(text_data=json.dumps({
             'type': 'get_search_query',
-            'search_results': {
-                'book_results': book_serializer.data,
-                'author_results': author_serializer.data,
-                'bookclub_results': bookclub_serializer.data
-            }
+            'search_results': 
+            [
+                {'type': 'authors', 'items': author_serializer.data},
+                {'type': 'bookclubs', 'items': bookclub_serializer.data},
+                 {'type': 'books', 'items': book_serializer.data}
+            ]
         }))
+
+        # self.send(text_data=json.dumps({
+        #     'type': 'get_search_query',
+        #     'search_results': {
+        #         'book_results': book_serializer.data,
+        #         'author_results': author_serializer.data,
+        #         'bookclub_results': bookclub_serializer.data
+        #     }
+        # }))
 
 
 class BookclubSearchConsumer(WebsocketConsumer):

@@ -21,9 +21,7 @@ const Navbar: FC = () => {
     {type: 'bookclub', items: bookclubSearchResults}
   ]
 
-  const sortedSearchResults = searchResults.sort((a, b) => {
-    return (a.items?.length || 0) - (b.items?.length || 0)
-  })
+  
 
     const handleLogout: HandleLogout = async () => {
         const token = localStorage.getItem('authToken');
@@ -86,9 +84,11 @@ const Navbar: FC = () => {
                       setShowSearchResults={setShowSearchResults}
                       showSearchResults={showSearchResults}
                     ></Searchbar>
-                    {showSearchResults ? 
+                    
+                    
+                    {/* {showSearchResults ? 
                       <SearchResults setShowSearchResults={setShowSearchResults} sortedSearchResults={sortedSearchResults}></SearchResults> : ''
-                    }
+                    } */}
                   </div>
                 </div>
 

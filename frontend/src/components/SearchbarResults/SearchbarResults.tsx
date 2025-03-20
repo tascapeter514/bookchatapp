@@ -1,46 +1,51 @@
 import './SearchbarResults.css'
-import {  Dispatch, SetStateAction } from 'react'
 import { Link } from 'react-router-dom'
-import { SearchResultsArray, Book, Author, Bookclub } from '../../types'
+import { SearchData, Book, Author, Bookclub } from '../../types'
 
 
-interface SearchResultProps {
-    sortedSearchResults: SearchResultsArray,
-    setShowSearchResults: Dispatch<SetStateAction<boolean>>
+interface ResultProps {
+    children: SearchData
 }
 
 
-const SearchResults = ({sortedSearchResults, setShowSearchResults}: SearchResultProps) => {
+const SearchResults = ({children}: ResultProps ) => {
+    console.log('children:', children);
+    
+    if (!children) {
+        return <p>No results</p>
+    }
 
-    console.log('sorted search results:', sortedSearchResults)
-
+    const sortedSearchResults = children.sort((a, b) => {
+        console.log('sorted search:', a, b);
+        
+        return (a.items?.length || 0) - (b.items?.length || 0)
+      })
+    
+    
     const searchResultElements = sortedSearchResults.map((searchResultElement: {type: string, items?: Book[] | Author[] | Bookclub[]}) => {
 
         const searchResult = searchResultElement.items
 
-        console.log('search result:', searchResult)
+        
 
         if (!searchResult) {
             return null
         }
         
         return (
+            searchResult.map((result) => {
+                console.log('result:', result.name, result.id)
+                return (<li key={result.id} >
+                            <Link to={`/${result.name}/${result.id}`}>{result.name}</Link>
+                        </li>)
+            })
             
-                <ul className='search-elements-list'>
-                    {searchResult.map((result) => {
-                        return (<li key={result.id} onClick={() => setShowSearchResults(false)}>
-                                    <Link to={`/${result.name}/${result.id}`}>{result.name}</Link>
-                                </li>)
-                    })}
-                </ul>
-
-
-
         )})
 
     
     return (
         <ul className="results-list">
+            <hr className='results-divider'/>
             {searchResultElements}
         </ul>
 
@@ -48,3 +53,6 @@ const SearchResults = ({sortedSearchResults, setShowSearchResults}: SearchResult
 }
 
 export default SearchResults
+
+
+// onClick={() => setShowSearchResults(false)}

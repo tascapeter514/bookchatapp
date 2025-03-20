@@ -94,7 +94,7 @@ export interface Bookclub {
 }
 
 
-export type SearchResultsArray = {
+export type SearchData = {
     type: string,
     items?: Book[] | Author[] | Bookclub[];
 }[]

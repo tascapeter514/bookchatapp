@@ -4,6 +4,7 @@ export default function useSearch() {
 
     const [searchValue, setSearchValue] = useState('')
     const [debouncedValue, setDebouncedValue] = useState('')
+    const [searchResults, setSearchResults] = useState([])
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null)
 
@@ -40,7 +41,8 @@ export default function useSearch() {
                     const data = JSON.parse(event.data);
                     if (data.type === 'get_search_query') {
                         console.log('WEBSOCKET SEARCH DATA:', data)
-                        return data
+                        // return data
+                        setSearchResults(data.search_results)
                         
                         
                         
@@ -65,13 +67,12 @@ export default function useSearch() {
             
         }, [])
         
-        
         //fetch search data when debounced value changes
         useEffect(() => {
             fetchData(debouncedValue);
         }, [debouncedValue, fetchData])
 
-    return {searchValue, setSearchValue, error, loading}
+    return {searchValue, searchResults, setSearchValue, fetchData, error, loading}
 
 
 }
