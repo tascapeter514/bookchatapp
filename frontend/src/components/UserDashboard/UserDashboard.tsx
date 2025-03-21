@@ -22,7 +22,7 @@ const UserDashboard = () => {
     const [activeBookshelf, setActiveBookshelf] = useState<number>(4);
     const [showNavbar, setShowNavbar] = useState(false);
     const [isExiting, setIsExiting] = useState(false)
-    const { userBookshelves }   = userData()
+    const { userBookshelves, activeUser }   = userData()
    
     const isBookshelfTab = activeTab >= 3
     const PanelComponent = () =>
@@ -40,6 +40,7 @@ const UserDashboard = () => {
         }
     }
 
+    console.log('active user:', activeUser)
 
     return(
         <div className='dashboard-container'>

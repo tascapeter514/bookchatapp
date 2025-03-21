@@ -1,7 +1,7 @@
 import { RefObject, useState } from 'react'
 import { Bookshelf } from '../../../../types'
 import SearchFilter from '../../SearchFilter/SearchFilter'
-import SearchResults from '../../../Bookpage/components/SearchFilter/SearchResults'
+import SearchResults from '../../../Bookpage/components/SearchFilter/FilterResults'
 import Button from '../../Buttons/Button/Button'
 import { userData } from '../../Context/UserContext/UserContext'
 import './AddBook.css'
@@ -19,7 +19,6 @@ const AddBook = ({addBookRef}: Props) => {
     
     const [currentBookshelf, setCurrentBookshelf] = useState<Bookshelf | null>(null)
     const [selectedUserBookshelf, setSelectedUserBookshelf] = useState<string | null>(null)
-    const [searchValue, setSearchValue] = useState('')
 
       const handleUserBookshelfSelection = (bookshelfId: string) => {
         setSelectedUserBookshelf(bookshelfId)
@@ -37,21 +36,12 @@ const AddBook = ({addBookRef}: Props) => {
                     {activeUser ? 
                         <main className="bookshelf-results-content">
                             <SearchFilter
-                                setSearchValue={setSearchValue}
-                                searchValue={searchValue} 
-                            ></SearchFilter>
-                                <div className="suggested-search-results">
-                                    {/* <SearchResults
-                                        idKey='bookshelf_id'
-                                        nameKey='name'
-                                        searchValue={searchValue}
-                                        searchResults={userBookshelves}
-                                        handleSelection={handleUserBookshelfSelection}
-                                        selectedElement={selectedUserBookshelf}
-                                    
-                                    >
-                                    </SearchResults> */}
-                                </div>
+                                
+                                
+                            >
+                                {userBookshelves}
+
+                            </SearchFilter>
                             </main>
                             
                         

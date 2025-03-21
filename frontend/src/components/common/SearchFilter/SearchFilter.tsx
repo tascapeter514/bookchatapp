@@ -1,14 +1,18 @@
 import './SearchFilter.css'
-import {Dispatch, SetStateAction} from 'react'
+import { useState } from 'react'
+import FilterResults from '../../Bookpage/components/SearchFilter/FilterResults'
+import { Bookshelf } from '../../../types'
 import { SearchIcon } from '../Icons'
 
 
-interface SearchFilterProps {
-    setSearchValue: Dispatch<SetStateAction<string>>,
-    searchValue: string
+type Props = {
+    children: Bookshelf[]
 }
 
-const SearchFilter = ({ searchValue, setSearchValue }: SearchFilterProps) => {
+const SearchFilter = ({children}: Props) => {
+
+    const [searchValue, setSearchValue] = useState('')
+
     return (
         <div className="searchFilter-content">
                 <input
@@ -20,6 +24,8 @@ const SearchFilter = ({ searchValue, setSearchValue }: SearchFilterProps) => {
                     required 
                 />
                 <SearchIcon className='search-icon'/>
+                <FilterResults searchValue={searchValue}>{children}</FilterResults>
+
 
         </div>
 

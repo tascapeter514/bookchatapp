@@ -14,11 +14,11 @@ const BookclubsPanel = () => {
 
     const bookclubElements = userBookclubs.map((userBookclub) => {
 
-        const lastVisited = localStorage.getItem(`lastVisited/${userBookclub.bookclub_id}`)
+        const lastVisited = localStorage.getItem(`lastVisited/${userBookclub.id}`)
         const weeksSinceVisited = lastVisited ? weeksAgo(lastVisited) : undefined
 
         return(
-            <li className='bookclub-element' key={userBookclub.bookclub_id}>
+            <li className='bookclub-element' key={userBookclub.id}>
                 <article className="bookclub-header">
                     <img className='bookclub-cover' src={`http://localhost:8000${userBookclub.cover_image}`} alt="cover" />
                     <div className="bookclub-header-text">

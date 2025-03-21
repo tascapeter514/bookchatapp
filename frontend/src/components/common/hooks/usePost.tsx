@@ -3,7 +3,7 @@ import axios from 'axios';
 
 
 
-export default function useAddBookclub(url: string) {
+export default function usePost(url: string) {
 
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)

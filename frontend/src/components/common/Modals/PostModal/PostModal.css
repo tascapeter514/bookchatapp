@@ -1,4 +1,4 @@
-.bookclub-modal {
+.post-modal {
     background-color: white;
     border-radius: 3px;
     border: 2px solid black;
@@ -6,7 +6,7 @@
     margin: auto;
 }
 
-.bookclub-modal input {
+.post-modal input {
     line-height: 2;
 }
 

@@ -1,10 +1,10 @@
 import { userData } from '../../../common/Context/UserContext/UserContext'
 import { Dispatch, SetStateAction, useState, useRef } from 'react'
-import BookclubModal from '../../../common/Modals/CreateBookclub/CreateBookclub'
+import PostModal from '../../../common/Modals/PostModal/PostModal'
 import CreateButton from '../../../common/Buttons/CreateButton/CreateButton'
 import { Bookshelf } from '../../../../types'
 import  BookshelfDropdown  from '../../../common/BookshelfDropdown/BookshelfDropdown'
-import BookshelfModal from '../../../common/Modals/BookshelfModal/BookshelfModal'
+import BookshelfModal from '../../../common/Modals/CreateBookshelf/CreateBookshelf'
 import { RightDropDownIcon } from '../../../common/Icons'
 import { formatDate } from '../../../common/functions'
 import './ProfileNavbar.css'
@@ -19,7 +19,7 @@ interface ProfileNavbarProps {
 const ProfileNavbar = (props: ProfileNavbarProps) => {
 
     const { activeTab, setActiveTab, setActiveBookshelf } = props
-    const { activeUser, userBookshelves, addUserBookshelf } = userData()
+    const { activeUser, userBookshelves, setUserBookshelves, setUserBookclubs } = userData()
     const [newBkslfId, setNewBkslfId] = useState<string>('')
     const [activePanel, setActivePanel] = useState(false);
     const [isRotated, setIsRotated] = useState(false);
@@ -38,6 +38,9 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
         setIsRotated(prev => !prev)
 
     }
+
+    console.log('user bookshelves:', userBookshelves)
+
 
     const bookshelfElements = userBookshelves.map((userBookshelf: Bookshelf, userBookshelfIndex: number) => {
 
@@ -94,14 +97,16 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
                             
                         </li>
                         <CreateButton onClick={openBookclubModal}>Bookclub</CreateButton>
-                        <BookclubModal
-                            bookclubfRef={bookclubRef}
-                            closeBookclubModal={closeBookclubModal}
-                            
+                        <PostModal
+                            ref={bookclubRef}
+                            closeModal={closeBookclubModal}
+                            url={`http://localhost:8000/api/user/addBookclub/${activeUser.id}`}
+                            setResults={setUserBookclubs}
+
+                        />
+                       
                         
-                        ></BookclubModal>
-                        
-                        
+                       
                         
          
                     </> 
@@ -123,13 +128,21 @@ const ProfileNavbar = (props: ProfileNavbarProps) => {
                             <ul className='navbar-bookshelf-list'>{bookshelfElements}</ul>
                         </BookshelfDropdown>
                         <CreateButton onClick={openBookshelfModal}>Bookshelf</CreateButton>
-                        <BookshelfModal
+                        <PostModal 
+                            ref={bookshelfRef} 
+                            closeModal={closeBookshelfModal}
+                            url={`http://localhost:8000/api/user/addBookshelf/${activeUser.id}`}
+                            setResults={setUserBookshelves}
+                            
+                        />
+
+                        {/* <BookshelfModal
                             bookshelfRef={bookshelfRef}
                             closeBookshelfModal={closeBookshelfModal}
                             addBookshelf={addUserBookshelf}
                             newBkslfId={newBkslfId}
                             setBkslfId={setNewBkslfId}
-                        ></BookshelfModal>
+                        ></BookshelfModal> */}
                     </div>
                 )} 
            </>
