@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
-export default function useSearch() {
+export default function useSearch(url: string) {
 
     const [searchValue, setSearchValue] = useState('')
     const [debouncedValue, setDebouncedValue] = useState('')
@@ -19,7 +19,7 @@ export default function useSearch() {
 
 
             const encodedValue = encodeURIComponent(value)
-            const path = encodeURI(`ws://localhost:8000/ws/search/${encodedValue}/`)
+            const path = encodeURI(`${url}${encodedValue}/`)
     
             try {
     

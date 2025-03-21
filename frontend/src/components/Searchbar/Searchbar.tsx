@@ -8,7 +8,7 @@ import {SearchIcon} from '../common/Icons'
 const Searchbar = () => {
 
 
-    const { searchValue, setSearchValue, searchResults } = useSearch()
+    const { searchValue, setSearchValue, searchResults } = useSearch('ws://localhost:8000/ws/search/')
     
     return(
 

@@ -1,6 +1,6 @@
 import { userData } from '../../../common/Context/UserContext/UserContext'
 import { Dispatch, SetStateAction, useState, useRef } from 'react'
-import BookclubModal from '../../../common/Modals/BookclubModal/BookclubModal'
+import BookclubModal from '../../../common/Modals/CreateBookclub/CreateBookclub'
 import CreateButton from '../../../common/Buttons/CreateButton/CreateButton'
 import { Bookshelf } from '../../../../types'
 import  BookshelfDropdown  from '../../../common/BookshelfDropdown/BookshelfDropdown'

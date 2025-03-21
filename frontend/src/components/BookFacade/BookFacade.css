@@ -30,51 +30,6 @@
     cursor: pointer;
 }
 
-.addToBookshelf-modal {
-
-    background-color: white;
-    border-radius: 3px;
-    border: 2px solid black;
-    margin: auto;
-    width: 100%;
-    max-width: 500px;
-}
-
-.addToBookshelf-modal.show {
-
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-
-
-}
-
-.addToBookshelf-modal.show > h3 {
-    text-align: center;
-    font-size: 1.25rem;
-}
-
-.addToBookshelf-modal.show > hr {
-    border: 1px solid lightgrey;
-    margin-bottom: 0;
-}
-
-.addToBookshelf-modal.show button {
-    width: 100%;
-    max-width: 81px;
-}
-
-.bookshelf-results-content {
-    display: flex;
-    width: 100%;
-    max-width: 350px;
-    border: 0;
-    margin: 0 auto;
-
-
-}
-
-
 
 .book-info-wrapper {
     padding: 2em;
