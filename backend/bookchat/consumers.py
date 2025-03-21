@@ -84,8 +84,6 @@ class SearchDataConsumer(WebsocketConsumer):
         book_serializer = BookSerializer(book_results, many=True, fields=['id', 'name'])
         bookclub_serializer = BookclubSerializer(bookclub_results, many=True, fields=['id', 'name'])
 
-        print(book_serializer.data)
-        print(author_serializer.data)
 
         self.send(text_data=json.dumps({
             'type': 'get_search_query',

@@ -220,28 +220,28 @@ def add_user_bookshelf(request, id):
 
     print('request body:', request.data)
 
-    bookshelf_id = request.data.get('bookshelfId')
-    bookshelf_name = request.data.get('bookshelfName')
+    bookshelf_name = request.data.get('name')
 
-    new_bookshelf = Bookshelf.objects.create(bookshelf_id=bookshelf_id, name=bookshelf_name)
-    user.bookshelves.add(new_bookshelf)
-
-    bookshelf_serializer = BookshelfSerializer(new_bookshelf)
-
-    return Response(bookshelf_serializer.data)
-
-
+    if not bookshelf_name:
+        return Response({'message:' 'You must enter a valid bookshelf name'}, status=status.HTTP_400_BAD_REQUEST)
+    else:
+        new_bookshelf = Bookshelf.objects.create(name=bookshelf_name)
+        user.bookshelves.add(new_bookshelf)
+        bookshelf_serializer = BookshelfSerializer(new_bookshelf)
+        return Response(bookshelf_serializer.data, status=status.HTTP_201_CREATED)
 
 @api_view(['POST'])
 def add_user_bookclub(request, id):
     user = User.objects.get(id=id)
-    bookclub_id = request.data.get('bookclubId')
-    bookclub_name = request.data.get('bookclubName')
+    
+    bookclub_name = request.data.get('name')
+
+    print('bookclub name:', bookclub_name)
 
     if not bookclub_name:
             return Response({'message:' 'You must enter a valid bookclub name'}, status=status.HTTP_400_BAD_REQUEST)
     else:
-        new_bookclub = Bookclub.objects.create(bookclub_id=bookclub_id, name=bookclub_name, administrator_id=id)
+        new_bookclub = Bookclub.objects.create(name=bookclub_name, administrator_id=id)
         new_bookclub.members.add(new_bookclub.administrator)
 
         bookclub_serializer = BookclubSerializer(new_bookclub)
