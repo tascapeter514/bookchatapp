@@ -1,6 +1,10 @@
 import './BookFacade.css'
+import { useRef } from 'react'
 import { Author, Genre } from '../../types'
 import { Link } from 'react-router-dom'
+import { BookmarkIcon } from '../common/Icons'
+import AddBook from '../common/Modals/AddBook/AddBook'
+
 
 
 interface Props {
@@ -31,53 +35,21 @@ const BookFacade = ({name, authors, genres, imageLinks}: Props) => {
         }
     })()
 
+    const addBookRef = useRef<HTMLDialogElement>(null)
+    const openModal = () => addBookRef.current?.showModal()
+
     return(
         <div className="top-facade">
         <div className="book-header-wrapper">
             <div className="book-details">
                 <img className='book-cover' src={imageLinks['thumbnail']} alt="" />
                <div className="bookshelfBtn-wrapper">
-                   {/* <BookmarkIcon onClick={openBookshelfModal}></BookmarkIcon> */}
+                   <BookmarkIcon onClick={openModal}></BookmarkIcon>
                     <span>Add to Bookshelf</span>
-
-                    
-
-                    {/* BOOKSHELF MODAL */}
-                    {/* <dialog className={`addToBookshelf-modal ${isBookshelfModalOpen ? 'show': ''}`} ref={bookshelfModalRef}>
-                        <h3>Add this book to your bookshelf</h3>
-                        <hr />
-                        {activeUser ? 
-                            <main className="bookshelf-results-content">
-                                
-                                <SearchFilter
-                                    setSearchValue={setSearchValue}
-                                    searchValue={searchValue} 
-                                ></SearchFilter>
-                                <div className="suggested-search-results">
-                                    <SearchResults
-                                        idKey='bookshelf_id'
-                                        nameKey='name'
-                                        searchValue={searchValue}
-                                        searchResults={userBookshelves}
-                                        handleSelection={handleUserBookshelfSelection}
-                                        selectedElement={selectedUserBookshelf}
-                                    
-                                    ></SearchResults>
-                                </div>
-                                
-
-                            </main>
-                            
-                        
-                        : <span>You must be logged in to use this feature</span>}
-                        <div className="button-wrapper">
-                            <button onClick={closeBookshelfModal}>Cancel</button>
-                            <button onClick={async () => selectedUserBookshelf && await addToUserBookshelf(selectedUserBookshelf)}>Add</button>
-                        </div>
-                    </dialog> */}
                </div>
+               <AddBook addBookRef={addBookRef}/>
               
-               {/* {book.authors?.[0].name} */}
+               
             </div>
             <article className="book-info-wrapper">
                 <h1>{name}</h1>

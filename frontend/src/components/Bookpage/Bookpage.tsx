@@ -4,11 +4,9 @@ import { Book, ISBN_Identifier, Bookshelf, Author, Bookclub } from '../../types'
 import AuthorDetails from '../AuthorDetails/AuthorDetails'
 import ProductDetails from '../ProductDetails/ProductDetails'
 import BookFacade from '../BookFacade/BookFacade'
-import { BookmarkIcon } from '../common/Icons'
-import { userData } from '../common/Context/UserContext/UserContext'
+
+
 import useGetData from '../common/hooks/useGetData'
-import SearchFilter from '../common/SearchFilter/SearchFilter'
-import SearchResults from './components/SearchFilter/SearchResults'
 import './Bookpage.css'
 
 
@@ -35,30 +33,18 @@ const Bookpage = () => {
 
 
     
-    
-
-
-
-
-
-
-    
-
-
-
     // const {activeUser, userBookshelves, setUserBookshelves} = userData()
     // const [isBookclubModalOpen, setIsBookclubModalOpen] = useState(false)
     // const [isBookshelfModalOpen, setIsBookshelfModalOpen] = useState(false)
     // const [searchValue, setSearchValue] = useState('')
     // const [bookclubSearchResults, setBookclubSearchResults] = useState<Bookclub[]>([])
     // const [currentBookclub, setCurrentBookclub] = useState<Bookclub | null>(null)
-    // const [currentBookshelf, setCurrentBookshelf] = useState<Bookshelf | null>(null)
-    // const [selectedUserBookshelf, setSelectedUserBookshelf] = useState<string | null>(null)
+
     // const [selectedBookclub, setSelectedBookclub] = useState<string | null>(null)
     
 
-    const bookclubModalRef = useRef<HTMLDialogElement>(null)
-    // const bookshelfModalRef = useRef<HTMLDialogElement>(null)
+    // const bookclubModalRef = useRef<HTMLDialogElement>(null)
+    
 
 
 
@@ -169,10 +155,7 @@ const Bookpage = () => {
     //     showBookshelves(bookclubId)
     // }
 
-    // const handleUserBookshelfSelection = (bookshelfId: string) => {
-    //     setSelectedUserBookshelf(bookshelfId)
-
-    // }
+  
     // console.log('current bookclub:', currentBookclub);
     
     // console.log('current bookclub bookshelves:', currentBookclub?.bookshelves);

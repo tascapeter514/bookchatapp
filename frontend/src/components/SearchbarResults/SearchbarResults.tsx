@@ -9,7 +9,7 @@ interface ResultProps {
 
 
 
-const SearchResults = ({children}: ResultProps ) => {
+const SearchbarResults = ({children}: ResultProps ) => {
 
     const noResults = children.map((searchResult: SearchResult) => searchResult.items).every(items => items.length < 1)
     const sortedResults = children.sort((a, b) => {
@@ -48,4 +48,4 @@ const SearchResults = ({children}: ResultProps ) => {
     )
 }
 
-export default SearchResults
+export default SearchbarResults
