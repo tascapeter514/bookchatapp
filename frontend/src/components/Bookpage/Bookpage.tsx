@@ -1,6 +1,8 @@
 import {useState, useEffect, useRef, useMemo} from 'react'
 import {useParams, Link } from 'react-router-dom'
 import { Book, ISBN_Identifier, Bookshelf, Author, Bookclub } from '../../types'
+import AuthorDetails from '../AuthorDetails/AuthorDetails'
+import ProductDetails from '../ProductDetails/ProductDetails'
 import { BookmarkIcon } from '../common/Icons'
 import { userData } from '../common/Context/UserContext/UserContext'
 import useGetData from '../common/hooks/useGetData'
@@ -30,6 +32,8 @@ const Bookpage = () => {
 
     }, [makeRequest])
 
+
+    // refactor to get at authors names
     const authorText = (() => {
         
         switch (book?.authors.length) {
@@ -313,57 +317,15 @@ const Bookpage = () => {
                             <p>{book.description}</p>
                            
                         </div>
-
                         {/* AUTHOR PRODUCT COMPONENT */}
                         <div className="author-product-container">
-
                             {book.authors && book.authors.length > 0 &&
                                 book.authors.map((author: Author ) => (
-
-                                <aside key={author.id} className='author-details'>
-                                    <hr />
-                                    <h3>About {author.name}</h3>
-                                    <div className='author-text-container'>
-                                        <p>{author.bio}</p>
-                                        <span className="author-link">
-                                            ... <Link to={`/author/${author.id}`}>More about { author.name } </Link>
-                                        </span>
-                                    </div>
-                                </aside>
-
-
-
-                                ))
-
-                                
-
-                                
-                            }
-
-
-
-
+                                    <AuthorDetails {...author} />
+                            ))}
                             {/* PRODUCT DETAILS COMPONENT */}
-                            <aside className="product-details-wrapper">
-                                <hr />
-                                <h3>Product Details</h3>
-                                <div className="product-details-content">
-                                    <p>{book.pageCount} pages</p>
-                                    <p>Published by {book.publisher}</p>
-                                    <ul>
-                                        {typeof book.ISBN_Identifiers === 'object' && 
-
-                                            book.ISBN_Identifiers.map((obj: ISBN_Identifier) => (
-                                                <li key={obj.identifier}> {obj.type} : {obj.identifier}</li>
-                                            ))
-                                        
-                                        
-                                        }
-                                       
-                                    
-                                    </ul>
-                                </div>
-                            </aside>
+                            <ProductDetails {...{pageCount: book.pageCount, publisher: book.publisher, ISBNIdentifiers: book.ISBN_Identifiers}}/>
+                            
                         </div>
                     </div>
                 </div>

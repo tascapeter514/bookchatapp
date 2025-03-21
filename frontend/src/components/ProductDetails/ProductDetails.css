@@ -1,0 +1,10 @@
+.product-details-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+}
+
+.product-details-content ul {
+    padding: 0;
+}
