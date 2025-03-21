@@ -1,6 +1,5 @@
 import './AuthorDetails.css'
 import { Link } from 'react-router-dom'
-import { Author } from '../../types'
 
 
 interface Props {

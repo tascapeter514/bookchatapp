@@ -3,6 +3,7 @@ import {useParams, Link } from 'react-router-dom'
 import { Book, ISBN_Identifier, Bookshelf, Author, Bookclub } from '../../types'
 import AuthorDetails from '../AuthorDetails/AuthorDetails'
 import ProductDetails from '../ProductDetails/ProductDetails'
+import BookFacade from '../BookFacade/BookFacade'
 import { BookmarkIcon } from '../common/Icons'
 import { userData } from '../common/Context/UserContext/UserContext'
 import useGetData from '../common/hooks/useGetData'
@@ -33,22 +34,8 @@ const Bookpage = () => {
     }, [makeRequest])
 
 
-    // refactor to get at authors names
-    const authorText = (() => {
-        
-        switch (book?.authors.length) {
-            case 0:
-                return 'Unknown Author';
-            case 1:
-                return book.authors[0].name
-            case 2:
-                return book.authors.join(' and ')
-            case 3:
-                return book.authors.slice(0, 3).join(', ')
-            case 4:
-                return `${book.authors.slice(0, 3).join(', ')} and others`;
-        }
-    })()
+    
+    
 
 
 
@@ -195,121 +182,10 @@ const Bookpage = () => {
     return(
         
         <div className='bookpage-container'>
-            {book ? (
+            {book && (
                 <div className="bookpage-detail">
                     {/* BOOK INFO COMPONENT */}
-                    <div className="top-facade">
-                        <div className="book-header-wrapper">
-                            <div className="book-details">
-                                <img className='book-cover' src={book.imageLinks['thumbnail']} alt="" />
-                               <div className="bookshelfBtn-wrapper">
-                                   {/* <BookmarkIcon onClick={openBookshelfModal}></BookmarkIcon> */}
-                                    <span>Add to Bookshelf</span>
-
-                                    
-
-                                    {/* BOOKSHELF MODAL */}
-                                    {/* <dialog className={`addToBookshelf-modal ${isBookshelfModalOpen ? 'show': ''}`} ref={bookshelfModalRef}>
-                                        <h3>Add this book to your bookshelf</h3>
-                                        <hr />
-                                        {activeUser ? 
-                                            <main className="bookshelf-results-content">
-                                                
-                                                <SearchFilter
-                                                    setSearchValue={setSearchValue}
-                                                    searchValue={searchValue} 
-                                                ></SearchFilter>
-                                                <div className="suggested-search-results">
-                                                    <SearchResults
-                                                        idKey='bookshelf_id'
-                                                        nameKey='name'
-                                                        searchValue={searchValue}
-                                                        searchResults={userBookshelves}
-                                                        handleSelection={handleUserBookshelfSelection}
-                                                        selectedElement={selectedUserBookshelf}
-                                                    
-                                                    ></SearchResults>
-                                                </div>
-                                                
-
-                                            </main>
-                                            
-                                        
-                                        : <span>You must be logged in to use this feature</span>}
-                                        <div className="button-wrapper">
-                                            <button onClick={closeBookshelfModal}>Cancel</button>
-                                            <button onClick={async () => selectedUserBookshelf && await addToUserBookshelf(selectedUserBookshelf)}>Add</button>
-                                        </div>
-                                    </dialog> */}
-                               </div>
-                              
-                               {/* {book.authors?.[0].name} */}
-                            </div>
-                            <article className="book-info-wrapper">
-                                <h1>{book.name}</h1>
-                                <h3>
-                                    By <span> {authorText} </span>
-                                </h3>
-                                <p>Category: <Link to='#' >{book.genres.name}</Link></p>
-                                <button
-                                    // onClick={openBookclubModal} 
-                                    
-                                    className='add-to-bookClubBtn'>Add to Bookclub</button>
-                            </article>
-
-                            {/* BOOKCLUB MODAL */}
-                            {/* <dialog className={`addToBookclub-modal ${isBookclubModalOpen ? 'show' : ''}`} ref={bookclubModalRef}>
-                                <h3>Add this book to your bookclub</h3>
-                                <hr />
-                                    <main className="bookclub-results-content">
-                                        <div className="suggested-search-results">
-                                            <SearchFilter
-                                                setSearchValue={setSearchValue}
-                                                searchValue={searchValue}
-                                            >
-                                            </SearchFilter>
-                                            <h3>Suggested</h3>
-                                            <SearchResults
-                                            idKey='bookclub_id'
-                                            nameKey='name'
-                                            searchValue={searchValue}
-                                            handleSelection={handleBookclubSelection}
-                                            selectedElement={selectedBookclub}
-                                            searchResults={bookclubSearchResults}
-                                            >
-
-                                            </SearchResults>
-                                        </div>
-                                        <aside className='bookclub-bookshelves'>
-                                            {currentBookclub && currentBookclub.bookshelves !== undefined  ? 
-                                                currentBookclub.bookshelves.length > 0 ? (
-                                                    currentBookclub.bookshelves.map((bookshelf, index) => {
-                                                        {return <li key={index} className='bookshelf-result'>
-                                                            <label htmlFor={bookshelf.name}>{bookshelf.name}</label>
-                                                            <input 
-                                                                type="radio" 
-                                                                className='bookshelf-input' 
-                                                                id={bookshelf.name}
-                                                                name='bookshelfGroup'
-                                                                checked={currentBookshelf?.bookshelf_id === bookshelf.bookshelf_id} 
-                                                                onClick={() => setCurrentBookshelf(bookshelf)}/>
-                                                        </li> }
-                                                    })
-                                                ) : (<span>No bookshelves for this bookclub</span>)
-                                                : 'No Bookclub Selected'}
-                                        </aside>
-                                    </main>
-                               
-                                
-                                <div className="button-wrapper">
-                                    <button onClick={closeBookclubModal}>Cancel</button>
-                                    <button onClick={() => currentBookshelf && addToBookshelf(currentBookshelf)}>Add</button>
-                                </div>
-
-                            </dialog> */}
-                        </div>
-                    </div>
-                    
+                    <BookFacade {...book} />
                     <div className="main-content">
                         <div className="book-description">
                             <hr />
@@ -329,8 +205,10 @@ const Bookpage = () => {
                         </div>
                     </div>
                 </div>
-
-            ) : <h2>Loading...</h2>}
+                )
+            }
+            {error && <p>There was an error loading the data: {error}</p>}
+            {loading && <p>Page is loading...</p>}
         </div>
 
     )
