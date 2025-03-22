@@ -1,13 +1,13 @@
 import './AccountPanel.css'
 import { useState, ChangeEvent} from 'react'
-import { userData } from '../../../common/Context/UserContext/UserContext'
+import { userContext} from '../../../common/Context/UserContext/UserContext'
 import Header from '../../../common/Header/Header'
 import SubHeader from '../../../common/SubHeader/SubHeader'
 import Button from '../../../common/Buttons/Button/Button'
 
 const AccountPanel = () => {
     
-    const { activeUser, changeContact, changePassword } = userData()
+    const { activeUser, changeContact, changePassword } = userContext()
 
     console.log('active user:', activeUser)
 

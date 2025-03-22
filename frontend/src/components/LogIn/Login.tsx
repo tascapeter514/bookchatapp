@@ -1,23 +1,27 @@
 import './Login.css'
-import { FC } from 'react'
-import { userData } from '../common/Context/UserContext/UserContext'
+import SubHeader from '../common/SubHeader/SubHeader'
+import useLogger from '../common/hooks/useLogger'
+import { userContext } from '../common/Context/UserContext/UserContext'
 
 
 
 
-const Login: FC = () => {
+const Login = () => {
 
-    const { handleLogin } = userData()
+    const { login, error, loading } = useLogger()
+
+    console.log('log in error:', error)
 
 
     return(
         <div className="login-container">
-            <h2>Log In</h2>
+            <SubHeader>Log In</SubHeader>
             <hr className='hr hr-login'/>
             <form 
-                action={handleLogin as any}
+                action={login as any}
                 className='login-form'
                 method='post'>
+                    {error && <p className='error-message'>{error}</p>}
                     <label htmlFor="username-login">Username: </label>
                     <input 
                         type="text" 

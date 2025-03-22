@@ -1,4 +1,4 @@
-import { userData } from '../../../common/Context/UserContext/UserContext'
+import { userContext } from '../../../common/Context/UserContext/UserContext'
 import { Dispatch, SetStateAction, useState, useRef } from 'react'
 import PostModal from '../../../common/Modals/PostModal/PostModal'
 import CreateButton from '../../../common/Buttons/CreateButton/CreateButton'
@@ -19,7 +19,7 @@ interface ProfileNavbarProps {
 const ProfileNavbar = (props: ProfileNavbarProps) => {
 
     const { activeTab, setActiveTab, setActiveBookshelf } = props
-    const { activeUser, userBookshelves, setUserBookshelves, setUserBookclubs } = userData()
+    const { activeUser, userData } = userContext()
     const [newBkslfId, setNewBkslfId] = useState<string>('')
     const [activePanel, setActivePanel] = useState(false);
     const [isRotated, setIsRotated] = useState(false);

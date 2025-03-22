@@ -5,7 +5,7 @@ import SearchFilter from '../../../common/SearchFilter/SearchFilter'
 import { bookclubData } from '../../../common/Context/BookclubContext/BookclubContext'
 import SearchFilterResults from '../../../common/SearchFilterResults/SearchFilterResults'
 import Button from '../../../common/Buttons/Button/Button'
-import { userData } from '../../../common/Context/UserContext/UserContext'
+import { userContext} from '../../../common/Context/UserContext/UserContext'
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios'
 
@@ -26,7 +26,7 @@ const InviteModal = ({ closeInviteModal, inviteRef }: InviteModalProps) => {
     const [searchValue, setSearchValue] = useState('')
     const [userSearchResults, setUserSearchResults] = useState<ActiveUser[]>([])
     const [newMemberId, setNewMemberId] = useState<number>(NaN)
-    const { activeUser } = userData()
+    const { activeUser } = userContext()
 
 
     const handleUserSelection = (id: number) => {

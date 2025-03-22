@@ -1,6 +1,6 @@
 import './UserDashboard.css';
 import { useState } from 'react';
-import { userData } from '../common/Context/UserContext/UserContext'
+import { userContext} from '../common/Context/UserContext/UserContext'
 import Bookshelfpanel from '../common/BookshelfPanel/BookshelfPanel'
 import MessagePanel from './components/MessagePanel/MessagePanel';
 import AccountPanel from './components/AccountPanel/AccountPanel';
@@ -9,11 +9,11 @@ import BookclubsPanel from './components/BookclubsPanel/BookclubsPanel'
 import { UserIcon, CloseIcon } from '../common/Icons'
 
 
-const panels = [
-    <AccountPanel />,
-    <MessagePanel />,
-    <BookclubsPanel />,
-]
+// const panels = [
+//     <AccountPanel />,
+//     <MessagePanel />,
+//     <BookclubsPanel />,
+// ]
 
 const UserDashboard = () => {
 
@@ -22,11 +22,11 @@ const UserDashboard = () => {
     const [activeBookshelf, setActiveBookshelf] = useState<number>(4);
     const [showNavbar, setShowNavbar] = useState(false);
     const [isExiting, setIsExiting] = useState(false)
-    const { userBookshelves, activeUser }   = userData()
+    const { userData, activeUser }   = userContext()
    
     const isBookshelfTab = activeTab >= 3
-    const PanelComponent = () =>
-          isBookshelfTab ? <Bookshelfpanel bookshelves={userBookshelves} activeBookshelf={activeBookshelf} /> : panels[activeTab] || null 
+    // const PanelComponent = () =>
+    //       isBookshelfTab ? <Bookshelfpanel bookshelves={userBookshelves} activeBookshelf={activeBookshelf} /> : panels[activeTab] || null 
     const toggleNavbar = () => {
         setShowNavbar(prev => !prev)
         if (showNavbar) {
@@ -61,14 +61,14 @@ const UserDashboard = () => {
                 </button>
                 
                 
-                <ProfileNavbar 
+                {/* <ProfileNavbar 
                     activeTab={activeTab} 
                     setActiveTab={setActiveTab} 
                     activeBookshelf={activeBookshelf}
                     setActiveBookshelf={setActiveBookshelf}
                 >
 
-                </ProfileNavbar>
+                </ProfileNavbar> */}
             </aside>
             
           

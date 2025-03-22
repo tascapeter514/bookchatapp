@@ -105,11 +105,10 @@ export type SearchData = {
 }[]
 
     
-export interface UserData {
-    user_bookclubs: Bookclub[],
-    user_bookshelves: Bookshelf[],
-    user_invites: Invitation[]
-}
+export type UserData = {
+    type: string,
+    items: Bookclub[] | Bookshelf[] | Invitation[]
+}[]
 
 export type Variant = 'bookclub' | 'bookshelf' | 'user'
 
@@ -118,3 +117,4 @@ export type DynamicName<T, V extends Variant> =
    Extract<keyof T, 'name'>
 
 export const GET_ERRORS = 'GET_ERRORS'
+

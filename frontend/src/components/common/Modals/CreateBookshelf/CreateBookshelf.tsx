@@ -1,7 +1,7 @@
 import './CreateBookshelf.css'
 import { Ref, Dispatch, SetStateAction } from 'react'
 import Button from '../../Buttons/Button/Button'
-import { userData } from '../../Context/UserContext/UserContext'
+import { userContext } from '../../Context/UserContext/UserContext'
 
 
 
@@ -17,7 +17,7 @@ interface BookshelfModalProps {
 
 const BookshelfModal = ({bookshelfRef, closeBookshelfModal, addBookshelf, newBkslfId, setBkslfId}: BookshelfModalProps) => {
 
-    const { activeUser } = userData()
+    const { activeUser } = userContext()
     
 
     return (

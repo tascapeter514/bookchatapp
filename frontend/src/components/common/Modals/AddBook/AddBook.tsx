@@ -3,7 +3,7 @@ import { Bookshelf } from '../../../../types'
 import SearchFilter from '../../SearchFilter/SearchFilter'
 import SearchResults from '../../../Bookpage/components/SearchFilter/FilterResults'
 import Button from '../../Buttons/Button/Button'
-import { userData } from '../../Context/UserContext/UserContext'
+import { userContext } from '../../Context/UserContext/UserContext'
 import './AddBook.css'
 
 
@@ -15,7 +15,7 @@ type Props = {
 
 const AddBook = ({addBookRef}: Props) => {
 
-    const {activeUser, userBookshelves, setUserBookshelves} = userData()
+    const {activeUser, userData} = userContext()
     
     const [currentBookshelf, setCurrentBookshelf] = useState<Bookshelf | null>(null)
     const [selectedUserBookshelf, setSelectedUserBookshelf] = useState<string | null>(null)
@@ -39,7 +39,7 @@ const AddBook = ({addBookRef}: Props) => {
                                 
                                 
                             >
-                                {userBookshelves}
+                                {/* {userBookshelves} */}
 
                             </SearchFilter>
                             </main>

@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { userData } from './Context/UserContext/UserContext'
+import { userContext } from './Context/UserContext/UserContext'
 import { bookclubData } from './Context/BookclubContext/BookclubContext'
 
 
@@ -8,7 +8,7 @@ type CheckMemberProps = { children: ReactNode }
 
 const CheckMembers = ({ children } : CheckMemberProps) => {
 
-    const { activeUser} = userData()
+    const { activeUser} = userContext()
     const { bookclub } = bookclubData()
 
     const isMember = bookclub.members.some((member) => member.id === activeUser.id)
