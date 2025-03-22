@@ -74,7 +74,7 @@ class BookshelfSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Bookshelf
-        fields = ['id', 'name', 'user', 'books']
+        fields = ['id', 'name', 'user', 'books', 'titles']
         
 #BOOKCLUB SERIALIZER
 class BookclubSerializer(serializers.ModelSerializer):

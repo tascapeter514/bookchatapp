@@ -5,20 +5,23 @@ import { userData } from '../../Context/UserContext/UserContext'
 
 
 
-interface Props {
+interface BookshelfModalProps {
     bookshelfRef: Ref<HTMLDialogElement>,
     closeBookshelfModal: () => void,
+    addBookshelf: (formData: FormData) => Promise<void>,
+    newBkslfId: string,
+    setBkslfId: Dispatch<SetStateAction<string>>
 }
 
 
 
-const BookshelfModal = ({bookshelfRef, closeBookshelfModal}: Props) => {
+const BookshelfModal = ({bookshelfRef, closeBookshelfModal, addBookshelf, newBkslfId, setBkslfId}: BookshelfModalProps) => {
 
     const { activeUser } = userData()
     
 
     return (
-        <dialog className="createBookshelf" ref={ bookshelfRef } >
+        <dialog className="bookshelf-modal" ref={ bookshelfRef } >
             <form action={addBookshelf as unknown as string} method='post'>
             <input type="hidden" name='userId' value={activeUser.id} />
                 <input 

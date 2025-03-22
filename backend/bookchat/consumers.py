@@ -29,13 +29,16 @@ class UserDataConsumer(WebsocketConsumer):
 
     def get_user_data(self):
         print('get user data trigger')
+        print('user id:', self.user_id)
         bookclubs = Bookclub.objects.filter(administrator=self.user_id)
         invitations = Invitation.objects.filter(invited_user_id=self.user_id)
-        bookshelves = Bookshelf.objects.filter(user=self.user_id)
+        bookshelves = Bookshelf.objects.filter(user_id=self.user_id)
 
         bookclub_serializer = BookclubSerializer(bookclubs, many=True)
         invitation_serializer = InvitationSerializer(invitations, many=True)
         bookshelf_serializer = BookshelfSerializer(bookshelves, many=True)
+
+        print("user bookshelf:", bookshelf_serializer.data)
 
         # user_data_serializer = [bookclub_serializer.data, invitation_serializer.data, bookshelf_serializer.data]
         
@@ -43,14 +46,15 @@ class UserDataConsumer(WebsocketConsumer):
         self.send(text_data=json.dumps(
             {
                 'type': 'get_user_data',
-                'user_data': {
-                    'user_bookclubs': bookclub_serializer.data,
-                    'user_invites': invitation_serializer.data,
-                    'user_bookshelves': bookshelf_serializer.data
-                }
+                'user_data': 
+                [
+                     {'type': 'bookclub', 'items': bookclub_serializer.data},
+                     {'type': 'bookshelf', 'items': bookshelf_serializer.data},
+                     {'type': 'invite', 'items': invitation_serializer.data}
+                    
+                ]
             }
         ))
-
 
 class SearchDataConsumer(WebsocketConsumer):
     def connect(self):
