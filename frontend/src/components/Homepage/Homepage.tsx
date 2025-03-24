@@ -11,7 +11,7 @@ export default function Homepage() {
    
     const navigate = useNavigate()
     const [bestsellers, setBestsellers] = useState<Book[]>([])
-    const {login, loading, error } = useLogger('http://localhost:8000/api/auth/register')
+    const {login, loading, error, activeUser, authToken } = useLogger('http://localhost:8000/api/auth/register')
 
 
     useEffect(() => {
@@ -23,14 +23,13 @@ export default function Homepage() {
 
     const handleRegister = async (formData: FormData) => {
 
-        try {
-            await login(formData)
+        await login(formData)
+        if (activeUser.id && authToken) {
             navigate('/userDashboard')
-        } catch(err) {
-            console.error('Unexpected error with handle login')
         }
-
     }
+
+    console.log('register error:', error)
 
 
 

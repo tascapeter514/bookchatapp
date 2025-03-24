@@ -65,14 +65,11 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
     const handleLogin = async (formData: FormData) => {
         await login(formData)
 
-        if (!error && activeUser.id && authToken) {
+        if (activeUser.id && authToken) {
           navigate('/userDashboard')  
         } 
 
     }
-
-    console.log('active user and token:', activeUser, authToken)
-
 
     useEffect(() => {
 
