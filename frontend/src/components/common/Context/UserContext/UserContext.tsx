@@ -1,5 +1,4 @@
 import {createContext, useEffect, useState, Dispatch, SetStateAction, ReactNode, useContext} from 'react'
-import { useNavigate } from 'react-router-dom'
 import { changeContact, changePassword } from '../../services/user.tsx';
 // import { addUserBookshelf } from '../../services/user.tsx';
 import useLogger from '../../hooks/useLogger.tsx';
@@ -15,7 +14,10 @@ interface UserContextProps {
     error: string | null,
     loading: boolean,
     setUserData: Dispatch<SetStateAction<UserData[]>>,
+    setAuthToken: Dispatch<SetStateAction<AuthToken>>,
+    setError: Dispatch<SetStateAction<string>>,
     handleLogin: HandleLogin,
+    handleRegister: (formData: FormData) => Promise<void>,
     changeContact: (formData: FormData) => Promise<void>,
     changePassword: (formData: FormData) => Promise<void>,
     // addUserBookshelf: (formData: FormData) => Promise<void>
@@ -47,7 +49,10 @@ export const UserContext = createContext<UserContextProps>({
     error: '',
     loading: false,
     setUserData: () => [],
+    setError: () => '',
     handleLogin: async () => {},
+    handleRegister: async () => {},
+    setAuthToken: () => '',
     changeContact: async () => {},
     changePassword: async () => {},
     // addUserBookshelf: async () => {}
@@ -55,26 +60,18 @@ export const UserContext = createContext<UserContextProps>({
 
 const UserDataProvider = ({ children }: UserProviderProps) => {
 
-    const navigate = useNavigate()
     const [userData, setUserData] = useState<UserData[]>([])
-    const {activeUser, authToken, loading, error, login, setActiveUser} = useLogger('http://localhost:8000/api/auth/login')
+    const {activeUser, authToken, loading, error, authenticate, setActiveUser, setAuthToken, setError} = useLogger()
     const {makeRequest, data} = useSocket('ws://localhost:8000/ws/userData')
-    
+    const handleLogin = async (formData: FormData) => await authenticate('http://localhost:8000/api/auth/login', formData)
+    const handleRegister = async (formData: FormData) => await authenticate('http://localhost:8000/api/auth/register', formData)
 
-    
-    const handleLogin = async (formData: FormData) => {
-        await login(formData)
 
-        if (activeUser.id && authToken) {
-          navigate('/userDashboard')  
-        } 
-
-    }
-
+  
     useEffect(() => {
 
       if (!activeUser.id) return
-
+      console.log('user context active user:', activeUser)
 
       makeRequest(activeUser.id)
       console.log('user data:', data)
@@ -89,6 +86,8 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
     }, [data])
 
 
+
+
     useEffect(() => {
            const storedUserData = sessionStorage.getItem('userData');
            if (storedUserData) {
@@ -98,12 +97,17 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
     }, [])
 
       return (
+
+        // pass values into useMemo?
         <UserContext.Provider
             value={{activeUser, authToken, userData, error, loading,
-                  handleLogin, 
+                  handleLogin,
+                  handleRegister, 
                   changeContact: (formData) => changeContact(formData, setActiveUser),
                   changePassword: (formData) => changePassword(formData, setActiveUser),
                   setUserData,
+                  setAuthToken,
+                  setError,
                   // addUserBookshelf: (formData) => addUserBookshelf(formData, setUserData)
                   
                   }}>

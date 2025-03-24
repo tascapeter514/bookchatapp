@@ -9,7 +9,7 @@ const Navbar = () => {
 
   const navigate = useNavigate()
   const [showNavbar] = useState(false)
-  const {activeUserToken, setActiveUserToken} = userContext()
+  const {authToken, setAuthToken} = userContext()
   
     const handleLogout: HandleLogout = async () => {
         const token = localStorage.getItem('authToken');
@@ -19,7 +19,7 @@ const Navbar = () => {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
-                'Authorization' : `Token ${activeUserToken}`
+                'Authorization' : `Token ${authToken}`
               }
             });
           }
@@ -27,9 +27,9 @@ const Navbar = () => {
           console.error('Error during logout', error)
         } finally {
           // Clear client-side data regardless of server response
-          setActiveUserToken('')
+          setAuthToken('')
           sessionStorage.removeItem('authToken')
-          sessionStorage.removeItem('currentUser')
+          sessionStorage.removeItem('activeUser')
           navigate('/login')
         }
       };
@@ -45,6 +45,9 @@ const Navbar = () => {
         </li>
 
     )
+
+    console.log('navbar auth token:', authToken);
+    
 
     return(
         <header>
@@ -70,7 +73,7 @@ const Navbar = () => {
                         <li className='main-list-element'><Link to='#'>Books</Link></li>
                         <li className='main-list-element'><Link to='#'>Authors</Link></li>
                         <li className='main-list-element'><Link to='#'>About</Link></li>
-                        { activeUserToken ? authLinks : guestLinks}
+                        { authToken ? authLinks : guestLinks}
                     </ul>
                 </nav>
             </div> 

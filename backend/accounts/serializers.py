@@ -26,15 +26,21 @@ class UserSerializer(serializers.ModelSerializer):
 # REGISTER SERIALIZER
 
 class RegisterSerializer(serializers.ModelSerializer):
+    firstName = serializers.CharField(source='first_name', required=True)
+    lastName = serializers.CharField(source='last_name', required=True)
+    emailAddress = serializers.CharField(source='email', required=True)
+
+
     class Meta:
         model = User
 
         # SWITCH TO ID,USERNAME, EMAIL?
-        fields = '__all__'
+        fields = ['username', 'emailAddress', 'password', 'firstName', 'lastName']
 
     def create(self, validated_data):
         print('validated data:', validated_data)
-        user = User.objects.create_user(validated_data['username'], "", validated_data['password'])
+        user = User.objects.create_user(validated_data['username'], validated_data['email'], validated_data['password'], first_name=validated_data['first_name'], last_name=validated_data['last_name'])
+
         print('user:', user)
 
         return user

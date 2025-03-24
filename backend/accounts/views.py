@@ -53,6 +53,7 @@ def register(request):
 
     try:
         data = json.loads(request.body)
+        print('data:', data)
         register_serializer = RegisterSerializer(data=data)
         register_serializer.is_valid(raise_exception=True)
 
@@ -61,10 +62,19 @@ def register(request):
         user_serializer = UserSerializer(new_user)
         auth_token = AuthToken.objects.create(new_user)[1]
 
-        return Response({'active_user': user_serializer.data, 'auth_token': auth_token})
+        return Response({'active_user': user_serializer.data, 'auth_token': auth_token}, status=status.HTTP_201_CREATED)
 
     except json.JSONDecodeError:
         return Response({'error': 'Invalid JSON format'}, status=400)
+    
+    except serializers.ValidationError as e:
+        error_detail = e.detail
+        print('error detail:', error_detail)
+        return Response(error_detail, status=status.HTTP_401_UNAUTHORIZED)
+    except Exception as e:
+        print(f'Error: {str(e)}')
+        return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 
 

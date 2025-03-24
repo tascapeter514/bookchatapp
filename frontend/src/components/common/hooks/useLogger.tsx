@@ -1,12 +1,15 @@
 import { useState, useCallback, useEffect } from 'react'
 import { ActiveUser, AuthToken } from '../../../types'
 import axios, { AxiosError } from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 import { axiosErrorHandler } from '../../../messages'
 
 
-export default function useLogger(url: string) {
+export default function useLogger() {
 
+    
+    const navigate = useNavigate()
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState<string>('')
     const [authToken, setAuthToken ] = useState<AuthToken>('')
@@ -24,7 +27,7 @@ export default function useLogger(url: string) {
         }
     })
 
-    const login = useCallback( async (formData: FormData) => {
+    const authenticate = useCallback( async (url: string, formData: FormData) => {
         setLoading(true)
 
         const data = Object.fromEntries(formData);
@@ -43,7 +46,8 @@ export default function useLogger(url: string) {
                 setActiveUser(active_user)
                 setAuthToken(auth_token)
                 sessionStorage.setItem('authToken', JSON.stringify(auth_token))
-                sessionStorage.setItem('activeUser', JSON.stringify(activeUser))
+                sessionStorage.setItem('activeUser', JSON.stringify(active_user))
+                navigate('/userDashboard')
                 
 
             } else {
@@ -62,19 +66,29 @@ export default function useLogger(url: string) {
 
     }, [])
 
-    useEffect(() => {
-        const storedUser = sessionStorage.getItem('currentUser')
-        const storedToken = sessionStorage.getItem('authToken')
+    console.log('use logger active user:', activeUser)
 
+    useEffect(() => {
+
+        if (!activeUser.id) {
+            const storedUser = sessionStorage.getItem('activeUser')
+            const storedToken = sessionStorage.getItem('authToken')
+  
         if (storedUser) {
+            console.log('stored user:', storedUser)
             setActiveUser(JSON.parse(storedUser))
            }
            if (storedToken) {
             setAuthToken(JSON.parse(storedToken))
            }
 
-    }, [])
+        }
+    }, [activeUser.id, authToken])
 
-    return {activeUser, authToken, setActiveUser, login, loading, error}
+   
+
+
+    // TEMPORARILY PASS SETAUTHTOKEN TO USER CONTEXT
+    return {activeUser, authToken, setActiveUser, setAuthToken, setError, authenticate, loading, error}
 
 }

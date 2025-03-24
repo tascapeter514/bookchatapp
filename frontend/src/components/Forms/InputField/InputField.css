@@ -1,0 +1,28 @@
+
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+
+    
+}
+
+.form-field > label {
+
+    font-size: 1rem;
+    color: rgb(112, 112, 112);
+    text-align: left;
+
+    
+
+}
+
+.form-field > input {
+
+    border: 0;
+    border-bottom: 1px solid lightgrey;
+    border-radius: 0;
+    font-size: 1.25rem;
+    text-align: left;
+
+}

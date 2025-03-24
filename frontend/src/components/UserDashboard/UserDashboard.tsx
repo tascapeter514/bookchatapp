@@ -41,6 +41,7 @@ const UserDashboard = () => {
     }
 
     console.log('active user:', activeUser)
+    console.log('user data:', userData)
 
     return(
         <div className='dashboard-container'>
@@ -48,6 +49,7 @@ const UserDashboard = () => {
             <main className='dashboard-main'>
                 <button className={`dashboardNavbar-mobile-toggle ${showNavbar ? '' : 'active'}`} onClick={toggleNavbar}><UserIcon /></button>
                     {/* <PanelComponent /> */}
+                    <AccountPanel></AccountPanel>
             </main>
 
             <aside className={`dashboard-navbar ${showNavbar ? 'enter' : ''} ${isExiting ? 'exit' : ''}`}>
