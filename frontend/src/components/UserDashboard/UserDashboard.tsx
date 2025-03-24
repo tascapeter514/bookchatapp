@@ -4,7 +4,7 @@ import { userContext} from '../common/Context/UserContext/UserContext'
 import Bookshelfpanel from '../common/BookshelfPanel/BookshelfPanel'
 import MessagePanel from './components/MessagePanel/MessagePanel';
 import AccountPanel from './components/AccountPanel/AccountPanel';
-import ProfileNavbar from './components/ProfileNavbar/ProfileNavbar'
+import UserTabs from '../UserTabs/UserTabs'
 import BookclubsPanel from './components/BookclubsPanel/BookclubsPanel'
 import { UserIcon, CloseIcon } from '../common/Icons'
 
@@ -62,7 +62,7 @@ const UserDashboard = () => {
                         <CloseIcon />
                 </button>
                 
-                
+                <UserTabs></UserTabs>
                 {/* <ProfileNavbar 
                     activeTab={activeTab} 
                     setActiveTab={setActiveTab} 

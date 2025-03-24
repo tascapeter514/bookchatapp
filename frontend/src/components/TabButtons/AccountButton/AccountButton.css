@@ -1,0 +1,27 @@
+.account-button {
+    padding: 1em 2em;
+    width: 100%;
+    font-size: 1.125rem;
+    font-weight: bold;
+    text-align: center;
+    color: black;
+    border: 0;
+    background: transparent;
+    /* border: 1px solid red; */
+
+
+}
+
+
+.account-button.active {
+    background: #D6f6ff;
+    position: relative;
+    
+}
+
+.account-button:hover {
+
+    background: #D6f6ff;
+}
+
+

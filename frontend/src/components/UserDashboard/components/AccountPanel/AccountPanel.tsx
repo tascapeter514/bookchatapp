@@ -9,7 +9,7 @@ const AccountPanel = () => {
     
     const { activeUser, changeContact, changePassword } = userContext()
 
-    console.log('active user:', activeUser)
+    console.log('active user for account panel:', activeUser)
 
    
     const [contact, setContact] = useState({

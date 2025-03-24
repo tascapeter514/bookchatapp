@@ -32,14 +32,9 @@ const RegisterForm = () => {
         setError('')
     }
 
-
-    // const handleRegister = async (formData: FormData) => await login(formData)
-
         
-        
-    
-
-
+    // ADD CONDITIONAL CHECK FOR WHEN USER IS LOGGED IN
+    // SHOULDN'T BE ABLE TO REGISTER IF USER IS ACTIVE
     return(
 
         <form action={handleRegister as any} className='register-form'>
