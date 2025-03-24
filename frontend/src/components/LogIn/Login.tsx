@@ -13,6 +13,7 @@ const Login = () => {
     console.log('log in error:', error)
 
 
+
     return(
         <div className="login-container">
             <SubHeader>Log In</SubHeader>
@@ -22,6 +23,7 @@ const Login = () => {
                 className='login-form'
                 method='post'>
                     {error && <p className='error-message'>{error}</p>}
+                    {loading && <p className='loading'>Loading....</p>}
                     <label htmlFor="username-login">Username: </label>
                     <input 
                         type="text" 

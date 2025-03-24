@@ -21,7 +21,6 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
 
-        # SWITCH TO ID,USERNAME, EMAIL?
         fields = ['id', 'username', 'profile', 'first_name', 'last_name', 'email', 'date_joined', 'password']
 
 # REGISTER SERIALIZER
@@ -46,9 +45,9 @@ class LoginSerializer(serializers.Serializer):
     username = serializers.CharField()
     password = serializers.CharField()
     
-    def validate_user_credentials(self, data):
-        print('data:', data)
 
+    def validate(self, data):
+        
         try:
             # Check if user exists in database
             user = User.objects.get(username=data.get('username'))

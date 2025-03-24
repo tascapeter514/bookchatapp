@@ -3,7 +3,7 @@ from django.shortcuts import render
 from knox.models import AuthToken
 from rest_framework.decorators import api_view
 from django.contrib.auth.models import User
-from .serializers import UserSerializer, LoginSerializer
+from .serializers import UserSerializer, LoginSerializer, RegisterSerializer
 from rest_framework import status, serializers
 from rest_framework.response import Response
 
@@ -11,25 +11,30 @@ from rest_framework.response import Response
 
 
 
+
+# LOGIN VIEW
 @api_view(['POST'])
 def log_in(request):
     print('request body:', request.body)
 
     try:
         data = json.loads(request.body)
-    except json.JSONDecodeError:
-        return Response({'error': 'Invalid JSON format'}, status=400)
-
-    try:
         login_serializer = LoginSerializer(data=data)
+        login_serializer.is_valid(raise_exception=True)
 
-        user = login_serializer.validate_user_credentials(data)
+        user = login_serializer
+        
+        
         if user:
             user = login_serializer.validated_data
             print('user:', user)
             user_serializer = UserSerializer(user)
             token = AuthToken.objects.create(user)[1]
             return Response({'activeUser': user_serializer.data, 'authToken': token}, status=status.HTTP_201_CREATED)
+        
+    except json.JSONDecodeError:
+        return Response({'error': 'Invalid JSON format'}, status=400)
+        
     except serializers.ValidationError as e:
         error_detail = e.detail
         print('error detail:', error_detail)
@@ -38,7 +43,28 @@ def log_in(request):
     except Exception as e:
         print(f'Error: {str(e)}')
         return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-            
+
+
+
+# REGISTER VIEW
+@api_view(['POST'])
+def register(request):
+    print(request.body)
+
+    try:
+        data = json.loads(request.body)
+        register_serializer = RegisterSerializer(data=data)
+        register_serializer.is_valid(raise_exception=True)
+
+        new_user = register_serializer.save()
+
+        user_serializer = UserSerializer(new_user)
+        auth_token = AuthToken.objects.create(new_user)[1]
+
+        return Response({'user': user_serializer.data, 'token': auth_token})
+
+    except json.JSONDecodeError:
+        return Response({'error': 'Invalid JSON format'}, status=400)
 
 
 
