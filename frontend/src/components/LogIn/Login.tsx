@@ -1,22 +1,16 @@
 import './Login.css'
 import SubHeader from '../common/SubHeader/SubHeader'
-// import useLogger from '../common/hooks/useLogger'
 import { userContext } from '../common/Context/UserContext/UserContext'
-// import { useNavigate } from 'react-router-dom'
+import ErrorMessage from '../Messages/ErrorMessage/ErrorMessage'
+
 
 
 
 
 const Login = () => {
 
-    // const navigate = useNavigate()
 
     const {handleLogin, error, loading } = userContext()
-
-    
-
-    
-
 
 
 
@@ -28,7 +22,7 @@ const Login = () => {
                 action={handleLogin as any}
                 className='login-form'
                 method='post'>
-                    {error && <p className='error-message'>{error}</p>}
+                    {error && <ErrorMessage>{error}</ErrorMessage>}
                     {loading && <p className='loading'>Loading....</p>}
                     <label htmlFor="username-login">Username: </label>
                     <input 

@@ -24,8 +24,6 @@ export default function useLogger(url: string) {
         }
     })
 
-
-
     const login = useCallback( async (formData: FormData) => {
         setLoading(true)
 
@@ -80,11 +78,3 @@ export default function useLogger(url: string) {
     return {activeUser, authToken, setActiveUser, login, loading, error}
 
 }
-
-
- // console.log('log in response:', response.data)
-            // const {active_user, auth_token} = response.data;
-            // console.log('active user data:', active_user)
-            // console.log('auth token:', auth_token)
-            // setActiveUser(active_user)
-            // setAuthToken(auth_token)

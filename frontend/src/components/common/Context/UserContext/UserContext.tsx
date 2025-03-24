@@ -1,7 +1,7 @@
 import {createContext, useEffect, useState, Dispatch, SetStateAction, ReactNode, useContext} from 'react'
 import { useNavigate } from 'react-router-dom'
 import { changeContact, changePassword } from '../../services/user.tsx';
-import { addUserBookshelf } from '../../services/user.tsx';
+// import { addUserBookshelf } from '../../services/user.tsx';
 import useLogger from '../../hooks/useLogger.tsx';
 import {  HandleLogin, ActiveUser, AuthToken, UserData } from '../../../../types.ts'
 import useSocket from '../../hooks/useSocket.tsx';
@@ -15,7 +15,6 @@ interface UserContextProps {
     error: string | null,
     loading: boolean,
     setUserData: Dispatch<SetStateAction<UserData[]>>,
-    // setActiveUserToken: Dispatch<SetStateAction<AuthToken>>,
     handleLogin: HandleLogin,
     changeContact: (formData: FormData) => Promise<void>,
     changePassword: (formData: FormData) => Promise<void>,
@@ -48,7 +47,6 @@ export const UserContext = createContext<UserContextProps>({
     error: '',
     loading: false,
     setUserData: () => [],
-    // setActiveUserToken: () => '',
     handleLogin: async () => {},
     changeContact: async () => {},
     changePassword: async () => {},
@@ -65,13 +63,11 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
 
     
     const handleLogin = async (formData: FormData) => {
-
-      try {
         await login(formData)
-        navigate('/userDashboard')  
-      } catch(err) {
-        console.error('Error with handleLogin:', err)
-      }
+
+        if (!error && activeUser.id && authToken) {
+          navigate('/userDashboard')  
+        } 
 
     }
 
