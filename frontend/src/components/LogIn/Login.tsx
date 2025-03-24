@@ -1,16 +1,22 @@
 import './Login.css'
 import SubHeader from '../common/SubHeader/SubHeader'
-import useLogger from '../common/hooks/useLogger'
+// import useLogger from '../common/hooks/useLogger'
 import { userContext } from '../common/Context/UserContext/UserContext'
+// import { useNavigate } from 'react-router-dom'
 
 
 
 
 const Login = () => {
 
-    const { login, error, loading } = useLogger()
+    // const navigate = useNavigate()
 
-    console.log('log in error:', error)
+    const {handleLogin, error, loading } = userContext()
+
+    
+
+    
+
 
 
 
@@ -19,7 +25,7 @@ const Login = () => {
             <SubHeader>Log In</SubHeader>
             <hr className='hr hr-login'/>
             <form 
-                action={login as any}
+                action={handleLogin as any}
                 className='login-form'
                 method='post'>
                     {error && <p className='error-message'>{error}</p>}

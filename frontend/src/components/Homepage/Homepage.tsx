@@ -1,5 +1,6 @@
 import {useState, useEffect } from 'react';
 import BookSlider from '../common/BookSlider/BookSlider'
+import useLogger from '../common/hooks/useLogger';
 import './Homepage.css'
 import { Book } from '../../types';
 
@@ -8,6 +9,9 @@ export default function Homepage() {
    
 
     const [bestsellers, setBestsellers] = useState<Book[]>([])
+    const { activeUser, authToken, login, loading, error } = useLogger('http://localhost:8000/api/auth/register')
+
+
 
 
     useEffect(() => {
@@ -16,29 +20,34 @@ export default function Homepage() {
         .then(data => setBestsellers(data))
     }, [])
 
-  
-    
+    console.log('registered active user:', activeUser)
+    console.log('registered auth token:', authToken)
 
-  
 
-    function register(formData: FormData) {
-        const data = Object.fromEntries(formData)
-        console.log('data:', data)
+    // function register(formData: FormData) {
+    //     const data = Object.fromEntries(formData)
+    //     console.log('data:', data)
         
         
-        fetch('http://localhost:8000/api/auth/register', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-            })
-        .then(response => response.json())
-        .then(data => console.log('Response:', data))
-        .catch(error => console.error('Error:', error)); 
+    //     fetch('http://localhost:8000/api/auth/register', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify(data)
+    //         })
+    //     .then(response => response.json())
+    //     .then(data => console.log('Response:', data))
+    //     .catch(error => console.error('Error:', error)); 
 
-        // console.log('form data:', formData)
-    }
+    // }
+
+    // function handleRegister(formData: FormData) {
+
+    //     console.log('active user in register function:');
+        
+
+    // }
 
     
 
@@ -53,8 +62,10 @@ export default function Homepage() {
             <p className='subtitle subtitle-signup'>Register today!</p>
             <hr className='hr hr-signup'/>
             <form className='email-collector' 
-                action={register as any}
-                method='post'>
+                action={login as any}
+                method='post'
+            >
+                {error && <p className='error-message'>{error}</p>}
                 <label htmlFor="userName">Username: </label>
                 <input 
                     type="text" 

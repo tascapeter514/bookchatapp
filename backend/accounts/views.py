@@ -30,7 +30,7 @@ def log_in(request):
             print('user:', user)
             user_serializer = UserSerializer(user)
             token = AuthToken.objects.create(user)[1]
-            return Response({'activeUser': user_serializer.data, 'authToken': token}, status=status.HTTP_201_CREATED)
+            return Response({'active_user': user_serializer.data, 'auth_token': token}, status=status.HTTP_201_CREATED)
         
     except json.JSONDecodeError:
         return Response({'error': 'Invalid JSON format'}, status=400)
@@ -61,7 +61,7 @@ def register(request):
         user_serializer = UserSerializer(new_user)
         auth_token = AuthToken.objects.create(new_user)[1]
 
-        return Response({'user': user_serializer.data, 'token': auth_token})
+        return Response({'active_user': user_serializer.data, 'auth_token': auth_token})
 
     except json.JSONDecodeError:
         return Response({'error': 'Invalid JSON format'}, status=400)
