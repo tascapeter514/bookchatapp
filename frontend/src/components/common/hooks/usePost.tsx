@@ -18,8 +18,6 @@ export default function usePost(url: string) {
         try {
 
             const response = await axios.post(url, requestData)
-
-
             if (response.status === 200) {
                 return response.data  
             } else {
@@ -30,6 +28,7 @@ export default function usePost(url: string) {
             
 
         } catch (err: any) {
+            console.log('use post catch handler:', err)
             setError(err)
             
         } finally {

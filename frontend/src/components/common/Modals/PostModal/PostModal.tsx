@@ -1,15 +1,13 @@
 import './PostModal.css'
-import {  useState, FormEvent, Dispatch, SetStateAction, RefObject } from 'react'
+import {  useState, FormEvent, RefObject } from 'react'
 import { userContext } from '../../Context/UserContext/UserContext'
+import ErrorMessage from '../../../Messages/ErrorMessage/ErrorMessage'
 import Button from '../../Buttons/Button/Button'
-import { BookclubData, BookshelfData, UserData, Bookshelf, Bookclub } from '../../../../types'
-import InputField from '../../../Forms/InputField/InputField'
 import usePost from '../../hooks/usePost'
 
 
 interface Props {
     ref: RefObject<HTMLDialogElement>,
-    // setResults: Dispatch<SetStateAction<Bookclub[]>> | Dispatch<SetStateAction<Bookshelf[]>>
     type: 'bookshelf' | 'bookclub',
     url: string
 }
@@ -43,18 +41,11 @@ const PostModal = ({ref, url, type}: Props) => {
                 )
             )
             
-            
-            
-
         } catch(err) {
             console.log('error handling submission:', err)
         }
 
     
-    }
-
-    if (error) {
-        return <div>An error occurred: {error}</div>
     }
 
     if (loading) {
@@ -63,13 +54,14 @@ const PostModal = ({ref, url, type}: Props) => {
 
     return (
         <dialog className="post-modal" ref={  ref } >
+            {error && <ErrorMessage>{error}</ErrorMessage>}
             <form onSubmit={handleSubmit} method='post'>
                 <input 
                     type="text" 
                     name='itemName'
                     value={name}
                     onChange={e => setName(e.target.value)} 
-                    placeholder='Enter a name'
+                    placeholder={`Enter your ${type} name`}
                     required/>
                 <div className="button-wrapper">
                     <Button type='button' onClick={() => {setName(''); closeModal()}}>Cancel</Button>

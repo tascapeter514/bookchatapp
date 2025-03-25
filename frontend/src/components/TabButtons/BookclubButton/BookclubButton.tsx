@@ -1,6 +1,6 @@
-import { SetStateAction, Dispatch, useRef, useState } from 'react'
+import { SetStateAction, Dispatch, useRef } from 'react'
+import { userContext } from '../../common/Context/UserContext/UserContext'
 import CreateButton from '../../common/Buttons/CreateButton/CreateButton'
-
 import PostModal from '../../common/Modals/PostModal/PostModal'
 import './BookclubButton.css'
 
@@ -12,35 +12,26 @@ interface Props {
 
 const BookclubButton = ({activeTab, setActiveTab}: Props) => {
 
-    
+    const { activeUser } = userContext()
     const bookclubRef = useRef<HTMLDialogElement>(null)
-    const openBookclubModal = () => bookclubRef.current?.showModal()
+    const openModal = () => bookclubRef.current?.showModal()
     
-
-
-
     return(
-            <> 
-                <hr className='navbar-line-break' />
-                
-                <button 
-                    className={`bookclub-button ${activeTab === 2 ? 'active' : ''}`}
-                    onClick={ () => setActiveTab(2)}
-                    
-                >
-                    
-                    Bookclubs
-                </button>
-                <CreateButton onClick={openBookclubModal}>Bookclub</CreateButton>
-                {/* <PostModal
-                    ref={bookclubRef}
-                    setResults={setUserBookclubs}
-                /> */}
-            
-
-            </>
-        
-
+        <> 
+            <hr className='navbar-line-break' />
+            <button 
+                className={`bookclub-button ${activeTab === 2 ? 'active' : ''}`}
+                onClick={ () => setActiveTab(2)}
+            >
+                Bookclubs
+            </button>
+            <CreateButton onClick={openModal}>Bookclub</CreateButton>
+            <PostModal
+                ref={bookclubRef}
+                url={`http://localhost:8000/api/user/bookclub/${activeUser.id}`}
+                type='bookclub'
+            />
+        </>
     )
 }
 
