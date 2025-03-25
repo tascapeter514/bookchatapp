@@ -24,8 +24,8 @@ const BookclubButton = ({activeTab, setActiveTab}: Props) => {
                 <hr className='navbar-line-break' />
                 
                 <button 
-                    className={`bookclub-button ${activeTab === 3 ? 'active' : ''}`}
-                    onClick={ () => setActiveTab(3)}
+                    className={`bookclub-button ${activeTab === 2 ? 'active' : ''}`}
+                    onClick={ () => setActiveTab(2)}
                     
                 >
                     

@@ -68,14 +68,14 @@ const BookshelfButton = ({activeTab, setActiveTab}: Props) => {
                         <BookshelfDropdown activePanel={activePanel}>
                         <a 
                             className={`bookshelf-button ${activeTab === 3 ? 'active' : ''}`}
-                            onClick={ () => setActiveTab(4)}
+                            onClick={ () => setActiveTab(3)}
                     
                         >
                             Bookshelves
                             <RightDropDownIcon onClick={toggleDropdown} isRotated={isRotated}></RightDropDownIcon>
                         </a>
 
-                            {/* <ul className='navbar-bookshelf-list'>{bookshelfElements}</ul> */}
+                        <ul className='navbar-bookshelf-list'>{bookshelfElements}</ul>
                         </BookshelfDropdown>
                         <CreateButton onClick={openBookshelfModal}>Bookshelf</CreateButton>
                         {/* <PostModal 
