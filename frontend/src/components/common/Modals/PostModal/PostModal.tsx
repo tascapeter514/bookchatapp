@@ -1,23 +1,25 @@
 import './PostModal.css'
-import { Ref,  useState, FormEvent, Dispatch, SetStateAction, RefObject } from 'react'
-import Button from '../../Buttons/Button/Button'
+import {  useState, FormEvent, Dispatch, SetStateAction, RefObject } from 'react'
 import { userContext } from '../../Context/UserContext/UserContext'
-import { Bookclub, Bookshelf } from '../../../../types'
+import Button from '../../Buttons/Button/Button'
+import { BookclubData, BookshelfData, UserData, Bookshelf, Bookclub } from '../../../../types'
 import InputField from '../../../Forms/InputField/InputField'
 import usePost from '../../hooks/usePost'
 
 
 interface Props {
     ref: RefObject<HTMLDialogElement>,
-    setResults: Dispatch<SetStateAction<Bookclub[]>> | Dispatch<SetStateAction<Bookshelf[]>>
+    // setResults: Dispatch<SetStateAction<Bookclub[]>> | Dispatch<SetStateAction<Bookshelf[]>>
+    type: 'bookshelf' | 'bookclub',
+    url: string
 }
 
 
-const PostModal = ({ref, setResults}: Props) => {
+const PostModal = ({ref, url, type}: Props) => {
 
-    const {activeUser} = userContext()
     const closeModal = () => ref.current?.close()
-    const { makeRequest, loading, error } = usePost(`http://localhost:8000/api/user/addBookclub/${activeUser.id}`)
+    const { setUserData } = userContext()
+    const { makeRequest, loading, error } = usePost(url)
     const [name, setName] = useState<string>('')
 
 
@@ -33,7 +35,13 @@ const PostModal = ({ref, setResults}: Props) => {
             const newItem = await makeRequest(request)
 
             console.log('new item:', newItem)
-            setResults((prev: Bookclub[] | Bookshelf[]) => [...prev, newItem])
+            setUserData(prevData => 
+                prevData.map(data =>
+                    data.type === type
+                    ? {...data, items: [...data.items, newItem]}
+                    : data
+                )
+            )
             
             
             

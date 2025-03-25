@@ -13,7 +13,7 @@ interface UserContextProps {
     userData: UserData,
     error: string | null,
     loading: boolean,
-    setUserData: Dispatch<SetStateAction<UserData[]>>,
+    setUserData: Dispatch<SetStateAction<UserData>>,
     setAuthToken: Dispatch<SetStateAction<AuthToken>>,
     setError: Dispatch<SetStateAction<string>>,
     handleLogin: HandleLogin,
@@ -60,7 +60,7 @@ export const UserContext = createContext<UserContextProps>({
 
 const UserDataProvider = ({ children }: UserProviderProps) => {
 
-    const [userData, setUserData] = useState<UserData[]>([])
+    const [userData, setUserData] = useState<UserData>([])
     const {activeUser, authToken, loading, error, authenticate, setActiveUser, setAuthToken, setError} = useLogger()
     const {makeRequest, data} = useSocket('ws://localhost:8000/ws/userData')
     const handleLogin = async (formData: FormData) => await authenticate('http://localhost:8000/api/auth/login', formData)

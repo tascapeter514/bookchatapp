@@ -18,7 +18,7 @@ const BookshelfButton = ({activeTab, setActiveTab}: Props) => {
      
     
     const { userData } = userContext()
-    const [ ,bookshelves ]: [ BookclubData, BookshelfData ] = userData
+    const bookshelves = userData.find(data => data.type === 'bookshelf') as BookshelfData | undefined
 
     const bookshelfRef = useRef<HTMLDialogElement>(null)
     const openBookshelfModal = () => bookshelfRef.current?.showModal()
@@ -37,7 +37,7 @@ const BookshelfButton = ({activeTab, setActiveTab}: Props) => {
 
 
 
-    const bookshelfElements = bookshelves.items.map((bookshelf: Bookshelf, index: number) => {
+    const bookshelfNames = bookshelves?.items.map((bookshelf: Bookshelf, index: number) => {
 
         function handleActiveBookshelf() {
             setActiveTab(index + 4)
@@ -66,16 +66,15 @@ const BookshelfButton = ({activeTab, setActiveTab}: Props) => {
         <div className='navbar-bookshelf-component'>
                         <hr className='navbar-line-break' />
                         <BookshelfDropdown activePanel={activePanel}>
-                        <a 
-                            className={`bookshelf-button ${activeTab === 3 ? 'active' : ''}`}
-                            onClick={ () => setActiveTab(3)}
-                    
-                        >
-                            Bookshelves
-                            <RightDropDownIcon onClick={toggleDropdown} isRotated={isRotated}></RightDropDownIcon>
-                        </a>
+                            <a 
+                                className={`bookshelf-button ${activeTab === 3 ? 'active' : ''}`}
+                                onClick={ () => setActiveTab(3)}
+                            >
+                                Bookshelves
+                                <RightDropDownIcon onClick={toggleDropdown} isRotated={isRotated} />
+                            </a>
 
-                        <ul className='navbar-bookshelf-list'>{bookshelfElements}</ul>
+                            <ul className='navbar-bookshelf-list'>{bookshelfNames}</ul>
                         </BookshelfDropdown>
                         <CreateButton onClick={openBookshelfModal}>Bookshelf</CreateButton>
                         {/* <PostModal 
