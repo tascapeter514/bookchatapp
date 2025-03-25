@@ -1,10 +1,8 @@
 import { userContext } from '../common/Context/UserContext/UserContext'
 import { Dispatch, SetStateAction, useState, useRef } from 'react'
-import PostModal from '../common/Modals/PostModal/PostModal'
-import CreateButton from '../common/Buttons/CreateButton/CreateButton'
 import { Bookshelf } from '../../types' 
 import BookshelfDropdown from '../common/BookshelfDropdown/BookshelfDropdown'
-
+import BookclubButton from '../TabButtons/BookclubButton/BookclubButton'
 import { RightDropDownIcon } from '../common/Icons'
 import { formatDate } from '../common/functions'
 import './UserTabs.css'
@@ -25,19 +23,18 @@ const UserTabs = () => {
     // MOVE LOGIC SERVER SIDE?
     const {day, month, year } = formatDate(activeUser.date_joined)
 
-    // const { activeTab, setActiveTab, setActiveBookshelf } = props
-
+    // const [activePanel, setActivePanel] = useState(false);
     const [activeTab, setActiveTab] = useState<number>(NaN)
     
     // const [newBkslfId, setNewBkslfId] = useState<string>('')
     // const [activePanel, setActivePanel] = useState(false);
     // const [isRotated, setIsRotated] = useState(false);
     // const bookshelfRef = useRef<HTMLDialogElement>(null)
-    // const bookclubRef = useRef<HTMLDialogElement>(null)
+    
     // const openBookshelfModal = () => bookshelfRef.current?.showModal()
     // const closeBookshelfModal = () => bookshelfRef.current?.close()
-    // const openBookclubModal = () => bookclubRef.current?.showModal()
-    // const closeBookclubModal = () => bookclubRef.current?.close()
+    // 
+    
 
     // const navbarContents = ['Account', 'Messages', 'Bookclubs', 'Bookshelves']
     // const bookshelfOffset = navbarContents.length
@@ -79,47 +76,10 @@ const UserTabs = () => {
 
     //     return (
     //         <>
-    //             {(navbarContent == 'Account' || navbarContent == 'Messages') && (
-    //                 <li 
-    //                     key={navbarIndex}
-    //                     onClick={ () => setActiveTab(navbarIndex)}
-    //                     className={activeTab == navbarIndex ? 'active' : ''}
-    //                 >
-    //                     <a id={`link-${navbarIndex}`} href={`#${navbarContent.toLowerCase()}`}>
-    //                         {navbarContent}
-    //                     </a>
-    //                 </li> 
-    //             )}
+    //
 
     //             {navbarContent == 'Bookclubs'&& (
-    //                 <>
-    //                     <hr className='navbar-line-break' />
-    //                     <li 
-    //                         key={navbarIndex}
-    //                         onClick={ () => setActiveTab(navbarIndex)}
-    //                         className={activeTab == navbarIndex ? 'active' : ''}
-    //                     >
-                            
-    //                         <a id={`link-${navbarIndex}`} href={`#${navbarContent.toLowerCase()}`}>
-    //                             {navbarContent}
-    //                         </a>
-                            
-    //                     </li>
-    //                     <CreateButton onClick={openBookclubModal}>Bookclub</CreateButton>
-                        {/* <PostModal
-                            ref={bookclubRef}
-                            closeModal={closeBookclubModal}
-                            url={`http://localhost:8000/api/user/addBookclub/${activeUser.id}`}
-                            setResults={setUserBookclubs}
-
-                        /> */}
-                       
-                        
-                       
-                        
-         
-                //     </> 
-                // )}
+    //                
                 {/* {navbarContent == 'Bookshelves' && (
                     <div className='navbar-bookshelf-component'>
                         <hr className='navbar-line-break' />
@@ -170,6 +130,10 @@ const UserTabs = () => {
                     />
                     <MessageButton activeTab={activeTab} setActiveTab ={setActiveTab} 
                     />
+                    <BookclubButton activeTab={activeTab} setActiveTab ={setActiveTab}
+                    />
+
+                    
 
                 </ul>
                

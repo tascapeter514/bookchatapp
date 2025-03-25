@@ -1,21 +1,22 @@
 import './PostModal.css'
-import { Ref,  useState, FormEvent, Dispatch, SetStateAction } from 'react'
+import { Ref,  useState, FormEvent, Dispatch, SetStateAction, RefObject } from 'react'
 import Button from '../../Buttons/Button/Button'
+import { userContext } from '../../Context/UserContext/UserContext'
 import { Bookclub, Bookshelf } from '../../../../types'
 import usePost from '../../hooks/usePost'
 
 
 interface Props {
-    ref: Ref<HTMLDialogElement>,
-    closeModal: () => void,
-    url: string,
+    ref: RefObject<HTMLDialogElement>,
     setResults: Dispatch<SetStateAction<Bookclub[]>> | Dispatch<SetStateAction<Bookshelf[]>>
 }
 
 
-const CreateBookclub = ({ref, closeModal, url, setResults}: Props) => {
+const PostModal = ({ref, setResults}: Props) => {
 
-    const { makeRequest, loading, error } = usePost(url)
+    const {activeUser} = userContext()
+    const closeModal = () => ref.current?.close()
+    const { makeRequest, loading, error } = usePost(`http://localhost:8000/api/user/addBookclub/${activeUser.id}`)
     const [name, setName] = useState<string>('')
 
 
@@ -71,4 +72,4 @@ const CreateBookclub = ({ref, closeModal, url, setResults}: Props) => {
 
 }
 
-export default CreateBookclub
+export default PostModal
