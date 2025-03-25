@@ -17,8 +17,8 @@ interface BookSearchbarProps {
 
 const BookSearchbar = ({setBookResults, setShowBookResults, showBookResults, searchValue, setSearchValue}: BookSearchbarProps) => {
 
-    const { useDebounce } = useSearch()
-    const debouncedSearchValue = useDebounce(searchValue, 500);
+    // const { useDebounce } = useSearch()
+    // const debouncedSearchValue = useDebounce(searchValue, 500);
 
 
     const fetchSearchData = (value: string) => {
@@ -53,15 +53,15 @@ const BookSearchbar = ({setBookResults, setShowBookResults, showBookResults, sea
         
     }
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        if (debouncedSearchValue) {
-            fetchSearchData(debouncedSearchValue)
-        } else {
-            setShowBookResults(false)
-        }
+    //     if (debouncedSearchValue) {
+    //         fetchSearchData(debouncedSearchValue)
+    //     } else {
+    //         setShowBookResults(false)
+    //     }
 
-    }, [debouncedSearchValue ])
+    // }, [debouncedSearchValue ])
 
     useEffect(() => {
         if (!showBookResults) {

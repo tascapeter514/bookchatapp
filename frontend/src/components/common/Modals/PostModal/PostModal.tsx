@@ -14,6 +14,7 @@ interface Props {
 
 
 const PostModal = ({ref, url, type}: Props) => {
+    console.log('post modal rendered')
 
     const closeModal = () => ref.current?.close()
     const { setUserData } = userContext()
@@ -23,6 +24,7 @@ const PostModal = ({ref, url, type}: Props) => {
 
 
     const handleSubmit = async (e: FormEvent) => {
+        console.log('handle submit called')
 
         e.preventDefault()
 
@@ -30,7 +32,13 @@ const PostModal = ({ref, url, type}: Props) => {
             name: String(name),
         }
         try {
+            console.log('before make request')
             const newItem = await makeRequest(request)
+
+            if (!newItem) {
+                console.log('no new item')
+            }
+            console.log('after make request')
 
             console.log('new item:', newItem)
             setUserData(prevData => 

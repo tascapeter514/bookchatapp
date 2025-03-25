@@ -1,32 +1,27 @@
 import './UserDashboard.css';
 import { useState } from 'react';
-// import { userContext} from '../common/Context/UserContext/UserContext'
-// import Bookshelfpanel from '../common/BookshelfPanel/BookshelfPanel'
-// import MessagePanel from './components/MessagePanel/MessagePanel';
+import { BookshelfData } from '../../types';
+import { userContext} from '../common/Context/UserContext/UserContext'
+import Bookshelfpanel from '../common/BookshelfPanel/BookshelfPanel'
+import MessagePanel from './components/MessagePanel/MessagePanel';
 import AccountPanel from './components/AccountPanel/AccountPanel';
 import UserTabs from '../UserTabs/UserTabs'
-// import BookclubsPanel from './components/BookclubsPanel/BookclubsPanel'
+import BookclubsPanel from './components/BookclubsPanel/BookclubsPanel'
 import { UserIcon, CloseIcon } from '../common/Icons'
 
 
-// const panels = [
-//     <AccountPanel />,
-//     <MessagePanel />,
-//     <BookclubsPanel />,
-// ]
 
 const UserDashboard = () => {
 
-    
-    const [activeTab, setActiveTab] = useState(0);
-    // const [activeBookshelf, setActiveBookshelf] = useState<number>(4);
+    const { userData }   = userContext()
+    const bookshelves = userData.find(data => data.type === 'bookshelf') as BookshelfData | undefined
+    const [activeTab, setActiveTab] = useState<number>(NaN);
+    const [activeBookshelf, setActiveBookshelf] = useState<number>(3);
     const [showNavbar, setShowNavbar] = useState(false);
     const [isExiting, setIsExiting] = useState(false)
-    // const { userData, activeUser }   = userContext()
+   
    
     const isBookshelfTab = activeTab >= 3
-    // const PanelComponent = () =>
-    //       isBookshelfTab ? <Bookshelfpanel bookshelves={userBookshelves} activeBookshelf={activeBookshelf} /> : panels[activeTab] || null 
     const toggleNavbar = () => {
         setShowNavbar(prev => !prev)
         if (showNavbar) {
@@ -48,8 +43,10 @@ const UserDashboard = () => {
 
             <main className='dashboard-main'>
                 <button className={`dashboardNavbar-mobile-toggle ${showNavbar ? '' : 'active'}`} onClick={toggleNavbar}><UserIcon /></button>
-                    {/* <PanelComponent /> */}
-                    <AccountPanel></AccountPanel>
+                    {activeTab === 0 && <AccountPanel />}
+                    {activeTab === 1 && <MessagePanel />}
+                    {activeTab === 2 && <BookclubsPanel />}
+                    {activeTab === 3 && <Bookshelfpanel bookshelves={bookshelves} activeBookshelf={activeBookshelf} />}
             </main>
             <aside className={`dashboard-navbar ${showNavbar ? 'enter' : ''} ${isExiting ? 'exit' : ''}`}>
                 <button 
@@ -61,7 +58,7 @@ const UserDashboard = () => {
                         <CloseIcon />
                 </button>
                 
-                <UserTabs></UserTabs>
+                <UserTabs activeTab={activeTab} setActiveTab={setActiveTab}></UserTabs>
             
             </aside>
         </div>

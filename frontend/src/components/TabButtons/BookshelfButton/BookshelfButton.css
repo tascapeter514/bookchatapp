@@ -9,7 +9,7 @@
     align-items: center;
 }
 
-.bookshelf-button {
+.bookshelf-button, .navbar-bookshelf-list li  {
     display: flex;
     justify-content: center;
     padding: 1em 2em;
@@ -21,6 +21,7 @@
     color: black;
     background: transparent;
     align-items: center;
+    cursor: pointer
 }
 
 .bookshelf-button.active {
@@ -45,8 +46,12 @@
     padding: 0;
 }
 
-.navbar-bookshelf-list li {
-    font-weight: 400
+
+
+.navbar-bookshelf-list a {
+    text-decoration: none;
+    color: black;
+
 }
 
 

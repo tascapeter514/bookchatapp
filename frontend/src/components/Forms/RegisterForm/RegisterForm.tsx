@@ -1,9 +1,9 @@
-import InputField from '../InputField'
-import Header from '../../../common/Header/Header'
-import SubHeader from '../../../common/SubHeader/SubHeader';
-import Button from '../../../common/Buttons/Button/Button'
-import ErrorMessage from '../../../Messages/ErrorMessage/ErrorMessage';
-import { userContext } from '../../../common/Context/UserContext/UserContext';
+import InputField from '../InputField/InputField'
+import Header from '../../common/Header/Header'
+import SubHeader from '../../common/SubHeader/SubHeader';
+import Button from '../../common/Buttons/Button/Button'
+import ErrorMessage from '../../Messages/ErrorMessage/ErrorMessage';
+import { userContext } from '../../common/Context/UserContext/UserContext';
 import {useState, ChangeEvent } from 'react';
 import './RegisterForm.css'
 

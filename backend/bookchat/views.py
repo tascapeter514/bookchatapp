@@ -222,7 +222,7 @@ def add_user_bookshelf(request, id):
         print('request body:', request.data)
 
         bookshelf_name = request.data.get('name')
-        new_bookshelf = Bookshelf.Object.create(name=bookshelf_name)
+        new_bookshelf = Bookshelf.objects.create(name=bookshelf_name)
         user.bookshelves.add(new_bookshelf)
         bookshelf_serializer = BookshelfSerializer(new_bookshelf)
         return Response(bookshelf_serializer.data, status=status.HTTP_201_CREATED)

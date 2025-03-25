@@ -1,5 +1,5 @@
 import { userContext } from '../common/Context/UserContext/UserContext'
-import { useState } from 'react'
+import { useState, Dispatch, SetStateAction } from 'react'
 import BookclubButton from '../TabButtons/BookclubButton/BookclubButton'
 import BookshelfButton from '../TabButtons/BookshelfButton/BookshelfButton'
 import { formatDate } from '../common/functions'
@@ -7,9 +7,12 @@ import './UserTabs.css'
 import AccountButton from '../TabButtons/AccountButton/AccountButton'
 import MessageButton from '../TabButtons/MessageButton/MessageButton'
 
+interface Props {
+    activeTab: number,
+    setActiveTab: Dispatch<SetStateAction<number>>
+}
 
-
-const UserTabs = () => {
+const UserTabs = ({activeTab, setActiveTab}: Props) => {
 
     const { activeUser } = userContext()
 
@@ -17,7 +20,7 @@ const UserTabs = () => {
     const {day, month, year } = formatDate(activeUser.date_joined)
 
     // const [activePanel, setActivePanel] = useState(false);
-    const [activeTab, setActiveTab] = useState<number>(NaN)
+    // const [activeTab, setActiveTab] = useState<number>(NaN)
     
     // const [newBkslfId, setNewBkslfId] = useState<string>('')
 

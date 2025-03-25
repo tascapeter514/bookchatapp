@@ -29,6 +29,8 @@ export default function useLogger() {
 
     const authenticate = useCallback( async (url: string, formData: FormData) => {
         setLoading(true)
+        // CLEAR THE ERROR HANDLER AFTER EACH REQUEST
+        setError('')
 
         const data = Object.fromEntries(formData);
 

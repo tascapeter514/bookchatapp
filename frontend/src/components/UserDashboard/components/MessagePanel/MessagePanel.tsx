@@ -1,7 +1,7 @@
 import './MessagePanel.css'
 import { Link } from 'react-router-dom'
 import { userContext } from '../../../common/Context/UserContext/UserContext'
-import { Invitation} from '../../../../types.ts'
+import { Invitation, InviteData} from '../../../../types.ts'
 import { formatDate } from '../../../common/functions.tsx'
 import Header from '../../../common/Header/Header.tsx'
 import SubHeader from '../../../common/SubHeader/SubHeader.tsx'
@@ -13,52 +13,55 @@ import SubHeader from '../../../common/SubHeader/SubHeader.tsx'
 const MessagePanel = () => {
 
 
-    const { activeUser, activeUserToken } = userContext()
+    const { activeUser, userData } = userContext()
 
-    function joinBookclub(bookclub: {id: string, name: string}) {
+    const invites = userData.find(data => data.type === 'invitation') as InviteData | undefined
 
-        const joinReq = {
-            user_id: activeUser.id,
-            bookclub_id: bookclub.id
-        }
+    // function joinBookclub(bookclub: {id: string, name: string}) {
 
-        fetch(`http://localhost:8000/api/acceptInvite`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Token ${activeUserToken}`
-            },
-            body: JSON.stringify(joinReq)
-        })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            setUserInvites(prev => [...prev, data])
-        })
-        .catch(err => console.log('There was an error in joining your bookclub:', err))
-    }
+    //     const joinReq = {
+    //         user_id: activeUser.id,
+    //         bookclub_id: bookclub.id
+    //     }
 
-    const userInvitesElements = userInvites?.map((userInvite: Invitation) => {
+    //     fetch(`http://localhost:8000/api/acceptInvite`, {
+    //         method: 'PUT',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //             'Authorization': `Token ${activeUserToken}`
+    //         },
+    //         body: JSON.stringify(joinReq)
+    //     })
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         console.log(data)
+    //         setUserInvites(prev => [...prev, data])
+    //     })
+    //     .catch(err => console.log('There was an error in joining your bookclub:', err))
+    // }
 
-        const {day, month, year } = formatDate(userInvite.created_at)
+    const userInvitesElements = invites?.items.map((invite: Invitation) => {
+
+        const {day, month, year } = formatDate(invite.created_at)
 
 
         return(
-            <li key={userInvite.invitation_id} className='message-element'>
+            <li key={invite.id} className='message-element'>
                 <div className="message-header-wrapper">
                     <div className="message-user-wrapper">
-                        <div className="message-profile-icon">{userInvite.invited_by.charAt(0).toUpperCase()}</div>
+                        <div className="message-profile-icon">{invite.invited_by.charAt(0).toUpperCase()}</div>
                         <div className="message-user-text">
-                            <span className='message-user-span'>{userInvite.invited_by}</span>
+                            <span className='message-user-span'>{invite.invited_by}</span>
                             <span className='message-invitation-span'>has invited you to</span>
-                            <Link to={`/bookclub/${userInvite.bookclub.id}`}><span className='message-bookclub-span'>{userInvite.bookclub.name}</span></Link>
+                            <Link to={`/bookclub/${invite.bookclub.id}`}><span className='message-bookclub-span'>{invite.bookclub.name}</span></Link>
                         </div>
                     
                     </div>
                     <span className='message-date-span'>{day} {month} {year}</span>
                 </div>
                 <div className="message-content">
-                    {!userInvite.accepted && (<button className='accept-button' onClick={() => joinBookclub(userInvite.bookclub)}>Accept</button>) }
+                    {/* REMOVED ONCLICK HANDLER UNTIL FETCH LOGIC IS IMPLEMENTED */}
+                    {!invite.accepted && (<button className='accept-button' >Accept</button>) }
                 </div> 
             </li>
         )

@@ -6,8 +6,8 @@ import AuthorPage from './components/AuthorPage/AuthorPage.tsx'
 import BookclubPage from './components/BookclubPage/BookclubPage.tsx'
 import Login from './components/LogIn/Login.tsx'
 import UserDashboard from './components/UserDashboard/UserDashboard.tsx'
-import AuthRequired from './components/common/authRequired.tsx'
 import ErrorBoundary from './components/common/ErrorBoundary.tsx'
+import AuthRequired from './components/common/authRequired.tsx'
 import UserDataProvider  from './components/common/Context/UserContext/UserContext.tsx'
 import BookclubDataProvider from './components/common/Context/BookclubContext/BookclubContext.tsx'
 import CheckMembers from './components/common/CheckMembers.tsx'
@@ -18,6 +18,7 @@ import './App.css';
 function App() {
 
   return (
+
     <BrowserRouter>
      <UserDataProvider>
       <Navbar />
@@ -27,8 +28,7 @@ function App() {
             <Route path='/author/:id' element={<AuthorPage />}></Route>
             <Route path='/login' element={<Login />}></Route>
             <Route element={<AuthRequired />}>
-                <Route path='/userDashboard' element={<ErrorBoundary><UserDashboard 
-                   /></ErrorBoundary>}></Route>
+                <Route path='/userDashboard' element={<ErrorBoundary><UserDashboard /></ErrorBoundary>}></Route>
                   <Route path='/bookclub/:id' element={
                     <BookclubDataProvider>
                       <CheckMembers><BookclubPage /></CheckMembers>

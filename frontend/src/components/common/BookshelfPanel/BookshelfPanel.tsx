@@ -1,5 +1,5 @@
 import './BookshelfPanel.css';
-import { Bookshelf } from '../../../types.ts'
+import { BookshelfData } from '../../../types.ts'
 import BookshelfComponent from './components/BookshelfComponent/BookshelfComponent.tsx'
 import SearchBooksModal from './components/SearchBooksModal/SearchBooksModal.tsx'
 import { bookshelfData } from '../Context/BookshelfContext/BookshelfContext.tsx';
@@ -11,7 +11,7 @@ import SubHeader from '../SubHeader/SubHeader.tsx'
 
 type BookshelfPanelProps = {
     activeBookshelf: number,
-    bookshelves: Bookshelf[] | [],
+    bookshelves: BookshelfData,
 
   }
 
@@ -19,7 +19,7 @@ const BookshelfPanel = ({activeBookshelf, bookshelves}: BookshelfPanelProps) => 
 
     const { openSearchBooks } = bookshelfData()
 
-    const bookshelfElements = bookshelves?.map((bookshelf, index) => (
+    const bookshelfElements = bookshelves?.items.map((bookshelf, index) => (
         activeBookshelf === index && 
             <li 
                 key={bookshelf.id}
@@ -42,7 +42,7 @@ const BookshelfPanel = ({activeBookshelf, bookshelves}: BookshelfPanelProps) => 
                 <SearchIcon></SearchIcon>
             </Button>
              <SearchBooksModal
-                bookshelves={bookshelves}                
+                bookshelves={bookshelves.items}                
             >
 
             </SearchBooksModal>

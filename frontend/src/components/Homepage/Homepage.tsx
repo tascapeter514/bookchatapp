@@ -5,7 +5,7 @@ import useLogger from '../common/hooks/useLogger';
 
 import './Homepage.css'
 import { Book } from '../../types';
-import RegisterForm from '../Forms/InputField/RegisterForm/RegisterForm';
+import RegisterForm from '../Forms/RegisterForm/RegisterForm';
 
 export default function Homepage() {
 
