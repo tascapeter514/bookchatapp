@@ -1,11 +1,11 @@
 import './UserDashboard.css';
 import { useState } from 'react';
-import { userContext} from '../common/Context/UserContext/UserContext'
-import Bookshelfpanel from '../common/BookshelfPanel/BookshelfPanel'
-import MessagePanel from './components/MessagePanel/MessagePanel';
+// import { userContext} from '../common/Context/UserContext/UserContext'
+// import Bookshelfpanel from '../common/BookshelfPanel/BookshelfPanel'
+// import MessagePanel from './components/MessagePanel/MessagePanel';
 import AccountPanel from './components/AccountPanel/AccountPanel';
 import UserTabs from '../UserTabs/UserTabs'
-import BookclubsPanel from './components/BookclubsPanel/BookclubsPanel'
+// import BookclubsPanel from './components/BookclubsPanel/BookclubsPanel'
 import { UserIcon, CloseIcon } from '../common/Icons'
 
 
@@ -19,10 +19,10 @@ const UserDashboard = () => {
 
     
     const [activeTab, setActiveTab] = useState(0);
-    const [activeBookshelf, setActiveBookshelf] = useState<number>(4);
+    // const [activeBookshelf, setActiveBookshelf] = useState<number>(4);
     const [showNavbar, setShowNavbar] = useState(false);
     const [isExiting, setIsExiting] = useState(false)
-    const { userData, activeUser }   = userContext()
+    // const { userData, activeUser }   = userContext()
    
     const isBookshelfTab = activeTab >= 3
     // const PanelComponent = () =>
@@ -51,7 +51,6 @@ const UserDashboard = () => {
                     {/* <PanelComponent /> */}
                     <AccountPanel></AccountPanel>
             </main>
-
             <aside className={`dashboard-navbar ${showNavbar ? 'enter' : ''} ${isExiting ? 'exit' : ''}`}>
                 <button 
                         className={`dashboardNavbar-close-toggle ${showNavbar ? 'active' : ''}`}
@@ -65,12 +64,6 @@ const UserDashboard = () => {
                 <UserTabs></UserTabs>
             
             </aside>
-            
-          
-            
-
-
-            
         </div>
     )
 }

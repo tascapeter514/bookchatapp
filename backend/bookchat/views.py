@@ -216,19 +216,21 @@ def delete_book(request, **kwargs):
 @api_view(['POST'])
 def add_user_bookshelf(request, id):
     print('add bookshelf check')
-    user = User.objects.get(id=id)
+    try:
+        user = User.objects.get(id=id)
 
-    print('request body:', request.data)
+        print('request body:', request.data)
 
-    bookshelf_name = request.data.get('name')
-
-    if not bookshelf_name:
-        return Response({'message:' 'You must enter a valid bookshelf name'}, status=status.HTTP_400_BAD_REQUEST)
-    else:
-        new_bookshelf = Bookshelf.objects.create(name=bookshelf_name)
+        bookshelf_name = request.data.get('name')
+        new_bookshelf = Bookshelf.Object.create(name=bookshelf_name)
         user.bookshelves.add(new_bookshelf)
         bookshelf_serializer = BookshelfSerializer(new_bookshelf)
         return Response(bookshelf_serializer.data, status=status.HTTP_201_CREATED)
+    except Exception as e:
+        print(f'Error: {str(e)}')
+        return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+
 
 @api_view(['POST'])
 def add_user_bookclub(request, id):

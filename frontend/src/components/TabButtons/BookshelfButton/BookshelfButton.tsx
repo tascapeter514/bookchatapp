@@ -70,7 +70,7 @@ const BookshelfButton = ({activeTab, setActiveTab}: Props) => {
             <CreateButton onClick={openModal}>Bookshelf</CreateButton>
             <PostModal 
                 ref={bookshelfRef} 
-                url={`http://localhost:8000/api/user/addBookshelf/${activeUser.id}`}
+                url={`http://localhost:8000/api/user/bookshelf/${activeUser.id}`}
                 type='bookshelf'  
             /> 
         </div>

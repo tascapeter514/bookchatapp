@@ -12,8 +12,8 @@ export default function usePost(url: string) {
 
     const makeRequest = useCallback(
         async <T extends object> (requestData: T) => {
+        console.log('use post check')
         setLoading(true)
-        setError('');
 
         try {
 
@@ -24,8 +24,6 @@ export default function usePost(url: string) {
                 console.log('unexpected error')
                 setError('Unexpected server error')
             }
-
-            
 
         } catch (err: any) {
             console.log('use post catch handler:', err)
@@ -39,6 +37,8 @@ export default function usePost(url: string) {
         
        
     }, [url])
+
+    console.log('use post error:', error)
 
 
     return { makeRequest, loading, error}

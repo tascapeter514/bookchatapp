@@ -51,7 +51,7 @@ const PostModal = ({ref, url, type}: Props) => {
     if (loading) {
         return <div>Loading...</div>
     }
-
+    console.log('post modal error:', error)
     return (
         <dialog className="post-modal" ref={  ref } >
             {error && <ErrorMessage>{error}</ErrorMessage>}
