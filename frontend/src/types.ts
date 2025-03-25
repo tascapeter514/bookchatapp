@@ -104,10 +104,13 @@ export type SearchData = {
     items: Book[] | Author[] | Bookclub[];
 }[]
 
-    
+export type BookclubData = {type: string, items: Bookclub[]}
+export type BookshelfData = {type: string, items: Bookshelf[]}
+export type InviteData = {type: string, items: Invitation[]}
+
 export type UserData = {
     type: string,
-    items: Bookclub[] | Bookshelf[] | Invitation[]
+    items: BookclubData | BookshelfData | InviteData
 }[]
 
 export type Variant = 'bookclub' | 'bookshelf' | 'user'

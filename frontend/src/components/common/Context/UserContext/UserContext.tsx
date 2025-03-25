@@ -10,7 +10,7 @@ import useSocket from '../../hooks/useSocket.tsx';
 interface UserContextProps {
     activeUser: ActiveUser,
     authToken: AuthToken,
-    userData: UserData[],
+    userData: UserData,
     error: string | null,
     loading: boolean,
     setUserData: Dispatch<SetStateAction<UserData[]>>,

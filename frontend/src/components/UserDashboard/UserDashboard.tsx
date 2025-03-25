@@ -40,8 +40,8 @@ const UserDashboard = () => {
         }
     }
 
-    console.log('active user:', activeUser)
-    console.log('user data:', userData)
+    // console.log('active user:', activeUser)
+    // console.log('user data:', userData)
 
     return(
         <div className='dashboard-container'>
@@ -63,14 +63,7 @@ const UserDashboard = () => {
                 </button>
                 
                 <UserTabs></UserTabs>
-                {/* <ProfileNavbar 
-                    activeTab={activeTab} 
-                    setActiveTab={setActiveTab} 
-                    activeBookshelf={activeBookshelf}
-                    setActiveBookshelf={setActiveBookshelf}
-                >
-
-                </ProfileNavbar> */}
+            
             </aside>
             
           
