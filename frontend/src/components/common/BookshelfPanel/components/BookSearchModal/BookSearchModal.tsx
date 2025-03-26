@@ -22,7 +22,7 @@ const BookSearchModal = ({ ref }: Props) => {
         
     return (
         <dialog className='search-books-modal' ref={ref}>
-            <h3>Add a new title to your bookclub</h3>
+            <h3>Add a new title to your bookshelf</h3>
             <hr />
             <section className='search-books-content'>
                

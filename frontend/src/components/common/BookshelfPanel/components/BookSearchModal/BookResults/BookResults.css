@@ -1,9 +1,9 @@
 .book-results-list {
     display: flex;
-    gap: 1rem;
     padding: 0;
     width: 100%;
     flex-direction: column;
+    max-height: 150px;
     overflow: scroll;
 
 }
@@ -16,7 +16,12 @@
     font-size: 1.125rem;
     width: 100%;
     padding: .5em;
+    align-items: center;
     
+}
+
+.book-result-label {
+    margin: 0;
 }
 
 .book-result-input {

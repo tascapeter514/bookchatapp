@@ -2,15 +2,14 @@ import './BookSearchbar.css'
 // import { Dispatch, SetStateAction, useState, useEffect } from 'react'
 // import { Book } from '../../../../../../types'
 import useSearch from '../../../../hooks/useSearch'
-import BookResults from '../BookResults/BooksResults'
+import BookResults from '../BookResults/BookResults'
 import { SearchIcon } from '../../../../Icons'
-
 
 
 
 const BookSearchbar = () => {
 
-    const {searchValue, setSearchValue, searchResults} = useSearch('ws://localhost:8000/ws/books/', 'get_books_data')
+    const {searchValue, setSearchValue, searchResults} = useSearch('ws://localhost:8000/ws/search/books/', 'get_books_data')
 
     console.log('book search bar results:', searchResults)
 
@@ -25,9 +24,7 @@ const BookSearchbar = () => {
                 />
                 <SearchIcon className='search-icon'/>
             </div>
-            <BookResults searchValue={searchValue}>
-                {searchResults}
-            </BookResults>
+            {searchValue && searchResults.length > 0 &&<BookResults searchValue={searchValue}>{searchResults}</BookResults>}
             
         </>
 

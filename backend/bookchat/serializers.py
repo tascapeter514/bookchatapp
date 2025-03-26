@@ -70,11 +70,11 @@ class BookSerializer(serializers.ModelSerializer):
 
 #BOOKSHELF SERIALIZER
 class BookshelfSerializer(serializers.ModelSerializer):
-    titles = BookSerializer(many=True, read_only=True)
+    books = BookSerializer(many=True, read_only=True)
 
     class Meta:
         model = Bookshelf
-        fields = ['id', 'name', 'user', 'books', 'titles']
+        fields = ['id', 'name', 'user', 'books']
         
 #BOOKCLUB SERIALIZER
 class BookclubSerializer(serializers.ModelSerializer):

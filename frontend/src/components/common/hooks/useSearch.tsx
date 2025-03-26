@@ -27,14 +27,14 @@ export default function useSearch(url: string, type: string) {
     
                 socket.onmessage = (event) => {
                     const data = JSON.parse(event.data);
-                    if (data.type === type) {
-                        console.log('WEBSOCKET SEARCH DATA:', data)
-                        setSearchResults(data.search_results)
-                        
-                        
-                        
+
+                // REFACTOR
+                    const {type, ...payload} = data
+
+                    if (payload) {
+                        setSearchResults(payload.search_results)
                     }
-                }
+                }   
     
                 socket.onerror = (event) => {
                     console.error('WebSocket connection failed:', event)
@@ -91,7 +91,7 @@ export default function useSearch(url: string, type: string) {
         }, [searchValue])
 
         
-    
+    console.log('use search results', searchResults)
     return {searchValue, searchResults, setSearchValue, fetchData, error, loading}
 
 

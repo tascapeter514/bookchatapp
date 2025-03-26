@@ -1,8 +1,5 @@
 import './BookResults.css'
-import { Book } from '../../../../../../types'
-
-
-
+import { SearchData } from '../../../../../../types'
 
 interface BookResult {
     id: number,
@@ -12,19 +9,22 @@ interface BookResult {
 }
 
 interface Props {
-    children: Book[],
-    // newBookId: number,
-    // setNewBookId: (id: number) => void,
+    children: SearchData,
+
     searchValue: string
 }
 
 
-const BookResults = ({children, searchValue}: Props) => {
+const BookResults = ({children}: Props) => {
 
+
+    console.log('book results children:', children)
+    const { items } = children[0]
 
     return(
         <ul className='book-results-list'>
-            {children.filter((result: BookResult) => result.name.includes(searchValue)).map((bookResult) => {
+            {items.map((bookResult: BookResult) => {
+                
                 if (!bookResult) {
                     return null
                 }
@@ -33,12 +33,12 @@ const BookResults = ({children, searchValue}: Props) => {
                     className='book-result-listElement'
                     key={bookResult.id}
                     >
-                        <label htmlFor={bookResult.name}>{bookResult.name}</label>
+                        <label className='book-result-label' htmlFor={bookResult.name}>{bookResult.name}</label>
                         <input 
                             type="radio"
                             name='bookResultsGroup'
-                            checked={newBookId === bookResult.id}
-                            onChange={() => setNewBookId(bookResult.id)}
+                            // checked={newBookId === bookResult.id}
+                            // onChange={() => setNewBookId(bookResult.id)}
                             className='book-result-input'  
                         />
                     </li>

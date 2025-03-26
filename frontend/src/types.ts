@@ -110,6 +110,8 @@ export type InviteData = {type: string, items: Invitation[]}
 
 export type UserData = (BookclubData | BookshelfData | InviteData)[]
 
+export type BookData = {type: string, items: Book[]}
+
 
     
 

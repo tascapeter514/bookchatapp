@@ -1,15 +1,15 @@
 .book-searchbar {
     background-color: white;
     width: 100%;
-    border-radius: 10px;
     height: 2rem;
     padding: 0 .5em;
     /* box-shadow: 0 0 8px #ddd; */
+    border: 1px solid black;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-
+    
 
 }
 
@@ -24,6 +24,10 @@
     /* flex: 0 1 auto; */
     background-color: transparent;
     border: none;
+    /* border-bottom: 1px solid black; */
+    border-radius: 0;
+    
+    
     height: 100%;
     font-size: 1rem;
     margin: 0;
