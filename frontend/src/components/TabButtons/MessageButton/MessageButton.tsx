@@ -1,5 +1,6 @@
 import './MessageButton.css'
 import { Dispatch, SetStateAction } from 'react'
+import { userContext } from '../../common/Context/UserContext/UserContext'
 
 
 interface Props {
@@ -11,11 +12,13 @@ interface Props {
 
 const MessageButton = ({activeTab, setActiveTab}: Props) => {
 
+    const { userTabs, tabsDispatch } = userContext()
+
     return (
 
         <button 
-            className={`message-button ${activeTab === 1 ? 'active' : ''}`}
-            onClick={() => setActiveTab(1)}
+            className={`message-button ${userTabs.activeTab === 'messagesTab' ? 'active' : ''}`}
+            onClick={() => tabsDispatch({type: 'SET_ACTIVE_TAB', payload: 'messagesTab'})}
         >
         Messages
         </button>

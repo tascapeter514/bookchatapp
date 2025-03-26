@@ -1,6 +1,7 @@
-import {createContext, useEffect, useState, Dispatch, SetStateAction, ReactNode, useContext} from 'react'
+import {createContext, useEffect, useState, Dispatch, SetStateAction, ReactNode, useContext, useReducer} from 'react'
 import { changeContact, changePassword } from '../../services/user.tsx';
 // import { addUserBookshelf } from '../../services/user.tsx';
+import userTabsReducer, {TabAction, TabState} from '../../../../reducers/userTabsReducer.tsx';
 import useLogger from '../../hooks/useLogger.tsx';
 import {  HandleLogin, ActiveUser, AuthToken, UserData } from '../../../../types.ts'
 import useSocket from '../../hooks/useSocket.tsx';
@@ -13,6 +14,8 @@ interface UserContextProps {
     userData: UserData,
     error: string | null,
     loading: boolean,
+    userTabs: TabState,
+    tabsDispatch: Dispatch<TabAction>,
     setUserData: Dispatch<SetStateAction<UserData>>,
     setAuthToken: Dispatch<SetStateAction<AuthToken>>,
     setError: Dispatch<SetStateAction<string>>,
@@ -48,6 +51,9 @@ export const UserContext = createContext<UserContextProps>({
     userData: [],
     error: '',
     loading: false,
+    userTabs: {activeTab: '', activeBookshelf: ''},
+    tabsDispatch: () => {},
+
     setUserData: () => [],
     setError: () => '',
     handleLogin: async () => {},
@@ -61,6 +67,7 @@ export const UserContext = createContext<UserContextProps>({
 const UserDataProvider = ({ children }: UserProviderProps) => {
 
     const [userData, setUserData] = useState<UserData>([])
+    const [userTabs, tabsDispatch] = useReducer(userTabsReducer, {activeTab: 'accountTab', activeBookshelf: ''})
     const {activeUser, authToken, loading, error, authenticate, setActiveUser, setAuthToken, setError} = useLogger()
     const {makeRequest, data} = useSocket('ws://localhost:8000/ws/userData')
     const handleLogin = async (formData: FormData) => await authenticate('http://localhost:8000/api/auth/login', formData)
@@ -100,7 +107,7 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
 
         // pass values into useMemo?
         <UserContext.Provider
-            value={{activeUser, authToken, userData, error, loading,
+            value={{activeUser, authToken, userData, error, loading, userTabs, tabsDispatch,
                   handleLogin,
                   handleRegister, 
                   changeContact: (formData) => changeContact(formData, setActiveUser),

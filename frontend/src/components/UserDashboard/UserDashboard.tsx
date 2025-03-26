@@ -13,7 +13,7 @@ import { UserIcon, CloseIcon } from '../common/Icons'
 
 const UserDashboard = () => {
 
-    const { userData }   = userContext()
+    const { userData, userTabs }   = userContext()
     const bookshelves = userData.find(data => data.type === 'bookshelf') as BookshelfData | undefined
     const [activeTab, setActiveTab] = useState<number>(NaN);
     const [activeBookshelf, setActiveBookshelf] = useState<number>(3);
@@ -43,10 +43,10 @@ const UserDashboard = () => {
 
             <main className='dashboard-main'>
                 <button className={`dashboardNavbar-mobile-toggle ${showNavbar ? '' : 'active'}`} onClick={toggleNavbar}><UserIcon /></button>
-                    {activeTab === 0 && <AccountPanel />}
-                    {activeTab === 1 && <MessagePanel />}
-                    {activeTab === 2 && <BookclubsPanel />}
-                    {activeTab === 3 && <Bookshelfpanel bookshelves={bookshelves} activeBookshelf={activeBookshelf} />}
+                    {userTabs.activeTab === 'accountTab' && <AccountPanel />}
+                    {userTabs.activeTab === 'messagesTab' && <MessagePanel />}
+                    {userTabs.activeTab === 'bookclubTab' && <BookclubsPanel />}
+                    {userTabs.activeTab === 'bookshelfTab' && <Bookshelfpanel bookshelves={bookshelves} activeBookshelf={activeBookshelf} />}
             </main>
             <aside className={`dashboard-navbar ${showNavbar ? 'enter' : ''} ${isExiting ? 'exit' : ''}`}>
                 <button 

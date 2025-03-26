@@ -12,7 +12,7 @@ interface Props {
 
 const BookclubButton = ({activeTab, setActiveTab}: Props) => {
 
-    const { activeUser } = userContext()
+    const { activeUser, userTabs, tabsDispatch } = userContext()
     const bookclubRef = useRef<HTMLDialogElement>(null)
     const openModal = () => bookclubRef.current?.showModal()
     
@@ -20,8 +20,8 @@ const BookclubButton = ({activeTab, setActiveTab}: Props) => {
         <> 
             <hr className='navbar-line-break' />
             <button 
-                className={`bookclub-button ${activeTab === 2 ? 'active' : ''}`}
-                onClick={ () => setActiveTab(2)}
+                className={`bookclub-button ${userTabs.activeTab === 'bookclubTab' ? 'active' : ''}`}
+                onClick={ () => tabsDispatch({type: 'SET_ACTIVE_TAB', payload: 'bookclubTab'})}
             >
                 Bookclubs
             </button>

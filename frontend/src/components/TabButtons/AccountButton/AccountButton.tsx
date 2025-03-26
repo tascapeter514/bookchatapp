@@ -1,5 +1,6 @@
 import './AccountButton.css'
 import { Dispatch, SetStateAction } from 'react'
+import { userContext } from '../../common/Context/UserContext/UserContext'
 
 interface Props {
 
@@ -10,12 +11,15 @@ interface Props {
 
 const AccountButton = ({activeTab, setActiveTab}: Props) => {
 
+    const {userTabs, tabsDispatch} = userContext()
+
+
 
     return (
 
         <button 
-            className={`account-button ${activeTab === 0 ? 'active' : ''}`}
-            onClick={() => setActiveTab(0)}
+            className={`account-button ${userTabs.activeTab === 'accountTab' ? 'active' : ''}`}
+            onClick={() => tabsDispatch({type: 'SET_ACTIVE_TAB', payload: 'accountTab'})}
         >
             Account
         </button>
@@ -27,13 +31,4 @@ const AccountButton = ({activeTab, setActiveTab}: Props) => {
 export default AccountButton
 
 
-{/* <div className="account-button">
-            <a
-                id='account-button'
-                className={`account-button ${activeTab === 0 ? 'active' : ''}`}
-                onClick={() => setActiveTab(0)}
-                href='#account'
-            >
-                Account
-            </a>
-        </div> */}
+

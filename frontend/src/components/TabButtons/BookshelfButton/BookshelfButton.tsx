@@ -17,7 +17,7 @@ interface Props {
 const BookshelfButton = ({activeTab, setActiveTab}: Props) => {
      
     
-    const { userData, activeUser } = userContext()
+    const { userData, activeUser, userTabs, tabsDispatch } = userContext()
     const bookshelves = userData.find(data => data.type === 'bookshelf') as BookshelfData | undefined
 
     const bookshelfRef = useRef<HTMLDialogElement>(null)
@@ -59,8 +59,8 @@ const BookshelfButton = ({activeTab, setActiveTab}: Props) => {
             <hr className='navbar-line-break' />
             <BookshelfDropdown activePanel={activePanel}>
                 <a 
-                    className={`bookshelf-button ${activeTab === 3 ? 'active' : ''}`}
-                    onClick={ () => setActiveTab(3)}
+                    className={`bookshelf-button ${userTabs.activeTab === 'bookshelfTab' ? 'active' : ''}`}
+                    onClick={ () => tabsDispatch({type: 'SET_ACTIVE_TAB', payload: 'bookshelfTab'})}
                 >
                     Bookshelves
                     <RightDropDownIcon onClick={toggleDropdown} isRotated={isRotated} />
