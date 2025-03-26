@@ -12,9 +12,9 @@ export default function userTabsReducer(state: TabState, action: TabAction) {
     const { type, payload } = action;
     switch(type) {
         case 'SET_ACTIVE_TAB':
-            return {...state, activeTab: payload};
+            return {activeTab: payload, activeBookshelf: ''};
         case 'SET_BOOKSHELF_TAB':
-            return {...state, activeBookshelf: payload};
+            return {activeTab: 'bookshelfTab', activeBookshelf: payload};
         default:
             return state
     }

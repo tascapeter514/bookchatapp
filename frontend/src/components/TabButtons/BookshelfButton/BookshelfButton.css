@@ -24,13 +24,13 @@
     cursor: pointer
 }
 
-.bookshelf-button.active {
+.bookshelf-button.active, .navbar-bookshelf-list > li.active {
     background: #D6f6ff;
     position: relative;
     
 }
 
-.bookshelf-button:hover {
+.bookshelf-button:hover, .navbar-bookshelf-list > li:hover {
 
     background: #D6f6ff;
 }
@@ -46,11 +46,10 @@
     padding: 0;
 }
 
-
-
 .navbar-bookshelf-list a {
     text-decoration: none;
     color: black;
+
 
 }
 

@@ -1,6 +1,6 @@
 
 import BookshelfDropdown from '../../common/BookshelfDropdown/BookshelfDropdown'
-import { useState, useRef, Dispatch, SetStateAction } from 'react'
+import { useState, useRef} from 'react'
 import { RightDropDownIcon } from '../../common/Icons'
 import CreateButton from '../../common/Buttons/CreateButton/CreateButton'
 import { userContext } from '../../common/Context/UserContext/UserContext'
@@ -9,17 +9,12 @@ import PostModal from '../../common/Modals/PostModal/PostModal'
 import './BookshelfButton.css'
 
 
-interface Props {
-    activeTab: number,
-    setActiveTab: Dispatch<SetStateAction<number>>
-}
 
-const BookshelfButton = ({activeTab, setActiveTab}: Props) => {
+const BookshelfButton = () => {
      
     
     const { userData, activeUser, userTabs, tabsDispatch } = userContext()
     const bookshelves = userData.find(data => data.type === 'bookshelf') as BookshelfData | undefined
-
     const bookshelfRef = useRef<HTMLDialogElement>(null)
     const openModal = () => bookshelfRef.current?.showModal()
     const [isRotated, setIsRotated] = useState(false);
@@ -41,7 +36,7 @@ const BookshelfButton = ({activeTab, setActiveTab}: Props) => {
                 onClick={() => tabsDispatch({type: 'SET_BOOKSHELF_TAB', payload: `bookshelfTab${index}`})}
                 className={userTabs.activeBookshelf === `bookshelfTab${index}`  ? 'active' : ''}
             >   
-                <a id={`bookshelf-${index}`} href={`#${bookshelf.name.toLowerCase()}`}>
+                <a id={`bookshelf-${index + 4}`} href={`#${bookshelf.name.toLowerCase()}`}>
                     {bookshelf.name}
                 </a>
             </li>
@@ -54,7 +49,7 @@ const BookshelfButton = ({activeTab, setActiveTab}: Props) => {
             <hr className='navbar-line-break' />
             <BookshelfDropdown activePanel={activePanel}>
                 <a 
-                    className={`bookshelf-button ${userTabs.activeTab === 'bookshelfTab' ? 'active' : ''}`}
+                    className={`bookshelf-button ${userTabs.activeTab === 'bookshelfTab' && userTabs.activeBookshelf === '' ? 'active' : ''}`}
                     onClick={ () => tabsDispatch({type: 'SET_ACTIVE_TAB', payload: 'bookshelfTab'})}
                 >
                     Bookshelves

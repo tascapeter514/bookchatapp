@@ -16,12 +16,11 @@ const UserDashboard = () => {
     const { userData, userTabs }   = userContext()
     const bookshelves = userData.find(data => data.type === 'bookshelf') as BookshelfData | undefined
     const [activeTab, setActiveTab] = useState<number>(NaN);
-    const [activeBookshelf, setActiveBookshelf] = useState<number>(3);
     const [showNavbar, setShowNavbar] = useState(false);
     const [isExiting, setIsExiting] = useState(false)
    
    
-    const isBookshelfTab = activeTab >= 3
+
     const toggleNavbar = () => {
         setShowNavbar(prev => !prev)
         if (showNavbar) {
@@ -46,7 +45,7 @@ const UserDashboard = () => {
                     {userTabs.activeTab === 'accountTab' && <AccountPanel />}
                     {userTabs.activeTab === 'messagesTab' && <MessagePanel />}
                     {userTabs.activeTab === 'bookclubTab' && <BookclubsPanel />}
-                    {userTabs.activeTab === 'bookshelfTab' && <Bookshelfpanel bookshelves={bookshelves} activeBookshelf={activeBookshelf} />}
+                    {userTabs.activeTab === 'bookshelfTab' && <Bookshelfpanel bookshelves={bookshelves}/>}
             </main>
             <aside className={`dashboard-navbar ${showNavbar ? 'enter' : ''} ${isExiting ? 'exit' : ''}`}>
                 <button 
@@ -58,7 +57,7 @@ const UserDashboard = () => {
                         <CloseIcon />
                 </button>
                 
-                <UserTabs activeTab={activeTab} setActiveTab={setActiveTab}></UserTabs>
+                <UserTabs></UserTabs>
             
             </aside>
         </div>
