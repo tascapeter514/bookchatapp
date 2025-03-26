@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
-export default function useSearch(url: string) {
+export default function useSearch(url: string, type: string) {
 
     const [searchValue, setSearchValue] = useState('')
     const [debouncedValue, setDebouncedValue] = useState('')
@@ -27,7 +27,7 @@ export default function useSearch(url: string) {
     
                 socket.onmessage = (event) => {
                     const data = JSON.parse(event.data);
-                    if (data.type === 'get_search_query') {
+                    if (data.type === type) {
                         console.log('WEBSOCKET SEARCH DATA:', data)
                         setSearchResults(data.search_results)
                         

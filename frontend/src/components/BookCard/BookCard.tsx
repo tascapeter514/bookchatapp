@@ -1,6 +1,6 @@
 import { LikeIcon, DislikeIcon, CancelIcon } from '../common/Icons'
 import { Book } from '../../types'
-import './Book.css'
+import './BookCard.css'
 
 interface Props {
     children: Book

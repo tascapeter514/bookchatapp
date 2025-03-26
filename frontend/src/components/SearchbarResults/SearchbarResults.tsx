@@ -31,9 +31,11 @@ const SearchbarResults = ({children}: ResultProps ) => {
         return (
             searchResult.map((result) => {
                 console.log('result link:', `/${resultElement.type}/${result.id}`)
-                return (<li key={result.id} >
-                            <Link to={`/${resultElement.type}/${result.id}`}>{result.name}</Link>
-                        </li>)
+                return (
+                    <li key={result.id} >
+                        <Link to={`/${resultElement.type}/${result.id}`}>{result.name}</Link>
+                    </li>
+                )
             })
             
         )})

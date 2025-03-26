@@ -35,16 +35,11 @@ const BookshelfButton = ({activeTab, setActiveTab}: Props) => {
 
     const bookshelfNames = bookshelves?.items.map((bookshelf: Bookshelf, index: number) => {
 
-        function handleActiveBookshelf() {
-            setActiveTab(index + 4)
-            // setActiveBookshelf(index)
-        }
-
         return (
             <li 
                 key={bookshelf.id}
                 onClick={() => tabsDispatch({type: 'SET_BOOKSHELF_TAB', payload: `bookshelfTab${index}`})}
-                className={activeTab == index + 4 ? 'active' : ''}
+                className={userTabs.activeBookshelf === `bookshelfTab${index}`  ? 'active' : ''}
             >   
                 <a id={`bookshelf-${index}`} href={`#${bookshelf.name.toLowerCase()}`}>
                     {bookshelf.name}
