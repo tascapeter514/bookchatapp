@@ -1,5 +1,7 @@
 import Button from '../../../Buttons/Button/Button'
-import { RefObject } from 'react'
+import { RefObject, useState } from 'react'
+import { userContext } from '../../../Context/UserContext/UserContext'
+import usePost from '../../../hooks/usePost'
 import BookSearchbar from './BookSearchbar/BookSearchbar'
 import './BookSearchModal.css'
 
@@ -12,22 +14,24 @@ interface Props {
 
 const BookSearchModal = ({ ref }: Props) => {
 
-    
-    console.log('booksearch ref:', ref)
-    // const { searchBooksRef, closeSearchBooks, addBook } = bookshelfData()
-    // const [bookResults, setBookResults] = useState<Book[]>([])
-    // const [newBookId, setNewBookId] = useState('')
-    // const [currBkslfId, setCurrBkslfId] = useState<string>('')
     const closeModal = () => ref.current?.close()
-        
+    const { activeUser, setUserData } = userContext()
+    const [newBook, setNewBook] = useState<number>(NaN)
+    const {makeRequest, loading, error} = usePost(`http://localhost:8000/api/user/${activeUser.id}`)
+    
+    
+
+
+
     return (
         <dialog className='search-books-modal' ref={ref}>
             <h3>Add a new title to your bookshelf</h3>
             <hr />
             <section className='search-books-content'>
-               
+                
                 <article className='suggested-book-list'>
                     <BookSearchbar></BookSearchbar>
+                    
                 </article>
                 
             </section>

@@ -15,12 +15,9 @@ const UserDashboard = () => {
 
     const { userData, userTabs }   = userContext()
     const bookshelves = userData.find(data => data.type === 'bookshelf') as BookshelfData | undefined
-    const [activeTab, setActiveTab] = useState<number>(NaN);
     const [showNavbar, setShowNavbar] = useState(false);
     const [isExiting, setIsExiting] = useState(false)
    
-   
-
     const toggleNavbar = () => {
         setShowNavbar(prev => !prev)
         if (showNavbar) {

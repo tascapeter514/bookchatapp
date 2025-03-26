@@ -22,6 +22,7 @@ export type HandleLogout = () => Promise<void>
 
 export type AuthToken = string
 export type Profile = {bio: string, profile_pic?: File}
+
 export interface ActiveUser {
         id: number,
         password: string,

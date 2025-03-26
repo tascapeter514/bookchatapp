@@ -115,7 +115,7 @@ def add_book_to_bookclub(request, **kwargs):
     return Response(serializer.data)
 
 @api_view(['PUT'])
-def add_book_to_user_bookshelf(request, **kwargs):
+def add_user_book(request, **kwargs):
     print('user bookshelf check')
 
     user_id = kwargs['id']
@@ -123,35 +123,35 @@ def add_book_to_user_bookshelf(request, **kwargs):
     bookshelf_id = UUID(json.loads(request.body)['bookshelf_id'])
 
 
-    # print('user bookshelf id:', bookshelf_id, book_id)
-    current_book = Book.objects.get(title_id=book_id)
-    current_user = User.objects.prefetch_related('bookshelves').get(id=user_id)
-    print('current user bookshelves:', current_user.bookshelves.values())
+    # # print('user bookshelf id:', bookshelf_id, book_id)
+    # current_book = Book.objects.get(title_id=book_id)
+    # current_user = User.objects.prefetch_related('bookshelves').get(id=user_id)
+    # print('current user bookshelves:', current_user.bookshelves.values())
 
-    current_user_bookshelf = current_user.bookshelves.prefetch_related('titles').get(bookshelf_id=bookshelf_id)
+    # current_user_bookshelf = current_user.bookshelves.prefetch_related('titles').get(bookshelf_id=bookshelf_id)
 
-    current_user_bookshelf.titles.add(current_book)
+    # current_user_bookshelf.titles.add(current_book)
 
    
    
 
-    serializer = BookshelfSerializer(current_user_bookshelf)
+    # serializer = BookshelfSerializer(current_user_bookshelf)
     
 
 
-    channel_layer = get_channel_layer()
-    async_to_sync(channel_layer.group_send)(
-            f'user_data_{user_id}',
-            {
-                'type': 'get_user_data',
-                'user_bookshelves': serializer.data
+    # channel_layer = get_channel_layer()
+    # async_to_sync(channel_layer.group_send)(
+    #         f'user_data_{user_id}',
+    #         {
+    #             'type': 'get_user_data',
+    #             'user_bookshelves': serializer.data
                 
-            }
+    #         }
 
-        )
+    #     )
 
 
-    return Response(serializer.data)
+    return Response({'message': 'reached backend!'})
 
 @api_view(['POST'])
 def send_invite(request):
