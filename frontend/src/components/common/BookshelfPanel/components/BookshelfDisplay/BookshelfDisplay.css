@@ -3,7 +3,30 @@
     display: grid;
     line-height: 1.6;
     background-color: white;
+    border: 1px solid orange;
 
+}
+
+.bookshelf-container > .bookchat-button {
+    position: absolute;
+    right: 0;
+    top: 1;
+    /* width: 100%;
+    max-width: 50px; */
+}
+
+.bookshelf-container > .bookchat-button > .search-icon {
+    height: 25px;
+    width: 20px;
+    /* border: 1px solid red; */
+}
+
+.bookshelf-container > .bookchat-button > .search-icon > * {
+    fill: white;  
+}
+
+.bookshelf-container > .bookchat-button:hover > .search-icon > * {
+    fill: orange;  
 }
 
 
@@ -19,87 +42,6 @@
 .book-card-listElement {
     max-width: 300px;
     margin-inline: auto;
-}
-
-.book-card {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-
-}
-
-
-.img-overlay {
-
-    width: 100%;
-    max-width: 300px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 3.5em;
-    background: rgb(246, 246, 246);
-    transition: clip-path 2000ms ease;
-    position: relative;
-    overflow: hidden;
-    
-}
-
-.img-overlay:hover {
-    background: rgb(211, 211, 211);
-}
-
-.book-card-img {
-    width: 100%;
-    min-width: 160px;
-    transition: transform 500ms ease;
-}
-
-.img-overlay:hover .book-card-img {
-    transform: scale(1.15)
-}
-
-.book-card-buttons {
-    display: flex;
-    gap: 1rem;
-    background: white;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    transform: translateY(100%);
-    transition: transform 500ms ease;
-}
-
-.img-overlay:hover .book-card-buttons {
-    transform: translateY(0)
-}
-
-
-
-.dislike-icon, .like-icon{
-    width: 100%;
-    height: 27px;
-    
-}
-
-.dislike-icon > *, .like-icon > *, .cancel-icon > * {
-    fill: orange;
-    cursor: pointer;  
-}
-
-.cancel-icon {
-    height: 27px;
-    width: 100%;
-    max-width: 40px;
-    position: absolute;
-    top: 5px;
-    right: 5px; 
-}
-
-.book-card-back {
-    font-size: 1rem;
-    flex-grow: 1;
 }
 
 
