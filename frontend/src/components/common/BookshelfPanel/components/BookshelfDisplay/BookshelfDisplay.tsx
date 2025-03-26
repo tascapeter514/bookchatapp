@@ -17,7 +17,7 @@ const BookshelfComponent = ({ bookshelf }: BookshelfProps) => {
 
 
 
-    const bookshelfTitles = (bookshelf?.titles ?? []).map((bookshelfTitle) => {
+    const books = .map((bookshelfTitle) => {
 
         
        return <li className='book-card-listElement' key={bookshelfTitle.title_id}>

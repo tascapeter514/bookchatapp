@@ -52,7 +52,7 @@ export interface Bookshelf {
     id: number,
     name: string,
     user?: number,
-    titles?: Book[],
+    books: Book[] | [],
     bookclub_id?: string
 
 }

@@ -1,16 +1,12 @@
-import { SetStateAction, Dispatch, useRef } from 'react'
+import { useRef } from 'react'
 import { userContext } from '../../common/Context/UserContext/UserContext'
 import CreateButton from '../../common/Buttons/CreateButton/CreateButton'
 import PostModal from '../../common/Modals/PostModal/PostModal'
 import './BookclubButton.css'
 
 
-interface Props {
-    activeTab: number,
-    setActiveTab: Dispatch<SetStateAction<number>>
-}
 
-const BookclubButton = ({activeTab, setActiveTab}: Props) => {
+const BookclubButton = () => {
 
     const { activeUser, userTabs, tabsDispatch } = userContext()
     const bookclubRef = useRef<HTMLDialogElement>(null)

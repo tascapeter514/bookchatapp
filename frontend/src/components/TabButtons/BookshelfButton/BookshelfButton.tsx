@@ -43,7 +43,7 @@ const BookshelfButton = ({activeTab, setActiveTab}: Props) => {
         return (
             <li 
                 key={bookshelf.id}
-                onClick={handleActiveBookshelf}
+                onClick={() => tabsDispatch({type: 'SET_BOOKSHELF_TAB', payload: `bookshelfTab${index}`})}
                 className={activeTab == index + 4 ? 'active' : ''}
             >   
                 <a id={`bookshelf-${index}`} href={`#${bookshelf.name.toLowerCase()}`}>
