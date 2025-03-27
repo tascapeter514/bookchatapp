@@ -1,13 +1,16 @@
 import './UserDashboard.css';
-import { useState } from 'react';
+import { useReducer } from 'react';
+import mobileNavReducer from '../../reducers/mobileNavReducer';
 import { BookshelfData } from '../../types';
 import { userContext} from '../common/Context/UserContext/UserContext'
 import Bookshelfpanel from '../common/BookshelfPanel/BookshelfPanel'
+import OpenMobileNav from '../common/Buttons/OpenMobileNav/OpenMobileNav';
+import CloseMobileNav from '../common/Buttons/CloseMobileNav/CloseMobileNav';
 import MessagePanel from './components/MessagePanel/MessagePanel';
 import AccountPanel from './components/AccountPanel/AccountPanel';
 import UserTabs from '../UserTabs/UserTabs'
 import BookclubsPanel from './components/BookclubsPanel/BookclubsPanel'
-import { UserIcon, CloseIcon } from '../common/Icons'
+
 
 
 
@@ -15,21 +18,8 @@ const UserDashboard = () => {
 
     const { userData, userTabs }   = userContext()
     const bookshelves = userData.find(data => data.type === 'bookshelf') as BookshelfData | undefined
-    const [showNavbar, setShowNavbar] = useState(false);
-    const [isExiting, setIsExiting] = useState(false)
+    const [mobileNav, navDispatch] = useReducer(mobileNavReducer, {open: false, isExiting: false})
    
-    const toggleNavbar = () => {
-        setShowNavbar(prev => !prev)
-        if (showNavbar) {
-            setIsExiting(true)
-            setTimeout(() => {
-                setShowNavbar(false)
-                setIsExiting(false)
-            }, 350)
-        } else {
-            setShowNavbar(true)
-        }
-    }
 
     // console.log('active user:', activeUser)
     // console.log('user data:', userData)
@@ -38,21 +28,15 @@ const UserDashboard = () => {
         <div className='dashboard-container'>
 
             <main className='dashboard-main'>
-                <button className={`dashboardNavbar-mobile-toggle ${showNavbar ? '' : 'active'}`} onClick={toggleNavbar}><UserIcon /></button>
+                <OpenMobileNav mobileNav={mobileNav} navDispatch={navDispatch} />
                     {userTabs.activeTab === 'accountTab' && <AccountPanel />}
                     {userTabs.activeTab === 'messagesTab' && <MessagePanel />}
                     {userTabs.activeTab === 'bookclubTab' && <BookclubsPanel />}
                     {userTabs.activeTab === 'bookshelfTab' && <Bookshelfpanel bookshelves={bookshelves}/>}
             </main>
-            <aside className={`dashboard-navbar ${showNavbar ? 'enter' : ''} ${isExiting ? 'exit' : ''}`}>
-                <button 
-                        className={`dashboardNavbar-close-toggle ${showNavbar ? 'active' : ''}`}
-                        aria-controls='dashboard-navbar'
-                        aria-expanded={showNavbar} 
-                        onClick={toggleNavbar}
-                    >
-                        <CloseIcon />
-                </button>
+            <aside className={`dashboard-navbar ${mobileNav.open ? 'enter' : ''} ${mobileNav.isExiting ? 'exit' : ''}`}>
+                <CloseMobileNav mobileNav={mobileNav} navDispatch={navDispatch} />
+                
                 
                 <UserTabs></UserTabs>
             

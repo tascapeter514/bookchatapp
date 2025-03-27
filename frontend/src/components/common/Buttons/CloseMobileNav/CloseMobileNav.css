@@ -1,0 +1,46 @@
+.dashboardNavbar-close-toggle {
+    display: none;
+}
+
+
+
+@media (max-width: 900px) {
+
+    .dashboardNavbar-close-toggle  {
+        display: block;
+        position: absolute;
+        right: 1.5em;
+        top: 1.5em;
+        width: 35px;
+        height: 35px;
+        border: 0;
+        background: transparent;
+        cursor: pointer;
+    
+    }
+    
+    
+    .dashboardNavbar-close-toggle.active {
+        display: block;
+        cursor: pointer;
+        z-index: 9999;
+        
+    
+    }
+
+    .close-icon {
+        width: 100%;
+        height: auto;
+    }
+
+    .close-icon > * {
+        fill: orange;
+    }
+
+
+
+
+}
+
+
+

@@ -9,7 +9,7 @@ export default function usePost(url: string) {
     const [error, setError] = useState<string>('')
 
     
-    console.log('use post error:', error)
+    // console.log('use post error:', error)
    
 
     const makeRequest = useCallback(

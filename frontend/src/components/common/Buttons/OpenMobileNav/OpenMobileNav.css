@@ -1,0 +1,39 @@
+.dashboardNavbar-mobile-toggle {
+    display: none;
+}
+
+
+@media (max-width: 900px) {
+
+    .dashboardNavbar-mobile-toggle  {
+        display: block;
+        position: absolute;
+        right: 1.5em;
+        top: 1.5em;
+        width: 35px;
+        height: 35px;
+        border: 0;
+        background: transparent;
+        cursor: pointer;
+
+    }
+
+
+
+    .dashboardNavbar-mobile-toggle.active {
+        background-color: transparent;
+        /* display: none; */
+    }
+
+   
+
+    .user-icon {
+        width: 100%;
+        height: auto;
+    }
+
+    .user-icon, * {
+        fill: orange;
+    }
+
+}

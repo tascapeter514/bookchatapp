@@ -14,7 +14,7 @@ interface Props {
 
 
 const PostModal = ({ref, url, type}: Props) => {
-    console.log('post modal rendered')
+
 
     const closeModal = () => ref.current?.close()
     const { setUserData } = userContext()
@@ -38,9 +38,9 @@ const PostModal = ({ref, url, type}: Props) => {
             if (!newItem) {
                 console.log('no new item')
             }
-            console.log('after make request')
+            // console.log('after make request')
 
-            console.log('new item:', newItem)
+            // console.log('new item:', newItem)
             setUserData(prevData => 
                 prevData.map(data =>
                     data.type === type
@@ -59,7 +59,7 @@ const PostModal = ({ref, url, type}: Props) => {
     if (loading) {
         return <div>Loading...</div>
     }
-    console.log('post modal error:', error)
+    // console.log('post modal error:', error)
     return (
         <dialog className="post-modal" ref={  ref } >
             {error && <ErrorMessage>{error}</ErrorMessage>}

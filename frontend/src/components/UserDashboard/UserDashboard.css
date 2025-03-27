@@ -11,9 +11,7 @@
 
 
 
-.dashboardNavbar-mobile-toggle, .dashboardNavbar-close-toggle {
-    display: none;
-}
+
 
 .dashboard-navbar {
     min-height: fit-content;
@@ -67,40 +65,6 @@
         z-index: 1;
     }
 
-    .dashboardNavbar-mobile-toggle, .dashboardNavbar-close-toggle  {
-        display: block;
-        position: absolute;
-        right: 1.5em;
-        top: 1.5em;
-        width: 35px;
-        height: 35px;
-        border: 0;
-        background: transparent;
-        cursor: pointer;
-    }
-
-
-
-    .dashboardNavbar-mobile-toggle.active {
-        background-color: transparent;
-        /* display: none; */
-    }
-
-    .dashboardNavbar-close-toggle.active {
-        display: block;
-        cursor: pointer;
-        
-
-    }
-
-    .user-icon, .close-icon {
-        width: 100%;
-        height: auto;
-    }
-
-    .user-icon, .close-icon > * {
-        fill: orange;
-    }
 
     .dashboard-navbar {
         position: absolute;
