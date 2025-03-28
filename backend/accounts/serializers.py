@@ -17,6 +17,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 # USER SERIALIZER
 class UserSerializer(serializers.ModelSerializer):
     profile = ProfileSerializer()
+    date_joined = serializers.DateTimeField(format="%d %B %Y")
     
     class Meta:
         model = User

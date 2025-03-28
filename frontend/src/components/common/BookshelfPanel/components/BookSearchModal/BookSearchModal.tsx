@@ -3,11 +3,13 @@ import { RefObject, useState } from 'react'
 import { userContext } from '../../../Context/UserContext/UserContext'
 import usePost from '../../../hooks/usePost'
 import BookSearchbar from './BookSearchbar/BookSearchbar'
+import { Bookshelf } from '../../../../../types'
 import './BookSearchModal.css'
 
 
 interface Props {
     ref: RefObject<HTMLDialogElement>,
+    bookshelf: Bookshelf
 }
 
 
@@ -19,7 +21,38 @@ const BookSearchModal = ({ ref }: Props) => {
     const [newBook, setNewBook] = useState<number>(NaN)
     const {makeRequest, loading, error} = usePost(`http://localhost:8000/api/user/${activeUser.id}`)
     
+    const addBook = async (e: FormEvent) => {
+        console.log('handle submit called')
+
+        e.preventDefault()
+
+        const request = {
+            name: String(name),
+        }
+        try {
+            console.log('before make request')
+            const newItem = await makeRequest(request)
+
+            if (!newItem) {
+                console.log('no new item')
+            }
+            // console.log('after make request')
+
+            // console.log('new item:', newItem)
+            setUserData(prevData => 
+                prevData.map(data =>
+                    data.type === 'bookshelf'
+                    ? {...data, items: [...data.items, newItem]}
+                    : data
+                )
+            )
+            
+        } catch(err) {
+            console.log('error handling submission:', err)
+        }
+
     
+    }
 
 
 
@@ -37,7 +70,7 @@ const BookSearchModal = ({ ref }: Props) => {
             </section>
             <div className="button-wrapper">
                 <Button onClick={closeModal}>Cancel</Button>
-                <Button >Add Book</Button>
+                <Button onClick={() => addBook}>Add Book</Button>
             </div>
         </dialog>
 

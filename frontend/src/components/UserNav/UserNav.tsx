@@ -1,26 +1,29 @@
 import { userContext } from '../common/Context/UserContext/UserContext'
 import BookclubButton from '../TabButtons/BookclubButton/BookclubButton'
 import BookshelfButton from '../TabButtons/BookshelfButton/BookshelfButton'
-import { formatDate } from '../common/functions'
-import './UserTabs.css'
 import AccountButton from '../TabButtons/AccountButton/AccountButton'
 import MessageButton from '../TabButtons/MessageButton/MessageButton'
+import './UserNav.css'
 
 
-const UserTabs = () => {
+const ProfileHeader = () => {
 
     const { activeUser } = userContext()
+    return(
+        <div className="profile-header">
+            <h1>Hi {activeUser.first_name}!</h1>
+            <span>Member since {activeUser.date_joined}</span>
+        </div>
+    )
 
-    // MOVE LOGIC SERVER SIDE?
-    const {day, month, year } = formatDate(activeUser.date_joined)
+}
 
 
+
+const UserNav = () => {
     return(
         <div className="navbar-container">
-            <div className="profile-header">
-                <h1>Hi {activeUser.first_name}!</h1>
-                <span>Member since {month} {day}, {year}</span>
-            </div>
+            <ProfileHeader></ProfileHeader>
             <nav className='profile-navbar'>
                 <AccountButton />
                 <MessageButton />
@@ -31,7 +34,7 @@ const UserTabs = () => {
     )
 }
 
-export default UserTabs
+export default UserNav
 
 
 

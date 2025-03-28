@@ -24,7 +24,7 @@ const BookSearchbar = () => {
                 />
                 <SearchIcon className='search-icon'/>
             </div>
-            {searchValue && searchResults.length > 0 &&<BookResults searchValue={searchValue}>{searchResults}</BookResults>}
+            {searchValue && searchResults.length > 0 &&<BookResults>{searchResults}</BookResults>}
             
         </>
 

@@ -3,14 +3,14 @@
     display: grid;
     line-height: 1.6;
     background-color: white;
-    border: 1px solid orange;
+    /* border: 1px solid orange; */
 
 }
 
 .bookshelf-container > .bookchat-button {
     position: absolute;
-    right: 0;
-    top: 1;
+    right: 10px;
+    top: 225px;
     /* width: 100%;
     max-width: 50px; */
 }

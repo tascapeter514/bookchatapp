@@ -9,9 +9,7 @@ interface BookResult {
 }
 
 interface Props {
-    children: SearchData,
-
-    searchValue: string
+    children: SearchData
 }
 
 
@@ -28,6 +26,7 @@ const BookResults = ({children}: Props) => {
                 if (!bookResult) {
                     return null
                 }
+                
                 return(
                     <li 
                     className='book-result-listElement'

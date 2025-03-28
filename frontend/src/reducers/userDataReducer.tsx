@@ -14,7 +14,7 @@ export default function userDataReducer(state: UserData, action: UserDataAction)
     const { type, payload } = action;
     switch(type) {
         case "ADD_BOOK":
-            return {}
+            return [...state, ]
         
     }
 

@@ -9,21 +9,32 @@ import useSocket from '../../hooks/useSocket.tsx';
 
 
 interface UserContextProps {
-    activeUser: ActiveUser,
-    authToken: AuthToken,
+  // USER TABS REDUCER
+  userTabs: TabState,
+  tabsDispatch: Dispatch<TabAction>,
+
+
+
+    // USERDATA REDUCER
     userData: UserData,
+    setUserData: Dispatch<SetStateAction<UserData>>,
+    // addUserBookshelf: (formData: FormData) => Promise<void>
+
+
     error: string | null,
     loading: boolean,
-    userTabs: TabState,
-    tabsDispatch: Dispatch<TabAction>,
-    setUserData: Dispatch<SetStateAction<UserData>>,
-    setAuthToken: Dispatch<SetStateAction<AuthToken>>,
     setError: Dispatch<SetStateAction<string>>,
+
+
+    // ADD HANDLE LOGOUT AND PUT INTO ACTIVEUSERREDUCER
+    activeUser: ActiveUser,
+    authToken: AuthToken,
     handleLogin: HandleLogin,
+    setAuthToken: Dispatch<SetStateAction<AuthToken>>,
     handleRegister: (formData: FormData) => Promise<void>,
     changeContact: (formData: FormData) => Promise<void>,
     changePassword: (formData: FormData) => Promise<void>,
-    // addUserBookshelf: (formData: FormData) => Promise<void>
+    
 }
 
 

@@ -8,7 +8,7 @@ import OpenMobileNav from '../common/Buttons/OpenMobileNav/OpenMobileNav';
 import CloseMobileNav from '../common/Buttons/CloseMobileNav/CloseMobileNav';
 import MessagePanel from './components/MessagePanel/MessagePanel';
 import AccountPanel from './components/AccountPanel/AccountPanel';
-import UserTabs from '../UserTabs/UserTabs'
+import UserNav from '../UserNav/UserNav'
 import BookclubsPanel from './components/BookclubsPanel/BookclubsPanel'
 
 
@@ -19,10 +19,7 @@ const UserDashboard = () => {
     const { userData, userTabs }   = userContext()
     const bookshelves = userData.find(data => data.type === 'bookshelf') as BookshelfData | undefined
     const [mobileNav, navDispatch] = useReducer(mobileNavReducer, {open: false, isExiting: false})
-   
 
-    // console.log('active user:', activeUser)
-    // console.log('user data:', userData)
 
     return(
         <div className='dashboard-container'>
@@ -36,9 +33,7 @@ const UserDashboard = () => {
             </main>
             <aside className={`dashboard-navbar ${mobileNav.open ? 'enter' : ''} ${mobileNav.isExiting ? 'exit' : ''}`}>
                 <CloseMobileNav mobileNav={mobileNav} navDispatch={navDispatch} />
-                
-                
-                <UserTabs></UserTabs>
+                <UserNav></UserNav>
             
             </aside>
         </div>
