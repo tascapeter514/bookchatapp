@@ -1,6 +1,6 @@
 import './BookshelfPanel.css';
-import { BookshelfData } from '../../../types.ts'
-import { useReducer } from 'react';
+import { BookshelfData, Bookshelf } from '../../../types.ts'
+import { useReducer, useState } from 'react';
 import { userContext } from '../Context/UserContext/UserContext.tsx';
 import BookshelfDisplay from './components/BookshelfDisplay/BookshelfDisplay.tsx'
 import booksearchReducer from '../../../reducers/booksearchReducer.tsx';
@@ -9,22 +9,24 @@ import SubHeader from '../SubHeader/SubHeader.tsx'
 
 
 type Props = {
-    bookshelfData: BookshelfData | undefined,
+    // bookshelfData: BookshelfData | undefined,
 
   }
 
-const BookshelfPanel = ({bookshelfData}: Props) => {
+const BookshelfPanel = () => {
 
-    const { userTabs } = userContext()
+    const { userData, userTabs } = userContext()
 
-    const [bookSearch, bookDispatch] = useReducer(booksearchReducer, {bookshelfId: 0, bookshelves: bookshelfData?.items || [], newBookId: 0})
+    // const [bookshelves, setBookshelves] = useState<Bookshelf[]>(bookshelfData?.items || [])
 
-
-    console.log('bookshelf panel bookshelves:', bookshelfData)
-    console.log('bookshelf panel books:', bookshelfData?.items)
     
 
-    const bookshelfElements = bookshelfData?.items.map((bookshelf, index) => (
+    const bookshelves = userData.find(data => data.type === 'bookshelf') as BookshelfData | undefined
+    // console.log('bookshelf panel bookshelves:', bookshelfData)
+    // console.log('bookshelf panel books:', bookshelfData?.items)
+    
+
+    const bookshelfElements = bookshelves?.items.map((bookshelf, index) => (
         userTabs.activeBookshelf === `bookshelfTab${index}` && 
             <li 
                 key={bookshelf.id}

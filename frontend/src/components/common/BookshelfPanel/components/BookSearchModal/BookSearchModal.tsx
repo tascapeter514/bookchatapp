@@ -1,9 +1,9 @@
 import Button from '../../../Buttons/Button/Button'
-import { RefObject, useReducer } from 'react'
+import { RefObject, useReducer, Dispatch, SetStateAction , useState} from 'react'
 import { userContext } from '../../../Context/UserContext/UserContext'
 import usePut from '../../../hooks/usePut'
 import ErrorMessage from '../../../../Messages/ErrorMessage/ErrorMessage'
-
+import booksearchReducer from '../../../../../reducers/booksearchReducer'
 import BookSearchbar from './BookSearchbar/BookSearchbar'
 import { Bookshelf, UserData } from '../../../../../types'
 import './BookSearchModal.css'
@@ -11,17 +11,23 @@ import './BookSearchModal.css'
 
 interface Props {
     ref: RefObject<HTMLDialogElement>,
-    bookshelf: Bookshelf
+    bookshelf: Bookshelf,
+    // setBookshelves: Dispatch<SetStateAction<Bookshelf[]>>
 }
 
-
+// {bookshelfId: 0, bookshelves: bookshelfData?.items || [], newBookId: 0}
 
 const BookSearchModal = ({ ref, bookshelf }: Props) => {
 
     const closeModal = () => ref.current?.close()
     const { activeUser, setUserData } = userContext()
+    // const [currBookshelf, setBookshelf] = useState<Bookshelf>(bookshelf)
+
+    
     
     const {makeRequest, loading, error} = usePut(`http://localhost:8000/api/user/book/${activeUser.id}`)
+
+    const [bookSearch, bookDispatch] = useReducer(booksearchReducer, {bookshelfId: 0, newBookId: 0} )
     
     // console.log('book search state:', bookSearch)
     console.log('book search bookshelf:', bookshelf)
@@ -43,14 +49,29 @@ const BookSearchModal = ({ ref, bookshelf }: Props) => {
                 console.log('no new item')
             }
 
-            if (newItem.type === 'book') {
-                bookDispatch({type: 'ADD_BOOK', payload: newItem})
-                // setUserData(prev => {
-                //     return prev.map(data => 
-                //         data.type == 'bookshelf' ?
-                //         {...data, items: [...data.items, newItem]} : data
-                //     )
-                // })
+            if (newItem) {
+
+                console.log('new item conditional check')
+
+                
+
+
+                // bookDispatch({type: 'ADD_BOOK', payload: newItem})
+                setUserData(prev => {
+                    return prev.map((data) => 
+                        data.type == 'bookshelf' ?
+                        {
+                            ...data,
+                            items: (data.items as Bookshelf[]).map((currBookshelf: Bookshelf) =>
+                            currBookshelf.id === bookshelf.id 
+                            ? {...currBookshelf, books: [...currBookshelf.books, newItem]}
+                            : currBookshelf
+                            )
+                        }
+                        : data
+                        
+                    )
+                })
 
             }
   

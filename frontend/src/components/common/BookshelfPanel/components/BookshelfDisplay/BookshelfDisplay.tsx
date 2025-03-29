@@ -1,13 +1,15 @@
 import {Bookshelf} from '../../../../../types'
 import BookCard from '../../../../BookCard/BookCard'
 import Button from '../../../Buttons/Button/Button'
+import {Dispatch, SetStateAction} from 'react'
 import BookSearchModal from '../BookSearchModal/BookSearchModal'
 import { SearchIcon } from '../../../Icons'
 import { useRef } from 'react';
 import './BookshelfDisplay.css'
 
 interface Props {
-    children: Bookshelf
+    children: Bookshelf,
+    // setBookshelves: Dispatch<SetStateAction<Bookshelf[]>>
 }
 
 
