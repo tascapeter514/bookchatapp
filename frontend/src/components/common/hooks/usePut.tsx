@@ -31,6 +31,8 @@ export default function usePut(url: string) {
 
         } catch (err: any) {
             console.log('use put catch handler:', err)
+            console.log('use put err response:', err.response)
+            console.log('err data:', err.response.data)
             setError(err.response?.data?.error || 'An unexpected error occurred')
             // throw err;
             
@@ -38,9 +40,6 @@ export default function usePut(url: string) {
             setLoading(false)
         }
 
-        
-        
-       
     }, [url])
 
     

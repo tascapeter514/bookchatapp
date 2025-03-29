@@ -3,9 +3,9 @@ import { RefObject, useReducer } from 'react'
 import { userContext } from '../../../Context/UserContext/UserContext'
 import usePut from '../../../hooks/usePut'
 import ErrorMessage from '../../../../Messages/ErrorMessage/ErrorMessage'
-import booksearchReducer from '../../../../../reducers/booksearchReducer'
+
 import BookSearchbar from './BookSearchbar/BookSearchbar'
-import { Bookshelf } from '../../../../../types'
+import { Bookshelf, UserData } from '../../../../../types'
 import './BookSearchModal.css'
 
 
@@ -20,10 +20,11 @@ const BookSearchModal = ({ ref, bookshelf }: Props) => {
 
     const closeModal = () => ref.current?.close()
     const { activeUser, setUserData } = userContext()
-    const [bookSearch, bookDispatch] = useReducer(booksearchReducer, {id: bookshelf.id, books: bookshelf.books, newBookId: NaN})
+    
     const {makeRequest, loading, error} = usePut(`http://localhost:8000/api/user/book/${activeUser.id}`)
     
-    console.log('book search state:', bookSearch)
+    // console.log('book search state:', bookSearch)
+    console.log('book search bookshelf:', bookshelf)
 
 
     const addBook = async () => {
@@ -44,6 +45,12 @@ const BookSearchModal = ({ ref, bookshelf }: Props) => {
 
             if (newItem.type === 'book') {
                 bookDispatch({type: 'ADD_BOOK', payload: newItem})
+                // setUserData(prev => {
+                //     return prev.map(data => 
+                //         data.type == 'bookshelf' ?
+                //         {...data, items: [...data.items, newItem]} : data
+                //     )
+                // })
 
             }
   

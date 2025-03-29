@@ -14,7 +14,7 @@ const BookSearchbar = ({bookSearch, bookDispatch}: Props) => {
 
     const {searchValue, setSearchValue, searchResults} = useSearch('ws://localhost:8000/ws/search/books/', 'get_books_data')
 
-    console.log('book search bar results:', searchResults)
+    // console.log('book search bar results:', searchResults)
 
     return (
         <>

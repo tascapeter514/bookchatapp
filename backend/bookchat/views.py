@@ -128,7 +128,8 @@ def add_user_book(request, **kwargs):
         current_bookshelf = Bookshelf.objects.get(id=bookshelf_id)
        
         if current_bookshelf.books.filter(id=current_book.id).exists():
-            raise ValidationError({'error': 'This book is already in the bookshelf.'})
+            print('validation error check')
+            raise ValidationError({'This book is already in the bookshelf.'})
         
         current_bookshelf.books.add(current_book)
         book_serializer = BookSerializer(current_book)
@@ -136,7 +137,7 @@ def add_user_book(request, **kwargs):
         return Response(book_serializer.data, status=status.HTTP_200_OK)
     
     except ValidationError as e:
-        return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(str(e), status=status.HTTP_400_BAD_REQUEST)
 
     except Exception as e:
         print(f'Error: {str(e)}')

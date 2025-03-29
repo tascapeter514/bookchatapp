@@ -29,7 +29,7 @@ const UserDashboard = () => {
                     {userTabs.activeTab === 'accountTab' && <AccountPanel />}
                     {userTabs.activeTab === 'messagesTab' && <MessagePanel />}
                     {userTabs.activeTab === 'bookclubTab' && <BookclubsPanel />}
-                    {userTabs.activeTab === 'bookshelfTab' && <Bookshelfpanel bookshelves={bookshelves}/>}
+                    {userTabs.activeTab === 'bookshelfTab' && <Bookshelfpanel bookshelfData={bookshelves}/>}
             </main>
             <aside className={`dashboard-navbar ${mobileNav.open ? 'enter' : ''} ${mobileNav.isExiting ? 'exit' : ''}`}>
                 <CloseMobileNav mobileNav={mobileNav} navDispatch={navDispatch} />

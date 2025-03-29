@@ -19,7 +19,7 @@ interface Props {
 const BookResults = ({children, bookDispatch}: Props) => {
 
 
-    console.log('book results children:', children)
+    // console.log('book results children:', children)
     const { items } = children[0]
 
     return(

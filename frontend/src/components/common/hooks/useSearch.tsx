@@ -91,7 +91,7 @@ export default function useSearch(url: string, type: string) {
         }, [searchValue])
 
         
-    console.log('use search results', searchResults)
+    // console.log('use search results', searchResults)
     return {searchValue, searchResults, setSearchValue, fetchData, error, loading}
 
 
