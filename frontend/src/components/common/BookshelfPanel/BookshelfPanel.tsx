@@ -16,17 +16,14 @@ type Props = {
 const BookshelfPanel = () => {
 
     const { userData, userTabs } = userContext()
-
-    // const [bookshelves, setBookshelves] = useState<Bookshelf[]>(bookshelfData?.items || [])
-
+    const bookshelves = userData.find(data => data.type === 'bookshelf')?.items as Bookshelf[] | []
     
 
-    const bookshelves = userData.find(data => data.type === 'bookshelf') as BookshelfData | undefined
-    // console.log('bookshelf panel bookshelves:', bookshelfData)
-    // console.log('bookshelf panel books:', bookshelfData?.items)
+    console.log('book panel bookshelves:', bookshelves)
+    // console.log('reducer bookshelves:', bookSearch.bookshelves);
     
 
-    const bookshelfElements = bookshelves?.items.map((bookshelf, index) => (
+    const bookshelfElements = bookshelves.map((bookshelf, index) => (
         userTabs.activeBookshelf === `bookshelfTab${index}` && 
             <li 
                 key={bookshelf.id}
@@ -34,7 +31,7 @@ const BookshelfPanel = () => {
 
             >
                 <SubHeader>{bookshelf.name}</SubHeader>
-                <BookshelfDisplay>{bookshelf}</BookshelfDisplay>
+                <BookshelfDisplay >{bookshelf}</BookshelfDisplay>
             </li>
     ))
 

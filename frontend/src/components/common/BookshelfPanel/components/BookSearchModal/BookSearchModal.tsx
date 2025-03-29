@@ -13,6 +13,7 @@ interface Props {
     ref: RefObject<HTMLDialogElement>,
     bookshelf: Bookshelf,
     // setBookshelves: Dispatch<SetStateAction<Bookshelf[]>>
+    // props: any
 }
 
 // {bookshelfId: 0, bookshelves: bookshelfData?.items || [], newBookId: 0}
@@ -21,13 +22,16 @@ const BookSearchModal = ({ ref, bookshelf }: Props) => {
 
     const closeModal = () => ref.current?.close()
     const { activeUser, setUserData } = userContext()
-    // const [currBookshelf, setBookshelf] = useState<Bookshelf>(bookshelf)
-
+    // const [bookSearch, bookDispatch] = props
+    const [bookSearch, bookDispatch] = useReducer(booksearchReducer, {bookshelfId: 0, books: bookshelf.books, newBookId: 0} )
     
+
+    console.log('bookshelf books:', bookshelf.books)
+    console.log('book search books', bookSearch.books)
     
     const {makeRequest, loading, error} = usePut(`http://localhost:8000/api/user/book/${activeUser.id}`)
 
-    const [bookSearch, bookDispatch] = useReducer(booksearchReducer, {bookshelfId: 0, newBookId: 0} )
+    
     
     // console.log('book search state:', bookSearch)
     console.log('book search bookshelf:', bookshelf)
@@ -53,25 +57,23 @@ const BookSearchModal = ({ ref, bookshelf }: Props) => {
 
                 console.log('new item conditional check')
 
-                
-
-
-                // bookDispatch({type: 'ADD_BOOK', payload: newItem})
-                setUserData(prev => {
-                    return prev.map((data) => 
-                        data.type == 'bookshelf' ?
-                        {
-                            ...data,
-                            items: (data.items as Bookshelf[]).map((currBookshelf: Bookshelf) =>
-                            currBookshelf.id === bookshelf.id 
-                            ? {...currBookshelf, books: [...currBookshelf.books, newItem]}
-                            : currBookshelf
-                            )
-                        }
-                        : data
+        
+                bookDispatch({type: 'ADD_BOOK', payload: newItem})
+            //     setUserData(prev => {
+            //         return prev.map((data) => 
+            //             data.type == 'bookshelf' ?
+            //             {
+            //                 ...data,
+            //                 items: (data.items as Bookshelf[]).map((currBookshelf: Bookshelf) =>
+            //                 currBookshelf.id === bookshelf.id 
+            //                 ? {...currBookshelf, books: [...currBookshelf.books, newItem]}
+            //                 : currBookshelf
+            //                 )
+            //             }
+            //             : data
                         
-                    )
-                })
+            //         )
+            //     })
 
             }
   

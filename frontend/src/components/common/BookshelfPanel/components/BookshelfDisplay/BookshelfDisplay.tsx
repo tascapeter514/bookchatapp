@@ -9,6 +9,7 @@ import './BookshelfDisplay.css'
 
 interface Props {
     children: Bookshelf,
+    // props: any
     // setBookshelves: Dispatch<SetStateAction<Bookshelf[]>>
 }
 
@@ -17,6 +18,7 @@ const BookshelfDisplay = ({ children }: Props) => {
 
     const { books } = children
     const openModal = () => bookSearchRef.current?.showModal()
+    
     const bookSearchRef = useRef<HTMLDialogElement>(null)
 
     return(
