@@ -41,13 +41,13 @@ const PostModal = ({ref, url, type}: Props) => {
             // console.log('after make request')
 
             // console.log('new item:', newItem)
-            setUserData(prevData => 
-                prevData.map(data =>
-                    data.type === type
-                    ? {...data, items: [...data.items, newItem]}
-                    : data
-                )
-            )
+            // setUserData(prevData => 
+            //     prevData.map(data =>
+            //         data.type === type
+            //         ? {...data, items: [...data.items, newItem]}
+            //         : data
+            //     )
+            // )
             
         } catch(err) {
             console.log('error handling submission:', err)

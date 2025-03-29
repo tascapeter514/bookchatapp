@@ -59,21 +59,7 @@ const BookSearchModal = ({ ref, bookshelf }: Props) => {
 
         
                 bookDispatch({type: 'ADD_BOOK', payload: newItem})
-            //     setUserData(prev => {
-            //         return prev.map((data) => 
-            //             data.type == 'bookshelf' ?
-            //             {
-            //                 ...data,
-            //                 items: (data.items as Bookshelf[]).map((currBookshelf: Bookshelf) =>
-            //                 currBookshelf.id === bookshelf.id 
-            //                 ? {...currBookshelf, books: [...currBookshelf.books, newItem]}
-            //                 : currBookshelf
-            //                 )
-            //             }
-            //             : data
-                        
-            //         )
-            //     })
+            
 
             }
   

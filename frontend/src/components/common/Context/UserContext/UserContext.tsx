@@ -1,6 +1,8 @@
-import {createContext, useEffect, useState, Dispatch, SetStateAction, ReactNode, useContext, useReducer} from 'react'
+import {createContext, useEffect, useState, Dispatch, SetStateAction, ReactNode, useContext, useReducer, Reducer} from 'react'
 import { changeContact, changePassword } from '../../services/user.tsx';
 // import { addUserBookshelf } from '../../services/user.tsx';
+import userDataReducer, { UserDataAction, UserState } from '../../../../reducers/userDataReducer.tsx';
+import bookshelvesReducer, {BookshelfState, BookshelfAction} from '../../../../reducers/bookshelvesReducer.tsx';
 import userTabsReducer, {TabAction, TabState} from '../../../../reducers/userTabsReducer.tsx';
 import useLogger from '../../hooks/useLogger.tsx';
 import {  HandleLogin, ActiveUser, AuthToken, UserData } from '../../../../types.ts'
@@ -16,11 +18,13 @@ interface UserContextProps {
 
 
     // USERDATA REDUCER
-    userData: UserData,
-    setUserData: Dispatch<SetStateAction<UserData>>,
+    userState: {userData: UserData},
+    stateDispatch: Dispatch<UserDataAction>,
+    // userData: UserData,
+    // setUserData: Dispatch<SetStateAction<UserData>>,
     // addUserBookshelf: (formData: FormData) => Promise<void>
 
-
+    bookshelves: BookshelfState,
     error: string | null,
     loading: boolean,
     setError: Dispatch<SetStateAction<string>>,
@@ -59,13 +63,16 @@ export const UserContext = createContext<UserContextProps>({
 
     },
     authToken: '',
-    userData: [],
+    userState: {userData: []},
+    // userData: [],
     error: '',
     loading: false,
     userTabs: {activeTab: '', activeBookshelf: ''},
     tabsDispatch: () => {},
+    stateDispatch: () => {},
+    bookshelves: {data: [], isLoading: false, isError: false},
 
-    setUserData: () => [],
+    // setUserData: () => [],
     setError: () => '',
     handleLogin: async () => {},
     handleRegister: async () => {},
@@ -75,9 +82,14 @@ export const UserContext = createContext<UserContextProps>({
     // addUserBookshelf: async () => {}
 });
 
+const initialState: BookshelfState = {data: [], isLoading: false, isError: false}
+
+
 const UserDataProvider = ({ children }: UserProviderProps) => {
 
-    const [userData, setUserData] = useState<UserData>([])
+
+    // const [userState, stateDispatch] = useReducer(userDataReducer, initialState )
+    const [bookshelves, bookshelfDispatch] = useReducer<Reducer<BookshelfState, BookshelfAction>>(bookshelvesReducer, initialState)
     const [userTabs, tabsDispatch] = useReducer(userTabsReducer, {activeTab: 'accountTab', activeBookshelf: ''})
     const {activeUser, authToken, loading, error, authenticate, setActiveUser, setAuthToken, setError} = useLogger()
     const {makeRequest, data} = useSocket('ws://localhost:8000/ws/userData')
@@ -97,7 +109,9 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
 
     useEffect(() => {
       if (data && data.type == 'get_user_data') {
-        setUserData(data.user_data)
+        // setUserData(data.user_data)
+
+        
         sessionStorage.setItem('userData', JSON.stringify(data.user_data))
       }
 
@@ -109,7 +123,7 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
     useEffect(() => {
            const storedUserData = sessionStorage.getItem('userData');
            if (storedUserData) {
-            setUserData(JSON.parse(storedUserData))
+            // setUserData(JSON.parse(storedUserData))
            }
       
     }, [])
@@ -117,13 +131,13 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
       return (
 
         // pass values into useMemo?
+        // REMOVED USERDATA AND SETUSERDATA
         <UserContext.Provider
-            value={{activeUser, authToken, userData, error, loading, userTabs, tabsDispatch,
+            value={{activeUser, authToken, error, loading, userTabs, tabsDispatch,
                   handleLogin,
                   handleRegister, 
                   changeContact: (formData) => changeContact(formData, setActiveUser),
                   changePassword: (formData) => changePassword(formData, setActiveUser),
-                  setUserData,
                   setAuthToken,
                   setError,
                   // addUserBookshelf: (formData) => addUserBookshelf(formData, setUserData)
