@@ -1,4 +1,6 @@
 import './BookResults.css'
+import { Dispatch } from 'react'
+import { BookSearchAction } from '../../../../../../reducers/booksearchReducer'
 import { SearchData } from '../../../../../../types'
 
 interface BookResult {
@@ -9,11 +11,12 @@ interface BookResult {
 }
 
 interface Props {
-    children: SearchData
+    children: SearchData,
+    bookDispatch: Dispatch<BookSearchAction>
 }
 
 
-const BookResults = ({children}: Props) => {
+const BookResults = ({children, bookDispatch}: Props) => {
 
 
     console.log('book results children:', children)
@@ -26,7 +29,7 @@ const BookResults = ({children}: Props) => {
                 if (!bookResult) {
                     return null
                 }
-                
+
                 return(
                     <li 
                     className='book-result-listElement'
@@ -37,7 +40,7 @@ const BookResults = ({children}: Props) => {
                             type="radio"
                             name='bookResultsGroup'
                             // checked={newBookId === bookResult.id}
-                            // onChange={() => setNewBookId(bookResult.id)}
+                            onChange={() => bookDispatch({type: 'CHECK_BOOK', payload: bookResult.id})}
                             className='book-result-input'  
                         />
                     </li>

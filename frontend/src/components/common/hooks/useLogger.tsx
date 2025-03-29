@@ -68,8 +68,6 @@ export default function useLogger() {
 
     }, [])
 
-    console.log('use logger active user:', activeUser)
-
     useEffect(() => {
 
         if (!activeUser.id) {

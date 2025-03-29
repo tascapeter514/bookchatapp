@@ -25,8 +25,7 @@ const BookshelfButton = () => {
         setIsRotated(prev => !prev)
     }
 
-    console.log('bookshelf button user data:', userData)
-    console.log('bookshelf data:', bookshelves)
+
 
     const bookshelfNames = bookshelves?.items.map((bookshelf: Bookshelf, index: number) => {
 

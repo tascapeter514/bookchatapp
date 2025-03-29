@@ -1,7 +1,9 @@
 import Button from '../../../Buttons/Button/Button'
-import { RefObject, useState } from 'react'
+import { RefObject, useReducer } from 'react'
 import { userContext } from '../../../Context/UserContext/UserContext'
-import usePost from '../../../hooks/usePost'
+import usePut from '../../../hooks/usePut'
+import ErrorMessage from '../../../../Messages/ErrorMessage/ErrorMessage'
+import booksearchReducer from '../../../../../reducers/booksearchReducer'
 import BookSearchbar from './BookSearchbar/BookSearchbar'
 import { Bookshelf } from '../../../../../types'
 import './BookSearchModal.css'
@@ -14,38 +16,38 @@ interface Props {
 
 
 
-const BookSearchModal = ({ ref }: Props) => {
+const BookSearchModal = ({ ref, bookshelf }: Props) => {
 
     const closeModal = () => ref.current?.close()
     const { activeUser, setUserData } = userContext()
-    const [newBook, setNewBook] = useState<number>(NaN)
-    const {makeRequest, loading, error} = usePost(`http://localhost:8000/api/user/${activeUser.id}`)
+    const [bookSearch, bookDispatch] = useReducer(booksearchReducer, {id: bookshelf.id, books: bookshelf.books, newBookId: NaN})
+    const {makeRequest, loading, error} = usePut(`http://localhost:8000/api/user/book/${activeUser.id}`)
     
-    const addBook = async (e: FormEvent) => {
+    console.log('book search state:', bookSearch)
+
+
+    const addBook = async () => {
         console.log('handle submit called')
 
-        e.preventDefault()
-
         const request = {
-            name: String(name),
+            bookshelfId: bookshelf.id,
+            bookId: bookSearch.newBookId
         }
         try {
             console.log('before make request')
             const newItem = await makeRequest(request)
+            console.log('new item:', newItem)
 
             if (!newItem) {
                 console.log('no new item')
             }
-            // console.log('after make request')
 
-            // console.log('new item:', newItem)
-            setUserData(prevData => 
-                prevData.map(data =>
-                    data.type === 'bookshelf'
-                    ? {...data, items: [...data.items, newItem]}
-                    : data
-                )
-            )
+            if (newItem.type === 'book') {
+                bookDispatch({type: 'ADD_BOOK', payload: newItem})
+
+            }
+  
+            
             
         } catch(err) {
             console.log('error handling submission:', err)
@@ -58,19 +60,20 @@ const BookSearchModal = ({ ref }: Props) => {
 
     return (
         <dialog className='search-books-modal' ref={ref}>
+            {error && <ErrorMessage>{error}</ErrorMessage>}
             <h3>Add a new title to your bookshelf</h3>
             <hr />
             <section className='search-books-content'>
                 
                 <article className='suggested-book-list'>
-                    <BookSearchbar></BookSearchbar>
+                    <BookSearchbar bookSearch={bookSearch} bookDispatch={bookDispatch}></BookSearchbar>
                     
                 </article>
                 
             </section>
             <div className="button-wrapper">
                 <Button onClick={closeModal}>Cancel</Button>
-                <Button onClick={() => addBook}>Add Book</Button>
+                <Button onClick={addBook}>Add Book</Button>
             </div>
         </dialog>
 

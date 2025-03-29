@@ -2,6 +2,7 @@
 from .models import Author, Book, Bookclub, Bookshelf, Invitation
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework.exceptions import ValidationError
 from django.contrib.auth.models import User
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
@@ -117,15 +118,37 @@ def add_book_to_bookclub(request, **kwargs):
 @api_view(['PUT'])
 def add_user_book(request, **kwargs):
     print('user bookshelf check')
-
+    print('request body:', request.body)
     user_id = kwargs['id']
-    book_id  = json.loads(request.body)['book_id']
-    bookshelf_id = UUID(json.loads(request.body)['bookshelf_id'])
+    book_id  = json.loads(request.body)['bookId']
+    bookshelf_id = (json.loads(request.body)['bookshelfId'])
+
+    try:
+        current_book = Book.objects.get(id=book_id)
+        current_bookshelf = Bookshelf.objects.get(id=bookshelf_id)
+       
+        if current_bookshelf.books.filter(id=current_book.id).exists():
+            raise ValidationError({'error': 'This book is already in the bookshelf.'})
+        
+        current_bookshelf.books.add(current_book)
+        book_serializer = BookSerializer(current_book)
+
+        return Response(book_serializer.data, status=status.HTTP_200_OK)
+    
+    except ValidationError as e:
+        return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+    except Exception as e:
+        print(f'Error: {str(e)}')
+        return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
     # # print('user bookshelf id:', bookshelf_id, book_id)
-    # current_book = Book.objects.get(title_id=book_id)
+    
     # current_user = User.objects.prefetch_related('bookshelves').get(id=user_id)
+
+    #  bookshelf_serializer = BookshelfSerializer(current_bookshelf)
+    #     print('bookshelf serializer:', bookshelf_serializer.data)
     # print('current user bookshelves:', current_user.bookshelves.values())
 
     # current_user_bookshelf = current_user.bookshelves.prefetch_related('titles').get(bookshelf_id=bookshelf_id)
@@ -139,19 +162,7 @@ def add_user_book(request, **kwargs):
     
 
 
-    # channel_layer = get_channel_layer()
-    # async_to_sync(channel_layer.group_send)(
-    #         f'user_data_{user_id}',
-    #         {
-    #             'type': 'get_user_data',
-    #             'user_bookshelves': serializer.data
-                
-    #         }
 
-    #     )
-
-
-    return Response({'message': 'reached backend!'})
 
 @api_view(['POST'])
 def send_invite(request):

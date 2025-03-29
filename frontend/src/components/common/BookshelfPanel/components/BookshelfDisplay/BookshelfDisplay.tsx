@@ -22,7 +22,7 @@ const BookshelfDisplay = ({ children }: Props) => {
             <Button onClick={openModal}>
                 <SearchIcon></SearchIcon>
             </Button>
-            <BookSearchModal ref={bookSearchRef}></BookSearchModal>
+            <BookSearchModal ref={bookSearchRef} bookshelf={children}></BookSearchModal>
             <ul className='bookshelf-title-list'>
                 {books.map((bookElement) => {
                     return(
