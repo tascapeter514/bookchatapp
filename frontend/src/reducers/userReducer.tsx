@@ -22,7 +22,7 @@ export type UserLoginAction = {
 
 export type UserLogoutAction = {
     type: 'LOGOUT_ACTIVE_USER',
-    payload: {user: ActiveUser, authToken: AuthToken}
+    payload: {user: ActiveUser | null, authToken: AuthToken}
 }
 
 export type UserFailureAction = {

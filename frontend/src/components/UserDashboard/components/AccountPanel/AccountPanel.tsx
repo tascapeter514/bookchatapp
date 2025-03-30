@@ -7,20 +7,20 @@ import Button from '../../../common/Buttons/Button/Button'
 
 const AccountPanel = () => {
     
-    const { activeUser, changeContact, changePassword } = userContext()
+    const { userState } = userContext()
 
-    // console.log('active user for account panel:', activeUser)
+
 
    
     const [contact, setContact] = useState({
-        userId: activeUser.id || '',
-        firstName: activeUser.first_name || '',
-        lastName: activeUser.last_name || '',
-        emailAddress: activeUser.email || ''
+        userId: userState.user?.id || '',
+        firstName: userState.user?.firstName || '',
+        lastName: userState.user?.lastName || '',
+        emailAddress: userState.user?.emailAddress || ''
     })
 
     const [passwordInfo, setPasswordInfo] = useState({
-        userId: activeUser.id,
+        userId: userState.user?.id,
         currentPassword: '',
         newPassword: ''
     })
@@ -46,11 +46,12 @@ const AccountPanel = () => {
     
 
     return(
-
+        // action={changeContact as any}
+        // action={changePassword as any}
         <section id='account' className='account-container' aria-labelledby='tab-3'>
             <Header>Account Details</Header>
             <SubHeader>Contact Info</SubHeader>
-            <form action={changeContact as any} className='contact-info-form'>
+            <form  className='contact-info-form'>
                 <input type="hidden" name='userId' value={contact.userId} />
                 <div className="form-field">
                     <label htmlFor="first_name">First Name</label>
@@ -67,7 +68,7 @@ const AccountPanel = () => {
                 <Button type='submit'>Save Changes</Button>
             </form>
             <SubHeader>Change Password</SubHeader>
-            <form action={changePassword as any} className='change-password-form'>
+            <form  className='change-password-form'>
             <input type="hidden" name='userId' value={passwordInfo.userId} />
                 <div className="form-field">
                     <label htmlFor="current-password">Current Password</label>

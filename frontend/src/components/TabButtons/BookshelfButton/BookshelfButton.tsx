@@ -4,7 +4,7 @@ import { useState, useRef} from 'react'
 import { RightDropDownIcon } from '../../common/Icons'
 import CreateButton from '../../common/Buttons/CreateButton/CreateButton'
 import { userContext } from '../../common/Context/UserContext/UserContext'
-import { Bookshelf, BookshelfData } from '../../../types'
+import { Bookshelf } from '../../../types'
 import PostModal from '../../common/Modals/PostModal/PostModal'
 import './BookshelfButton.css'
 
@@ -13,8 +13,7 @@ import './BookshelfButton.css'
 const BookshelfButton = () => {
      
     
-    const { userData, activeUser, userTabs, tabsDispatch } = userContext()
-    const bookshelves = userData.find(data => data.type === 'bookshelf') as BookshelfData | undefined
+    const { userState, bookshelves, userTabs, tabsDispatch } = userContext()
     const bookshelfRef = useRef<HTMLDialogElement>(null)
     const openModal = () => bookshelfRef.current?.showModal()
     const [isRotated, setIsRotated] = useState(false);
@@ -27,7 +26,7 @@ const BookshelfButton = () => {
 
 
 
-    const bookshelfNames = bookshelves?.items.map((bookshelf: Bookshelf, index: number) => {
+    const bookshelfNames = bookshelves.data.map((bookshelf: Bookshelf, index: number) => {
 
         return (
             <li 
@@ -59,7 +58,7 @@ const BookshelfButton = () => {
             <CreateButton onClick={openModal}>Bookshelf</CreateButton>
             <PostModal 
                 ref={bookshelfRef} 
-                url={`http://localhost:8000/api/user/bookshelf/${activeUser.id}`}
+                url={`http://localhost:8000/api/user/bookshelf/${userState.user?.id}`}
                 type='bookshelf'  
             /> 
         </div>

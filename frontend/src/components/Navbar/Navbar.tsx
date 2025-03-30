@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { HandleLogout } from '../../types.ts'
+import useLogger from '../common/hooks/useLogger.tsx'
 import { userContext } from '../common/Context/UserContext/UserContext.tsx'
 import Searchbar from '../Searchbar/Searchbar.tsx'
 import './Navbar.css'
@@ -9,30 +10,33 @@ const Navbar = () => {
 
   const navigate = useNavigate()
   const [showNavbar] = useState(false)
-  const {authToken, setAuthToken} = userContext()
+  const {userState, userDispatch} = userContext()
+  const { authenticate } = useLogger()
   
-    const handleLogout: HandleLogout = async () => {
-        const token = localStorage.getItem('authToken');
-        try {
-          if (token) {
-            await fetch('http:localhost:8000/api/auth/logout', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-                'Authorization' : `Token ${authToken}`
-              }
-            });
-          }
-        } catch (error) {
-          console.error('Error during logout', error)
-        } finally {
-          // Clear client-side data regardless of server response
-          setAuthToken('')
-          sessionStorage.removeItem('authToken')
-          sessionStorage.removeItem('activeUser')
-          navigate('/login')
-        }
-      };
+    // const handleLogout: HandleLogout = async () => {
+    //     const token = localStorage.getItem('authToken');
+    //     try {
+    //       if (token) {
+    //         await fetch('http:localhost:8000/api/auth/logout', {
+    //           method: 'POST',
+    //           headers: {
+    //             'Content-Type': 'application/json',
+    //             'Authorization' : `Token ${authToken}`
+    //           }
+    //         });
+    //       }
+    //     } catch (error) {
+    //       console.error('Error during logout', error)
+    //     } finally {
+    //       // Clear client-side data regardless of server response
+    //       setAuthToken('')
+    //       sessionStorage.removeItem('authToken')
+    //       sessionStorage.removeItem('activeUser')
+    //       navigate('/login')
+    //     }
+    //   };
+
+    const handleLogout = async () => await authenticate('http:localhost:8000/api/auth/logout', {authToken: userState.authToken})
    
     const guestLinks = (
         <li className='login-link'><Link to='/login'>Log In</Link></li>
@@ -46,7 +50,7 @@ const Navbar = () => {
 
     )
 
-    console.log('navbar auth token:', authToken);
+    console.log('navbar auth token:', userState.authToken);
     
 
     return(
@@ -73,7 +77,7 @@ const Navbar = () => {
                         <li className='main-list-element'><Link to='#'>Books</Link></li>
                         <li className='main-list-element'><Link to='#'>Authors</Link></li>
                         <li className='main-list-element'><Link to='#'>About</Link></li>
-                        { authToken ? authLinks : guestLinks}
+                        { userState.authToken ? authLinks : guestLinks}
                     </ul>
                 </nav>
             </div> 

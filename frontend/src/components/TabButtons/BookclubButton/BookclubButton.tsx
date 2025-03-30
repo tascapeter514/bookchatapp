@@ -8,7 +8,7 @@ import './BookclubButton.css'
 
 const BookclubButton = () => {
 
-    const { activeUser, userTabs, tabsDispatch } = userContext()
+    const { userState, userTabs, tabsDispatch } = userContext()
     const bookclubRef = useRef<HTMLDialogElement>(null)
     const openModal = () => bookclubRef.current?.showModal()
     
@@ -24,7 +24,7 @@ const BookclubButton = () => {
             <CreateButton onClick={openModal}>Bookclub</CreateButton>
             <PostModal
                 ref={bookclubRef}
-                url={`http://localhost:8000/api/user/bookclub/${activeUser.id}`}
+                url={`http://localhost:8000/api/user/bookclub/${userState.user?.id}`}
                 type='bookclub'
             />
         </>

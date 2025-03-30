@@ -12,13 +12,13 @@ export default function useLogger() {
     
   
 
-    const authenticate = useCallback( async (url: string, formData: FormData) => {
+    const authenticate = useCallback( async <T extends object> (url: string, logData: T) => {
         
         userDispatch({type: 'USER_FETCH_INIT'})
-        const data = Object.fromEntries(formData);
+        // const data = Object.fromEntries(logData);
 
         try {
-            const response = await axios.post(url, data)
+            const response = await axios.post(url, logData)
 
             console.log('user logger response:', response)
 
@@ -33,6 +33,12 @@ export default function useLogger() {
                 sessionStorage.setItem('activeUser', JSON.stringify(active_user))
                 navigate('/userDashboard')
                 
+
+            } else if (response.status >=200 && response.status < 300 && !response.data.auth_token) {
+                userDispatch({type: 'LOGOUT_ACTIVE_USER', payload: {user: null, authToken: ''}})
+                sessionStorage.removeItem('authToken')
+                sessionStorage.removeItem('activeUser')
+                navigate('/login')
 
             } else {
                 console.log('unexpected response')

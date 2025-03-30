@@ -13,34 +13,13 @@ import SubHeader from '../../../common/SubHeader/SubHeader.tsx'
 const MessagePanel = () => {
 
 
-    const { activeUser, userData } = userContext()
+    const { invitations } = userContext()
 
-    const invites = userData.find(data => data.type === 'invitation') as InviteData | undefined
 
-    // function joinBookclub(bookclub: {id: string, name: string}) {
 
-    //     const joinReq = {
-    //         user_id: activeUser.id,
-    //         bookclub_id: bookclub.id
-    //     }
+   
 
-    //     fetch(`http://localhost:8000/api/acceptInvite`, {
-    //         method: 'PUT',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //             'Authorization': `Token ${activeUserToken}`
-    //         },
-    //         body: JSON.stringify(joinReq)
-    //     })
-    //     .then(res => res.json())
-    //     .then(data => {
-    //         console.log(data)
-    //         setUserInvites(prev => [...prev, data])
-    //     })
-    //     .catch(err => console.log('There was an error in joining your bookclub:', err))
-    // }
-
-    const userInvitesElements = invites?.items.map((invite: Invitation) => {
+    const userInvitesElements = invitations.data.map((invite: Invitation) => {
 
         const {day, month, year } = formatDate(invite.created_at)
 
@@ -79,4 +58,28 @@ const MessagePanel = () => {
 }
 
 export default MessagePanel
+
+
+ // function joinBookclub(bookclub: {id: string, name: string}) {
+
+    //     const joinReq = {
+    //         user_id: activeUser.id,
+    //         bookclub_id: bookclub.id
+    //     }
+
+    //     fetch(`http://localhost:8000/api/acceptInvite`, {
+    //         method: 'PUT',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //             'Authorization': `Token ${activeUserToken}`
+    //         },
+    //         body: JSON.stringify(joinReq)
+    //     })
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         console.log(data)
+    //         setUserInvites(prev => [...prev, data])
+    //     })
+    //     .catch(err => console.log('There was an error in joining your bookclub:', err))
+    // }
 
