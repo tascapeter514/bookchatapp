@@ -11,7 +11,7 @@ const Navbar = () => {
   const navigate = useNavigate()
   const [showNavbar] = useState(false)
   const {userState, userDispatch} = userContext()
-  const { authenticate } = useLogger()
+  const { logout } = useLogger()
   
     // const handleLogout: HandleLogout = async () => {
     //     const token = localStorage.getItem('authToken');
@@ -36,7 +36,10 @@ const Navbar = () => {
     //     }
     //   };
 
-    const handleLogout = async () => await authenticate('http:localhost:8000/api/auth/logout', {authToken: userState.authToken})
+    const handleLogout = async () => {
+      console.log('handle logout check')
+      await logout()
+    }
    
     const guestLinks = (
         <li className='login-link'><Link to='/login'>Log In</Link></li>

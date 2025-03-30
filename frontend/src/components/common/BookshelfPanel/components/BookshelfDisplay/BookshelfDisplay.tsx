@@ -1,7 +1,6 @@
 import {Bookshelf} from '../../../../../types'
 import BookCard from '../../../../BookCard/BookCard'
 import Button from '../../../Buttons/Button/Button'
-import {Dispatch, SetStateAction} from 'react'
 import BookSearchModal from '../BookSearchModal/BookSearchModal'
 import { SearchIcon } from '../../../Icons'
 import { useRef } from 'react';
@@ -9,8 +8,7 @@ import './BookshelfDisplay.css'
 
 interface Props {
     children: Bookshelf,
-    // props: any
-    // setBookshelves: Dispatch<SetStateAction<Bookshelf[]>>
+
 }
 
 
@@ -26,7 +24,7 @@ const BookshelfDisplay = ({ children }: Props) => {
             <Button onClick={openModal}>
                 <SearchIcon></SearchIcon>
             </Button>
-            <BookSearchModal ref={bookSearchRef} bookshelf={children}></BookSearchModal>
+            {/* <BookSearchModal ref={bookSearchRef} bookshelf={children}></BookSearchModal> */}
             <ul className='bookshelf-title-list'>
                 {books.map((bookElement) => {
                     return(

@@ -15,7 +15,7 @@ from rest_framework.response import Response
 # LOGIN VIEW
 @api_view(['POST'])
 def log_in(request):
-    print('request body:', request.body)
+    # print('request body:', request.body)
 
     try:
         data = json.loads(request.body)
@@ -27,7 +27,7 @@ def log_in(request):
         
         if user:
             user = login_serializer.validated_data
-            print('user:', user)
+            # print('user:', user)
             user_serializer = UserSerializer(user)
             token = AuthToken.objects.create(user)[1]
             return Response({'active_user': user_serializer.data, 'auth_token': token}, status=status.HTTP_201_CREATED)

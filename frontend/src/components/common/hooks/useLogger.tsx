@@ -10,15 +10,15 @@ export default function useLogger() {
     const navigate = useNavigate()
     const {userState, userDispatch} = userContext()
     
-  
 
-    const authenticate = useCallback( async <T extends object> (url: string, logData: T) => {
+    const authenticate = useCallback( async (url: string, formData: FormData) => {
         
         userDispatch({type: 'USER_FETCH_INIT'})
-        // const data = Object.fromEntries(logData);
+        const data = Object.fromEntries(formData);
 
         try {
-            const response = await axios.post(url, logData)
+            console.log('log in response check')
+            const response = await axios.post(url, data)
 
             console.log('user logger response:', response)
 
@@ -34,26 +34,50 @@ export default function useLogger() {
                 navigate('/userDashboard')
                 
 
-            } else if (response.status >=200 && response.status < 300 && !response.data.auth_token) {
-                userDispatch({type: 'LOGOUT_ACTIVE_USER', payload: {user: null, authToken: ''}})
-                sessionStorage.removeItem('authToken')
-                sessionStorage.removeItem('activeUser')
-                navigate('/login')
-
-            } else {
+            }  else {
                 console.log('unexpected response')
                 userDispatch({'type': 'USER_ERROR', payload: 'Unexpected server response'})
             }
 
         } catch(err: any) {
-            console.log("type of error:", err instanceof AxiosError)
-            console.log("catch handler:", err)
+            console.log("authenticate catch handler:", err)
             err instanceof AxiosError 
             ? userDispatch({type: 'USER_ERROR', payload: axiosErrorHandler(err)})
             : userDispatch({type: 'USER_ERROR', payload: err})
 
         }
 
+    }, [])
+
+    const logout = useCallback( async () => {
+        console.log('logout check')
+        try {
+
+            const response = await axios.post('http://localhost:8000/api/auth/logout', 
+                {},
+                {
+                    headers: {
+                        Authorization: `Token ${userState.authToken}`
+                    }
+                }
+            )
+            console.log('logout response:', response)
+
+            if (response.status === 204) {
+                console.log('Logout successful');
+                userDispatch({type: 'LOGOUT_ACTIVE_USER', payload: {user: null, authToken: ''}})
+                sessionStorage.removeItem('authToken')
+                sessionStorage.removeItem('activeUser')
+                navigate('/login')
+                
+            }
+
+        } catch(err: any) {
+            console.log("logout catch handler:", err)
+            err instanceof AxiosError 
+            ? userDispatch({type: 'USER_ERROR', payload: axiosErrorHandler(err)})
+            : userDispatch({type: 'USER_ERROR', payload: err})
+        }
     }, [])
 
     useEffect(() => {
@@ -71,6 +95,6 @@ export default function useLogger() {
     }, [userState.user?.id, userState.authToken])
 
    
-    return {authenticate}
+    return {authenticate, logout}
 
 }

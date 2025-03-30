@@ -141,7 +141,5 @@ export default UserDataProvider
 
 
 // DO WE NEED HANDLERS?
-// handleLogin,
-// handleRegister, 
 // changeContact: (formData) => changeContact(formData, setActiveUser),
 // changePassword: (formData) => changePassword(formData, setActiveUser),

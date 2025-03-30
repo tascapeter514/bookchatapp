@@ -1,9 +1,8 @@
 import './BookshelfPanel.css';
-import { BookshelfData, Bookshelf } from '../../../types.ts'
+import {  Bookshelf } from '../../../types.ts'
 import { useReducer, useState } from 'react';
 import { userContext } from '../Context/UserContext/UserContext.tsx';
 import BookshelfDisplay from './components/BookshelfDisplay/BookshelfDisplay.tsx'
-import booksearchReducer from '../../../reducers/booksearchReducer.tsx';
 import Header from '../Header/Header.tsx'
 import SubHeader from '../SubHeader/SubHeader.tsx'
 
@@ -15,15 +14,15 @@ type Props = {
 
 const BookshelfPanel = () => {
 
-    const { userData, userTabs } = userContext()
-    const bookshelves = userData.find(data => data.type === 'bookshelf')?.items as Bookshelf[] | []
+    const { bookshelves, userTabs } = userContext()
+    
     
 
     console.log('book panel bookshelves:', bookshelves)
     // console.log('reducer bookshelves:', bookSearch.bookshelves);
     
 
-    const bookshelfElements = bookshelves.map((bookshelf, index) => (
+    const bookshelfElements = bookshelves.data.map((bookshelf, index) => (
         userTabs.activeBookshelf === `bookshelfTab${index}` && 
             <li 
                 key={bookshelf.id}

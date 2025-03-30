@@ -2,7 +2,6 @@ import './BookclubsPanel.css'
 import { userContext } from '../../../common/Context/UserContext/UserContext'
 import { weeksAgo } from '../../../common/functions.tsx'
 import Button from '../../../common/Buttons/Button/Button.tsx'
-import { BookclubData } from '../../../../types.ts'
 import ProfileIcons from '../../../common/ProfileIcons/ProfileIcons.tsx'
 import Header from '../../../common/Header/Header.tsx'
 
@@ -11,11 +10,11 @@ import Header from '../../../common/Header/Header.tsx'
 
 const BookclubsPanel = () => {
 
-    const { userData } = userContext()
+    const { bookclubs } = userContext()
 
-    const bookclubs = userData.find(data => data.type === 'bookclub') as BookclubData | undefined
+  
 
-    const bookclubElements = bookclubs?.items.map((userBookclub) => {
+    const bookclubElements = bookclubs.data.map((userBookclub) => {
 
         const lastVisited = localStorage.getItem(`lastVisited/${userBookclub.id}`)
         const weeksSinceVisited = lastVisited ? weeksAgo(lastVisited) : undefined

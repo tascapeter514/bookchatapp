@@ -38,7 +38,7 @@ class UserDataConsumer(WebsocketConsumer):
         invitation_serializer = InvitationSerializer(invitations, many=True)
         bookshelf_serializer = BookshelfSerializer(bookshelves, many=True)
 
-        print("user bookshelf:", bookshelf_serializer.data)
+        # print("user bookshelf:", bookshelf_serializer.data)
 
         # user_data_serializer = [bookclub_serializer.data, invitation_serializer.data, bookshelf_serializer.data]
         

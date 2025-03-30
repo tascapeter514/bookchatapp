@@ -19,8 +19,6 @@ urlpatterns = [
 
 
     
-    
-    
     path('api/auth/logout', knox_views.LogoutView.as_view(), name='knox_logout'),
     path('api/inviteusers/<uuid:bookclub_id>', InviteUsersAPI.as_view()),
     path('api/user/updateAccount/<int:id>', change_contact, name='change_contact'),
