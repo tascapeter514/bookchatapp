@@ -1,32 +1,15 @@
-import { useCallback, useEffect, useReducer, Reducer } from 'react'
-import userReducer, {UserState, UserAction} from '../../../reducers/userReducer'
+import { useCallback, useEffect } from 'react'
+import { userContext } from '../Context/UserContext/UserContext'
 import axios, { AxiosError } from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { axiosErrorHandler } from '../../../messages'
 
 export default function useLogger() {
-    const navigate = useNavigate()
-    const [userState, userDispatch] = useReducer<Reducer<UserState, UserAction>>(userReducer, {
-        user: {
-            id: 0,
-            password: '',
-            username: '',
-            firstName: '',
-            lastName: '',
-            emailAddress: '',
-            dateJoined: '',
-            profile: {
-                bio: '',
-                profilePic: undefined
 
-            }
-        },
-        authToken: '',
-        isLoggedIn: false,
-        isLoading: false,
-        isError: false,
-        error: ''
-    })
+
+    const navigate = useNavigate()
+    const {userState, userDispatch} = userContext()
+    
   
 
     const authenticate = useCallback( async (url: string, formData: FormData) => {

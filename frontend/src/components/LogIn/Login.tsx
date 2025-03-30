@@ -2,6 +2,7 @@ import './Login.css'
 import SubHeader from '../common/SubHeader/SubHeader'
 import { userContext } from '../common/Context/UserContext/UserContext'
 import ErrorMessage from '../Messages/ErrorMessage/ErrorMessage'
+import useLogger from '../common/hooks/useLogger'
 
 
 
@@ -10,7 +11,12 @@ import ErrorMessage from '../Messages/ErrorMessage/ErrorMessage'
 const Login = () => {
 
 
-    const {handleLogin, error, loading } = userContext()
+    const { userState } = userContext()
+    const { authenticate } = useLogger()
+
+
+
+    const handleLogin = async (formData: FormData) => {await authenticate('http://localhost:8000/api/auth/login', formData)}
 
 
 
@@ -22,8 +28,8 @@ const Login = () => {
                 action={handleLogin as any}
                 className='login-form'
                 method='post'>
-                    {error && <ErrorMessage>{error}</ErrorMessage>}
-                    {loading && <p className='loading'>Loading....</p>}
+                    {userState.isError && <ErrorMessage>{userState.error}</ErrorMessage>}
+                    {userState.isLoading && <p className='loading'>Loading....</p>}
                     <label htmlFor="username-login">Username: </label>
                     <input 
                         type="text" 

@@ -8,7 +8,6 @@ import Login from './components/LogIn/Login.tsx'
 import UserDashboard from './components/UserDashboard/UserDashboard.tsx'
 import ErrorBoundary from './components/common/ErrorBoundary.tsx'
 import AuthRequired from './components/common/authRequired.tsx'
-import UserDataProvider  from './components/common/Context/UserContext/UserContext.tsx'
 import BookclubDataProvider from './components/common/Context/BookclubContext/BookclubContext.tsx'
 import CheckMembers from './components/common/CheckMembers.tsx'
 import './App.css';
@@ -20,7 +19,6 @@ function App() {
   return (
 
     <BrowserRouter>
-     <UserDataProvider>
       <Navbar />
       <Routes>
             <Route path='/' element={<Homepage />} />
@@ -37,7 +35,6 @@ function App() {
                   </Route>
             </Route>
       </Routes>
-      </UserDataProvider>
     </BrowserRouter>
     
 

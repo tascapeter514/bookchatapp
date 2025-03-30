@@ -90,7 +90,6 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
 
     useEffect(() => {
       if (data.data && data.data.type == 'get_user_data') {
-        // setUserData(data.user_data)
         dispatchBookshelves({type: 'LOAD_BOOKSHELVES', payload: data.data.find((result: Data) => result.type === 'bookshelf').items})
         
 
