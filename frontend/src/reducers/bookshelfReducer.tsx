@@ -1,26 +1,12 @@
 import { Bookshelf, Book } from "../types";
+import { Data } from "./dataReducer";
 
 
 
 export type BookshelfState = {
     data: Bookshelf[],
-    // isLoading: boolean,
-    // isError: boolean
 }
 
-
-// type BookshelfFetchInitAction = {
-//     type: 'BOOKSHELVES_FETCH_INIT'
-// }
-
-// type BookshelfFetchSuccessAction = {
-//     type: 'BOOKSHELF_FETCH_SUCCESS';
-//     payload: Bookshelf[]
-// }
-
-// type BookshelfFetchFailureAction = {
-//     type: 'BOOKSHELF_FETCH_FAILURE'
-// }
 
 type BookshelfLoadAction = {
     type: 'LOAD_BOOKSHELVES',
@@ -29,12 +15,12 @@ type BookshelfLoadAction = {
 
 type BookshelfCreateAction = {
     type: 'ADD_BOOKSHELF',
-    payload: Bookshelf
+    payload: Bookshelf | Data
 }
 
 type BookshelfDeleteAction = {
     type: 'REMOVE_BOOKSHELF';
-    payload: Bookshelf
+    payload: Bookshelf | Data
 }
 
 type BookDeleteAction = {

@@ -1,4 +1,5 @@
 import { Bookclub } from "../types";
+import { Data } from "./dataReducer";
 
 
 export type BookclubState = {
@@ -13,12 +14,12 @@ export type BookclubLoadAction = {
 
 export type BookclubCreateAction = {
     type: 'ADD_BOOKCLUB',
-    payload: Bookclub
+    payload: Bookclub | Data
 }
 
 export type BookclubDeleteAction = {
     type: 'REMOVE_BOOKCLUB',
-    payload: Bookclub
+    payload: Bookclub | Data
 }
 
 export type BookclubAction =

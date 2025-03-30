@@ -17,8 +17,8 @@ const PostModal = ({ref, url, type}: Props) => {
 
 
     const closeModal = () => ref.current?.close()
-    const { setUserData } = userContext()
-    const { makeRequest, loading, error } = usePost(url)
+    const { bookclubDispatch, bookshelfDispatch } = userContext()
+    const { data, makeRequest } = usePost(url)
     const [name, setName] = useState<string>('')
 
 
@@ -33,21 +33,20 @@ const PostModal = ({ref, url, type}: Props) => {
         }
         try {
             console.log('before make request')
-            const newItem = await makeRequest(request)
+            await makeRequest(request)
 
-            if (!newItem) {
+            if (!data.isLoading && !data.isError && !data.data.type) {
                 console.log('no new item')
             }
-            // console.log('after make request')
 
-            // console.log('new item:', newItem)
-            // setUserData(prevData => 
-            //     prevData.map(data =>
-            //         data.type === type
-            //         ? {...data, items: [...data.items, newItem]}
-            //         : data
-            //     )
-            // )
+            if (type === 'bookclub' && newItem) {
+                bookclubDispatch({type: 'ADD_BOOKCLUB', payload: newItem})
+            }
+
+            if (type === 'bookshelf' && newItem) {
+                bookshelfDispatch({type: 'ADD_BOOKSHELF', payload: newItem})
+            }
+        
             
         } catch(err) {
             console.log('error handling submission:', err)
@@ -56,13 +55,13 @@ const PostModal = ({ref, url, type}: Props) => {
     
     }
 
-    if (loading) {
+    if (data.isLoading) {
         return <div>Loading...</div>
     }
     // console.log('post modal error:', error)
     return (
         <dialog className="post-modal" ref={  ref } >
-            {error && <ErrorMessage>{error}</ErrorMessage>}
+            {data.isError && <ErrorMessage>{data.error}</ErrorMessage>}
             <form onSubmit={handleSubmit} method='post'>
                 <input 
                     type="text" 
