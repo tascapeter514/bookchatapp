@@ -27,11 +27,11 @@ export interface ActiveUser {
         id: number,
         password: string,
         username: string,
-        first_name: string,
-        last_name: string,
-        email: string,
+        firstName: string,
+        lastName: string,
+        emailAddress: string,
         profile: Profile ,
-        date_joined: string
+        dateJoined: string
 
 
 }
@@ -109,7 +109,7 @@ export type BookclubData = {type: string, items: Bookclub[]}
 export type BookshelfData = {type: string, items: Bookshelf[]}
 export type InviteData = {type: string, items: Invitation[]}
 
-export type UserData = (BookclubData | BookshelfData | InviteData)
+export type UserData = (BookclubData | BookshelfData | InviteData)[]
 
 export type BookData = {type: string, items: Book[]}
 

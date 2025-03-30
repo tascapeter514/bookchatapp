@@ -58,3 +58,5 @@ const bookclubReducer = (
     }
 
 }
+
+export default bookclubReducer
