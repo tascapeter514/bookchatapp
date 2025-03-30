@@ -84,14 +84,12 @@ export const UserContext = createContext<UserContextProps>({
     // addUserBookshelf: async () => {}
 });
 
-const initialState: BookshelfState = {data: [], isLoading: false, isError: false}
-
 
 const UserDataProvider = ({ children }: UserProviderProps) => {
 
 
     // const [userState, stateDispatch] = useReducer(userDataReducer, initialState )
-    const [bookshelves, dispatchBookshelves] = useReducer<Reducer<BookshelfState, BookshelfAction>>(bookshelfReducer, initialState)
+    const [bookshelves, dispatchBookshelves] = useReducer<Reducer<BookshelfState, BookshelfAction>>(bookshelfReducer, {data: []})
     const [userTabs, tabsDispatch] = useReducer(userTabsReducer, {activeTab: 'accountTab', activeBookshelf: ''})
     const {activeUser, authToken, loading, error, authenticate, setActiveUser, setAuthToken, setError} = useLogger()
     const {data, makeRequest} = useSocket('ws://localhost:8000/ws/userData')

@@ -1,6 +1,6 @@
 import { ActiveUser, AuthToken } from "../types";
 
-export type ActiveUserState = {
+export type UserState = {
     user: ActiveUser,
     authToken: AuthToken,
     isLoggedIn: boolean,
@@ -47,8 +47,8 @@ export type UserAction =
     | UserChangePasswordAction
     | UserFailureAction
 
-const activeUserReducer = (
-    state: ActiveUserState,
+const userReducer = (
+    state: UserState,
     action: UserAction
 ) => {
     switch(action.type) {
@@ -106,4 +106,4 @@ const activeUserReducer = (
 
 }
 
-export default activeUserReducer
+export default userReducer
