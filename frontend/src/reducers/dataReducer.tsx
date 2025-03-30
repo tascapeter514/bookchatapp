@@ -8,7 +8,8 @@ export type Data = {
 export type DataState = {
     data: Data,
     isLoading: boolean,
-    isError: boolean 
+    isError: boolean,
+    error: string 
 }
 
 export type DataFetchInitAction = {
@@ -21,7 +22,8 @@ export type DataFetchSuccessAction = {
 }
 
 export type DataFetchFailureAction = {
-    type: 'DATA_FETCH_FAILURE'
+    type: 'DATA_FETCH_FAILURE',
+    payload: string
 }
 
 
@@ -41,20 +43,23 @@ const dataReducer = (
             return {
                 ...state,
                 isLoading: true,
-                isError: false
+                isError: false,
+                error: ''
             }
         case 'DATA_FETCH_SUCCESS':
             return {
                 ...state,
                 isLoading: false,
                 isError: false,
+                error: '',
                 data: action.payload
             }
         case 'DATA_FETCH_FAILURE':
             return {
                 ...state,
                 isLoading: false,
-                isError: true
+                isError: true,
+                error: action.payload
             }
         default: 
             throw new Error()

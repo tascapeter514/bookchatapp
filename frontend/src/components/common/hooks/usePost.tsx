@@ -1,12 +1,15 @@
-import {useState, useCallback } from 'react'
+import { useCallback, useReducer, Reducer } from 'react'
+import dataReducer, {DataAction, DataState} from '../../../reducers/dataReducer';
 import axios from 'axios';
 
 
 
 export default function usePost(url: string) {
 
-    const [loading, setLoading] = useState(false)
-    const [error, setError] = useState<string>('')
+    // const [loading, setLoading] = useState(false)
+    // const [error, setError] = useState<string>('')
+    const {data, dispatchData} = useReducer<Reducer<DataState, DataAction>>(dataReducer, {data: [], isError: false, isLoading: false})
+    
 
     
     // console.log('use post error:', error)
@@ -15,6 +18,7 @@ export default function usePost(url: string) {
     const makeRequest = useCallback(
         async <T extends object> (requestData: T) => {
         console.log('use post check')
+    
         setLoading(true)
         setError('')
 

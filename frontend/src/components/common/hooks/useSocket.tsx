@@ -9,7 +9,7 @@ import dataReducer, {DataAction, DataState} from '../../../reducers/dataReducer'
 export default function useSocket(url: string) {
 
     const [data, dispatchData] = useReducer<Reducer<DataState, DataAction>>(dataReducer,
-         {data: {type: ''}, isLoading: false, isError: false} )
+         {data: {type: ''}, isLoading: false, isError: false, error: ''} )
 
 
     const makeRequest = useCallback( async (id: number) => {
@@ -27,7 +27,7 @@ export default function useSocket(url: string) {
             socket.onerror = (event) => {
               console.error('WebSocket connection failed:', event)
             //   setError(new Error('Search websocket failed to connect'))
-              dispatchData({type: 'DATA_FETCH_FAILURE'})
+              dispatchData({type: 'DATA_FETCH_FAILURE', payload: 'Search websocket failed to connect'})
               socket.close();
           }
     
@@ -38,7 +38,7 @@ export default function useSocket(url: string) {
     
     
           } catch (err: any) {
-            dispatchData({type: 'DATA_FETCH_FAILURE'})
+            dispatchData({type: 'DATA_FETCH_FAILURE', payload: 'Search websocket failure'})
             
           }
         
