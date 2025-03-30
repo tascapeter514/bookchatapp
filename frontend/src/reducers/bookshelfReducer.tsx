@@ -25,18 +25,15 @@ type BookshelfDeleteAction = {
 
 type BookDeleteAction = {
     type: 'REMOVE_BOOK';
-    payload: {bookshelfId: number, oldBook: Book}
+    payload: {bookshelfId: number, oldBook: Book | Data}
 }
 
 type BookAddAction = {
     type: 'ADD_BOOK';
-    payload: {bookshelfId: number, newBook: Book}
+    payload: {bookshelfId: number, newBook: Book | Data}
 }
 
 export type BookshelfAction = 
-    // | BookshelfFetchInitAction
-    // | BookshelfFetchSuccessAction
-    // | BookshelfFetchFailureAction
     | BookshelfLoadAction
     | BookshelfDeleteAction
     | BookshelfCreateAction

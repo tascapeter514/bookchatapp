@@ -1,13 +1,14 @@
-import {Bookshelf} from '../../../../../types'
+import {Bookshelf, Book} from '../../../../../types'
 import BookCard from '../../../../BookCard/BookCard'
 import Button from '../../../Buttons/Button/Button'
+import { Data } from '../../../../../reducers/dataReducer'
 import BookSearchModal from '../BookSearchModal/BookSearchModal'
 import { SearchIcon } from '../../../Icons'
 import { useRef } from 'react';
 import './BookshelfDisplay.css'
 
 interface Props {
-    children: Bookshelf,
+    children: Bookshelf | Data,
 
 }
 
@@ -24,9 +25,9 @@ const BookshelfDisplay = ({ children }: Props) => {
             <Button onClick={openModal}>
                 <SearchIcon></SearchIcon>
             </Button>
-            {/* <BookSearchModal ref={bookSearchRef} bookshelf={children}></BookSearchModal> */}
+            <BookSearchModal ref={bookSearchRef} bookshelf={children}></BookSearchModal>
             <ul className='bookshelf-title-list'>
-                {books.map((bookElement) => {
+                {books.map((bookElement: Book) => {
                     return(
                         <li 
                             className='book-card-listElement' 

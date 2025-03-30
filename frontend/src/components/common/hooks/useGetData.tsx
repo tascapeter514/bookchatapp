@@ -8,7 +8,7 @@ export default function useGetData(url: string) {
     console.log('url:', url)
     
     const [data, dispatchData] = useReducer<Reducer<DataState, DataAction>>(dataReducer,
-        {data: {type: ''}, isLoading: false, isError: false, error: ''})
+        {data: {}, isLoading: false, isError: false, error: ''})
 
 
     const makeRequest = useCallback( async () => {

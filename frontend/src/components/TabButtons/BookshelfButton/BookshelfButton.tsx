@@ -4,7 +4,6 @@ import { useState, useRef} from 'react'
 import { RightDropDownIcon } from '../../common/Icons'
 import CreateButton from '../../common/Buttons/CreateButton/CreateButton'
 import { userContext } from '../../common/Context/UserContext/UserContext'
-import { Bookshelf } from '../../../types'
 import PostModal from '../../common/Modals/PostModal/PostModal'
 import './BookshelfButton.css'
 
@@ -26,7 +25,7 @@ const BookshelfButton = () => {
 
 
 
-    const bookshelfNames = bookshelves.data.map((bookshelf: Bookshelf, index: number) => {
+    const bookshelfNames = bookshelves.data.map((bookshelf, index) => {
 
         return (
             <li 

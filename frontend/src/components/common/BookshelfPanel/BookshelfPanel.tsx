@@ -7,11 +7,6 @@ import Header from '../Header/Header.tsx'
 import SubHeader from '../SubHeader/SubHeader.tsx'
 
 
-type Props = {
-    // bookshelfData: BookshelfData | undefined,
-
-  }
-
 const BookshelfPanel = () => {
 
     const { bookshelves, userTabs } = userContext()

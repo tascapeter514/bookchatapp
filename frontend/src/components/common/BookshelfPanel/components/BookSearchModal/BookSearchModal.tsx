@@ -1,40 +1,44 @@
 import Button from '../../../Buttons/Button/Button'
-import { RefObject, useReducer, Dispatch, SetStateAction , useState} from 'react'
+import { Data } from '../../../../../reducers/dataReducer'
+import { RefObject, useReducer, useEffect} from 'react'
 import { userContext } from '../../../Context/UserContext/UserContext'
 import usePut from '../../../hooks/usePut'
 import ErrorMessage from '../../../../Messages/ErrorMessage/ErrorMessage'
 import booksearchReducer from '../../../../../reducers/booksearchReducer'
 import BookSearchbar from './BookSearchbar/BookSearchbar'
-import { Bookshelf, UserData } from '../../../../../types'
+import { Bookshelf } from '../../../../../types'
 import './BookSearchModal.css'
 
 
 interface Props {
     ref: RefObject<HTMLDialogElement>,
-    bookshelf: Bookshelf,
-    // setBookshelves: Dispatch<SetStateAction<Bookshelf[]>>
-    // props: any
+    bookshelf: Bookshelf | Data,
 }
 
-// {bookshelfId: 0, bookshelves: bookshelfData?.items || [], newBookId: 0}
 
 const BookSearchModal = ({ ref, bookshelf }: Props) => {
 
     const closeModal = () => ref.current?.close()
-    const { activeUser, setUserData } = userContext()
-    // const [bookSearch, bookDispatch] = props
+    const { userState, bookshelfDispatch} = userContext()
     const [bookSearch, bookDispatch] = useReducer(booksearchReducer, {bookshelfId: 0, books: bookshelf.books, newBookId: 0} )
     
 
     console.log('bookshelf books:', bookshelf.books)
     console.log('book search books', bookSearch.books)
     
-    const {makeRequest, loading, error} = usePut(`http://localhost:8000/api/user/book/${activeUser.id}`)
+    const {data, makeRequest} = usePut(`http://localhost:8000/api/user/book/${userState.user?.id}`)
 
     
     
     // console.log('book search state:', bookSearch)
     console.log('book search bookshelf:', bookshelf)
+
+    useEffect(() => {
+        if (!data.isLoading && !data.isError && data.data) {
+            bookshelfDispatch({type: 'ADD_BOOK' , payload: {bookshelfId: bookshelf.id, newBook: data.data}})
+        }
+
+    }, [data])
 
 
     const addBook = async () => {
@@ -46,22 +50,8 @@ const BookSearchModal = ({ ref, bookshelf }: Props) => {
         }
         try {
             console.log('before make request')
-            const newItem = await makeRequest(request)
-            console.log('new item:', newItem)
+            await makeRequest(request)
 
-            if (!newItem) {
-                console.log('no new item')
-            }
-
-            if (newItem) {
-
-                console.log('new item conditional check')
-
-        
-                bookDispatch({type: 'ADD_BOOK', payload: newItem})
-            
-
-            }
   
             
             
@@ -76,13 +66,13 @@ const BookSearchModal = ({ ref, bookshelf }: Props) => {
 
     return (
         <dialog className='search-books-modal' ref={ref}>
-            {error && <ErrorMessage>{error}</ErrorMessage>}
+            {data.isError && <ErrorMessage>{data.error}</ErrorMessage>}
             <h3>Add a new title to your bookshelf</h3>
             <hr />
             <section className='search-books-content'>
                 
                 <article className='suggested-book-list'>
-                    <BookSearchbar bookSearch={bookSearch} bookDispatch={bookDispatch}></BookSearchbar>
+                    <BookSearchbar bookDispatch={bookDispatch}></BookSearchbar>
                     
                 </article>
                 
