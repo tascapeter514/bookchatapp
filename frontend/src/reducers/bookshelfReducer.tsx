@@ -4,22 +4,27 @@ import { Bookshelf, Book } from "../types";
 
 export type BookshelfState = {
     data: Bookshelf[],
-    isLoading: boolean,
-    isError: boolean
+    // isLoading: boolean,
+    // isError: boolean
 }
 
 
-type BookshelfFetchInitAction = {
-    type: 'BOOKSHELVES_FETCH_INIT'
-}
+// type BookshelfFetchInitAction = {
+//     type: 'BOOKSHELVES_FETCH_INIT'
+// }
 
-type BookshelfFetchSuccessAction = {
-    type: 'BOOKSHELF_FETCH_SUCCESS';
+// type BookshelfFetchSuccessAction = {
+//     type: 'BOOKSHELF_FETCH_SUCCESS';
+//     payload: Bookshelf[]
+// }
+
+// type BookshelfFetchFailureAction = {
+//     type: 'BOOKSHELF_FETCH_FAILURE'
+// }
+
+type BookshelfLoadAction = {
+    type: 'LOAD_BOOKSHELVES',
     payload: Bookshelf[]
-}
-
-type BookshelfFetchFailureAction = {
-    type: 'BOOKSHELF_FETCH_FAILURE'
 }
 
 type BookshelfCreateAction = {
@@ -43,39 +48,46 @@ type BookAddAction = {
 }
 
 export type BookshelfAction = 
-    | BookshelfFetchInitAction
-    | BookshelfFetchSuccessAction
-    | BookshelfFetchFailureAction
+    // | BookshelfFetchInitAction
+    // | BookshelfFetchSuccessAction
+    // | BookshelfFetchFailureAction
+    | BookshelfLoadAction
     | BookshelfDeleteAction
     | BookshelfCreateAction
     | BookDeleteAction
     | BookAddAction
 
 
-const bookshelvesReducer = (
+const bookshelfReducer = (
     state: BookshelfState,
     action: BookshelfAction
 ) => {
 
     switch(action.type) {
-        case 'BOOKSHELVES_FETCH_INIT':
+        // case 'BOOKSHELVES_FETCH_INIT':
+        //     return {
+        //         ...state,
+        //         isLoading: true,
+        //         isError: false,
+        //     }
+        // case 'BOOKSHELF_FETCH_SUCCESS':
+        //     return {
+        //         ...state,
+        //         isLoading: false,
+        //         isError: false,
+        //         data: action.payload
+        //     }
+        // case 'BOOKSHELF_FETCH_FAILURE':
+        //     return {
+        //         ...state,
+        //         isLoading: false,
+        //         isError: true
+        //     }
+        case 'LOAD_BOOKSHELVES':
             return {
                 ...state,
-                isLoading: true,
-                isError: false,
-            }
-        case 'BOOKSHELF_FETCH_SUCCESS':
-            return {
-                ...state,
-                isLoading: false,
-                isError: false,
                 data: action.payload
-            }
-        case 'BOOKSHELF_FETCH_FAILURE':
-            return {
-                ...state,
-                isLoading: false,
-                isError: true
+
             }
         case 'REMOVE_BOOKSHELF':
             return {
@@ -116,5 +128,5 @@ const bookshelvesReducer = (
 
 }
 
-export default bookshelvesReducer
+export default bookshelfReducer
     

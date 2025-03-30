@@ -1,36 +1,65 @@
-import { UserData, Bookclub, Bookshelf, Book } from "../types";
 
-
-type Data = {
+export type Data = {
     type: string,
     [key: string]: any
 
 }
 
-type DataState = {
-    data: null,
+export type DataState = {
+    data: Data,
     isLoading: boolean,
     isError: boolean 
 }
 
-type DataFetchInitAction = {
+export type DataFetchInitAction = {
     type: 'DATA_FETCH_INIT'
 }
 
-type DataFetchSuccessAction = {
+export type DataFetchSuccessAction = {
     type: 'DATA_FETCH_SUCCESS',
-    payload: 
+    payload: Data
+}
+
+export type DataFetchFailureAction = {
+    type: 'DATA_FETCH_FAILURE'
 }
 
 
+export type DataAction = 
+| DataFetchInitAction
+| DataFetchSuccessAction
+| DataFetchFailureAction
 
 
 
-export default function socketReducer(state: UserState, action: UserDataAction) {
-    const { type, payload } = action;
-    const { userData } = state
-    switch(type) {
-
-       
+const dataReducer = (
+    state: DataState,
+    action: DataAction
+) => {
+    switch (action.type) {
+        case 'DATA_FETCH_INIT':
+            return {
+                ...state,
+                isLoading: true,
+                isError: false
+            }
+        case 'DATA_FETCH_SUCCESS':
+            return {
+                ...state,
+                isLoading: false,
+                isError: false,
+                data: action.payload
+            }
+        case 'DATA_FETCH_FAILURE':
+            return {
+                ...state,
+                isLoading: false,
+                isError: true
+            }
+        default: 
+            throw new Error()
+    }
 
 }
+
+export default dataReducer

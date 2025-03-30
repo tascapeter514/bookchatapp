@@ -1,35 +1,33 @@
-import { useState, useCallback } from 'react'
+import { useCallback, useReducer, Reducer } from 'react'
+import dataReducer, {DataAction, DataState} from '../../../reducers/dataReducer';
 
 
 
 
-interface WebSocketData {
-    type: string,
-    [key: string]: any;
-}
 
 
 export default function useSocket(url: string) {
 
-    const [loading, setLoading] = useState(false)
-    const [error, setError] = useState<Error | null>(null)
-    const [data, setData] = useState<WebSocketData | null>(null)
+    const [data, dispatchData] = useReducer<Reducer<DataState, DataAction>>(dataReducer,
+         {data: {type: ''}, isLoading: false, isError: false} )
+
 
     const makeRequest = useCallback( async (id: number) => {
 
-        setLoading(true)
+        dispatchData({type: 'DATA_FETCH_INIT'})
         try {
             const socket = new WebSocket(`${url}/${id}`)
     
             socket.onmessage = (event) => {
             //   const data = JSON.parse(event.data);
                 console.log('use socket data:', JSON.parse(event.data))
-                setData( JSON.parse(event.data))
+                dispatchData({type: 'DATA_FETCH_SUCCESS', payload: JSON.parse(event.data)})
             }
     
             socket.onerror = (event) => {
               console.error('WebSocket connection failed:', event)
-              setError(new Error('Search websocket failed to connect'))
+            //   setError(new Error('Search websocket failed to connect'))
+              dispatchData({type: 'DATA_FETCH_FAILURE'})
               socket.close();
           }
     
@@ -40,10 +38,8 @@ export default function useSocket(url: string) {
     
     
           } catch (err: any) {
-            setError(err)
+            dispatchData({type: 'DATA_FETCH_FAILURE'})
             
-          } finally {
-              setLoading(false)
           }
         
 
@@ -51,6 +47,6 @@ export default function useSocket(url: string) {
 
     
 
-    return {loading, error, data, setData, makeRequest}
+    return {data, makeRequest}
 
 }
