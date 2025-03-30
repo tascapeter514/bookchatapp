@@ -22,11 +22,6 @@ export default function Homepage() {
     }, [])
 
 
-   
-
-  
-
-
 
     return(
       <div className="book-container">
@@ -36,38 +31,6 @@ export default function Homepage() {
         <div className="homepage-main-content">
 
             <RegisterForm></RegisterForm>
-
-            
-
-
-
-
-            {/* <h2>Create a Book Club with your Friends!</h2> */}
-            {/* <p className='subtitle subtitle-signup'>Register today!</p> */}
-            {/* <hr className='hr hr-signup'/> */}
-            {/* <form className='email-collector' 
-                action={handleRegister as any}
-                method='post'
-            >
-                {error && <ErrorMessage>{error}</ErrorMessage>}
-                {loading && <p>Loading...</p>}
-                <label htmlFor="userName">Username: </label>
-                <input 
-                    type="text" 
-                    id='username' 
-                    placeholder='samJohnson514' 
-                    name='username' 
- 
-                    required/>
-                <label htmlFor="userPassword">Password: </label>
-                <input 
-                    type="password" 
-                    id='password' 
-                    placeholder='Enter your password' 
-                    name='password' 
-                    required/>
-                <button className='btn btn-signup' type='submit'>Register</button>
-            </form> */}
 
             
         </div>

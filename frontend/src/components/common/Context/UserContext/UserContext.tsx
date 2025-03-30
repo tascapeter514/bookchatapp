@@ -1,6 +1,6 @@
 import {createContext, useEffect, useState, Dispatch, SetStateAction, ReactNode, useContext, useReducer, Reducer} from 'react'
+import userReducer, {UserState, UserAction} from '../../../../reducers/userReducer.tsx'
 import { changeContact, changePassword } from '../../services/user.tsx';
-import { UserState, UserAction } from '../../../../reducers/userReducer.tsx';
 // import { addUserBookshelf } from '../../services/user.tsx';
 import { Data } from '../../../../reducers/dataReducer.tsx';
 import bookshelfReducer, {BookshelfState, BookshelfAction} from '../../../../reducers/bookshelfReducer.tsx';
@@ -51,11 +51,11 @@ export const UserContext = createContext<UserContextProps>({
     
     userTabs: {activeTab: '', activeBookshelf: ''},
     tabsDispatch: () => {},
-    // stateDispatch: () => {},
+
     bookshelves: {data: []},
     dispatchBookshelves: () => {},
 
-    // setUserData: () => [],
+
     
     // handleLogin: async () => {},
     // handleRegister: async () => {},
@@ -68,15 +68,33 @@ export const UserContext = createContext<UserContextProps>({
 const UserDataProvider = ({ children }: UserProviderProps) => {
 
 
-    // const [userState, stateDispatch] = useReducer(userDataReducer, initialState )
+    const [userState, userDispatch] = useReducer<Reducer<UserState, UserAction>>(userReducer, {
+      user: {
+          id: 0,
+          password: '',
+          username: '',
+          firstName: '',
+          lastName: '',
+          emailAddress: '',
+          dateJoined: '',
+          profile: {
+              bio: '',
+              profilePic: undefined
+
+          }
+      },
+      authToken: '',
+      isLoggedIn: false,
+      isLoading: false,
+      isError: false,
+      error: ''
+    })
     const [bookshelves, dispatchBookshelves] = useReducer<Reducer<BookshelfState, BookshelfAction>>(bookshelfReducer, {data: []})
     const [userTabs, tabsDispatch] = useReducer(userTabsReducer, {activeTab: 'accountTab', activeBookshelf: ''})
-    const {userState, userDispatch, authenticate} = useLogger()
     const {data, makeRequest} = useSocket('ws://localhost:8000/ws/userData')
-    const handleLogin = async (formData: FormData) => await authenticate('http://localhost:8000/api/auth/login', formData)
-    const handleRegister = async (formData: FormData) => await authenticate('http://localhost:8000/api/auth/register', formData)
+    
 
-// const bookshelves = userData.find(data => data.type === 'bookshelf') as BookshelfData | undefined
+
   
     useEffect(() => {
 

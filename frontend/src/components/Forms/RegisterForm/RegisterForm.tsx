@@ -4,6 +4,7 @@ import SubHeader from '../../common/SubHeader/SubHeader';
 import Button from '../../common/Buttons/Button/Button'
 import ErrorMessage from '../../Messages/ErrorMessage/ErrorMessage';
 import { userContext } from '../../common/Context/UserContext/UserContext';
+import useLogger from '../../common/hooks/useLogger';
 import {useState, ChangeEvent } from 'react';
 import './RegisterForm.css'
 
@@ -11,7 +12,10 @@ import './RegisterForm.css'
 const RegisterForm = () => {
 
     
-    const {handleRegister, setError, error, } = userContext()
+    const { userState, userDispatch } = userContext()
+    const { authenticate } = useLogger()
+
+    const handleRegister = async (formData: FormData) => await authenticate('http://localhost:8000/api/auth/register', formData)
     
 
     const [registerData, setRegisterData] = useState({
@@ -40,7 +44,7 @@ const RegisterForm = () => {
         <form action={handleRegister as any} className='register-form'>
             <Header>Register</Header>
             <SubHeader>Contact Info</SubHeader>
-            {error && <ErrorMessage>{error}</ErrorMessage>}
+            {userState.isError && <ErrorMessage>{userState.error}</ErrorMessage>}
             <InputField value={registerData.firstName} labelKey='firstName' handleChange={onChange}>First Name</InputField>
             <InputField value={registerData.lastName} labelKey='lastName' handleChange={onChange}>Last Name</InputField>
             <InputField value={registerData.emailAddress} labelKey='emailAddress' handleChange={onChange} type='email'>Email</InputField>

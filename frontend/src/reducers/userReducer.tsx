@@ -30,6 +30,10 @@ export type UserFailureAction = {
     payload: string
 }
 
+export type UserClearFailureAction = {
+    type: 'CLEAR_ERROR'
+}
+
 export type UserChangeContactAction = {
     type: 'CHANGE_USER_CONTACT',
     payload: {firstName: string, lastName: string, emailAddress: string}
@@ -48,6 +52,7 @@ export type UserAction =
     | UserChangeContactAction
     | UserChangePasswordAction
     | UserFailureAction
+    | UserClearFailureAction
 
 const userReducer = (
     state: UserState,
@@ -85,6 +90,14 @@ const userReducer = (
                 authToken: ''
 
             }
+        
+        case 'CLEAR_ERROR':
+            return {
+                ...state,
+                error: '',
+                isError: false
+            }
+        
         
         case 'LOGOUT_ACTIVE_USER':
             return {

@@ -65,6 +65,6 @@ export default function useLogger() {
     }, [userState.user?.id, userState.authToken])
 
    
-    return {userState, userDispatch, authenticate}
+    return {authenticate}
 
 }
