@@ -1,11 +1,12 @@
 import {createContext, useEffect, useState, Dispatch, SetStateAction, ReactNode, useContext, useReducer, Reducer} from 'react'
 import { changeContact, changePassword } from '../../services/user.tsx';
+import { UserState, UserAction } from '../../../../reducers/userReducer.tsx';
 // import { addUserBookshelf } from '../../services/user.tsx';
 import { Data } from '../../../../reducers/dataReducer.tsx';
 import bookshelfReducer, {BookshelfState, BookshelfAction} from '../../../../reducers/bookshelfReducer.tsx';
 import userTabsReducer, {TabAction, TabState} from '../../../../reducers/userTabsReducer.tsx';
 import useLogger from '../../hooks/useLogger.tsx';
-import {  HandleLogin, ActiveUser, AuthToken, UserData } from '../../../../types.ts'
+
 import useSocket from '../../hooks/useSocket.tsx';
 
 
@@ -18,27 +19,22 @@ interface UserContextProps {
 
 
     // USERDATA REDUCER
-    // userState: {userData: UserData},
-    // stateDispatch: Dispatch<UserDataAction>,
-    // userData: UserData,
-    // setUserData: Dispatch<SetStateAction<UserData>>,
-    // addUserBookshelf: (formData: FormData) => Promise<void>
+    userState: UserState,
+    userDispatch: Dispatch<UserAction>,
+
+
 
     bookshelves: BookshelfState,
     dispatchBookshelves: Dispatch<BookshelfAction>,
-    error: string | null,
-    loading: boolean,
-    setError: Dispatch<SetStateAction<string>>,
+
 
 
     // ADD HANDLE LOGOUT AND PUT INTO ACTIVEUSERREDUCER
-    activeUser: ActiveUser,
-    authToken: AuthToken,
-    handleLogin: HandleLogin,
-    setAuthToken: Dispatch<SetStateAction<AuthToken>>,
-    handleRegister: (formData: FormData) => Promise<void>,
-    changeContact: (formData: FormData) => Promise<void>,
-    changePassword: (formData: FormData) => Promise<void>,
+    // handleLogin: HandleLogin,
+
+    // handleRegister: (formData: FormData) => Promise<void>,
+    // changeContact: (formData: FormData) => Promise<void>,
+    // changePassword: (formData: FormData) => Promise<void>,
     
 }
 
@@ -49,25 +45,10 @@ interface UserProviderProps {
 }
 
 export const UserContext = createContext<UserContextProps>({
-    activeUser: {
-        id: 0,
-        password: '',
-        username: '',
-        first_name: '',
-        date_joined: '',
-        last_name: '',
-        email: '',
-        profile: {
-            bio: '',
-            profile_pic: undefined
-        }
-
-    },
-    authToken: '',
-    // userState: {userData: []},
-    // userData: [],
-    error: '',
-    loading: false,
+    
+    userState: {user: null, authToken: '', isLoggedIn: false, isLoading: false, isError: false, error: ''},
+    userDispatch: () => {},
+    
     userTabs: {activeTab: '', activeBookshelf: ''},
     tabsDispatch: () => {},
     // stateDispatch: () => {},
@@ -75,12 +56,11 @@ export const UserContext = createContext<UserContextProps>({
     dispatchBookshelves: () => {},
 
     // setUserData: () => [],
-    setError: () => '',
-    handleLogin: async () => {},
-    handleRegister: async () => {},
-    setAuthToken: () => '',
-    changeContact: async () => {},
-    changePassword: async () => {},
+    
+    // handleLogin: async () => {},
+    // handleRegister: async () => {},
+    // changeContact: async () => {},
+    // changePassword: async () => {},
     // addUserBookshelf: async () => {}
 });
 
@@ -138,18 +118,15 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
         // pass values into useMemo?
         // REMOVED USERDATA AND SETUSERDATA
         <UserContext.Provider
-            value={{activeUser, authToken, error, loading, userTabs, tabsDispatch,
-                  handleLogin,
-                  handleRegister, 
-                  changeContact: (formData) => changeContact(formData, setActiveUser),
-                  changePassword: (formData) => changePassword(formData, setActiveUser),
-                  setAuthToken,
-                  setError,
-                  bookshelves,
-                  dispatchBookshelves
-                  // addUserBookshelf: (formData) => addUserBookshelf(formData, setUserData)
+            value={{userState,
+                    userDispatch,
+                    userTabs,
+                    tabsDispatch,
+                    bookshelves,
+                    dispatchBookshelves
                   
                   }}>
+
                 {children}
         </UserContext.Provider>
       )
@@ -159,3 +136,11 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
 export const userContext = () => useContext(UserContext)
 
 export default UserDataProvider
+
+
+
+// DO WE NEED HANDLERS?
+// handleLogin,
+// handleRegister, 
+// changeContact: (formData) => changeContact(formData, setActiveUser),
+// changePassword: (formData) => changePassword(formData, setActiveUser),

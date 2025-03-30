@@ -8,11 +8,15 @@ import './UserNav.css'
 
 const ProfileHeader = () => {
 
-    const { activeUser } = userContext()
+    const { userState } = userContext()
+    const { user } = userState
+
+
+
     return(
         <div className="profile-header">
-            <h1>Hi {activeUser.first_name}!</h1>
-            <span>Member since {activeUser.date_joined}</span>
+            <h1>Hi {user?.firstName}!</h1>
+            <span>Member since {user?.dateJoined}</span>
         </div>
     )
 
