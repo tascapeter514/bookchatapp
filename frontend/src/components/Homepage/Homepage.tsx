@@ -1,25 +1,25 @@
-import {useState, useEffect, ChangeEvent } from 'react';
-import BookSlider from '../common/BookSlider/BookSlider'
-import useLogger from '../common/hooks/useLogger';
+// import {useState, useEffect, ChangeEvent } from 'react';
+// import BookSlider from '../common/BookSlider/BookSlider'
+// import useLogger from '../common/hooks/useLogger';
 
 
 import './Homepage.css'
-import { Book } from '../../types';
+// import { Book } from '../../types';
 import RegisterForm from '../Forms/RegisterForm/RegisterForm';
 
 export default function Homepage() {
 
    
     
-    const [bestsellers, setBestsellers] = useState<Book[]>([])
+    // const [bestsellers, setBestsellers] = useState<Book[]>([])
     
 
 
-    useEffect(() => {
-        fetch('http://localhost:8000/')
-        .then(res => res.json())
-        .then(data => setBestsellers(data))
-    }, [])
+    // useEffect(() => {
+    //     fetch('http://localhost:8000/')
+    //     .then(res => res.json())
+    //     .then(data => setBestsellers(data))
+    // }, [])
 
 
 

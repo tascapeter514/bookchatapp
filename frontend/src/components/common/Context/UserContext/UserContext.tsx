@@ -1,44 +1,26 @@
-import {createContext, useEffect, useState, Dispatch, SetStateAction, ReactNode, useContext, useReducer, Reducer} from 'react'
+import {createContext, useEffect, Dispatch, ReactNode, useContext, useReducer, Reducer} from 'react'
 import userReducer, {UserState, UserAction} from '../../../../reducers/userReducer.tsx'
-import { changeContact, changePassword } from '../../services/user.tsx';
-// import { addUserBookshelf } from '../../services/user.tsx';
 import { Data } from '../../../../reducers/dataReducer.tsx';
 import bookshelfReducer, {BookshelfState, BookshelfAction} from '../../../../reducers/bookshelfReducer.tsx';
+import bookclubReducer, {BookclubState, BookclubAction} from '../../../../reducers/bookclubReducer.tsx';
+import inviteReducer, {InviteState, InviteAction} from '../../../../reducers/inviteReducer.tsx';
 import userTabsReducer, {TabAction, TabState} from '../../../../reducers/userTabsReducer.tsx';
-import useLogger from '../../hooks/useLogger.tsx';
-
 import useSocket from '../../hooks/useSocket.tsx';
 
-
-
 interface UserContextProps {
-  // USER TABS REDUCER
+
+  userState: UserState,
+  bookshelves: BookshelfState,
+  bookclubs: BookclubState,
+  invitations: InviteState,
   userTabs: TabState,
-  tabsDispatch: Dispatch<TabAction>,
+  userDispatch: Dispatch<UserAction>,
+  bookshelfDispatch: Dispatch<BookshelfAction>,
+  bookclubDispatch: Dispatch<BookclubAction>,
+  inviteDispatch: Dispatch<InviteAction>
+  tabsDispatch: Dispatch<TabAction> 
 
-
-
-    // USERDATA REDUCER
-    userState: UserState,
-    userDispatch: Dispatch<UserAction>,
-
-
-
-    bookshelves: BookshelfState,
-    dispatchBookshelves: Dispatch<BookshelfAction>,
-
-
-
-    // ADD HANDLE LOGOUT AND PUT INTO ACTIVEUSERREDUCER
-    // handleLogin: HandleLogin,
-
-    // handleRegister: (formData: FormData) => Promise<void>,
-    // changeContact: (formData: FormData) => Promise<void>,
-    // changePassword: (formData: FormData) => Promise<void>,
-    
 }
-
-
 
 interface UserProviderProps {
     children: ReactNode
@@ -47,21 +29,16 @@ interface UserProviderProps {
 export const UserContext = createContext<UserContextProps>({
     
     userState: {user: null, authToken: '', isLoggedIn: false, isLoading: false, isError: false, error: ''},
-    userDispatch: () => {},
-    
+    bookshelves: {data: []},
+    bookclubs: {data: []},
+    invitations: { data: []},
     userTabs: {activeTab: '', activeBookshelf: ''},
+    userDispatch: () => {},
+    bookshelfDispatch: () => {},
+    bookclubDispatch: () => {},
+    inviteDispatch: () => {},
     tabsDispatch: () => {},
 
-    bookshelves: {data: []},
-    dispatchBookshelves: () => {},
-
-
-    
-    // handleLogin: async () => {},
-    // handleRegister: async () => {},
-    // changeContact: async () => {},
-    // changePassword: async () => {},
-    // addUserBookshelf: async () => {}
 });
 
 
@@ -89,13 +66,13 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
       isError: false,
       error: ''
     })
-    const [bookshelves, dispatchBookshelves] = useReducer<Reducer<BookshelfState, BookshelfAction>>(bookshelfReducer, {data: []})
+    const [bookshelves, bookshelfDispatch] = useReducer<Reducer<BookshelfState, BookshelfAction>>(bookshelfReducer, {data: []})
+    const [bookclubs, bookclubDispatch] = useReducer<Reducer<BookclubState, BookclubAction>>(bookclubReducer, {data: []})
+    const [invitations, inviteDispatch] = useReducer<Reducer<InviteState, InviteAction>>(inviteReducer, {data: []})
     const [userTabs, tabsDispatch] = useReducer(userTabsReducer, {activeTab: 'accountTab', activeBookshelf: ''})
     const {data, makeRequest} = useSocket('ws://localhost:8000/ws/userData')
     
 
-
-  
     useEffect(() => {
 
       if (!userState.user?.id) return
@@ -108,24 +85,28 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
 
     useEffect(() => {
       if (data.data && data.data.type == 'get_user_data') {
-        dispatchBookshelves({type: 'LOAD_BOOKSHELVES', payload: data.data.find((result: Data) => result.type === 'bookshelf').items})
-        
-
-
-
-        
+        console.log('user context incoming data:', data.data)
+        bookshelfDispatch({type: 'LOAD_BOOKSHELVES', payload: data.data.user_data.find((result: Data) => result.type === 'bookshelf').items})
+        bookclubDispatch({type: 'LOAD_BOOKCLUBS', payload: data.data.user_data.find((result: Data) => result.type === 'bookclub').items})
+        inviteDispatch({type: 'LOAD_INVITES', payload: data.data.user_data.find((result: Data) => result.type === 'invite').items})
         sessionStorage.setItem('userData', JSON.stringify(data.data.user_data))
       }
 
-    }, [data])
+    }, [data.data])
 
 
 
 
     useEffect(() => {
-           const storedUserData = sessionStorage.getItem('userData');
+           const storedUserData = JSON.parse(sessionStorage.getItem('userData') ?? '');
            if (storedUserData) {
             // setUserData(JSON.parse(storedUserData))
+            console.log('stored user data:', storedUserData)
+            bookshelfDispatch({type: 'LOAD_BOOKSHELVES', payload: storedUserData.find((result: Data) => result.type === 'bookshelf').items})
+            bookclubDispatch({type: 'LOAD_BOOKCLUBS', payload: storedUserData.find((result: Data) => result.type === 'bookclub').items})
+            inviteDispatch({type: 'LOAD_INVITES', payload: storedUserData.find((result: Data) => result.type === 'invite').items})
+            
+
            }
       
     }, [])
@@ -136,12 +117,15 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
         // REMOVED USERDATA AND SETUSERDATA
         <UserContext.Provider
             value={{userState,
+                   bookshelves,
+                   bookclubs,
+                   invitations,
+                   userTabs,
                     userDispatch,
-                    userTabs,
+                    bookshelfDispatch,
+                    bookclubDispatch,
+                    inviteDispatch,
                     tabsDispatch,
-                    bookshelves,
-                    dispatchBookshelves
-                  
                   }}>
 
                 {children}

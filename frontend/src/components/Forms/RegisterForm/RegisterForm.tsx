@@ -33,7 +33,7 @@ const RegisterForm = () => {
             ...prev,
             [name]: value
         }))
-        setError('')
+        userDispatch({type: 'CLEAR_ERROR'})
     }
 
         
