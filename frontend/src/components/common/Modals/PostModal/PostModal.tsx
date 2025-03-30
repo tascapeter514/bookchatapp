@@ -1,5 +1,5 @@
 import './PostModal.css'
-import {  useState, FormEvent, RefObject } from 'react'
+import {  useState, FormEvent, RefObject, useEffect } from 'react'
 import { userContext } from '../../Context/UserContext/UserContext'
 import ErrorMessage from '../../../Messages/ErrorMessage/ErrorMessage'
 import Button from '../../Buttons/Button/Button'
@@ -23,6 +23,21 @@ const PostModal = ({ref, url, type}: Props) => {
 
 
 
+    useEffect(() => {
+
+        if (!data.isLoading && !data.isError && data.data) {
+            if (type === 'bookclub') {
+                bookclubDispatch({type: 'ADD_BOOKCLUB', payload: data.data})
+
+            } else if (type === 'bookshelf') {
+                bookshelfDispatch({type: 'ADD_BOOKSHELF', payload: data.data})
+            }
+        }
+
+    }, [data, type, bookclubDispatch, bookshelfDispatch])
+
+
+
     const handleSubmit = async (e: FormEvent) => {
         console.log('handle submit called')
 
@@ -35,31 +50,6 @@ const PostModal = ({ref, url, type}: Props) => {
             console.log('before make request')
             await makeRequest(request)
 
-            if (data.isLoading) {
-                console.log('waiting for data')
-                return
-            }
-
-            if (data.isError) {
-                console.log('error in data')
-                return
-            }
-
-            if (!data.isLoading && !data.isError && !data.data) {
-                console.log('no new item')
-            }
-
-            if (type === 'bookclub' && !data.isLoading && !data.isError && data.data) {
-                console.log('add bookclub check')
-                console.log('add bookclub data data:', data.data)
-                bookclubDispatch({type: 'ADD_BOOKCLUB', payload: data.data})
-            }
-
-            if (type === 'bookshelf' && !data.isLoading && !data.isError && data.data) {
-                bookshelfDispatch({type: 'ADD_BOOKSHELF', payload: data.data})
-            }
-        
-            
         } catch(err) {
             console.log('error handling submission:', err)
         }
