@@ -50,6 +50,21 @@ class Bookclub(models.Model):
     isPrivate = models.BooleanField(default=True)
     cover_image = models.ImageField(null=True, blank=True, upload_to="images/")
 
+    def delete(self, *args, **kwargs):
+        # CLEAR MANY TO MANY RELATIONSHIPS
+        self.members.clear()
+        self.bookshelves.clear()
+
+        # DELETE RELATED INVITATIONS
+        Invitation.objects.filter(bookclub=self).delete()
+
+        # SET CURRENT READ TO NULL BEFORE DELETION
+        self.currentRead = None
+        self.save()
+
+        # DELETE BOOKCLUB
+        super().delete(*args, **kwargs)
+
 
 
 class Invitation(models.Model):

@@ -35,16 +35,28 @@ const PostModal = ({ref, url, type}: Props) => {
             console.log('before make request')
             await makeRequest(request)
 
-            if (!data.isLoading && !data.isError && !data.data.type) {
+            if (data.isLoading) {
+                console.log('waiting for data')
+                return
+            }
+
+            if (data.isError) {
+                console.log('error in data')
+                return
+            }
+
+            if (!data.isLoading && !data.isError && !data.data) {
                 console.log('no new item')
             }
 
-            if (type === 'bookclub' && newItem) {
-                bookclubDispatch({type: 'ADD_BOOKCLUB', payload: newItem})
+            if (type === 'bookclub' && !data.isLoading && !data.isError && data.data) {
+                console.log('add bookclub check')
+                console.log('add bookclub data data:', data.data)
+                bookclubDispatch({type: 'ADD_BOOKCLUB', payload: data.data})
             }
 
-            if (type === 'bookshelf' && newItem) {
-                bookshelfDispatch({type: 'ADD_BOOKSHELF', payload: newItem})
+            if (type === 'bookshelf' && !data.isLoading && !data.isError && data.data) {
+                bookshelfDispatch({type: 'ADD_BOOKSHELF', payload: data.data})
             }
         
             
@@ -58,7 +70,9 @@ const PostModal = ({ref, url, type}: Props) => {
     if (data.isLoading) {
         return <div>Loading...</div>
     }
-    // console.log('post modal error:', error)
+
+    // console.log('post modal data:', data)
+
     return (
         <dialog className="post-modal" ref={  ref } >
             {data.isError && <ErrorMessage>{data.error}</ErrorMessage>}

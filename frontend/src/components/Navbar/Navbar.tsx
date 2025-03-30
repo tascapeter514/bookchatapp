@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { HandleLogout } from '../../types.ts'
+import { Link } from 'react-router-dom'
 import useLogger from '../common/hooks/useLogger.tsx'
 import { userContext } from '../common/Context/UserContext/UserContext.tsx'
 import Searchbar from '../Searchbar/Searchbar.tsx'
@@ -8,33 +7,11 @@ import './Navbar.css'
 
 const Navbar = () => {
 
-  const navigate = useNavigate()
   const [showNavbar] = useState(false)
-  const {userState, userDispatch} = userContext()
+  const {userState} = userContext()
   const { logout } = useLogger()
   
-    // const handleLogout: HandleLogout = async () => {
-    //     const token = localStorage.getItem('authToken');
-    //     try {
-    //       if (token) {
-    //         await fetch('http:localhost:8000/api/auth/logout', {
-    //           method: 'POST',
-    //           headers: {
-    //             'Content-Type': 'application/json',
-    //             'Authorization' : `Token ${authToken}`
-    //           }
-    //         });
-    //       }
-    //     } catch (error) {
-    //       console.error('Error during logout', error)
-    //     } finally {
-    //       // Clear client-side data regardless of server response
-    //       setAuthToken('')
-    //       sessionStorage.removeItem('authToken')
-    //       sessionStorage.removeItem('activeUser')
-    //       navigate('/login')
-    //     }
-    //   };
+
 
     const handleLogout = async () => {
       console.log('handle logout check')
@@ -68,11 +45,7 @@ const Navbar = () => {
                     <Searchbar></Searchbar>
                   </div>
                 </div>
-
-
-
                 <button className='mobile-nav-toggle' aria-expanded={showNavbar}>
-
                 </button>
                 <nav className='main-navbar'>
                     <ul className='main-navbar-list'>

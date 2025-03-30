@@ -1,7 +1,6 @@
 import './UserDashboard.css';
 import { useReducer } from 'react';
 import mobileNavReducer from '../../reducers/mobileNavReducer';
-import { BookshelfData } from '../../types';
 import { userContext} from '../common/Context/UserContext/UserContext'
 import Bookshelfpanel from '../common/BookshelfPanel/BookshelfPanel'
 import OpenMobileNav from '../common/Buttons/OpenMobileNav/OpenMobileNav';
@@ -12,12 +11,9 @@ import UserNav from '../UserNav/UserNav'
 import BookclubsPanel from './components/BookclubsPanel/BookclubsPanel'
 
 
-// bookshelfData={bookshelves}
-
 const UserDashboard = () => {
 
-    const { userTabs }   = userContext()
-    // const bookshelves = userData.find(data => data.type === 'bookshelf') as BookshelfData | undefined
+    const { userTabs } = userContext()
     const [mobileNav, navDispatch] = useReducer(mobileNavReducer, {open: false, isExiting: false})
 
 

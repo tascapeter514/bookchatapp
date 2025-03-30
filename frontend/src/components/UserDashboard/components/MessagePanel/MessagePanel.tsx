@@ -1,7 +1,7 @@
 import './MessagePanel.css'
 import { Link } from 'react-router-dom'
 import { userContext } from '../../../common/Context/UserContext/UserContext'
-import { Invitation, InviteData} from '../../../../types.ts'
+import { Invitation } from '../../../../types.ts'
 import { formatDate } from '../../../common/functions.tsx'
 import Header from '../../../common/Header/Header.tsx'
 import SubHeader from '../../../common/SubHeader/SubHeader.tsx'
@@ -14,10 +14,6 @@ const MessagePanel = () => {
 
 
     const { invitations } = userContext()
-
-
-
-   
 
     const userInvitesElements = invitations.data.map((invite: Invitation) => {
 

@@ -111,6 +111,8 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
       
     }, [])
 
+    console.log('user context bookclubs:', bookclubs)
+
       return (
 
         // pass values into useMemo?
@@ -137,9 +139,3 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
 export const userContext = () => useContext(UserContext)
 
 export default UserDataProvider
-
-
-
-// DO WE NEED HANDLERS?
-// changeContact: (formData) => changeContact(formData, setActiveUser),
-// changePassword: (formData) => changePassword(formData, setActiveUser),

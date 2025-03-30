@@ -7,7 +7,7 @@ import axios from 'axios';
 export default function usePost(url: string) {
 
     const [data, dispatchData] = useReducer<Reducer<DataState, DataAction>>(dataReducer, 
-            {data: {type: ''}, isError: false, isLoading: false, error: ''})
+            {data: [], isError: false, isLoading: false, error: ''})
 
    
 
@@ -20,8 +20,10 @@ export default function usePost(url: string) {
 
             const response = await axios.post(url, requestData)
             console.log('use post response:', response)
+
             if (response.status >= 200 && response.status < 300) {
-                dispatchData({type: 'DATA_FETCH_SUCCESS', payload: response.data}) 
+                dispatchData({type: 'DATA_FETCH_SUCCESS', payload: response.data})
+
             } else {
                 console.log('unexpected error')
                 throw new Error('use post error occurred')
@@ -39,6 +41,8 @@ export default function usePost(url: string) {
         
        
     }, [url])
+
+    // console.log('use post data:', data)
 
     
 

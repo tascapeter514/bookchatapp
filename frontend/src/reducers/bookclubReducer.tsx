@@ -3,13 +3,13 @@ import { Data } from "./dataReducer";
 
 
 export type BookclubState = {
-    data: Bookclub[]
+    data: Bookclub[] | Data[]
 }
 
 
 export type BookclubLoadAction = {
     type: 'LOAD_BOOKCLUBS',
-    payload: Bookclub[]
+    payload: Bookclub[] | Data[]
 }
 
 export type BookclubCreateAction = {

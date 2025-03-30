@@ -20,8 +20,10 @@ export default function usePut(url: string) {
         try {
             const response = await axios.put(url, requestData)
             console.log('use put response:', response)
+
             if (response.status >= 200 && response.status < 300) {
                 dispatchData({type: 'DATA_FETCH_SUCCESS', payload: response.data})
+                
             } else {
                 console.log('unexpected error')
                 throw new Error('use post error occurred')

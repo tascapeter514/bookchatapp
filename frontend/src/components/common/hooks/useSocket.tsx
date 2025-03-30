@@ -2,14 +2,10 @@ import { useCallback, useReducer, Reducer } from 'react'
 import dataReducer, {DataAction, DataState} from '../../../reducers/dataReducer';
 
 
-
-
-
-
 export default function useSocket(url: string) {
 
     const [data, dispatchData] = useReducer<Reducer<DataState, DataAction>>(dataReducer,
-         {data: {type: ''}, isLoading: false, isError: false, error: ''} )
+         {data: [], isLoading: false, isError: false, error: ''} )
 
 
     const makeRequest = useCallback( async (id: number) => {
