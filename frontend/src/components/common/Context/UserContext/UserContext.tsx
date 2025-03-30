@@ -91,7 +91,7 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
     // const [userState, stateDispatch] = useReducer(userDataReducer, initialState )
     const [bookshelves, dispatchBookshelves] = useReducer<Reducer<BookshelfState, BookshelfAction>>(bookshelfReducer, {data: []})
     const [userTabs, tabsDispatch] = useReducer(userTabsReducer, {activeTab: 'accountTab', activeBookshelf: ''})
-    const {activeUser, authToken, loading, error, authenticate, setActiveUser, setAuthToken, setError} = useLogger()
+    const {userState, userDispatch, authenticate} = useLogger()
     const {data, makeRequest} = useSocket('ws://localhost:8000/ws/userData')
     const handleLogin = async (formData: FormData) => await authenticate('http://localhost:8000/api/auth/login', formData)
     const handleRegister = async (formData: FormData) => await authenticate('http://localhost:8000/api/auth/register', formData)
@@ -100,13 +100,13 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
   
     useEffect(() => {
 
-      if (!activeUser.id) return
-      console.log('user context active user:', activeUser)
+      if (!userState.user?.id) return
+      console.log('user context active user:', userState.user)
 
-      makeRequest(activeUser.id)
+      makeRequest(userState.user?.id)
       console.log('user data:', data)
 
-    }, [activeUser.id, makeRequest])
+    }, [userState.user?.id, makeRequest])
 
     useEffect(() => {
       if (data.data && data.data.type == 'get_user_data') {
