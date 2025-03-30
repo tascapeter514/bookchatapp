@@ -1,11 +1,12 @@
 import { ActiveUser, AuthToken } from "../types";
 
 export type UserState = {
-    user: ActiveUser,
+    user: ActiveUser | null,
     authToken: AuthToken,
     isLoggedIn: boolean,
     isLoading: boolean,
-    isError: boolean
+    isError: boolean,
+    error: string
 
 }
 
@@ -25,7 +26,8 @@ export type UserLogoutAction = {
 }
 
 export type UserFailureAction = {
-    type: 'USER_FETCH_FAILURE'
+    type: 'USER_ERROR',
+    payload: string
 }
 
 export type UserChangeContactAction = {
@@ -57,7 +59,8 @@ const userReducer = (
             return {
                 ...state,
                 isLoading: true,
-                isError: false
+                isError: false,
+                error: ''
             }
 
 
@@ -68,13 +71,15 @@ const userReducer = (
                 isError: false,
                 isLoading: false,
                 user: action.payload.user,
-                authToken: action.payload.authToken
+                authToken: action.payload.authToken,
+                error: ''
             }
-        case 'USER_FETCH_FAILURE':
+        case 'USER_ERROR':
             return {
                 ...state,
-                isLoggedIn: false,
+                error: action.payload,
                 isError: true,
+                isLoggedIn: false,
                 isLoading: false,
                 user: null,
                 authToken: ''
@@ -88,16 +93,23 @@ const userReducer = (
                 isError: false,
                 isLoading: false,
                 user: null,
-                authToken: ''
+                authToken: '',
+                error: ''
             }
         
         case 'CHANGE_USER_CONTACT':
+            if (!state.user) {
+                return state
+            }
             return {
                 ...state,
                 user: {...state.user, firstName: action.payload.firstName, lastName: action.payload.lastName, emailAddress: action.payload.emailAddress}
             }
             // LOGIC MAY BE OFF -- THINK THROUGH
         case 'CHANGE_USER_PASSWORD':
+            if (!state.user) {
+                return state
+            }
             return {
                 ...state,
                 user: {...state.user, password: action.payload}
