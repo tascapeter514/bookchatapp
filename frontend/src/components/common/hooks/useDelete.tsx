@@ -38,3 +38,5 @@ const useDelete = (url: string) => {
 
 }
 
+export default useDelete
+
