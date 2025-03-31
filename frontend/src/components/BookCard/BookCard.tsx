@@ -21,7 +21,7 @@ const BookCard = ({children, bookshelfId}: Props) => {
     useEffect(() => {
         if (!data.isLoading && !data.isError && data.data) {
             console.log('delete data:', data.data)
-            // bookshelfDispatch({type: 'REMOVE_BOOK', payload: {bookshelfId: bookshelfId, oldBook: data.data}})
+            bookshelfDispatch({type: 'REMOVE_BOOK', payload: {bookshelfId: bookshelfId, oldBook: data.data}})
         }
 
     }, [data, bookshelfDispatch])

@@ -126,6 +126,8 @@ def add_user_book(request, **kwargs):
     try:
         current_book = Book.objects.get(id=book_id)
         current_bookshelf = Bookshelf.objects.get(id=bookshelf_id)
+
+        print('current bookshelf:', current_bookshelf)
        
         if current_bookshelf.books.filter(id=current_book.id).exists():
             print('validation error check')
@@ -197,6 +199,8 @@ def delete_book(request, **kwargs):
         current_book = Book.objects.get(id=book_id)
 
         print('current book:', current_book)
+
+        current_bookshelf.books.remove(current_book)
 
         book_serializer = BookSerializer(current_book)
 
