@@ -1,19 +1,25 @@
 import './FilterResults.css'
+import { Dispatch } from 'react'
 import { BookshelfState } from '../../../../reducers/bookshelfReducer'
 import { BookclubState } from '../../../../reducers/bookclubReducer'
 import { Bookshelf, Bookclub } from '../../../../types'
 import { Data } from '../../../../reducers/dataReducer'
+ import { SearchState, SearchAction } from '../../../../reducers/searchReducer'
 
 
 interface Props {
     children: BookshelfState | BookclubState,
-    searchValue: string
+    search: SearchState,
+    searchDispatch: Dispatch<SearchAction>
+
 }
 
 
-const FilterResults = ({children, searchValue}: Props  ) => {
+const FilterResults = ({children, search, searchDispatch}: Props  ) => {
 
-    const results = children.data.filter(child => child.name.toLowerCase().includes(searchValue.toLowerCase()))
+
+    
+    const results = children.data.filter(child => child.name.toLowerCase().includes(search.value.toLowerCase()))
 
     const resultElements = results.map(
             ((resultElement: Bookshelf | Bookclub | Data) => {
@@ -31,6 +37,7 @@ const FilterResults = ({children, searchValue}: Props  ) => {
                         type="radio" 
                         className='search-result-input' 
                         name='searchResultsGroup'
+                        onChange={() => searchDispatch({type: 'CHECK_RESULT', payload: resultElement.id})}
                         />
                     
                 </div>
