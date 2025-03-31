@@ -3,15 +3,14 @@ import dataReducer, {DataState, DataAction} from '../../../reducers/dataReducer'
 import axios from 'axios'
 
 
-export default function useGet(url: string) {
+export default function useGet() {
 
-    console.log('url:', url)
     
     const [data, dispatchData] = useReducer<Reducer<DataState, DataAction>>(dataReducer,
         {data: [], isLoading: false, isError: false, error: ''})
 
 
-    const makeRequest = useCallback( async () => {
+    const makeRequest = useCallback( async (url: string) => {
         console.log('make request check')
         dispatchData({type: 'DATA_FETCH_INIT'})
 
@@ -35,5 +34,5 @@ export default function useGet(url: string) {
     }, [])
 
 
-    return { data, makeRequest}
+    return { data, makeRequest }
 }

@@ -27,6 +27,7 @@ def get_book(request, id):
     book = Book.objects.get(id=id)
     if book:
         book_serializer = BookSerializer(book)
+        print('book serializer data:', book_serializer.data)
         return Response(book_serializer.data, status=status.HTTP_200_OK)
     else:
         return Response({'message': 'Book not found'}, status=status.HTTP_404_NOT_FOUND)

@@ -1,6 +1,6 @@
 import './BookFacade.css'
 import { useRef } from 'react'
-import { Book } from '../../types'
+import { Book, Author } from '../../types'
 import { Data } from '../../reducers/dataReducer'
 import { Link } from 'react-router-dom'
 import { BookmarkIcon } from '../common/Icons'
@@ -17,17 +17,17 @@ interface Props {
 const BookFacade = ({book}: Props) => {
     console.log('book:', book)
     console.log('book authors:', book.authors)
-    
+    const authors = book.authors ?? []
       // refactor to get at authors names
     const authorText = (() => {
         
-        switch (book.authors.length) {
+        switch (authors.length) {
             case 0:
                 return 'Unknown Author';
             case 1:
                 return book.authors[0].name
             case 2:
-                return book.authors.join(' and ')
+                return book.authors.map((author: Author) => author.name)
             case 3:
                 return book.authors.slice(0, 3).join(', ')
             case 4:
@@ -39,6 +39,7 @@ const BookFacade = ({book}: Props) => {
     const openModal = () => addBookRef.current?.showModal()
 
     return(
+
         <div className="top-facade">
         <div className="book-header-wrapper">
             <div className="book-details">
@@ -116,7 +117,6 @@ const BookFacade = ({book}: Props) => {
             </dialog> */}
         </div>
     </div>
-        
     )
 }
 

@@ -28,7 +28,7 @@ router.register('', BestsellerViewSet, 'homepage')
 
 urlpatterns = [
     # finished routes
-    path('api/book/<int:id>', get_book, name='get-book'),
+    path('api/book/<int:id>', get_book, name='get_book'),
     path('api/user/bookshelf/<int:id>', add_user_bookshelf, name='add_user_bookshelf'),
     path('api/user/bookclub/<int:id>', add_user_bookclub, name='add_user_bookclub'),
     path('api/user/book/<int:id>', add_user_book, name='add_user_book'),

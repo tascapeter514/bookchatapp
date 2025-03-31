@@ -1,4 +1,4 @@
-import {createContext, useEffect, Dispatch, ReactNode, useContext, useReducer, Reducer} from 'react'
+import {createContext, useEffect, Dispatch, ReactNode, useContext, useReducer, Reducer, useMemo} from 'react'
 import userReducer, {UserState, UserAction} from '../../../../reducers/userReducer.tsx'
 import { Data } from '../../../../reducers/dataReducer.tsx';
 import bookshelfReducer, {BookshelfState, BookshelfAction} from '../../../../reducers/bookshelfReducer.tsx';
@@ -75,6 +75,8 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
 
     useEffect(() => {
 
+      console.log('user state use effect')
+
       if (!userState.user?.id) return
       console.log('user context active user:', userState.user)
 
@@ -84,6 +86,7 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
     }, [userState.user?.id, makeRequest])
 
     useEffect(() => {
+      console.log('data use effect')
       if (data.data && data.data.type == 'get_user_data') {
         console.log('user context incoming data:', data.data)
         bookshelfDispatch({type: 'LOAD_BOOKSHELVES', payload: data.data.user_data.find((result: Data) => result.type === 'bookshelf').items})
@@ -98,13 +101,15 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
 
 
     useEffect(() => {
-           const storedUserData = JSON.parse(sessionStorage.getItem('userData') ?? '');
+      console.log('stored data use effect')
+           const storedUserData = sessionStorage.getItem('userData') ? JSON.parse(sessionStorage.getItem('userData') as string) : null;
+
            if (storedUserData) {
             // setUserData(JSON.parse(storedUserData))
             console.log('stored user data:', storedUserData)
-            bookshelfDispatch({type: 'LOAD_BOOKSHELVES', payload: storedUserData.find((result: Data) => result.type === 'bookshelf').items})
-            bookclubDispatch({type: 'LOAD_BOOKCLUBS', payload: storedUserData.find((result: Data) => result.type === 'bookclub').items})
-            inviteDispatch({type: 'LOAD_INVITES', payload: storedUserData.find((result: Data) => result.type === 'invite').items})
+            bookshelfDispatch({type: 'LOAD_BOOKSHELVES', payload: storedUserData.find((result: Data) => result.type === 'bookshelf').items || []})
+            bookclubDispatch({type: 'LOAD_BOOKCLUBS', payload: storedUserData.find((result: Data) => result.type === 'bookclub').items || []})
+            inviteDispatch({type: 'LOAD_INVITES', payload: storedUserData.find((result: Data) => result.type === 'invite').items || []})
             
 
            }
@@ -113,22 +118,32 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
 
     console.log('user context bookclubs:', bookclubs)
 
+
+    const userContextValue = useMemo(() => ({
+
+      userState,
+      bookshelves,
+      bookclubs,
+      invitations,
+      userTabs,
+      userDispatch,
+      bookshelfDispatch,
+      bookclubDispatch,
+      inviteDispatch,
+      tabsDispatch,
+
+    }), [JSON.stringify(userState), 
+      JSON.stringify(bookshelves), 
+      JSON.stringify(bookclubs),
+      JSON.stringify(invitations), 
+      JSON.stringify(userTabs)])
+
       return (
 
         // pass values into useMemo?
         // REMOVED USERDATA AND SETUSERDATA
         <UserContext.Provider
-            value={{userState,
-                   bookshelves,
-                   bookclubs,
-                   invitations,
-                   userTabs,
-                    userDispatch,
-                    bookshelfDispatch,
-                    bookclubDispatch,
-                    inviteDispatch,
-                    tabsDispatch,
-                  }}>
+            value={userContextValue}>
 
                 {children}
         </UserContext.Provider>
