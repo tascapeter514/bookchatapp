@@ -1,19 +1,22 @@
 import './FilterResults.css'
+import { BookshelfState } from '../../../../reducers/bookshelfReducer'
+import { BookclubState } from '../../../../reducers/bookclubReducer'
 import { Bookshelf, Bookclub } from '../../../../types'
+import { Data } from '../../../../reducers/dataReducer'
 
 
 interface Props {
-    children: Bookshelf[] | Bookclub[],
+    children: BookshelfState | BookclubState,
     searchValue: string
 }
 
 
 const FilterResults = ({children, searchValue}: Props  ) => {
 
+    const results = children.data.filter(child => child.name.toLowerCase().includes(searchValue.toLowerCase()))
 
-    const resultElements = children.filter(
-                                        child => child.name.toLowerCase().includes(searchValue.toLowerCase())).map(
-                                        (resultElement: Bookshelf | Bookclub) => {
+    const resultElements = results.map(
+            ((resultElement: Bookshelf | Bookclub | Data) => {
 
         if (!resultElement) {
             return null
@@ -36,7 +39,7 @@ const FilterResults = ({children, searchValue}: Props  ) => {
 
             </li>
 
-        )})
+        )}))
 
 
     

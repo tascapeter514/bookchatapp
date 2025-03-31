@@ -1,17 +1,17 @@
 import './SearchFilter.css'
-import { useState } from 'react'
-import FilterResults from '../../Bookpage/components/SearchFilter/FilterResults'
-import { Bookshelf } from '../../../types'
+import { Dispatch } from 'react'
+import { SearchState, SearchAction } from '../../../reducers/searchReducer'
 import { SearchIcon } from '../Icons'
 
 
 type Props = {
-    children: Bookshelf[]
+    search: SearchState,
+    searchDispatch: Dispatch<SearchAction>
 }
 
-const SearchFilter = ({children}: Props) => {
+const SearchFilter = ({search, searchDispatch}: Props) => {
 
-    const [searchValue, setSearchValue] = useState('')
+    
 
     return (
         <div className="searchFilter-content">
@@ -19,12 +19,12 @@ const SearchFilter = ({children}: Props) => {
                     className='searchFilter-input'
                     name='searchValue'
                     placeholder='Enter your search term' 
-                    value={searchValue} 
-                    onChange={(e) => setSearchValue(e.target.value)}
+                    value={search.value} 
+                    onChange={(e) => searchDispatch({type: 'START_SEARCH', payload: e.target.value})}
                     required 
                 />
                 <SearchIcon className='search-icon'/>
-                <FilterResults searchValue={searchValue}>{children}</FilterResults>
+                
 
 
         </div>

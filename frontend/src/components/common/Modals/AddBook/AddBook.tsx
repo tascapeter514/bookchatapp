@@ -1,7 +1,6 @@
-import { RefObject, useState } from 'react'
-import { Bookshelf } from '../../../../types'
+import { RefObject, useReducer } from 'react'
 import SearchFilter from '../../SearchFilter/SearchFilter'
-import SearchResults from '../../../Bookpage/components/SearchFilter/FilterResults'
+import searchReducer from '../../../../reducers/searchReducer'
 import Button from '../../Buttons/Button/Button'
 import { userContext } from '../../Context/UserContext/UserContext'
 import './AddBook.css'
@@ -15,15 +14,10 @@ type Props = {
 
 const AddBook = ({addBookRef}: Props) => {
 
-    const {activeUser, userData} = userContext()
+    const [search, dispatchSearch] = useReducer(searchReducer, {id: 0})
+    const { userState, bookshelves, bookshelfDispatch} = userContext()
     
-    const [currentBookshelf, setCurrentBookshelf] = useState<Bookshelf | null>(null)
-    const [selectedUserBookshelf, setSelectedUserBookshelf] = useState<string | null>(null)
-
-      const handleUserBookshelfSelection = (bookshelfId: string) => {
-        setSelectedUserBookshelf(bookshelfId)
-
-    }
+    
 
    
     const closeModal = () => addBookRef.current?.close()
@@ -33,13 +27,13 @@ const AddBook = ({addBookRef}: Props) => {
             <dialog className='addBook' ref={addBookRef}>
                 <h3>Add this book to your bookshelf</h3>
                     <hr />
-                    {activeUser ? 
+                    {userState.isLoggedIn ? 
                         <main className="bookshelf-results-content">
                             <SearchFilter
                                 
                                 
                             >
-                                {/* {userBookshelves} */}
+                                {bookshelves}
 
                             </SearchFilter>
                             </main>
