@@ -8,6 +8,7 @@ import AddBook from '../common/Modals/AddBook/AddBook'
 
 
 
+
 interface Props {
     book: Book | Data
 
@@ -15,8 +16,9 @@ interface Props {
 
 const BookFacade = ({book}: Props) => {
 
+    
       // refactor to get at authors names
-      const authorText = (() => {
+    const authorText = (() => {
         
         switch (book.authors.length) {
             case 0:
@@ -44,7 +46,8 @@ const BookFacade = ({book}: Props) => {
                    <BookmarkIcon onClick={openModal}></BookmarkIcon>
                     <span>Add to Bookshelf</span>
                </div>
-               <AddBook addBookRef={addBookRef}/>
+               <AddBook addBookRef={addBookRef} book={book}/>
+            
               
                
             </div>

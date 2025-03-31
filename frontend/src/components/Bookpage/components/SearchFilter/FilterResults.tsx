@@ -10,12 +10,12 @@ import { Data } from '../../../../reducers/dataReducer'
 interface Props {
     children: BookshelfState | BookclubState,
     search: SearchState,
-    searchDispatch: Dispatch<SearchAction>
+    dispatchSearch: Dispatch<SearchAction>
 
 }
 
 
-const FilterResults = ({children, search, searchDispatch}: Props  ) => {
+const FilterResults = ({children, search, dispatchSearch}: Props  ) => {
 
 
     
@@ -37,7 +37,7 @@ const FilterResults = ({children, search, searchDispatch}: Props  ) => {
                         type="radio" 
                         className='search-result-input' 
                         name='searchResultsGroup'
-                        onChange={() => searchDispatch({type: 'CHECK_RESULT', payload: resultElement.id})}
+                        onChange={() => dispatchSearch({type: 'CHECK_RESULT', payload: resultElement.id})}
                         />
                     
                 </div>

@@ -1,26 +1,55 @@
-import { RefObject, useReducer } from 'react'
+import { RefObject, useReducer, useEffect } from 'react'
 import SearchFilter from '../../SearchFilter/SearchFilter'
 import searchReducer from '../../../../reducers/searchReducer'
 import Button from '../../Buttons/Button/Button'
+import FilterResults from '../../../Bookpage/components/SearchFilter/FilterResults'
 import { userContext } from '../../Context/UserContext/UserContext'
+import { Book } from '../../../../types'
+import { Data } from '../../../../reducers/dataReducer'
+import usePut from '../../hooks/usePut'
 import './AddBook.css'
 
 
 
 type Props = {
     addBookRef: RefObject<HTMLDialogElement>
+    book: Book | Data
 }
 
 
-const AddBook = ({addBookRef}: Props) => {
 
-    const [search, dispatchSearch] = useReducer(searchReducer, {id: 0})
+const AddBook = ({addBookRef, book}: Props) => {
+
+    const [search, dispatchSearch] = useReducer(searchReducer, {id: 0, value: ''})
     const { userState, bookshelves, bookshelfDispatch} = userContext()
-    
-    
-
-   
     const closeModal = () => addBookRef.current?.close()
+    const { data, makeRequest } = usePut(`http://localhost:8000/api/user/book/${userState.user?.id}`)
+
+
+
+    useEffect(() => {
+
+        if (!data.isLoading && !data.isError && data.data) {
+            bookshelfDispatch({type: 'ADD_BOOK', payload: {bookshelfId: search.id, newBook: data.data}})
+        }
+
+
+    })
+
+    const addBook = async () => {
+
+        const data = { bookId: book.id,  bookshelfId: search.id}
+        try {
+
+            await makeRequest(data)
+            
+        } catch (err: any) {
+
+            console.error('Error with add book handler:', err)
+
+        }
+
+    }
     
 
     return (
@@ -29,20 +58,15 @@ const AddBook = ({addBookRef}: Props) => {
                     <hr />
                     {userState.isLoggedIn ? 
                         <main className="bookshelf-results-content">
-                            <SearchFilter
-                                
-                                
-                            >
-                                {bookshelves}
-
-                            </SearchFilter>
+                            <SearchFilter search={search} dispatchSearch={dispatchSearch}/>
+                            <FilterResults search={search} dispatchSearch={dispatchSearch}>{bookshelves}</FilterResults>
                             </main>
                             
                         
                         : <span>You must be logged in to use this feature</span>}
                         <div className="button-wrapper">
                             <Button onClick={closeModal}>Cancel</Button>
-                            <Button>Add</Button>
+                            <Button onClick={addBook}>Add</Button>
                         </div>
                     </dialog>
     )

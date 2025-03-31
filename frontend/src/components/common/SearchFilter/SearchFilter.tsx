@@ -6,10 +6,10 @@ import { SearchIcon } from '../Icons'
 
 type Props = {
     search: SearchState,
-    searchDispatch: Dispatch<SearchAction>
+    dispatchSearch: Dispatch<SearchAction>
 }
 
-const SearchFilter = ({search, searchDispatch}: Props) => {
+const SearchFilter = ({search, dispatchSearch}: Props) => {
 
     
 
@@ -20,7 +20,7 @@ const SearchFilter = ({search, searchDispatch}: Props) => {
                     name='searchValue'
                     placeholder='Enter your search term' 
                     value={search.value} 
-                    onChange={(e) => searchDispatch({type: 'START_SEARCH', payload: e.target.value})}
+                    onChange={(e) => dispatchSearch({type: 'START_SEARCH', payload: e.target.value})}
                     required 
                 />
                 <SearchIcon className='search-icon'/>
