@@ -1,6 +1,7 @@
 import './BookFacade.css'
 import { useRef } from 'react'
-import { Author, Genre } from '../../types'
+import { Book } from '../../types'
+import { Data } from '../../reducers/dataReducer'
 import { Link } from 'react-router-dom'
 import { BookmarkIcon } from '../common/Icons'
 import AddBook from '../common/Modals/AddBook/AddBook'
@@ -8,30 +9,26 @@ import AddBook from '../common/Modals/AddBook/AddBook'
 
 
 interface Props {
-    name: string,
-    authors: Author[],
-    imageLinks: {smallThumbnail?: string, thumbnail?: string}
-    genres: Genre,
-    description: string
+    book: Book | Data
 
 }
 
-const BookFacade = ({name, authors, genres, imageLinks}: Props) => {
+const BookFacade = ({book}: Props) => {
 
       // refactor to get at authors names
       const authorText = (() => {
         
-        switch (authors.length) {
+        switch (book.authors.length) {
             case 0:
                 return 'Unknown Author';
             case 1:
-                return authors[0].name
+                return book.authors[0].name
             case 2:
-                return authors.join(' and ')
+                return book.authors.join(' and ')
             case 3:
-                return authors.slice(0, 3).join(', ')
+                return book.authors.slice(0, 3).join(', ')
             case 4:
-                return `${authors.slice(0, 3).join(', ')} and others`;
+                return `${book.authors.slice(0, 3).join(', ')} and others`;
         }
     })()
 
@@ -42,7 +39,7 @@ const BookFacade = ({name, authors, genres, imageLinks}: Props) => {
         <div className="top-facade">
         <div className="book-header-wrapper">
             <div className="book-details">
-                <img className='book-cover' src={imageLinks['thumbnail']} alt="" />
+                <img className='book-cover' src={book.imageLinks['thumbnail']} alt="" />
                <div className="bookshelfBtn-wrapper">
                    <BookmarkIcon onClick={openModal}></BookmarkIcon>
                     <span>Add to Bookshelf</span>
@@ -52,11 +49,11 @@ const BookFacade = ({name, authors, genres, imageLinks}: Props) => {
                
             </div>
             <article className="book-info-wrapper">
-                <h1>{name}</h1>
+                <h1>{book.name}</h1>
                 <h3>
                     By <span> {authorText} </span>
                 </h3>
-                <p>Category: <Link to='#' >{genres.name}</Link></p>
+                <p>Category: <Link to='#' >{book.genres.name}</Link></p>
                 <button
                     // onClick={openBookclubModal} 
                     
