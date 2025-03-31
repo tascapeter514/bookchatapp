@@ -15,7 +15,8 @@ interface Props {
 }
 
 const BookFacade = ({book}: Props) => {
-
+    console.log('book:', book)
+    console.log('book authors:', book.authors)
     
       // refactor to get at authors names
     const authorText = (() => {

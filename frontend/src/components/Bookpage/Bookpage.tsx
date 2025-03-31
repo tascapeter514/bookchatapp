@@ -5,8 +5,6 @@ import { Data } from '../../reducers/dataReducer'
 import AuthorDetails from '../AuthorDetails/AuthorDetails'
 import ProductDetails from '../ProductDetails/ProductDetails'
 import BookFacade from '../BookFacade/BookFacade'
-
-
 import useGet from '../common/hooks/useGet'
 import './Bookpage.css'
 
@@ -17,7 +15,19 @@ const Bookpage = () => {
     const { data, makeRequest  } = useGet(`http://localhost:8000/api/book/${id}`)
     const [book, setBook] = useState<Book | Data>({} as Book)
 
+
+
     useEffect(() => {
+
+        const getBook = async () => {
+            try {
+                await makeRequest()
+    
+            } catch(err) {
+                console.error('Error fetching book:', err)
+            }
+            
+        }
 
         getBook()
 
@@ -28,16 +38,9 @@ const Bookpage = () => {
     }, [data, makeRequest])
 
 
-    const getBook = async () => {
-        try {
-            await makeRequest()
+    
 
-        } catch(err) {
-            console.error('Error fetching book:', err)
-        }
-        
-    }
-
+    console.log('book page data:', data)
 
     return(
         

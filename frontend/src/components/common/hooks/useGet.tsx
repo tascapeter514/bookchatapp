@@ -3,7 +3,7 @@ import dataReducer, {DataState, DataAction} from '../../../reducers/dataReducer'
 import axios from 'axios'
 
 
-export default function useGetData(url: string) {
+export default function useGet(url: string) {
 
     console.log('url:', url)
     
@@ -12,12 +12,13 @@ export default function useGetData(url: string) {
 
 
     const makeRequest = useCallback( async () => {
-
+        console.log('make request check')
         dispatchData({type: 'DATA_FETCH_INIT'})
 
 
         try {
             const response = await axios.get(url)
+            console.log('get response data:', response.data)
 
             if (response.status >= 200 && response.status < 300) {
                 dispatchData({type: 'DATA_FETCH_SUCCESS', payload: response.data})
