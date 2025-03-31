@@ -1,4 +1,5 @@
 import { LikeIcon, DislikeIcon, CancelIcon } from '../common/Icons'
+import { useEffect } from 'react'
 import { Data } from '../../reducers/dataReducer'
 import { userContext } from '../common/Context/UserContext/UserContext'
 import { UserContext } from '../common/Context/UserContext/UserContext'
@@ -17,10 +18,22 @@ const BookCard = ({children, bookshelfId}: Props) => {
     const { bookshelfDispatch } = userContext()
     const {data, makeRequest} = useDelete(`http://localhost:8000/api/book/delete/${children.id}`)
 
-    const deleteBook = () => {
 
+    useEffect(() => {
+        if (!data.isLoading && !data.isError && data.data) {
+            bookshelfDispatch({type: 'REMOVE_BOOK', payload: {bookshelfId: bookshelfId, oldBook: data.data}})
+        }
+
+    }, [data, bookshelfDispatch])
+
+    const deleteBook = async () => {
+        const data = {bookshelfId: bookshelfId}
         try {
-            
+
+            await makeRequest(data);
+
+        } catch (err: any) {
+            bookshelfDispatch({type: 'BOOKSHELF_ERROR', payload: err.response?.data?.error || 'An unexpected error occurred'})
         }
 
     }
