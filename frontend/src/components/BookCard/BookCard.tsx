@@ -2,7 +2,6 @@ import { LikeIcon, DislikeIcon, CancelIcon } from '../common/Icons'
 import { useEffect } from 'react'
 import { Data } from '../../reducers/dataReducer'
 import { userContext } from '../common/Context/UserContext/UserContext'
-import { UserContext } from '../common/Context/UserContext/UserContext'
 import useDelete from '../common/hooks/useDelete'
 import { Book, Author } from '../../types'
 import './BookCard.css'
@@ -16,12 +15,13 @@ interface Props {
 const BookCard = ({children, bookshelfId}: Props) => {
 
     const { bookshelfDispatch } = userContext()
-    const {data, makeRequest} = useDelete(`http://localhost:8000/api/book/delete/${children.id}`)
+    const {data, makeRequest} = useDelete(`http://localhost:8000/api/user/book/delete/${children.id}`)
 
 
     useEffect(() => {
         if (!data.isLoading && !data.isError && data.data) {
-            bookshelfDispatch({type: 'REMOVE_BOOK', payload: {bookshelfId: bookshelfId, oldBook: data.data}})
+            console.log('delete data:', data.data)
+            // bookshelfDispatch({type: 'REMOVE_BOOK', payload: {bookshelfId: bookshelfId, oldBook: data.data}})
         }
 
     }, [data, bookshelfDispatch])

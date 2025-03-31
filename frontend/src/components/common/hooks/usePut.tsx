@@ -8,7 +8,7 @@ export default function usePut(url: string) {
 
 
     const [data, dispatchData] = useReducer<Reducer<DataState, DataAction>>(dataReducer,
-        {data: {type: ''}, isLoading: false, isError: false, error: ''})
+        {data: [], isLoading: false, isError: false, error: ''})
 
    
 
@@ -23,7 +23,7 @@ export default function usePut(url: string) {
 
             if (response.status >= 200 && response.status < 300) {
                 dispatchData({type: 'DATA_FETCH_SUCCESS', payload: response.data})
-                
+
             } else {
                 console.log('unexpected error')
                 throw new Error('use post error occurred')

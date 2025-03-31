@@ -6,15 +6,12 @@ import BookResults from '../BookResults/BookResults'
 import { SearchIcon } from '../../../../Icons'
 
 interface Props {
-    bookSearch: BookshelfState,
     bookDispatch: Dispatch<BookSearchAction>
 }
 
-const BookSearchbar = ({bookSearch, bookDispatch}: Props) => {
+const BookSearchbar = ({bookDispatch}: Props) => {
 
     const {searchValue, setSearchValue, searchResults} = useSearch('ws://localhost:8000/ws/search/books/', 'get_books_data')
-
-    // console.log('book search bar results:', searchResults)
 
     return (
         <>

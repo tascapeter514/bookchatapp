@@ -32,6 +32,7 @@ urlpatterns = [
     path('api/user/bookshelf/<int:id>', add_user_bookshelf, name='add_user_bookshelf'),
     path('api/user/bookclub/<int:id>', add_user_bookclub, name='add_user_bookclub'),
     path('api/user/book/<int:id>', add_user_book, name='add_user_book'),
+    path('api/user/book/delete/<int:id>', delete_book, name='delete_book'),
 
     # UNFINISHED ROUTES? NEED WORK
      path('api/sendInvite', send_invite, name='send-invite'),
@@ -43,7 +44,7 @@ urlpatterns = [
      path('api/bookclub/addBook/<uuid:id>', add_book_to_bookclub, name='add_book_to_bookclub'),
      path('api/author/<uuid:id>', get_author_data, name='get_author_data'),
      path('api/fileUpload/<uuid:id>', upload_file, name='upload_file'),
-     path('api/book/delete/<uuid:id>', delete_book, name='delete_book'),
+     
      path('', include(router.urls))
 ]
 

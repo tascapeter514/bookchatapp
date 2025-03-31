@@ -12,10 +12,12 @@ const useDelete = (url: string) => {
         async <T extends object> (requestData: T) => {
         dispatchData({type: 'DATA_FETCH_INIT'})
 
+        console.log('delete request data:', requestData)
+
         try {
 
 
-            const response = await axios.delete(url, requestData)
+            const response = await axios.delete(url, {data: requestData})
 
             if (response.status >= 200 && response.status < 300) {
                 dispatchData({type: 'DATA_FETCH_SUCCESS', payload: response.data})

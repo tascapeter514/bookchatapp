@@ -100,6 +100,7 @@ const bookshelfReducer = (
                 isError: true,
                 error: action.payload
             }
+            
         default:
             throw new Error()
     }

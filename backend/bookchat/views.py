@@ -144,25 +144,6 @@ def add_user_book(request, **kwargs):
         return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-    # # print('user bookshelf id:', bookshelf_id, book_id)
-    
-    # current_user = User.objects.prefetch_related('bookshelves').get(id=user_id)
-
-    #  bookshelf_serializer = BookshelfSerializer(current_bookshelf)
-    #     print('bookshelf serializer:', bookshelf_serializer.data)
-    # print('current user bookshelves:', current_user.bookshelves.values())
-
-    # current_user_bookshelf = current_user.bookshelves.prefetch_related('titles').get(bookshelf_id=bookshelf_id)
-
-    # current_user_bookshelf.titles.add(current_book)
-
-   
-   
-
-    # serializer = BookshelfSerializer(current_user_bookshelf)
-    
-
-
 
 
 @api_view(['POST'])
@@ -203,27 +184,33 @@ def send_invite(request):
 
 @api_view(['DELETE'])
 def delete_book(request, **kwargs):
-    book_id = kwargs['id']
+    print('delete book check')
 
+    try:
+        print('delete request:', request)
+        print('request body:', request.body)
+        book_id = kwargs['id']
+        print('book id:', book_id)
+        bookshelf_id = request.data.get('bookshelfId')
 
-    bookshelf_id = request.data.get('bookshelf_id')
+        current_bookshelf = Bookshelf.objects.get(id=bookshelf_id)
+        current_book = Book.objects.get(id=book_id)
 
-    print('bookshelf id:', bookshelf_id)
+        print('current book:', current_book)
 
-   
+        book_serializer = BookSerializer(current_book)
 
-    current_bookshelf = Bookshelf.objects.get(bookshelf_id=bookshelf_id)
-    current_book = Book.objects.get(title_id=book_id)
+        print('deleted book serializer:', book_serializer.data)
+        
 
-    print('current book:', current_book)
+        return Response(book_serializer.data, status=status.HTTP_200_OK)
 
-    print('book id:', book_id)
+    except ValidationError as e:
+        return Response(str(e), status=status.HTTP_400_BAD_REQUEST)
 
-    current_bookshelf.titles.remove(current_book)
-
-    bookshelf_serializer = BookshelfSerializer(current_bookshelf)
-
-    return Response(bookshelf_serializer.data)
+    except Exception as e:
+        print(f'Error: {str(e)}')
+        return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 @api_view(['POST'])
 def add_user_bookshelf(request, id):
