@@ -4,7 +4,9 @@ import { Data } from "./dataReducer";
 
 
 export type BookshelfState = {
-    data: Bookshelf[] | Data[]
+    data: Bookshelf[] | Data[],
+    error: string,
+    isError: boolean
 }
 
 
@@ -33,12 +35,18 @@ type BookAddAction = {
     payload: {bookshelfId: number, newBook: Book | Data}
 }
 
+type BookshelfFailureAction = {
+    type: 'BOOKSHELF_ERROR',
+    payload: string
+}
+
 export type BookshelfAction = 
     | BookshelfLoadAction
     | BookshelfDeleteAction
     | BookshelfCreateAction
     | BookDeleteAction
     | BookAddAction
+    | BookshelfFailureAction
 
 
 const bookshelfReducer = (
@@ -85,6 +93,12 @@ const bookshelfReducer = (
                     )}
                     : bookshelf
                 ) 
+            }
+        case 'BOOKSHELF_ERROR':
+            return {
+                ...state,
+                isError: true,
+                error: action.payload
             }
         default:
             throw new Error()

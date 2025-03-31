@@ -29,7 +29,7 @@ interface UserProviderProps {
 export const UserContext = createContext<UserContextProps>({
     
     userState: {user: null, authToken: '', isLoggedIn: false, isLoading: false, isError: false, error: ''},
-    bookshelves: {data: []},
+    bookshelves: {data: [], isError: false, error: ''},
     bookclubs: {data: []},
     invitations: { data: []},
     userTabs: {activeTab: '', activeBookshelf: ''},
@@ -66,7 +66,7 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
       isError: false,
       error: ''
     })
-    const [bookshelves, bookshelfDispatch] = useReducer<Reducer<BookshelfState, BookshelfAction>>(bookshelfReducer, {data: []})
+    const [bookshelves, bookshelfDispatch] = useReducer<Reducer<BookshelfState, BookshelfAction>>(bookshelfReducer, {data: [], isError: false, error: ''})
     const [bookclubs, bookclubDispatch] = useReducer<Reducer<BookclubState, BookclubAction>>(bookclubReducer, {data: []})
     const [invitations, inviteDispatch] = useReducer<Reducer<InviteState, InviteAction>>(inviteReducer, {data: []})
     const [userTabs, tabsDispatch] = useReducer(userTabsReducer, {activeTab: 'accountTab', activeBookshelf: ''})

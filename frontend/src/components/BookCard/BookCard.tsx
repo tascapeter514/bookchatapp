@@ -1,19 +1,34 @@
 import { LikeIcon, DislikeIcon, CancelIcon } from '../common/Icons'
 import { Data } from '../../reducers/dataReducer'
+import { userContext } from '../common/Context/UserContext/UserContext'
+import { UserContext } from '../common/Context/UserContext/UserContext'
+import useDelete from '../common/hooks/useDelete'
 import { Book, Author } from '../../types'
 import './BookCard.css'
 
 interface Props {
-    children: Book | Data
+    children: Book | Data,
+    bookshelfId: number
 }
 
 
-const BookCard = ({children}: Props) => {
+const BookCard = ({children, bookshelfId}: Props) => {
+
+    const { bookshelfDispatch } = userContext()
+    const {data, makeRequest} = useDelete(`http://localhost:8000/api/book/delete/${children.id}`)
+
+    const deleteBook = () => {
+
+        try {
+            
+        }
+
+    }
 
     return(
         <article className="book-card" >
             <div className="img-overlay">
-                <CancelIcon ></CancelIcon>
+                <CancelIcon onClick={deleteBook}></CancelIcon>
                 <img src={children.imageLinks?.thumbnail} alt="book-card-cover" className='book-card-img' />
                 <div className="book-card-buttons">
                     <LikeIcon></LikeIcon>
