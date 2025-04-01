@@ -16,6 +16,9 @@ const UserDashboard = () => {
     const { userTabs } = userContext()
     const [mobileNav, navDispatch] = useReducer(mobileNavReducer, {open: false, isExiting: false})
 
+    const { userState } = userContext()
+
+    console.log('user dashboard user state:', userState)
 
     return(
         <div className='dashboard-container'>

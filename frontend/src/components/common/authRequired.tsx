@@ -1,4 +1,5 @@
 import { Outlet, Navigate } from 'react-router-dom'
+import { userContext } from './Context/UserContext/UserContext'
 
 
 
@@ -11,6 +12,10 @@ const AuthRequired = (  ) => {
     // if they are authenticated render the outlet
 
     const activeUserToken = sessionStorage.getItem('authToken')
+    const { userState } = userContext()
+
+    console.log('active user token authrequired:', activeUserToken)
+    console.log('user state authrequired:', userState)
 
     const isAuthenticated = activeUserToken ? true : false
 

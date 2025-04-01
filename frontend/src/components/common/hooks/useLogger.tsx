@@ -1,5 +1,5 @@
-import { useCallback, useEffect } from 'react'
-import { userContext } from '../Context/UserContext/UserContext'
+import { useCallback, useReducer, Reducer } from 'react'
+import dataReducer, {DataState, DataAction} from '../../../reducers/dataReducer'
 import axios, { AxiosError } from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { axiosErrorHandler } from '../../../messages'
@@ -8,16 +8,18 @@ export default function useLogger() {
 
 
     const navigate = useNavigate()
-    const {userState, userDispatch} = userContext()
+    const [logInDataState, dispatchLogin] = useReducer<Reducer<DataState, DataAction>>(dataReducer,{
+        data: [], isError: false, isLoading: false, error: ''
+    })
     
+  
 
     const authenticate = useCallback( async (url: string, formData: FormData) => {
         
-        userDispatch({type: 'USER_FETCH_INIT'})
+        dispatchLogin({type: 'DATA_FETCH_INIT'})
         const data = Object.fromEntries(formData);
 
         try {
-            console.log('log in response check')
             const response = await axios.post(url, data)
 
             console.log('user logger response:', response)
@@ -27,75 +29,51 @@ export default function useLogger() {
 
                 console.log('response:', response.data)
 
-                const {active_user, auth_token} = response.data;
-                userDispatch({type: 'LOGIN_ACTIVE_USER', payload: {user: active_user, authToken: auth_token }})
-                sessionStorage.setItem('authToken', JSON.stringify(auth_token))
-                sessionStorage.setItem('activeUser', JSON.stringify(active_user))
+                // const {active_user, auth_token} = response.data;
+                dispatchLogin({type: 'DATA_FETCH_SUCCESS', payload: response.data})
+                // sessionStorage.setItem('authToken', JSON.stringify(auth_token))
+                // sessionStorage.setItem('activeUser', JSON.stringify(active_user))
                 navigate('/userDashboard')
                 
 
-            }  else {
-                console.log('unexpected response')
-                userDispatch({'type': 'USER_ERROR', payload: 'Unexpected server response'})
-            }
-
-        } catch(err: any) {
-            console.log("authenticate catch handler:", err)
-            err instanceof AxiosError 
-            ? userDispatch({type: 'USER_ERROR', payload: axiosErrorHandler(err)})
-            : userDispatch({type: 'USER_ERROR', payload: err})
-
-        }
-
-    }, [])
-
-    const logout = useCallback( async () => {
-        console.log('logout check')
-        try {
-
-            const response = await axios.post('http://localhost:8000/api/auth/logout', 
-                {},
-                {
-                    headers: {
-                        Authorization: `Token ${userState.authToken}`
-                    }
-                }
-            )
-            console.log('logout response:', response)
-
-            if (response.status === 204) {
-                console.log('Logout successful');
-                userDispatch({type: 'LOGOUT_ACTIVE_USER', payload: {user: null, authToken: ''}})
+            } else if (response.status >= 200 && response.status < 300 && !response.data.auth_token) {
+                dispatchLogin({type: 'DATA_FETCH_FAILURE', payload: 'Login Successful but no auth token'})
                 sessionStorage.removeItem('authToken')
                 sessionStorage.removeItem('activeUser')
-                sessionStorage.removeItem('userData')
                 navigate('/login')
-                
+
+            } else {
+                console.log('unexpected response')
+                dispatchLogin({type: 'DATA_FETCH_FAILURE', payload: 'Unexpected response while logging in'})
             }
 
         } catch(err: any) {
-            console.log("logout catch handler:", err)
+            console.log("type of error:", err instanceof AxiosError)
+            console.log("catch handler:", err)
             err instanceof AxiosError 
-            ? userDispatch({type: 'USER_ERROR', payload: axiosErrorHandler(err)})
-            : userDispatch({type: 'USER_ERROR', payload: err})
+            ? dispatchLogin({type: 'DATA_FETCH_FAILURE', payload: axiosErrorHandler(err)})
+            : dispatchLogin({type: 'DATA_FETCH_FAILURE', payload: err})
+
         }
+
     }, [])
+    
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        if (!userState.user?.id) {
-            const storedUser = sessionStorage.getItem('activeUser')
-            const storedToken = sessionStorage.getItem('authToken')
+    //     if (!userState.user?.id) {
+    //         const storedUser = sessionStorage.getItem('activeUser')
+    //         const storedToken = sessionStorage.getItem('authToken')
   
-        if (storedUser && storedToken) {
-            console.log('stored user:', storedUser)
-            userDispatch({type: 'LOGIN_ACTIVE_USER', payload: {user: JSON.parse(storedUser), authToken: JSON.parse(storedToken)}})
-           }
+    //     // if (storedUser && storedToken) {
+    //     //     console.log('stored user:', storedUser)
+    //     //     userDispatch({type: 'LOGIN_ACTIVE_USER', payload: {user: JSON.parse(storedUser), authToken: JSON.parse(storedToken)}})
+    //     //    }
 
-        }
-    }, [userState.user?.id, userState.authToken])
+    //     }
+    // }, [userState.user?.id, userState.authToken])
 
    
-    return {authenticate, logout}
+    return {logInDataState, authenticate}
 
 }

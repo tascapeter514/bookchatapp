@@ -2,7 +2,7 @@ import { ActiveUser, AuthToken } from "../types";
 
 export type UserState = {
     user: ActiveUser | null,
-    authToken: AuthToken,
+    authToken: AuthToken | null,
     isLoggedIn: boolean,
     isLoading: boolean,
     isError: boolean,
@@ -58,6 +58,9 @@ const userReducer = (
     state: UserState,
     action: UserAction
 ) => {
+
+    console.log('user reducer state:', state)
+    console.log('user reducer action:', action)
     switch(action.type) {
 
         case 'USER_FETCH_INIT':

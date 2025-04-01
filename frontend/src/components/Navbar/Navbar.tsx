@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import useLogger from '../common/hooks/useLogger.tsx'
 import { userContext } from '../common/Context/UserContext/UserContext.tsx'
@@ -9,14 +9,16 @@ const Navbar = () => {
 
   const [showNavbar] = useState(false)
   const {userState} = userContext()
-  const { logout } = useLogger()
+  // const { logout } = useLogger()
   
 
 
     const handleLogout = async () => {
       console.log('handle logout check')
-      await logout()
+      // await logout()
     }
+
+
    
     const guestLinks = (
         <li className='login-link'><Link to='/login'>Log In</Link></li>
@@ -32,6 +34,11 @@ const Navbar = () => {
 
     console.log('navbar auth token:', userState.authToken);
     console.log('navbar user state:', userState)
+
+
+    useEffect(() => {
+      console.log('Navbar re-rendering with new userState:', userState);
+  }, [userState]);
     
 
     return(
@@ -54,7 +61,7 @@ const Navbar = () => {
                         <li className='main-list-element'><Link to='#'>Books</Link></li>
                         <li className='main-list-element'><Link to='#'>Authors</Link></li>
                         <li className='main-list-element'><Link to='#'>About</Link></li>
-                        { userState.authToken ? authLinks : guestLinks}
+                        { userState.authToken && userState.isLoggedIn ? authLinks : guestLinks}
                     </ul>
                 </nav>
             </div> 

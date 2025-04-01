@@ -2,7 +2,7 @@ import './Login.css'
 import SubHeader from '../common/SubHeader/SubHeader'
 import { userContext } from '../common/Context/UserContext/UserContext'
 import ErrorMessage from '../Messages/ErrorMessage/ErrorMessage'
-import useLogger from '../common/hooks/useLogger'
+
 
 
 
@@ -11,12 +11,11 @@ import useLogger from '../common/hooks/useLogger'
 const Login = () => {
 
 
-    const { userState } = userContext()
-    const { authenticate } = useLogger()
+    const { userState, handleLogin } = userContext()
 
-    const handleLogin = async (formData: FormData) => {await authenticate('http://localhost:8000/api/auth/login', formData)}
+    
 
-
+    console.log('login USERSTATE:', userState)
 
     return(
         <div className="login-container">

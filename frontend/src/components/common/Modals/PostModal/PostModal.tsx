@@ -1,6 +1,7 @@
 import './PostModal.css'
-import {  useState, FormEvent, RefObject, useEffect } from 'react'
+import {  useState, FormEvent, RefObject, useEffect, useRef } from 'react'
 import { userContext } from '../../Context/UserContext/UserContext'
+import { Data } from '../../../../reducers/dataReducer'
 import ErrorMessage from '../../../Messages/ErrorMessage/ErrorMessage'
 import Button from '../../Buttons/Button/Button'
 import usePost from '../../hooks/usePost'
@@ -20,16 +21,19 @@ const PostModal = ({ref, url, type}: Props) => {
     const { bookclubDispatch, bookshelfDispatch } = userContext()
     const { data, makeRequest } = usePost(url)
     const [name, setName] = useState<string>('')
+    const prevDataRef = useRef<Data | null>(null)
 
 
 
     useEffect(() => {
 
-        if (!data.isLoading && !data.isError && data.data) {
+        if (!data.isLoading && !data.isError && data.data !== prevDataRef.current) {
+            prevDataRef.current = data.data
             if (type === 'bookclub') {
                 bookclubDispatch({type: 'ADD_BOOKCLUB', payload: data.data})
 
             } else if (type === 'bookshelf') {
+                console.log('post modal called check')
                 bookshelfDispatch({type: 'ADD_BOOKSHELF', payload: data.data})
             }
         }

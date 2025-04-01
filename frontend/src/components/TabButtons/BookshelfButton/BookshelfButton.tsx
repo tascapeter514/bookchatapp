@@ -25,7 +25,7 @@ const BookshelfButton = () => {
 
     console.log('bookshelves:', bookshelves)
 
-    const bookshelfNames = bookshelves.data.map((bookshelf, index) => {
+    const bookshelfNames = bookshelves.data?.map((bookshelf, index) => {
 
         console.log('bookshelf:', bookshelf)
 

@@ -10,6 +10,7 @@ import ErrorBoundary from './components/common/ErrorBoundary.tsx'
 import AuthRequired from './components/common/authRequired.tsx'
 import BookclubDataProvider from './components/common/Context/BookclubContext/BookclubContext.tsx'
 import CheckMembers from './components/common/CheckMembers.tsx'
+import UserDataProvider  from './components/common/Context/UserContext/UserContext.tsx'
 import './App.css';
 
 
@@ -19,22 +20,25 @@ function App() {
   return (
 
     <BrowserRouter>
-      <Navbar />
-      <Routes>
-            <Route path='/' element={<Homepage />} />
-            <Route path='/book/:id' element={<Bookpage />} />
-            <Route path='/author/:id' element={<AuthorPage />}></Route>
-            <Route path='/login' element={<Login />}></Route>
-            <Route element={<AuthRequired />}>
-                <Route path='/userDashboard' element={<ErrorBoundary><UserDashboard /></ErrorBoundary>}></Route>
-                  <Route path='/bookclub/:id' element={
-                    <BookclubDataProvider>
-                      <CheckMembers><BookclubPage /></CheckMembers>
-                      </BookclubDataProvider>
-                  }>
-                  </Route>
-            </Route>
-      </Routes>
+      <UserDataProvider>
+     
+        <Navbar />
+        <Routes>
+              <Route path='/' element={<Homepage />} />
+              <Route path='/book/:id' element={<Bookpage />} />
+              <Route path='/author/:id' element={<AuthorPage />}></Route>
+              <Route path='/login' element={<Login />}></Route>
+              <Route element={<AuthRequired />}>
+                  <Route path='/userDashboard' element={<ErrorBoundary><UserDashboard /></ErrorBoundary>}></Route>
+                    <Route path='/bookclub/:id' element={
+                      <BookclubDataProvider>
+                        <CheckMembers><BookclubPage /></CheckMembers>
+                        </BookclubDataProvider>
+                    }>
+                    </Route>
+              </Route>
+        </Routes>
+      </UserDataProvider>
     </BrowserRouter>
     
 

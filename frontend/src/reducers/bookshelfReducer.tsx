@@ -53,26 +53,33 @@ const bookshelfReducer = (
     state: BookshelfState,
     action: BookshelfAction
 ) => {
+    console.log('reducer - action', action)
+    console.log('reducer -- state:', state)
+    
 
     switch(action.type) {
         case 'LOAD_BOOKSHELVES':
             console.log('Reducer - LOAD_BOOKSHELVES - action.payload:', action.payload);
+            
             return {
                 ...state,
-                data: [...state.data, ...action.payload]
+                data: state.data
+                ? [...state.data, ...action.payload]
+                : []
 
             }
         case 'REMOVE_BOOKSHELF':
             return {
                 ...state,
-                data: state.data.filter(
+                data: state.data?.filter(
                     (bookshelf) => action.payload.id !== bookshelf.id
                 )
             }
         case 'ADD_BOOKSHELF':
             return {
                 ...state,
-                data: [...state.data, action.payload]
+                data: state.data? [...state.data, action.payload]
+                : [action.payload]
             }
         case 'ADD_BOOK':
             return {
