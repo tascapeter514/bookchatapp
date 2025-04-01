@@ -15,7 +15,7 @@ interface UserContextProps {
   bookclubs: BookclubState,
   invitations: InviteState,
   userTabs: TabState,
-  userDispatch: Dispatch<UserAction>,
+  dispatchUser: Dispatch<UserAction>,
   bookshelfDispatch: Dispatch<BookshelfAction>,
   bookclubDispatch: Dispatch<BookclubAction>,
   inviteDispatch: Dispatch<InviteAction>
@@ -35,8 +35,8 @@ export const UserContext = createContext<UserContextProps>({
     bookclubs: {data: []},
     invitations: { data: []},
     userTabs: {activeTab: '', activeBookshelf: ''},
-    handleLogin : async (formData: FormData) => {},
-    userDispatch: () => {},
+    handleLogin : async () => {},
+    dispatchUser: () => {},
     bookshelfDispatch: () => {},
     bookclubDispatch: () => {},
     inviteDispatch: () => {},
@@ -48,32 +48,29 @@ export const UserContext = createContext<UserContextProps>({
 // console.log('log in fired' ) 
 const UserDataProvider = ({ children }: UserProviderProps) => {
 
-  const [userState, userDispatch] = useReducer<Reducer<UserState, UserAction>>(userReducer, {
-    user: null,
-    authToken: '',
-    isLoggedIn: false,
-    isLoading: false,
-    isError: false,
-    error: ''
-  })
-    
+
     const [bookshelves, bookshelfDispatch] = useReducer<Reducer<BookshelfState, BookshelfAction>>(bookshelfReducer, {data: [], isError: false, error: ''})
   
     const [bookclubs, bookclubDispatch] = useReducer<Reducer<BookclubState, BookclubAction>>(bookclubReducer, {data: []})
     const [invitations, inviteDispatch] = useReducer<Reducer<InviteState, InviteAction>>(inviteReducer, {data: []})
     const [userTabs, tabsDispatch] = useReducer(userTabsReducer, {activeTab: 'accountTab', activeBookshelf: ''})
-    const { authenticate} = useLogger(userDispatch)
+    const { userState, dispatchUser, authenticate} = useLogger()
     const {data, makeRequest} = useSocket('ws://localhost:8000/ws/userData')
     const handleLogin = async (formData: FormData) => { await authenticate('http://localhost:8000/api/auth/login', formData)}
     
-    console.log('user context userState:', userState)
-    
+
+
+  console.log('user context userState:', userState)
+  console.log('user context data:', data)
 
     useEffect(() => {
 
       console.log('user state use effect')
 
-      if (!userState.user?.id) return
+      if (!userState.user) {
+        console.log('no user state')
+        return
+      }
       console.log('user context active user:', userState.user)
 
       makeRequest(userState.user?.id)
@@ -84,6 +81,13 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
     useEffect(() => {
       console.log('data use effect')
       console.log('use effect data:', data.data)
+
+      if (!data.data.type) {
+        console.log('no socket data')
+        return
+      }
+
+
       if (data.data && data.data.type == 'get_user_data') {
 
         
@@ -95,13 +99,12 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
         sessionStorage.setItem('bookclubs', JSON.stringify(data.data.bookclubs))
         sessionStorage.setItem('invitations', JSON.stringify(data.data.invitations))
         
-        
       }
 
     }, [data.data])
 
-    sessionStorage.removeItem('activeUser')
-    sessionStorage.removeItem('authToken')
+    // sessionStorage.removeItem('activeUser')
+    // sessionStorage.removeItem('authToken')
 
 
     useEffect(() => {
@@ -124,7 +127,7 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
 
             console.log('userState storage check:', userState)
 
-            userDispatch({type: 'LOGIN_ACTIVE_USER', payload: {user: storedUser, authToken: storedToken }})
+            dispatchUser({type: 'LOGIN_ACTIVE_USER', payload: {user: storedUser, authToken: storedToken }})
 
           } 
 
@@ -170,14 +173,14 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
       bookclubs,
       invitations,
       userTabs,
-      userDispatch,
+      dispatchUser,
       bookshelfDispatch,
       bookclubDispatch,
       inviteDispatch,
       tabsDispatch,
       handleLogin
 
-    }), [userState])
+    }), [userState, userTabs])
 
       return (
 

@@ -14,10 +14,11 @@ const AuthRequired = (  ) => {
     const activeUserToken = sessionStorage.getItem('authToken')
     const { userState } = userContext()
 
-    console.log('active user token authrequired:', activeUserToken)
+    console.log('active user token authrequired:', userState.authToken)
     console.log('user state authrequired:', userState)
 
-    const isAuthenticated = activeUserToken ? true : false
+    const isAuthenticated = userState.authToken ? true : false
+    console.log('is authenticated:', isAuthenticated)
 
     if (!isAuthenticated) {
         return <Navigate to='/login' />

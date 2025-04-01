@@ -35,8 +35,8 @@ const BookshelfButton = () => {
                 onClick={() => tabsDispatch({type: 'SET_BOOKSHELF_TAB', payload: `bookshelfTab${index}`})}
                 className={userTabs.activeBookshelf === `bookshelfTab${index}`  ? 'active' : ''}
             >   
-                <a id={`bookshelf-${index + 4}`} href={`#${bookshelf.name.toLowerCase()}`}>
-                    {bookshelf.name}
+                <a id={`bookshelf-${index + 4}`} href={`#${bookshelf.name?.toLowerCase()}`}>
+                    {bookshelf.name == undefined ? '' : bookshelf.name}
                 </a>
             </li>
         )

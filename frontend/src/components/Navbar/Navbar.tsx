@@ -36,9 +36,7 @@ const Navbar = () => {
     console.log('navbar user state:', userState)
 
 
-    useEffect(() => {
-      console.log('Navbar re-rendering with new userState:', userState);
-  }, [userState]);
+  
     
 
     return(
