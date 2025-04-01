@@ -1,29 +1,101 @@
-import { useCallback, useReducer, Reducer } from 'react'
-import dataReducer, {DataAction, DataState} from '../../../reducers/dataReducer';
+import { useCallback, useReducer } from 'react'
+import { Bookclub, Bookshelf, Invitation } from '../../../types';
+
+
+type SocketData = {
+  type: string,
+  bookclubs: Bookclub[] | null,
+  bookshelves: Bookshelf[] | null,
+  invitations: Invitation[] | null
+
+}
+
+type SocketState = {
+
+  data: SocketData,
+  isLoading: boolean,
+  isError: boolean,
+  error: string
+}
+
+type SocketFetchInitAction = {
+  type: 'SOCKET_FETCH_INIT'
+}
+
+type SocketFetchSuccessAction = {
+  type: 'SOCKET_FETCH_SUCCESS',
+  payload: SocketData
+}
+
+type SocketFetchFailureAction = {
+  type: 'SOCKET_FETCH_FAILURE',
+  payload: string
+}
+
+type SocketAction = SocketFetchInitAction |  SocketFetchSuccessAction | SocketFetchFailureAction
+
+const socketReducer = (state: SocketState, action: SocketAction) => {
+      switch(action.type) {
+        case 'SOCKET_FETCH_INIT':
+          return {
+            ...state,
+            isLoading: true,
+          }
+        
+        case 'SOCKET_FETCH_SUCCESS':
+          return {
+            ...state,
+            isLoading: false,
+            data: action.payload
+          }
+
+        case 'SOCKET_FETCH_FAILURE':
+          return {
+            ...state,
+            isLoading: false,
+            isError: true,
+            error: action.payload
+          }
+
+        default:
+          throw new Error
+
+      }
+}
+
 
 
 export default function useSocket(url: string) {
 
-    const [data, dispatchData] = useReducer<Reducer<DataState, DataAction>>(dataReducer,
-         {data: [], isLoading: false, isError: false, error: ''} )
+    const [socketState, dispatchSocket] = useReducer(socketReducer, {
+      data: {
+        type: '',
+        bookclubs: null,
+        bookshelves: null,
+        invitations: null,
+      },
+      isLoading: false,
+      isError: false,
+      error: ''
+
+    })
 
 
-    const makeRequest = useCallback( async (id: number) => {
+    const connectSocket = useCallback( async (id: number) => {
 
-        dispatchData({type: 'DATA_FETCH_INIT'})
+        dispatchSocket({type: 'SOCKET_FETCH_INIT'})
         try {
             const socket = new WebSocket(`${url}/${id}`)
     
             socket.onmessage = (event) => {
             //   const data = JSON.parse(event.data);
                 console.log('use socket data:', JSON.parse(event.data))
-                dispatchData({type: 'DATA_FETCH_SUCCESS', payload: JSON.parse(event.data)})
+                dispatchSocket({type: 'SOCKET_FETCH_SUCCESS', payload: JSON.parse(event.data) })
             }
     
             socket.onerror = (event) => {
               console.error('WebSocket connection failed:', event)
-            //   setError(new Error('Search websocket failed to connect'))
-              dispatchData({type: 'DATA_FETCH_FAILURE', payload: 'Search websocket failed to connect'})
+              dispatchSocket({type: 'SOCKET_FETCH_FAILURE', payload: 'User Data websocket failed to connect'})
               socket.close();
           }
     
@@ -34,14 +106,14 @@ export default function useSocket(url: string) {
     
     
           } catch (err: any) {
-            dispatchData({type: 'DATA_FETCH_FAILURE', payload: 'Search websocket failure'})
+            dispatchSocket({type: 'SOCKET_FETCH_FAILURE', payload: 'User data websocket failure'})
             
           }
         
 
     }, [])
     
-
-    return {data, makeRequest}
+    return {socketState, connectSocket}
+    
 
 }

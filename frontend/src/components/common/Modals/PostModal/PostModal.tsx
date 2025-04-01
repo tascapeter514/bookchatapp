@@ -9,7 +9,7 @@ import usePost from '../../hooks/usePost'
 
 interface Props {
     ref: RefObject<HTMLDialogElement>,
-    type: 'bookshelf' | 'bookclub',
+    type: string,
     url: string
 }
 
@@ -27,7 +27,10 @@ const PostModal = ({ref, url, type}: Props) => {
 
     useEffect(() => {
 
-        if (!data.isLoading && !data.isError && data.data !== prevDataRef.current) {
+        console.log('use post data:', data)
+        console.log('use post type:', type)
+
+        if (!data.isLoading && !data.isError && data.data.length > 0) {
             prevDataRef.current = data.data
             if (type === 'bookclub') {
                 bookclubDispatch({type: 'ADD_BOOKCLUB', payload: data.data})
@@ -38,7 +41,7 @@ const PostModal = ({ref, url, type}: Props) => {
             }
         }
 
-    }, [data, type, bookclubDispatch, bookshelfDispatch])
+    }, [data, type, bookclubDispatch])
 
 
 

@@ -1,4 +1,4 @@
-
+import { Bookshelf, Bookclub, Invitation } from "../types"
 
 
 
@@ -10,7 +10,7 @@ export type Data = {
 }
 
 export type DataState = {
-    data: Data,
+    data: Data | Bookshelf[] | Bookclub[] | Invitation[],
     isLoading: boolean,
     isError: boolean,
     error: string 

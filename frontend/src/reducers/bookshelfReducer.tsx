@@ -4,7 +4,7 @@ import { Data } from "./dataReducer";
 
 
 export type BookshelfState = {
-    data: Bookshelf[] | Data[],
+    data: Bookshelf[] | null,
     error: string,
     isError: boolean
 }
@@ -59,7 +59,6 @@ const bookshelfReducer = (
 
     switch(action.type) {
         case 'LOAD_BOOKSHELVES':
-            console.log('Reducer - LOAD_BOOKSHELVES - action.payload:', action.payload);
             
             return {
                 ...state,
@@ -76,15 +75,18 @@ const bookshelfReducer = (
                 )
             }
         case 'ADD_BOOKSHELF':
-            return {
+            console.log('add bookshelf payload:', action.payload)
+            const bookshelfState = {
                 ...state,
-                data: state.data? [...state.data, action.payload]
+                data: state.data ? [...state.data, action.payload]
                 : [action.payload]
             }
+            console.log('add book bookshelf state:', bookshelfState)
+            return bookshelfState
         case 'ADD_BOOK':
             return {
                 ...state,
-                data: state.data.map(bookshelf => {
+                data: state.data?.map(bookshelf => {
                     if (bookshelf.id === action.payload.bookshelfId) {
                         return {...bookshelf, books: [...bookshelf.books, action.payload.newBook]};
                     }
@@ -94,7 +96,7 @@ const bookshelfReducer = (
         case 'REMOVE_BOOK':
             return {
                 ...state,
-                data: state.data.map(bookshelf => 
+                data: state.data?.map(bookshelf => 
                     bookshelf.id === action.payload.bookshelfId ?
                     {...bookshelf, books: bookshelf.books.filter(
                         (book: Book) => book.id !== action.payload.oldBook.id

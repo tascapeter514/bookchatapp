@@ -59,8 +59,8 @@ const userReducer = (
     action: UserAction
 ) => {
 
-    console.log('user reducer state:', state)
-    console.log('user reducer action:', action)
+    // console.log('user reducer state:', state)
+    // console.log('user reducer action:', action)
     switch(action.type) {
 
         case 'USER_FETCH_INIT':

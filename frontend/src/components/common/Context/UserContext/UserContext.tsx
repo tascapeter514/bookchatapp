@@ -88,11 +88,11 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
       }
 
 
-      if (data.data && data.data.type == 'get_user_data') {
+      if (data.data.type == 'get_user_data') {
 
         
         console.log('user context incoming data:', data.data.bookshelves)
-        // bookshelfDispatch({type: 'LOAD_BOOKSHELVES', payload: data.data.bookshelves})
+        bookshelfDispatch({type: 'LOAD_BOOKSHELVES', payload: data.data.bookshelves})
         bookclubDispatch({type: 'LOAD_BOOKCLUBS', payload: data.data.bookclubs})
         inviteDispatch({type: 'LOAD_INVITES', payload: data.data.invitations})
         sessionStorage.setItem('bookshelves', JSON.stringify(data.data.bookshelves))
@@ -101,7 +101,7 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
         
       }
 
-    }, [data.data])
+    }, [data.data.type])
 
     // sessionStorage.removeItem('activeUser')
     // sessionStorage.removeItem('authToken')
@@ -109,7 +109,7 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
 
     useEffect(() => {
       console.log('stored data use effect')
-          //  const storedUserData = sessionStorage.getItem('userData') ? JSON.parse(sessionStorage.getItem('userData') as string) : null;
+
           const storedBookclubs = sessionStorage.getItem('bookclubs') ? JSON.parse(sessionStorage.getItem('bookclubs') as string) : null
           const storedInvites = sessionStorage.getItem('invitations') ? JSON.parse(sessionStorage.getItem('invitations') as string) : null
           const storedUser = sessionStorage.getItem('activeUser') ? JSON.parse(sessionStorage.getItem('activeUser') as string) : null
@@ -131,12 +131,15 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
 
           } 
 
-            
+          if (!userState.isLoggedIn) {
+            sessionStorage.removeItem('bookclubs')
+            sessionStorage.removeItem('invitations')
+            sessionStorage.removeItem('activeUser')
+            sessionStorage.removeItem('authToken')
+            sessionStorage.removeItem('bookshelves')
+          }
 
-          
-
-
-      
+   
     }, [])
 
 
@@ -180,11 +183,10 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
       tabsDispatch,
       handleLogin
 
-    }), [userState, userTabs])
+    }), [userState, userTabs, bookshelves])
 
       return (
 
-        // pass values into useMemo?
         // REMOVED USERDATA AND SETUSERDATA
         <UserContext.Provider
             value={userContextValue}>
