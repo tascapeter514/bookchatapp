@@ -1,38 +1,38 @@
 import { Bookshelf, Book } from "../types";
-import { Data } from "./dataReducer";
 
 
 
 export type BookshelfState = {
     data: Bookshelf[] | null,
     error: string,
-    isError: boolean
+    isError: boolean,
+    isLoaded: boolean
 }
 
 
 type BookshelfLoadAction = {
     type: 'LOAD_BOOKSHELVES',
-    payload: Bookshelf[] | Data[]
+    payload: Bookshelf[]
 }
 
 type BookshelfCreateAction = {
     type: 'ADD_BOOKSHELF',
-    payload: Bookshelf | Data
+    payload: Bookshelf
 }
 
 type BookshelfDeleteAction = {
     type: 'REMOVE_BOOKSHELF';
-    payload: Bookshelf | Data
+    payload: Bookshelf
 }
 
 type BookDeleteAction = {
     type: 'REMOVE_BOOK';
-    payload: {bookshelfId: number, oldBook: Book | Data}
+    payload: {bookshelfId: number, oldBook: Book}
 }
 
 type BookAddAction = {
     type: 'ADD_BOOK';
-    payload: {bookshelfId: number, newBook: Book | Data}
+    payload: {bookshelfId: number, newBook: Book}
 }
 
 type BookshelfFailureAction = {
@@ -62,52 +62,49 @@ const bookshelfReducer = (
             
             return {
                 ...state,
-                data: state.data
-                ? [...state.data, ...action.payload]
-                : []
+                data: action.payload,
+                isLoaded: true
 
             }
         case 'REMOVE_BOOKSHELF':
             return {
                 ...state,
-                data: state.data?.filter(
+                data: state.data ? state.data.filter(
                     (bookshelf) => action.payload.id !== bookshelf.id
-                )
+                ) : null
             }
         case 'ADD_BOOKSHELF':
             console.log('add bookshelf payload:', action.payload)
-            const bookshelfState = {
+            return {
                 ...state,
                 data: state.data ? [...state.data, action.payload]
-                : [action.payload]
+                : action.payload
             }
-            console.log('add book bookshelf state:', bookshelfState)
-            return bookshelfState
+
         case 'ADD_BOOK':
             return {
                 ...state,
-                data: state.data?.map(bookshelf => {
+                data: state.data ? state.data.map(bookshelf => {
                     if (bookshelf.id === action.payload.bookshelfId) {
                         return {...bookshelf, books: [...bookshelf.books, action.payload.newBook]};
                     }
                     return bookshelf;
-                })
+                }) : null
             }
         case 'REMOVE_BOOK':
             return {
                 ...state,
-                data: state.data?.map(bookshelf => 
-                    bookshelf.id === action.payload.bookshelfId ?
-                    {...bookshelf, books: bookshelf.books.filter(
-                        (book: Book) => book.id !== action.payload.oldBook.id
-                    )}
+                data: state.data ? state.data.map(bookshelf => 
+                    bookshelf.id === action.payload.bookshelfId 
+                    ? {...bookshelf, books: bookshelf.books.filter((book: Book) => book.id !== action.payload.oldBook.id)}
                     : bookshelf
-                ) 
+                ) : null
             }
         case 'BOOKSHELF_ERROR':
             return {
                 ...state,
                 isError: true,
+                isLoaded: false,
                 error: action.payload
             }
             

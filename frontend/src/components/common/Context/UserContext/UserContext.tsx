@@ -1,6 +1,7 @@
 import {createContext, useEffect, Dispatch, ReactNode, useContext, useReducer, Reducer, useMemo, useState} from 'react'
 import userReducer, {UserState, UserAction} from '../../../../reducers/userReducer.tsx'
 import { Data } from '../../../../reducers/dataReducer.tsx';
+import { Bookshelf } from '../../../../types.ts';
 import bookshelfReducer, {BookshelfState, BookshelfAction} from '../../../../reducers/bookshelfReducer.tsx';
 import bookclubReducer, {BookclubState, BookclubAction} from '../../../../reducers/bookclubReducer.tsx';
 import inviteReducer, {InviteState, InviteAction} from '../../../../reducers/inviteReducer.tsx';
@@ -31,7 +32,7 @@ interface UserProviderProps {
 export const UserContext = createContext<UserContextProps>({
     
     userState: {user: null, authToken: '', isLoggedIn: false, isLoading: false, isError: false, error: ''},
-    bookshelves: {data: [], isError: false, error: ''},
+    bookshelves: {data: [], isError: false, error: '', isLoaded: false},
     bookclubs: {data: []},
     invitations: { data: []},
     userTabs: {activeTab: '', activeBookshelf: ''},
@@ -49,19 +50,19 @@ export const UserContext = createContext<UserContextProps>({
 const UserDataProvider = ({ children }: UserProviderProps) => {
 
 
-    const [bookshelves, bookshelfDispatch] = useReducer<Reducer<BookshelfState, BookshelfAction>>(bookshelfReducer, {data: [], isError: false, error: ''})
+    const [bookshelves, bookshelfDispatch] = useReducer<Reducer<BookshelfState, BookshelfAction>>(bookshelfReducer, {data: null, isError: false, error: '', isLoaded: false})
   
     const [bookclubs, bookclubDispatch] = useReducer<Reducer<BookclubState, BookclubAction>>(bookclubReducer, {data: []})
     const [invitations, inviteDispatch] = useReducer<Reducer<InviteState, InviteAction>>(inviteReducer, {data: []})
     const [userTabs, tabsDispatch] = useReducer(userTabsReducer, {activeTab: 'accountTab', activeBookshelf: ''})
     const { userState, dispatchUser, authenticate} = useLogger()
-    const {data, makeRequest} = useSocket('ws://localhost:8000/ws/userData')
+    const {socketState, connectSocket} = useSocket('ws://localhost:8000/ws/userData')
     const handleLogin = async (formData: FormData) => { await authenticate('http://localhost:8000/api/auth/login', formData)}
     
 
 
   console.log('user context userState:', userState)
-  console.log('user context data:', data)
+  console.log('user context data:', socketState.data)
 
     useEffect(() => {
 
@@ -73,35 +74,35 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
       }
       console.log('user context active user:', userState.user)
 
-      makeRequest(userState.user?.id)
-      console.log('user data:', data)
+      connectSocket(userState.user?.id)
+      console.log('user data:', socketState.data)
 
-    }, [userState.user?.id, makeRequest])
+    }, [userState.user?.id, connectSocket])
 
     useEffect(() => {
       console.log('data use effect')
-      console.log('use effect data:', data.data)
+      console.log('use effect data:', socketState.data)
 
-      if (!data.data.type) {
+      if (!socketState.data.type) {
         console.log('no socket data')
         return
       }
 
 
-      if (data.data.type == 'get_user_data') {
+      if (socketState.data.type == 'get_user_data') {
 
         
-        console.log('user context incoming data:', data.data.bookshelves)
-        bookshelfDispatch({type: 'LOAD_BOOKSHELVES', payload: data.data.bookshelves})
-        bookclubDispatch({type: 'LOAD_BOOKCLUBS', payload: data.data.bookclubs})
-        inviteDispatch({type: 'LOAD_INVITES', payload: data.data.invitations})
-        sessionStorage.setItem('bookshelves', JSON.stringify(data.data.bookshelves))
-        sessionStorage.setItem('bookclubs', JSON.stringify(data.data.bookclubs))
-        sessionStorage.setItem('invitations', JSON.stringify(data.data.invitations))
+        console.log('user context incoming data:', socketState.data.bookshelves)
+        bookshelfDispatch({type: 'LOAD_BOOKSHELVES', payload: socketState.data.bookshelves as Bookshelf[]})
+        // bookclubDispatch({type: 'LOAD_BOOKCLUBS', payload: data.data.bookclubs})
+        // inviteDispatch({type: 'LOAD_INVITES', payload: data.data.invitations})
+        // sessionStorage.setItem('bookshelves', JSON.stringify(data.data.bookshelves))
+        // sessionStorage.setItem('bookclubs', JSON.stringify(data.data.bookclubs))
+        // sessionStorage.setItem('invitations', JSON.stringify(data.data.invitations))
         
       }
 
-    }, [data.data.type])
+    }, [socketState.data.type])
 
     // sessionStorage.removeItem('activeUser')
     // sessionStorage.removeItem('authToken')

@@ -17,12 +17,13 @@ const BookshelfPanel = () => {
     // console.log('reducer bookshelves:', bookSearch.bookshelves);
 
     if (userTabs.activeBookshelf === 'bookshelfTab0') {
-        console.log('virginia woolf bookshelf')
-        console.log(bookshelves.data)
+        console.log('james joyce bookshelf')
+        console.log('james joyce books:', bookshelves.data?.map(bookshelf => bookshelf.books))
     }
     
 
-    const bookshelfElements = bookshelves.data.map((bookshelf, index) => (
+    const bookshelfElements = bookshelves.data?.map((bookshelf, index) => (
+        
         userTabs.activeBookshelf === `bookshelfTab${index}` && 
             <li 
                 key={bookshelf.id}
