@@ -56,9 +56,10 @@ const bookshelfReducer = (
 
     switch(action.type) {
         case 'LOAD_BOOKSHELVES':
+            console.log('Reducer - LOAD_BOOKSHELVES - action.payload:', action.payload);
             return {
                 ...state,
-                data: action.payload
+                data: [...state.data, ...action.payload]
 
             }
         case 'REMOVE_BOOKSHELF':

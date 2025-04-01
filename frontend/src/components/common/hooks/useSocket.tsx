@@ -41,6 +41,7 @@ export default function useSocket(url: string) {
 
     }, [])
 
+    console.log('use socket data:', data)
     
 
     return {data, makeRequest}

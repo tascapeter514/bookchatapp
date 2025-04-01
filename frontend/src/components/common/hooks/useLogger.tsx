@@ -68,6 +68,7 @@ export default function useLogger() {
                 userDispatch({type: 'LOGOUT_ACTIVE_USER', payload: {user: null, authToken: ''}})
                 sessionStorage.removeItem('authToken')
                 sessionStorage.removeItem('activeUser')
+                sessionStorage.removeItem('userData')
                 navigate('/login')
                 
             }

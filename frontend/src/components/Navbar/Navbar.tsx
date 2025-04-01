@@ -31,6 +31,7 @@ const Navbar = () => {
     )
 
     console.log('navbar auth token:', userState.authToken);
+    console.log('navbar user state:', userState)
     
 
     return(

@@ -87,12 +87,20 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
 
     useEffect(() => {
       console.log('data use effect')
+      console.log('use effect data:', data.data)
       if (data.data && data.data.type == 'get_user_data') {
+
+        
+
+
+
+
         console.log('user context incoming data:', data.data)
-        bookshelfDispatch({type: 'LOAD_BOOKSHELVES', payload: data.data.user_data.find((result: Data) => result.type === 'bookshelf').items})
-        bookclubDispatch({type: 'LOAD_BOOKCLUBS', payload: data.data.user_data.find((result: Data) => result.type === 'bookclub').items})
-        inviteDispatch({type: 'LOAD_INVITES', payload: data.data.user_data.find((result: Data) => result.type === 'invite').items})
-        sessionStorage.setItem('userData', JSON.stringify(data.data.user_data))
+        bookshelfDispatch({type: 'LOAD_BOOKSHELVES', payload: data.data.bookshelves})
+  
+        bookclubDispatch({type: 'LOAD_BOOKCLUBS', payload: data.data.bookclubs})
+        inviteDispatch({type: 'LOAD_INVITES', payload: data.data.invitations})
+        // sessionStorage.removeItem('userData')
       }
 
     }, [data.data])
@@ -107,9 +115,10 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
            if (storedUserData) {
             // setUserData(JSON.parse(storedUserData))
             console.log('stored user data:', storedUserData)
-            bookshelfDispatch({type: 'LOAD_BOOKSHELVES', payload: storedUserData.find((result: Data) => result.type === 'bookshelf').items || []})
-            bookclubDispatch({type: 'LOAD_BOOKCLUBS', payload: storedUserData.find((result: Data) => result.type === 'bookclub').items || []})
-            inviteDispatch({type: 'LOAD_INVITES', payload: storedUserData.find((result: Data) => result.type === 'invite').items || []})
+            // bookshelfDispatch({type: 'LOAD_BOOKSHELVES', payload: storedUserData.find((result: Data) => result.type === 'bookshelf').items})
+            console.log('stored bookshelves user data:', storedUserData.find((result: Data) => result.type === 'bookshelf').items)
+            bookclubDispatch({type: 'LOAD_BOOKCLUBS', payload: storedUserData.find((result: Data) => result.type === 'bookclub').items})
+            inviteDispatch({type: 'LOAD_INVITES', payload: storedUserData.find((result: Data) => result.type === 'invite').items})
             
 
            }
@@ -117,6 +126,7 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
     }, [])
 
     console.log('user context bookclubs:', bookclubs)
+    console.log('user context bookshelves:', bookshelves)
 
 
     const userContextValue = useMemo(() => ({

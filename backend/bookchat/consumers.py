@@ -38,7 +38,7 @@ class UserDataConsumer(WebsocketConsumer):
         invitation_serializer = InvitationSerializer(invitations, many=True)
         bookshelf_serializer = BookshelfSerializer(bookshelves, many=True)
 
-        # print("user bookshelf:", bookshelf_serializer.data)
+        print("user bookshelf:", bookshelf_serializer.data)
 
         # user_data_serializer = [bookclub_serializer.data, invitation_serializer.data, bookshelf_serializer.data]
         
@@ -46,13 +46,10 @@ class UserDataConsumer(WebsocketConsumer):
         self.send(text_data=json.dumps(
             {
                 'type': 'get_user_data',
-                'user_data': 
-                [
-                     {'type': 'bookclub', 'items': bookclub_serializer.data},
-                     {'type': 'bookshelf', 'items': bookshelf_serializer.data},
-                     {'type': 'invite', 'items': invitation_serializer.data}
-                    
-                ]
+                'bookclubs': bookclub_serializer.data,
+                'bookshelves': bookshelf_serializer.data,
+                'invitations': invitation_serializer.data
+                
             }
         ))
 
