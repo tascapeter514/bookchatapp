@@ -1,4 +1,4 @@
-import { useCallback, useReducer } from 'react'
+import { useCallback, useReducer, useEffect } from 'react'
 import { Bookclub, Bookshelf, Invitation } from '../../../types';
 
 
@@ -65,7 +65,7 @@ const socketReducer = (state: SocketState, action: SocketAction) => {
 
 
 
-export default function useSocket(url: string) {
+export default function useSocketData(url: string) {
 
     const [socketState, dispatchSocket] = useReducer(socketReducer, {
       data: {
@@ -79,6 +79,8 @@ export default function useSocket(url: string) {
       error: ''
 
     })
+
+
 
 
     const connectSocket = useCallback( async (id: number) => {
@@ -112,6 +114,8 @@ export default function useSocket(url: string) {
         
 
     }, [])
+
+
     
     return {socketState, connectSocket}
     

@@ -29,7 +29,7 @@ const AddBook = ({addBookRef, book}: Props) => {
 
     useEffect(() => {
 
-        if (!data.isLoading && !data.isError && data.data) {
+        if (!data.isLoading && !data.isError && data.data.length > 0) {
             bookshelfDispatch({type: 'ADD_BOOK', payload: {bookshelfId: search.id, newBook: data.data}})
         }
 
@@ -42,7 +42,7 @@ const AddBook = ({addBookRef, book}: Props) => {
         try {
 
             await makeRequest(data)
-            
+
         } catch (err: any) {
 
             console.error('Error with add book handler:', err)

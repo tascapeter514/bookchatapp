@@ -9,10 +9,18 @@ export type BookshelfState = {
     isLoaded: boolean
 }
 
+type BookshelfFetchInitAction = {
+    type: "BOOKSHELVES_FETCH_INIT"
+}
 
-type BookshelfLoadAction = {
-    type: 'LOAD_BOOKSHELVES',
+type BooksehlfFetchSuccessAction = {
+    type: 'BOOKSHELVES_FETCH_SUCCESS',
     payload: Bookshelf[]
+}
+
+type BookshelfFetchFailureAction = {
+    type: 'BOOKSHELVES_FETCH_FAILURE',
+    payload: string
 }
 
 type BookshelfCreateAction = {
@@ -41,7 +49,9 @@ type BookshelfFailureAction = {
 }
 
 export type BookshelfAction = 
-    | BookshelfLoadAction
+    | BookshelfFetchInitAction
+    | BooksehlfFetchSuccessAction
+    | BookshelfFetchFailureAction
     | BookshelfDeleteAction
     | BookshelfCreateAction
     | BookDeleteAction
@@ -58,14 +68,35 @@ const bookshelfReducer = (
     
 
     switch(action.type) {
-        case 'LOAD_BOOKSHELVES':
+        case 'BOOKSHELVES_FETCH_INIT':
             
             return {
                 ...state,
-                data: action.payload,
-                isLoaded: true
+                isLoading: true,
+                isError: false,
+                error: ''
 
             }
+
+        case 'BOOKSHELVES_FETCH_SUCCESS':
+
+            return {
+                ...state,
+                isLoading: false,
+                isError: false,
+                error: '',
+                data: action.payload
+            }
+
+        case 'BOOKSHELVES_FETCH_FAILURE':
+            return {
+                ...state,
+                isLoading: false,
+                isError: true,
+                error: action.payload
+            }
+
+        
         case 'REMOVE_BOOKSHELF':
             return {
                 ...state,
@@ -78,9 +109,9 @@ const bookshelfReducer = (
             return {
                 ...state,
                 data: state.data ? [...state.data, action.payload]
-                : action.payload
+                : [action.payload]
             }
-
+            // EMPTY ARRAY PROBLEM
         case 'ADD_BOOK':
             return {
                 ...state,

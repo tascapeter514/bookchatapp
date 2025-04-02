@@ -61,7 +61,7 @@ const Bookpage = () => {
             {data.isLoading && <p>Page is loading...</p>}
             {bookState.book.id && (
                 <div className="bookpage-detail">
-                    {/* BOOK INFO COMPONENT */}
+                   
                     <BookFacade book={bookState.book} /> 
                     <div className="main-content">
                         <div className="book-description">
@@ -70,13 +70,13 @@ const Bookpage = () => {
                             <p>{bookState.book.description}</p>
                            
                         </div>
-                        {/* AUTHOR PRODUCT COMPONENT */}
+                    
                         <div className="author-product-container">
                             {bookState.book.authors && bookState.book.authors.length > 0 &&
                                 bookState.book.authors.map((author: Author ) => (
                                     <AuthorDetails {...author} />
                             ))}
-                            {/* PRODUCT DETAILS COMPONENT */}
+                            
                             <ProductDetails {...{pageCount: bookState.book.pageCount, publisher: bookState.book.publisher, ISBNIdentifiers: bookState.book.ISBN_Identifiers}}/>
                             
                         </div>

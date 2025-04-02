@@ -33,12 +33,12 @@ const BookSearchModal = ({ ref, bookshelf }: Props) => {
     // console.log('book search state:', bookSearch)
     console.log('book search bookshelf:', bookshelf)
 
-    useEffect(() => {
-        if (!data.isLoading && !data.isError && data.data) {
-            bookshelfDispatch({type: 'ADD_BOOK' , payload: {bookshelfId: bookshelf.id, newBook: data.data}})
-        }
+    // useEffect(() => {
+    //     if (!data.isLoading && !data.isError && data.data.length > 0) {
+    //         bookshelfDispatch({type: 'ADD_BOOK' , payload: {bookshelfId: bookshelf.id, newBook: data.data}})
+    //     }
 
-    }, [data])
+    // }, [data])
 
 
     const addBook = async () => {
@@ -79,7 +79,7 @@ const BookSearchModal = ({ ref, bookshelf }: Props) => {
             </section>
             <div className="button-wrapper">
                 <Button onClick={closeModal}>Cancel</Button>
-                <Button onClick={addBook}>Add Book</Button>
+                {/* <Button onClick={addBook}>Add Book</Button> */}
             </div>
         </dialog>
 

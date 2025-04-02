@@ -53,6 +53,38 @@ class UserDataConsumer(WebsocketConsumer):
             }
         ))
 
+class UserBookshelfConsumer(WebsocketConsumer):
+    def connect(self):
+        self.user_id = self.scope['url_route']['kwargs']['id']
+        self.group_name = f'get_user{self.user_id}_bookshelves'
+
+        async_to_sync(self.channel_layer.group_add)(
+            self.group_name,
+            self.channel_name
+        )
+
+        self.accept()
+        self.get_user_bookshelves()
+
+    def disconnect(self, clode_code):
+        async_to_sync(self.channel_layer.group_discard)(
+            self.group_name,
+            self.channel_name
+        )
+
+    def get_user_bookshelves(self):
+        bookshelves = Bookshelf.objects.filter(user_id=self.user_id)
+        bookshelf_serializer = BookshelfSerializer(bookshelves, many=True)
+
+        self.send(text_data=json.dumps({
+            'type': 'get_user_bookshelves',
+            'user_bookshelves': bookshelf_serializer.data
+
+        }))
+
+    
+
+
 class SearchDataConsumer(WebsocketConsumer):
     def connect(self):
         self.group_name = 'get_search_query'

@@ -6,7 +6,7 @@ import bookshelfReducer, {BookshelfState, BookshelfAction} from '../../../../red
 import bookclubReducer, {BookclubState, BookclubAction} from '../../../../reducers/bookclubReducer.tsx';
 import inviteReducer, {InviteState, InviteAction} from '../../../../reducers/inviteReducer.tsx';
 import userTabsReducer, {TabAction, TabState} from '../../../../reducers/userTabsReducer.tsx';
-import useSocket from '../../hooks/useSocket.tsx';
+import useSocketData from '../../hooks/useSocketData.tsx';
 import useLogger from '../../hooks/useLogger.tsx';
 
 interface UserContextProps {
@@ -56,7 +56,7 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
     const [invitations, inviteDispatch] = useReducer<Reducer<InviteState, InviteAction>>(inviteReducer, {data: []})
     const [userTabs, tabsDispatch] = useReducer(userTabsReducer, {activeTab: 'accountTab', activeBookshelf: ''})
     const { userState, dispatchUser, authenticate} = useLogger()
-    const {socketState, connectSocket} = useSocket('ws://localhost:8000/ws/userData')
+    const {socketState, connectSocket} = useSocketData('ws://localhost:8000/ws/userData')
     const handleLogin = async (formData: FormData) => { await authenticate('http://localhost:8000/api/auth/login', formData)}
     
 
