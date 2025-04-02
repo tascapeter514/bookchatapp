@@ -6,7 +6,7 @@ export type BookshelfState = {
     data: Bookshelf[] | null,
     error: string,
     isError: boolean,
-    isLoaded: boolean
+    isLoading: boolean
 }
 
 type BookshelfFetchInitAction = {
@@ -43,11 +43,6 @@ type BookAddAction = {
     payload: {bookshelfId: number, newBook: Book}
 }
 
-type BookshelfFailureAction = {
-    type: 'BOOKSHELF_ERROR',
-    payload: string
-}
-
 export type BookshelfAction = 
     | BookshelfFetchInitAction
     | BooksehlfFetchSuccessAction
@@ -56,7 +51,6 @@ export type BookshelfAction =
     | BookshelfCreateAction
     | BookDeleteAction
     | BookAddAction
-    | BookshelfFailureAction
 
 
 const bookshelfReducer = (
@@ -130,13 +124,6 @@ const bookshelfReducer = (
                     ? {...bookshelf, books: bookshelf.books.filter((book: Book) => book.id !== action.payload.oldBook.id)}
                     : bookshelf
                 ) : null
-            }
-        case 'BOOKSHELF_ERROR':
-            return {
-                ...state,
-                isError: true,
-                isLoaded: false,
-                error: action.payload
             }
             
         default:

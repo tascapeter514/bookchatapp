@@ -1,10 +1,10 @@
-import { useCallback, useReducer, Reducer } from 'react'
+import { useCallback, useReducer, useEffect, Reducer } from 'react'
 import userReducer, {UserAction, UserState} from '../../../reducers/userReducer'
 import axios, { AxiosError } from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { axiosErrorHandler } from '../../../messages'
 
-export default function useLogger() {
+export default function useLogger(url: string, formData: FormData) {
 
 
     const navigate = useNavigate()
@@ -12,6 +12,18 @@ export default function useLogger() {
     const [userState, dispatchUser] = useReducer(userReducer, {
         user: null, authToken: '', isLoggedIn: false, isError: false, isLoading: false, error: ''
     })
+
+    useEffect(() => {
+
+        if (!userState.user && !userState.authToken) {
+            return
+        } else {
+            const response = authenticate(url, formData)
+            console.log('user state response:', response)
+        }
+
+    }, [userState.user])
+
 
     const authenticate = useCallback( async (url: string, formData: FormData) => {
         
@@ -28,11 +40,11 @@ export default function useLogger() {
 
                 console.log('response:', response.data)
 
-                const {active_user, auth_token} = response.data;
-                dispatchUser({type: 'LOGIN_ACTIVE_USER', payload: {user: active_user, authToken: auth_token }})
+                return response.data
+                // dispatchUser({type: 'LOGIN_ACTIVE_USER', payload: {user: active_user, authToken: auth_token }})
                 // sessionStorage.setItem('authToken', JSON.stringify(auth_token))
                 // sessionStorage.setItem('activeUser', JSON.stringify(active_user))
-                navigate('/userDashboard')
+                // navigate('/userDashboard')
                 
 
             } else if (response.status >= 200 && response.status < 300 && !response.data.auth_token) {

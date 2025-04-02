@@ -2,26 +2,32 @@ import {createContext, useEffect, Dispatch, ReactNode, useContext, useReducer, R
 import userReducer, {UserState, UserAction} from '../../../../reducers/userReducer.tsx'
 import { Data } from '../../../../reducers/dataReducer.tsx';
 import { Bookshelf } from '../../../../types.ts';
-import bookshelfReducer, {BookshelfState, BookshelfAction} from '../../../../reducers/bookshelfReducer.tsx';
-import bookclubReducer, {BookclubState, BookclubAction} from '../../../../reducers/bookclubReducer.tsx';
-import inviteReducer, {InviteState, InviteAction} from '../../../../reducers/inviteReducer.tsx';
+// import bookshelfReducer, {BookshelfState, BookshelfAction} from '../../../../reducers/bookshelfReducer.tsx';
+// import bookclubReducer, {BookclubState, BookclubAction} from '../../../../reducers/bookclubReducer.tsx';
+// import inviteReducer, {InviteState, InviteAction} from '../../../../reducers/inviteReducer.tsx';
+import useBookshelves from '../../hooks/useBookshelves.tsx';
 import userTabsReducer, {TabAction, TabState} from '../../../../reducers/userTabsReducer.tsx';
 import useSocketData from '../../hooks/useSocketData.tsx';
 import useLogger from '../../hooks/useLogger.tsx';
 
-interface UserContextProps {
+// interface UserContextProps {
 
-  userState: UserState,
-  bookshelves: BookshelfState,
-  bookclubs: BookclubState,
-  invitations: InviteState,
-  userTabs: TabState,
-  dispatchUser: Dispatch<UserAction>,
-  bookshelfDispatch: Dispatch<BookshelfAction>,
-  bookclubDispatch: Dispatch<BookclubAction>,
-  inviteDispatch: Dispatch<InviteAction>
-  tabsDispatch: Dispatch<TabAction>,
-  handleLogin: (formData: FormData) => Promise<void> 
+//   userState: UserState,
+//   bookshelves: BookshelfState,
+//   bookclubs: BookclubState,
+//   invitations: InviteState,
+//   userTabs: TabState,
+//   dispatchUser: Dispatch<UserAction>,
+//   bookshelfDispatch: Dispatch<BookshelfAction>,
+//   bookclubDispatch: Dispatch<BookclubAction>,
+//   inviteDispatch: Dispatch<InviteAction>
+//   tabsDispatch: Dispatch<TabAction>,
+//   handleLogin: (formData: FormData) => Promise<void> 
+
+// }
+
+interface Props {
+  handleLogin: (formData: FormData) => FormData
 
 }
 
@@ -29,7 +35,7 @@ interface UserProviderProps {
     children: ReactNode
 }
 
-export const UserContext = createContext<UserContextProps>({
+export const UserContext = createContext<Props>({
     
     userState: {user: null, authToken: '', isLoggedIn: false, isLoading: false, isError: false, error: ''},
     bookshelves: {data: [], isError: false, error: '', isLoaded: false},
@@ -50,98 +56,96 @@ export const UserContext = createContext<UserContextProps>({
 const UserDataProvider = ({ children }: UserProviderProps) => {
 
 
-    const [bookshelves, bookshelfDispatch] = useReducer<Reducer<BookshelfState, BookshelfAction>>(bookshelfReducer, {data: null, isError: false, error: '', isLoaded: false})
-  
-    const [bookclubs, bookclubDispatch] = useReducer<Reducer<BookclubState, BookclubAction>>(bookclubReducer, {data: []})
-    const [invitations, inviteDispatch] = useReducer<Reducer<InviteState, InviteAction>>(inviteReducer, {data: []})
+    const handleLogin = (formData: FormData) => {return formData}
     const [userTabs, tabsDispatch] = useReducer(userTabsReducer, {activeTab: 'accountTab', activeBookshelf: ''})
-    const { userState, dispatchUser, authenticate} = useLogger()
-    const {socketState, connectSocket} = useSocketData('ws://localhost:8000/ws/userData')
-    const handleLogin = async (formData: FormData) => { await authenticate('http://localhost:8000/api/auth/login', formData)}
+    const {userState, userDispatch} = useLogger('http://localhost:8000/api/auth/login', handleLogin)
     
+    
+    // const handleLogin = async (formData: FormData) => { await authenticate('http://localhost:8000/api/auth/login', formData)}
+    // const { bookshelvesState, bookshelfDispatch } = useBookshelves(`ws://localhost:8000/ws/user/bookshelves/`)
 
 
-  console.log('user context userState:', userState)
-  console.log('user context data:', socketState.data)
+  // console.log('user context userState:', userState)
+  // console.log('user context data:', socketState.data)
 
-    useEffect(() => {
+    // useEffect(() => {
 
-      console.log('user state use effect')
+    //   console.log('user state use effect')
 
-      if (!userState.user) {
-        console.log('no user state')
-        return
-      }
-      console.log('user context active user:', userState.user)
+    //   if (!userState.user) {
+    //     console.log('no user state')
+    //     return
+    //   }
+    //   console.log('user context active user:', userState.user)
 
-      connectSocket(userState.user?.id)
-      console.log('user data:', socketState.data)
+    //   connectSocket(userState.user?.id)
+    //   console.log('user data:', socketState.data)
 
-    }, [userState.user?.id, connectSocket])
+    // }, [userState.user?.id, connectSocket])
 
-    useEffect(() => {
-      console.log('data use effect')
-      console.log('use effect data:', socketState.data)
+    // useEffect(() => {
+    //   console.log('data use effect')
+    //   console.log('use effect data:', socketState.data)
 
-      if (!socketState.data.type) {
-        console.log('no socket data')
-        return
-      }
+    //   if (!socketState.data.type) {
+    //     console.log('no socket data')
+    //     return
+    //   }
 
 
-      if (socketState.data.type == 'get_user_data') {
+    //   if (socketState.data.type == 'get_user_data') {
 
         
-        console.log('user context incoming data:', socketState.data.bookshelves)
-        bookshelfDispatch({type: 'LOAD_BOOKSHELVES', payload: socketState.data.bookshelves as Bookshelf[]})
-        // bookclubDispatch({type: 'LOAD_BOOKCLUBS', payload: data.data.bookclubs})
-        // inviteDispatch({type: 'LOAD_INVITES', payload: data.data.invitations})
-        // sessionStorage.setItem('bookshelves', JSON.stringify(data.data.bookshelves))
-        // sessionStorage.setItem('bookclubs', JSON.stringify(data.data.bookclubs))
-        // sessionStorage.setItem('invitations', JSON.stringify(data.data.invitations))
+    //     console.log('user context incoming data:', socketState.data.bookshelves)
+    //     bookshelfDispatch({type: 'LOAD_BOOKSHELVES', payload: socketState.data.bookshelves as Bookshelf[]})
+    //     bookclubDispatch({type: 'LOAD_BOOKCLUBS', payload: data.data.bookclubs})
+    //     inviteDispatch({type: 'LOAD_INVITES', payload: data.data.invitations})
+    //     sessionStorage.setItem('bookshelves', JSON.stringify(data.data.bookshelves))
+    //     sessionStorage.setItem('bookclubs', JSON.stringify(data.data.bookclubs))
+    //     sessionStorage.setItem('invitations', JSON.stringify(data.data.invitations))
         
-      }
+    //   }
 
-    }, [socketState.data.type])
+    // }, [socketState.data.type])
 
     // sessionStorage.removeItem('activeUser')
     // sessionStorage.removeItem('authToken')
 
 
-    useEffect(() => {
-      console.log('stored data use effect')
+    // useEffect(() => {
+    //   console.log('stored data use effect')
 
-          const storedBookclubs = sessionStorage.getItem('bookclubs') ? JSON.parse(sessionStorage.getItem('bookclubs') as string) : null
-          const storedInvites = sessionStorage.getItem('invitations') ? JSON.parse(sessionStorage.getItem('invitations') as string) : null
-          const storedUser = sessionStorage.getItem('activeUser') ? JSON.parse(sessionStorage.getItem('activeUser') as string) : null
-          const storedToken = sessionStorage.getItem('authToken') ? JSON.parse(sessionStorage.getItem('authToken') as string) : null
-          // const storedBookshelves = sessionStorage.getItem('bookshelves') ? JSON.parse(sessionStorage.getItem('bookshelves') as string) : null
+    //       const storedBookclubs = sessionStorage.getItem('bookclubs') ? JSON.parse(sessionStorage.getItem('bookclubs') as string) : null
+    //       const storedInvites = sessionStorage.getItem('invitations') ? JSON.parse(sessionStorage.getItem('invitations') as string) : null
+    //       const storedUser = sessionStorage.getItem('activeUser') ? JSON.parse(sessionStorage.getItem('activeUser') as string) : null
+    //       const storedToken = sessionStorage.getItem('authToken') ? JSON.parse(sessionStorage.getItem('authToken') as string) : null
+    //       // const storedBookshelves = sessionStorage.getItem('bookshelves') ? JSON.parse(sessionStorage.getItem('bookshelves') as string) : null
           
 
-          // if (storedBookshelves) {
-          //   bookshelfDispatch({type: 'LOAD_BOOKSHELVES', payload: storedBookshelves})
-          // }
+    //       // if (storedBookshelves) {
+    //       //   bookshelfDispatch({type: 'LOAD_BOOKSHELVES', payload: storedBookshelves})
+    //       // }
 
-          if (storedBookclubs) bookclubDispatch({type: 'LOAD_BOOKCLUBS', payload: storedBookclubs})
-          if (storedInvites) inviteDispatch({type: 'LOAD_INVITES', payload: storedInvites})
-          if (storedUser && storedToken) {
+    //       if (storedBookclubs) bookclubDispatch({type: 'LOAD_BOOKCLUBS', payload: storedBookclubs})
+    //       if (storedInvites) inviteDispatch({type: 'LOAD_INVITES', payload: storedInvites})
+    //       if (storedUser && storedToken) {
 
-            console.log('userState storage check:', userState)
+    //         console.log('userState storage check:', userState)
 
-            dispatchUser({type: 'LOGIN_ACTIVE_USER', payload: {user: storedUser, authToken: storedToken }})
+    //         dispatchUser({type: 'LOGIN_ACTIVE_USER', payload: {user: storedUser, authToken: storedToken }})
 
-          } 
+    //       } 
 
-          if (!userState.isLoggedIn) {
-            sessionStorage.removeItem('bookclubs')
-            sessionStorage.removeItem('invitations')
-            sessionStorage.removeItem('activeUser')
-            sessionStorage.removeItem('authToken')
-            sessionStorage.removeItem('bookshelves')
-          }
+    //       if (!userState.isLoggedIn) {
+    //         sessionStorage.removeItem('bookclubs')
+    //         sessionStorage.removeItem('invitations')
+    //         sessionStorage.removeItem('activeUser')
+    //         sessionStorage.removeItem('authToken')
+    //         sessionStorage.removeItem('bookshelves')
+    //       }
 
    
-    }, [])
+    // }, [])
 
 
   //   useEffect(() => {
@@ -161,7 +165,7 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
     // console.log('user context data:', data.data);
     
     // console.log('user context bookclubs:', bookclubs)
-    console.log('user context bookshelves:', bookshelves)
+    // console.log('user context bookshelves:', bookshelves)
     // console.log('user context invitations:', invitations)
 
     // JSON.stringify(userState), 
@@ -170,27 +174,27 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
     //   JSON.stringify(invitations), 
     //   JSON.stringify(userTabs)
 
-    const userContextValue = useMemo(() => ({
+    // const userContextValue = useMemo(() => ({
 
-      userState,
-      bookshelves,
-      bookclubs,
-      invitations,
-      userTabs,
-      dispatchUser,
-      bookshelfDispatch,
-      bookclubDispatch,
-      inviteDispatch,
-      tabsDispatch,
-      handleLogin
+    //   userState,
+    //   bookshelves,
+    //   bookclubs,
+    //   invitations,
+    //   userTabs,
+    //   dispatchUser,
+    //   bookshelfDispatch,
+    //   bookclubDispatch,
+    //   inviteDispatch,
+    //   tabsDispatch,
+    //   handleLogin
 
-    }), [userState, userTabs, bookshelves])
+    // }), [userState, userTabs, bookshelves])
 
       return (
 
         // REMOVED USERDATA AND SETUSERDATA
         <UserContext.Provider
-            value={userContextValue}>
+            value={{ handleLogin}}>
 
                 {children}
         </UserContext.Provider>
