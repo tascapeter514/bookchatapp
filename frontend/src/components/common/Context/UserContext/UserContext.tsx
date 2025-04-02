@@ -2,7 +2,7 @@ import {createContext, useEffect, Dispatch, ReactNode, useContext, useReducer, R
 import userReducer, {UserState, UserAction} from '../../../../reducers/userReducer.tsx'
 import { Data } from '../../../../reducers/dataReducer.tsx';
 import { Bookshelf } from '../../../../types.ts';
-// import bookshelfReducer, {BookshelfState, BookshelfAction} from '../../../../reducers/bookshelfReducer.tsx';
+import {BookshelfState, BookshelfAction} from '../../../../reducers/bookshelfReducer.tsx';
 // import bookclubReducer, {BookclubState, BookclubAction} from '../../../../reducers/bookclubReducer.tsx';
 // import inviteReducer, {InviteState, InviteAction} from '../../../../reducers/inviteReducer.tsx';
 import useBookshelves from '../../hooks/useBookshelves.tsx';
@@ -27,7 +27,14 @@ import useLogger from '../../hooks/useLogger.tsx';
 // }
 
 interface Props {
-  handleLogin: (formData: FormData) => FormData
+  handleLogin: (formData: FormData) => Promise<void>
+  userState: UserState,
+  userTabs: TabState,
+  tabsDispatch: Dispatch<TabAction>,
+  dispatchUser: Dispatch<UserAction>,
+  bookshelvesState: BookshelfState,
+  bookshelfDispatch: Dispatch<BookshelfAction>,
+
 
 }
 
@@ -38,15 +45,15 @@ interface UserProviderProps {
 export const UserContext = createContext<Props>({
     
     userState: {user: null, authToken: '', isLoggedIn: false, isLoading: false, isError: false, error: ''},
-    bookshelves: {data: [], isError: false, error: '', isLoaded: false},
-    bookclubs: {data: []},
-    invitations: { data: []},
+    bookshelfState: {data: [], isError: false, error: '', isLoading: false},
+    // bookclubs: {data: []},
+    // invitations: { data: []},
     userTabs: {activeTab: '', activeBookshelf: ''},
     handleLogin : async () => {},
     dispatchUser: () => {},
     bookshelfDispatch: () => {},
-    bookclubDispatch: () => {},
-    inviteDispatch: () => {},
+    // bookclubDispatch: () => {},
+    // inviteDispatch: () => {},
     tabsDispatch: () => {},
 
 
@@ -56,13 +63,21 @@ export const UserContext = createContext<Props>({
 const UserDataProvider = ({ children }: UserProviderProps) => {
 
 
-    const handleLogin = (formData: FormData) => {return formData}
     const [userTabs, tabsDispatch] = useReducer(userTabsReducer, {activeTab: 'accountTab', activeBookshelf: ''})
-    const {userState, userDispatch} = useLogger('http://localhost:8000/api/auth/login', handleLogin)
+    const {userState, dispatchUser, authenticate} = useLogger()
+    const { bookshelvesState, bookshelfDispatch, connectSocket } = useBookshelves()
+    const handleLogin = async (formData: FormData) => { 
+      
+      await authenticate('http://localhost:8000/api/auth/login', formData)
+      await connectSocket(`ws://localhost:8000/ws/user/bookshelves/${userState.user?.id}`)
     
     
-    // const handleLogin = async (formData: FormData) => { await authenticate('http://localhost:8000/api/auth/login', formData)}
-    // const { bookshelvesState, bookshelfDispatch } = useBookshelves(`ws://localhost:8000/ws/user/bookshelves/`)
+    }
+    
+
+
+    console.log('user context user state:', userState)
+    console.log('user context bookshelf state:', bookshelvesState)
 
 
   // console.log('user context userState:', userState)
@@ -194,7 +209,7 @@ const UserDataProvider = ({ children }: UserProviderProps) => {
 
         // REMOVED USERDATA AND SETUSERDATA
         <UserContext.Provider
-            value={{ handleLogin}}>
+            value={{ userState, dispatchUser, handleLogin, userTabs, tabsDispatch, bookshelvesState, bookshelfDispatch}}>
 
                 {children}
         </UserContext.Provider>

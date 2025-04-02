@@ -3,8 +3,8 @@ import bookshelfReducer, {BookshelfState, BookshelfAction} from "../../../reduce
 // import axios from "axios"
 
 
-const useBookshelves = (url: string) => {
-
+const useBookshelves = () => {
+    console.log('use bookshelves check')
 
     const [bookshelvesState, bookshelfDispatch] = useReducer<Reducer<BookshelfState, BookshelfAction>>(bookshelfReducer, 
         {data: null, isError: false, error: '', isLoading: false})
@@ -13,16 +13,14 @@ const useBookshelves = (url: string) => {
 
     useEffect(() => {
 
+        console.log('bookshelves use Effect check')
+
         if (bookshelvesState.data) {
-            const response = connectSocket(url)
-            console.log('bookshelf hook response data:', response)
+            sessionStorage.setItem('bookshelves', JSON.stringify(bookshelvesState.data))
 
         }
 
     }, [bookshelvesState.data])
-
-
-
 
 
     const connectSocket = useCallback( async (url: string) => {
@@ -35,8 +33,8 @@ const useBookshelves = (url: string) => {
             socket.onmessage = (event) => {
             //   const data = JSON.parse(event.data);
                 console.log('use bookshelf data:', JSON.parse(event.data))
-                // bookshelfDispatch({'type': 'BOOKSHELVES_FETCH_SUCCESS', payload: JSON.parse(event.data)})
-                return JSON.parse(event.data)
+                bookshelfDispatch({'type': 'BOOKSHELVES_FETCH_SUCCESS', payload: JSON.parse(event.data)})
+                // return JSON.parse(event.data)
 
             }
     
@@ -62,7 +60,7 @@ const useBookshelves = (url: string) => {
 
     }, [bookshelvesState, bookshelfDispatch])
 
-    return {bookshelvesState, bookshelfDispatch}
+    return {bookshelvesState, bookshelfDispatch, connectSocket}
 
 }
 

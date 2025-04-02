@@ -1,10 +1,10 @@
-import { useCallback, useReducer, useEffect, Reducer } from 'react'
-import userReducer, {UserAction, UserState} from '../../../reducers/userReducer'
+import { useCallback, useReducer, useEffect } from 'react'
+import userReducer from '../../../reducers/userReducer'
 import axios, { AxiosError } from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { axiosErrorHandler } from '../../../messages'
 
-export default function useLogger(url: string, formData: FormData) {
+export default function useLogger() {
 
 
     const navigate = useNavigate()
@@ -13,18 +13,7 @@ export default function useLogger(url: string, formData: FormData) {
         user: null, authToken: '', isLoggedIn: false, isError: false, isLoading: false, error: ''
     })
 
-    useEffect(() => {
-
-        if (!userState.user && !userState.authToken) {
-            return
-        } else {
-            const response = authenticate(url, formData)
-            console.log('user state response:', response)
-        }
-
-    }, [userState.user])
-
-
+  
     const authenticate = useCallback( async (url: string, formData: FormData) => {
         
         dispatchUser({type: 'USER_FETCH_INIT'})
@@ -40,11 +29,9 @@ export default function useLogger(url: string, formData: FormData) {
 
                 console.log('response:', response.data)
 
-                return response.data
-                // dispatchUser({type: 'LOGIN_ACTIVE_USER', payload: {user: active_user, authToken: auth_token }})
-                // sessionStorage.setItem('authToken', JSON.stringify(auth_token))
-                // sessionStorage.setItem('activeUser', JSON.stringify(active_user))
-                // navigate('/userDashboard')
+                const {active_user, auth_token} = response.data
+                dispatchUser({type: 'LOGIN_ACTIVE_USER', payload: {user: active_user, authToken: auth_token }})
+                
                 
 
             } else if (response.status >= 200 && response.status < 300 && !response.data.auth_token) {
@@ -68,21 +55,24 @@ export default function useLogger(url: string, formData: FormData) {
         }
 
     }, [])
+
+
+    useEffect(() => {
+
+       if (userState.isLoggedIn && userState.authToken && userState.user) {
+            sessionStorage.setItem('authToken', JSON.stringify(userState.authToken))
+            sessionStorage.setItem('activeUser', JSON.stringify(userState.user))
+            navigate('/userDashboard')
+
+       } else {
+
+            return
+
+       }
+
+    }, [userState, dispatchUser, authenticate])
     
 
-    // useEffect(() => {
-
-    //     if (!userState.user?.id) {
-    //         const storedUser = sessionStorage.getItem('activeUser')
-    //         const storedToken = sessionStorage.getItem('authToken')
-  
-    //     // if (storedUser && storedToken) {
-    //     //     console.log('stored user:', storedUser)
-    //     //     userDispatch({type: 'LOGIN_ACTIVE_USER', payload: {user: JSON.parse(storedUser), authToken: JSON.parse(storedToken)}})
-    //     //    }
-
-    //     }
-    // }, [userState.user?.id, userState.authToken])
 
    
     return {userState, dispatchUser, authenticate}
