@@ -1,12 +1,12 @@
 import './BookclubPage.css'
 
 import { useState } from 'react'
-import { bookclubData } from '../../components/common/Context/BookclubContext/BookclubContext'
-import BookshelfPanel from '../common/BookshelfPanel/BookshelfPanel'
+import { bookclubData } from '../../context/BookclubContext/BookclubContext'
+import BookshelfPanel from '../Panels/BookshelfPanel/BookshelfPanel'
 import CurrentReadPanel from './components/CurrentReadPanel/CurrentReadPanel'
 import SubNavbar from './components/SubNavbar/SubNavbar'
 import TopFacade from './components/TopFacade/TopFacade'
-import BookshelfProvider from '../common/Context/BookshelfContext/BookshelfContext'
+import BookshelfProvider from '../../context/BookshelfContext/BookshelfContext'
 import Tabs from './components/Tabs/Tabs'
 
 

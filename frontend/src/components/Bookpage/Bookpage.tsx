@@ -6,7 +6,7 @@ import bookReducer, {BookState, BookAction} from '../../reducers/bookReducer'
 import AuthorDetails from '../AuthorDetails/AuthorDetails'
 import ProductDetails from '../ProductDetails/ProductDetails'
 import BookFacade from '../BookFacade/BookFacade'
-import useGet from '../common/hooks/useGet'
+import useGet from '../../hooks/useGet'
 import './Bookpage.css'
 
 

@@ -1,8 +1,8 @@
-import { LikeIcon, DislikeIcon, CancelIcon } from '../common/Icons'
+import { LikeIcon, DislikeIcon, CancelIcon } from '../Icons'
 import { useEffect } from 'react'
 import { Data } from '../../reducers/dataReducer'
-import { userContext } from '../common/Context/UserContext/UserContext'
-import useDelete from '../common/hooks/useDelete'
+import { userContext } from '../../context/UserContext/UserContext'
+import useDelete from '../../hooks/useDelete'
 import { Book, Author } from '../../types'
 import './BookCard.css'
 

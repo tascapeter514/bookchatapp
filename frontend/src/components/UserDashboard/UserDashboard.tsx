@@ -1,14 +1,14 @@
 import './UserDashboard.css';
 import { useReducer } from 'react';
 import mobileNavReducer from '../../reducers/mobileNavReducer';
-import { userContext} from '../common/Context/UserContext/UserContext'
-import Bookshelfpanel from '../common/BookshelfPanel/BookshelfPanel'
-import OpenMobileNav from '../common/Buttons/OpenMobileNav/OpenMobileNav';
-import CloseMobileNav from '../common/Buttons/CloseMobileNav/CloseMobileNav';
-import MessagePanel from './components/MessagePanel/MessagePanel';
-import AccountPanel from './components/AccountPanel/AccountPanel';
+import { userContext} from '../../context/UserContext/UserContext'
+import Bookshelfpanel from '../Panels/BookshelfPanel/BookshelfPanel'
+import OpenMobileNav from '../Buttons/OpenMobileNav/OpenMobileNav';
+import CloseMobileNav from '../Buttons/CloseMobileNav/CloseMobileNav';
+import MessagePanel from '../Panels/MessagePanel/MessagePanel';
+import AccountPanel from '../Panels/AccountPanel/AccountPanel';
 import UserNav from '../UserNav/UserNav'
-import BookclubsPanel from './components/BookclubsPanel/BookclubsPanel'
+import BookclubsPanel from '../Panels/BookclubsPanel/BookclubsPanel';
 
 
 const UserDashboard = () => {

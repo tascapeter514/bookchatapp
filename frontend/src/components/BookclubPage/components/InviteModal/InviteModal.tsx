@@ -1,11 +1,11 @@
 import './InviteModal.css'
 import { ActiveUser } from '../../../../types'
 import { Ref, useState, useEffect } from 'react'
-import SearchFilter from '../../../common/SearchFilter/SearchFilter'
-import { bookclubData } from '../../../common/Context/BookclubContext/BookclubContext'
-import SearchFilterResults from '../../../common/SearchFilterResults/SearchFilterResults'
-import Button from '../../../common/Buttons/Button/Button'
-import { userContext} from '../../../common/Context/UserContext/UserContext'
+import SearchFilter from '../../../Search/SearchFilter/SearchFilter'
+import { bookclubData } from '../../../../context/BookclubContext/BookclubContext'
+import SearchFilterResults from '../../../Search/SearchFilterResults/SearchFilterResults'
+import Button from '../../../Buttons/Button/Button'
+import { userContext} from '../../../../context/UserContext/UserContext'
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios'
 

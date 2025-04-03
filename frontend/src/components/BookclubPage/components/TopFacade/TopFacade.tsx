@@ -1,10 +1,10 @@
 import { useRef } from 'react'
-import { bookclubData } from '../../../common/Context/BookclubContext/BookclubContext'
+import { bookclubData } from '../../../../context/BookclubContext/BookclubContext'
 import BookclubBackground from '../../assets/bookclub-background.jpg'
-import FileUploadModal from '../../../common/Modals/FileUploadModal/FileUploadModal'
+import FileUploadModal from '../../../Modals/FileUploadModal/FileUploadModal'
 import InviteModal from '../InviteModal/InviteModal'
-import ProfileIcons from '../../../common/ProfileIcons/ProfileIcons'
-import Button from '../../../common/Buttons/Button/Button'
+import ProfileIcons from '../../../ProfileIcons/ProfileIcons'
+import Button from '../../../Buttons/Button/Button'
 
 import './TopFacade.css'
 

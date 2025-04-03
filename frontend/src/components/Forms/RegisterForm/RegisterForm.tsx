@@ -1,10 +1,10 @@
 import InputField from '../InputField/InputField'
-import Header from '../../common/Header/Header'
-import SubHeader from '../../common/SubHeader/SubHeader';
-import Button from '../../common/Buttons/Button/Button'
+import Header from '../../Header/Header'
+import SubHeader from '../../SubHeader/SubHeader';
+import Button from '../../Buttons/Button/Button'
 import ErrorMessage from '../../Messages/ErrorMessage/ErrorMessage';
-import { userContext } from '../../common/Context/UserContext/UserContext';
-import useLogger from '../../common/hooks/useLogger';
+import { userContext } from '../../../context/UserContext/UserContext';
+import useLogger from '../../../hooks/useLogger';
 import {useState, ChangeEvent } from 'react';
 import './RegisterForm.css'
 

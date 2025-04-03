@@ -3,8 +3,8 @@ import { useRef } from 'react'
 import { Book, Author } from '../../types'
 import { Data } from '../../reducers/dataReducer'
 import { Link } from 'react-router-dom'
-import { BookmarkIcon } from '../common/Icons'
-import AddBook from '../common/Modals/AddBook/AddBook'
+import { BookmarkIcon } from '../Icons'
+import AddBook from '../Modals/AddBook/AddBook'
 
 
 

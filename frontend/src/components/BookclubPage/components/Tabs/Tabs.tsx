@@ -1,6 +1,6 @@
 import './Tabs.css'
 import { Dispatch, SetStateAction, useState } from 'react'
-import { RightDropDownIcon } from '../../../common/Icons'
+import { RightDropDownIcon } from '../../../Icons'
 
 
 

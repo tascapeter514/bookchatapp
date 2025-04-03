@@ -1,10 +1,10 @@
 
-import BookshelfDropdown from '../../common/BookshelfDropdown/BookshelfDropdown'
+import BookshelfDropdown from '../../BookshelfDropdown/BookshelfDropdown'
 import { useState, useRef} from 'react'
-import { RightDropDownIcon } from '../../common/Icons'
-import CreateButton from '../../common/Buttons/CreateButton/CreateButton'
-import { userContext } from '../../common/Context/UserContext/UserContext'
-import PostModal from '../../common/Modals/PostModal/PostModal'
+import { RightDropDownIcon } from '../../Icons'
+import CreateButton from '../../Buttons/CreateButton/CreateButton'
+import { userContext } from '../../../context/UserContext/UserContext'
+import PostModal from '../../Modals/PostModal/PostModal'
 import './BookshelfButton.css'
 
 

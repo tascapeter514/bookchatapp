@@ -6,11 +6,10 @@ import AuthorPage from './components/AuthorPage/AuthorPage.tsx'
 import BookclubPage from './components/BookclubPage/BookclubPage.tsx'
 import Login from './components/LogIn/Login.tsx'
 import UserDashboard from './components/UserDashboard/UserDashboard.tsx'
-import ErrorBoundary from './components/common/ErrorBoundary.tsx'
-import AuthRequired from './components/common/authRequired.tsx'
-import BookclubDataProvider from './components/common/Context/BookclubContext/BookclubContext.tsx'
-import CheckMembers from './components/common/CheckMembers.tsx'
-import UserDataProvider  from './components/common/Context/UserContext/UserContext.tsx'
+import ErrorBoundary from './components/ErrorBoundary.tsx'
+import AuthRequired from './components/authRequired.tsx'
+import CheckMembers from './components/CheckMembers.tsx'
+import UserDataProvider  from './context/UserContext/UserContext.tsx'
 import './App.css';
 
 
@@ -30,13 +29,8 @@ function App() {
               <Route path='/login' element={<Login />}></Route>
               <Route element={<AuthRequired />}>
                   <Route path='/userDashboard' element={<ErrorBoundary><UserDashboard /></ErrorBoundary>}></Route>
-                    <Route path='/bookclub/:id' element={
-                      <BookclubDataProvider>
-                        <CheckMembers><BookclubPage /></CheckMembers>
-                        </BookclubDataProvider>
-                    }>
-                    </Route>
               </Route>
+              {/* <Route path='/bookclub/:id' element={<CheckMembers><BookclubPage /></CheckMembers>}></Route> */}
         </Routes>
       </UserDataProvider>
     </BrowserRouter>

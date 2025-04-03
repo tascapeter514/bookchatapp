@@ -1,8 +1,8 @@
 import { useState, useMemo } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import useLogger from '../common/hooks/useLogger.tsx'
-import { userContext } from '../common/Context/UserContext/UserContext.tsx'
-import Searchbar from '../Searchbar/Searchbar.tsx'
+import useLogger from '../../hooks/useLogger.tsx'
+import { userContext } from '../../context/UserContext/UserContext.tsx'
+import Searchbar from '../Search/Searchbar/Searchbar.tsx'
 import './Navbar.css'
 
 const Navbar = () => {

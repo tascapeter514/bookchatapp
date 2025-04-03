@@ -1,6 +1,6 @@
 import './Login.css'
-import SubHeader from '../common/SubHeader/SubHeader'
-import { userContext } from '../common/Context/UserContext/UserContext'
+import SubHeader from '../SubHeader/SubHeader'
+import { userContext } from '../../context/UserContext/UserContext'
 import ErrorMessage from '../Messages/ErrorMessage/ErrorMessage'
 
 

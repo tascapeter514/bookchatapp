@@ -1,7 +1,7 @@
 import { useRef, Dispatch, SetStateAction } from 'react'
-import { bookclubData } from '../../../common/Context/BookclubContext/BookclubContext'
-import BookshelfModal from '../../../common/Modals/CreateBookshelf/CreateBookshelf'
-import Button from '../../../common/Buttons/Button/Button'
+import { bookclubData } from '../../../../context/BookclubContext/BookclubContext'
+import BookshelfModal from '../../../Modals/CreateBookshelf/CreateBookshelf'
+import Button from '../../../Buttons/Button/Button'
 import './SubNavbar.css'
 
 

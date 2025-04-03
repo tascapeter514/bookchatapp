@@ -2,7 +2,7 @@ import './AuthorPage.css'
 import { FC, useState, useEffect } from 'react'
 import {  Author, Book } from '../../types'
 import {useParams } from 'react-router-dom'
-import Accordion from '../common/Accordion/Accordion'
+import Accordion from '../Accordion/Accordion'
 
 const AuthorPage: FC = () => {
 
@@ -13,9 +13,9 @@ const AuthorPage: FC = () => {
 
     const bookElements = books?.map((book) => {
         return(
-            <li key={book.title_id} className='book-item'>
+            <li key={book.name} className='book-item'>
                 <img src={book.imageLinks.thumbnail} alt="book-thumbnail" className='book-thumbnail' />
-                <span className='book-title'>{book.title}</span>
+                <span className='book-title'>{book.name}</span>
             </li>
         )
     })

@@ -1,7 +1,7 @@
 import { useRef } from 'react'
-import { userContext } from '../../common/Context/UserContext/UserContext'
-import CreateButton from '../../common/Buttons/CreateButton/CreateButton'
-import PostModal from '../../common/Modals/PostModal/PostModal'
+import { userContext } from '../../../context/UserContext/UserContext'
+import CreateButton from '../../Buttons/CreateButton/CreateButton'
+import PostModal from '../../Modals/PostModal/PostModal'
 import './BookclubButton.css'
 
 
