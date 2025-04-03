@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import {useContext} from 'react'
 import Navbar from './components/Navbar/Navbar.tsx'
 import Homepage from './components/Homepage/Homepage.tsx'
 import Bookpage from './components/Bookpage/Bookpage.tsx'
@@ -19,7 +20,7 @@ function App() {
   return (
 
     <BrowserRouter>
-      <UserDataProvider>
+
      
         <Navbar />
         <Routes>
@@ -32,7 +33,7 @@ function App() {
               </Route>
               {/* <Route path='/bookclub/:id' element={<CheckMembers><BookclubPage /></CheckMembers>}></Route> */}
         </Routes>
-      </UserDataProvider>
+
     </BrowserRouter>
     
 
