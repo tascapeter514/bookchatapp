@@ -1,6 +1,9 @@
 import './Login.css'
 import SubHeader from '../SubHeader/SubHeader'
-import { userContext } from '../../context/UserContext/UserContext'
+import { useContext } from 'react'
+import useLogger from '../../hooks/useLogger'
+import { AuthContext } from '../../context/authContext/authContext'
+
 import ErrorMessage from '../Messages/ErrorMessage/ErrorMessage'
 
 
@@ -10,12 +13,10 @@ import ErrorMessage from '../Messages/ErrorMessage/ErrorMessage'
 
 const Login = () => {
 
-
-    const { userState, handleLogin } = userContext()
+    const {isError, isLoading, error, dispatch} = useContext(AuthContext)
+    const {authenticate} = useLogger(dispatch)
 
     
-
-    console.log('login USERSTATE:', userState)
 
     return(
         <div className="login-container">
@@ -25,8 +26,8 @@ const Login = () => {
                 action={handleLogin as any}
                 className='login-form'
                 method='post'>
-                    {userState.isError && <ErrorMessage>{userState.error}</ErrorMessage>}
-                    {userState.isLoading && <p className='loading'>Loading....</p>}
+                    {isError && <ErrorMessage>{error}</ErrorMessage>}
+                    {isLoading && <p className='loading'>Loading....</p>}
                     <label htmlFor="username-login">Username: </label>
                     <input 
                         type="text" 

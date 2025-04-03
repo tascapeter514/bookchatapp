@@ -1,6 +1,14 @@
-import {createContext, useEffect, useReducer, ReactNode, useMemo} from 'react'
-import userReducer from '../../reducers/userReducer'
+import {createContext, useEffect, useReducer, ReactNode, useMemo, Dispatch} from 'react'
+import { AuthState } from '../../types'
+import userReducer, {UserAction} from '../../reducers/userReducer'
 
+
+
+
+
+interface AuthContextType extends AuthState {
+    dispatch: Dispatch<UserAction>
+}
 
 interface Props {
     children: ReactNode
@@ -8,8 +16,8 @@ interface Props {
 
 
 
-const INITIAL_STATE = {
-    user: JSON.parse(sessionStorage.getItem('user') as string)|| null,
+const INITIAL_STATE: AuthState = {
+    user: JSON.parse(sessionStorage.getItem('user') as string) || null,
     authToken: JSON.parse(sessionStorage.getItem('authToken') || '') ,
     isLoggedIn: false,
     isLoading: false,
@@ -18,15 +26,21 @@ const INITIAL_STATE = {
 
 }
 
-export const AuthContext = createContext(INITIAL_STATE)
+export const AuthContext = createContext<AuthContextType>({
+    ...INITIAL_STATE,
+    dispatch: () => {}
+})
 
 export const AuthContextProvider = ({children}: Props) => {
 
     const [state, dispatch] = useReducer(userReducer, INITIAL_STATE);
 
     useEffect(() => {
+
         sessionStorage.setItem('user', JSON.stringify(state.user))
-    }, [state.user])
+        sessionStorage.setItem('authToken', JSON.stringify(state.authToken))
+
+    }, [state.user, state.authToken])
     
     
 
@@ -43,7 +57,7 @@ export const AuthContextProvider = ({children}: Props) => {
 
 
 
-    }), [])
+    }), [state])
 
 
     return (

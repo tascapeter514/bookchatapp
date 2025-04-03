@@ -32,8 +32,15 @@ export interface ActiveUser {
         emailAddress: string,
         profile: Profile ,
         dateJoined: string
+}
 
-
+export interface AuthState {
+    user: ActiveUser | null,
+    authToken: string | null,
+    isLoggedIn: boolean,
+    isLoading: boolean,
+    isError: boolean,
+    error: string
 }
 
 export type Author = {
