@@ -16,9 +16,9 @@ const Navbar = () => {
   console.log('navbar rendered')
 
   const {authToken, isLoggedIn, dispatch} = useContext(AuthContext)
-  const {logout} = useLogger(dispatch)
+  const {logout} = useLogger('http://localhost:8000/api/auth/logout')
   const [showNavbar] = useState(false)
-  const handleLogout = async () => await logout(authToken)
+  const handleLogout = async () => await logout(dispatch, authToken as string)
 
  
   const guestLinks = (<li className='login-link'><Link to='/login'>Log In</Link></li>)

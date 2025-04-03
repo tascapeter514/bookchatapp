@@ -7,10 +7,12 @@ import { axiosErrorHandler } from '../messages'
 
 export default function useLogger(dispatch: Dispatch<UserAction>) {
 
+    console.log('use logger dispatch:', dispatch)
+
     const navigate = useNavigate()
     
     const authenticate = useCallback( async (url: string, formData: FormData) => {
-        
+        console.log('dispatching user fetch init')
         dispatch({type: 'USER_FETCH_INIT'})
         const data = Object.fromEntries(formData);
 
@@ -25,7 +27,9 @@ export default function useLogger(dispatch: Dispatch<UserAction>) {
                 console.log('response:', response.data)
 
                 const {active_user, auth_token} = response.data
+
                 dispatch({type: 'LOGIN_ACTIVE_USER', payload: {user: active_user, authToken: auth_token }})
+                console.log('post dispatch')
                 
                 
 
@@ -49,9 +53,11 @@ export default function useLogger(dispatch: Dispatch<UserAction>) {
 
         }
 
-    }, [navigate])
+    }, [navigate, dispatch])
 
     const logout = useCallback(async (authToken: string) => {
+
+        if (!authToken) return
 
         try {
             const response = await axios.post('http://localhost:8000/api/auth/logout', 

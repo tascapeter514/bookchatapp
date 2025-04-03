@@ -59,11 +59,12 @@ const userReducer = (
     action: UserAction
 ) => {
 
-    // console.log('user reducer state:', state)
-    // console.log('user reducer action:', action)
+    console.log('user reducer state:', state)
+    console.log('user reducer action:', action)
     switch(action.type) {
 
         case 'USER_FETCH_INIT':
+            console.log('USER_FETCH_INIT')
             return {
                 ...state,
                 isLoading: true,
@@ -73,6 +74,8 @@ const userReducer = (
 
 
         case 'LOGIN_ACTIVE_USER':
+            console.log('log in state:', state)
+            console.log('log in action:', action)
             return {
                 ...state,
                 isLoggedIn: true,
