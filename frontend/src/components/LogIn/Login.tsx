@@ -15,6 +15,7 @@ const Login = () => {
 
     const {isError, isLoading, error, dispatch} = useContext(AuthContext)
     const {authenticate} = useLogger(dispatch)
+    const handleLogin = async (formData: FormData) => await authenticate('http://localhost:8000/api/auth/login', formData)
 
     
 

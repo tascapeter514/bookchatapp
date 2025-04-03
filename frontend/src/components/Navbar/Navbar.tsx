@@ -1,62 +1,41 @@
-import { useState, useMemo } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useState, useMemo, useContext } from 'react'
+import { Link } from 'react-router-dom'
 import useLogger from '../../hooks/useLogger.tsx'
-import { userContext } from '../../context/UserContext/UserContext.tsx'
+import { AuthContext } from '../../context/authContext/authContext.tsx'
 import Searchbar from '../Search/Searchbar/Searchbar.tsx'
 import './Navbar.css'
+
+
+
+
+
+
 
 const Navbar = () => {
 
   console.log('navbar rendered')
 
+  const {authToken, isLoggedIn, dispatch} = useContext(AuthContext)
+  const {logout} = useLogger(dispatch)
   const [showNavbar] = useState(false)
-  // const {authToken, isLoggedIn} = userContext().userState
-  const [authToken] = useState<string>(() => {
-    const storedToken = sessionStorage.getItem('authToken')
-    return storedToken ? JSON.parse(storedToken) : '';
-  }
+  const handleLogout = async () => await logout(authToken)
 
+ 
+  const guestLinks = (<li className='login-link'><Link to='/login'>Log In</Link></li>)
+  const authLinks = (
+      <li>
+          <Link className='profile-link' to='/userDashboard'>Profile</Link>
+          <a className='logout-link' onClick={handleLogout}>Logout</a>
+      </li>
 
   )
-  const navigate = useNavigate()
-  // const {userState } = userContext()
-  // const { logout } = useLogger()
-  
 
-
-    const handleLogout = async () => {
-      console.log('handle logout check')
-      sessionStorage.removeItem('authToken')
-      sessionStorage.removeItem('activeUser')
-      console.log('removed token')
-      navigate('/login')
-      // await logout()
-    }
-
-
-   
-    const guestLinks = (
-        <li className='login-link'><Link to='/login'>Log In</Link></li>
-    )
-
-    const authLinks = (
-        <li>
-            <Link className='profile-link' to='/userDashboard'>Profile</Link>
-            <a className='logout-link' onClick={handleLogout}>Logout</a>
-        </li>
-
-    )
-
-    const navLinks = useMemo(() => {
-
-      return authToken  ? authLinks : guestLinks
-
-    }, [authToken])
+  const navLinks = useMemo(() => authToken && isLoggedIn  ? authLinks : guestLinks , [authToken])
 
 
     console.log('navbar auth token:', authToken)
 
-    // console.log('navbar userState:', userState)
+  
 
 
     return(
@@ -79,7 +58,6 @@ const Navbar = () => {
                         <li className='main-list-element'><Link to='#'>Books</Link></li>
                         <li className='main-list-element'><Link to='#'>Authors</Link></li>
                         <li className='main-list-element'><Link to='#'>About</Link></li>
-                        {/* { userState.authToken && userState.isLoggedIn ? authLinks  :  guestLinks} */}
                         {navLinks}
                     </ul>
                 </nav>
@@ -88,4 +66,4 @@ const Navbar = () => {
     )
 }
 
-export default Navbar
+export default React.memo(Navbar)

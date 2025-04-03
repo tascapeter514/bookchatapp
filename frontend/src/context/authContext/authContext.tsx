@@ -18,7 +18,7 @@ interface Props {
 
 const INITIAL_STATE: AuthState = {
     user: JSON.parse(sessionStorage.getItem('user') as string) || null,
-    authToken: JSON.parse(sessionStorage.getItem('authToken') || '') ,
+    authToken: JSON.parse(sessionStorage.getItem('authToken') as string) || null ,
     isLoggedIn: false,
     isLoading: false,
     isError: false,
@@ -35,6 +35,9 @@ export const AuthContextProvider = ({children}: Props) => {
 
     const [state, dispatch] = useReducer(userReducer, INITIAL_STATE);
 
+    console.log('auth context logged in:', state.isLoggedIn)
+    console.log('auth context token:', state.authToken)
+
     useEffect(() => {
 
         sessionStorage.setItem('user', JSON.stringify(state.user))
@@ -43,8 +46,6 @@ export const AuthContextProvider = ({children}: Props) => {
     }, [state.user, state.authToken])
     
     
-
-
     const contextValues = useMemo(() => ({
 
         user: state.user,

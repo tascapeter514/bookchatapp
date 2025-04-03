@@ -7,7 +7,6 @@ import { axiosErrorHandler } from '../messages'
 
 export default function useLogger(dispatch: Dispatch<UserAction>) {
 
-
     const navigate = useNavigate()
     
     const authenticate = useCallback( async (url: string, formData: FormData) => {
@@ -52,8 +51,39 @@ export default function useLogger(dispatch: Dispatch<UserAction>) {
 
     }, [navigate])
 
+    const logout = useCallback(async (authToken: string) => {
+
+        try {
+            const response = await axios.post('http://localhost:8000/api/auth/logout', 
+                {},
+                {
+                    headers: {
+                        Authorization: `Token ${authToken}`
+                    }
+                }
+            
+            )
+
+            if (response.status === 204) {
+                console.log('Logout Successful')
+                dispatch({type: 'LOGOUT_ACTIVE_USER', payload: {user: null, authToken: ''}})
+                sessionStorage.removeItem('user')
+                sessionStorage.removeItem('authToken')
+                navigate('/login')
+            } else {
+                throw new Error ('unexpected error logging out')
+
+            }
+        } catch (err: any) {
+            console.log('Error logging out:', err)
+
+            dispatch({type: 'USER_ERROR', payload: 'Unexpected error logging out'})
+
+        }
+    }, [navigate, dispatch])
+
 
     
-    return {authenticate}
+    return {authenticate, logout}
 
 }
