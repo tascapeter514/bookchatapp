@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar.tsx'
 import Homepage from './components/Homepage/Homepage.tsx'
 import Bookpage from './components/Bookpage/Bookpage.tsx'
@@ -31,7 +31,7 @@ function App() {
               <Route path='/login' element={<Login />} />
 
               <Route path='/userDashboard'element={<UserDashboard /> }/>
-              <Route path='/bookclub/:id' element={<CheckMembers><BookclubPage /></CheckMembers>}></Route> 
+              <Route path='/bookclub/:id' element={<BookclubPage />}></Route> 
 
               
         </Routes>
