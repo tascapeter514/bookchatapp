@@ -1,12 +1,11 @@
 import './BookclubPage.css'
 
 import { useState } from 'react'
-import { bookclubData } from '../../context/BookclubContext/BookclubContext'
-import BookshelfPanel from '../Panels/BookshelfPanel/BookshelfPanel'
-import CurrentReadPanel from './components/CurrentReadPanel/CurrentReadPanel'
+// import BookshelfPanel from '../Panels/BookshelfPanel/BookshelfPanel'
+// import CurrentReadPanel from './components/CurrentReadPanel/CurrentReadPanel'
 import SubNavbar from './components/SubNavbar/SubNavbar'
 import TopFacade from './components/TopFacade/TopFacade'
-import BookshelfProvider from '../../context/BookshelfContext/BookshelfContext'
+// import BookshelfProvider from '../../context/BookshelfContext/BookshelfContext'
 import Tabs from './components/Tabs/Tabs'
 
 
@@ -14,21 +13,20 @@ import Tabs from './components/Tabs/Tabs'
 const BookclubPage = () => {
 
     
-    const { bookshelves } = bookclubData()
     const [activeTab, setActiveTab] = useState(0)
     const [showSubNav, setShowSubNav] = useState(false)
     const [activeBookshelf, setActiveBookshelf] = useState<number>(0)
     const tabContents = [{name: 'Bookshelves', id: 0}, {name: 'Current Read', id: 1}]
     
     
-    const panels = [
-        <BookshelfPanel 
-            activeBookshelf={activeBookshelf} 
-            bookshelves={bookshelves}
-        />,
-        <CurrentReadPanel />
-    ]
-    const PanelComponent = () => panels[activeTab]
+    // const panels = [
+    //     <BookshelfPanel 
+    //         activeBookshelf={activeBookshelf} 
+    //         bookshelves={bookshelves}
+    //     />,
+    //     <CurrentReadPanel />
+    // ]
+    // const PanelComponent = () => panels[activeTab]
 
 
     return(

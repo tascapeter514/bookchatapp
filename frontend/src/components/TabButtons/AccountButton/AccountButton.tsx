@@ -1,28 +1,27 @@
 import './AccountButton.css'
-import { userContext } from '../../../context/UserContext/UserContext'
 
 
 
-const AccountButton = () => {
+// const AccountButton = () => {
 
-    const {userTabs, tabsDispatch} = userContext()
+//     const {userTabs, tabsDispatch} = userContext()
 
 
 
-    return (
+//     return (
 
-        <button 
-            className={`account-button ${userTabs.activeTab === 'accountTab' ? 'active' : ''}`}
-            onClick={() => tabsDispatch({type: 'SET_ACTIVE_TAB', payload: 'accountTab'})}
-        >
-            Account
-        </button>
+//         <button 
+//             className={`account-button ${userTabs.activeTab === 'accountTab' ? 'active' : ''}`}
+//             onClick={() => tabsDispatch({type: 'SET_ACTIVE_TAB', payload: 'accountTab'})}
+//         >
+//             Account
+//         </button>
         
-    )
+//     )
 
-}
+// }
 
-export default AccountButton
+// export default AccountButton
 
 
 

@@ -1,7 +1,6 @@
 import './UserDashboard.css';
 import { useReducer } from 'react';
 import mobileNavReducer from '../../reducers/mobileNavReducer';
-import { userContext} from '../../context/UserContext/UserContext'
 import Bookshelfpanel from '../Panels/BookshelfPanel/BookshelfPanel'
 import OpenMobileNav from '../Buttons/OpenMobileNav/OpenMobileNav';
 import CloseMobileNav from '../Buttons/CloseMobileNav/CloseMobileNav';
@@ -13,7 +12,7 @@ import BookclubsPanel from '../Panels/BookclubsPanel/BookclubsPanel';
 
 const UserDashboard = () => {
 
-    const { userTabs } = userContext()
+
     const [mobileNav, navDispatch] = useReducer(mobileNavReducer, {open: false, isExiting: false})
 
 
@@ -22,10 +21,10 @@ const UserDashboard = () => {
 
             <main className='dashboard-main'>
                 <OpenMobileNav mobileNav={mobileNav} navDispatch={navDispatch} />
-                    {userTabs.activeTab === 'accountTab' && <AccountPanel />}
+                    {/* {userTabs.activeTab === 'accountTab' && <AccountPanel />}
                     {userTabs.activeTab === 'messagesTab' && <MessagePanel />}
                     {userTabs.activeTab === 'bookclubTab' && <BookclubsPanel />}
-                    {userTabs.activeTab === 'bookshelfTab' && <Bookshelfpanel />}
+                    {userTabs.activeTab === 'bookshelfTab' && <Bookshelfpanel />} */}
             </main>
             <aside className={`dashboard-navbar ${mobileNav.open ? 'enter' : ''} ${mobileNav.isExiting ? 'exit' : ''}`}>
                 <CloseMobileNav mobileNav={mobileNav} navDispatch={navDispatch} />

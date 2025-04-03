@@ -3,7 +3,7 @@ import BookshelfDropdown from '../../BookshelfDropdown/BookshelfDropdown'
 import { useState, useRef} from 'react'
 import { RightDropDownIcon } from '../../Icons'
 import CreateButton from '../../Buttons/CreateButton/CreateButton'
-import { userContext } from '../../../context/UserContext/UserContext'
+// import { userContext } from '../../../context/UserContext/UserContext'
 import PostModal from '../../Modals/PostModal/PostModal'
 import './BookshelfButton.css'
 
@@ -12,7 +12,7 @@ import './BookshelfButton.css'
 const BookshelfButton = () => {
      
     
-    const { userState, bookshelves, userTabs, tabsDispatch } = userContext()
+    // const { userState, bookshelves, userTabs, tabsDispatch } = userContext()
     const bookshelfRef = useRef<HTMLDialogElement>(null)
     const openModal = () => bookshelfRef.current?.showModal()
     const [isRotated, setIsRotated] = useState(false);
@@ -25,28 +25,28 @@ const BookshelfButton = () => {
 
     console.log('bookshelves:', bookshelves)
 
-    const bookshelfNames = bookshelves.data?.map((bookshelf, index) => {
+    // const bookshelfNames = bookshelves.data?.map((bookshelf, index) => {
 
-        console.log('bookshelf:', bookshelf)
+    //     console.log('bookshelf:', bookshelf)
 
-        return (
-            <li 
-                key={bookshelf.id}
-                onClick={() => tabsDispatch({type: 'SET_BOOKSHELF_TAB', payload: `bookshelfTab${index}`})}
-                className={userTabs.activeBookshelf === `bookshelfTab${index}`  ? 'active' : ''}
-            >   
-                <a id={`bookshelf-${index + 4}`} href={`#${bookshelf.name?.toLowerCase()}`}>
-                    {bookshelf.name == undefined ? '' : bookshelf.name}
-                </a>
-            </li>
-        )
-    })
+    //     return (
+    //         <li 
+    //             key={bookshelf.id}
+    //             onClick={() => tabsDispatch({type: 'SET_BOOKSHELF_TAB', payload: `bookshelfTab${index}`})}
+    //             className={userTabs.activeBookshelf === `bookshelfTab${index}`  ? 'active' : ''}
+    //         >   
+    //             <a id={`bookshelf-${index + 4}`} href={`#${bookshelf.name?.toLowerCase()}`}>
+    //                 {bookshelf.name == undefined ? '' : bookshelf.name}
+    //             </a>
+    //         </li>
+    //     )
+    // })
 
                 
     return (
         <div className='navbar-bookshelf-component'>
             <hr className='navbar-line-break' />
-            <BookshelfDropdown activePanel={activePanel}>
+            {/* <BookshelfDropdown activePanel={activePanel}>
                 <a 
                     className={`bookshelf-button ${userTabs.activeTab === 'bookshelfTab' && userTabs.activeBookshelf === '' ? 'active' : ''}`}
                     onClick={ () => tabsDispatch({type: 'SET_ACTIVE_TAB', payload: 'bookshelfTab'})}
@@ -55,7 +55,7 @@ const BookshelfButton = () => {
                     <RightDropDownIcon onClick={toggleDropdown} isRotated={isRotated} />
                 </a>
                 <ul className='navbar-bookshelf-list'>{bookshelfNames}</ul>
-            </BookshelfDropdown>
+            </BookshelfDropdown> */}
             <CreateButton onClick={openModal}>Bookshelf</CreateButton>
             <PostModal 
                 ref={bookshelfRef} 

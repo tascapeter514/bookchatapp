@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import useLogger from '../../hooks/useLogger.tsx'
-import { AuthContext } from '../../context/authContext/authContext.tsx'
+
 import Searchbar from '../Search/Searchbar/Searchbar.tsx'
 import './Navbar.css'
 
@@ -15,11 +15,11 @@ const Navbar = () => {
 
   console.log('navbar rendered')
 
-  const {authToken, isLoggedIn, dispatch} = useContext(AuthContext)
-  const {logout} = useLogger('http://localhost:8000/api/auth/logout')
+ 
+  // const {logout} = useLogger('http://localhost:8000/api/auth/logout')
   const [showNavbar] = useState(false)
-  const handleLogout = async () => await logout(dispatch, authToken as string)
-
+  // const handleLogout = async () => await logout(dispatch, authToken as string)
+  const handleLogout = async () => console.log('log out')
  
   const guestLinks = (<li className='login-link'><Link to='/login'>Log In</Link></li>)
   const authLinks = (
@@ -30,10 +30,10 @@ const Navbar = () => {
 
   )
 
-  const navLinks = useMemo(() => authToken && isLoggedIn  ? authLinks : guestLinks , [authToken])
+  // const navLinks = useMemo(() => authToken && isLoggedIn  ? authLinks : guestLinks , [authToken])
 
 
-    console.log('navbar auth token:', authToken)
+    // console.log('navbar auth token:', authToken)
 
   
 
@@ -58,7 +58,7 @@ const Navbar = () => {
                         <li className='main-list-element'><Link to='#'>Books</Link></li>
                         <li className='main-list-element'><Link to='#'>Authors</Link></li>
                         <li className='main-list-element'><Link to='#'>About</Link></li>
-                        {navLinks}
+                        {/* {navLinks} */}
                     </ul>
                 </nav>
             </div> 

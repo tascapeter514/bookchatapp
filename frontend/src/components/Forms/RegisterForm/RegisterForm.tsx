@@ -12,11 +12,10 @@ import './RegisterForm.css'
 const RegisterForm = () => {
 
     
-    const { userState, userDispatch } = userContext()
-    const { authenticate } = useLogger()
 
-    const handleRegister = async (formData: FormData) => await authenticate('http://localhost:8000/api/auth/register', formData)
-    
+
+    // const handleRegister = async (formData: FormData) => await authenticate('http://localhost:8000/api/auth/register', formData)
+    const handleRegister = async (formData: FormData) => console.log(formData)
 
     const [registerData, setRegisterData] = useState({
         firstName: '',
@@ -33,7 +32,7 @@ const RegisterForm = () => {
             ...prev,
             [name]: value
         }))
-        userDispatch({type: 'CLEAR_ERROR'})
+    
     }
 
         
@@ -44,7 +43,7 @@ const RegisterForm = () => {
         <form action={handleRegister as any} className='register-form'>
             <Header>Register</Header>
             <SubHeader>Contact Info</SubHeader>
-            {userState.isError && <ErrorMessage>{userState.error}</ErrorMessage>}
+            {/* {userState.isError && <ErrorMessage>{userState.error}</ErrorMessage>} */}
             <InputField value={registerData.firstName} labelKey='firstName' handleChange={onChange}>First Name</InputField>
             <InputField value={registerData.lastName} labelKey='lastName' handleChange={onChange}>Last Name</InputField>
             <InputField value={registerData.emailAddress} labelKey='emailAddress' handleChange={onChange} type='email'>Email</InputField>

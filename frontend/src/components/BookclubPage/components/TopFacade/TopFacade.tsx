@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { bookclubData } from '../../../../context/BookclubContext/BookclubContext'
+// import { bookclubData } from '../../../../context/BookclubContext/BookclubContext'
 import BookclubBackground from '../../assets/bookclub-background.jpg'
 import FileUploadModal from '../../../Modals/FileUploadModal/FileUploadModal'
 import InviteModal from '../InviteModal/InviteModal'
@@ -13,8 +13,8 @@ import './TopFacade.css'
 
 const TopFacade = () => {
 
-    const { bookclub, parameters } = bookclubData()
-    const { id } = parameters
+    // const { bookclub, parameters } = bookclubData()
+    // const { id } = parameters
     const uploadFileRef = useRef<HTMLDialogElement>(null)
     const inviteRef = useRef<HTMLDialogElement>(null)
     const openImageModal = () => uploadFileRef.current?.showModal()
@@ -30,9 +30,9 @@ const TopFacade = () => {
             <div className="bookclub-background">
             <img src={BookclubBackground} alt="" />
                 <Button onClick={openImageModal}>Change Image</Button>
-                <FileUploadModal id={id ?? ''} closeImageModal={closeImageModal} uploadFileRef={uploadFileRef} />
+                {/* <FileUploadModal id={id ?? ''} closeImageModal={closeImageModal} uploadFileRef={uploadFileRef} /> */}
             </div>
-            <div className="bookclub-top-bar">
+            {/* <div className="bookclub-top-bar">
                 <h2>{bookclub?.name}</h2>
                                 
                 <small>{bookclub?.members.length} Members</small>
@@ -51,7 +51,7 @@ const TopFacade = () => {
                         inviteRef={inviteRef}
                     ></InviteModal>
                 </div>
-            </div>
+            </div> */}
         </div>
 
     )

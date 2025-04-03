@@ -3,7 +3,6 @@ import SearchFilter from '../../Search/SearchFilter/SearchFilter'
 import searchReducer from '../../../reducers/searchReducer'
 import Button from '../../Buttons/Button/Button'
 import FilterResults from '../../Bookpage/components/SearchFilter/FilterResults'
-import { userContext } from '../../../context/UserContext/UserContext'
 import { Book } from '../../../types'
 import { Data } from '../../../reducers/dataReducer'
 import usePut from '../../../hooks/usePut'
@@ -21,20 +20,19 @@ type Props = {
 const AddBook = ({addBookRef, book}: Props) => {
 
     const [search, dispatchSearch] = useReducer(searchReducer, {id: 0, value: ''})
-    const { userState, bookshelves, bookshelfDispatch} = userContext()
     const closeModal = () => addBookRef.current?.close()
     const { data, makeRequest } = usePut(`http://localhost:8000/api/user/book/${userState.user?.id}`)
 
 
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        if (!data.isLoading && !data.isError && data.data.length > 0) {
-            bookshelfDispatch({type: 'ADD_BOOK', payload: {bookshelfId: search.id, newBook: data.data}})
-        }
+    //     if (!data.isLoading && !data.isError && data.data.length > 0) {
+    //         bookshelfDispatch({type: 'ADD_BOOK', payload: {bookshelfId: search.id, newBook: data.data}})
+    //     }
 
 
-    })
+    // })
 
     const addBook = async () => {
 
@@ -56,14 +54,14 @@ const AddBook = ({addBookRef, book}: Props) => {
             <dialog className='addBook' ref={addBookRef}>
                 <h3>Add this book to your bookshelf</h3>
                     <hr />
-                    {userState.isLoggedIn ? 
+                    {/* {userState.isLoggedIn ? 
                         <main className="bookshelf-results-content">
                             <SearchFilter search={search} dispatchSearch={dispatchSearch}/>
                             <FilterResults search={search} dispatchSearch={dispatchSearch}>{bookshelves}</FilterResults>
                         </main>
                             
                         
-                        : <span>You must be logged in to use this feature</span>}
+                        : <span>You must be logged in to use this feature</span>} */}
                         <div className="button-wrapper">
                             <Button onClick={closeModal}>Cancel</Button>
                             <Button onClick={addBook}>Add</Button>

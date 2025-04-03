@@ -1,6 +1,6 @@
 import './PostModal.css'
 import {  useState, FormEvent, RefObject, useEffect, useRef } from 'react'
-import { userContext } from '../../../context/UserContext/UserContext'
+// import { userContext } from '../../../context/UserContext/UserContext'
 import { Data } from '../../../reducers/dataReducer'
 import ErrorMessage from '../../Messages/ErrorMessage/ErrorMessage'
 import Button from '../../Buttons/Button/Button'
@@ -18,30 +18,30 @@ const PostModal = ({ref, url, type}: Props) => {
 
 
     const closeModal = () => ref.current?.close()
-    const { bookclubDispatch, bookshelfDispatch } = userContext()
+    // const { bookclubDispatch, bookshelfDispatch } = userContext()
     const { data, makeRequest } = usePost(url)
     const [name, setName] = useState<string>('')
     const prevDataRef = useRef<Data | null>(null)
 
 
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        console.log('use post data:', data)
-        console.log('use post type:', type)
+    //     console.log('use post data:', data)
+    //     console.log('use post type:', type)
 
-        if (!data.isLoading && !data.isError && data.data.length > 0) {
-            prevDataRef.current = data.data
-            if (type === 'bookclub') {
-                bookclubDispatch({type: 'ADD_BOOKCLUB', payload: data.data})
+    //     if (!data.isLoading && !data.isError && data.data.length > 0) {
+    //         prevDataRef.current = data.data
+    //         if (type === 'bookclub') {
+    //             bookclubDispatch({type: 'ADD_BOOKCLUB', payload: data.data})
 
-            } else if (type === 'bookshelf') {
-                console.log('post modal called check')
-                bookshelfDispatch({type: 'ADD_BOOKSHELF', payload: data.data})
-            }
-        }
+    //         } else if (type === 'bookshelf') {
+    //             console.log('post modal called check')
+    //             bookshelfDispatch({type: 'ADD_BOOKSHELF', payload: data.data})
+    //         }
+    //     }
 
-    }, [data, type, bookclubDispatch])
+    // }, [data, type, bookclubDispatch])
 
 
 

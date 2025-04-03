@@ -1,5 +1,5 @@
 import { useRef, Dispatch, SetStateAction } from 'react'
-import { bookclubData } from '../../../../context/BookclubContext/BookclubContext'
+// import { bookclubData } from '../../../../context/BookclubContext/BookclubContext'
 import BookshelfModal from '../../../Modals/CreateBookshelf/CreateBookshelf'
 import Button from '../../../Buttons/Button/Button'
 import './SubNavbar.css'
@@ -13,19 +13,19 @@ interface SubNavbarProps {
 
 const SubNavbar = ({ subNav, setActiveBookshelf }: SubNavbarProps) => {
 
-    const { bookshelves, addBookshelf, newBkslfId, setBkslfId } = bookclubData()
+    // const { bookshelves, addBookshelf, newBkslfId, setBkslfId } = bookclubData()
     const bookshelfRef = useRef<HTMLDialogElement>(null)
     const openBookshelfModal = () => bookshelfRef.current?.showModal()
     const closeBookshelfModal = () => bookshelfRef.current?.close()
 
-    const bookshelfTitles = bookshelves?.map((bookshelf, index) => {
+    // const bookshelfTitles = bookshelves?.map((bookshelf, index) => {
 
 
-        return (
-                <li key={bookshelf.bookshelf_id} onClick={() => setActiveBookshelf(index)} className='bookshelf-title-listElement'>
-                    {bookshelf.name}
-                </li>
-        )})
+    //     return (
+    //             <li key={bookshelf.bookshelf_id} onClick={() => setActiveBookshelf(index)} className='bookshelf-title-listElement'>
+    //                 {bookshelf.name}
+    //             </li>
+    //     )})
 
 
     
@@ -36,17 +36,17 @@ const SubNavbar = ({ subNav, setActiveBookshelf }: SubNavbarProps) => {
             aria-hidden='true'
         >
             <ul className="bookshelf-titles-list">
-                {bookshelfTitles}
+                {/* {bookshelfTitles} */}
             </ul>
             <Button onClick={openBookshelfModal}>Add Bookshelf</Button>
-            <BookshelfModal 
+            {/* <BookshelfModal 
                 bookshelfRef={bookshelfRef}
                 closeBookshelfModal={closeBookshelfModal}
                 addBookshelf={addBookshelf}
                 newBkslfId={newBkslfId}
                 setBkslfId={setBkslfId}
             >
-            </BookshelfModal>
+            </BookshelfModal> */}
         </nav>
 
     )
