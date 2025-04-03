@@ -1,4 +1,4 @@
-import { useReducer, Reducer, useCallback, useEffect } from "react"
+import { useReducer, Reducer, useCallback, useEffect, useRef } from "react"
 import bookshelfReducer, {BookshelfState, BookshelfAction} from "../../../reducers/bookshelfReducer"
 // import axios from "axios"
 
@@ -9,13 +9,15 @@ const useBookshelves = () => {
     const [bookshelvesState, bookshelfDispatch] = useReducer<Reducer<BookshelfState, BookshelfAction>>(bookshelfReducer, 
         {data: null, isError: false, error: '', isLoading: false})
 
+    const socketRef = useRef<WebSocket | null>(null)
+
     
 
     useEffect(() => {
 
         console.log('bookshelves use Effect check')
 
-        if (bookshelvesState.data) {
+        if (bookshelvesState.data && bookshelvesState.data.length > 0) {
             sessionStorage.setItem('bookshelves', JSON.stringify(bookshelvesState.data))
 
         }
@@ -23,12 +25,20 @@ const useBookshelves = () => {
     }, [bookshelvesState.data])
 
 
-    const connectSocket = useCallback( async (url: string) => {
+    const bookshelvesSocket = useCallback( async (url: string) => {
+        if (socketRef.current) {
+            console.log('close previous bookshelves socket connection')
+            socketRef.current.close()
+        }
+
+
+
         bookshelfDispatch({'type': 'BOOKSHELVES_FETCH_INIT'})
 
 
         try {
             const socket = new WebSocket(url)
+            socketRef.current = socket
     
             socket.onmessage = (event) => {
             //   const data = JSON.parse(event.data);
@@ -60,7 +70,10 @@ const useBookshelves = () => {
 
     }, [bookshelvesState, bookshelfDispatch])
 
-    return {bookshelvesState, bookshelfDispatch, connectSocket}
+    console.log('use bookshelves hook state:', bookshelvesState)
+
+    return {bookshelvesState, bookshelfDispatch, bookshelvesSocket}
+
 
 }
 

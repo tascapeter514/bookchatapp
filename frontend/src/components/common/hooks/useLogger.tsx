@@ -4,6 +4,10 @@ import axios, { AxiosError } from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { axiosErrorHandler } from '../../../messages'
 
+
+
+
+
 export default function useLogger() {
 
 
@@ -12,6 +16,7 @@ export default function useLogger() {
     const [userState, dispatchUser] = useReducer(userReducer, {
         user: null, authToken: '', isLoggedIn: false, isError: false, isLoading: false, error: ''
     })
+
 
   
     const authenticate = useCallback( async (url: string, formData: FormData) => {
@@ -54,10 +59,11 @@ export default function useLogger() {
 
         }
 
-    }, [])
+    }, [navigate])
 
 
     useEffect(() => {
+
 
        if (userState.isLoggedIn && userState.authToken && userState.user) {
             sessionStorage.setItem('authToken', JSON.stringify(userState.authToken))
@@ -71,10 +77,7 @@ export default function useLogger() {
        }
 
     }, [userState, dispatchUser, authenticate])
-    
 
-
-   
     return {userState, dispatchUser, authenticate}
 
 }

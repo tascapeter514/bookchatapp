@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { useState, useMemo } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import useLogger from '../common/hooks/useLogger.tsx'
 import { userContext } from '../common/Context/UserContext/UserContext.tsx'
 import Searchbar from '../Searchbar/Searchbar.tsx'
@@ -7,14 +7,29 @@ import './Navbar.css'
 
 const Navbar = () => {
 
+  console.log('navbar rendered')
+
   const [showNavbar] = useState(false)
-  const {userState} = userContext()
+  // const {authToken, isLoggedIn} = userContext().userState
+  const [authToken] = useState<string>(() => {
+    const storedToken = sessionStorage.getItem('authToken')
+    return storedToken ? JSON.parse(storedToken) : '';
+  }
+
+
+  )
+  const navigate = useNavigate()
+  // const {userState } = userContext()
   // const { logout } = useLogger()
   
 
 
     const handleLogout = async () => {
       console.log('handle logout check')
+      sessionStorage.removeItem('authToken')
+      sessionStorage.removeItem('activeUser')
+      console.log('removed token')
+      navigate('/login')
       // await logout()
     }
 
@@ -32,12 +47,17 @@ const Navbar = () => {
 
     )
 
-    console.log('navbar auth token:', userState.authToken);
-    console.log('navbar user state:', userState)
+    const navLinks = useMemo(() => {
+
+      return authToken  ? authLinks : guestLinks
+
+    }, [authToken])
 
 
-  
-    
+    console.log('navbar auth token:', authToken)
+
+    // console.log('navbar userState:', userState)
+
 
     return(
         <header>
@@ -59,7 +79,8 @@ const Navbar = () => {
                         <li className='main-list-element'><Link to='#'>Books</Link></li>
                         <li className='main-list-element'><Link to='#'>Authors</Link></li>
                         <li className='main-list-element'><Link to='#'>About</Link></li>
-                        { userState.authToken && userState.isLoggedIn ? authLinks : guestLinks}
+                        {/* { userState.authToken && userState.isLoggedIn ? authLinks  :  guestLinks} */}
+                        {navLinks}
                     </ul>
                 </nav>
             </div> 
