@@ -11,7 +11,7 @@ const useAuth = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const [login, { isLoading }] = useLoginMutation();
+    const [login, { isLoading, error }] = useLoginMutation();
 
     const { userInfo } = useSelector((state: RootState)  => state.auth)
 
@@ -20,6 +20,8 @@ const useAuth = () => {
             navigate('/userDashboard')
         }
     }, [navigate, userInfo])
+
+    return { dispatch, login, isLoading, error }
 
 }
 

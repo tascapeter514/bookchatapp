@@ -23,7 +23,7 @@ const BookshelfButton = () => {
         setIsRotated(prev => !prev)
     }
 
-    console.log('bookshelves:', bookshelves)
+    // console.log('bookshelves:', bookshelves)
 
     // const bookshelfNames = bookshelves.data?.map((bookshelf, index) => {
 
@@ -57,11 +57,11 @@ const BookshelfButton = () => {
                 <ul className='navbar-bookshelf-list'>{bookshelfNames}</ul>
             </BookshelfDropdown> */}
             <CreateButton onClick={openModal}>Bookshelf</CreateButton>
-            <PostModal 
+            {/* <PostModal 
                 ref={bookshelfRef} 
                 url={`http://localhost:8000/api/user/bookshelf/${userState.user?.id}`}
                 type='bookshelf'  
-            /> 
+            />  */}
         </div>
     )
 

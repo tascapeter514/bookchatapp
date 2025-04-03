@@ -1,10 +1,9 @@
 import './Login.css'
 import SubHeader from '../SubHeader/SubHeader'
-import { useContext } from 'react'
-import useLogger from '../../hooks/useLogger'
-
-
+import { useNavigate } from 'react-router-dom'
 import ErrorMessage from '../Messages/ErrorMessage/ErrorMessage'
+import useAuth from '../../hooks/useAuth'
+import { setCredentials } from '../../slices/authSlice'
 
 
 
@@ -14,9 +13,26 @@ import ErrorMessage from '../Messages/ErrorMessage/ErrorMessage'
 const Login = () => {
 
 
+    const navigate = useNavigate()
+    const { dispatch, login, isLoading, error } = useAuth()
+    const handleLogin = async (formData: FormData) => {
+        
+        const username = formData.get('username')
+        const password = formData.get('password')
 
-    // const handleLogin = async (formData: FormData) => await authenticate('http://localhost:8000/api/auth/login', formData)
-    const handleLogin = async(formData: FormData) => console.log(formData)
+
+        try {
+            const response = await login({ username, password }).unwrap()
+            dispatch(setCredentials({...response}))
+            navigate('/userDashboard')
+
+
+        } catch (err: any) {
+            console.log(err?.data?.message || err?.error)
+
+        }
+
+    }
 
     
 
