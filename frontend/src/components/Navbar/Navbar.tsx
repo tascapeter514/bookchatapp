@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { useLogoutMutation } from '../../slices/authApiSlice.tsx'
-import useAuth from '../../hooks/useAuth.tsx'
 import { RootState } from '../../store/store.tsx'
 import Searchbar from '../Search/Searchbar/Searchbar.tsx'
 import { removeCredentials } from '../../slices/authSlice.tsx'
@@ -21,13 +20,13 @@ const Navbar = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const { authToken } = useSelector((state: RootState) => state.auth)
-  const [logout, {isLoading, error}] = useLogoutMutation()
-  // const { dispatch, logout } = useAuth()
+  const [logout ] = useLogoutMutation()
+  
 
  
   const [showNavbar] = useState(false)
 
-  // const handleLogout = async () => console.log('log out')
+ 
 
   const handleLogout = async () => {
     

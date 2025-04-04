@@ -1,83 +1,80 @@
-import {useMemo, useEffect, useReducer, Reducer} from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import {useParams } from 'react-router-dom'
+import { useEffect, useCallback } from 'react'
+import { useGetBookMutation } from '../../slices/bookApiSlice'
+import { loadBook } from '../../slices/bookSlice'
 import { Book, Author } from '../../types'
-import { Data } from '../../reducers/dataReducer'
-import bookReducer, {BookState, BookAction} from '../../reducers/bookReducer'
+import { RootState } from '../../store/store'
 import AuthorDetails from '../AuthorDetails/AuthorDetails'
 import ProductDetails from '../ProductDetails/ProductDetails'
 import BookFacade from '../BookFacade/BookFacade'
-import useGet from '../../hooks/useGet'
 import './Bookpage.css'
 
 
 const Bookpage = () => {
 
     const { id } = useParams();
-    console.log('id:', id)
-    const { data, makeRequest  } = useGet()
-    // const [book, setBook] = useState<Book | Data>({} as Book)
-    const [bookState, dispatchBook] = useReducer<Reducer<BookState, BookAction>>(bookReducer, {book: {} as Book | Data, isError: false, error: ''})
-    const stableData = useMemo(() => data.data, [JSON.stringify(data.data)])
+    console.log('book id:', id)
+    const dispatch = useDispatch()
+    const [getBook, {isLoading, isError}] = useGetBookMutation()
+    const { book } = useSelector((state: RootState) => state.book)
 
-    useEffect(() => {
-        console.log('get book use effect')
+    console.log('book authors:', book.authors)
 
-        const getBook = async () => {
-            console.log('get book check')
-            try {
+    const getBookData = useCallback( async () => {
+
+        try {
+
+            const response = await getBook(id).unwrap()
+            dispatch(loadBook({...response}))
 
 
-                await makeRequest(`http://localhost:8000/api/book/${id}`)
-                
-            } catch(err) {
-                console.error('Error fetching book:', err)
-                dispatchBook({type: 'BOOK_ERROR', payload: 'Error fetching book'})
-            }
-            
+
+
+        } catch(err: any) {
+            console.error('Error fetching book:', err)
         }
 
-        getBook()
+    }, [id])
 
-    }, [stableData])
 
 
     useEffect(() => {
 
-        console.log('second use effect data check')
-        if (!data.isError && !data.isLoading && data.data) {
-            dispatchBook({type: 'LOAD_BOOK', payload: data.data})
-        }
+        getBookData()
 
-    }, [data.data])
+    }, [id])
+
+ 
 
     
 
-    console.log('book page data:', data.data)
+  
 
     return(
         
         <div className='bookpage-container'>
-            {data.isError && <p>There was an error loading the data: {data.error}</p>}
-            {data.isLoading && <p>Page is loading...</p>}
-            {bookState.book.id && (
+            {isError && <p>There was an error loading the data: {data.error}</p>}
+            {isLoading && <p>Page is loading...</p>}
+            {book.id && (
                 <div className="bookpage-detail">
                    
-                    <BookFacade book={bookState.book} /> 
+                    <BookFacade book={book} /> 
                     <div className="main-content">
                         <div className="book-description">
                             <hr />
-                            <h3>About {bookState.book.name}</h3>
-                            <p>{bookState.book.description}</p>
+                            <h3>About {book.name}</h3>
+                            <p>{book.description}</p>
                            
                         </div>
                     
                         <div className="author-product-container">
-                            {bookState.book.authors && bookState.book.authors.length > 0 &&
-                                bookState.book.authors.map((author: Author ) => (
+                            {book.authors && book.authors.length > 0 &&
+                                book.authors.map((author: Author ) => (
                                     <AuthorDetails {...author} />
                             ))}
                             
-                            <ProductDetails {...{pageCount: bookState.book.pageCount, publisher: bookState.book.publisher, ISBNIdentifiers: bookState.book.ISBN_Identifiers}}/>
+                            <ProductDetails {...{pageCount: book.pageCount, publisher: book.publisher, ISBNIdentifiers: book.ISBN_Identifiers}}/>
                             
                         </div>
                     </div>

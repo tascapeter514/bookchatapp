@@ -4,6 +4,7 @@ import { Book, Author } from '../../types'
 import { Data } from '../../reducers/dataReducer'
 import { Link } from 'react-router-dom'
 import { BookmarkIcon } from '../Icons'
+import { authorText } from '../../utils/textFormatting'
 import AddBook from '../Modals/AddBook/AddBook'
 
 
@@ -19,21 +20,7 @@ const BookFacade = ({book}: Props) => {
     console.log('book authors:', book.authors)
     const authors = book.authors ?? []
       // refactor to get at authors names
-    const authorText = (() => {
-        
-        switch (authors.length) {
-            case 0:
-                return 'Unknown Author';
-            case 1:
-                return book.authors[0].name
-            case 2:
-                return book.authors.map((author: Author) => author.name)
-            case 3:
-                return book.authors.slice(0, 3).join(', ')
-            case 4:
-                return `${book.authors.slice(0, 3).join(', ')} and others`;
-        }
-    })()
+   
 
     const addBookRef = useRef<HTMLDialogElement>(null)
     const openModal = () => addBookRef.current?.showModal()
@@ -48,7 +35,7 @@ const BookFacade = ({book}: Props) => {
                    <BookmarkIcon onClick={openModal}></BookmarkIcon>
                     <span>Add to Bookshelf</span>
                </div>
-               <AddBook addBookRef={addBookRef} book={book}/>
+               {/* <AddBook addBookRef={addBookRef} book={book}/> */}
             
               
                
@@ -56,7 +43,7 @@ const BookFacade = ({book}: Props) => {
             <article className="book-info-wrapper">
                 <h1>{book.name}</h1>
                 <h3>
-                    By <span> {authorText} </span>
+                    By <span> {authorText(book.authors)} </span>
                 </h3>
                 <p>Category: <Link to='#' >{book.genres.name}</Link></p>
                 <button

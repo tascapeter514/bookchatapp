@@ -1,6 +1,6 @@
 import './SearchbarResults.css'
 import { Link } from 'react-router-dom'
-import { SearchData, SearchResult } from '../../types'
+import { SearchData, SearchResult } from '../../../types'
 
 
 interface ResultProps {
