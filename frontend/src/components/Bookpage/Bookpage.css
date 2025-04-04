@@ -1,24 +1,10 @@
 
-.bookpage-detail {
-    padding: 2.5em 0;
+.bookpage-container {
     display: flex;
     flex-direction: column;
 }
 
-.top-facade {
-    background-color: #f6f6f6;
-    border: 1px solid red;
-}
 
-.book-header-wrapper {
-    display: flex;
-    justify-content: center;
-    gap: 3rem;
-    max-width: 940px;
-    margin: 0 auto;
-    padding: 2em;
-    border: 1px solid red;   
-}
 
 
 
@@ -46,6 +32,7 @@
 
     .book-details {
         font-size: 1.15rem;
+
     }
 
 

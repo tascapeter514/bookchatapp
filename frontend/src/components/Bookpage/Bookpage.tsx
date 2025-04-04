@@ -7,7 +7,7 @@ import { Book, Author } from '../../types'
 import { RootState } from '../../store/store'
 import AuthorDetails from '../AuthorDetails/AuthorDetails'
 import ProductDetails from '../ProductDetails/ProductDetails'
-import BookFacade from '../BookFacade/BookFacade'
+import BookHeader from '../BookHeader/BookHeader'
 import './Bookpage.css'
 
 
@@ -19,7 +19,6 @@ const Bookpage = () => {
     const [getBook, {isLoading, isError}] = useGetBookMutation()
     const { book } = useSelector((state: RootState) => state.book)
 
-    console.log('book authors:', book.authors)
 
     const getBookData = useCallback( async () => {
 
@@ -56,10 +55,9 @@ const Bookpage = () => {
         <div className='bookpage-container'>
             {isError && <p>There was an error loading the data: {data.error}</p>}
             {isLoading && <p>Page is loading...</p>}
-            {book.id && (
-                <div className="bookpage-detail">
+                {/* <div className="bookpage-detail"> */}
                    
-                    <BookFacade book={book} /> 
+                    <BookHeader book={book} /> 
                     <div className="main-content">
                         <div className="book-description">
                             <hr />
@@ -79,10 +77,9 @@ const Bookpage = () => {
                         </div>
                     </div>
                 </div>
-                )
-            }
+                
             
-        </div>
+        // </div>
 
     )
 }

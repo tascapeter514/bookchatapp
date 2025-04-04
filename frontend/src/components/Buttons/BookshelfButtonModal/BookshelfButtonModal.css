@@ -1,0 +1,16 @@
+.bookshelf-button-modal {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.bookshelf-button-modal > span  {
+    width: 60%;
+    text-align: left;
+}
+
+.bookmark-icon {
+    cursor: pointer;
+}

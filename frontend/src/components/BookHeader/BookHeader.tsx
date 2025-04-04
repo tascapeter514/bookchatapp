@@ -1,45 +1,29 @@
-import './BookFacade.css'
-import { useRef } from 'react'
+import './BookHeader.css'
 import { Book, Author } from '../../types'
+import BookCover from '../BookCover/BookCover'
 import { Data } from '../../reducers/dataReducer'
 import { Link } from 'react-router-dom'
-import { BookmarkIcon } from '../Icons'
+
 import { authorText } from '../../utils/textFormatting'
-import AddBook from '../Modals/AddBook/AddBook'
+
 
 
 
 
 interface Props {
-    book: Book | Data
+    book: Book
 
 }
 
-const BookFacade = ({book}: Props) => {
-    console.log('book:', book)
-    console.log('book authors:', book.authors)
-    const authors = book.authors ?? []
-      // refactor to get at authors names
+const BookHeader = ({book}: Props) => {
+
+    
    
-
-    const addBookRef = useRef<HTMLDialogElement>(null)
-    const openModal = () => addBookRef.current?.showModal()
-
     return(
 
-        <div className="top-facade">
-        <div className="book-header-wrapper">
-            <div className="book-details">
-                <img className='book-cover' src={book.imageLinks['thumbnail']} alt="" />
-               <div className="bookshelfBtn-wrapper">
-                   <BookmarkIcon onClick={openModal}></BookmarkIcon>
-                    <span>Add to Bookshelf</span>
-               </div>
-               {/* <AddBook addBookRef={addBookRef} book={book}/> */}
+        <div className="book-header">
+            <BookCover book={book}/>
             
-              
-               
-            </div>
             <article className="book-info-wrapper">
                 <h1>{book.name}</h1>
                 <h3>
@@ -103,8 +87,7 @@ const BookFacade = ({book}: Props) => {
 
             </dialog> */}
         </div>
-    </div>
     )
 }
 
-export default BookFacade
+export default BookHeader
