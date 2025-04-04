@@ -1,13 +1,7 @@
 import './BookHeader.css'
 import { Book, Author } from '../../types'
 import BookCover from '../BookCover/BookCover'
-import { Data } from '../../reducers/dataReducer'
-import { Link } from 'react-router-dom'
-
-import { authorText } from '../../utils/textFormatting'
-
-
-
+import BookHeaderTitle from '../BookHeaderTitle/BookHeaderTitle'
 
 
 interface Props {
@@ -23,20 +17,15 @@ const BookHeader = ({book}: Props) => {
 
         <div className="book-header">
             <BookCover book={book}/>
-            
-            <article className="book-info-wrapper">
-                <h1>{book.name}</h1>
-                <h3>
-                    By <span> {authorText(book.authors)} </span>
-                </h3>
-                <p>Category: <Link to='#' >{book.genres.name}</Link></p>
-                <button
-                    // onClick={openBookclubModal} 
-                    
-                    className='add-to-bookClubBtn'>Add to Bookclub</button>
-            </article>
+            <BookHeaderTitle book={book} />
+        </div>
+    )
+}
 
-            {/* BOOKCLUB MODAL */}
+export default BookHeader
+
+
+  {/* BOOKCLUB MODAL */}
             {/* <dialog className={`addToBookclub-modal ${isBookclubModalOpen ? 'show' : ''}`} ref={bookclubModalRef}>
                 <h3>Add this book to your bookclub</h3>
                 <hr />
@@ -86,8 +75,3 @@ const BookHeader = ({book}: Props) => {
                 </div>
 
             </dialog> */}
-        </div>
-    )
-}
-
-export default BookHeader
