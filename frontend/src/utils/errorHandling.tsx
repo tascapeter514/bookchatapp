@@ -6,6 +6,13 @@ export type LoginError = {
     }
 }
 
+export type RegisterError = {
+    status: number,
+    data: {
+        username?: String[]
+    }
+}
+
 
 
 export const handleLoginError = (err: LoginError ) => {
@@ -24,4 +31,14 @@ export const handleLoginError = (err: LoginError ) => {
 
     return 'Login failed. Please try again.'
     
+}
+
+export const handleRegisterError = (err: RegisterError) => {
+
+    if ('data' in err) {
+
+        return err.data.username ? err.data.username.join(' ') : 'Unknown error with data'
+    }
+
+    return 'Registration Failed. Please try again'
 }

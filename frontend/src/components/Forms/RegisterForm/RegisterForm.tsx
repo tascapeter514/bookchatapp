@@ -1,4 +1,5 @@
 import ErrorMessage from '../../Messages/ErrorMessage/ErrorMessage';
+import { handleRegisterError, RegisterError } from '../../../utils/errorHandling';
 import InputField from '../InputField/InputField'
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -12,10 +13,16 @@ import './RegisterForm.css'
 
 
 const RegisterForm = () => {
-
+    const [registerData, setRegisterData] = useState({
+        firstName: '',
+        lastName: '',
+        emailAddress: '',
+        username: '',
+        password: ''
+    })
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const [register, {isLoading, isError, error}] = useRegisterMutation()
+    const [register, {isLoading, isError, error, reset}] = useRegisterMutation()
 
     const handleRegister = async (formData: FormData) => {
         const firstName = formData.get('firstName')
@@ -32,24 +39,23 @@ const RegisterForm = () => {
             dispatch(setCredentials({...response}))
             navigate('/userDashboard')
         } catch (err: any) {
+            console.log('register form error:', err)
             console.log(err?.data?.message || err?.error)
 
         }
 
     }
 
+    console.log('register mutation error:', error)
 
-   
-   
-    const [registerData, setRegisterData] = useState({
-        firstName: '',
-        lastName: '',
-        emailAddress: '',
-        username: '',
-        password: ''
-    })
+
+    
 
     const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+
+        if (isError) reset()
+
+
         const {name, value} = event.target
 
         setRegisterData(prev => ({
@@ -67,7 +73,7 @@ const RegisterForm = () => {
         <form action={handleRegister as any} className='register-form'>
             <Header>Register</Header>
             <SubHeader>Contact Info</SubHeader>
-            {isError && <ErrorMessage>{'Registration failed. Please try again'}</ErrorMessage>}
+            {isError && <ErrorMessage>{handleRegisterError(error as RegisterError)}</ErrorMessage>}
             <InputField value={registerData.firstName} labelKey='firstName' handleChange={onChange}>First Name</InputField>
             <InputField value={registerData.lastName} labelKey='lastName' handleChange={onChange}>Last Name</InputField>
             <InputField value={registerData.emailAddress} labelKey='emailAddress' handleChange={onChange} type='email'>Email</InputField>
