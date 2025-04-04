@@ -1,22 +1,46 @@
+import ErrorMessage from '../../Messages/ErrorMessage/ErrorMessage';
 import InputField from '../InputField/InputField'
-import Header from '../../Header/Header'
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useRegisterMutation } from '../../../slices/authApiSlice';
+import { setCredentials } from '../../../slices/authSlice';
 import SubHeader from '../../SubHeader/SubHeader';
 import Button from '../../Buttons/Button/Button'
-import ErrorMessage from '../../Messages/ErrorMessage/ErrorMessage';
-import { userContext } from '../../../context/UserContext/UserContext';
-import useLogger from '../../../hooks/useLogger';
 import {useState, ChangeEvent } from 'react';
+import Header from '../../Header/Header'
 import './RegisterForm.css'
 
 
 const RegisterForm = () => {
 
-    
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const [register, {isLoading, isError, error}] = useRegisterMutation()
+
+    const handleRegister = async (formData: FormData) => {
+        const firstName = formData.get('firstName')
+        const lastName = formData.get('lastName')
+        const username = formData.get('username')
+        const emailAddress = formData.get('emailAddress')
+        const password = formData.get('password')
+
+        try {
+            const response = await register({
+                firstName, lastName, username, emailAddress, password
+            }).unwrap()
+
+            dispatch(setCredentials({...response}))
+            navigate('/userDashboard')
+        } catch (err: any) {
+            console.log(err?.data?.message || err?.error)
+
+        }
+
+    }
 
 
-    // const handleRegister = async (formData: FormData) => await authenticate('http://localhost:8000/api/auth/register', formData)
-    const handleRegister = async (formData: FormData) => console.log(formData)
-
+   
+   
     const [registerData, setRegisterData] = useState({
         firstName: '',
         lastName: '',
@@ -43,7 +67,7 @@ const RegisterForm = () => {
         <form action={handleRegister as any} className='register-form'>
             <Header>Register</Header>
             <SubHeader>Contact Info</SubHeader>
-            {/* {userState.isError && <ErrorMessage>{userState.error}</ErrorMessage>} */}
+            {isError && <ErrorMessage>{'Registration failed. Please try again'}</ErrorMessage>}
             <InputField value={registerData.firstName} labelKey='firstName' handleChange={onChange}>First Name</InputField>
             <InputField value={registerData.lastName} labelKey='lastName' handleChange={onChange}>Last Name</InputField>
             <InputField value={registerData.emailAddress} labelKey='emailAddress' handleChange={onChange} type='email'>Email</InputField>
