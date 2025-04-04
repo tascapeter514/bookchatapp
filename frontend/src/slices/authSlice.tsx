@@ -1,14 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { ActiveUser } from '../types'
+import { ActiveUser, AuthToken } from '../types'
 
 
-export type UserInfoState = {
-    userInfo: ActiveUser | null
+export type UserState = {
+    user: ActiveUser,
+    authToken: AuthToken
 }
 
 const initialState = {
-    userInfo: localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo') as string)
-    : null
+    user: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user') as string) : null,
+    authToken: localStorage.getItem('authToken') ? JSON.parse(localStorage.getItem('user') as string) : null
 }
 
 
@@ -17,12 +18,17 @@ const authSlice = createSlice({
     initialState,
     reducers: {
         setCredentials: (state, action) => {
-            state.userInfo = action.payload;
-            localStorage.setItem('userInfo', JSON.stringify(action.payload))
+            state.user = action.payload.active_user;
+            state.authToken = action.payload.auth_token,
+            localStorage.setItem('user', JSON.stringify(action.payload))
+            localStorage.setItem('authToken', JSON.stringify(action.payload))
+            console.log('set credentials action:', action)
         },
         logout: (state) => {
-            state.userInfo = null,
-            localStorage.removeItem('userInfo')
+            state.user = null,
+            state.authToken = null,
+            localStorage.removeItem('user')
+            localStorage.removeItem('authToken')
         }
     }
 })

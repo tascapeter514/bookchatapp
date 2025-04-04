@@ -28,7 +28,7 @@ const bookSlice = createSlice({
     name: 'book',
     initialState,
     reducers: {
-        fetchBook: (state, action) => {
+        getBook: (state, action) => {
             state.book = action.payload
         }
 
@@ -36,5 +36,5 @@ const bookSlice = createSlice({
 })
 
 
-export const { fetchBook } = bookSlice.actions
+export const { getBook } = bookSlice.actions
 export default bookSlice.reducer

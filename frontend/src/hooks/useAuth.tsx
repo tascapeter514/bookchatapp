@@ -13,13 +13,20 @@ const useAuth = () => {
 
     const [login, { isLoading, error }] = useLoginMutation();
 
-    const { userInfo } = useSelector((state: RootState)  => state.auth)
+    const { user, authToken } = useSelector((state: RootState)  => state.auth)
+    console.log('use auth hook user:', user)
+    console.log('use auth hook user:', authToken)
 
     useEffect(() => {
-        if (userInfo) {
+
+        if (!user && !authToken) {
+            return
+        } else {
             navigate('/userDashboard')
         }
-    }, [navigate, userInfo])
+
+        
+    }, [navigate, user, authToken])
 
     return { dispatch, login, isLoading, error }
 

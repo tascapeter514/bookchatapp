@@ -15,6 +15,7 @@ const Login = () => {
 
     const navigate = useNavigate()
     const { dispatch, login, isLoading, error } = useAuth()
+
     const handleLogin = async (formData: FormData) => {
         
         const username = formData.get('username')
@@ -23,6 +24,8 @@ const Login = () => {
 
         try {
             const response = await login({ username, password }).unwrap()
+            console.log('login response:', response)
+            
             dispatch(setCredentials({...response}))
             navigate('/userDashboard')
 
