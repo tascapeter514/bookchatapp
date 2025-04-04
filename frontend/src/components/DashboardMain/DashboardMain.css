@@ -1,0 +1,17 @@
+@media (max-width: 900px) {
+
+   
+
+    .dashboard-main {
+        border: 1px solid red;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        z-index: 1;
+    }
+
+
+  
+    
+}
+
