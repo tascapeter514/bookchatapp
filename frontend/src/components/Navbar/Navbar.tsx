@@ -1,8 +1,11 @@
 import React, { useState, useMemo, useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import useAuth from '../../hooks/useAuth.tsx'
 import { RootState } from '../../store/store.tsx'
 import Searchbar from '../Search/Searchbar/Searchbar.tsx'
+import { removeCredentials } from '../../slices/authSlice.tsx'
 import './Navbar.css'
 
 
@@ -14,14 +17,31 @@ import './Navbar.css'
 
 const Navbar = () => {
 
-  console.log('navbar rendered')
+  const navigate = useNavigate()
 
   const { authToken } = useSelector((state: RootState) => state.auth)
+  const { dispatch, logout } = useAuth()
 
  
   const [showNavbar] = useState(false)
 
-  const handleLogout = async () => console.log('log out')
+  // const handleLogout = async () => console.log('log out')
+
+  const handleLogout = async () => {
+    
+    try {
+      const response = await logout(authToken)
+      console.log('navbar logout response:', response)
+      dispatch(removeCredentials())
+      navigate('/login')
+
+
+    } catch (err: any) {
+      console.log(err?.data?.message || err?.error)
+
+    }
+
+  }
  
   const guestLinks = (<li className='login-link'><Link to='/login'>Log In</Link></li>)
   const authLinks = (

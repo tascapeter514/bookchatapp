@@ -1,6 +1,5 @@
 import { apiSlice } from './apiSlice'
 const AUTH_URL = '/api/auth'
-const LOGOUT_URL = 'api/auth/logout'
 
 
 
@@ -18,6 +17,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
             query: (authToken) => ({
                 url: `${AUTH_URL}/logout`,
                 method: 'POST',
+                body: {},
                 headers: {
                     Authorization: `Token ${authToken}`
                 }
@@ -28,5 +28,5 @@ export const authApiSlice = apiSlice.injectEndpoints({
 })
 
 
-export const { useLoginMutation } = authApiSlice;
+export const { useLoginMutation, useLogoutMutation } = authApiSlice;
 
