@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useLoginMutation, useLogoutMutation } from '../slices/authApiSlice'
 import { setCredentials } from '../slices/authSlice'
@@ -8,7 +8,7 @@ import { RootState } from '../store/store'
 
 const useAuth = () => {
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const [login, { isLoading, error }] = useLoginMutation();
@@ -18,16 +18,16 @@ const useAuth = () => {
     console.log('use auth hook user:', user)
     console.log('use auth hook user:', authToken)
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        if (!user && !authToken) {
-            return
-        } else {
-            navigate('/userDashboard')
-        }
+    //     if (!user && !authToken) {
+    //         return
+    //     } else {
+    //         navigate('/userDashboard')
+    //     }
 
         
-    }, [navigate, user, authToken])
+    // }, [navigate, user, authToken])
 
     return { dispatch, login, logout, isLoading, error }
 

@@ -2,19 +2,21 @@ import './Login.css'
 import SubHeader from '../SubHeader/SubHeader'
 import { useNavigate } from 'react-router-dom'
 import ErrorMessage from '../Messages/ErrorMessage/ErrorMessage'
-import useAuth from '../../hooks/useAuth'
+import { useDispatch } from 'react-redux'
+import { useLoginMutation } from '../../slices/authApiSlice'
 import { setCredentials } from '../../slices/authSlice'
-
+import { handleLoginError, LoginError } from '../../utils/errorHandling'
 
 
 
 
 
 const Login = () => {
-
+    console.log('login rendered')
 
     const navigate = useNavigate()
-    const { dispatch, login, isLoading, error } = useAuth()
+    const dispatch = useDispatch()
+    const [login, {isLoading, isError, error}] = useLoginMutation()
 
     const handleLogin = async (formData: FormData) => {
         
@@ -25,7 +27,7 @@ const Login = () => {
         try {
             const response = await login({ username, password }).unwrap()
             console.log('login response:', response)
-            
+
             dispatch(setCredentials({...response}))
             navigate('/userDashboard')
 
@@ -37,6 +39,8 @@ const Login = () => {
 
     }
 
+    console.log('login error:', error)
+
     
 
     return(
@@ -47,8 +51,9 @@ const Login = () => {
                 action={handleLogin as any}
                 className='login-form'
                 method='post'>
-                    {/* {isError && <ErrorMessage>{error}</ErrorMessage>}
-                    {isLoading && <p className='loading'>Loading....</p>} */}
+                    {/* REFACTOR WITH ERROR */}
+                    {isError && <ErrorMessage>{handleLoginError(error as LoginError)}</ErrorMessage>}
+                    {isLoading && <p className='loading'>Loading....</p>}
                     <label htmlFor="username-login">Username: </label>
                     <input 
                         type="text" 

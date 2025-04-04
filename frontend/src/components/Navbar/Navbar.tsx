@@ -1,7 +1,8 @@
 import React, { useState, useMemo, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { useLogoutMutation } from '../../slices/authApiSlice.tsx'
 import useAuth from '../../hooks/useAuth.tsx'
 import { RootState } from '../../store/store.tsx'
 import Searchbar from '../Search/Searchbar/Searchbar.tsx'
@@ -18,9 +19,10 @@ import './Navbar.css'
 const Navbar = () => {
 
   const navigate = useNavigate()
-
+  const dispatch = useDispatch()
   const { authToken } = useSelector((state: RootState) => state.auth)
-  const { dispatch, logout } = useAuth()
+  const [logout, {isLoading, error}] = useLogoutMutation()
+  // const { dispatch, logout } = useAuth()
 
  
   const [showNavbar] = useState(false)
