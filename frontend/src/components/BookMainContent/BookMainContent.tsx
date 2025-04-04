@@ -1,12 +1,12 @@
 import ProductDetails from '../ProductDetails/ProductDetails'
-import { Author, Book } from '../../types'
 import AuthorDetails from '../AuthorDetails/AuthorDetails'
+import { Author, Book } from '../../types'
+
 import './BookMainContent.css'
 
 interface Props {
     book: Book
 }
-
 
 const BookMainContent = ({book}: Props) => {
 
@@ -16,23 +16,18 @@ const BookMainContent = ({book}: Props) => {
                 <hr />
                 <h3>About {book.name}</h3>
                 <p>{book.description}</p>
-            
             </div>
-    
-        <div className="author-product-container">
-            {book.authors && book.authors.length > 0 &&
-                book.authors.map((author: Author ) => (
-                    <AuthorDetails {...author} />
-            ))}
-            
-            <ProductDetails {...{pageCount: book.pageCount, publisher: book.publisher, ISBNIdentifiers: book.ISBN_Identifiers}}/>
-            
+            <div className="author-product-container">
+                {book.authors && book.authors.length > 0 &&
+                    book.authors.map((author: Author ) => (
+                        <AuthorDetails {...author} />
+                ))}
+                
+                <ProductDetails {...{pageCount: book.pageCount, publisher: book.publisher, ISBNIdentifiers: book.ISBN_Identifiers}}/>
+                
+            </div>
         </div>
-    </div>
     )
-
-
-
 
 }
 

@@ -1,12 +1,13 @@
-import { useDispatch, useSelector } from 'react-redux'
-import {useParams } from 'react-router-dom'
-import { useEffect, useCallback } from 'react'
-import { useGetBookMutation } from '../../slices/bookApiSlice'
-import { loadBook } from '../../slices/bookSlice'
 import BookMainContent from '../BookMainContent/BookMainContent'
-import { RootState } from '../../store/store'
-
+import BookHeaderTitle from '../BookHeaderTitle/BookHeaderTitle'
+import { useGetBookMutation } from '../../slices/bookApiSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { loadBook } from '../../slices/bookSlice'
+import { useEffect, useCallback } from 'react'
+import BookCover from '../BookCover/BookCover'
 import BookHeader from '../BookHeader/BookHeader'
+import { RootState } from '../../store/store'
+import {useParams } from 'react-router-dom'
 import './Bookpage.css'
 
 
@@ -37,24 +38,18 @@ const Bookpage = () => {
 
     }, [id])
 
- 
 
-    
-
-  
-
-    return(
+    return (
         
         <div className='bookpage-container'>
             {/* {isError && <p>There was an error loading the data: {data.error}</p>} */}
             {isLoading && <p>Page is loading...</p>}
-                <BookHeader book={book} />
-                <BookMainContent book={book} />
-                   
+            <BookHeader>
+                <BookCover book={book}/>
+                <BookHeaderTitle book={book}/> 
+            </BookHeader>
+            <BookMainContent book={book} />     
         </div>
-                
-            
-
     )
 }
 
