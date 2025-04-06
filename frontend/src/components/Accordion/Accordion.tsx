@@ -25,21 +25,21 @@ const Accordion = ({children}: {children: React.ReactNode}) => {
             >
                     <div className='accordion-children'>{children}</div>
             </div>
-            <h2 id='panel-heading'>
+            <h2 id='panel-heading'></h2>
                 <button
-                    className='accordion-trigger'
+                    className = {`accordion-trigger ${isExpanded ? 'expanded': 'collapsed'}`}
                     aria-controls='panel-content'
                     aria-expanded={isExpanded}
-                     
+                    onClick={toggleAccordion}
                 >
-                {isExpanded ?  
-                    <span  onClick={toggleAccordion}>See Less</span>
 
-                :  <span  onClick={toggleAccordion}>See More</span>
-                }
+                    <span  className={isExpanded ? 'expanded-span' : 'collapsed-span'}>
+                        {isExpanded ? 'See Less' : 'See More'}
+                    </span>
+                    </button>
                 
-            </button>
-        </h2>
+                 
+        
         </div>
         
     </div>
