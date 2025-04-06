@@ -1,10 +1,10 @@
 import './AuthorPage.css'
-import { FC, useState, useEffect } from 'react'
+import {  useState, useEffect } from 'react'
 import {  Author, Book } from '../../types'
 import {useParams } from 'react-router-dom'
 import Accordion from '../Accordion/Accordion'
 
-const AuthorPage: FC = () => {
+const AuthorPage = () => {
 
     const [author, setAuthor] = useState<Author | null>(null)
     const [books, setBooks] = useState<Book[] | null>(null)
@@ -58,7 +58,7 @@ const AuthorPage: FC = () => {
     return(
 
         <div className="authorpage-container">
-            {author ? (
+            
                 <div className="authorpage-detail">
                     <div className="top-facade">
                         <div className="author-header-wrapper">
@@ -106,7 +106,7 @@ const AuthorPage: FC = () => {
                         </div>
                     </div>
                 </div>
-            ) : <h2>Loading...</h2>}
+            
 
         </div>
 

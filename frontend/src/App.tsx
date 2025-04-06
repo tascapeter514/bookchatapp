@@ -6,8 +6,7 @@ import AuthorPage from './components/AuthorPage/AuthorPage.tsx'
 import BookclubPage from './components/BookclubPage/BookclubPage.tsx'
 import Login from './components/LogIn/Login.tsx'
 import UserDashboard from './components/UserDashboard/UserDashboard.tsx'
-import CheckMembers from './components/CheckMembers.tsx'
-
+// import CheckMembers from './components/CheckMembers.tsx'
 import './App.css';
 
 
@@ -30,7 +29,10 @@ function App() {
               <Route path='/author/:id' element={<AuthorPage />} />
               <Route path='/login' element={<Login />} />
 
-              <Route path='/userDashboard'element={<UserDashboard /> }/>
+              <Route path='/userDashboard'element={ 
+                <UserDashboard>
+  
+                </UserDashboard>}/>
               <Route path='/bookclub/:id' element={<BookclubPage />}></Route> 
 
               

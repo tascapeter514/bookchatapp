@@ -1,7 +1,7 @@
 import './BookSlider.css'
 import { useState, useRef, FC } from 'react'
 import { Link } from 'react-router-dom'
-import { Book } from '../../../types'
+import { Book } from '../../types'
 
 
 

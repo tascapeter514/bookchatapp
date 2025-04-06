@@ -18,10 +18,6 @@ const UserDashboard = () => {
 
             <DashboardMain mobileNav={mobileNav} navDispatch= {navDispatch}/>
             <DashboardNav mobileNav={mobileNav} navDispatch= {navDispatch}/>
-
-
-            
-          
         </div>
     )
 }
