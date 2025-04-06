@@ -45,13 +45,13 @@ def get_member_bookclubs(request, **kwargs):
 
 @api_view(['GET'])
 def get_author_data(request, **kwargs):
-    id = kwargs['id']
+    author_id = kwargs['id']
     print('id:', id)
 
-    author = Author.objects.get(author_id=id)
-    serializer = AuthorSerializer(author)
+    author_query = Author.objects.get(id=author_id)
+    author_serializer = AuthorSerializer(author_query)
 
-    return Response(serializer.data)
+    return Response(author_serializer.data)
 
 @api_view(['POST'])
 def upload_file(request, **kwargs):

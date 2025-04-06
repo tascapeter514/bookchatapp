@@ -47,10 +47,10 @@ export type Author = {
     id: number,
     name: string,
     bio: string,
-    titles: Book[],
-    author_photo: string,
-    birth_date: string,
-    death_date: string
+    books: Book[],
+    authorPhoto: string,
+    birthDate: string,
+    deathDate: string
 
 }
 
