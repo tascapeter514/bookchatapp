@@ -1,4 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { useGetUserDataQuery } from './slices/userDataApiSlice.tsx'
+import { RootState } from './store/store.tsx'
 import Navbar from './components/Navbar/Navbar.tsx'
 import Homepage from './components/Homepage/Homepage.tsx'
 import Bookpage from './components/Bookpage/Bookpage.tsx'
@@ -12,6 +16,26 @@ import './App.css';
 
 
 function App() {
+
+const { user } = useSelector((state: RootState) => state.auth)
+const { data } = useGetUserDataQuery(user.id)
+
+console.log('app level user data:', data)
+
+// useEffect(() => {
+
+//   if (user.id) {
+
+   
+//     console.log('get user data:', data)
+
+//   } else {
+//     return
+//   }
+
+// }, [user.id])
+
+  
 
 
 

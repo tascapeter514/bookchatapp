@@ -77,8 +77,7 @@ class UserBookshelfConsumer(WebsocketConsumer):
         bookshelf_serializer = BookshelfSerializer(bookshelves, many=True)
 
         self.send(text_data=json.dumps({
-            'type': 'get_user_bookshelves',
-            'user_bookshelves': bookshelf_serializer.data
+            bookshelf_serializer.data
 
         }))
 

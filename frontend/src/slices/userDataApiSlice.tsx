@@ -15,7 +15,8 @@ export interface UserData {
 }
 
 
-export const api = createApi({
+export const userDataApi = createApi({
+    reducerPath: 'userDataApi',
     baseQuery: fetchBaseQuery({ baseUrl: '/'}),
     endpoints: (build) => ({
         getUserData: build.query<UserData, number>({
@@ -30,9 +31,13 @@ export const api = createApi({
                     await cacheDataLoaded
 
                     const listener = (event: MessageEvent) => {
-                        const data = JSON.parse(event.data)
+                        const data = event.data
+
+                        console.log('user data event:', event.data)
 
                         updateCachedData((draft) => {
+
+                            console.log('draft:', draft)
                             draft.bookclubs = data.bookclubs,
                             draft.bookshelves = data.bookshelves,
                             draft.invitations = data.invitations
@@ -54,3 +59,5 @@ export const api = createApi({
         })
     })
 })
+
+export const { useGetUserDataQuery } = userDataApi
