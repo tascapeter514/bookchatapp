@@ -45,11 +45,14 @@ def get_member_bookclubs(request, **kwargs):
 
 @api_view(['GET'])
 def get_author_data(request, **kwargs):
+    print('get author data check')
     author_id = kwargs['id']
     print('id:', id)
 
     author_query = Author.objects.get(id=author_id)
     author_serializer = AuthorSerializer(author_query)
+
+    print(author_serializer.data)
 
     return Response(author_serializer.data)
 

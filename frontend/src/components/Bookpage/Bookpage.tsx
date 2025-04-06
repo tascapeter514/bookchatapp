@@ -23,7 +23,7 @@ const Bookpage = () => {
 
         try {
 
-            const response = await getBook(id).unwrap()
+            const response = await getBook(Number(id)).unwrap()
             dispatch(loadBook({...response}))
 
         } catch(err: any) {

@@ -77,7 +77,7 @@
 
 .accordion-content {
     width: 100%;
-    border: 5px solid purple;
+    /* border: 5px solid purple; */
     transform: translateY(2rem);
     transition: transform 500ms, opacity 500ms;
     overflow: hidden;
