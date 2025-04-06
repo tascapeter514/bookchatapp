@@ -20,12 +20,15 @@ const Login = () => {
         const username = formData.get('username')
         const password = formData.get('password')
 
-
         try {
             const response = await login({ username, password }).unwrap()
             console.log('login response:', response)
 
-            dispatch(setCredentials({...response}))
+            dispatch(setCredentials({
+                ...response,
+                firstName: response
+
+            }))
             navigate('/userDashboard')
 
 
