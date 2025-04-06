@@ -13,3 +13,5 @@ export const authorApiSlice = apiSlice.injectEndpoints({
         })
     })
 })
+
+export const { useGetAuthorMutation } = authorApiSlice

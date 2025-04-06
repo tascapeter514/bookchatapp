@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Author, Book } from "../types";
+import { Author} from "../types";
 
 
 export type AuthorState = {

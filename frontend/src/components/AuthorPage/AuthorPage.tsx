@@ -6,9 +6,12 @@ import Accordion from '../Accordion/Accordion'
 
 const AuthorPage = () => {
 
+
+    const params = useParams();
+    console.log('author page params:', params)
     const [author, setAuthor] = useState<Author | null>(null)
     const [books, setBooks] = useState<Book[] | null>(null)
-    const params = useParams();
+    
 
 
     const bookElements = books?.map((book) => {
