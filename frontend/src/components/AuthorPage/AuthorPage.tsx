@@ -1,28 +1,21 @@
-
-import { useDispatch, useSelector } from 'react-redux'
-import Accordion from '../Accordion/Accordion'
-import {  useEffect, useRef } from 'react'
-import { RootState } from '../../store/store'
-import LoadSpinner from '../LoadSpinner/LoadSpinner'
 import { useGetAuthorMutation } from '../../slices/authorApiSlice'
-import {  Author, Book } from '../../types'
-import {useParams } from 'react-router-dom'
-import './AuthorPage.css'
+import AuthorHeader from '../AuthorHeader/AuthorHeader'
+import { useDispatch, useSelector } from 'react-redux'
 import { loadAuthor } from '../../slices/authorSlice'
-
-
+import LoadSpinner from '../LoadSpinner/LoadSpinner'
+import AuthorBooks from '../AuthorBooks/AuthorBooks'
+import { RootState } from '../../store/store'
+import {useParams } from 'react-router-dom'
+import {  useEffect } from 'react'
+import './AuthorPage.css'
 
 
 const AuthorPage = () => {
 
-
     const {id} = useParams();
-
-    const isMounted = useRef(false)
     const dispatch = useDispatch()
     const [getAuthor, {isLoading, isError, error}] = useGetAuthorMutation()
     const { author } = useSelector((state: RootState) => state.author)
-
 
     const handleGetAuthor = async () => {
 
@@ -47,75 +40,17 @@ const AuthorPage = () => {
 
         handleGetAuthor()
 
-    
-
     }, [id])
 
-
-    
-
-
-    const bookElements = author.books?.map((book: Book) => {
-        return(
-            <li key={book.id} className='book-item'>
-                <img src={book.imageLinks.thumbnail} alt="book-thumbnail" className='book-thumbnail' />
-                <span className='book-title'>{book.name}</span>
-            </li>
-        )
-    })
 
 
     console.log('author page author:', author)
     return(
 
-        <div className="authorpage-container">
-            <LoadSpinner></LoadSpinner>
-                <div className="authorpage-detail">
-                    <div className="top-facade">
-                        <div className="author-header-wrapper">
-                                <img src={author.authorPhoto} alt="" className="author-cover" />
-                            <article className="author-info-wrapper">
-                                <h1>{author.name}</h1>
-                                <p>Born on <span>{author.birthDate}</span></p>
-                                <p>Died on <span>{author.deathDate}</span></p>
-                                <hr />
-                                <h3>ABOUT THE AUTHOR </h3>
-                                
-                                <Accordion>{author.bio}</Accordion>
-                                <hr />
-                            </article>
-                        </div>
-                    </div>
-                    
-                    <div className="authorpage-main-content">
-                        
-                        <div className="author-books-container">
-                            <hr />
-                            <h3>Books by {author.name}</h3>
-
-                                {author.books && author.books.length <= 6 ? (
-                                    <ul className='author-book-list'>
-                                    
-                                    {bookElements}
-
-                                    </ul>
-                                    
-
-                                ) : (
-                                    <Accordion>
-                                        <ul className="author-book-list">{bookElements}</ul>
-                                    </Accordion>
-
-                                )}
-                                
-                            
-
-
-                        </div>
-                    </div>
-                </div>
-            
-
+        <div className="author-page">
+            {isLoading && <LoadSpinner></LoadSpinner>}
+            <AuthorHeader author={author}/>
+            <AuthorBooks author={author} />
         </div>
 
     )

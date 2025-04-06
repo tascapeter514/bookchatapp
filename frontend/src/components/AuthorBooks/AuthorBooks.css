@@ -1,0 +1,48 @@
+.author-books{
+    display: flex;
+    padding: 2em;
+    flex-direction: column;
+    max-width: 1200px;
+    gap: .5rem;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto; 
+}
+
+.author-book-list {
+    display: flex;
+    flex-direction: row;
+    max-width: 700px;
+    padding: 2em;
+    gap: 2rem;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+}
+
+.author-divider {
+    border: 1px solid black;
+    width: 100%;
+}
+
+.book-item {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    border: 1px solid red;
+
+}
+
+.book-thumbnail {
+    min-width: 150px;
+    max-width: 150px;
+}
+
+.book-title{
+    max-width: 160px;
+    text-align: left;
+    text-wrap: balance;
+    text-decoration: underline;
+    font-weight: bold;
+}
+

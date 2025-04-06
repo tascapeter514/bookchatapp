@@ -13,15 +13,23 @@ const initialState = {
 }
 
 
+
 const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
         setCredentials: (state, action) => {
-            state.user = action.payload.active_user;
-            state.authToken = action.payload.auth_token,
-            localStorage.setItem('user', JSON.stringify(action.payload))
-            localStorage.setItem('authToken', JSON.stringify(action.payload))
+            const {active_user, auth_token} = action.payload
+            state.user = {
+                active_user,
+                firstName: active_user.first_name,
+                lastName: active_user.last_name,
+                emailAddress: active_user.email,
+                dateJoined: active_user.date_joined
+            };
+            state.authToken = auth_token,
+            localStorage.setItem('user', JSON.stringify(active_user))
+            localStorage.setItem('authToken', JSON.stringify(auth_token))
             console.log('set credentials action:', action)
         },
         removeCredentials: (state) => {

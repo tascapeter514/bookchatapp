@@ -1,5 +1,5 @@
 import './UserDashboard.css';
-import { ReactNode, useReducer } from 'react';
+import { useReducer } from 'react';
 import DashboardMain from '../DashboardMain/DashboardMain';
 import DashboardNav from '../DashboardNav/DashboardNav';
 import mobileNavReducer from '../../reducers/mobileNavReducer';

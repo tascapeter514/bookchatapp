@@ -28,8 +28,6 @@ const authorSlice = createSlice({
     reducers: {
         loadAuthor: (state, action) => {
             state.author = action.payload
-
-
         }
     }
 

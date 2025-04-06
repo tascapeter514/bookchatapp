@@ -11,8 +11,6 @@ import './App.css';
 
 
 
-
-// element={<UserDashboard />}
 function App() {
 
 
@@ -26,13 +24,14 @@ function App() {
         <Routes>
               <Route path='/' element={<Homepage />} />
               <Route path='/book/:id' element={<Bookpage />} />
+
+              {/* Can we lift author state up? */}
               <Route path='/author/:id' element={<AuthorPage />} />
               <Route path='/login' element={<Login />} />
 
-              <Route path='/userDashboard'element={ 
-                <UserDashboard>
-  
-                </UserDashboard>}/>
+
+              {/* lift userdashboard state up? */}
+              <Route path='/userDashboard'element={<UserDashboard></UserDashboard>}/>
               <Route path='/bookclub/:id' element={<BookclubPage />}></Route> 
 
               

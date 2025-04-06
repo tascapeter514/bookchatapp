@@ -1,10 +1,10 @@
-.authorpage-detail {
+.author-page {
     padding: 2em 0;
     display: flex;
     flex-direction: column;
 }
 
-.author-header-wrapper {
+.author-header{
     display: flex;
     justify-content: center;
     max-width: 1200px;
@@ -26,7 +26,7 @@
     border: 1px solid black;
 }
 
-.author-info-wrapper {
+.author-info {
     padding: 2em;
     width: 100%;
     max-width: 600px;
@@ -39,62 +39,63 @@
     /* overflow: scroll; */
 }
 
-.author-info-wrapper > h1 {
+.author-info> h1 {
     font-size: 2rem;
 
 }
 
-.author-info-wrapper > h1 {
+.author-info> h1 {
     font-weight: 700;
 }
 
-.author-info-wrapper > h3 {
+.author-info > h3 {
     font-size: .825rem;
 }
 
-.author-info-wrapper > p {
+.author-info > p {
 
     font-size: 1.115rem;
 
 }
 
-.author-info-wrapper > p > span {
+.author-info > p > span {
     font-weight: 700;
 }
 
-.authorpage-main-content {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
-.author-books-container {
+
+.author-books{
     display: flex;
+    padding: 2em;
     flex-direction: column;
+    max-width: 1200px;
     gap: .5rem;
     width: 100%;
     max-width: 700px;
-    
+    margin: 0 auto; 
 }
 
 .author-book-list {
     display: flex;
+    flex-direction: row;
+    max-width: 700px;
     padding: 2em;
-    gap: 1.5rem;
+    gap: 2rem;
     flex-wrap: wrap;
     width: 100%;
-
+    justify-content: center;
 }
 
+.author-divider {
+    border: 1px solid black;
+    width: 100%;
+}
 
 .book-item {
     display: flex;
     flex-direction: column;
     gap: .5rem;
+    border: 1px solid red;
 
 }
 
