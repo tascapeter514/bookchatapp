@@ -1,26 +1,32 @@
 import './AccountPanel.css'
 import { useState, ChangeEvent} from 'react'
-import { userContext} from '../../../context/UserContext/UserContext'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../../store/store'
 import Header from '../../Header/Header'
 import SubHeader from '../../SubHeader/SubHeader'
 import Button from '../../Buttons/Button/Button'
 
 const AccountPanel = () => {
     
-    const { userState } = userContext()
+
+
+    const  { user } = useSelector((state: RootState) => state.auth )
+
+    console.log('account panel user:', user)
+
 
 
 
    
     const [contact, setContact] = useState({
-        userId: userState.user?.id || '',
-        firstName: userState.user?.firstName || '',
-        lastName: userState.user?.lastName || '',
-        emailAddress: userState.user?.emailAddress || ''
+        userId: user?.id || '',
+        firstName: user?.firstName || '',
+        lastName: user?.lastName || '',
+        emailAddress: user?.emailAddress || ''
     })
 
     const [passwordInfo, setPasswordInfo] = useState({
-        userId: userState.user?.id,
+        userId: user?.id,
         currentPassword: '',
         newPassword: ''
     })

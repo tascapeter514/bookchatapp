@@ -35,10 +35,10 @@ const UserNav = ({mobileNav}: Props) => {
 
     return(
         <div className={`navbar-container ${mobileNav.open ? 'enter' : ''} ${mobileNav.isExiting ? 'exit' : ''}`}>
-            <ProfileHeader></ProfileHeader>
+            <ProfileHeader />
             <nav className='profile-navbar'>
-                {/* // <AccountButton />
-                // <MessageButton /> */}
+                {/* <AccountButton /> */}
+                {/* // <MessageButton /> */}
                 <BookclubButton />
                 <BookshelfButton />
             </nav>

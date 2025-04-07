@@ -27,14 +27,12 @@ const UserDashboard = () => {
     const [mobileNav, navDispatch] = useReducer(mobileNavReducer, {open: false, isExiting: false})
     const [userTabs, dispatchUserTabs] = useReducer(userTabsReducer, {activeTab: 'accountTab', activeBookshelf: ''})
 
-    console.log('mobile nav:', mobileNav)
-
 
     return(
         <div className='dashboard-container'>
             <DashboardMain>
                 <OpenMobileNav mobileNav={mobileNav} navDispatch={navDispatch} />
-                {/* {userTabs.activeTab === 'accountTab' && <AccountPanel />} */}
+                {userTabs.activeTab === 'accountTab' && <AccountPanel />}
                 {/* {userTabs.activeTab === 'messagesTab' && <MessagePanel />}
                 {userTabs.activeTab === 'bookclubTab' && <BookclubsPanel />}
                 {userTabs.activeTab === 'bookshelfTab' && <BookshelfPanel />}  */}

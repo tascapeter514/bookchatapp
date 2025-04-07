@@ -26,7 +26,6 @@ const Login = () => {
 
             dispatch(setCredentials({
                 ...response,
-                firstName: response
 
             }))
             navigate('/userDashboard')

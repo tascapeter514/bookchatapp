@@ -11,7 +11,7 @@ interface Props {
 
 const CloseMobileNav = ({mobileNav, navDispatch}: Props) => {
 
-    console.log('close mobile nav:', mobileNav)
+    // console.log('close mobile nav:', mobileNav)
 
 
     return(
