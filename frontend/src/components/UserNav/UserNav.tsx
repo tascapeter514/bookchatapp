@@ -2,6 +2,7 @@
 import BookshelfButton from '../TabButtons/BookshelfButton/BookshelfButton'
 import BookclubButton from '../TabButtons/BookclubButton/BookclubButton'
 import { RootState } from '../../store/store'
+import { MobileNavState } from '../../reducers/mobileNavReducer'
 import { useSelector } from 'react-redux'
 
 
@@ -23,11 +24,17 @@ const ProfileHeader = () => {
 
 }
 
+interface Props {
+    mobileNav: MobileNavState
+}
+
+const UserNav = ({mobileNav}: Props) => {
 
 
-const UserNav = () => {
+    console.log('user nav mobile nav:', mobileNav)
+
     return(
-        <div className="navbar-container">
+        <div className={`navbar-container ${mobileNav.open ? 'enter' : ''} ${mobileNav.isExiting ? 'exit' : ''}`}>
             <ProfileHeader></ProfileHeader>
             <nav className='profile-navbar'>
                 {/* // <AccountButton />
@@ -40,8 +47,6 @@ const UserNav = () => {
 }
 
 export default UserNav
-
-
 
 
 

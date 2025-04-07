@@ -11,10 +11,12 @@ interface Props {
 
 const CloseMobileNav = ({mobileNav, navDispatch}: Props) => {
 
+    console.log('close mobile nav:', mobileNav)
+
 
     return(
         <button 
-            className={`dashboardNavbar-close-toggle ${mobileNav.open ? 'active' : ''}`}
+            className={`close-toggle ${mobileNav.open ? 'active' : ''}`}
             aria-controls='dashboard-navbar'
             aria-expanded={mobileNav.open} 
             onClick={() => { navDispatch({type: 'CLOSING_MOBILE_NAV', payload: true});

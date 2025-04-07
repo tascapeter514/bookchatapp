@@ -1,4 +1,4 @@
-.dashboardNavbar-close-toggle {
+.close-toggle {
     display: none;
 }
 
@@ -6,8 +6,15 @@
 
 @media (max-width: 900px) {
 
-    .dashboardNavbar-close-toggle  {
+    .close-toggle  {
+
+        display: none;
+    }
+    
+    
+    .close-toggle.active {
         display: block;
+        cursor: pointer;
         position: absolute;
         right: 1.5em;
         top: 1.5em;
@@ -15,15 +22,7 @@
         height: 35px;
         border: 0;
         background: transparent;
-        cursor: pointer;
-    
-    }
-    
-    
-    .dashboardNavbar-close-toggle.active {
-        display: block;
-        cursor: pointer;
-        z-index: 9999;
+        z-index: 999999;
         
     
     }

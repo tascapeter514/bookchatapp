@@ -32,7 +32,6 @@ const UserDashboard = () => {
 
     return(
         <div className='dashboard-container'>
-
             <DashboardMain>
                 <OpenMobileNav mobileNav={mobileNav} navDispatch={navDispatch} />
                 {/* {userTabs.activeTab === 'accountTab' && <AccountPanel />} */}
@@ -42,7 +41,7 @@ const UserDashboard = () => {
             </DashboardMain>
             <DashboardNav>
                 <CloseMobileNav mobileNav={mobileNav} navDispatch={navDispatch} />
-                <UserNav></UserNav>
+                <UserNav mobileNav={mobileNav}></UserNav>
             </DashboardNav>
         </div>
     )

@@ -6,7 +6,7 @@
     display: grid;
     grid-template-columns: minmax(250px, 80%) minmax(300px, 20%);
     margin: 0 auto;
-    z-index: 1;
+    z-index: 10000;
 }
 
 
@@ -18,13 +18,7 @@
     .dashboard-container {
         grid-template-columns: 1fr;
         position: relative;
-    }
-
-
-
-
-  
-    
+    }   
 }
 
 

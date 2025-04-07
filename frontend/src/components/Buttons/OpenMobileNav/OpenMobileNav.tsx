@@ -17,7 +17,7 @@ const OpenMobileNav = ({mobileNav, navDispatch}: Props) => {
     return(
         <>
             <button 
-                className={`dashboardNavbar-mobile-toggle ${mobileNav.open ? '' : 'active'}`} 
+                className={`open-toggle ${mobileNav.open ? 'closed' : ''}`} 
                 onClick={() => navDispatch({type: 'OPEN_MOBILE_NAV', payload: true})}
             >
                 <UserIcon />

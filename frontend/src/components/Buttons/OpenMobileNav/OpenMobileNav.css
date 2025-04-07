@@ -1,11 +1,11 @@
-.dashboardNavbar-mobile-toggle {
+.open-toggle {
     display: none;
 }
 
 
 @media (max-width: 900px) {
 
-    .dashboardNavbar-mobile-toggle  {
+    .open-toggle  {
         display: block;
         position: absolute;
         right: 1.5em;
@@ -20,9 +20,9 @@
 
 
 
-    .dashboardNavbar-mobile-toggle.active {
-        background-color: transparent;
-        /* display: none; */
+    .open-toggle.closed {
+        display: none;
+
     }
 
    
