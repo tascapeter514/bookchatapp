@@ -1,12 +1,13 @@
 import './BookshelfDropdown.css'
+import { DropdownState } from '../../reducers/dropdownReducer'
 import { ReactNode, Children } from 'react'
 
 
 
-type BookshelfAccordionProps = {children: ReactNode, activePanel: boolean}
+type BookshelfAccordionProps = {children: ReactNode, dropdown: DropdownState}
 
 
-const BookshelfDropdown = ({children, activePanel}: BookshelfAccordionProps) => {
+const BookshelfDropdown = ({children, dropdown}: BookshelfAccordionProps) => {
 
     const [firstChild, secondChild] = Children.toArray(children)
 
@@ -21,7 +22,7 @@ const BookshelfDropdown = ({children, activePanel}: BookshelfAccordionProps) => 
                     <button
                         className='dropdown-trigger'
                         aria-controls='dropdown-panel-content'
-                        aria-expanded={activePanel}
+                        aria-expanded={dropdown.activePanel}
                                                          
                     >
                         {firstChild}

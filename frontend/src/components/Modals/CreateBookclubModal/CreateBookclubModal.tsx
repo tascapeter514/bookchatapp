@@ -14,7 +14,7 @@ const CreateBookclubModal = () => {
 
     return(
         <>
-            <CreateButton onClick={openModal}>Bookshelf</CreateButton>
+            <CreateButton onClick={openModal}>Bookclub</CreateButton>
             <dialog className="create-bookclub-modal" ref={  bookclubRef } >
             {/* {data.isError && <ErrorMessage>{data.error}</ErrorMessage>} */}
             <form onSubmit={handleSubmit} method='post'>

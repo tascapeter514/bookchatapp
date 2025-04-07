@@ -1,4 +1,5 @@
 import { FaSearch, FaArrowLeft, FaArrowRight, FaUser } from 'react-icons/fa'
+import { DropdownState } from '../reducers/dropdownReducer';
 import { IoMdArrowDropright, IoIosCloseCircle } from "react-icons/io";
 import { ImCheckmark2, ImCancelCircle } from 'react-icons/im'
 import { GrLike, GrDislike } from "react-icons/gr";
@@ -6,7 +7,7 @@ import { BsBookmarkPlus } from "react-icons/bs"
 
 
 export type ArrowProps = {
-    isRotated: boolean
+    dropdown: DropdownState
 } & IconProps
 
 
@@ -17,16 +18,16 @@ export const BookmarkIcon = (props: IconProps) => <BsBookmarkPlus  className='bo
 
 export const SearchIcon = (props: IconProps) => <FaSearch className='search-icon' {...props} />
 
-export const ArrowLeftIcon = ({isRotated, ...props}: ArrowProps) => 
-    <FaArrowLeft className={`arrow-left-icon ${isRotated ? 'rotated' : ''}`} {...props} />
+// export const ArrowLeftIcon = ({isRotated, ...props}: ArrowProps) => 
+//     <FaArrowLeft className={`arrow-left-icon ${isRotated ? 'rotated' : ''}`} {...props} />
 
 
-export const ArrowRightIcon = ({isRotated, ...props}: ArrowProps) => 
-    <FaArrowRight className={`arrow-right-icon ${isRotated ? 'rotated': ''}`} {...props} />
+// export const ArrowRightIcon = ({isRotated, ...props}: ArrowProps) => 
+//     <FaArrowRight className={`arrow-right-icon ${isRotated ? 'rotated': ''}`} {...props} />
 
 
-export const RightDropDownIcon = ({isRotated, ...props}: ArrowProps) => 
-    <IoMdArrowDropright className={`right-dropdown-icon ${isRotated ? 'rotated': ''}`} {...props} />
+export const RightDropDownIcon = ({dropdown, ...props}: ArrowProps) => 
+    <IoMdArrowDropright className={`right-dropdown-icon ${dropdown.isRotated ? 'rotated': ''}`} {...props} />
 
 
 export const LikeIcon = (props: IconProps) => <GrLike className='like-icon'  {...props}/>

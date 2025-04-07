@@ -1,0 +1,21 @@
+.create-bookshelf-modal {
+    background-color: white;
+    border-radius: 3px;
+    border: 2px solid black;
+    /* position: absolute; */
+    margin: auto;
+}
+
+.create-bookshelf-modal input {
+    line-height: 2;
+}
+
+.button-wrapper {
+    display: flex;
+    justify-content: space-between;  
+}
+
+.button-wrapper > button {
+    font-size: 1.125rem;
+
+}

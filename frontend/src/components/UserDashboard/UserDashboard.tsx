@@ -17,9 +17,6 @@ import { useSelector } from 'react-redux';
 import { useReducer } from 'react';
 import './UserDashboard.css';
 
-
-
-
 const ProfileHeader = () => {
     const {user} = useSelector((state: RootState) => state.auth)
     return(

@@ -2,10 +2,10 @@
 import BookshelfDropdown from '../../BookshelfDropdown/BookshelfDropdown'
 import { TabState, TabAction } from '../../../reducers/userTabsReducer'
 import { Dispatch } from 'react'
-import { useState, useRef} from 'react'
+import { useState, useRef, useReducer} from 'react'
+import dropdownReducer from '../../../reducers/dropdownReducer'
 import { RightDropDownIcon } from '../../Icons'
-// import CreateButton from '../../Buttons/CreateButton/CreateButton'
-import PostModal from '../../Modals/PostModal/PostModal'
+import CreateBookshelfModal from '../../Modals/CreateBookshelfModal/CreateBookshelfModal'
 import './BookshelfButton.css'
 
 interface Props {
@@ -17,16 +17,8 @@ interface Props {
 
 const BookshelfButton = ({userTabs, dispatchUserTabs}: Props) => {
      
-    
-    const bookshelfRef = useRef<HTMLDialogElement>(null)
-    const openModal = () => bookshelfRef.current?.showModal()
-    const [isRotated, setIsRotated] = useState(false);
-    const [activePanel, setActivePanel] = useState(false);
+    const [dropdown, dispatchDropdown] = useReducer(dropdownReducer, {activePanel: false, isRotated: false})
 
-    const toggleDropdown = () => {
-        setActivePanel(prev => !prev)
-        setIsRotated(prev => !prev)
-    }
 
     // console.log('bookshelves:', bookshelves)
 
@@ -51,22 +43,19 @@ const BookshelfButton = ({userTabs, dispatchUserTabs}: Props) => {
     return (
         <div className='tab-button bookshelves'>
             <hr className='navbar-line-break' />
-            <BookshelfDropdown activePanel={activePanel}>
+            <BookshelfDropdown dropdown={dropdown}>
                 <a 
                     className={`bookshelf-button ${userTabs.activeTab === 'bookshelfTab' && userTabs.activeBookshelf === '' ? 'active' : ''}`}
                     onClick={ () => dispatchUserTabs({type: 'SET_ACTIVE_TAB', payload: 'bookshelfTab'})}
                 >
                     Bookshelves
-                    <RightDropDownIcon onClick={toggleDropdown} isRotated={isRotated} />
+                    <RightDropDownIcon onClick={() => dispatchDropdown({type: 'TOGGLE_DROPDOWN'})} dropdown={dropdown} />
                 </a>
                 {/* <ul className='navbar-bookshelf-list'>{bookshelfNames}</ul> */}
             </BookshelfDropdown>
+            <CreateBookshelfModal />
             
-            {/* <PostModal 
-                ref={bookshelfRef} 
-                url={`http://localhost:8000/api/user/bookshelf/${userState.user?.id}`}
-                type='bookshelf'  
-            />  */}
+           
         </div>
     )
 
