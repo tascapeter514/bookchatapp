@@ -18,9 +18,10 @@ import './App.css';
 function App() {
 
 const { user } = useSelector((state: RootState) => state.auth)
-const { data } = useGetUserDataQuery(user.id)
+const { data, isError, error } = useGetUserDataQuery(user.id)
 
 console.log('app level user data:', data)
+console.log('app level user error:', error)
 
 // useEffect(() => {
 

@@ -17,42 +17,57 @@ export interface UserData {
 
 export const userDataApi = createApi({
     reducerPath: 'userDataApi',
-    baseQuery: fetchBaseQuery({ baseUrl: '/'}),
+    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:8000/'}),
     endpoints: (build) => ({
         getUserData: build.query<UserData, number>({
-            query: (id: number) => `userData/${id}`,
+            queryFn: async () => ({data: {type: '', bookclubs: [], bookshelves: [], invitations: []}}),
             async onCacheEntryAdded(
-                arg,
+                userId,
                 { updateCachedData, cacheDataLoaded, cacheEntryRemoved},
             ) {
-                const ws = new WebSocket(`${WEBSOCKET_URL}/ws/userData/${arg}`)
+                const ws = new WebSocket(`${WEBSOCKET_URL}/ws/userData/${userId}`)
                 try {
 
                     await cacheDataLoaded
 
                     const listener = (event: MessageEvent) => {
-                        const data = event.data
 
-                        console.log('user data event:', event.data)
+                    const data = JSON.parse(event.data)
+                       
+                    if (data.type === 'get_user_data') {
 
                         updateCachedData((draft) => {
+
+                            if (!draft) {
+                                console.warn('Draft is undefined')
+                                return;
+                            }
 
                             console.log('draft:', draft)
                             draft.bookclubs = data.bookclubs,
                             draft.bookshelves = data.bookshelves,
                             draft.invitations = data.invitations
-                        })
+                        });
                     }
+
+                    }
+                       
+
+                      
 
                     ws.addEventListener('message', listener)
 
-                } catch {
+                } catch (error) {
+
+                    console.error('Error during websocket setup:', error);
+
+
 
                 }
 
-                await cacheEntryRemoved
+                await cacheEntryRemoved;
 
-                ws.close()
+                ws.close();
             }
 
 

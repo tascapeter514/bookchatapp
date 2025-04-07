@@ -40,18 +40,22 @@ class UserDataConsumer(WebsocketConsumer):
 
         print("user bookshelf:", bookshelf_serializer.data)
 
-        # user_data_serializer = [bookclub_serializer.data, invitation_serializer.data, bookshelf_serializer.data]
-        
-
-        self.send(text_data=json.dumps(
-            {
+        user_data_response = {
                 'type': 'get_user_data',
                 'bookclubs': bookclub_serializer.data,
                 'bookshelves': bookshelf_serializer.data,
                 'invitations': invitation_serializer.data
                 
             }
+        
+        print('user data response:', user_data_response)
+
+        self.send(text_data=json.dumps(
+            user_data_response
+            
         ))
+
+    
 
 class UserBookshelfConsumer(WebsocketConsumer):
     def connect(self):
