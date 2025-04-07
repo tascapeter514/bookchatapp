@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { useEffect } from 'react'
+import { useCallback, useEffect, useMemo } from 'react'
 import { useGetUserDataQuery } from './slices/userDataApiSlice.tsx'
 import { RootState } from './store/store.tsx'
 import Navbar from './components/Navbar/Navbar.tsx'
@@ -17,26 +17,20 @@ import './App.css';
 
 function App() {
 
+  console.log('app rendered')
+
 const { user } = useSelector((state: RootState) => state.auth)
-const { data, isError, error } = useGetUserDataQuery(user.id)
+const userId = useMemo(() => user.id, [user.id])
+const { data } = useGetUserDataQuery(userId)
+const userData = useMemo(() => data, [data])
+// const { data } = useCallback(() =>{
+
+//   useGetUserDataQuery(user.id)
+
+// }, [user]) 
 
 console.log('app level user data:', data)
-console.log('app level user error:', error)
-
-// useEffect(() => {
-
-//   if (user.id) {
-
-   
-//     console.log('get user data:', data)
-
-//   } else {
-//     return
-//   }
-
-// }, [user.id])
-
-  
+// console.log('app level user error:', error)
 
 
 
