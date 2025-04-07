@@ -4,7 +4,7 @@ import { TabState, TabAction } from '../../../reducers/userTabsReducer'
 import { Dispatch } from 'react'
 import { useState, useRef} from 'react'
 import { RightDropDownIcon } from '../../Icons'
-import CreateButton from '../../Buttons/CreateButton/CreateButton'
+// import CreateButton from '../../Buttons/CreateButton/CreateButton'
 import PostModal from '../../Modals/PostModal/PostModal'
 import './BookshelfButton.css'
 
@@ -61,7 +61,7 @@ const BookshelfButton = ({userTabs, dispatchUserTabs}: Props) => {
                 </a>
                 {/* <ul className='navbar-bookshelf-list'>{bookshelfNames}</ul> */}
             </BookshelfDropdown>
-            <CreateButton onClick={openModal}>Bookshelf</CreateButton>
+            
             {/* <PostModal 
                 ref={bookshelfRef} 
                 url={`http://localhost:8000/api/user/bookshelf/${userState.user?.id}`}

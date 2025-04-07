@@ -1,8 +1,7 @@
 import { useRef } from 'react'
 import { TabState, TabAction } from '../../../reducers/userTabsReducer'
 import { Dispatch } from 'react'
-import CreateButton from '../../Buttons/CreateButton/CreateButton'
-import PostModal from '../../Modals/PostModal/PostModal'
+import CreateBookclubModal from '../../Modals/CreateBookclubModal/CreateBookclubModal'
 import './BookclubButton.css'
 
 
@@ -16,9 +15,6 @@ interface Props {
 const BookclubButton = ({userTabs, dispatchUserTabs}: Props) => {
 
   
-    const bookclubRef = useRef<HTMLDialogElement>(null)
-    const openModal = () => bookclubRef.current?.showModal()
-    
     return(
         <div className='tab-button bookclubs'> 
             <hr className='navbar-line-break' />
@@ -28,12 +24,7 @@ const BookclubButton = ({userTabs, dispatchUserTabs}: Props) => {
             >
                 Bookclubs
             </button>
-            <CreateButton onClick={openModal}>Bookclub</CreateButton>
-            {/* <PostModal
-                ref={bookclubRef}
-                url={`http://localhost:8000/api/user/bookclub/${userState.user?.id}`}
-                type='bookclub'
-            /> */}
+           <CreateBookclubModal></CreateBookclubModal>
         </div>
     )
 }
