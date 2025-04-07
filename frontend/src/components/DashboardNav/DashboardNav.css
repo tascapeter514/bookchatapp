@@ -1,18 +1,39 @@
-/* .dashboard-navbar {
-    position: relative;
+.dashboard-navbar {
+    /* position: relative;
     z-index: 10000;
-    border: 10px solid lime;
-} */
+    border: 10px solid lime; */
+    font-family: 'Fort-Bold';
+    background-color: white;
+
+    min-height: 100%;
+}
+
 
 
 @media (max-width: 900px) {
+
     .dashboard-navbar {
-        position: relative;
-        z-index: 100000;
-        display: flex;
+        position: absolute;
+        right: 0;
+        width: 100%;
+        max-width: 400px;
+        z-index: 9999;
+        height: fit-content;
+        transform: translateX(100%);
+        height: 100%;
     }
 
+    .dashboard-navbar.enter {
+        transform: translateX(0);
+        transition: transform 500ms ease;
         
+    }
 
-   
+    .dashboard-navbar.exit {
+        transform: translateX(100%);
+        transition: transform 500ms ease;
+
+    }
+
 }
+

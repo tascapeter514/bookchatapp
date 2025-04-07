@@ -22,7 +22,7 @@
     font-size: .825rem
 }
 
-.profile-navbar {
+/* .profile-navbar {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -33,12 +33,25 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-}
+} */
 
 .navbar-line-break {
     border-top: 1px solid #eee;
     width: 100%;
     max-width: 150px;
+}
+
+.tab-button {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    gap: 1.5rem;
+    padding-block: 2em;
+    font-size: 1.5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 @media (max-width: 900px) {

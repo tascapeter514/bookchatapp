@@ -44,7 +44,7 @@ const BookshelfButton = () => {
 
                 
     return (
-        <div className='navbar-bookshelf-component'>
+        <div className='tab-button bookshelves'>
             <hr className='navbar-line-break' />
             {/* <BookshelfDropdown activePanel={activePanel}>
                 <a 

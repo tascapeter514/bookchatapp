@@ -6,20 +6,36 @@ import userTabsReducer from '../../reducers/userTabsReducer';
 import MessagePanel from '../Panels/MessagePanel/MessagePanel';
 import AccountPanel from '../Panels/AccountPanel/AccountPanel';
 import DashboardMain from '../DashboardMain/DashboardMain';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
 import DashboardNav from '../DashboardNav/DashboardNav';
-import UserNav from '../UserNav/UserNav';
+import BookclubButton from '../TabButtons/BookclubButton/BookclubButton';
+import BookshelfButton from '../TabButtons/BookshelfButton/BookshelfButton';
+import AccountButton from '../TabButtons/AccountButton/AccountButton';
+import MessageButton from '../TabButtons/MessageButton/MessageButton';
+
 import CloseMobileNav from '../Buttons/CloseMobileNav/CloseMobileNav';
 import { useReducer } from 'react';
+
 import './UserDashboard.css';
 
 
 
 
+const ProfileHeader = () => {
 
+    const {user} = useSelector((state: RootState) => state.auth)
 
+    console.log('profile header user:', user)
 
+    return(
+        <div className="profile-header">
+            <h1>Hi {user?.firstName}!</h1>
+            <span>Member since {user?.dateJoined}</span>
+        </div>
+    )
 
-
+}
 
 const UserDashboard = () => {
 
@@ -37,9 +53,14 @@ const UserDashboard = () => {
                 {userTabs.activeTab === 'bookclubTab' && <BookclubsPanel />}
                 {userTabs.activeTab === 'bookshelfTab' && <BookshelfPanel />}  */}
             </DashboardMain>
-            <DashboardNav>
+            <DashboardNav mobileNav={mobileNav}>
                 <CloseMobileNav mobileNav={mobileNav} navDispatch={navDispatch} />
-                <UserNav mobileNav={mobileNav}></UserNav>
+                <ProfileHeader></ProfileHeader>
+                {/* <AccountButton /> */}
+                {/* // <MessageButton /> */}
+                <BookclubButton />
+                <BookshelfButton />
+                
             </DashboardNav>
         </div>
     )

@@ -2,22 +2,22 @@ import './MessageButton.css'
 // import { userContext } from '../../../context/UserContext/UserContext'
 
 
-// const MessageButton = () => {
+const MessageButton = () => {
 
-//     // const { userTabs, tabsDispatch } = userContext()
+    // const { userTabs, tabsDispatch } = userContext()
 
 
-//     return (
+    return (
 
-//         <button 
-//             className={`message-button ${userTabs.activeTab === 'messagesTab' ? 'active' : ''}`}
-//             onClick={() => tabsDispatch({type: 'SET_ACTIVE_TAB', payload: 'messagesTab'})}
-//         >
-//         Messages
-//         </button>
+        // <button 
+        //     className={`message-button ${userTabs.activeTab === 'messagesTab' ? 'active' : ''}`}
+        //     onClick={() => tabsDispatch({type: 'SET_ACTIVE_TAB', payload: 'messagesTab'})}
+        // >
+        // Messages
+        // </button>
         
-//     )
+    )
 
-// }
+}
 
-// export default MessageButton
+export default MessageButton

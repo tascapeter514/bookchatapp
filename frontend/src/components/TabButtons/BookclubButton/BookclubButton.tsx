@@ -13,7 +13,7 @@ const BookclubButton = () => {
     const openModal = () => bookclubRef.current?.showModal()
     
     return(
-        <> 
+        <div className='tab-button bookclubs'> 
             <hr className='navbar-line-break' />
             {/* <button 
                 className={`bookclub-button ${userTabs.activeTab === 'bookclubTab' ? 'active' : ''}`}
@@ -27,7 +27,7 @@ const BookclubButton = () => {
                 url={`http://localhost:8000/api/user/bookclub/${userState.user?.id}`}
                 type='bookclub'
             /> */}
-        </>
+        </div>
     )
 }
 

@@ -1,37 +1,19 @@
-import './DashboardNav.css'
-import CloseMobileNav from '../Buttons/CloseMobileNav/CloseMobileNav'
-import { Dispatch } from 'react';
-import { MobileNavState, MobileNavAction } from '../../reducers/mobileNavReducer';
-import UserNav from '../UserNav/UserNav'
 import { ReactNode } from 'react';
-
+import { MobileNavState } from '../../reducers/mobileNavReducer';
+import './DashboardNav.css'
 
 interface Props {
-    children: ReactNode
+    children: ReactNode,
+    mobileNav: MobileNavState
 
 }
 
-
-const DashboardNav = ({children}: Props) => {
-
-
+const DashboardNav = ({children, mobileNav}: Props) => {
 
     return(
-
-
-        // <aside className={`dashboard-navbar ${mobileNav.open ? 'enter' : ''} ${mobileNav.isExiting ? 'exit' : ''}`}>
-            
-    
-        // </aside>
-
-        <aside className="dashboard-navbar">
+        <aside className={`dashboard-navbar ${mobileNav.open ? 'enter' : ''} ${mobileNav.isExiting ? 'exit' : ''}`}>
             {children}
         </aside>
-
-
-
-
-
     )
 }
 

@@ -9,20 +9,7 @@ import { useSelector } from 'react-redux'
 import './UserNav.css'
 
 
-const ProfileHeader = () => {
 
-    const {user} = useSelector((state: RootState) => state.auth)
-
-    console.log('profile header user:', user)
-
-    return(
-        <div className="profile-header">
-            <h1>Hi {user?.firstName}!</h1>
-            <span>Member since {user?.dateJoined}</span>
-        </div>
-    )
-
-}
 
 interface Props {
     mobileNav: MobileNavState
@@ -35,13 +22,12 @@ const UserNav = ({mobileNav}: Props) => {
 
     return(
         <div className={`navbar-container ${mobileNav.open ? 'enter' : ''} ${mobileNav.isExiting ? 'exit' : ''}`}>
-            <ProfileHeader />
-            <nav className='profile-navbar'>
-                {/* <AccountButton /> */}
-                {/* // <MessageButton /> */}
-                <BookclubButton />
-                <BookshelfButton />
-            </nav>
+
+            {/* <AccountButton /> */}
+            {/* // <MessageButton /> */}
+            {/* <BookclubButton />
+            <BookshelfButton /> */}
+
         </div>
     )
 }
