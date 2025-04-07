@@ -11,23 +11,8 @@ interface Props {
 
 const OpenMobileNav = ({mobileNav, navDispatch}: Props) => {
 
-    // const [showNavbar, setShowNavbar] = useState(false);
-    // const [isExiting, setIsExiting] = useState(false)
-   
-    // const toggleNavbar = () => {
-    //     setShowNavbar(prev => !prev)
-    //     if (showNavbar) {
-    //         setIsExiting(true)
-    //         setTimeout(() => {
-    //             setShowNavbar(false)
-    //             setIsExiting(false)
-    //         }, 350)
-    //     } else {
-    //         setShowNavbar(true)
-    //     }
-    // }
 
-    console.log('mobile nav open:', mobileNav.open)
+    console.log('open mobile nav:', mobileNav)
 
     return(
         <>

@@ -19,17 +19,17 @@ function App() {
 
   console.log('app rendered')
 
-const { user } = useSelector((state: RootState) => state.auth)
-const userId = useMemo(() => user.id, [user.id])
-const { data } = useGetUserDataQuery(userId)
-const userData = useMemo(() => data, [data])
+// const { user } = useSelector((state: RootState) => state.auth)
+// const userId = useMemo(() => user.id, [user.id])
+// const { data } = useGetUserDataQuery(userId)
+// const userData = useMemo(() => data, [data])
 // const { data } = useCallback(() =>{
 
 //   useGetUserDataQuery(user.id)
 
 // }, [user]) 
 
-console.log('app level user data:', data)
+// console.log('app level user data:', data)
 // console.log('app level user error:', error)
 
 

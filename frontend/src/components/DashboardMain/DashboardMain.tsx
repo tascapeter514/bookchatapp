@@ -1,32 +1,25 @@
-import MessagePanel from '../Panels/MessagePanel/MessagePanel';
-import AccountPanel from '../Panels/AccountPanel/AccountPanel';
-import Bookshelfpanel from '../Panels/BookshelfPanel/BookshelfPanel'
-import OpenMobileNav from '../Buttons/OpenMobileNav/OpenMobileNav';
-import { Dispatch } from 'react';
-import { MobileNavState, MobileNavAction } from '../../reducers/mobileNavReducer';
+
+import { Dispatch, ReactNode } from 'react';
+
 import './DashboardMain.css'
 
 interface Props {
-    mobileNav: MobileNavState,
-    navDispatch: Dispatch<MobileNavAction>
+    children: ReactNode
 }
 
 
 
-const DashboardMain = ({mobileNav, navDispatch} : Props) => {
+const DashboardMain = ({children} : Props) => {
 
 
     return(
 
         <main className='dashboard-main'>
-            <OpenMobileNav mobileNav={mobileNav} navDispatch={navDispatch} />
-                {/* {userTabs.activeTab === 'accountTab' && <AccountPanel />}
-                {userTabs.activeTab === 'messagesTab' && <MessagePanel />}
-                {userTabs.activeTab === 'bookclubTab' && <BookclubsPanel />}
-                {userTabs.activeTab === 'bookshelfTab' && <Bookshelfpanel />} */}
+            {children}
         </main>
 
     )
 }
 
 export default DashboardMain
+
