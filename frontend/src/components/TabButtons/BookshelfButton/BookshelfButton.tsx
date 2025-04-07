@@ -1,18 +1,23 @@
 
 import BookshelfDropdown from '../../BookshelfDropdown/BookshelfDropdown'
+import { TabState, TabAction } from '../../../reducers/userTabsReducer'
+import { Dispatch } from 'react'
 import { useState, useRef} from 'react'
 import { RightDropDownIcon } from '../../Icons'
 import CreateButton from '../../Buttons/CreateButton/CreateButton'
-// import { userContext } from '../../../context/UserContext/UserContext'
 import PostModal from '../../Modals/PostModal/PostModal'
 import './BookshelfButton.css'
 
+interface Props {
 
+    userTabs: TabState,
+    dispatchUserTabs: Dispatch<TabAction>
+    
+}
 
-const BookshelfButton = () => {
+const BookshelfButton = ({userTabs, dispatchUserTabs}: Props) => {
      
     
-    // const { userState, bookshelves, userTabs, tabsDispatch } = userContext()
     const bookshelfRef = useRef<HTMLDialogElement>(null)
     const openModal = () => bookshelfRef.current?.showModal()
     const [isRotated, setIsRotated] = useState(false);
@@ -46,16 +51,16 @@ const BookshelfButton = () => {
     return (
         <div className='tab-button bookshelves'>
             <hr className='navbar-line-break' />
-            {/* <BookshelfDropdown activePanel={activePanel}>
+            <BookshelfDropdown activePanel={activePanel}>
                 <a 
                     className={`bookshelf-button ${userTabs.activeTab === 'bookshelfTab' && userTabs.activeBookshelf === '' ? 'active' : ''}`}
-                    onClick={ () => tabsDispatch({type: 'SET_ACTIVE_TAB', payload: 'bookshelfTab'})}
+                    onClick={ () => dispatchUserTabs({type: 'SET_ACTIVE_TAB', payload: 'bookshelfTab'})}
                 >
                     Bookshelves
                     <RightDropDownIcon onClick={toggleDropdown} isRotated={isRotated} />
                 </a>
-                <ul className='navbar-bookshelf-list'>{bookshelfNames}</ul>
-            </BookshelfDropdown> */}
+                {/* <ul className='navbar-bookshelf-list'>{bookshelfNames}</ul> */}
+            </BookshelfDropdown>
             <CreateButton onClick={openModal}>Bookshelf</CreateButton>
             {/* <PostModal 
                 ref={bookshelfRef} 

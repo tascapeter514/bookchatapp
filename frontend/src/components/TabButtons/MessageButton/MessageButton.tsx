@@ -1,20 +1,28 @@
+import { TabState, TabAction } from '../../../reducers/userTabsReducer'
+import { Dispatch } from 'react'
 import './MessageButton.css'
-// import { userContext } from '../../../context/UserContext/UserContext'
 
 
-const MessageButton = () => {
+interface Props {
 
-    // const { userTabs, tabsDispatch } = userContext()
+    userTabs: TabState,
+    dispatchUserTabs: Dispatch<TabAction>
+
+}
+
+const MessageButton = ({userTabs, dispatchUserTabs} : Props) => {
+
+
 
 
     return (
 
-        // <button 
-        //     className={`message-button ${userTabs.activeTab === 'messagesTab' ? 'active' : ''}`}
-        //     onClick={() => tabsDispatch({type: 'SET_ACTIVE_TAB', payload: 'messagesTab'})}
-        // >
-        // Messages
-        // </button>
+        <button 
+            className={`message-button ${userTabs.activeTab === 'messagesTab' ? 'active' : ''}`}
+            onClick={() => dispatchUserTabs({type: 'SET_ACTIVE_TAB', payload: 'messagesTab'})}
+        >
+        Messages
+        </button>
         
     )
 

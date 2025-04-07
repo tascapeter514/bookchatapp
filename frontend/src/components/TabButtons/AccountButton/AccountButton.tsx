@@ -1,27 +1,35 @@
+import { TabAction, TabState } from "../../../reducers/userTabsReducer"
+import { Dispatch } from "react"
 import './AccountButton.css'
 
 
 
-// const AccountButton = () => {
 
-//     const {userTabs, tabsDispatch} = userContext()
+interface Props {
+    userTabs: TabState,
+    dispatchUserTabs: Dispatch<TabAction>
+}
 
 
 
-//     return (
+const AccountButton = ({userTabs, dispatchUserTabs} : Props) => {
 
-//         <button 
-//             className={`account-button ${userTabs.activeTab === 'accountTab' ? 'active' : ''}`}
-//             onClick={() => tabsDispatch({type: 'SET_ACTIVE_TAB', payload: 'accountTab'})}
-//         >
-//             Account
-//         </button>
+
+
+    return (
+
+        <button 
+            className={`tab-button account ${userTabs.activeTab === 'accountTab' ? 'active' : ''}`}
+            onClick={() => dispatchUserTabs({type: 'SET_ACTIVE_TAB', payload: 'accountTab'})}
+        >
+            Account
+        </button>
         
-//     )
+    )
 
-// }
+}
 
-// export default AccountButton
+export default AccountButton
 
 
 

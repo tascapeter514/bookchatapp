@@ -1,27 +1,26 @@
-.account-button {
+.tab-button.account {
     padding: 1em 2em;
     width: 100%;
-    font-size: 1.125rem;
+
     font-weight: bold;
     text-align: center;
     color: black;
     border: 0;
     background: transparent;
-    cursor: pointer
-
-
+    cursor: pointer;
 }
 
 
-.account-button.active {
+.tab-button.account.active {
     background: #D6f6ff;
     position: relative;
     
 }
 
-.account-button:hover {
+.tab-button.account:hover {
 
     background: #D6f6ff;
 }
+
 
 

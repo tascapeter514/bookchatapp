@@ -9,36 +9,36 @@ import SubHeader from '../../SubHeader/SubHeader.tsx'
 
 const BookshelfPanel = () => {
 
-    const { bookshelves, userTabs } = userContext()
+    // const { bookshelves, userTabs } = userContext()
     
     
 
-    console.log('book panel bookshelves:', bookshelves)
+    // console.log('book panel bookshelves:', bookshelves)
     // console.log('reducer bookshelves:', bookSearch.bookshelves);
 
-    if (userTabs.activeBookshelf === 'bookshelfTab0') {
-        console.log('james joyce bookshelf')
-        console.log('james joyce books:', bookshelves.data?.map(bookshelf => bookshelf.books))
-    }
+    // if (userTabs.activeBookshelf === 'bookshelfTab0') {
+    //     console.log('james joyce bookshelf')
+    //     console.log('james joyce books:', bookshelves.data?.map(bookshelf => bookshelf.books))
+    // }
     
 
-    const bookshelfElements = bookshelves.data?.map((bookshelf, index) => (
+    // const bookshelfElements = bookshelves.data?.map((bookshelf, index) => (
         
-        userTabs.activeBookshelf === `bookshelfTab${index}` && 
-            <li 
-                key={bookshelf.id}
-                className='bookshelf-listElement'
+    //     userTabs.activeBookshelf === `bookshelfTab${index}` && 
+    //         <li 
+    //             key={bookshelf.id}
+    //             className='bookshelf-listElement'
 
-            >
-                <SubHeader>{bookshelf.name}</SubHeader>
-                <BookshelfDisplay >{bookshelf}</BookshelfDisplay>
-            </li>
-    ))
+    //         >
+    //             <SubHeader>{bookshelf.name}</SubHeader>
+    //             <BookshelfDisplay >{bookshelf}</BookshelfDisplay>
+    //         </li>
+    // ))
 
     return(
         <section className='bookshelves-container' aria-labelledby='tab-1'>
             <Header>Bookshelves</Header>
-            <ul className='bookshelf-panel-list'>{bookshelfElements}</ul>
+            {/* <ul className='bookshelf-panel-list'>{bookshelfElements}</ul> */}
         </section>
 
     )

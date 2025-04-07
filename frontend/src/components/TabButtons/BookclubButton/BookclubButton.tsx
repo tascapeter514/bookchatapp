@@ -1,26 +1,33 @@
 import { useRef } from 'react'
-// import { userContext } from '../../../context/UserContext/UserContext'
+import { TabState, TabAction } from '../../../reducers/userTabsReducer'
+import { Dispatch } from 'react'
 import CreateButton from '../../Buttons/CreateButton/CreateButton'
 import PostModal from '../../Modals/PostModal/PostModal'
 import './BookclubButton.css'
 
 
+interface Props {
+    userTabs: TabState,
+    dispatchUserTabs: Dispatch<TabAction>
+}
 
-const BookclubButton = () => {
 
-    // const { userState, userTabs, tabsDispatch } = userContext()
+
+const BookclubButton = ({userTabs, dispatchUserTabs}: Props) => {
+
+  
     const bookclubRef = useRef<HTMLDialogElement>(null)
     const openModal = () => bookclubRef.current?.showModal()
     
     return(
         <div className='tab-button bookclubs'> 
             <hr className='navbar-line-break' />
-            {/* <button 
+            <button 
                 className={`bookclub-button ${userTabs.activeTab === 'bookclubTab' ? 'active' : ''}`}
-                onClick={ () => tabsDispatch({type: 'SET_ACTIVE_TAB', payload: 'bookclubTab'})}
+                onClick={ () => dispatchUserTabs({type: 'SET_ACTIVE_TAB', payload: 'bookclubTab'})}
             >
                 Bookclubs
-            </button> */}
+            </button>
             <CreateButton onClick={openModal}>Bookclub</CreateButton>
             {/* <PostModal
                 ref={bookclubRef}

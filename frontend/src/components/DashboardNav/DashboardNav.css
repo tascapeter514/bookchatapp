@@ -4,7 +4,9 @@
     border: 10px solid lime; */
     font-family: 'Fort-Bold';
     background-color: white;
-
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     min-height: 100%;
 }
 

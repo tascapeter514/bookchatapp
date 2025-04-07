@@ -49,17 +49,17 @@ const UserDashboard = () => {
             <DashboardMain>
                 <OpenMobileNav mobileNav={mobileNav} navDispatch={navDispatch} />
                 {userTabs.activeTab === 'accountTab' && <AccountPanel />}
-                {/* {userTabs.activeTab === 'messagesTab' && <MessagePanel />}
+                {userTabs.activeTab === 'messagesTab' && <MessagePanel />}
                 {userTabs.activeTab === 'bookclubTab' && <BookclubsPanel />}
-                {userTabs.activeTab === 'bookshelfTab' && <BookshelfPanel />}  */}
+                {userTabs.activeTab === 'bookshelfTab' && <BookshelfPanel />}
             </DashboardMain>
             <DashboardNav mobileNav={mobileNav}>
                 <CloseMobileNav mobileNav={mobileNav} navDispatch={navDispatch} />
                 <ProfileHeader></ProfileHeader>
-                {/* <AccountButton /> */}
-                {/* // <MessageButton /> */}
-                <BookclubButton />
-                <BookshelfButton />
+                <AccountButton userTabs={userTabs} dispatchUserTabs={dispatchUserTabs}/>
+                <MessageButton userTabs={userTabs} dispatchUserTabs={dispatchUserTabs}/>
+                <BookclubButton userTabs={userTabs} dispatchUserTabs={dispatchUserTabs}/>
+                <BookshelfButton userTabs={userTabs} dispatchUserTabs={dispatchUserTabs}/>
                 
             </DashboardNav>
         </div>
