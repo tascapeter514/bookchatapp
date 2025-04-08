@@ -1,44 +1,44 @@
-import './BookshelfPanel.css';
-import {  Bookshelf } from '../../../types.ts'
-import { useReducer, useState } from 'react';
-import { userContext } from '../../../context/UserContext/UserContext.tsx';
 import BookshelfDisplay from '../../BookshelfDisplay/BookshelfDisplay.tsx'
-import Header from '../../Header/Header.tsx'
+import { TabState } from '../../../reducers/userTabsReducer.tsx';
 import SubHeader from '../../SubHeader/SubHeader.tsx'
+import {  Bookshelf } from '../../../types.ts'
+import Header from '../../Header/Header.tsx'
+import './BookshelfPanel.css';
 
 
-const BookshelfPanel = () => {
+interface Props {
+    bookshelves: Bookshelf[],
+    userTabs: TabState
+}
 
-    // const { bookshelves, userTabs } = userContext()
-    
-    
+const UserBookshelves = ({bookshelves, userTabs}: Props) => {
 
-    // console.log('book panel bookshelves:', bookshelves)
-    // console.log('reducer bookshelves:', bookSearch.bookshelves);
+    return(
+        <ul className='bookshelf-panel-list'>
+            {bookshelves.map((bookshelf: Bookshelf, index: number) => {
+                return(
+                    userTabs.activeBookshelf === `bookshelfTab${index}` && 
+                    <li 
+                        key={bookshelf.id}
+                        className='bookshelf-listElement'
+                    >
+                        <SubHeader>{bookshelf.name}</SubHeader>
+                        <BookshelfDisplay >{bookshelf}</BookshelfDisplay>
+                    </li>
+                )
+            })}
+        </ul>
+    )
+}
 
-    // if (userTabs.activeBookshelf === 'bookshelfTab0') {
-    //     console.log('james joyce bookshelf')
-    //     console.log('james joyce books:', bookshelves.data?.map(bookshelf => bookshelf.books))
-    // }
-    
+const BookshelfPanel = ({bookshelves, userTabs}: Props) => {
 
-    // const bookshelfElements = bookshelves.data?.map((bookshelf, index) => (
-        
-    //     userTabs.activeBookshelf === `bookshelfTab${index}` && 
-    //         <li 
-    //             key={bookshelf.id}
-    //             className='bookshelf-listElement'
-
-    //         >
-    //             <SubHeader>{bookshelf.name}</SubHeader>
-    //             <BookshelfDisplay >{bookshelf}</BookshelfDisplay>
-    //         </li>
-    // ))
 
     return(
         <section className='bookshelves-container' aria-labelledby='tab-1'>
             <Header>Bookshelves</Header>
-            {/* <ul className='bookshelf-panel-list'>{bookshelfElements}</ul> */}
+            <UserBookshelves bookshelves={bookshelves} userTabs={userTabs}/>
+            
         </section>
 
     )

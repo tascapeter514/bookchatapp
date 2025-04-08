@@ -70,7 +70,7 @@ const UserDashboard = () => {
                 {userTabs.activeTab === 'accountTab' && <AccountPanel />}
                 {userTabs.activeTab === 'messagesTab' && <MessagePanel invitations={invitations} />}
                 {userTabs.activeTab === 'bookclubTab' && <BookclubsPanel bookclubs={bookclubs}/>}
-                {userTabs.activeTab === 'bookshelfTab' && <BookshelfPanel />}
+                {userTabs.activeTab === 'bookshelfTab' && <BookshelfPanel userTabs={userTabs} bookshelves={bookshelves}/>}
             </DashboardMain>
             <DashboardNav mobileNav={mobileNav}>
                 <CloseMobileNav mobileNav={mobileNav} navDispatch={navDispatch} />
