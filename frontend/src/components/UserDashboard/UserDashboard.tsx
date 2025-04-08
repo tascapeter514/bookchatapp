@@ -68,8 +68,8 @@ const UserDashboard = () => {
             <DashboardMain>
                 <OpenMobileNav mobileNav={mobileNav} navDispatch={navDispatch} />
                 {userTabs.activeTab === 'accountTab' && <AccountPanel />}
-                {userTabs.activeTab === 'messagesTab' && <MessagePanel />}
-                {userTabs.activeTab === 'bookclubTab' && <BookclubsPanel />}
+                {userTabs.activeTab === 'messagesTab' && <MessagePanel invitations={invitations} />}
+                {userTabs.activeTab === 'bookclubTab' && <BookclubsPanel bookclubs={bookclubs}/>}
                 {userTabs.activeTab === 'bookshelfTab' && <BookshelfPanel />}
             </DashboardMain>
             <DashboardNav mobileNav={mobileNav}>
