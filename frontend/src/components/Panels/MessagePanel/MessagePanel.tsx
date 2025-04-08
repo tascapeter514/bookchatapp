@@ -7,40 +7,38 @@ import Header from '../../Header/Header.tsx'
 import SubHeader from '../../SubHeader/SubHeader.tsx'
 
 
+interface Props {
+    invitations: Invitation[]
+}
 
 
+const MessagePanel = ({invitations}: Props) => {
 
-const MessagePanel = () => {
+    const userInvitesElements = invitations?.map((invite: Invitation) => {
 
-    
-    
+        const {day, month, year } = formatDate(invite.created_at)
 
-    // const userInvitesElements = invitations?.data.map((invite: Invitation) => {
-
-    //     const {day, month, year } = formatDate(invite.created_at)
-
-
-    //     return(
-    //         <li key={invite.id} className='message-element'>
-    //             <div className="message-header-wrapper">
-    //                 <div className="message-user-wrapper">
-    //                     <div className="message-profile-icon">{invite.invited_by.charAt(0).toUpperCase()}</div>
-    //                     <div className="message-user-text">
-    //                         <span className='message-user-span'>{invite.invited_by}</span>
-    //                         <span className='message-invitation-span'>has invited you to</span>
-    //                         <Link to={`/bookclub/${invite.bookclub.id}`}><span className='message-bookclub-span'>{invite.bookclub.name}</span></Link>
-    //                     </div>
+        return(
+            <li key={invite.id} className='message-element'>
+                <div className="message-header-wrapper">
+                    <div className="message-user-wrapper">
+                        <div className="message-profile-icon">{invite.invited_by.charAt(0).toUpperCase()}</div>
+                        <div className="message-user-text">
+                            <span className='message-user-span'>{invite.invited_by}</span>
+                            <span className='message-invitation-span'>has invited you to</span>
+                            <Link to={`/bookclub/${invite.bookclub.id}`}><span className='message-bookclub-span'>{invite.bookclub.name}</span></Link>
+                        </div>
                     
-    //                 </div>
-    //                 <span className='message-date-span'>{day} {month} {year}</span>
-    //             </div>
-    //             <div className="message-content">
-    //                 {/* REMOVED ONCLICK HANDLER UNTIL FETCH LOGIC IS IMPLEMENTED */}
-    //                 {!invite.accepted && (<button className='accept-button' >Accept</button>) }
-    //             </div> 
-    //         </li>
-    //     )
-    // })
+                    </div>
+                    <span className='message-date-span'>{day} {month} {year}</span>
+                </div>
+                <div className="message-content">
+                    {/* REMOVED ONCLICK HANDLER UNTIL FETCH LOGIC IS IMPLEMENTED */}
+                    {!invite.accepted && (<button className='accept-button' >Accept</button>) }
+                </div> 
+            </li>
+        )
+    })
 
 
 
@@ -48,7 +46,7 @@ const MessagePanel = () => {
         <section id='messages' className='messages-container' aria-labelledby='tab-2'>
             <Header>Messages</Header>
             <SubHeader>Invitations</SubHeader>
-            {/* <ul className='messages-list'>{userInvitesElements}</ul> */}
+            <ul className='messages-list'>{userInvitesElements}</ul>
         </section>
     )
 }
