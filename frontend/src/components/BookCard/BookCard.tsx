@@ -1,7 +1,6 @@
 import { LikeIcon, DislikeIcon, CancelIcon } from '../Icons'
 import { useEffect } from 'react'
 import { Data } from '../../reducers/dataReducer'
-import { userContext } from '../../context/UserContext/UserContext'
 import useDelete from '../../hooks/useDelete'
 import { Book, Author } from '../../types'
 import './BookCard.css'
@@ -14,34 +13,33 @@ interface Props {
 
 const BookCard = ({children, bookshelfId}: Props) => {
 
-    const { bookshelfDispatch } = userContext()
-    const {data, makeRequest} = useDelete(`http://localhost:8000/api/user/book/delete/${children.id}`)
+    // const {data, makeRequest} = useDelete(`http://localhost:8000/api/user/book/delete/${children.id}`)
 
 
-    useEffect(() => {
-        if (!data.isLoading && !data.isError && data.data) {
-            console.log('delete data:', data.data)
-            bookshelfDispatch({type: 'REMOVE_BOOK', payload: {bookshelfId: bookshelfId, oldBook: data.data}})
-        }
+    // useEffect(() => {
+    //     if (!data.isLoading && !data.isError && data.data) {
+    //         console.log('delete data:', data.data)
+    //         bookshelfDispatch({type: 'REMOVE_BOOK', payload: {bookshelfId: bookshelfId, oldBook: data.data}})
+    //     }
 
-    }, [data, bookshelfDispatch])
+    // }, [data, bookshelfDispatch])
 
-    const deleteBook = async () => {
-        const data = {bookshelfId: bookshelfId}
-        try {
+    // const deleteBook = async () => {
+    //     const data = {bookshelfId: bookshelfId}
+    //     try {
 
-            await makeRequest(data);
+    //         await makeRequest(data);
 
-        } catch (err: any) {
-            bookshelfDispatch({type: 'BOOKSHELF_ERROR', payload: err.response?.data?.error || 'An unexpected error occurred'})
-        }
+    //     } catch (err: any) {
+    //         bookshelfDispatch({type: 'BOOKSHELF_ERROR', payload: err.response?.data?.error || 'An unexpected error occurred'})
+    //     }
 
-    }
+    // }
 
     return(
         <article className="book-card" >
             <div className="img-overlay">
-                <CancelIcon onClick={deleteBook}></CancelIcon>
+                {/* <CancelIcon onClick={deleteBook}></CancelIcon> */}
                 <img src={children.imageLinks?.thumbnail} alt="book-card-cover" className='book-card-img' />
                 <div className="book-card-buttons">
                     <LikeIcon></LikeIcon>

@@ -10,6 +10,7 @@ const CreateBookclubModal = () => {
     const closeModal = () =>bookclubRef.current?.close()
     const [bookclubName, setBookclubName] = useState<string>('')
 
+    // ADD SUBMIT LOGIC
     const handleSubmit = (e: FormEvent) => console.log('event:', e)
 
     return(
@@ -17,20 +18,20 @@ const CreateBookclubModal = () => {
             <CreateButton onClick={openModal}>Bookclub</CreateButton>
             <dialog className="create-bookclub-modal" ref={  bookclubRef } >
             {/* {data.isError && <ErrorMessage>{data.error}</ErrorMessage>} */}
-            <form onSubmit={handleSubmit} method='post'>
-                <input 
-                    type="text" 
-                    name='itemName'
-                    value={bookclubName}
-                    onChange={e => setBookclubName(e.target.value)} 
-                    placeholder={`Enter your bookclub name`}
-                    required/>
-                <div className="button-wrapper">
-                    <Button type='button' onClick={() => {setBookclubName(''); closeModal()}}>Cancel</Button>
-                    <Button type='submit'>Create</Button>
-                </div>
-            </form>
-        </dialog>
+                <form onSubmit={handleSubmit} method='post'>
+                    <input 
+                        type="text" 
+                        name='itemName'
+                        value={bookclubName}
+                        onChange={e => setBookclubName(e.target.value)} 
+                        placeholder={`Enter your bookclub name`}
+                        required/>
+                    <div className="button-wrapper">
+                        <Button type='button' onClick={() => {setBookclubName(''); closeModal()}}>Cancel</Button>
+                        <Button type='submit'>Create</Button>
+                    </div>
+                </form>
+            </dialog>
 
         </>
 

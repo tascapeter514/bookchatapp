@@ -23,7 +23,7 @@ const UserBookshelves = ({bookshelves, userTabs}: Props) => {
                         className='bookshelf-listElement'
                     >
                         <SubHeader>{bookshelf.name}</SubHeader>
-                        <BookshelfDisplay >{bookshelf}</BookshelfDisplay>
+                        <BookshelfDisplay>{bookshelf}</BookshelfDisplay>
                     </li>
                 )
             })}
