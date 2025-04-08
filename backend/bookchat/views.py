@@ -9,6 +9,7 @@ from rest_framework import status
 from knox.auth import TokenAuthentication
 from django.shortcuts import get_object_or_404
 from .serializers import BookclubSerializer, BookshelfSerializer, AuthorSerializer, InvitationSerializer, BookSerializer
+from bookchat.consumers import send_user_data_to_group
 from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync
 from django.http import JsonResponse
@@ -252,6 +253,8 @@ def add_user_bookclub(request, id):
     else:
         new_bookclub = Bookclub.objects.create(name=bookclub_name, administrator_id=id)
         new_bookclub.members.add(new_bookclub.administrator)
+
+        send_user_data_to_group(user.id)
 
         bookclub_serializer = BookclubSerializer(new_bookclub)
     

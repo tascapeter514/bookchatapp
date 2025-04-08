@@ -19,11 +19,11 @@ const BookshelfTabs = ({userTabs, bookshelves, dispatchUserTabs} : Props) => {
 
     // const [bookshelves] = useState<Bookshelf[]>(bookshelves || [])
 
-    console.log('bookshelf tabs:', bookshelves)
+    // console.log('bookshelf tabs:', bookshelves)
 
     const bookshelfTabs = bookshelves.map((bookshelf, index) => {
 
-        console.log('bookshelf:', bookshelf)
+        // console.log('bookshelf:', bookshelf)
 
         if (bookshelves.length < 1) return
 

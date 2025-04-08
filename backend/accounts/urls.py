@@ -16,9 +16,6 @@ urlpatterns = [
     path('api/auth', include('knox.urls')),
     path('api/auth/login', log_in, name='log_in'),
     path('api/auth/register', register, name='register'),
-
-
-    
     path('api/auth/logout', knox_views.LogoutView.as_view(), name='knox_logout'),
     path('api/inviteusers/<uuid:bookclub_id>', InviteUsersAPI.as_view()),
     path('api/user/updateAccount/<int:id>', change_contact, name='change_contact'),

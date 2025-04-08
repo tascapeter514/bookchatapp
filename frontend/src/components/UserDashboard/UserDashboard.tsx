@@ -60,7 +60,7 @@ const UserDashboard = () => {
 
 
     console.log('user dashboard data:', data)
-    console.log('user dashboard bookshelves:', bookshelves)
+    // console.log('user dashboard bookshelves:', bookshelves)
 
     return(
         <div className='dashboard-container'>

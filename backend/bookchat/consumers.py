@@ -1,6 +1,7 @@
 from channels.generic.websocket import WebsocketConsumer, AsyncWebsocketConsumer
 from asgiref.sync import async_to_sync
 from urllib.parse import unquote
+from channels.layers import get_channel_layer
 import json
 from .models import Bookclub, Invitation, Bookshelf, Book, Author
 from django.contrib.auth.models import User
@@ -38,7 +39,6 @@ class UserDataConsumer(WebsocketConsumer):
         invitation_serializer = InvitationSerializer(invitations, many=True)
         bookshelf_serializer = BookshelfSerializer(bookshelves, many=True)
 
-        print("user bookshelf:", bookshelf_serializer.data)
 
         user_data_response = {
                 'type': 'get_user_data',
@@ -48,12 +48,28 @@ class UserDataConsumer(WebsocketConsumer):
                 
             }
         
-        print('user data response:', user_data_response)
 
         self.send(text_data=json.dumps(
             user_data_response
             
         ))
+    
+    def send_user_data(self, event):
+        self.get_user_data()
+
+def send_user_data_to_group(user_id):
+    print('send data check')
+    channel_layer = get_channel_layer()
+
+    async_to_sync(channel_layer.group_send)(
+        f'user_data_{user_id}',
+        {
+            'type': 'send_user_data',
+            'user_id': user_id
+        }
+    )
+
+
 
     
 

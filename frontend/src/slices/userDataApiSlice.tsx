@@ -1,7 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { Bookclub, Bookshelf, Invitation } from "../types";
 const WEBSOCKET_URL = 'ws://localhost:8000'
-const ADDBOOKCLUB_URL = 'api/user/bookclub/'
 
 export interface UserData {
     type: string,
@@ -34,7 +33,6 @@ export const userDataApi = createApi({
                                 console.warn('Draft is undefined')
                                 return;
                             }
-                            console.log('draft:', draft)
                             draft.bookclubs = data.bookclubs,
                             draft.bookshelves = data.bookshelves,
                             draft.invitations = data.invitations
@@ -52,13 +50,13 @@ export const userDataApi = createApi({
         }),
         addBookclub: build.mutation({
             query: ({bookclubName, userId}: { bookclubName: string, userId: number}) => ({
-                url: `${ADDBOOKCLUB_URL}/${userId}`,
+                url: `/api/user/bookclub/${userId}`,
                 method: 'POST',
-                body: bookclubName
+                body: {name: bookclubName}
 
             })
         })
     })
 })
 
-export const { useGetUserDataQuery } = userDataApi
+export const { useGetUserDataQuery, useAddBookclubMutation } = userDataApi

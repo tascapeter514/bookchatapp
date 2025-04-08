@@ -12,7 +12,7 @@ const AccountPanel = () => {
 
     const  { user } = useSelector((state: RootState) => state.auth )
 
-    console.log('account panel user:', user)
+    // console.log('account panel user:', user)
 
 
 
