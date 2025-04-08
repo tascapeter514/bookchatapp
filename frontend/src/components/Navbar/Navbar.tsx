@@ -31,6 +31,7 @@ const Navbar = () => {
   const handleLogout = async () => {
     
     try {
+      console.log('nav')
       const response = await logout(authToken)
       console.log('navbar logout response:', response)
       dispatch(removeCredentials())
@@ -56,7 +57,7 @@ const Navbar = () => {
   const navLinks = useMemo(() => authToken ? authLinks : guestLinks , [authToken])
 
 
-    console.log('navbar auth token:', authToken)
+    // console.log('navbar auth token:', authToken)
 
   
 

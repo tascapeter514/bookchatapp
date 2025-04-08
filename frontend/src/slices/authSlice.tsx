@@ -20,6 +20,7 @@ const authSlice = createSlice({
         setCredentials: (state, action) => {
             console.log('set credentials action:', action)
             const {active_user, auth_token} = action.payload
+            console.log('set credentials auth token:', auth_token)
             state.user = {
                 ...state.user,
                 id: active_user.id,
