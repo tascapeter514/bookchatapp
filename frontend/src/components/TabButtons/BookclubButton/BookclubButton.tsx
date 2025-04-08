@@ -1,7 +1,7 @@
-import { useRef } from 'react'
-import { TabState, TabAction } from '../../../reducers/userTabsReducer'
-import { Dispatch } from 'react'
 import CreateBookclubModal from '../../Modals/CreateBookclubModal/CreateBookclubModal'
+import { TabState, TabAction } from '../../../reducers/userTabsReducer'
+import NavbarDivider from '../../Dividers/NavbarDivider/NavbarDivider'
+import { Dispatch } from 'react'
 import './BookclubButton.css'
 
 
@@ -17,7 +17,7 @@ const BookclubButton = ({userTabs, dispatchUserTabs}: Props) => {
   
     return(
         <div className='tab-button bookclubs'> 
-            <hr className='navbar-line-break' />
+            <NavbarDivider />
             <button 
                 className={`bookclub-button ${userTabs.activeTab === 'bookclubTab' ? 'active' : ''}`}
                 onClick={ () => dispatchUserTabs({type: 'SET_ACTIVE_TAB', payload: 'bookclubTab'})}
