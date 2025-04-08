@@ -7,7 +7,9 @@ import CloseMobileNav from '../Buttons/CloseMobileNav/CloseMobileNav';
 import BookshelfPanel from '../Panels/BookshelfPanel/BookshelfPanel';
 import BookclubsPanel from '../Panels/BookclubsPanel/BookclubsPanel';
 import NavbarDivider from '../Dividers/NavbarDivider/NavbarDivider';
+import { useGetUserDataQuery } from '../../slices/userDataApiSlice';
 import OpenMobileNav from '../Buttons/OpenMobileNav/OpenMobileNav';
+import LoadSpinner from '../LoadSpinner/LoadSpinner';
 import MessagePanel from '../Panels/MessagePanel/MessagePanel';
 import AccountPanel from '../Panels/AccountPanel/AccountPanel';
 import mobileNavReducer from '../../reducers/mobileNavReducer';
@@ -15,16 +17,19 @@ import userTabsReducer from '../../reducers/userTabsReducer';
 import BookshelfTabs from '../BookshelfTabs/BookshelfTabs';
 import DashboardMain from '../DashboardMain/DashboardMain';
 import DashboardNav from '../DashboardNav/DashboardNav';
+import { ActiveUser } from '../../types';
 import { RootState } from '../../store/store';
-import { useSelector } from 'react-redux';
+import { useSelector,  shallowEqual } from 'react-redux';
 import { useReducer } from 'react';
-
-
-
 import './UserDashboard.css';
 
-const ProfileHeader = () => {
-    const {user} = useSelector((state: RootState) => state.auth)
+
+interface Props {
+    user: ActiveUser
+}
+
+const ProfileHeader = ({user}: Props) => {
+
     return(
         <div className="profile-header">
             <h1>Hi {user?.firstName}!</h1>
@@ -34,13 +39,32 @@ const ProfileHeader = () => {
 
 }
 
+
+
 const UserDashboard = () => {
 
+    const { user } = useSelector((state: RootState) => state.auth, shallowEqual)
+    const { data, isLoading } = useGetUserDataQuery(user.id)
+
+    const bookclubs = data?.bookclubs ?? []
+    const bookshelves = data?.bookshelves ?? []
+    const invitations = data?.invitations ?? []
+
+
+    
+   
     const [mobileNav, navDispatch] = useReducer(mobileNavReducer, {open: false, isExiting: false})
     const [userTabs, dispatchUserTabs] = useReducer(userTabsReducer, {activeTab: 'accountTab', activeBookshelf: ''})
 
+    if (isLoading) return <><LoadSpinner /></>
+
+
+    console.log('user dashboard data:', data)
+    console.log('user dashboard bookshelves:', bookshelves)
+
     return(
         <div className='dashboard-container'>
+  
             <DashboardMain>
                 <OpenMobileNav mobileNav={mobileNav} navDispatch={navDispatch} />
                 {userTabs.activeTab === 'accountTab' && <AccountPanel />}
@@ -50,13 +74,13 @@ const UserDashboard = () => {
             </DashboardMain>
             <DashboardNav mobileNav={mobileNav}>
                 <CloseMobileNav mobileNav={mobileNav} navDispatch={navDispatch} />
-                <ProfileHeader />
+                <ProfileHeader user={user}/>
                 <AccountButton userTabs={userTabs} dispatchUserTabs={dispatchUserTabs}/>
                 <MessageButton userTabs={userTabs} dispatchUserTabs={dispatchUserTabs}/>
                 <BookclubButton userTabs={userTabs} dispatchUserTabs={dispatchUserTabs}/>
                 <BookshelfButton>
                     <NavbarDivider />
-                    <BookshelfTabs userTabs={userTabs} dispatchUserTabs={dispatchUserTabs} />
+                    <BookshelfTabs userTabs={userTabs} dispatchUserTabs={dispatchUserTabs} bookshelves={bookshelves} />
                     <CreateBookshelfModal />
                 </BookshelfButton>
             </DashboardNav>

@@ -8,16 +8,18 @@ import './BookshelfTabs.css'
 
 interface Props {
     userTabs: TabState,
-    dispatchUserTabs: Dispatch<TabAction>
+    dispatchUserTabs: Dispatch<TabAction>,
+    bookshelves: Bookshelf[]
 }
 
 
-const BookshelfTabs = ({userTabs, dispatchUserTabs} : Props) => {
+const BookshelfTabs = ({userTabs, bookshelves, dispatchUserTabs} : Props) => {
 
     const [dropdown, dispatchDropdown] = useReducer(dropdownReducer, {activePanel: false, isRotated: false})
 
-    const [bookshelves] = useState<Bookshelf[]>([])
+    // const [bookshelves] = useState<Bookshelf[]>(bookshelves || [])
 
+    console.log('bookshelf tabs:', bookshelves)
 
     const bookshelfTabs = bookshelves.map((bookshelf, index) => {
 
