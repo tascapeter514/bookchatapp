@@ -36,10 +36,8 @@ const ProfileHeader = () => {
 
 const UserDashboard = () => {
 
-
     const [mobileNav, navDispatch] = useReducer(mobileNavReducer, {open: false, isExiting: false})
     const [userTabs, dispatchUserTabs] = useReducer(userTabsReducer, {activeTab: 'accountTab', activeBookshelf: ''})
-
 
     return(
         <div className='dashboard-container'>
@@ -52,7 +50,7 @@ const UserDashboard = () => {
             </DashboardMain>
             <DashboardNav mobileNav={mobileNav}>
                 <CloseMobileNav mobileNav={mobileNav} navDispatch={navDispatch} />
-                <ProfileHeader></ProfileHeader>
+                <ProfileHeader />
                 <AccountButton userTabs={userTabs} dispatchUserTabs={dispatchUserTabs}/>
                 <MessageButton userTabs={userTabs} dispatchUserTabs={dispatchUserTabs}/>
                 <BookclubButton userTabs={userTabs} dispatchUserTabs={dispatchUserTabs}/>

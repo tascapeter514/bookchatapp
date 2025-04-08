@@ -48,7 +48,7 @@ const AuthorPage = () => {
     return(
 
         <div className="author-page">
-            {isLoading && <LoadSpinner></LoadSpinner>}
+            {isLoading && <LoadSpinner />}
             <AuthorHeader author={author}/>
             <AuthorBooks author={author} />
         </div>
