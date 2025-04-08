@@ -2,29 +2,26 @@
 import { TabState, TabAction } from '../../../reducers/userTabsReducer'
 import BookshelfTabs from '../../BookshelfTabs/BookshelfTabs'
 import NavbarDivider from '../../Dividers/NavbarDivider/NavbarDivider'
-import { Dispatch } from 'react'
+import { Dispatch, ReactNode } from 'react'
 import CreateBookshelfModal from '../../Modals/CreateBookshelfModal/CreateBookshelfModal'
 import './BookshelfButton.css'
 
 
 interface Props {
 
-    userTabs: TabState,
-    dispatchUserTabs: Dispatch<TabAction>
+    children: ReactNode
     
 }
 
-const BookshelfButton = ({userTabs, dispatchUserTabs}: Props) => {
+const BookshelfButton = ({children}: Props) => {
      
 
 
                 
     return (
         <div className='tab-button bookshelves'>
-            <NavbarDivider />
-            <BookshelfTabs userTabs={userTabs} dispatchUserTabs={dispatchUserTabs} />
-            <CreateBookshelfModal />
-           
+
+           {children}
             
            
         </div>
@@ -33,6 +30,10 @@ const BookshelfButton = ({userTabs, dispatchUserTabs}: Props) => {
 }
 
 export default BookshelfButton
+
+{/* <NavbarDivider />
+<BookshelfTabs userTabs={userTabs} dispatchUserTabs={dispatchUserTabs} />
+<CreateBookshelfModal /> */}
 
 
  

@@ -1,3 +1,4 @@
+import CreateBookshelfModal from '../Modals/CreateBookshelfModal/CreateBookshelfModal';
 import BookshelfButton from '../TabButtons/BookshelfButton/BookshelfButton';
 import BookclubButton from '../TabButtons/BookclubButton/BookclubButton';
 import AccountButton from '../TabButtons/AccountButton/AccountButton';
@@ -5,16 +6,21 @@ import MessageButton from '../TabButtons/MessageButton/MessageButton';
 import CloseMobileNav from '../Buttons/CloseMobileNav/CloseMobileNav';
 import BookshelfPanel from '../Panels/BookshelfPanel/BookshelfPanel';
 import BookclubsPanel from '../Panels/BookclubsPanel/BookclubsPanel';
+import NavbarDivider from '../Dividers/NavbarDivider/NavbarDivider';
 import OpenMobileNav from '../Buttons/OpenMobileNav/OpenMobileNav';
 import MessagePanel from '../Panels/MessagePanel/MessagePanel';
 import AccountPanel from '../Panels/AccountPanel/AccountPanel';
 import mobileNavReducer from '../../reducers/mobileNavReducer';
 import userTabsReducer from '../../reducers/userTabsReducer';
+import BookshelfTabs from '../BookshelfTabs/BookshelfTabs';
 import DashboardMain from '../DashboardMain/DashboardMain';
 import DashboardNav from '../DashboardNav/DashboardNav';
 import { RootState } from '../../store/store';
 import { useSelector } from 'react-redux';
 import { useReducer } from 'react';
+
+
+
 import './UserDashboard.css';
 
 const ProfileHeader = () => {
@@ -50,10 +56,16 @@ const UserDashboard = () => {
                 <AccountButton userTabs={userTabs} dispatchUserTabs={dispatchUserTabs}/>
                 <MessageButton userTabs={userTabs} dispatchUserTabs={dispatchUserTabs}/>
                 <BookclubButton userTabs={userTabs} dispatchUserTabs={dispatchUserTabs}/>
-                <BookshelfButton userTabs={userTabs} dispatchUserTabs={dispatchUserTabs}/>
+                <BookshelfButton>
+                    <NavbarDivider />
+                    <BookshelfTabs userTabs={userTabs} dispatchUserTabs={dispatchUserTabs} />
+                    <CreateBookshelfModal />
+                </BookshelfButton>
             </DashboardNav>
         </div>
     )
 }
 
 export default UserDashboard
+
+
