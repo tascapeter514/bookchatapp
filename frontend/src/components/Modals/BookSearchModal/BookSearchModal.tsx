@@ -3,7 +3,7 @@ import { RefObject, useReducer, useRef} from 'react'
 import ErrorMessage from '../../Messages/ErrorMessage/ErrorMessage'
 import { SearchIcon } from '../../Icons'
 import booksearchReducer from '../../../reducers/booksearchReducer'
-
+import BookResults from '../../Search/BookResults/BookResults'
 import BookSearchbar from '../../Search/BookSearchbar/BookSearchbar'
 import { Bookshelf } from '../../../types'
 import './BookSearchModal.css'
@@ -20,6 +20,7 @@ const BookSearchModal = ({ bookshelf }: Props) => {
     const openModal = () => bookSearchRef.current?.showModal()
     const closeModal = () => bookSearchRef.current?.close()
     const [bookSearch, bookDispatch] = useReducer(booksearchReducer, {bookshelfId: 0, books: bookshelf.books, newBookId: 0} )
+    
   
     const addBook = () => console.log('add button clicked')
             
@@ -36,6 +37,7 @@ const BookSearchModal = ({ bookshelf }: Props) => {
                 <section className='search-books-content'>
                     <article className='suggested-book-list'>
                         <BookSearchbar bookDispatch={bookDispatch}></BookSearchbar>
+                        <BookResults bookDispatch={bookDispatch}></BookResults>
                     </article>
                 </section>
                 <div className="button-wrapper">
@@ -49,6 +51,8 @@ const BookSearchModal = ({ bookshelf }: Props) => {
 
 
 export default BookSearchModal
+
+// {searchValue && searchResults.length > 0 &&<BookResults bookDispatch={bookDispatch}>{searchResults}</BookResults>}
 
 // onClick={async () => newBookId && await addBook(newBookId, currBkslfId)}
 {/* <aside className='bookshelves-list'>
