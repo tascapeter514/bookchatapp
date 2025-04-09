@@ -3,6 +3,7 @@
     display: grid;
     line-height: 1.6;
     background-color: white;
+    row-gap: 1rem;
 
 }
 
@@ -10,8 +11,7 @@
     position: absolute;
     right: 10px;
     top: 225px;
-    /* width: 100%;
-    max-width: 50px; */
+
 }
 
 .bookshelf-container > .bookchat-button > .search-icon {

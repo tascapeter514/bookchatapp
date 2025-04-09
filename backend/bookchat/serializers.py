@@ -70,7 +70,7 @@ class BookSerializer(serializers.ModelSerializer):
 
 #BOOKSHELF SERIALIZER
 class BookshelfSerializer(serializers.ModelSerializer):
-    books = BookSerializer(many=True, read_only=True)
+    books = BookSerializer(many=True)
 
     class Meta:
         model = Bookshelf

@@ -1,10 +1,10 @@
 import Button from '../../Buttons/Button/Button'
-import { RefObject, useReducer, useRef} from 'react'
+import { useReducer, useRef} from 'react'
 import { handleBookError, BookError } from '../../../utils/errorHandling'
 import ErrorMessage from '../../Messages/ErrorMessage/ErrorMessage'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../../store/store'
-import { usePostBookMutation } from '../../../slices/searchApiSlice'
+import { usePostBookMutation } from '../../../slices/userDataApiSlice'
 import useBookSearch from '../../../hooks/useBookSearch'
 import { SearchIcon } from '../../Icons'
 import booksearchReducer from '../../../reducers/booksearchReducer'
@@ -82,56 +82,3 @@ const BookSearchModal = ({ bookshelf }: Props) => {
 
 
 export default BookSearchModal
-
-// {searchValue && searchResults.length > 0 &&<BookResults bookDispatch={bookDispatch}>{searchResults}</BookResults>}
-
-// onClick={async () => newBookId && await addBook(newBookId, currBkslfId)}
-{/* <aside className='bookshelves-list'>
-                    {newBookId && bookshelves !== undefined  ? 
-                        bookshelves.length > 0 ? (
-                        bookshelves.map((bookshelf) => {
-                        {return <li key={bookshelf.bookshelf_id} className='bookshelf-result'
-                                >
-                                <label htmlFor={bookshelf.name}>{bookshelf.name}</label>
-                                <input 
-                                    type="radio" 
-                                    className='bookshelf-input' 
-                                    id={bookshelf.name}
-                                    name='bookshelfGroup'
-                                    checked={currBkslfId === bookshelf.bookshelf_id} 
-                                    onChange={() => setCurrBkslfId(bookshelf.bookshelf_id)}/>
-                                </li> }
-                        })
-                        ) : (<span>No bookshelves  in your bookclub</span>)
-                        : 'No Book Selected'}
-                    </aside> */}
-
-
- // useEffect(() => {
-    //     if (!data.isLoading && !data.isError && data.data.length > 0) {
-    //         bookshelfDispatch({type: 'ADD_BOOK' , payload: {bookshelfId: bookshelf.id, newBook: data.data}})
-    //     }
-
-    // }, [data])
-
-
-    // const addBook = async () => {
-    //     console.log('handle submit called')
-
-    //     const request = {
-    //         bookshelfId: bookshelf.id,
-    //         bookId: bookSearch.newBookId
-    //     }
-    //     try {
-    //         console.log('before make request')
-    //         await makeRequest(request)
-
-  
-            
-            
-    //     } catch(err) {
-    //         console.log('error handling submission:', err)
-    //     }
-
-    
-    // }

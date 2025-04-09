@@ -1,45 +1,40 @@
 import { LikeIcon, DislikeIcon, CancelIcon } from '../Icons'
-import { useEffect } from 'react'
-import { Data } from '../../reducers/dataReducer'
-import useDelete from '../../hooks/useDelete'
+import { useDeleteBookMutation } from '../../slices/userDataApiSlice'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../store/store'
 import { Book, Author } from '../../types'
 import './BookCard.css'
 
 interface Props {
-    children: Book | Data,
+    children: Book,
     bookshelfId: number
 }
 
 
 const BookCard = ({children, bookshelfId}: Props) => {
 
-    // const {data, makeRequest} = useDelete(`http://localhost:8000/api/user/book/delete/${children.id}`)
+    const { user } = useSelector((state: RootState ) => state.auth)
+    const [deleteBook] = useDeleteBookMutation()
 
+    const handleDeleteBook = async () => {
 
-    // useEffect(() => {
-    //     if (!data.isLoading && !data.isError && data.data) {
-    //         console.log('delete data:', data.data)
-    //         bookshelfDispatch({type: 'REMOVE_BOOK', payload: {bookshelfId: bookshelfId, oldBook: data.data}})
-    //     }
+        const userId = Number(user.id)
+        const bookId = Number(children.id)
 
-    // }, [data, bookshelfDispatch])
+        try {
+            await deleteBook({userId, bookId, bookshelfId})
 
-    // const deleteBook = async () => {
-    //     const data = {bookshelfId: bookshelfId}
-    //     try {
+        } catch(err) {
+            console.error('Delete Book Error:', err)
+        }
 
-    //         await makeRequest(data);
+    }
 
-    //     } catch (err: any) {
-    //         bookshelfDispatch({type: 'BOOKSHELF_ERROR', payload: err.response?.data?.error || 'An unexpected error occurred'})
-    //     }
-
-    // }
 
     return(
         <article className="book-card" >
             <div className="img-overlay">
-                {/* <CancelIcon onClick={deleteBook}></CancelIcon> */}
+                <CancelIcon onClick={handleDeleteBook}></CancelIcon>
                 <img src={children.imageLinks?.thumbnail} alt="book-card-cover" className='book-card-img' />
                 <div className="book-card-buttons">
                     <LikeIcon></LikeIcon>

@@ -203,6 +203,7 @@ def delete_book(request, **kwargs):
         book_id = kwargs['id']
         print('book id:', book_id)
         bookshelf_id = request.data.get('bookshelfId')
+        user_id = request.data.get('userId')
 
         current_bookshelf = Bookshelf.objects.get(id=bookshelf_id)
         current_book = Book.objects.get(id=book_id)
@@ -210,16 +211,16 @@ def delete_book(request, **kwargs):
         print('current book:', current_book)
 
         current_bookshelf.books.remove(current_book)
-
+        
         book_serializer = BookSerializer(current_book)
 
-        print('deleted book serializer:', book_serializer.data)
         
-
+        
+        send_user_data_to_group(user_id)
         return Response(book_serializer.data, status=status.HTTP_200_OK)
 
     except ValidationError as e:
-        return Response(str(e), status=status.HTTP_400_BAD_REQUEST)
+        return Response(e.detail, status=status.HTTP_400_BAD_REQUEST)
 
     except Exception as e:
         print(f'Error: {str(e)}')
