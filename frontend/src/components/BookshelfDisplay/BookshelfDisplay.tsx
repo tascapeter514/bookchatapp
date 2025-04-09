@@ -17,16 +17,18 @@ const BookshelfDisplay = ({ children }: Props) => {
     return(
         <section className="bookshelf-container">
             <BookSearchModal bookshelf={children}></BookSearchModal> 
-            {books.map((bookElement: Book) => {
-                return(
-                    <li 
-                        className='book-card-listElement' 
-                        key={bookElement.id}
-                    >
-                        <BookCard bookshelfId={children.id}>{bookElement}</BookCard>   
-                    </li>
-                )
-            })}  
+            <ul className="bookshelf-title-list">
+                {books.map((bookElement: Book) => {
+                    return(
+                        <li
+                            className='book-card-listElement'
+                            key={bookElement.id}
+                        >
+                            <BookCard bookshelfId={children.id}>{bookElement}</BookCard>
+                        </li>
+                    )
+                })}
+            </ul>
         </section>
         
     )
