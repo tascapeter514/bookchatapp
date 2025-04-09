@@ -232,8 +232,14 @@ def add_user_bookshelf(request, id):
         bookshelf_name = request.data.get('name')
         new_bookshelf = Bookshelf.objects.create(name=bookshelf_name)
         user.bookshelves.add(new_bookshelf)
+
+        send_user_data_to_group(user.id)
+
+
         bookshelf_serializer = BookshelfSerializer(new_bookshelf)
         return Response(bookshelf_serializer.data, status=status.HTTP_201_CREATED)
+    
+
     except Exception as e:
         print(f'Error: {str(e)}')
         return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

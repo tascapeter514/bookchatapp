@@ -22,6 +22,9 @@ const userDataSlice = createSlice({
     reducers: {
         addBookclub: (state, action) => {
             state.bookclubs = [...state.bookclubs, action.payload]
+        },
+        addBookshelf: (state, action) => {
+            state.bookshelves = [...state.bookshelves, action.payload]
         }
     }
 })

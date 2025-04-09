@@ -57,7 +57,7 @@ export const userDataApi = createApi({
             })
         }),
         postBookshelf: build.mutation({
-            query: ({keyword, userId}:  {keyword: String, userId: number}) => ({
+            query: ({keyword, userId}:  {keyword: string, userId: number}) => ({
                 url: `/api/user/bookshelf/${userId}`,
                 method: 'POST',
                 body: {name: keyword}
@@ -68,4 +68,4 @@ export const userDataApi = createApi({
     })
 })
 
-export const { useGetUserDataQuery, usePostBookclubMutation } = userDataApi
+export const { useGetUserDataQuery, usePostBookclubMutation, usePostBookshelfMutation } = userDataApi
