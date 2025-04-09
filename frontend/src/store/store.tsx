@@ -5,6 +5,8 @@ import authorReducer from '../slices/authorSlice'
 import userDataReducer from '../slices/userDataSlice'
 import { apiSlice } from '../slices/apiSlice'
 import { userDataApi } from '../slices/userDataApiSlice'
+import { searchDataApi } from '../slices/searchApiSlice'
+import bookshelfReducer from '../slices/bookshelfSlice'
 
 
 
@@ -13,9 +15,11 @@ const store = configureStore({
         auth: authReducer,
         book: bookReducer,
         author: authorReducer,
+        bookshelf: bookshelfReducer,
         userData: userDataReducer,
         [apiSlice.reducerPath]: apiSlice.reducer,
-        [userDataApi.reducerPath]: userDataApi.reducer
+        [userDataApi.reducerPath]: userDataApi.reducer,
+        [searchDataApi.reducerPath]: searchDataApi.reducer,
     },
     middleware: (getdefaultMiddleWare) => getdefaultMiddleWare().concat(apiSlice.middleware, userDataApi.middleware),
     devTools: true
