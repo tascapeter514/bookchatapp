@@ -48,15 +48,24 @@ export const userDataApi = createApi({
                 ws.close();
             }
         }),
-        addBookclub: build.mutation({
-            query: ({bookclubName, userId}: { bookclubName: string, userId: number}) => ({
+        postBookclub: build.mutation({
+            query: ({keyword, userId}: { keyword: string, userId: number}) => ({
                 url: `/api/user/bookclub/${userId}`,
                 method: 'POST',
-                body: {name: bookclubName}
+                body: {name: keyword}
+
+            })
+        }),
+        postBookshelf: build.mutation({
+            query: ({keyword, userId}:  {keyword: String, userId: number}) => ({
+                url: `/api/user/bookshelf/${userId}`,
+                method: 'POST',
+                body: {name: keyword}
 
             })
         })
+        
     })
 })
 
-export const { useGetUserDataQuery, useAddBookclubMutation } = userDataApi
+export const { useGetUserDataQuery, usePostBookclubMutation } = userDataApi
