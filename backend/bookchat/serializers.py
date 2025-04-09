@@ -99,6 +99,29 @@ class BookclubSerializer(serializers.ModelSerializer):
             for field_name in existing - allowed:
                 self.fields.pop(field_name)
 
+    # def validate(self, data):
+    #     try:
+    #         if 
+
+
+
+
+# def validate(self, data):
+        
+#         try:
+#             # Check if user exists in database
+#             user = User.objects.get(username=data.get('username'))
+#         except User.DoesNotExist:
+#             raise serializers.ValidationError({'username': 'No such username exists'})
+    
+            
+#         if user and not user.check_password(data.get('password')):
+#             print('if not password validated check')
+#             raise serializers.ValidationError({'password': 'Incorrect password'})
+
+#         if user and user.is_active:
+#             return user
+
 
 #INVITATION SERIALIZER
 

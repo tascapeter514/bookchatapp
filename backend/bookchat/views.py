@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework.exceptions import ValidationError
 from django.contrib.auth.models import User
 from rest_framework.permissions import IsAuthenticated
-from rest_framework import status
+from rest_framework import status, serializers
 from knox.auth import TokenAuthentication
 from django.shortcuts import get_object_or_404
 from .serializers import BookclubSerializer, BookshelfSerializer, AuthorSerializer, InvitationSerializer, BookSerializer
@@ -221,25 +221,30 @@ def delete_book(request, **kwargs):
         print(f'Error: {str(e)}')
         return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
+
 @api_view(['POST'])
 def add_user_bookshelf(request, id):
     print('add bookshelf check')
     try:
         user = User.objects.get(id=id)
-
-        print('request body:', request.data)
-
         bookshelf_name = request.data.get('name')
-        new_bookshelf = Bookshelf.objects.create(name=bookshelf_name)
-        user.bookshelves.add(new_bookshelf)
+        
 
-        send_user_data_to_group(user.id)
-
-
-        bookshelf_serializer = BookshelfSerializer(new_bookshelf)
-        return Response(bookshelf_serializer.data, status=status.HTTP_201_CREATED)
+        if user.bookshelves.filter(name=bookshelf_name).exists():
+            print('Repeat name check')
+            raise ValidationError({'bookshelf': 'You already have a bookshelf with this name'})
+        else:
+            new_bookshelf = Bookshelf.objects.create(name=bookshelf_name)
+            user.bookshelves.add(new_bookshelf)
+            send_user_data_to_group(user.id)
+            bookshelf_serializer = BookshelfSerializer(new_bookshelf)
+            return Response(bookshelf_serializer.data, status=status.HTTP_201_CREATED)
+        
+    except ValidationError as e:
+        print('create bookshelf error:', e.detail)
+        return Response(e.detail, status=status.HTTP_400_BAD_REQUEST)
     
-
     except Exception as e:
         print(f'Error: {str(e)}')
         return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -248,23 +253,39 @@ def add_user_bookshelf(request, id):
 
 @api_view(['POST'])
 def add_user_bookclub(request, id):
-    user = User.objects.get(id=id)
+
+    try:
+        user = User.objects.get(id=id)
+        bookclub_name = request.data.get('name')
+
+        if Bookclub.objects.filter(name=bookclub_name).exists():
+            raise ValidationError({'bookclub' : "We're sorry. There's already a bookclub with this name"})
+        
+        else:
+            new_bookclub = Bookclub.objects.create(name=bookclub_name, administrator_id=id)
+            new_bookclub.members.add(new_bookclub.administrator)
+
+            send_user_data_to_group(user.id)
+
+            bookclub_serializer = BookclubSerializer(new_bookclub)
     
-    bookclub_name = request.data.get('name')
+            return Response(bookclub_serializer.data, status=status.HTTP_201_CREATED)
 
-    print('bookclub name:', bookclub_name)
+    except ValidationError as e:
+        print('bookclub error:', e)
+        print('bookclub error detail:', e.detail)
+        return Response(e.detail, status=status.HTTP_400_BAD_REQUEST)
 
-    if not bookclub_name:
-            return Response({'message:' 'You must enter a valid bookclub name'}, status=status.HTTP_400_BAD_REQUEST)
-    else:
-        new_bookclub = Bookclub.objects.create(name=bookclub_name, administrator_id=id)
-        new_bookclub.members.add(new_bookclub.administrator)
+    except Exception as e:
+        print(f'Error: {str(e)}')
+        return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-        send_user_data_to_group(user.id)
-
-        bookclub_serializer = BookclubSerializer(new_bookclub)
     
-        return Response(bookclub_serializer.data, status=status.HTTP_201_CREATED)
+
+
+     
+
+        
 
     
 

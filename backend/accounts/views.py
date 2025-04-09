@@ -77,9 +77,6 @@ def register(request):
 
 
 
-
-    
-
 @api_view(['PUT'])
 def change_contact(request, id):
     try:

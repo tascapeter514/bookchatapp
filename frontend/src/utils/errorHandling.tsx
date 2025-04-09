@@ -13,6 +13,22 @@ export type RegisterError = {
     }
 }
 
+export type BookshelfError = {
+    status: number,
+    data: {
+        bookshelf?: string
+        
+    }
+}
+
+export type BookclubError = {
+    status: number,
+    data: {
+        bookclub?: string
+        
+    }
+}
+
 
 
 export const handleLoginError = (err: LoginError ) => {
@@ -41,4 +57,22 @@ export const handleRegisterError = (err: RegisterError) => {
     }
 
     return 'Registration Failed. Please try again'
+}
+
+export const handleBookclubError = (err: BookclubError) => {
+    
+    if ('data' in err) {
+        return err.data.bookclub ? err.data.bookclub : 'Unknown error with data'
+    }
+
+    return 'Your request to create a bookclub failed. Please try again.'
+}
+
+export const handleBookshelfError = (err: BookshelfError) => {
+    
+    if ('data' in err) {
+        return err.data.bookshelf ? err.data.bookshelf : 'Unknown error with data'
+    }
+
+    return 'Your request to create a bookshelf failed. Please try again.'
 }

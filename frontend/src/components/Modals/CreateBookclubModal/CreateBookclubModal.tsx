@@ -1,8 +1,9 @@
 import CreateButton from '../../Buttons/CreateButton/CreateButton'
 import Button from '../../Buttons/Button/Button'
 import { usePostBookclubMutation } from '../../../slices/userDataApiSlice'
+import { handleBookclubError, BookclubError } from '../../../utils/errorHandling'
 import ErrorMessage from '../../Messages/ErrorMessage/ErrorMessage'
-import { FormEvent, useRef, useState } from 'react'
+import { ChangeEvent, FormEvent, useRef, useState } from 'react'
 // import { addBookclub as addBookclubToStore } from '../../../slices/userDataSlice'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../../store/store'
@@ -15,7 +16,7 @@ const CreateBookclubModal = () => {
     const openModal = () => bookclubRef.current?.showModal()
     const closeModal = () =>bookclubRef.current?.close()
     const [keyword, setKeyword] = useState<string>('')
-    const [addBookclub] = usePostBookclubMutation()
+    const [addBookclub, {isError, error, reset}] = usePostBookclubMutation()
 
 
     const handleSubmit = async (e: FormEvent) => {
@@ -29,24 +30,30 @@ const CreateBookclubModal = () => {
 
 
         } catch ( err: any) {
-
+            console.error('create bookclub error:', err)
+            console.log('logging error:', err)
             console.log(err?.data?.message || err?.error)
 
         }
 
     }
 
+    const handleOnChange = (value: string) => {
+        if (isError) reset()
+        setKeyword(value)
+    }
+
     return(
         <>
             <CreateButton onClick={openModal}>Bookclub</CreateButton>
             <dialog className="create-bookclub-modal" ref={  bookclubRef } >
-            {/* {isError && <ErrorMessage>{error}</ErrorMessage>} */}
+            {isError && <ErrorMessage>{handleBookclubError(error as BookclubError)}</ErrorMessage>}
                 <form onSubmit={handleSubmit}>
                     <input 
                         type="text" 
                         name='itemName'
                         value={keyword}
-                        onChange={e => setKeyword(e.target.value)} 
+                        onChange={e => handleOnChange(e.target.value)} 
                         placeholder={`Enter your bookclub name`}
                         required/>
                     <div className="button-wrapper">

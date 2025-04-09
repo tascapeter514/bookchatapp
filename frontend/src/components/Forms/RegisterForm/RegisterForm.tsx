@@ -46,11 +46,6 @@ const RegisterForm = () => {
 
     }
 
-    console.log('register mutation error:', error)
-
-
-    
-
     const onChange = (event: ChangeEvent<HTMLInputElement>) => {
 
         if (isError) reset()
