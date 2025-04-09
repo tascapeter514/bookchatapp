@@ -29,6 +29,13 @@ export type BookclubError = {
     }
 }
 
+export type BookError = {
+    status: number,
+    data: {
+        book?: string
+    }
+}
+
 
 
 export const handleLoginError = (err: LoginError ) => {
@@ -75,4 +82,13 @@ export const handleBookshelfError = (err: BookshelfError) => {
     }
 
     return 'Your request to create a bookshelf failed. Please try again.'
+}
+
+export const handleBookError = (err: BookError) => {
+    
+    if ('data' in err) {
+        return err.data.book ? err.data.book : 'Unknown error with data'
+    }
+
+    return 'Your request to add a book to this bookshelf failed. Please try again.'
 }

@@ -1,11 +1,14 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Book, Bookclub, ActiveUser, Bookshelf } from "../types";
+
+export type BookData = {
+    id: number,
+    name: string
+}
 
 
 export type BookSearchData = {
-
     type: string,
-    search_results: [{type: string, items: Book[]}]
+    search_results: BookData[]
 
 }
 
@@ -15,7 +18,7 @@ export const searchDataApi = createApi({
     baseQuery: fetchBaseQuery({baseUrl: 'http://localhost:8000/'}),
     endpoints: (build) => ({
         getBookData: build.query<BookSearchData, string>({
-            queryFn: async () => ({data: {type: '', search_results: [{type: '', items: []}]}}),
+            queryFn: async () => ({data: {type: '', search_results: []}}),
             async onCacheEntryAdded(
                 searchTerm,
                 {updateCachedData, cacheDataLoaded, cacheEntryRemoved}
@@ -33,7 +36,7 @@ export const searchDataApi = createApi({
                                     console.warn("Draft is undefined")
                                     return
                                 }
-
+                                draft.type = data.type
                                 draft.search_results = data.search_results
 
                             })
@@ -47,9 +50,16 @@ export const searchDataApi = createApi({
                 await cacheEntryRemoved
                 ws.close()
             }
+        }),
+        postBook: build.mutation({
+            query: ({userId, bookshelfId, newBookId}: {userId: number, bookshelfId: number, newBookId: number }) => ({
+                url: `api/user/book/${userId}`,
+                method: 'PUT',
+                body: {bookshelfId: bookshelfId, newBookId: newBookId}
+            })
         })
     })
 })
 
 
-export const {useGetBookDataQuery} = searchDataApi
+export const {useLazyGetBookDataQuery, usePostBookMutation} = searchDataApi

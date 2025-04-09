@@ -124,11 +124,12 @@ def add_book_to_bookclub(request, **kwargs):
 def add_user_book(request, **kwargs):
     print('user bookshelf check')
     print('request body:', request.body)
-    user_id = kwargs['id']
-    book_id  = json.loads(request.body)['bookId']
-    bookshelf_id = (json.loads(request.body)['bookshelfId'])
+    
 
     try:
+        user_id = kwargs['id']
+        book_id  = json.loads(request.body)['newBookId']
+        bookshelf_id = (json.loads(request.body)['bookshelfId'])
         current_book = Book.objects.get(id=book_id)
         current_bookshelf = Bookshelf.objects.get(id=bookshelf_id)
 
@@ -136,15 +137,18 @@ def add_user_book(request, **kwargs):
        
         if current_bookshelf.books.filter(id=current_book.id).exists():
             print('validation error check')
-            raise ValidationError({'This book is already in the bookshelf.'})
+            raise ValidationError({'book': 'This book is already in the bookshelf.'})
         
-        current_bookshelf.books.add(current_book)
-        book_serializer = BookSerializer(current_book)
+        else:
+        
+            current_bookshelf.books.add(current_book)
+            send_user_data_to_group(user_id)
+            book_serializer = BookSerializer(current_book)
 
-        return Response(book_serializer.data, status=status.HTTP_200_OK)
+            return Response(book_serializer.data, status=status.HTTP_200_OK)
     
     except ValidationError as e:
-        return Response(str(e), status=status.HTTP_400_BAD_REQUEST)
+        return Response(e.detail, status=status.HTTP_400_BAD_REQUEST)
 
     except Exception as e:
         print(f'Error: {str(e)}')

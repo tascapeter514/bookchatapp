@@ -21,7 +21,7 @@ const store = configureStore({
         [userDataApi.reducerPath]: userDataApi.reducer,
         [searchDataApi.reducerPath]: searchDataApi.reducer,
     },
-    middleware: (getdefaultMiddleWare) => getdefaultMiddleWare().concat(apiSlice.middleware, userDataApi.middleware),
+    middleware: (getdefaultMiddleWare) => getdefaultMiddleWare().concat(apiSlice.middleware, userDataApi.middleware, searchDataApi.middleware),
     devTools: true
 })
 

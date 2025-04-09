@@ -1,17 +1,15 @@
 import './BookSearchbar.css'
 import { Dispatch } from 'react'
-import { BookSearchAction, BookshelfState  } from '../../../reducers/booksearchReducer'
-import useSearch from '../../../hooks/useSearch'
-import BookResults from '../BookResults/BookResults'
 import { SearchIcon } from '../../Icons'
 
 interface Props {
-    bookDispatch: Dispatch<BookSearchAction>
+    searchValue: string,
+    handleOnChange: (e: string) => void
 }
 
-const BookSearchbar = ({bookDispatch}: Props) => {
+const BookSearchbar = ({searchValue, handleOnChange}: Props) => {
 
-    const {searchValue, setSearchValue, searchResults} = useSearch('ws://localhost:8000/ws/search/books/', 'get_books_data')
+    
 
     return (
         <>
@@ -20,11 +18,11 @@ const BookSearchbar = ({bookDispatch}: Props) => {
                     className='search-books-input'
                     placeholder='Type to search...' 
                     value={searchValue} 
-                    onChange={(e) => setSearchValue(e.target.value)} 
+                    onChange={(e) => handleOnChange(e.target.value)} 
                 />
                 <SearchIcon className='search-icon'/>
             </div>
-            {searchValue && searchResults.length > 0 &&<BookResults bookDispatch={bookDispatch}>{searchResults}</BookResults>}
+            
             
         </>
 

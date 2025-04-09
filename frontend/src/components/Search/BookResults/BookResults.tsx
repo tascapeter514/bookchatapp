@@ -1,17 +1,12 @@
 import './BookResults.css'
 import { Dispatch } from 'react'
 import { BookSearchAction } from '../../../reducers/booksearchReducer'
-import { SearchData } from '../../../types'
-
-interface BookResult {
-    id: number,
-    name: string
+import { BookData } from '../../../slices/searchApiSlice'
 
 
-}
 
 interface Props {
-    children: SearchData,
+    children: BookData[],
     bookDispatch: Dispatch<BookSearchAction>
 }
 
@@ -20,11 +15,11 @@ const BookResults = ({children, bookDispatch}: Props) => {
 
 
     // console.log('book results children:', children)
-    const { items } = children[0]
+    
 
     return(
         <ul className='book-results-list'>
-            {items.map((bookResult: BookResult) => {
+            {children.map((bookResult: BookData) => {
                 
                 if (!bookResult) {
                     return null

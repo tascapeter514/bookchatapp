@@ -143,7 +143,7 @@ class SearchDataConsumer(WebsocketConsumer):
             [
                 {'type': 'author', 'items': author_serializer.data},
                 {'type': 'bookclub', 'items': bookclub_serializer.data},
-                 {'type': 'book', 'items': book_serializer.data}
+                {'type': 'book', 'items': book_serializer.data}
             ]
         }))
 
@@ -256,7 +256,8 @@ class UsersConsumer(WebsocketConsumer):
 
 class BookSearchConsumer(WebsocketConsumer):
     def connect(self):
-        self.group_name = 'get_books_data'
+
+        self.group_name = 'book_data'
         self.search_term = unquote(self.scope['url_route']['kwargs']['searchTerm'])
 
         async_to_sync(self.channel_layer.group_add)(
@@ -283,14 +284,9 @@ class BookSearchConsumer(WebsocketConsumer):
 
         self.send(text_data=json.dumps({
             'type': 'get_books_data',
-            'search_results': [{'type': 'book', 'items': book_serializer.data}]
+            'search_results': book_serializer.data
             
         }))
-
-
-    
-
-
 
 
 
