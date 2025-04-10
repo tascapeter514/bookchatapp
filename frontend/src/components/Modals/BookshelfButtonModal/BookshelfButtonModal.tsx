@@ -1,5 +1,5 @@
 import { BookmarkIcon } from '../../Icons'
-import { Bookshelf } from '../../../types'
+import { Bookshelf, Book } from '../../../types'
 import Button from '../../Buttons/Button/Button'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../../store/store'
@@ -7,30 +7,59 @@ import SearchFilter from '../../Search/SearchFilter/SearchFilter'
 import FilterResults from '../../Search/FilterResults/FilterResults'
 import searchReducer from '../../../reducers/searchReducer'
 import { useGetUserDataQuery, usePostBookMutation } from '../../../slices/userDataApiSlice'
-import { useRef, useReducer, memo } from 'react'
+import ErrorMessage from '../../Messages/ErrorMessage/ErrorMessage'
+import { useRef, useReducer, useState, memo } from 'react'
+import { handleBookError, BookError } from '../../../utils/errorHandling'
 import './BookshelfButtonModal.css'
 
+interface Props {
+    book: Book
+}
 
-
-const BookshelfButtonModal = () => {
+const BookshelfButtonModal = ({book}: Props) => {
 
     const { user } = useSelector((state: RootState) => state.auth)
-
-    const {data, isError, error} = useGetUserDataQuery(user?.id, {
+    const {data, isError: isUserDataError} = useGetUserDataQuery(user?.id, {
         skip: !user?.id
     })
-    // const [postBook, {isError, error, reset}] = usePostBookMutation()
+    const [idError, setIdError] = useState<string>('')
+    const [postBook, {isError: isPostBookError, error: postBookError, reset}] = usePostBookMutation()
     const [search, dispatchSearch] = useReducer(searchReducer, {id: 0, value: ''})
     const ref = useRef<HTMLDialogElement>(null)
     const openModal = () => ref.current?.showModal()
-    const closeModal = () => {
-        console.log('close click')
-        ref.current?.close()
-    }
-    const addBook = () => console.log('add button click')
+    const closeModal = () => ref.current?.close()
+  
+  
+    const handleAddBook = async () => {
 
-    console.log('bookshelf modal data:', data)
-    console.log('bookshelf modal user:', user)
+        const {id} = search
+    
+        try {
+
+            if (!id || !user.id || !book) {
+                throw Error('You are missing an id.')
+                
+            }
+
+            
+            const bookshelfId = Number(id)
+            const userId = Number(user.id)
+            const newBookId = Number(book.id)
+
+            console.log('new book id:', newBookId)
+
+            const response = await postBook({userId, bookshelfId, newBookId}).unwrap()
+            console.log('add book response:', response)
+
+        } catch(err: any) {
+            console.error('There was a problem adding the book to your bookshelf:', err)
+            setIdError(err.message)
+            
+        }
+
+    }
+
+ 
 
     return(
         <>
@@ -39,17 +68,21 @@ const BookshelfButtonModal = () => {
                 <span>Add to Bookshelf</span>
             </div>
             <dialog className='bookshelf-dialog' ref={ref}>
+                {isPostBookError && <ErrorMessage>{handleBookError(postBookError as BookError)}</ErrorMessage>}
+                {idError && <ErrorMessage>{idError}</ErrorMessage>}
+                
                 <h3>Add this book to your bookshelf</h3>
                     <hr />
                     {user ? 
                         <>
                             <SearchFilter search={search} dispatchSearch={dispatchSearch}/>
+                            {isUserDataError && <ErrorMessage>There was an error loading your bookshelves</ErrorMessage>}
                             <FilterResults search={search} dispatchSearch={dispatchSearch}>{data?.bookshelves as Bookshelf[]}</FilterResults>
                         </>
                         : <span>You must be logged in to use this feature</span>}
                 <div className="bookshelf-dialog-button-wrapper">
-                    <Button onClick={closeModal}>Cancel</Button>
-                    <Button onClick={addBook}>Add</Button>
+                    <Button onClick={() => {closeModal(); reset()}}>Cancel</Button>
+                    <Button onClick={handleAddBook}>Add</Button>
                 </div>
             </dialog>
         </>

@@ -10,6 +10,7 @@ const BookCover = ({book}: Props) => {
 
     const thumbnail = book.imageLinks?.thumbnail || null
 
+
     return(
         <div className="book-cover">
             {thumbnail ? (
@@ -21,7 +22,7 @@ const BookCover = ({book}: Props) => {
         
             }
             
-            <BookshelfButtonModal /> 
+            <BookshelfButtonModal book={book} /> 
         </div>
     )
 
