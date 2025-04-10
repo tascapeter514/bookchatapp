@@ -13,7 +13,7 @@ import LoadSpinner from '../LoadSpinner/LoadSpinner';
 import MessagePanel from '../Panels/MessagePanel/MessagePanel';
 import AccountPanel from '../Panels/AccountPanel/AccountPanel';
 import mobileNavReducer from '../../reducers/mobileNavReducer';
-import userTabsReducer from '../../reducers/userTabsReducer';
+import tabsReducer from '../../reducers/tabsReducer';
 import BookshelfTabs from '../BookshelfTabs/BookshelfTabs';
 import DashboardMain from '../DashboardMain/DashboardMain';
 import DashboardNav from '../DashboardNav/DashboardNav';
@@ -51,10 +51,8 @@ const UserDashboard = () => {
     const invitations = data?.invitations ?? []
 
 
-    
-   
     const [mobileNav, navDispatch] = useReducer(mobileNavReducer, {open: false, isExiting: false})
-    const [userTabs, dispatchUserTabs] = useReducer(userTabsReducer, {activeTab: 'accountTab', activeBookshelf: ''})
+    const [userTabs, dispatchUserTabs] = useReducer(tabsReducer, {activeTab: 'accountTab', activeBookshelf: ''})
 
     if (isLoading) return <><LoadSpinner /></>
 

@@ -3,10 +3,10 @@ import './BookclubPage.css'
 import { useState } from 'react'
 // import BookshelfPanel from '../Panels/BookshelfPanel/BookshelfPanel'
 // import CurrentReadPanel from './components/CurrentReadPanel/CurrentReadPanel'
-import SubNavbar from './components/SubNavbar/SubNavbar'
-import TopFacade from './components/TopFacade/TopFacade'
+import BookclubHeader from '../BookclubHeader/BookclubHeader'
+import BookclubNav from '../BookclubNav/BookclubNav'
 // import BookshelfProvider from '../../context/BookshelfContext/BookshelfContext'
-import Tabs from './components/Tabs/Tabs'
+import Tabs from '../BookclubTabs/BookclubTabs'
 
 
 
@@ -32,7 +32,7 @@ const BookclubPage = () => {
     return(
             <div className='bookclub-container'>
                 <div className="bookclub-content-wrapper">
-                    <TopFacade></TopFacade>
+                    <BookclubHeader></BookclubHeader>
                     <hr />
                     <Tabs
                         showSubNav={showSubNav}
@@ -46,11 +46,11 @@ const BookclubPage = () => {
                         className={`subnav-container ${showSubNav ? 'active' : ''}`}
 
                     >
-                        <SubNavbar 
+                        <BookclubNav 
                             subNav={showSubNav} 
                             setActiveBookshelf={setActiveBookshelf}
                         >
-                        </SubNavbar>
+                        </BookclubNav>
                     </div>
                     {/* <BookshelfProvider>
                         <PanelComponent />

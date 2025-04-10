@@ -1,8 +1,8 @@
 import { useRef, Dispatch, SetStateAction } from 'react'
 // import { bookclubData } from '../../../../context/BookclubContext/BookclubContext'
 import BookshelfModal from '../../../Modals/CreateBookshelf/CreateBookshelf'
-import Button from '../../../Buttons/Button/Button'
-import './SubNavbar.css'
+import Button from '../Buttons/Button/Button'
+import './BookclubNav.css'
 
 
 interface SubNavbarProps {
@@ -11,7 +11,7 @@ interface SubNavbarProps {
 }
 
 
-const SubNavbar = ({ subNav, setActiveBookshelf }: SubNavbarProps) => {
+const BookclubNav = ({ subNav, setActiveBookshelf }: SubNavbarProps) => {
 
     // const { bookshelves, addBookshelf, newBkslfId, setBkslfId } = bookclubData()
     const bookshelfRef = useRef<HTMLDialogElement>(null)
@@ -52,4 +52,4 @@ const SubNavbar = ({ subNav, setActiveBookshelf }: SubNavbarProps) => {
     )
 }
 
-export default SubNavbar
+export default BookclubNav

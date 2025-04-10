@@ -1,17 +1,17 @@
 import { useRef } from 'react'
 // import { bookclubData } from '../../../../context/BookclubContext/BookclubContext'
 import BookclubBackground from '../../assets/bookclub-background.jpg'
-import FileUploadModal from '../../../Modals/FileUploadModal/FileUploadModal'
-import InviteModal from '../InviteModal/InviteModal'
-import ProfileIcons from '../../../ProfileIcons/ProfileIcons'
-import Button from '../../../Buttons/Button/Button'
+import FileUploadModal from '../Modals/FileUploadModal/FileUploadModal'
+import InviteModal from '../BookclubPage/components/InviteModal/InviteModal'
+import ProfileIcons from '../ProfileIcons/ProfileIcons'
+import Button from '../Buttons/Button/Button'
 
-import './TopFacade.css'
-
-
+import './BookclubHeader.css'
 
 
-const TopFacade = () => {
+
+
+const BookclubHeader = () => {
 
     // const { bookclub, parameters } = bookclubData()
     // const { id } = parameters
@@ -58,4 +58,4 @@ const TopFacade = () => {
 }
 
 
-export default TopFacade
+export default BookclubHeader

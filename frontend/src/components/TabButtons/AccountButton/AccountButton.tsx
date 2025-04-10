@@ -1,4 +1,4 @@
-import { TabAction, TabState } from "../../../reducers/userTabsReducer"
+import { TabAction, TabState } from "../../../reducers/tabsReducer"
 import { Dispatch } from "react"
 import './AccountButton.css'
 

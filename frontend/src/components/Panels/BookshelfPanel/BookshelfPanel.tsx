@@ -1,5 +1,5 @@
 import BookshelfDisplay from '../../BookshelfDisplay/BookshelfDisplay.tsx'
-import { TabState } from '../../../reducers/userTabsReducer.tsx';
+import { TabState } from '../../../reducers/tabsReducer.tsx';
 import SubHeader from '../../SubHeader/SubHeader.tsx'
 import {  Bookshelf } from '../../../types.ts'
 import Header from '../../Header/Header.tsx'
@@ -38,7 +38,6 @@ const BookshelfPanel = ({bookshelves, userTabs}: Props) => {
         <section className='bookshelves-container' aria-labelledby='tab-1'>
             <Header>Bookshelves</Header>
             <UserBookshelves bookshelves={bookshelves} userTabs={userTabs}/>
-            
         </section>
 
     )

@@ -1,19 +1,14 @@
-import { TabState, TabAction } from '../../../reducers/userTabsReducer'
+import { TabState, TabAction } from '../../../reducers/tabsReducer'
 import { Dispatch } from 'react'
 import './MessageButton.css'
 
 
 interface Props {
-
     userTabs: TabState,
     dispatchUserTabs: Dispatch<TabAction>
-
 }
 
 const MessageButton = ({userTabs, dispatchUserTabs} : Props) => {
-
-
-
 
     return (
 

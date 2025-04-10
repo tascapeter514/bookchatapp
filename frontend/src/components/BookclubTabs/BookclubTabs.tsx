@@ -1,6 +1,6 @@
 import './Tabs.css'
 import { Dispatch, SetStateAction, useState } from 'react'
-import { RightDropDownIcon } from '../../../Icons'
+import { RightDropDownIcon } from '../Icons'
 
 
 
@@ -49,14 +49,14 @@ const Tabs = ({ activeTab, contents, showSubNav, setActiveTab, setShowSubNav }: 
                             href={`#${tabContent.name.toLowerCase()}`}
                         >
                             {tabContent.name}
-                            <RightDropDownIcon 
+                            {/* <RightDropDownIcon 
                                 aria-controls='bookshelves-subnav'
                                 aria-expanded={showSubNav}
                                 onClick={toggleDropdown}
                                 isRotated={isRotated}
                             >
 
-                            </RightDropDownIcon>
+                            </RightDropDownIcon> */}
 
                         </a>
                         

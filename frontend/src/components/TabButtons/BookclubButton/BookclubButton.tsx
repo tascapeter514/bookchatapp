@@ -1,5 +1,5 @@
 import CreateBookclubModal from '../../Modals/CreateBookclubModal/CreateBookclubModal'
-import { TabState, TabAction } from '../../../reducers/userTabsReducer'
+import { TabState, TabAction } from '../../../reducers/tabsReducer'
 import NavbarDivider from '../../Dividers/NavbarDivider/NavbarDivider'
 import { Dispatch } from 'react'
 import './BookclubButton.css'

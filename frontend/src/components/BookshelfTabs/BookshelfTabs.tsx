@@ -1,6 +1,6 @@
 import BookshelfDropdown from '../BookshelfDropdown/BookshelfDropdown'
 import dropdownReducer from '../../reducers/dropdownReducer'
-import { TabState, TabAction } from '../../reducers/userTabsReducer'
+import { TabState, TabAction } from '../../reducers/tabsReducer'
 import { useReducer, Dispatch, useState } from 'react'
 import { Bookshelf } from '../../types'
 import { RightDropDownIcon } from '../Icons'
