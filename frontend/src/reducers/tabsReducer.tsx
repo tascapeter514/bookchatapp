@@ -10,12 +10,12 @@ export type TabAction = {type: 'SET_ACTIVE_TAB', payload: string} | {type: 'SET_
 
 
 export default function tabsReducer(state: TabState, action: TabAction) {
-    const { type, payload } = action;
-    switch(type) {
+    
+    switch(action.type) {
         case 'SET_ACTIVE_TAB':
-            return {activeTab: payload, activeBookshelf: ''};
+            return {activeTab: action.payload, activeBookshelf: ''};
         case 'SET_BOOKSHELF_TAB':
-            return {activeTab: 'bookshelfTab', activeBookshelf: payload};
+            return {activeTab: 'bookshelfTab', activeBookshelf: action.payload};
         case 'SHOW_NAV':
             return {...state, showNav: !state.showNav}
         default:

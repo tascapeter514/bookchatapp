@@ -1,7 +1,7 @@
 import BookshelfDropdown from '../BookshelfDropdown/BookshelfDropdown'
 import dropdownReducer from '../../reducers/dropdownReducer'
 import { TabState, TabAction } from '../../reducers/tabsReducer'
-import { useReducer, Dispatch, useState } from 'react'
+import { useReducer, Dispatch } from 'react'
 import { Bookshelf } from '../../types'
 import { RightDropDownIcon } from '../Icons'
 import './BookshelfTabs.css'
@@ -13,32 +13,42 @@ interface Props {
 }
 
 
+const BookshelfButtons = ({userTabs, bookshelves, dispatchUserTabs} : Props) => {
+
+    if (bookshelves.length < 1) return
+
+    return(
+        bookshelves.map((bookshelf, index) => {
+            return (
+                <ul className='navbar-bookshelf-list'>
+                    <li 
+                        key={bookshelf.id}
+                        onClick={() => dispatchUserTabs({type: 'SET_BOOKSHELF_TAB', payload: `bookshelfTab${index}`})}
+                        className={userTabs.activeBookshelf === `bookshelfTab${index}`  ? 'active' : ''}
+                    >   
+                        <a id={`bookshelf-${index + 4}`} href={`#${bookshelf.name?.toLowerCase()}`}>
+                            {bookshelf.name == undefined ? '' : bookshelf.name}
+                        </a>
+                    </li>
+                </ul>
+            )
+        })
+
+    )
+
+}
+
+
+
+
+
+
+
 const BookshelfTabs = ({userTabs, bookshelves, dispatchUserTabs} : Props) => {
 
     const [dropdown, dispatchDropdown] = useReducer(dropdownReducer, {activePanel: false, isRotated: false})
 
-    // const [bookshelves] = useState<Bookshelf[]>(bookshelves || [])
 
-    // console.log('bookshelf tabs:', bookshelves)
-
-    const bookshelfTabs = bookshelves.map((bookshelf, index) => {
-
-        // console.log('bookshelf:', bookshelf)
-
-        if (bookshelves.length < 1) return
-
-        return (
-            <li 
-                key={bookshelf.id}
-                onClick={() => dispatchUserTabs({type: 'SET_BOOKSHELF_TAB', payload: `bookshelfTab${index}`})}
-                className={userTabs.activeBookshelf === `bookshelfTab${index}`  ? 'active' : ''}
-            >   
-                <a id={`bookshelf-${index + 4}`} href={`#${bookshelf.name?.toLowerCase()}`}>
-                    {bookshelf.name == undefined ? '' : bookshelf.name}
-                </a>
-            </li>
-        )
-    })
 
     return(
         <>
@@ -50,7 +60,7 @@ const BookshelfTabs = ({userTabs, bookshelves, dispatchUserTabs} : Props) => {
                 Bookshelves
                 <RightDropDownIcon onClick={() => dispatchDropdown({type: 'TOGGLE_DROPDOWN'})} dropdown={dropdown} />
             </a>
-            <ul className='navbar-bookshelf-list'>{bookshelfTabs}</ul>
+            <BookshelfButtons userTabs={userTabs} bookshelves={bookshelves} dispatchUserTabs={dispatchUserTabs} />
             </BookshelfDropdown>
         </>
     )

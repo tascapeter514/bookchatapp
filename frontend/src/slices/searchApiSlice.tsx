@@ -50,16 +50,9 @@ export const searchDataApi = createApi({
                 await cacheEntryRemoved
                 ws.close()
             }
-        }),
-        postBook: build.mutation({
-            query: ({userId, bookshelfId, newBookId}: {userId: number, bookshelfId: number, newBookId: number }) => ({
-                url: `api/user/book/${userId}`,
-                method: 'PUT',
-                body: {bookshelfId: bookshelfId, newBookId: newBookId}
-            })
         })
     })
 })
 
 
-export const {useLazyGetBookDataQuery, usePostBookMutation} = searchDataApi
+export const {useLazyGetBookDataQuery} = searchDataApi
