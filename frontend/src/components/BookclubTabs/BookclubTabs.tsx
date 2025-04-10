@@ -1,7 +1,8 @@
 import './BookclubTabs.css'
-import { Dispatch, SetStateAction, useState } from 'react'
+import { Dispatch, useReducer } from 'react'
 import { TabState, TabAction } from '../../reducers/tabsReducer'
 import { Bookshelf } from '../../types'
+import BookshelfButtons from '../BookshelfButtons/BookshelfButtons'
 import dropdownReducer from '../../reducers/dropdownReducer'
 import { RightDropDownIcon } from '../Icons'
 
@@ -9,21 +10,65 @@ import { RightDropDownIcon } from '../Icons'
 
 // type TabContent = {name: string, id: number}
 
-interface TabsProps {
+interface TabProps {
     bookclubTabs: TabState,
     dispatchTabs: Dispatch<TabAction>,
-    bookshelves: Bookshelf[]
+}
+
+interface Props {
+    dispatchTabs: Dispatch<TabAction>
 }
 
 
-const BookclubTabs = ({ bookclubTabs, dispatchTabs, bookshelves }: TabsProps) => {
+const BookshelfButton = ({bookclubTabs, dispatchTabs}: TabProps) => {
+
+    const [dropdown, dispatchDropdown] = useReducer(dropdownReducer, {activePanel: false, isRotated: false})
+
+    return(
+        <a 
+            className='bookshelf-tab' 
+            href={'#bookshelf'} 
+            onClick={() => dispatchTabs({type:'SHOW_NAV'})}
+        >
+            Bookshelves
+            <RightDropDownIcon 
+                aria-controls='bookshelves-subnav'
+                aria-expanded={dropdown.activePanel}
+                onClick={() => dispatchDropdown({type: 'TOGGLE_DROPDOWN'})}
+                dropdown={dropdown}
+            >
+            </RightDropDownIcon>
+        </a>
+
+    )
+
+}
+
+const CurrentReadButton = ({dispatchTabs}: Props) => {
+
+    return(
+        <a 
+            className='current-read-tab' 
+            href={'#currentRead'} 
+            onClick={() => dispatchTabs({type: 'SET_ACTIVE_TAB', payload: 'bookshelfTab'})}
+        >
+            Current Read
+        </a>
+    )
+
+}
+
+
+
+
+const BookclubTabs = ({ bookclubTabs, dispatchTabs }: TabProps) => {
 
     
     return(
 
         <div className="tabs-container">
-            {bookclubTabs.activeTab === 'Bookshelves' && }
-                
+            <BookshelfButton bookclubTabs={bookclubTabs} dispatchTabs={dispatchTabs}/>
+            <CurrentReadButton dispatchTabs={dispatchTabs} />  
         </div>
 
 

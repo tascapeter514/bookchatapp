@@ -7,34 +7,23 @@
     background-color: inherit;
     display: flex;
     gap: 1rem;
-    /* border: 1px solid red; */
-    
-
-
+    border: 1px solid red;
 }
 
-.tabs-list {
+.bookshelf-tab, .current-read-tab {
     display: flex;
     margin: 0;
     padding: 0;
-    gap: 1rem;
-
-
-}
-
-.tabs-container a {
     text-decoration: none;
     color: black;
     font-size: 1.25rem;
 }
 
-.tabs-container li:hover {
+
+
+.bookshelf-tab:hover, .current-read-tab:hover {
     text-decoration: underline;
     text-decoration-thickness: 0.25em;
     text-underline-offset: 0.25em;
-    color: red;
-}
-
-#tab-0 {
-    display: flex;
+    color: orange;
 }

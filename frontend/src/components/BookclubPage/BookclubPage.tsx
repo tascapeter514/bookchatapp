@@ -25,7 +25,9 @@ const BookclubPage = () => {
                     <hr />
                     
 
-                    {/* <BookclubTabs /> */}
+                    <BookclubTabs bookclubTabs={bookclubTabs} dispatchTabs={dispatchTabs}/>
+                    {bookclubTabs.showNav && <BookclubNav bookclubTabs={bookclubTabs}/>}
+
                     {/* <div 
                         className={`subnav-container ${showSubNav ? 'active' : ''}`}
 
@@ -36,9 +38,9 @@ const BookclubPage = () => {
                         >
                         </BookclubNav> */}
                     {/* </div> */}
-                    {/* <BookshelfProvider>
-                        <PanelComponent />
-                    </BookshelfProvider> */}
+     
+                        
+                 
                 </div>
             </div>
             )

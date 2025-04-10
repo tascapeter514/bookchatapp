@@ -1,17 +1,17 @@
 import { useRef, Dispatch, SetStateAction } from 'react'
+import { TabState } from '../../reducers/tabsReducer'
 // import { bookclubData } from '../../../../context/BookclubContext/BookclubContext'
 import BookshelfModal from '../../../Modals/CreateBookshelf/CreateBookshelf'
 import Button from '../Buttons/Button/Button'
 import './BookclubNav.css'
 
 
-interface SubNavbarProps {
-    subNav: boolean,
-    setActiveBookshelf: Dispatch<SetStateAction<number>>,
+interface Props {
+    bookclubTabs: TabState
 }
 
 
-const BookclubNav = ({ subNav, setActiveBookshelf }: SubNavbarProps) => {
+const BookclubNav = ({bookclubTabs}: Props) => {
 
     // const { bookshelves, addBookshelf, newBkslfId, setBkslfId } = bookclubData()
     const bookshelfRef = useRef<HTMLDialogElement>(null)
@@ -32,7 +32,7 @@ const BookclubNav = ({ subNav, setActiveBookshelf }: SubNavbarProps) => {
     return (
         <nav 
             id='bookshelves-subnav' 
-            className={`bookshelves-subnav ${subNav ? 'active' : '0'}`}
+            className={`bookshelves-subnav ${bookclubTabs.showNav ? 'active' : '0'}`}
             aria-hidden='true'
         >
             <ul className="bookshelf-titles-list">

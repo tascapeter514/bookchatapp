@@ -38,12 +38,6 @@ const BookshelfButtons = ({userTabs, bookshelves, dispatchUserTabs} : Props) => 
 
 }
 
-
-
-
-
-
-
 const BookshelfTabs = ({userTabs, bookshelves, dispatchUserTabs} : Props) => {
 
     const [dropdown, dispatchDropdown] = useReducer(dropdownReducer, {activePanel: false, isRotated: false})
