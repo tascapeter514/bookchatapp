@@ -20,7 +20,7 @@ const BookMainContent = ({book}: Props) => {
             <div className="author-product-container">
                 {book.authors && book.authors.length > 0 &&
                     book.authors.map((author: Author ) => (
-                        <AuthorDetails {...author} />
+                        <AuthorDetails {...author} key={author.id}/>
                 ))}
                 
                 <ProductDetails {...{pageCount: book.pageCount, publisher: book.publisher, ISBNIdentifiers: book.ISBN_Identifiers}}/>

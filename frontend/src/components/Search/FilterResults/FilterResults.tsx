@@ -1,21 +1,40 @@
 import './FilterResults.css'
 import { Dispatch } from 'react'
-import { BookshelfState } from '../../../../reducers/bookshelfReducer'
-import { BookclubState } from '../../../../reducers/bookclubReducer'
-import { Bookshelf, Bookclub } from '../../../../types'
-import { Data } from '../../../../reducers/dataReducer'
- import { SearchState, SearchAction } from '../../../../reducers/searchReducer'
+import { BookshelfState } from '../../../reducers/bookshelfReducer'
+import { BookclubState } from '../../../reducers/bookclubReducer'
+import { Bookshelf, Bookclub } from '../../../types'
+import { Data } from '../../../reducers/dataReducer'
+ import { SearchState, SearchAction } from '../../../reducers/searchReducer'
 
 
-interface Props {
+interface FilterProps {
     children: BookshelfState | BookclubState,
     search: SearchState,
     dispatchSearch: Dispatch<SearchAction>
+}
+
+interface ResultProps {
+    results: BookshelfState | BookclubState
+}
+
+const Results = ({results}: ResultProps) => {
+
+    return(
+        <ul className="search-results-list">
+            {results.map((result: Bookshelf | Bookclub) => {
+                
+            })}
+
+        </ul>
+        
+    )
 
 }
 
 
-const FilterResults = ({children, search, dispatchSearch}: Props  ) => {
+
+
+const FilterResults = ({children, search, dispatchSearch}: FilterProps  ) => {
 
 
     
@@ -38,7 +57,7 @@ const FilterResults = ({children, search, dispatchSearch}: Props  ) => {
                         className='search-result-input' 
                         name='searchResultsGroup'
                         onChange={() => dispatchSearch({type: 'CHECK_RESULT', payload: resultElement.id})}
-                        />
+                    />
                     
                 </div>
                 

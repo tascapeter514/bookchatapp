@@ -2,6 +2,8 @@ import BookMainContent from '../BookMainContent/BookMainContent'
 import BookHeaderTitle from '../BookHeaderTitle/BookHeaderTitle'
 import { useGetBookMutation } from '../../slices/bookApiSlice'
 import { useDispatch, useSelector } from 'react-redux'
+import LoadSpinner from '../LoadSpinner/LoadSpinner'
+import ErrorMessage from '../Messages/ErrorMessage/ErrorMessage'
 import { loadBook } from '../../slices/bookSlice'
 import { useEffect, useCallback } from 'react'
 import BookCover from '../BookCover/BookCover'
@@ -16,7 +18,7 @@ const Bookpage = () => {
     const { id } = useParams();
     console.log('book id:', id)
     const dispatch = useDispatch()
-    const [getBook, {isLoading, isError}] = useGetBookMutation()
+    const [getBook, {isLoading, isError, error}] = useGetBookMutation()
     const { book } = useSelector((state: RootState) => state.book)
 
     const getBookData = useCallback( async () => {
@@ -42,8 +44,8 @@ const Bookpage = () => {
     return (
         
         <div className='bookpage-container'>
-            {/* {isError && <p>There was an error loading the data: {data.error}</p>} */}
-            {isLoading && <p>Page is loading...</p>}
+            {isError && <ErrorMessage>{error as string}</ErrorMessage>}
+            {isLoading && <LoadSpinner />}
             <BookHeader>
                 <BookCover book={book}/>
                 <BookHeaderTitle book={book}/> 

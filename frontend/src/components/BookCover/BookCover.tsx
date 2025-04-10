@@ -1,4 +1,4 @@
-import BookshelfButtonModal from '../Buttons/BookshelfButtonModal/BookshelfButtonModal'
+import BookshelfButtonModal from '../Modals/BookshelfButtonModal/BookshelfButtonModal'
 import { Book } from '../../types'
 import './BookCover.css'
 
@@ -8,9 +8,19 @@ interface Props {
 
 const BookCover = ({book}: Props) => {
 
+    const thumbnail = book.imageLinks?.thumbnail || null
+
     return(
         <div className="book-cover">
-            <img className='book-cover-image' src={book.imageLinks['thumbnail']} alt="" />
+            {thumbnail ? (
+                <img className='book-cover-image' src={book.imageLinks?.thumbnail} alt="" />
+
+                ) : (
+                    <div className="cover-placeholder">No Cover</div>
+                )
+        
+            }
+            
             <BookshelfButtonModal /> 
         </div>
     )
@@ -18,3 +28,5 @@ const BookCover = ({book}: Props) => {
 }
 
 export default BookCover
+
+
