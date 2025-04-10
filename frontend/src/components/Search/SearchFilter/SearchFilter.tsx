@@ -15,22 +15,17 @@ const SearchFilter = ({search, dispatchSearch}: Props) => {
 
     return (
         <div className="searchFilter-content">
-                <input
-                    className='searchFilter-input'
-                    name='searchValue'
-                    placeholder='Enter your search term' 
-                    value={search.value} 
-                    onChange={(e) => dispatchSearch({type: 'START_SEARCH', payload: e.target.value})}
-                    required 
-                />
-                <SearchIcon className='search-icon'/>
-                
-
+            <input
+                className='searchFilter-input'
+                name='searchValue'
+                placeholder='Enter your search term' 
+                value={search.value} 
+                onChange={(e) => dispatchSearch({type: 'START_SEARCH', payload: e.target.value})}
+                required 
+            />
+            <SearchIcon className='search-icon'/>
 
         </div>
-
-
-
     )
 }
 
