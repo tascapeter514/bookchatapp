@@ -4,17 +4,19 @@
     color: black;
     align-items: left;
     border-radius: 10px;
-    max-height: 500px;
+    max-height: 150px;
     overflow-y: scroll;
-    padding: .25em;
+    padding: .5em;
+    width: 100%;
+    max-width: 300px;
 }
 
-.search-result-wrapper {
+.search-result {
     width: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
     line-height: 2.5;
+    text-align: left;
 }
 
 .search-result-input {
@@ -47,10 +49,12 @@
 }
 
 
-.search-result-wrapper label {
+.search-result label {
 
     width: 100%;
     margin-bottom: 0;
     font-size: 1.25rem;
+    
+
 
 }

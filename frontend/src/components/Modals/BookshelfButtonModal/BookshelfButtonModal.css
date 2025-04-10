@@ -14,3 +14,51 @@
 .bookmark-icon {
     cursor: pointer;
 }
+
+.bookshelf-dialog {
+
+    background-color: white;
+    border-radius: 3px;
+    border: 2px solid black;
+    margin: auto;
+    width: 100%;
+    max-width: 500px;
+   
+    
+}
+
+.bookshelf-dialog[open] {
+
+     display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.bookshelf-dialog > h3 {
+    font-size: 1.25rem;
+}
+
+.bookshelf-dialog > hr {
+    width: 100%;
+    border: 1px solid black;
+    max-width: 300px;
+    margin: 0;
+
+}
+
+.bookshelf-dialog-button-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 300px; 
+
+}
+
+
+.bookshelf-dialog-button-wrapper > button {
+    font-size: 1.125rem;
+
+}
+
