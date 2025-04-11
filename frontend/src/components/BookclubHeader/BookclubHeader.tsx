@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 // import { bookclubData } from '../../../../context/BookclubContext/BookclubContext'
 import BookclubBackground from '../../assets/bookclub-background.jpg'
+import BookclubAvatar from '../../assets/areej-fateyma-w1fdd9FldPA-unsplash.jpg'
 import FileUploadModal from '../Modals/FileUploadModal/FileUploadModal'
 import InviteModal from '../BookclubPage/components/InviteModal/InviteModal'
 import ProfileIcons from '../ProfileIcons/ProfileIcons'
@@ -28,8 +29,14 @@ const BookclubHeader = () => {
     return (
         <div className='bookclub-top-facade'>
             <div className="bookclub-background">
-            <img src={BookclubBackground} alt="" />
-                <Button onClick={openImageModal}>Change Image</Button>
+                <div className="bookclub-background-img-wrapper"><img src={BookclubBackground} alt="" /></div>
+                <div className="avatar-wrapper">
+                    <img src={BookclubAvatar} className="bookclub-avatar" />
+                    <Button onClick={openImageModal}>Change Image</Button>
+                </div>
+                
+                
+                
                 {/* <FileUploadModal id={id ?? ''} closeImageModal={closeImageModal} uploadFileRef={uploadFileRef} /> */}
             </div>
             {/* <div className="bookclub-top-bar">
@@ -40,6 +47,8 @@ const BookclubHeader = () => {
                     <ul className='user-profile-list' >
                         <ProfileIcons users={bookclub?.members}></ProfileIcons>
                     </ul>
+
+                    // REFACTOR TO INVITEMODALWITHBUTTON
                     <div className="member-buttons">
                         <Button
                             onClick={openInviteModal}
