@@ -188,6 +188,7 @@ class BookclubSearchConsumer(WebsocketConsumer):
 
 class BookclubDataConsumer(WebsocketConsumer):
     def connect(self):
+        print('bookclub data connection check')
         self.group_name = 'get_bookclub_data'
         self.bookclub_id = self.scope['url_route']['kwargs']['id']
 
@@ -207,13 +208,14 @@ class BookclubDataConsumer(WebsocketConsumer):
 
     def get_bookclub_data(self):
 
-        bookclub = Bookclub.objects.get(bookclub_id=self.bookclub_id)
+        bookclub = Bookclub.objects.get(id=self.bookclub_id)
         bookclub_serializer = BookclubSerializer(bookclub)
         bookshelves_serializer = BookshelfSerializer(bookclub.bookshelves, many=True)
 
-        # print('bookclub serializer', bookclub_serializer.data)
-        # print('bookshelf serializer', bookshelves_serializer.data)
+        print('bookclub serializer', bookclub_serializer.data)
+        print('bookshelf serializer', bookshelves_serializer.data)
         
+
 
         self.send(text_data=json.dumps({
             'type': 'get_bookclub_data',

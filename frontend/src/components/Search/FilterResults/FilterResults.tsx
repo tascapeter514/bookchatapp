@@ -1,5 +1,5 @@
 import { SearchState, SearchAction } from '../../../reducers/searchReducer'
-import { Bookshelf, Bookclub } from '../../../types'
+import { Bookshelf } from '../../../types'
 import { Dispatch } from 'react'
 import './FilterResults.css'
 
@@ -20,7 +20,7 @@ const FilterResults = ({children, search, dispatchSearch}: FilterProps  ) => {
 
     return (
         <ul className="search-results-list">
-            {results?.map((result: Bookshelf | Bookclub) => {
+            {results?.map((result: Bookshelf) => {
                 return(
                     <li key={result.id} >
                         <div className='search-result'>

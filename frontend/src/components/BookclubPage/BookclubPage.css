@@ -1,16 +1,17 @@
-.bookclub-content-wrapper {
+.bookclub-content {
     /* max-width: 1200px; */
-    margin-inline: auto;
+    /* margin-inline: auto; */
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     gap: .25rem;
+    justify-content: right;
     
     
 }
 
 
 
-.bookclub-content-wrapper hr {
+.bookclub-content hr {
     margin-block: .5em;
 
     border: 1px solid lightgrey;

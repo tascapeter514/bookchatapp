@@ -67,7 +67,7 @@ def upload_file(request, **kwargs):
 
 
 
-        bookclub = Bookclub.objects.get(bookclub_id=id)
+        bookclub = Bookclub.objects.get(id=id)
         print(bookclub.name)
         print(bookclub.cover_image)
 

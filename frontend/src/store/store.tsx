@@ -7,6 +7,7 @@ import { apiSlice } from '../slices/apiSlice'
 import { userDataApi } from '../slices/userDataApiSlice'
 import { searchDataApi } from '../slices/searchApiSlice'
 import bookshelfReducer from '../slices/bookshelfSlice'
+import { bookclubApi } from '../slices/bookclubApiSlice'
 
 
 
@@ -20,8 +21,9 @@ const store = configureStore({
         [apiSlice.reducerPath]: apiSlice.reducer,
         [userDataApi.reducerPath]: userDataApi.reducer,
         [searchDataApi.reducerPath]: searchDataApi.reducer,
+        [bookclubApi.reducerPath]: bookclubApi.reducer
     },
-    middleware: (getdefaultMiddleWare) => getdefaultMiddleWare().concat(apiSlice.middleware, userDataApi.middleware, searchDataApi.middleware),
+    middleware: (getdefaultMiddleWare) => getdefaultMiddleWare().concat(apiSlice.middleware, userDataApi.middleware, searchDataApi.middleware, bookclubApi.middleware),
     devTools: true
 })
 

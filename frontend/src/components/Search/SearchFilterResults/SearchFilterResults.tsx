@@ -8,7 +8,7 @@ interface ChildElement<T extends string | number> {
 }
 
 
-interface SearchFilterResultsProps<T extends string | number> {
+interface Props<T extends string | number> {
     variant: string,
     children: ChildElement<T>[],
     selectedElement: T,
@@ -20,7 +20,7 @@ interface SearchFilterResultsProps<T extends string | number> {
 
 
 const SearchFilterResults = <T extends string | number,>(
-    { children, searchValue, variant, selectedElement, handleSelection}: SearchFilterResultsProps<T>) => {
+    { children, searchValue, variant, selectedElement, handleSelection}: Props<T>) => {
 
     console.log('search result variant:', variant)
 

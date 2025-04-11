@@ -1,46 +1,77 @@
 import './BookclubPage.css'
-
+import { Dispatch } from 'react'
 import { useReducer } from 'react'
 import { Bookshelf } from '../../types'
+import BookshelfTabs from '../BookshelfTabs/BookshelfTabs'
 // import BookshelfPanel from '../Panels/BookshelfPanel/BookshelfPanel'
 // import CurrentReadPanel from './components/CurrentReadPanel/CurrentReadPanel'
+import { useParams } from 'react-router-dom'
+import { useGetBookclubDataQuery } from '../../slices/bookclubApiSlice'
 import BookclubHeader from '../BookclubHeader/BookclubHeader'
-import BookclubNav from '../BookclubNav/BookclubNav'
-import tabsReducer from '../../reducers/tabsReducer'
-import BookclubTabs from '../BookclubTabs/BookclubTabs'
+import tabsReducer, { TabAction } from '../../reducers/tabsReducer'
+import BookshelfButton from '../TabButtons/BookshelfButton/BookshelfButton'
+import DashboardNav from '../DashboardNav/DashboardNav'
+import mobileNavReducer from '../../reducers/mobileNavReducer'
+import NavbarDivider from '../Dividers/NavbarDivider/NavbarDivider'
 
 
 
+interface Props {
+    dispatchTabs: Dispatch<TabAction>
+}
+
+const CurrentReadButton = ({dispatchTabs}: Props) => {
+
+    return(
+        <a 
+            className='current-read-tab' 
+            href={'#currentRead'} 
+            onClick={() => dispatchTabs({type: 'SET_ACTIVE_TAB', payload: 'bookshelfTab'})}
+        >
+            Current Read
+        </a>
+    )
+
+}
 
 
 const BookclubPage = () => {
 
-    const [bookclubTabs, dispatchTabs] = useReducer(tabsReducer, {activeTab: '', activeBookshelf: '', showNav: false})
 
-    const bookshelves = [] as Bookshelf[]
+    const { id } = useParams()
+    const {data, isLoading, error, isError}= useGetBookclubDataQuery(Number(id))
+    const { bookclub } = data
+    const [bookclubTabs, dispatchTabs] = useReducer(tabsReducer, {activeTab: '', activeBookshelf: '', showNav: false})
+    const [mobileNav, navDispatch] = useReducer(mobileNavReducer, {open: false, isExiting: false})
+
+    console.log('bookclub data:', data)
+
+    
     return(
             <div className='bookclub-container'>
-                <div className="bookclub-content-wrapper">
-                    <BookclubHeader /> 
-                    <hr />
+                <BookclubHeader bookclub={bookclub}/>
+                <hr />
+                <div className="bookclub-content">
+                <DashboardNav mobileNav={mobileNav}>
+
+                    <CurrentReadButton dispatchTabs={dispatchTabs} />
+                    <BookshelfButton>
+                        <NavbarDivider />
+                        <BookshelfTabs userTabs={bookclubTabs} dispatchUserTabs={dispatchTabs} bookshelves={data?.bookshelves}/>
+                        
+
+                    </BookshelfButton>
+
+                </DashboardNav>
+                     
+                    
                     
 
-                    <BookclubTabs bookclubTabs={bookclubTabs} dispatchTabs={dispatchTabs}/>
-                    {bookclubTabs.showNav && <BookclubNav bookclubTabs={bookclubTabs}/>}
+                    {/* <BookclubTabs dispatchTabs={dispatchTabs} bookclubTabs={bookclubTabs}/> */}
+                    
 
-                    {/* <div 
-                        className={`subnav-container ${showSubNav ? 'active' : ''}`}
 
-                    > */}
-                        {/* <BookclubNav 
-                            subNav={showSubNav} 
-                            setActiveBookshelf={setActiveBookshelf}
-                        >
-                        </BookclubNav> */}
-                    {/* </div> */}
-     
-                        
-                 
+    
                 </div>
             </div>
             )

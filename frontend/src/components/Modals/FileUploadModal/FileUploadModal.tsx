@@ -1,25 +1,31 @@
 import './FileUploadModal.css'
-import FileUploader from '../../../common/FileUploader/FIleUploader'
-import Button from '../../../common/Buttons/Button/Button'
-import { Ref } from 'react'
+import Button from '../../Buttons/Button/Button'
+import FileUploader from '../../FileUploader/FIleUploader'
+import {useRef } from 'react'
 
 
-interface FileUploadModal {
+interface Props {
     id: string,
-    uploadFileRef: Ref<HTMLDialogElement>,
-    closeImageModal: () => void
 }
 
 
-const FileUploadModal = ({id, uploadFileRef, closeImageModal}: FileUploadModal) => {
+const FileUploadModal = ({ id }: Props) => {
+
+    const ref = useRef<HTMLDialogElement>(null)
+    const openModal = () => ref.current?.showModal()
+    const closeModal = () => ref.current?.close()
 
     return (
-        <dialog className='uploadFile-modal' ref={uploadFileRef}>
-            <div>
-                <FileUploader id={id ?? ''}></FileUploader>
-                <Button onClick={closeImageModal}>Cancel</Button>
-            </div>
-        </dialog>
+
+        <>  
+            <Button onClick={openModal}>Change Image</Button>
+            <dialog className='uploadFile-modal' ref={ref}>
+                <div>
+                    <FileUploader id={id ?? ''}></FileUploader>
+                    <Button onClick={closeModal}>Cancel</Button>
+                </div>
+            </dialog>
+        </>
     )
 
 }

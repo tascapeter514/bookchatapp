@@ -20,7 +20,7 @@ interface Props {
 }
 
 
-const BookshelfButton = ({bookclubTabs, dispatchTabs}: TabProps) => {
+const BookshelfButton = ({ dispatchTabs}: TabProps) => {
 
     const [dropdown, dispatchDropdown] = useReducer(dropdownReducer, {activePanel: false, isRotated: false})
 
@@ -68,7 +68,7 @@ const BookclubTabs = ({ bookclubTabs, dispatchTabs }: TabProps) => {
 
         <div className="tabs-container">
             <BookshelfButton bookclubTabs={bookclubTabs} dispatchTabs={dispatchTabs}/>
-            <CurrentReadButton dispatchTabs={dispatchTabs} />  
+            {/* <CurrentReadButton dispatchTabs={dispatchTabs} />   */}
         </div>
 
 

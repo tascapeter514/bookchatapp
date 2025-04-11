@@ -8,6 +8,8 @@
     display: flex;
     gap: 1rem;
     border: 1px solid red;
+    flex-direction: column;
+    align-items: center;
 }
 
 .bookshelf-tab, .current-read-tab {
