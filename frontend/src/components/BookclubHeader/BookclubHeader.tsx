@@ -1,7 +1,7 @@
 import { Bookclub } from '../../types'
 // import { bookclubData } from '../../../../context/BookclubContext/BookclubContext'
 import BookclubBackground from '../../assets/bookclub-background.jpg'
-import InviteModal from '../BookclubPage/components/InviteModal/InviteModal'
+import InviteModal from '../Modals/InviteModal/InviteModal'
 import ProfileIcons from '../ProfileIcons/ProfileIcons'
 import BookclubAvatar from '../Images/BookclubAvatar/BookclubAvatar'
 
@@ -40,6 +40,8 @@ const BookclubHeader = ({bookclub}: Props) => {
                     </div>
                 </div>
             </div>
+            <InviteModal bookclubId={bookclub.id} />
+                    
             
                 
 
@@ -48,8 +50,7 @@ const BookclubHeader = ({bookclub}: Props) => {
                         
                         <Button>Joined</Button>
                     </div>
-                    <InviteModal
-                    ></InviteModal> */}
+                     */}
                 
            
         </div>

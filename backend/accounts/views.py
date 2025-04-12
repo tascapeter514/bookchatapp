@@ -1,9 +1,11 @@
 import json
 from django.shortcuts import render
+from bookchat.models import Bookclub
 from knox.models import AuthToken
 from rest_framework.decorators import api_view
 from django.contrib.auth.models import User
 from .serializers import UserSerializer, LoginSerializer, RegisterSerializer
+from rest_framework.exceptions import ValidationError
 from rest_framework import status, serializers
 from rest_framework.response import Response
 
@@ -115,6 +117,32 @@ def change_password(request, id):
             user.save()
             user_serializer = UserSerializer(user)
             return Response(user_serializer.data, status=status.HTTP_200_OK)
+        
+
+@api_view(['GET'])
+def get_users(request, id):
+    try:
+        bookclub = Bookclub.objects.get(id=id)
+        bookclub_members = bookclub.members.all()
+        users = User.objects.exclude(id__in=bookclub_members.values_list('id', flat=True))
+
+        print('users:', users)
+
+        user_serializer = UserSerializer(users, many=True)
+
+        print('user serializer:', user_serializer.data)
+
+        return Response(user_serializer.data, status=status.HTTP_200_OK)
+
+
+    except ValidationError as e:
+        print('bookclub error:', e)
+        print('bookclub error detail:', e.detail)
+        return Response(e.detail, status=status.HTTP_400_BAD_REQUEST)
+
+    except Exception as e:
+        print(f'Error: {str(e)}')
+        return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
             
         

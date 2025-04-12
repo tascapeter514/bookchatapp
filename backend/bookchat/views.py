@@ -285,26 +285,7 @@ def add_user_bookclub(request, id):
         print(f'Error: {str(e)}')
         return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     
-@api_view(['GET'])
-def get_users(request, id):
-    try:
-        bookclub = Bookclub.objects.get(id=id)
-        bookclub_members = bookclub.members.all()
-        users = User.objects.exclude(id__in=bookclub_members.values_list('id', flat=True))
 
-        users = [{user.id, user.username} for user in users]
-
-        return Response(users, status=status.HTTP_200_OK)
-
-
-    except ValidationError as e:
-        print('bookclub error:', e)
-        print('bookclub error detail:', e.detail)
-        return Response(e.detail, status=status.HTTP_400_BAD_REQUEST)
-
-    except Exception as e:
-        print(f'Error: {str(e)}')
-        return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 

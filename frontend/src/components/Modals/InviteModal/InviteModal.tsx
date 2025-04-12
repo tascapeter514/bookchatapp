@@ -4,23 +4,26 @@ import Button from '../../Buttons/Button/Button'
 import SearchFilter from '../../Search/SearchFilter/SearchFilter'
 import searchReducer from '../../../reducers/searchReducer'
 import UserResults from '../../Search/UserResults/UserResults'
+import useGetUsers from '../../../hooks/useGetUsers'
 
 
 
+interface Props {
+    bookclubId: number
+}
 
 
-const InviteModal = () => {
+const InviteModal = ({bookclubId}: Props) => {
 
 
     const [search, dispatchSearch] = useReducer(searchReducer, {id: 0, value: ''})
     const ref = useRef<HTMLDialogElement>(null)
     const openInviteModal = () => ref.current?.showModal()
     const closeInviteModal = () => ref.current?.close()
-    
 
+    const {results} = useGetUsers(bookclubId)
 
-  
-
+    console.log('invite modal results:', results)
 
 
     return (
@@ -37,11 +40,8 @@ const InviteModal = () => {
                 <section className='invite-user-content'>
                     <SearchFilter search={search} dispatchSearch={dispatchSearch}/>
                     <article className='suggested-user-list'>
-                        <UserResults />
+                        {/* <UserResults search={search} dispatchSearch={dispatchSearch}/> */}
 
-                        
-                        
-                        
                     </article>
                 </section>
                 <div className="button-wrapper">

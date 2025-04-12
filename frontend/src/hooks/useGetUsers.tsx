@@ -1,18 +1,18 @@
-import { useCallback, useReducer, Reducer, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { ActiveUser } from '../types'
 import { useGetUsersMutation } from '../slices/bookclubApiSlice'
 
 
 
-interface Props {
-    bookclubId: number
-}
-
-export default function useGetUsers({bookclubId}: Props) {
 
 
-    const [results, setResults] = useState<ActiveUser[]>([])
-    const [getUsers, {isError, error, isLoading}] = useGetUsersMutation()
+export default function useGetUsers(bookclubId: number) {
+
+
+    const [results, setResults] = useState<ActiveUser[]>()
+    const [getUsers] = useGetUsersMutation()
+
+
 
     const handleGetUsers = async () => {
 
@@ -21,10 +21,9 @@ export default function useGetUsers({bookclubId}: Props) {
 
             console.log('get users response:', response)
 
-            
+            setResults(response)
 
-
-
+        
         } catch (error: any) {
 
             console.error('There was an error retrieving users:', error)
@@ -32,9 +31,13 @@ export default function useGetUsers({bookclubId}: Props) {
         }
     }
 
-    
+    useEffect(() => {
+
+        handleGetUsers()
+
+    }, [bookclubId])
    
 
-
+    return {results}
     
 }
