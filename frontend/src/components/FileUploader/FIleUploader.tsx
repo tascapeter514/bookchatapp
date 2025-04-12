@@ -7,7 +7,7 @@ import Button from '../Buttons/Button/Button'
 type UploadStatus = 'idle' | 'uploading' | 'success' | 'error'
 
 interface FileUploaderProps {
-    id: string | number
+    id: number
 }
 
 const FileUploader = (props: FileUploaderProps) => {

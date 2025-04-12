@@ -1,15 +1,21 @@
 
 import Button from '../../Buttons/Button/Button'
 import BookclubImage from '../../../assets/areej-fateyma-w1fdd9FldPA-unsplash.jpg'
+import FileUploadModal from '../../Modals/FileUploadModal/FileUploadModal'
 import './BookclubAvatar.css'
 
 
-const BookclubAvatar = () => {
+interface Props {
+    id: number
+}
+
+
+const BookclubAvatar = ({id}: Props) => {
 
     return(
         <div className="avatar-wrapper">
             <img src={BookclubImage} className="bookclub-avatar" />
-            <Button>Change Image</Button>
+            <FileUploadModal id={id ?? ''} />
         </div>
     )
 
