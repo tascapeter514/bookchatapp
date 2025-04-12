@@ -1,5 +1,5 @@
 import './InviteModal.css'
-import { useRef, useState, useReducer } from 'react'
+import { useRef, useReducer } from 'react'
 import Button from '../../Buttons/Button/Button'
 import SearchFilter from '../../Search/SearchFilter/SearchFilter'
 import searchReducer from '../../../reducers/searchReducer'
@@ -40,7 +40,7 @@ const InviteModal = ({bookclubId}: Props) => {
                 <section className='invite-user-content'>
                     <SearchFilter search={search} dispatchSearch={dispatchSearch}/>
                     <article className='suggested-user-list'>
-                        {/* <UserResults search={search} dispatchSearch={dispatchSearch}/> */}
+                        <UserResults search={search} dispatchSearch={dispatchSearch} results={results ?? []} />
 
                     </article>
                 </section>

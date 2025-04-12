@@ -6,21 +6,21 @@ import { Dispatch } from 'react'
 
 
 interface Props {
-    children: ActiveUser[]
+    results: ActiveUser[]
     search: SearchState,
     dispatchSearch: Dispatch<SearchAction>
 }
 
 
-const UserResults = ({children, search, dispatchSearch}: Props ) => {
+const UserResults = ({results, search, dispatchSearch}: Props ) => {
 
 
     
-    const results = children?.filter(child => child.username.toLowerCase().includes(search.value.toLowerCase()))
+    const users = results?.filter(user => user.username.toLowerCase().includes(search.value.toLowerCase()))
 
     return (
         <ul className="user-results-list">
-            {results?.map((result: ActiveUser) => {
+            {users?.map((result: ActiveUser) => {
                 return(
                     <li key={result.id} >
                         <div className='user-result'>
