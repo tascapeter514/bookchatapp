@@ -1,4 +1,3 @@
-import { useRef } from 'react'
 import { Bookclub } from '../../types'
 // import { bookclubData } from '../../../../context/BookclubContext/BookclubContext'
 import BookclubBackground from '../../assets/bookclub-background.jpg'
@@ -18,10 +17,9 @@ const BookclubHeader = ({bookclub}: Props) => {
     // const { bookclub, parameters } = bookclubData()
     // const { id } = parameters
     
-    const inviteRef = useRef<HTMLDialogElement>(null)
     
-    const openInviteModal = () => inviteRef.current?.showModal()
-    const closeInviteModal = () => inviteRef.current?.close()
+    
+   
     console.log('book header bookclub:', bookclub)
 
 
@@ -31,7 +29,7 @@ const BookclubHeader = ({bookclub}: Props) => {
         <div className='bookclub-top-facade'>
             <div className="bookclub-background">
                 <div className="bookclub-background-img-wrapper"><img src={BookclubBackground} alt="" /></div>
-                <BookclubAvatar />
+                <BookclubAvatar id={bookclub?.id}/>
                 <div className="bookclub-header-title">
                     <h2>{bookclub?.name}</h2>
                     <small>{bookclub?.members.length} Members</small>
@@ -47,14 +45,10 @@ const BookclubHeader = ({bookclub}: Props) => {
 
                      {/* TO INVITEMODALWITHBUTTON */}
                     {/* <div className="member-buttons">
-                        <Button
-                            onClick={openInviteModal}
-                        >+ Invite</Button>
+                        
                         <Button>Joined</Button>
                     </div>
                     <InviteModal
-                        closeInviteModal={closeInviteModal}
-                        inviteRef={inviteRef}
                     ></InviteModal> */}
                 
            

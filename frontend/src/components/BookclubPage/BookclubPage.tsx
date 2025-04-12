@@ -40,7 +40,8 @@ const BookclubPage = () => {
 
     const { id } = useParams()
     const {data, isLoading, error, isError}= useGetBookclubDataQuery(Number(id))
-    const { bookclub } = data
+    const bookclub = data?.bookclub
+    const bookshelves = data?.bookshelves
     const [bookclubTabs, dispatchTabs] = useReducer(tabsReducer, {activeTab: '', activeBookshelf: '', showNav: false})
     const [mobileNav, navDispatch] = useReducer(mobileNavReducer, {open: false, isExiting: false})
 
@@ -48,33 +49,26 @@ const BookclubPage = () => {
 
     
     return(
-            <div className='bookclub-container'>
-                <BookclubHeader bookclub={bookclub}/>
-                <hr />
-                <div className="bookclub-content">
-                <DashboardNav mobileNav={mobileNav}>
 
-                    <CurrentReadButton dispatchTabs={dispatchTabs} />
-                    <BookshelfButton>
-                        <NavbarDivider />
-                        <BookshelfTabs userTabs={bookclubTabs} dispatchUserTabs={dispatchTabs} bookshelves={data?.bookshelves}/>
-                        
-
-                    </BookshelfButton>
-
-                </DashboardNav>
-                     
-                    
-                    
-
-                    {/* <BookclubTabs dispatchTabs={dispatchTabs} bookclubTabs={bookclubTabs}/> */}
-                    
-
-
-    
-                </div>
-            </div>
-            )
+        
+        <div className='bookclub-container'>
+            {bookclub && (
+                <>
+                    <BookclubHeader bookclub={bookclub}/>
+                    <hr />
+                    <div className="bookclub-content">
+                        <DashboardNav mobileNav={mobileNav}>
+                            <CurrentReadButton dispatchTabs={dispatchTabs} />
+                            <BookshelfButton>
+                                <NavbarDivider />
+                                <BookshelfTabs userTabs={bookclubTabs} dispatchUserTabs={dispatchTabs} bookshelves={bookshelves ?? []}/>
+                            </BookshelfButton>
+                        </DashboardNav>
+                    </div>
+                </>
+            )}
+        </div>
+    )
 }
 
 
