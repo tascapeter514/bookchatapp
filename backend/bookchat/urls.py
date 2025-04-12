@@ -33,8 +33,8 @@ urlpatterns = [
     path('api/user/bookclub/<int:id>', add_user_bookclub, name='add_user_bookclub'),
     path('api/user/book/<int:id>', add_user_book, name='add_user_book'),
     path('api/user/book/delete/<int:id>', delete_book, name='delete_book'),
-
-     path('api/author/<int:id>', get_author_data, name='get_author_data'),
+    path('api/author/<int:id>', get_author_data, name='get_author_data'),
+    path('api/bookclub/users/<int:id>', get_users, name='get_users'),
 
     # UNFINISHED ROUTES? NEED WORK
      path('api/sendInvite', send_invite, name='send-invite'),

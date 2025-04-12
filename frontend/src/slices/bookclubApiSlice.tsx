@@ -49,8 +49,14 @@ export const bookclubApi = createApi({
                 ws.close()
 
             }
+        }),
+        getUsers: build.mutation({
+            query: (bookclubId: number) => ({
+                    url: `api/bookclub/users/${bookclubId}`,
+                    post: 'GET'
+            })
         })
     })
 })
 
-export const {useGetBookclubDataQuery} = bookclubApi
+export const {useGetBookclubDataQuery, useGetUsersMutation} = bookclubApi

@@ -71,39 +71,6 @@ def send_user_data_to_group(user_id):
 
 
 
-    
-
-class UserBookshelfConsumer(WebsocketConsumer):
-    def connect(self):
-        self.user_id = self.scope['url_route']['kwargs']['id']
-        self.group_name = f'get_user{self.user_id}_bookshelves'
-
-        async_to_sync(self.channel_layer.group_add)(
-            self.group_name,
-            self.channel_name
-        )
-
-        self.accept()
-        self.get_user_bookshelves()
-
-    def disconnect(self, clode_code):
-        async_to_sync(self.channel_layer.group_discard)(
-            self.group_name,
-            self.channel_name
-        )
-
-    def get_user_bookshelves(self):
-        bookshelves = Bookshelf.objects.filter(user_id=self.user_id)
-        bookshelf_serializer = BookshelfSerializer(bookshelves, many=True)
-
-        self.send(text_data=json.dumps({
-            bookshelf_serializer.data
-
-        }))
-
-    
-
-
 class SearchDataConsumer(WebsocketConsumer):
     def connect(self):
         self.group_name = 'get_search_query'
@@ -223,38 +190,6 @@ class BookclubDataConsumer(WebsocketConsumer):
             'bookshelves_data': bookshelves_serializer.data
         }))
 
-class UsersConsumer(WebsocketConsumer):
-    def connect(self):
-        self.group_name = 'get_users'
-
-
-        async_to_sync(self.channel_layer.group_add)(
-            self.group_name,
-            self.channel_name
-        )
-
-        self.accept()
-
-        self.get_users()
-
-    def disconnect(self, close_code):
-        async_to_sync(self.channel_layer.group_discard)(
-            self.group_name,
-            self.channel_name
-        )
-
-    def get_users(self):
-        print('get user check')
-
-        users = User.objects.all()
-        users_serializer = UserSerializer(users, many=True)
-
-        print('users serializer:', users_serializer.data)
-
-        self.send(text_data=json.dumps({
-            'type': 'get_users',
-            'users_data': users_serializer.data
-        }))
 
 class BookSearchConsumer(WebsocketConsumer):
     def connect(self):

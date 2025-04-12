@@ -9,15 +9,10 @@ websocket_urlpatterns = [
     path('ws/bookclub/<int:id>', BookclubDataConsumer.as_asgi()),
 
 
-    path('ws/user/bookshelves/<int:id>', UserBookshelfConsumer.as_asgi()),
-
-
     # Unfinished/Need work
    
     path('ws/search/bookclubs/all', BookclubSearchConsumer.as_asgi()),
     
-    
-    path('ws/users', UsersConsumer.as_asgi()),
     
     
 ]
