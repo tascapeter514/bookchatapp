@@ -46,7 +46,6 @@ const UserDashboard = () => {
 
     const navigate = useNavigate()
     const { user } = useSelector((state: RootState) => state.auth, shallowEqual)
-    if (!user) navigate('/login' )
     const { data, isLoading } = useGetUserDataQuery(user.id)
 
     const bookclubs = data?.bookclubs ?? []

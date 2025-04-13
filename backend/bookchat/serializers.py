@@ -134,7 +134,7 @@ class InvitationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Invitation
-        fields = ['id', 'accepted', 'created_at', 'invited_user', 'bookclub',  'invited_by']
+        fields = ['id', 'accepted', 'created_at', 'invitee', 'bookclub',  'inviter']
 
     def get_bookclub(self, obj):
         return {

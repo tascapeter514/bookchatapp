@@ -6,10 +6,7 @@ import AuthorPage from './components/AuthorPage/AuthorPage.tsx'
 import BookclubPage from './components/BookclubPage/BookclubPage.tsx'
 import Login from './components/LogIn/Login.tsx'
 import UserDashboard from './components/UserDashboard/UserDashboard.tsx'
-// import { useSelector } from 'react-redux'
-// import { RootState } from './store/store.tsx'
-// import { useGetUserDataQuery } from './slices/userDataApiSlice.tsx'
-// import LoadSpinner from './components/LoadSpinner/LoadSpinner.tsx'
+import PrivateRoute from './components/HigherOrderComponents/PrivateRoute.tsx'
 // import CheckMembers from './components/CheckMembers.tsx'
 import './App.css';
 
@@ -39,7 +36,9 @@ function App() {
 
 
               {/* lift userdashboard state up? */}
-              <Route path='/userDashboard'element={<UserDashboard />}/>
+              
+                <Route path='/userDashboard'element={<PrivateRoute><UserDashboard /></PrivateRoute>}/>
+              
               <Route path='/bookclub/:id' element={<BookclubPage />}></Route> 
 
               

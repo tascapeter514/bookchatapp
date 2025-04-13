@@ -32,7 +32,7 @@ class UserDataConsumer(WebsocketConsumer):
         print('get user data trigger')
         print('user id:', self.user_id)
         bookclubs = Bookclub.objects.filter(administrator=self.user_id)
-        invitations = Invitation.objects.filter(invited_user_id=self.user_id)
+        invitations = Invitation.objects.filter(invitee=self.user_id)
         bookshelves = Bookshelf.objects.filter(user_id=self.user_id)
 
         bookclub_serializer = BookclubSerializer(bookclubs, many=True)
