@@ -21,7 +21,6 @@ import { ActiveUser } from '../../types';
 import { RootState } from '../../store/store';
 import { useSelector,  shallowEqual } from 'react-redux';
 import { useReducer } from 'react';
-import { useNavigate } from 'react-router-dom';
 import './UserDashboard.css';
 
 
@@ -44,7 +43,6 @@ const ProfileHeader = ({user}: Props) => {
 
 const UserDashboard = () => {
 
-    const navigate = useNavigate()
     const { user } = useSelector((state: RootState) => state.auth, shallowEqual)
     const { data, isLoading } = useGetUserDataQuery(user.id)
 
@@ -54,7 +52,7 @@ const UserDashboard = () => {
 
     
     const [mobileNav, navDispatch] = useReducer(mobileNavReducer, {open: false, isExiting: false})
-    const [userTabs, dispatchUserTabs] = useReducer(tabsReducer, {activeTab: 'accountTab', activeBookshelf: ''})
+    const [userTabs, dispatchUserTabs] = useReducer(tabsReducer, {activeTab: 'accountPanel', activeBookshelf: ''})
 
     
     if (isLoading) return <><LoadSpinner /></>
@@ -69,10 +67,10 @@ const UserDashboard = () => {
   
             <DashboardMain>
                 <OpenMobileNav mobileNav={mobileNav} navDispatch={navDispatch} />
-                {userTabs.activeTab === 'accountTab' && <AccountPanel />}
-                {userTabs.activeTab === 'messagesTab' && <MessagePanel invitations={invitations} />}
-                {userTabs.activeTab === 'bookclubTab' && <BookclubsPanel bookclubs={bookclubs}/>}
-                {userTabs.activeTab === 'bookshelfTab' && <BookshelfPanel userTabs={userTabs} bookshelves={bookshelves}/>}
+                {userTabs.activeTab === 'accountPanel' && <AccountPanel />}
+                {userTabs.activeTab === 'messagesPanel' && <MessagePanel invitations={invitations} />}
+                {userTabs.activeTab === 'bookclubPanel' && <BookclubsPanel bookclubs={bookclubs}/>}
+                {userTabs.activeTab === 'bookshelfPanel' && <BookshelfPanel tabs={userTabs} bookshelves={bookshelves}/>}
             </DashboardMain>
             <DashboardNav mobileNav={mobileNav}>
                 <CloseMobileNav mobileNav={mobileNav} navDispatch={navDispatch} />

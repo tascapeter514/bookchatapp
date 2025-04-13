@@ -6,8 +6,7 @@ import DashboardMain from '../DashboardMain/DashboardMain'
 import BookshelfPanel from '../Panels/BookshelfPanel/BookshelfPanel'
 import CreateBookclubBookshelfModal from '../Modals/CreateBookclubBookshelfModal/CreateBookclubBookshelfModal'
 import BookshelfTabs from '../BookshelfTabs/BookshelfTabs'
-// import BookshelfPanel from '../Panels/BookshelfPanel/BookshelfPanel'
-// import CurrentReadPanel from './components/CurrentReadPanel/CurrentReadPanel'
+import CurrentReadPanel from '../Panels/CurrentReadPanel/CurrentReadPanel'
 import { useParams } from 'react-router-dom'
 import { useGetBookclubDataQuery } from '../../slices/bookclubApiSlice'
 import BookclubHeader from '../BookclubHeader/BookclubHeader'
@@ -29,7 +28,7 @@ const CurrentReadButton = ({dispatchTabs}: Props) => {
         <a 
             className='current-read-tab' 
             href={'#currentRead'} 
-            onClick={() => dispatchTabs({type: 'SET_ACTIVE_TAB', payload: 'bookshelfTab'})}
+            onClick={() => dispatchTabs({type: 'SET_ACTIVE_TAB', payload: 'currentReadPanel'})}
         >
             Current Read
         </a>
@@ -60,6 +59,14 @@ const BookclubPage = () => {
                     <BookclubHeader bookclub={bookclub}/>
                     <hr />
                     <div className="bookclub-content">
+                        <DashboardMain>
+                            {bookclubTabs.activeTab === 'currentReadPanel' && <CurrentReadPanel  />}
+
+                            {bookclubTabs.activeTab === 'bookshelfPanel' && <BookshelfPanel tabs={bookclubTabs} bookshelves={bookshelves ?? []} />}
+                            
+                            
+
+                        </DashboardMain>
                         <DashboardNav mobileNav={mobileNav}>
                             <CurrentReadButton dispatchTabs={dispatchTabs} />
                             <BookshelfButton>

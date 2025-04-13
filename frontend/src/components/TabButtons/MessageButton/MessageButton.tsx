@@ -13,8 +13,8 @@ const MessageButton = ({userTabs, dispatchUserTabs} : Props) => {
     return (
 
         <button 
-            className={`message-button ${userTabs.activeTab === 'messagesTab' ? 'active' : ''}`}
-            onClick={() => dispatchUserTabs({type: 'SET_ACTIVE_TAB', payload: 'messagesTab'})}
+            className={`message-button ${userTabs.activeTab === 'messagesPanel' ? 'active' : ''}`}
+            onClick={() => dispatchUserTabs({type: 'SET_ACTIVE_TAB', payload: 'messagesPanel'})}
         >
         Messages
         </button>

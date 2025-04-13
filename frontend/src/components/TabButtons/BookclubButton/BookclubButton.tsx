@@ -19,8 +19,8 @@ const BookclubButton = ({userTabs, dispatchUserTabs}: Props) => {
         <div className='tab-button bookclubs'> 
             <NavbarDivider />
             <button 
-                className={`bookclub-button ${userTabs.activeTab === 'bookclubTab' ? 'active' : ''}`}
-                onClick={ () => dispatchUserTabs({type: 'SET_ACTIVE_TAB', payload: 'bookclubTab'})}
+                className={`bookclub-button ${userTabs.activeTab === 'bookclubPanel' ? 'active' : ''}`}
+                onClick={ () => dispatchUserTabs({type: 'SET_ACTIVE_TAB', payload: 'bookclubPanel'})}
             >
                 Bookclubs
             </button>
