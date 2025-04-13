@@ -4,6 +4,7 @@ import { weeksAgo } from '../../functions.tsx'
 import Button from '../../Buttons/Button/Button.tsx'
 import ProfileIcons from '../../ProfileIcons/ProfileIcons.tsx'
 import Header from '../../Header/Header.tsx'
+import { Link } from 'react-router-dom'
 
 interface Props {
     bookclubs: Bookclub[]
@@ -31,7 +32,7 @@ const UserBookclubs = ({bookclubs}: Props) => {
                             <ul className='bookclub-icons-list'><ProfileIcons users={bookclub.members}></ProfileIcons></ul>
                         </div>
                     </article>
-                    <Button>View Bookclub</Button>
+                    <Link to={`/bookclub/${bookclub.id}`}><Button>View Bookclub</Button></Link>
                 </li>
             )})}
         </ul>
@@ -39,6 +40,8 @@ const UserBookclubs = ({bookclubs}: Props) => {
     )
 
 }
+{/* <Link to={`/${resultElement.type}/${result.id}`}>{result.name}</Link> */}
+
 
 const BookclubsPanel = ({bookclubs}: Props) => {
 
