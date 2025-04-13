@@ -1,17 +1,19 @@
 import { Outlet, Navigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../store/store'
 import { useState } from 'react'
-import { userContext } from '../context/UserContext/UserContext'
 
 
 
 
 
 
-const AuthRequired = (  ) => {
+const PrivateRoute = (  ) => {
     // Check the authenticated status of the user
     // If they're not authenticated send user to the login page
     // if they are authenticated render the outlet
 
+    const { user } = useSelector((state: RootState) => state.auth)
     const [authToken] = useState<string>(() => {
         const storedToken = sessionStorage.getItem('authToken')
         return storedToken ? JSON.parse(storedToken) : '';
@@ -19,7 +21,9 @@ const AuthRequired = (  ) => {
     
     console.log('auth required authToken:', authToken)
 
-    const isAuthenticated = authToken ? true : false
+    
+
+    const isAuthenticated = authToken && user.id ? true : false
     console.log('is authenticated:', isAuthenticated)
 
     if (!isAuthenticated) {
@@ -31,4 +35,4 @@ const AuthRequired = (  ) => {
 
 }
 
-export default AuthRequired
+export default PrivateRoute

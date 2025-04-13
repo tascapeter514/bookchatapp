@@ -21,6 +21,7 @@ import { ActiveUser } from '../../types';
 import { RootState } from '../../store/store';
 import { useSelector,  shallowEqual } from 'react-redux';
 import { useReducer } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './UserDashboard.css';
 
 
@@ -43,18 +44,22 @@ const ProfileHeader = ({user}: Props) => {
 
 const UserDashboard = () => {
 
+    const navigate = useNavigate()
     const { user } = useSelector((state: RootState) => state.auth, shallowEqual)
+    if (!user) navigate('/login' )
     const { data, isLoading } = useGetUserDataQuery(user.id)
 
     const bookclubs = data?.bookclubs ?? []
     const bookshelves = data?.bookshelves ?? []
     const invitations = data?.invitations ?? []
 
-
+    
     const [mobileNav, navDispatch] = useReducer(mobileNavReducer, {open: false, isExiting: false})
     const [userTabs, dispatchUserTabs] = useReducer(tabsReducer, {activeTab: 'accountTab', activeBookshelf: ''})
 
+    
     if (isLoading) return <><LoadSpinner /></>
+    
 
 
     console.log('user dashboard data:', data)
