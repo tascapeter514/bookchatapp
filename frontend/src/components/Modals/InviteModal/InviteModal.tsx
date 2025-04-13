@@ -5,6 +5,7 @@ import SearchFilter from '../../Search/SearchFilter/SearchFilter'
 import searchReducer from '../../../reducers/searchReducer'
 import UserResults from '../../Search/UserResults/UserResults'
 import useGetUsers from '../../../hooks/useGetUsers'
+import { useInviteUserMutation } from '../../../slices/bookclubApiSlice'
 
 
 
@@ -22,6 +23,10 @@ const InviteModal = ({bookclubId}: Props) => {
     const closeInviteModal = () => ref.current?.close()
 
     const {results} = useGetUsers(bookclubId)
+
+    const handleInviteUser = async () => {
+
+    }
 
     console.log('invite modal resarch:', search)
 
@@ -41,7 +46,7 @@ const InviteModal = ({bookclubId}: Props) => {
                 <UserResults search={search} dispatchSearch={dispatchSearch} results={results ?? []} />
                 <div className="button-wrapper">
                     <Button onClick={closeInviteModal}>Cancel</Button>
-                    {/* <Button onClick={async () => newMemberId && await inviteUser(newMemberId)}>Invite</Button> */}
+                    <Button onClick={handleInviteUser}>Invite</Button>
 
                 </div>
             </dialog>
@@ -105,37 +110,6 @@ export default InviteModal
                                 
                             // }
 
-
-                            // useEffect(() => {
-
-                            //     try {
-                            //         const socket = new WebSocket('ws://localhost:8000/ws/users')
-                        
-                            //         socket.onmessage = (event) => {
-                            //             const data = JSON.parse(event.data)
-                            //             if (data.type === 'get_users') {
-                            //                 console.log('all users:', data.users_data)
-                            //                 setUserSearchResults(data.users_data)
-                            //             }
-                            //         }
-                        
-                            //         socket.onerror = (error) => {
-                            //             console.error('Users websocket error:', error)
-                            //         }
-                        
-                            //         socket.onopen = () => console.log('Users websocket connected');
-                            //         socket.onclose = () => console.log('Users websocket disconnected');
-                        
-                            //         return () => socket.close()
-                                    
-                                    
-                            //     } catch (err) {
-                            //         console.log('Failed to initialize users websocket');
-                                    
-                            //     }
-                        
-                            // }, [])
-                        
                             // const inviteUser = async (selectedUser: number | string): Promise<void> => { 
                             //     console.log('selected user:', selectedUser)
                                 

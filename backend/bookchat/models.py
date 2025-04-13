@@ -78,16 +78,11 @@ class Invitation(models.Model):
         (DECLINED, 'Declined'),
     ]
 
-    #     status = models.CharField(
-    #     max_length=100,
-    #     choices=STATUS_CHOICES,
-    #     default=PENDING
-    # )
 
-    id = models.AutoField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.AutoField(primary_key=True, editable=False)
     bookclub = models.ForeignKey(Bookclub, on_delete=models.CASCADE, related_name='invitations')
-    invited_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='bookclub_invitations')
-    invited_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sent_invitations')
+    inviter = models.ForeignKey(User, on_delete=models.CASCADE, related_name='bookclub_invitations')
+    invitee = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sent_invitations')
     accepted = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=100, choices=STATUS_CHOICES, default=PENDING)
