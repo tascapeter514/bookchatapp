@@ -36,6 +36,14 @@ export type BookError = {
     }
 }
 
+export type InviteError = {
+    status: number,
+    data: {
+        admin?: string,
+        duplicate?: string
+    }
+}
+
 
 
 export const handleLoginError = (err: LoginError ) => {
@@ -91,4 +99,20 @@ export const handleBookError = (err: BookError) => {
     }
 
     return 'Your request to add a book to this bookshelf failed. Please try again.'
+}
+
+export const handleInviteError = (err: InviteError) => {
+    
+    if ('data' in err) {
+        if (err.data.admin) {
+
+            return err.data.admin
+
+        } else if (err.data.duplicate) {
+
+            return err.data.duplicate
+        }
+    }
+
+    return 'Your request to send an invitation failed. Please try again.'
 }

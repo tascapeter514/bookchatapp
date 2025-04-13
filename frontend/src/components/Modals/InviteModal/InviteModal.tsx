@@ -7,6 +7,8 @@ import UserResults from '../../Search/UserResults/UserResults'
 import useGetUsers from '../../../hooks/useGetUsers'
 import { useInviteUserMutation } from '../../../slices/bookclubApiSlice'
 import { RootState } from '../../../store/store'
+import ErrorMessage, {LoginError} from '../../Messages/ErrorMessage/ErrorMessage'
+import { handleLoginError } from '../../../utils/errorHandling'
 import { useSelector } from 'react-redux'
 
 
@@ -31,7 +33,7 @@ const InviteModal = ({bookclubId}: Props) => {
 
         try {
             const data = {
-                bookclub_id: bookclubId,
+                bookclubId: bookclubId,
                 inviter: Number(user.id),
                 invitee: Number(search.id)
             }
@@ -64,6 +66,7 @@ const InviteModal = ({bookclubId}: Props) => {
                 + Invite
             </Button>
             <dialog className='invite-modal' ref={ref}>
+                {isError && <ErrorMessage>{handleLoginError(error as LoginError)}</ErrorMessage>}
                 <h3>Invite a user to your bookclub</h3>
                 <hr />
                 <SearchFilter search={search} dispatchSearch={dispatchSearch}/>
