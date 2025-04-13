@@ -2,6 +2,9 @@ import './BookclubPage.css'
 import { Dispatch } from 'react'
 import { useReducer } from 'react'
 import { Bookshelf } from '../../types'
+import DashboardMain from '../DashboardMain/DashboardMain'
+import BookshelfPanel from '../Panels/BookshelfPanel/BookshelfPanel'
+import CreateBookclubBookshelfModal from '../Modals/CreateBookclubBookshelfModal/CreateBookclubBookshelfModal'
 import BookshelfTabs from '../BookshelfTabs/BookshelfTabs'
 // import BookshelfPanel from '../Panels/BookshelfPanel/BookshelfPanel'
 // import CurrentReadPanel from './components/CurrentReadPanel/CurrentReadPanel'
@@ -62,6 +65,7 @@ const BookclubPage = () => {
                             <BookshelfButton>
                                 <NavbarDivider />
                                 <BookshelfTabs userTabs={bookclubTabs} dispatchUserTabs={dispatchTabs} bookshelves={bookshelves ?? []}/>
+                                <CreateBookclubBookshelfModal bookclub={bookclub}/>
                             </BookshelfButton>
                         </DashboardNav>
                     </div>

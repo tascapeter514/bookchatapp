@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { Bookclub, Bookshelf } from "../types";
+import { BsBuildingExclamation } from "react-icons/bs";
 
 
 export interface BookclubData {
@@ -62,8 +63,18 @@ export const bookclubApi = createApi({
                 method: 'POST',
                 body: data
             })
-        })
+        }),
+        postBookshelf: build.mutation({
+            query: ({keyword, bookclubId}:  {keyword: string, bookclubId: number}) => ({
+                url: `/api/user/bookshelf/${bookclubId}`,
+                method: 'POST',
+                body: {name: keyword}
+
+            })
+        }),
     })
 })
 
-export const {useGetBookclubDataQuery, useGetUsersMutation, useInviteUserMutation} = bookclubApi
+
+
+export const {useGetBookclubDataQuery, useGetUsersMutation, useInviteUserMutation, usePostBookshelfMutation} = bookclubApi
