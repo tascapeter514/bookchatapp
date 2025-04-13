@@ -23,7 +23,7 @@ const InviteModal = ({bookclubId}: Props) => {
 
     const {results} = useGetUsers(bookclubId)
 
-    console.log('invite modal results:', results)
+    console.log('invite modal resarch:', search)
 
 
     return (
@@ -37,12 +37,8 @@ const InviteModal = ({bookclubId}: Props) => {
             <dialog className='invite-modal' ref={ref}>
                 <h3>Invite a user to your bookclub</h3>
                 <hr />
-                {/* <section className='invite-modal-content'> */}
-                    <SearchFilter search={search} dispatchSearch={dispatchSearch}/>
-
-                    <UserResults search={search} dispatchSearch={dispatchSearch} results={results ?? []} />
-
-                {/* </section> */}
+                <SearchFilter search={search} dispatchSearch={dispatchSearch}/>
+                <UserResults search={search} dispatchSearch={dispatchSearch} results={results ?? []} />
                 <div className="button-wrapper">
                     <Button onClick={closeInviteModal}>Cancel</Button>
                     {/* <Button onClick={async () => newMemberId && await inviteUser(newMemberId)}>Invite</Button> */}
