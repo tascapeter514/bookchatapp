@@ -3,6 +3,13 @@
     border-radius: 3px;
     border: 2px solid black;
     margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    width: 100%;
+    max-width: 350px;
+    align-items: center;
+    justify-content: center;
 }
 
 .invite-modal > hr {
@@ -10,15 +17,15 @@
     width: 100%;
 }
 
-.invite-modal.show {
+/* .invite-modal.show {
     display: flex;
     flex-direction: column;
     gap: .5em;
     align-items: center;
     
-}
+} */
 
-.invite-user-content {
+.invite-modal-content {
     padding: .5em;
     display: flex;
     flex-direction: column;
