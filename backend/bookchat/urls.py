@@ -34,10 +34,11 @@ urlpatterns = [
     path('api/user/book/<int:id>', add_user_book, name='add_user_book'),
     path('api/user/book/delete/<int:id>', delete_book, name='delete_book'),
     path('api/author/<int:id>', get_author_data, name='get_author_data'),
+    path('api/bookclub/invite', send_invite, name='send-invite'),
    
 
     # UNFINISHED ROUTES? NEED WORK
-     path('api/sendInvite', send_invite, name='send-invite'),
+     
      path('api/getInvites/<int:id>', InvitationAPI.as_view(), name='get-invites'),
      path('api/acceptInvite', InvitationAPI.as_view(), name='accept-invite'),
      path('api/getBookclubMemberships/<int:id>', get_member_bookclubs, name='get_member_bookclubs'),

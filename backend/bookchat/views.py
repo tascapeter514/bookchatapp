@@ -159,38 +159,50 @@ def add_user_book(request, **kwargs):
 
 @api_view(['POST'])
 def send_invite(request):
-    permission_classes = [IsAuthenticated]
-    authentication_classes = [TokenAuthentication]
 
-    print('request user:', request.body)
+    try:
+        permission_classes = [IsAuthenticated]
+        authentication_classes = [TokenAuthentication]
 
-    
-    bookclub_id = request.data.get('bookclub_id')
-    invited_user_id = request.data.get('invited_user_id')
-    invited_by_id = request.data.get('invited_by_id')
-
-
-    bookclub = get_object_or_404(Bookclub, bookclub_id=bookclub_id)
-    invited_user = get_object_or_404(User, id=invited_user_id)
-    invited_by = get_object_or_404(User, id=invited_by_id)
-    
+        print('request user:', request.body)
 
     
-    #only send if user is administrator
-    if invited_by_id != bookclub.administrator.id:
-        return Response({'error': 'You must be a bookclub administrator to send invitations'})
+        bookclub_id = request.data.get('bookclubId')
+        inviter_id = request.data.get('inviter')
+        invitee_id = request.data.get('invitee')
+
+
+        bookclub = get_object_or_404(Bookclub, id=bookclub_id)
+        inviter = get_object_or_404(User, id=inviter_id)
+        invitee = get_object_or_404(User, id=invitee_id)
+    
+    
+        #only send if user is administrator
+        if inviter_id  != bookclub.administrator.id:
+            raise ValidationError({'admin': 'You must be a bookclub administrator to send invitations'})
         
-    #prevent duplicate invitations
-    if Invitation.objects.filter(bookclub=bookclub, invited_user=invited_user, accepted=False).exists():
-        return Response({'error': 'Invitation already exists'}, status=status.HTTP_400_BAD_REQUEST)
+        #prevent duplicate invitations
+        elif Invitation.objects.filter(bookclub=bookclub, invitee=invitee, accepted=False).exists():
+            raise ValidationError({'duplicate': 'Invitation already exists'}, status=status.HTTP_400_BAD_REQUEST)
         
-    invitation = Invitation.objects.create(
-        bookclub=bookclub,
-        invited_user=invited_user,
-        invited_by=invited_by
-    )
+        else:
+        
+            # invitation = Invitation.objects.create(
+            #     bookclub=bookclub,
+            #     inviter=inviter,
+            #     invitee=invitee
+            # )
 
-    return Response(InvitationSerializer(invitation).data, status=status.HTTP_201_CREATED)
+            return Response({'message': 'Successfully reached invite backend!'}, status=status.HTTP_201_CREATED)
+
+            # return Response(InvitationSerializer(invitation).data, status=status.HTTP_201_CREATED)
+    
+    except ValidationError as e:
+        return Response(e.detail, status=status.HTTP_400_BAD_REQUEST)
+
+    except Exception as e:
+        print(f'Error: {str(e)}')
+        return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 @api_view(['DELETE'])
