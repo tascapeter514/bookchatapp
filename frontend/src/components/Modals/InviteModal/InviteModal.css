@@ -11,7 +11,7 @@
     width: 100%;
 }
 
-.invite-modal.show {
+.invite-modal[open] {
     display: flex;
     flex-direction: column;
     gap: .5rem;

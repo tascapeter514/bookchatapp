@@ -77,7 +77,6 @@ const InviteModal = ({bookclubId}: Props) => {
                 <div className="button-wrapper">
                     <Button onClick={closeInviteModal}>Cancel</Button>
                     <Button onClick={handleInviteUser}>Invite</Button>
-
                 </div>
             </dialog>
         </>
