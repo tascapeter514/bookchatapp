@@ -175,17 +175,22 @@ def send_invite(request):
         bookclub = get_object_or_404(Bookclub, id=bookclub_id)
         inviter = get_object_or_404(User, id=inviter_id)
         invitee = get_object_or_404(User, id=invitee_id)
+
+        
     
     
         #only send if user is administrator
         if inviter_id  != bookclub.administrator.id:
+            
             raise ValidationError({'admin': 'You must be a bookclub administrator to send invitations'})
         
         #prevent duplicate invitations
         elif Invitation.objects.filter(bookclub=bookclub, invitee=invitee, accepted=False).exists():
-            raise ValidationError({'duplicate': 'Invitation already exists'}, status=status.HTTP_400_BAD_REQUEST)
+            print('invite check')
+            raise ValidationError({'duplicate': 'Invitation already exists'})
         
         else:
+            
         
             invitation = Invitation.objects.create(
                 bookclub=bookclub,

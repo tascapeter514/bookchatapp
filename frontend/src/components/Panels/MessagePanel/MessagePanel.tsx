@@ -22,10 +22,10 @@ const UserMessages = ({invitations}: Props) => {
                         <div className="message-header-wrapper">
                             <div className="message-user-wrapper">
                                 <div className="message-profile-icon">
-                                    {invite.invited_by.charAt(0).toUpperCase()}
+                                    {invite.inviter.charAt(0).toUpperCase()}
                                 </div>
                                 <div className="message-user-text">
-                                    <span className='message-user-span'>{invite.invited_by}</span>
+                                    <span className='message-user-span'>{invite.inviter}</span>
                                     <span className='message-invitation-span'>has invited you to</span>
                                     <Link to={`/bookclub/${invite.bookclub.id}`}>
                                         <span className='message-bookclub-span'>

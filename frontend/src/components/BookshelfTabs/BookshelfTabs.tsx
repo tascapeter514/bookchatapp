@@ -18,21 +18,19 @@ const BookshelfButtons = ({userTabs, bookshelves, dispatchUserTabs} : Props) => 
     if (bookshelves.length < 1) return
 
     return(
-        bookshelves.map((bookshelf, index) => {
-            return (
-                <ul className='navbar-bookshelf-list'>
-                    <li 
-                        key={bookshelf.id}
-                        onClick={() => dispatchUserTabs({type: 'SET_BOOKSHELF_TAB', payload: `bookshelfTab${index}`})}
-                        className={userTabs.activeBookshelf === `bookshelfTab${index}`  ? 'active' : ''}
-                    >   
-                        <a id={`bookshelf-${index + 4}`} href={`#${bookshelf.name?.toLowerCase()}`}>
-                            {bookshelf.name == undefined ? '' : bookshelf.name}
-                        </a>
-                    </li>
-                </ul>
-            )
-        })
+        <ul className='navbar-bookshelf-list'>
+            {bookshelves.map((bookshelf, index) => (
+                <li 
+                    key={bookshelf.id}
+                    onClick={() => dispatchUserTabs({type: 'SET_BOOKSHELF_TAB', payload: `bookshelfTab${index}`})}
+                    className={userTabs.activeBookshelf === `bookshelfTab${index}`  ? 'active' : ''}
+                >   
+                    <a id={`bookshelf-${index + 4}`} href={`#${bookshelf.name?.toLowerCase()}`}>
+                        {bookshelf.name == undefined ? '' : bookshelf.name}
+                    </a>
+                </li>
+            ))}
+        </ul>
 
     )
 

@@ -8,7 +8,7 @@ import useGetUsers from '../../../hooks/useGetUsers'
 import { useInviteUserMutation } from '../../../slices/bookclubApiSlice'
 import { RootState } from '../../../store/store'
 import ErrorMessage from '../../Messages/ErrorMessage/ErrorMessage'
-import { handleLoginError, LoginError } from '../../../utils/errorHandling'
+import { handleInviteError, InviteError } from '../../../utils/errorHandling'
 import { useSelector } from 'react-redux'
 
 
@@ -25,7 +25,7 @@ const InviteModal = ({bookclubId}: Props) => {
     const ref = useRef<HTMLDialogElement>(null)
     const openInviteModal = () => ref.current?.showModal()
     const closeInviteModal = () => ref.current?.close()
-    const [inviteUser, {error, isLoading, isError}] = useInviteUserMutation()
+    const [inviteUser, {error, isLoading, isError, reset}] = useInviteUserMutation()
 
     const {results} = useGetUsers(bookclubId)
 
@@ -49,9 +49,6 @@ const InviteModal = ({bookclubId}: Props) => {
 
         } catch (error: any) {
             console.error('There was an error sending your invitation:', error)
-        } finally {
-
-            closeInviteModal()
         }
 
        
@@ -69,13 +66,13 @@ const InviteModal = ({bookclubId}: Props) => {
                 + Invite
             </Button>
             <dialog className='invite-modal' ref={ref}>
-                {isError && <ErrorMessage>{handleLoginError(error as LoginError)}</ErrorMessage>}
+                {isError && <ErrorMessage>{handleInviteError(error as InviteError)}</ErrorMessage>}
                 <h3>Invite a user to your bookclub</h3>
                 <hr />
                 <SearchFilter search={search} dispatchSearch={dispatchSearch}/>
                 <UserResults search={search} dispatchSearch={dispatchSearch} results={results ?? []} />
                 <div className="button-wrapper">
-                    <Button onClick={closeInviteModal}>Cancel</Button>
+                    <Button onClick={() => {closeInviteModal(); reset()}}>Cancel</Button>
                     <Button onClick={handleInviteUser}>Invite</Button>
                 </div>
             </dialog>
