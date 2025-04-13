@@ -187,15 +187,18 @@ def send_invite(request):
         
         else:
         
-            # invitation = Invitation.objects.create(
-            #     bookclub=bookclub,
-            #     inviter=inviter,
-            #     invitee=invitee
-            # )
+            invitation = Invitation.objects.create(
+                bookclub=bookclub,
+                inviter=inviter,
+                invitee=invitee
+            )
 
-            return Response({'message': 'Successfully reached invite backend!'}, status=status.HTTP_201_CREATED)
+            # return Response({'message': 'Successfully reached invite backend!'}, status=status.HTTP_201_CREATED)
 
-            # return Response(InvitationSerializer(invitation).data, status=status.HTTP_201_CREATED)
+            invitation_serializer = InvitationSerializer(invitation)
+            send_user_data_to_group(invitee_id)
+
+            return Response(invitation_serializer.data, status=status.HTTP_201_CREATED)
     
     except ValidationError as e:
         return Response(e.detail, status=status.HTTP_400_BAD_REQUEST)

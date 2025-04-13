@@ -7,8 +7,8 @@ import UserResults from '../../Search/UserResults/UserResults'
 import useGetUsers from '../../../hooks/useGetUsers'
 import { useInviteUserMutation } from '../../../slices/bookclubApiSlice'
 import { RootState } from '../../../store/store'
-import ErrorMessage, {LoginError} from '../../Messages/ErrorMessage/ErrorMessage'
-import { handleLoginError } from '../../../utils/errorHandling'
+import ErrorMessage from '../../Messages/ErrorMessage/ErrorMessage'
+import { handleLoginError, LoginError } from '../../../utils/errorHandling'
 import { useSelector } from 'react-redux'
 
 
@@ -25,7 +25,7 @@ const InviteModal = ({bookclubId}: Props) => {
     const ref = useRef<HTMLDialogElement>(null)
     const openInviteModal = () => ref.current?.showModal()
     const closeInviteModal = () => ref.current?.close()
-    const [inviteUser, error, isLoading, isError] = useInviteUserMutation()
+    const [inviteUser, {error, isLoading, isError}] = useInviteUserMutation()
 
     const {results} = useGetUsers(bookclubId)
 
@@ -49,6 +49,9 @@ const InviteModal = ({bookclubId}: Props) => {
 
         } catch (error: any) {
             console.error('There was an error sending your invitation:', error)
+        } finally {
+
+            closeInviteModal()
         }
 
        
