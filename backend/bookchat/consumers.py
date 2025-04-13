@@ -156,8 +156,9 @@ class BookclubSearchConsumer(WebsocketConsumer):
 class BookclubDataConsumer(WebsocketConsumer):
     def connect(self):
         print('bookclub data connection check')
-        self.group_name = 'get_bookclub_data'
         self.bookclub_id = self.scope['url_route']['kwargs']['id']
+        self.group_name = f'bookclub_data_{self.bookclub_id}'
+        
 
         async_to_sync(self.channel_layer.group_add)(
             self.group_name,
@@ -189,6 +190,22 @@ class BookclubDataConsumer(WebsocketConsumer):
             'bookclub_data': bookclub_serializer.data,
             'bookshelves_data': bookshelves_serializer.data
         }))
+
+
+    def send_bookclub_data(self, event):
+        self.get_bookclub_data()
+
+def send_bookclub_data_to_group(bookclub_id):
+    print('send data check')
+    channel_layer = get_channel_layer()
+
+    async_to_sync(channel_layer.group_send)(
+        f'bookclub_data_{bookclub_id}',
+        {
+            'type': 'send_bookclub_data',
+            'bookclub_id': bookclub_id
+        }
+    )
 
 
 class BookSearchConsumer(WebsocketConsumer):

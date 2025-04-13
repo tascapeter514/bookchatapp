@@ -80,21 +80,30 @@ def upload_file(request, **kwargs):
 
 
 @api_view(['POST'])
-def add_bookclub_bookshelf(request):
+def add_bookclub_bookshelf(request, id):
+    try:
+        bookclub = Bookclub.objects.get(id=id)
+        bookshelf_name = request.data.get('name')
 
-    bookshelf_data = json.loads(request.body)
-
-    bookshelf_id, bookshelf_name, bookclub_id, bookshelf_titles = bookshelf_data.values()
+        if bookclub.bookshelves.filter(name=bookshelf_name).exists():
+            raise ValidationError({'bookshelf': 'You already have a bookshelf with this name'})
+        else:
+            new_bookshelf = Bookshelf.objects.create(name=bookshelf_name)
+            bookclub.bookshelves.add(new_bookshelf)
+            bookshelf_serializer = BookshelfSerializer(new_bookshelf)
+            return Response(bookshelf_serializer.data, status=status.HTTP_201_CREATED)
+        
+    except ValidationError as e:
+        print('create bookshelf error:', e.detail)
+        return Response(e.detail, status=status.HTTP_400_BAD_REQUEST)
     
-    bookclub = Bookclub.objects.get(bookclub_id=bookclub_id)
-    new_bookshelf = Bookshelf.objects.create(bookshelf_id=bookshelf_id, name=bookshelf_name)
+    except Exception as e:
+        print(f'Error: {str(e)}')
+        return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            
 
-    bookclub.bookshelves.add(new_bookshelf)
-    bookshelf_serializer = BookshelfSerializer(new_bookshelf)
 
-    
 
-    return Response(bookshelf_serializer.data)
 
 @api_view(['PUT'])
 def add_book_to_bookclub(request, **kwargs):
@@ -119,6 +128,9 @@ def add_book_to_bookclub(request, **kwargs):
 
 
     return Response(serializer.data)
+
+
+
 
 @api_view(['PUT'])
 def add_user_book(request, **kwargs):

@@ -35,6 +35,7 @@ urlpatterns = [
     path('api/user/book/delete/<int:id>', delete_book, name='delete_book'),
     path('api/author/<int:id>', get_author_data, name='get_author_data'),
     path('api/bookclub/invite', send_invite, name='send-invite'),
+    path('api/bookclub/bookshelf/<int:id>', add_bookclub_bookshelf, name='add_bookshelf'),
    
 
     # UNFINISHED ROUTES? NEED WORK
@@ -43,7 +44,7 @@ urlpatterns = [
      path('api/acceptInvite', InvitationAPI.as_view(), name='accept-invite'),
      path('api/getBookclubMemberships/<int:id>', get_member_bookclubs, name='get_member_bookclubs'),
     #  path('api/bookclub/<uuid:id>', get_bookclub, name='get_bookclub'),
-     path('api/bookclub/addBookshelf', add_bookclub_bookshelf, name='add_bookshelf'),
+    
      path('api/bookclub/addBook/<uuid:id>', add_book_to_bookclub, name='add_book_to_bookclub'),
     
      path('api/fileUpload/<uuid:id>', upload_file, name='upload_file'),
