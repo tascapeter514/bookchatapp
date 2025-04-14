@@ -17,12 +17,6 @@ import CurrentReadButton from '../TabButtons/CurrentReadButton/CurrentReadButton
 import InviteButton from '../TabButtons/InviteButton/InviteButton'
 
 
-
-
-
-
-
-
 const BookclubPage = () => {
 
 
@@ -56,7 +50,7 @@ const BookclubPage = () => {
                         <InviteButton bookclub={bookclub}/>
                         <BookshelfButton>
                             <NavbarDivider />
-                            <BookshelfTabs userTabs={bookclubTabs} dispatchUserTabs={dispatchTabs} bookshelves={bookshelves ?? []}/>
+                            <BookshelfTabs tabs={bookclubTabs} dispatchTabs={dispatchTabs} bookshelves={bookshelves ?? []}/>
                             <CreateBookclubBookshelfModal bookclub={bookclub}/>
                         </BookshelfButton>
                     </DashboardNav>

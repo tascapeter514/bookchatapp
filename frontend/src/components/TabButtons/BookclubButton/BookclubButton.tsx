@@ -18,12 +18,12 @@ const BookclubButton = ({userTabs, dispatchUserTabs}: Props) => {
     return(
         <div className='tab-button bookclubs'> 
             <NavbarDivider />
-            <button 
+            <a 
                 className={`bookclub-button ${userTabs.activeTab === 'bookclubPanel' ? 'active' : ''}`}
                 onClick={ () => dispatchUserTabs({type: 'SET_ACTIVE_TAB', payload: 'bookclubPanel'})}
             >
                 Bookclubs
-            </button>
+            </a>
            <CreateBookclubModal />
         </div>
     )

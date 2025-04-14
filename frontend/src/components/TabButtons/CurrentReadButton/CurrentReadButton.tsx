@@ -14,12 +14,12 @@ const CurrentReadButton = ({dispatchTabs, tabs}: Props) => {
 
     return(
         <div className="tab-button current-read">
-            <button
+            <a
                 className={`current-read-button ${tabs.activeTab === 'currentReadPanel' ? 'active' : ''}` }
                 onClick={() => dispatchTabs({type: 'SET_ACTIVE_TAB', payload: 'currentReadPanel'})}
             >
                 Current Read
-            </button>
+            </a>
             <CreatePollModal />
         </div>
     )

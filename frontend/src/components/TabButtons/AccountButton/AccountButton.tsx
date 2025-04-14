@@ -18,12 +18,12 @@ const AccountButton = ({userTabs, dispatchUserTabs} : Props) => {
 
     return (
 
-        <button 
+        <a 
             className={`tab-button account ${userTabs.activeTab === 'accountPanel' ? 'active' : ''}`}
             onClick={() => dispatchUserTabs({type: 'SET_ACTIVE_TAB', payload: 'accountPanel'})}
         >
             Account
-        </button>
+        </a>
         
     )
 
