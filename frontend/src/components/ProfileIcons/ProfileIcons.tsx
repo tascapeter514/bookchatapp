@@ -11,7 +11,7 @@ interface ProfileIconProps {
 const ProfileIcons = ( {users}: ProfileIconProps ) => {
 
        return (
-            <>
+            <ul className='user-profile-list'>
                 {users?.map((user, index) => (
                     <li key={user.id} >
                         <div 
@@ -26,7 +26,7 @@ const ProfileIcons = ( {users}: ProfileIconProps ) => {
                         {user?.username?.charAt(0).toUpperCase()}</div>
                     </li>
                 ))}
-            </>
+            </ul>
        )
 }
 

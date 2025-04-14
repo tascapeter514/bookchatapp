@@ -6,7 +6,7 @@ const CreatePollModal = () => {
 
     return(
         <>
-            <CreateButton>a Poll</CreateButton>
+            <CreateButton>Poll</CreateButton>
 
 
         </>

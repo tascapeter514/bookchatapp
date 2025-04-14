@@ -14,6 +14,7 @@ import DashboardNav from '../DashboardNav/DashboardNav'
 import mobileNavReducer from '../../reducers/mobileNavReducer'
 import NavbarDivider from '../Dividers/NavbarDivider/NavbarDivider'
 import CurrentReadButton from '../TabButtons/CurrentReadButton/CurrentReadButton'
+import InviteButton from '../TabButtons/InviteButton/InviteButton'
 
 
 
@@ -53,6 +54,7 @@ const BookclubPage = () => {
                     </DashboardMain>
                     <DashboardNav mobileNav={mobileNav}>
                         <CurrentReadButton dispatchTabs={dispatchTabs} />
+                        <InviteButton bookclub={bookclub}/>
                         <BookshelfButton>
                             <NavbarDivider />
                             <BookshelfTabs userTabs={bookclubTabs} dispatchUserTabs={dispatchTabs} bookshelves={bookshelves ?? []}/>

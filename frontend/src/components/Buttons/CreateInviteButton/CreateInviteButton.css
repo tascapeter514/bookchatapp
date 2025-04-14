@@ -1,0 +1,14 @@
+.invite-button {
+    font-size: 1.125rem;
+    width: 100%;
+    max-width: 200px;
+    border-radius: 100px;
+    background: transparent;
+    border: 1px solid black;
+    padding: .75em 1em;
+    cursor: pointer;
+}
+
+.invite-button:hover {
+    border: 1px solid #019FDB;
+}

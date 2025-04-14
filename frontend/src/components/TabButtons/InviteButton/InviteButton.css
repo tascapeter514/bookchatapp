@@ -1,0 +1,25 @@
+.tab-button.invite {
+    gap: .75rem;
+}
+
+
+
+.invite-button-header {
+    padding: .55em 2em;
+    width: 100%;
+    font-size: 1.125rem;
+    font-weight: bold;
+    text-align: center;
+    color: black;
+    border: 0;
+    background: transparent;
+    cursor: pointer
+}
+
+.header-members-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
