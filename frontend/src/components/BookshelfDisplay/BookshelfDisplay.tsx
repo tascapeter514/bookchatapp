@@ -28,7 +28,7 @@ const BookshelfDisplay = ({ children, id }: Props) => {
                             className='book-card-listElement'
                             key={bookElement.id}
                         >
-                            <BookCard bookshelfId={children.id}>{bookElement}</BookCard>
+                            <BookCard id={id} bookshelfId={children.id}>{bookElement}</BookCard>
                         </li>
                     )
                 })}

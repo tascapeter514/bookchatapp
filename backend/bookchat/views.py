@@ -106,16 +106,13 @@ def add_bookclub_bookshelf(request, id):
 
 @api_view(['PUT'])
 def add_book(request):
-    print('user bookshelf check')
-    print('request body:', request.body)
+
     
 
     try:
-        data = json.loads(request.body)
-        print('data:', data)
-        id = data['id']
-        book_id  = data['newBookId']
-        bookshelf_id = data['bookshelfId']
+        id = request.data.get('id')
+        book_id  = request.data.get('newBookId')
+        bookshelf_id = request.data.get('bookshelfId')
         current_book = Book.objects.get(id=book_id)
         current_bookshelf = Bookshelf.objects.get(id=bookshelf_id)
 
@@ -201,16 +198,15 @@ def send_invite(request):
 
 
 @api_view(['DELETE'])
-def delete_book(request, **kwargs):
+def delete_book(request):
     print('delete book check')
 
     try:
-        print('delete request:', request)
         print('request body:', request.body)
-        book_id = kwargs['id']
+        book_id = request.data.get('bookId')
         print('book id:', book_id)
         bookshelf_id = request.data.get('bookshelfId')
-        user_id = request.data.get('userId')
+        id = request.data.get('id')
 
         current_bookshelf = Bookshelf.objects.get(id=bookshelf_id)
         current_book = Book.objects.get(id=book_id)
@@ -222,8 +218,8 @@ def delete_book(request, **kwargs):
         book_serializer = BookSerializer(current_book)
 
         
-        
-        send_user_data_to_group(user_id)
+        send_bookclub_data_to_group(id)
+        send_user_data_to_group(id)
         return Response(book_serializer.data, status=status.HTTP_200_OK)
 
     except ValidationError as e:

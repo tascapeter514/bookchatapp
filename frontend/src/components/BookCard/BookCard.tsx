@@ -1,28 +1,27 @@
 import { LikeIcon, DislikeIcon, CancelIcon } from '../Icons'
 import { useDeleteBookMutation } from '../../slices/bookshelfApiSlice'
-import { useSelector } from 'react-redux'
-import { RootState } from '../../store/store'
 import { Book, Author } from '../../types'
 import './BookCard.css'
 
 interface Props {
     children: Book,
-    bookshelfId: number
+    bookshelfId: number,
+    id: number
 }
 
 
-const BookCard = ({children, bookshelfId}: Props) => {
+const BookCard = ({children, bookshelfId, id}: Props) => {
 
-    const { user } = useSelector((state: RootState ) => state.auth)
+   
     const [deleteBook] = useDeleteBookMutation()
 
     const handleDeleteBook = async () => {
 
-        const userId = Number(user.id)
+        
         const bookId = Number(children.id)
 
         try {
-            await deleteBook({userId, bookId, bookshelfId})
+            await deleteBook({bookId, bookshelfId, id})
 
         } catch(err) {
             console.error('Delete Book Error:', err)
@@ -34,11 +33,11 @@ const BookCard = ({children, bookshelfId}: Props) => {
     return(
         <article className="book-card" >
             <div className="img-overlay">
-                {/* <CancelIcon onClick={handleDeleteBook}></CancelIcon> */}
+                <CancelIcon onClick={handleDeleteBook} />
                 <img src={children.imageLinks?.thumbnail} alt="book-card-cover" className='book-card-img' />
                 <div className="book-card-buttons">
-                    <LikeIcon></LikeIcon>
-                    <DislikeIcon></DislikeIcon>
+                    <LikeIcon />
+                    <DislikeIcon />
                 </div>
             </div>      
             <div className="book-card-back">
