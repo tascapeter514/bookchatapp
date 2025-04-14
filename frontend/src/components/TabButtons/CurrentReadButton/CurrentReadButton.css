@@ -1,0 +1,26 @@
+.current-read-button {
+    padding: 1em 2em;
+    width: 100%;
+    font-size: 1.125rem;
+    font-weight: bold;
+    text-align: center;
+    color: black;
+    border: 0;
+    background: transparent;
+    cursor: pointer
+
+
+
+}
+
+
+.current-read-button .active {
+    background: #D6f6ff;
+    position: relative;
+    
+}
+
+.current-read-button :hover {
+
+    background: #D6f6ff;
+}

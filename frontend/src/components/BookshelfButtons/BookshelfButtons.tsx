@@ -15,7 +15,7 @@ interface Props {
 
 const BookshelfButtons = ({bookshelves, bookclubTabs, dispatchTabs}: Props) => {
 
-    const [dropdown, dispatchDropdown] = useReducer(dropdownReducer, {activePanel: false, isRotated: false})
+    
 
     if (bookshelves.length < 1) return
 

@@ -1,7 +1,5 @@
 import './BookclubPage.css'
-import { Dispatch } from 'react'
 import { useReducer } from 'react'
-import { Bookshelf } from '../../types'
 import DashboardMain from '../DashboardMain/DashboardMain'
 import BookshelfPanel from '../Panels/BookshelfPanel/BookshelfPanel'
 import CreateBookclubBookshelfModal from '../Modals/CreateBookclubBookshelfModal/CreateBookclubBookshelfModal'
@@ -10,31 +8,18 @@ import CurrentReadPanel from '../Panels/CurrentReadPanel/CurrentReadPanel'
 import { useParams } from 'react-router-dom'
 import { useGetBookclubDataQuery } from '../../slices/bookclubApiSlice'
 import BookclubHeader from '../BookclubHeader/BookclubHeader'
-import tabsReducer, { TabAction } from '../../reducers/tabsReducer'
+import tabsReducer from '../../reducers/tabsReducer'
 import BookshelfButton from '../TabButtons/BookshelfButton/BookshelfButton'
 import DashboardNav from '../DashboardNav/DashboardNav'
 import mobileNavReducer from '../../reducers/mobileNavReducer'
 import NavbarDivider from '../Dividers/NavbarDivider/NavbarDivider'
+import CurrentReadButton from '../TabButtons/CurrentReadButton/CurrentReadButton'
 
 
 
-interface Props {
-    dispatchTabs: Dispatch<TabAction>
-}
 
-const CurrentReadButton = ({dispatchTabs}: Props) => {
 
-    return(
-        <a 
-            className='current-read-tab' 
-            href={'#currentRead'} 
-            onClick={() => dispatchTabs({type: 'SET_ACTIVE_TAB', payload: 'currentReadPanel'})}
-        >
-            Current Read
-        </a>
-    )
 
-}
 
 
 const BookclubPage = () => {
@@ -54,29 +39,27 @@ const BookclubPage = () => {
 
         
         <div className='bookclub-container'>
+            {bookclub && (<BookclubHeader bookclub={bookclub}/>)}
             {bookclub && (
-                <>
-                    <BookclubHeader bookclub={bookclub}/>
-                    <hr />
-                    <div className="bookclub-content">
-                        <DashboardMain>
-                            {bookclubTabs.activeTab === 'currentReadPanel' && <CurrentReadPanel  />}
+                <div className='bookclub-content'>
+                    {/* <hr className='bookclub-divider'/> */}
+                    <DashboardMain>
+                        {bookclubTabs.activeTab === 'currentReadPanel' && <CurrentReadPanel  />}
 
-                            {bookclubTabs.activeTab === 'bookshelfPanel' && <BookshelfPanel tabs={bookclubTabs} bookshelves={bookshelves ?? []} />}
+                        {bookclubTabs.activeTab === 'bookshelfPanel' && <BookshelfPanel tabs={bookclubTabs} bookshelves={bookshelves ?? []} />}
                             
                             
 
-                        </DashboardMain>
-                        <DashboardNav mobileNav={mobileNav}>
-                            <CurrentReadButton dispatchTabs={dispatchTabs} />
-                            <BookshelfButton>
-                                <NavbarDivider />
-                                <BookshelfTabs userTabs={bookclubTabs} dispatchUserTabs={dispatchTabs} bookshelves={bookshelves ?? []}/>
-                                <CreateBookclubBookshelfModal bookclub={bookclub}/>
-                            </BookshelfButton>
-                        </DashboardNav>
-                    </div>
-                </>
+                    </DashboardMain>
+                    <DashboardNav mobileNav={mobileNav}>
+                        <CurrentReadButton dispatchTabs={dispatchTabs} />
+                        <BookshelfButton>
+                            <NavbarDivider />
+                            <BookshelfTabs userTabs={bookclubTabs} dispatchUserTabs={dispatchTabs} bookshelves={bookshelves ?? []}/>
+                            <CreateBookclubBookshelfModal bookclub={bookclub}/>
+                        </BookshelfButton>
+                    </DashboardNav>
+                </div>
             )}
         </div>
     )

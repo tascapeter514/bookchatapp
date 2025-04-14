@@ -24,7 +24,7 @@ const BookclubButton = ({userTabs, dispatchUserTabs}: Props) => {
             >
                 Bookclubs
             </button>
-           <CreateBookclubModal></CreateBookclubModal>
+           <CreateBookclubModal />
         </div>
     )
 }

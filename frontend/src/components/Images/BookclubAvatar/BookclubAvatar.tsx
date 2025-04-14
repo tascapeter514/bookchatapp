@@ -1,5 +1,3 @@
-
-import Button from '../../Buttons/Button/Button'
 import BookclubImage from '../../../assets/areej-fateyma-w1fdd9FldPA-unsplash.jpg'
 import FileUploadModal from '../../Modals/FileUploadModal/FileUploadModal'
 import './BookclubAvatar.css'

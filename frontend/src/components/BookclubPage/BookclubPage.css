@@ -1,34 +1,24 @@
+
 .bookclub-content {
-    /* max-width: 1200px; */
-    /* margin-inline: auto; */
-    display: flex;
-    /* flex-direction: column; */
-    gap: .25rem;
-    justify-content: right;
-    
-    
+    margin: 0;
+    font-size: 1.25rem;
+    display: grid;
+    grid-template-columns: minmax(250px, 80%) minmax(300px, 20%);
+    margin: 0 auto;
+    z-index: 10000;
 }
 
 
-
-.bookclub-content hr {
+.bookclub-divider {
     margin-block: .5em;
 
     border: 1px solid lightgrey;
 }
 
-.subnav-container {
-    overflow: hidden;
-    transition: height 500ms ease;
-    height: 0;
-}
-
-.subnav-container.active {
-    height: fit-content;
-    transition: height 500ms ease;
 
 
-}
+
+
 
 
 
