@@ -9,7 +9,7 @@ from rest_framework import status, serializers
 from knox.auth import TokenAuthentication
 from django.shortcuts import get_object_or_404
 from .serializers import BookclubSerializer, BookshelfSerializer, AuthorSerializer, InvitationSerializer, BookSerializer
-from bookchat.consumers import send_user_data_to_group
+from bookchat.consumers import send_user_data_to_group, send_bookclub_data_to_group
 from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync
 from django.http import JsonResponse
@@ -90,6 +90,7 @@ def add_bookclub_bookshelf(request, id):
         else:
             new_bookshelf = Bookshelf.objects.create(name=bookshelf_name)
             bookclub.bookshelves.add(new_bookshelf)
+            send_bookclub_data_to_group(id)
             bookshelf_serializer = BookshelfSerializer(new_bookshelf)
             return Response(bookshelf_serializer.data, status=status.HTTP_201_CREATED)
         
@@ -103,45 +104,18 @@ def add_bookclub_bookshelf(request, id):
             
 
 
-
-
 @api_view(['PUT'])
-def add_book_to_bookclub(request, **kwargs):
-
-    bookshelf_id = kwargs['id']
-
-    print('bookshelf_id:', bookshelf_id)
-
-    print(request.body)
-
-    book_id  = json.loads(request.body)['book_id']
-
-    current_book = Book.objects.get(title_id=book_id)
-    bookshelf = Bookshelf.objects.get(bookshelf_id=bookshelf_id)
-    print('bookshelf:', bookshelf)
-
-    bookshelf.titles.add(current_book)
-    bookshelf.save()
-
-    serializer = BookshelfSerializer(bookshelf)
-    
-
-
-    return Response(serializer.data)
-
-
-
-
-@api_view(['PUT'])
-def add_user_book(request, **kwargs):
+def add_book(request):
     print('user bookshelf check')
     print('request body:', request.body)
     
 
     try:
-        user_id = kwargs['id']
-        book_id  = json.loads(request.body)['newBookId']
-        bookshelf_id = (json.loads(request.body)['bookshelfId'])
+        data = json.loads(request.body)
+        print('data:', data)
+        id = data['id']
+        book_id  = data['newBookId']
+        bookshelf_id = data['bookshelfId']
         current_book = Book.objects.get(id=book_id)
         current_bookshelf = Bookshelf.objects.get(id=bookshelf_id)
 
@@ -154,7 +128,8 @@ def add_user_book(request, **kwargs):
         else:
         
             current_bookshelf.books.add(current_book)
-            send_user_data_to_group(user_id)
+            send_user_data_to_group(id)
+            send_bookclub_data_to_group(id)
             book_serializer = BookSerializer(current_book)
 
             return Response(book_serializer.data, status=status.HTTP_200_OK)

@@ -64,23 +64,10 @@ export const userDataApi = createApi({
 
             })
         }),
-        postBook: build.mutation({
-            query: ({userId, bookshelfId, newBookId}: {userId: number, bookshelfId: number, newBookId: number }) => ({
-                url: `api/user/book/${userId}`,
-                method: 'PUT',
-                body: {bookshelfId: bookshelfId, newBookId: newBookId}
-            })
-        }),
-        deleteBook: build.mutation({
-            query: ({userId, bookId, bookshelfId}: {userId: number, bookId: number, bookshelfId: number}) => ({
-                url: `api/user/book/delete/${bookId}`,
-                method: 'DELETE',
-                body: {bookshelfId: bookshelfId, userId: userId}
-            })
-        })
+        
         
     })
 })
 
-export const { useGetUserDataQuery, usePostBookclubMutation, usePostBookshelfMutation, usePostBookMutation, useDeleteBookMutation } = userDataApi
+export const { useGetUserDataQuery, usePostBookclubMutation, usePostBookshelfMutation } = userDataApi
 

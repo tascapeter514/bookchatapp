@@ -6,17 +6,19 @@ import { RootState } from '../../../store/store'
 import SearchFilter from '../../Search/SearchFilter/SearchFilter'
 import FilterResults from '../../Search/FilterResults/FilterResults'
 import searchReducer from '../../../reducers/searchReducer'
-import { useGetUserDataQuery, usePostBookMutation } from '../../../slices/userDataApiSlice'
+import { useGetUserDataQuery} from '../../../slices/userDataApiSlice'
+import { usePostBookMutation } from '../../../slices/bookshelfApiSlice'
 import ErrorMessage from '../../Messages/ErrorMessage/ErrorMessage'
 import { useRef, useReducer, useState, memo } from 'react'
 import { handleBookError, BookError } from '../../../utils/errorHandling'
 import './BookshelfButtonModal.css'
 
 interface Props {
-    book: Book
+    book: Book,
+    id: number
 }
 
-const BookshelfButtonModal = ({book}: Props) => {
+const BookshelfButtonModal = ({book, id}: Props) => {
 
     const { user } = useSelector((state: RootState) => state.auth)
     const {data, isError: isUserDataError} = useGetUserDataQuery(user?.id, {
@@ -24,7 +26,7 @@ const BookshelfButtonModal = ({book}: Props) => {
     })
     const [idError, setIdError] = useState<string>('')
     const [postBook, {isError: isPostBookError, error: postBookError, reset}] = usePostBookMutation()
-    const [search, dispatchSearch] = useReducer(searchReducer, {id: 0, value: ''})
+    const [search, dispatchSearch] = useReducer(searchReducer, {resultId: 0, value: ''})
     const ref = useRef<HTMLDialogElement>(null)
     const openModal = () => ref.current?.showModal()
     const closeModal = () => ref.current?.close()
@@ -32,23 +34,22 @@ const BookshelfButtonModal = ({book}: Props) => {
   
     const handleAddBook = async () => {
 
-        const {id} = search
+        const { resultId } = search
     
         try {
 
-            if (!id || !user.id || !book) {
+            if (!resultId || !id || !book) {
                 throw Error('You are missing an id.')
                 
             }
 
             
-            const bookshelfId = Number(id)
-            const userId = Number(user.id)
+            const bookshelfId = Number(resultId)
             const newBookId = Number(book.id)
 
             console.log('new book id:', newBookId)
 
-            const response = await postBook({userId, bookshelfId, newBookId}).unwrap()
+            const response = await postBook({bookshelfId, newBookId, id}).unwrap()
             console.log('add book response:', response)
 
         } catch(err: any) {

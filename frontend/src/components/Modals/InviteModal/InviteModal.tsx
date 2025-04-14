@@ -22,7 +22,7 @@ interface Props {
 const InviteModal = ({bookclubId}: Props) => {
 
     const { user } = useSelector((state: RootState) => state.auth)
-    const [search, dispatchSearch] = useReducer(searchReducer, {id: 0, value: ''})
+    const [search, dispatchSearch] = useReducer(searchReducer, {resultId: 0, value: ''})
     const ref = useRef<HTMLDialogElement>(null)
     const openInviteModal = () => ref.current?.showModal()
     const closeInviteModal = () => ref.current?.close()
@@ -36,7 +36,7 @@ const InviteModal = ({bookclubId}: Props) => {
             const data = {
                 bookclubId: bookclubId,
                 inviter: Number(user.id),
-                invitee: Number(search.id)
+                invitee: Number(search.resultId)
             }
 
             if (!data) throw new Error('You must select a user to invite');

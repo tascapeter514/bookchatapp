@@ -54,25 +54,6 @@
 
 
 
-.bookclub-header-title > small {
-    font-size: 1rem;
-}
-
-.header-members-wrapper {
-    display: flex;
-    justify-content: space-between;
-
-}
-
-.user-profile-list {
-    /* padding: 0; */
-    width: 25%;
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    padding-left: .7em;
-}
 
 
 

@@ -4,7 +4,7 @@ export type TabState = {
     showNav?: boolean
 }
 
-export type TabAction = {type: 'SET_ACTIVE_TAB', payload: string} | {type: 'SET_BOOKSHELF_TAB', payload: string } | {type: 'SHOW_NAV'}
+export type TabAction = {type: 'SET_ACTIVE_TAB', payload: string} | {type: 'SET_BOOKSHELF_TAB', payload: string } 
 
 
 
@@ -16,8 +16,7 @@ export default function tabsReducer(state: TabState, action: TabAction) {
             return {activeTab: action.payload, activeBookshelf: ''};
         case 'SET_BOOKSHELF_TAB':
             return {activeTab: 'bookshelfPanel', activeBookshelf: action.payload};
-        case 'SHOW_NAV':
-            return {...state, showNav: !state.showNav}
+
         default:
             return state
     }

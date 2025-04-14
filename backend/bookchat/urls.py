@@ -26,13 +26,14 @@ router.register('', BestsellerViewSet, 'homepage')
 
 
 
+
 urlpatterns = [
     # finished routes
     path('api/book/<int:id>', get_book, name='get_book'),
     path('api/user/bookshelf/<int:id>', add_user_bookshelf, name='add_user_bookshelf'),
     path('api/user/bookclub/<int:id>', add_user_bookclub, name='add_user_bookclub'),
-    path('api/user/book/<int:id>', add_user_book, name='add_user_book'),
-    path('api/user/book/delete/<int:id>', delete_book, name='delete_book'),
+    path('api/bookshelf/book/add', add_book, name='add_user_book'),
+    path('api/bookshelf/book/delete', delete_book, name='delete_book'),
     path('api/author/<int:id>', get_author_data, name='get_author_data'),
     path('api/bookclub/invite', send_invite, name='send-invite'),
     path('api/bookclub/bookshelf/<int:id>', add_bookclub_bookshelf, name='add_bookshelf'),
@@ -45,7 +46,6 @@ urlpatterns = [
      path('api/getBookclubMemberships/<int:id>', get_member_bookclubs, name='get_member_bookclubs'),
     #  path('api/bookclub/<uuid:id>', get_bookclub, name='get_bookclub'),
     
-     path('api/bookclub/addBook/<uuid:id>', add_book_to_bookclub, name='add_book_to_bookclub'),
     
      path('api/fileUpload/<uuid:id>', upload_file, name='upload_file'),
      

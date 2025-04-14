@@ -1,5 +1,5 @@
 import { LikeIcon, DislikeIcon, CancelIcon } from '../Icons'
-import { useDeleteBookMutation } from '../../slices/userDataApiSlice'
+import { useDeleteBookMutation } from '../../slices/bookshelfApiSlice'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../store/store'
 import { Book, Author } from '../../types'
@@ -34,7 +34,7 @@ const BookCard = ({children, bookshelfId}: Props) => {
     return(
         <article className="book-card" >
             <div className="img-overlay">
-                <CancelIcon onClick={handleDeleteBook}></CancelIcon>
+                {/* <CancelIcon onClick={handleDeleteBook}></CancelIcon> */}
                 <img src={children.imageLinks?.thumbnail} alt="book-card-cover" className='book-card-img' />
                 <div className="book-card-buttons">
                     <LikeIcon></LikeIcon>

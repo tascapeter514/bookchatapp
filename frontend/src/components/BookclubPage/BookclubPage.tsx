@@ -40,7 +40,7 @@ const BookclubPage = () => {
                     <DashboardMain>
                         {bookclubTabs.activeTab === 'currentReadPanel' && <CurrentReadPanel  />}
 
-                        {bookclubTabs.activeTab === 'bookshelfPanel' && <BookshelfPanel tabs={bookclubTabs} bookshelves={bookshelves ?? []} />}
+                        {bookclubTabs.activeTab === 'bookshelfPanel' && <BookshelfPanel tabs={bookclubTabs} bookshelves={bookshelves ?? []} id={bookclub.id} />}
                             
                             
 

@@ -6,17 +6,21 @@ import './BookshelfDisplay.css'
 
 interface Props {
     children: Bookshelf,
+    id: number
 
 }
 
 
-const BookshelfDisplay = ({ children }: Props) => {
+const BookshelfDisplay = ({ children, id }: Props) => {
+
+    
+
 
     const { books } = children
     
     return(
         <section className="bookshelf-container">
-            <BookSearchModal bookshelf={children}></BookSearchModal> 
+            <BookSearchModal bookshelf={children} id={id} />
             <ul className="bookshelf-title-list">
                 {books.map((bookElement: Book) => {
                     return(

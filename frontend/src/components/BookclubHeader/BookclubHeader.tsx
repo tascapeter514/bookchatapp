@@ -1,8 +1,5 @@
 import { Bookclub } from '../../types'
-// import { bookclubData } from '../../../../context/BookclubContext/BookclubContext'
 import BookclubBackground from '../../assets/bookclub-background.jpg'
-import InviteModal from '../Modals/InviteModal/InviteModal'
-// import ProfileIcons from '../ProfileIcons/ProfileIcons'
 import BookclubAvatar from '../Images/BookclubAvatar/BookclubAvatar'
 
 import './BookclubHeader.css'

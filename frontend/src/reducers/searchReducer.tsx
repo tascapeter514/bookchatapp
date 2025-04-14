@@ -2,7 +2,7 @@
 
 export type SearchState = {
     value: string,
-    id: number
+    resultId: number
 }
 
 
@@ -23,7 +23,7 @@ const searchReducer = (state: SearchState, action: SearchAction) => {
         case 'CHECK_RESULT':
             return {
                 ...state,
-                id: payload
+                resultId: payload
             }
         
         default:
