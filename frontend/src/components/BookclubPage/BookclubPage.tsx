@@ -43,7 +43,6 @@ const BookclubPage = () => {
             {bookclub && (<BookclubHeader bookclub={bookclub}/>)}
             {bookclub && (
                 <div className='bookclub-content'>
-                    {/* <hr className='bookclub-divider'/> */}
                     <DashboardMain>
                         {bookclubTabs.activeTab === 'currentReadPanel' && <CurrentReadPanel  />}
 
@@ -53,7 +52,7 @@ const BookclubPage = () => {
 
                     </DashboardMain>
                     <DashboardNav mobileNav={mobileNav}>
-                        <CurrentReadButton dispatchTabs={dispatchTabs} />
+                        <CurrentReadButton dispatchTabs={dispatchTabs} tabs={bookclubTabs}/>
                         <InviteButton bookclub={bookclub}/>
                         <BookshelfButton>
                             <NavbarDivider />

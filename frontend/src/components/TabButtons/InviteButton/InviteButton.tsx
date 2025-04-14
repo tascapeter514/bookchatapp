@@ -2,6 +2,7 @@ import './InviteButton.css'
 import { Bookclub } from '../../../types'
 import ProfileIcons from '../../ProfileIcons/ProfileIcons'
 import InviteModal from '../../Modals/InviteModal/InviteModal'
+import NavbarDivider from '../../Dividers/NavbarDivider/NavbarDivider'
 
 
 interface Props {
@@ -14,6 +15,7 @@ const InviteButton = ({bookclub}: Props) => {
     return(
 
         <div className='tab-button invite'>
+            <NavbarDivider />
 
             
             <div className="header-members-wrapper">
