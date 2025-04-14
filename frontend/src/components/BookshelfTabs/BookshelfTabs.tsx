@@ -7,13 +7,15 @@ import { RightDropDownIcon } from '../Icons'
 import './BookshelfTabs.css'
 
 interface Props {
-    userTabs: TabState,
-    dispatchUserTabs: Dispatch<TabAction>,
+    tabs: TabState,
+    dispatchTabs: Dispatch<TabAction>,
     bookshelves: Bookshelf[]
 }
 
 
-const BookshelfButtons = ({userTabs, bookshelves, dispatchUserTabs} : Props) => {
+const BookshelfButtons = ({tabs, bookshelves, dispatchTabs} : Props) => {
+
+    console.log('bookshelf buttons:', tabs)
 
     if (bookshelves.length < 1) return
 
@@ -22,8 +24,8 @@ const BookshelfButtons = ({userTabs, bookshelves, dispatchUserTabs} : Props) => 
             {bookshelves.map((bookshelf, index) => (
                 <li 
                     key={bookshelf.id}
-                    onClick={() => dispatchUserTabs({type: 'SET_BOOKSHELF_TAB', payload: `bookshelfTab${index}`})}
-                    className={userTabs.activeBookshelf === `bookshelfTab${index}`  ? 'active' : ''}
+                    onClick={() => dispatchTabs({type: 'SET_BOOKSHELF_TAB', payload: `bookshelfTab${index}`})}
+                    className={tabs.activeBookshelf === `bookshelfTab${index}`  ? 'active' : ''}
                 >   
                     <a id={`bookshelf-${index + 4}`} href={`#${bookshelf.name?.toLowerCase()}`}>
                         {bookshelf.name == undefined ? '' : bookshelf.name}
@@ -36,7 +38,7 @@ const BookshelfButtons = ({userTabs, bookshelves, dispatchUserTabs} : Props) => 
 
 }
 
-const BookshelfTabs = ({userTabs, bookshelves, dispatchUserTabs} : Props) => {
+const BookshelfTabs = ({tabs, bookshelves, dispatchTabs} : Props) => {
 
     const [dropdown, dispatchDropdown] = useReducer(dropdownReducer, {activePanel: false, isRotated: false})
 
@@ -45,14 +47,14 @@ const BookshelfTabs = ({userTabs, bookshelves, dispatchUserTabs} : Props) => {
     return(
         <>
             <BookshelfDropdown dropdown={dropdown}>
-            <a 
-                className={`bookshelf-button ${userTabs.activeTab === 'bookshelfPanel' && userTabs.activeBookshelf === '' ? 'active' : ''}`}
-                onClick={ () => dispatchUserTabs({type: 'SET_ACTIVE_TAB', payload: 'bookshelfPanel'})}
-            >
-                Bookshelves
-                <RightDropDownIcon onClick={() => dispatchDropdown({type: 'TOGGLE_DROPDOWN'})} dropdown={dropdown} />
-            </a>
-            <BookshelfButtons userTabs={userTabs} bookshelves={bookshelves} dispatchUserTabs={dispatchUserTabs} />
+                <a 
+                    className={`bookshelf-button ${tabs.activeTab === 'bookshelfPanel' && tabs.activeBookshelf === '' ? 'active' : ''}`}
+                    onClick={ () => dispatchTabs({type: 'SET_ACTIVE_TAB', payload: 'bookshelfPanel'})}
+                >
+                    Bookshelves
+                    <RightDropDownIcon onClick={() => dispatchDropdown({type: 'TOGGLE_DROPDOWN'})} dropdown={dropdown} />
+                </a>
+                <BookshelfButtons tabs={tabs} bookshelves={bookshelves} dispatchTabs={dispatchTabs} />
             </BookshelfDropdown>
         </>
     )

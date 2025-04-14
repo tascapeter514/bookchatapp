@@ -80,7 +80,7 @@ const UserDashboard = () => {
                 <BookclubButton userTabs={userTabs} dispatchUserTabs={dispatchUserTabs}/>
                 <BookshelfButton>
                     <NavbarDivider />
-                    <BookshelfTabs userTabs={userTabs} dispatchUserTabs={dispatchUserTabs} bookshelves={bookshelves} />
+                    <BookshelfTabs tabs={userTabs} dispatchTabs={dispatchUserTabs} bookshelves={bookshelves} />
                     <CreateBookshelfModal />
                 </BookshelfButton>
             </DashboardNav>

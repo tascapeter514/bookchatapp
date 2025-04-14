@@ -15,7 +15,7 @@ export default function tabsReducer(state: TabState, action: TabAction) {
         case 'SET_ACTIVE_TAB':
             return {activeTab: action.payload, activeBookshelf: ''};
         case 'SET_BOOKSHELF_TAB':
-            return {activeTab: 'bookshelfTab', activeBookshelf: action.payload};
+            return {activeTab: 'bookshelfPanel', activeBookshelf: action.payload};
         case 'SHOW_NAV':
             return {...state, showNav: !state.showNav}
         default:
