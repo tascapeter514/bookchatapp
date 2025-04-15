@@ -35,15 +35,26 @@ def get_book(request, id):
 
 
 @api_view(['GET'])
-def get_member_bookclubs(request, **kwargs):
-    user_id = kwargs.get('id')
-    user = User.objects.get(id=user_id)
-    user_bookclubs = user.bookclubs.all()
-    serializer = BookclubSerializer(user_bookclubs, many=True)
-    return Response(serializer.data)
+def get_books(request):
+    try:
+        books = Book.objects.all()
+
+        books_serializer = BookSerializer(books, many=True)
+        return Response(books_serializer.data, status=status.HTTP_200_OK)
+
+    except ValidationError as e:
+
+        return Response(e.detail, status=status.HTTP_400_BAD_REQUEST)
+    
+    except Exception as e:
+        print(f'Error: {str(e)}')
+        return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
 
 
 
+
+# REFACTOR
 @api_view(['GET'])
 def get_author_data(request, **kwargs):
     print('get author data check')
@@ -57,6 +68,7 @@ def get_author_data(request, **kwargs):
 
     return Response(author_serializer.data)
 
+# REFACTOR
 @api_view(['POST'])
 def upload_file(request, **kwargs):
     id= kwargs['id']
