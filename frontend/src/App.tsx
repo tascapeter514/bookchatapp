@@ -8,6 +8,7 @@ import Login from './components/LogIn/Login.tsx'
 import UserDashboard from './components/UserDashboard/UserDashboard.tsx'
 import PrivateRoute from './components/HigherOrderComponents/PrivateRoute.tsx'
 // import CheckMembers from './components/CheckMembers.tsx'
+import BooksPage from './components/BooksPage/BooksPage.tsx'
 import './App.css';
 
 
@@ -29,6 +30,7 @@ function App() {
         <Routes>
               <Route path='/' element={<Homepage />} />
               <Route path='/book/:id' element={<Bookpage />} />
+              <Route path='/books' element={<BooksPage />} />
 
               {/* Can we lift author state up? */}
               <Route path='/author/:id' element={<AuthorPage />} />

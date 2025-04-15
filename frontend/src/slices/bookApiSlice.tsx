@@ -1,17 +1,24 @@
 import { apiSlice } from "./apiSlice";
-const BOOK_URL = 'api/book'
+import { Book } from "../types";
+
 
 
 
 export const bookApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
+        getBooks: builder.query<Book[], void>({
+            query: () => ({
+                url: 'api/books',
+                method: 'GET'
+            })
+        }),
         getBook: builder.mutation({
             query: (id) => ({
-                url: `${BOOK_URL}/${id}`,
+                url: `api/book/${id}`,
                 method: 'GET'
             })
         })
     })
 })
 
-export const {useGetBookMutation} = bookApiSlice
+export const {useGetBooksQuery, useGetBookMutation} = bookApiSlice

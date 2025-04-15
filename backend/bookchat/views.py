@@ -36,6 +36,7 @@ def get_book(request, id):
 
 @api_view(['GET'])
 def get_books(request):
+    print('get books check')
     try:
         books = Book.objects.all()
 

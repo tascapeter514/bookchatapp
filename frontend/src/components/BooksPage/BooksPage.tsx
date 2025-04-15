@@ -1,10 +1,27 @@
 import './BooksPage.css'
 import BookSlider from '../BookSlider/BookSlider'
+import { useGetBooksQuery } from '../../slices/bookApiSlice'
+import { useCallback } from 'react'
 
 
 const BooksPage = () => {
 
-        // const [bestsellers, setBestsellers] = useState<Book[]>([])
+    const {data, isLoading, isError, error} = useGetBooksQuery()
+
+   
+    console.log('books page data:', data)
+
+        return(
+            <div>Books Page</div>
+
+        )
+
+}
+
+export default BooksPage
+
+
+ // const [bestsellers, setBestsellers] = useState<Book[]>([])
     
 
 
@@ -16,12 +33,3 @@ const BooksPage = () => {
 
    {/* <h3>Bestsellers</h3>
         <BookSlider books={bestsellers}></BookSlider> */}
-
-        return(
-            <div>Books Page</div>
-
-        )
-
-}
-
-export default BooksPage
