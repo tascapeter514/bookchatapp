@@ -1,8 +1,8 @@
 import BookshelfDisplay from '../../BookshelfDisplay/BookshelfDisplay.tsx'
 import { TabState } from '../../../reducers/tabsReducer.tsx';
-import SubHeader from '../../SubHeader/SubHeader.tsx'
+import SubHeader from '../../Headers/SubHeader/SubHeader.tsx'
 import {  Bookshelf } from '../../../types.ts'
-import Header from '../../Header/Header.tsx'
+import Header from '../../Headers/Header/Header.tsx'
 import './BookshelfPanel.css';
 
 

@@ -1,0 +1,44 @@
+.carousel {
+    list-style: none;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 13%;
+    grid-gap: 2rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    scroll-snap-type: x mandatory;
+    max-width: 1200px;
+    border: 1px solid lime;
+    padding: .5em 2em;
+
+    @media (prefers-reduced-motion: no-preference) {
+        scroll-behavior: smooth
+    }
+
+}
+
+.carousel-element {
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 250px;
+}
+
+.carousel-image {
+    height: 250px;
+    
+    
+}
+
+.carousel-element a {
+    text-decoration: none;
+    color: black;
+}
+
+.carousel-book-title, .carousel-author-text {
+    font-size: 14px;
+    
+}

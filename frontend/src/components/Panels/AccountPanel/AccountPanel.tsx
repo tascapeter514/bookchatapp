@@ -2,8 +2,8 @@ import './AccountPanel.css'
 import { useState, ChangeEvent} from 'react'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../../store/store'
-import Header from '../../Header/Header'
-import SubHeader from '../../SubHeader/SubHeader'
+import Header from '../../Headers/Header/Header'
+import SubHeader from '../../Headers/SubHeader/SubHeader'
 import Button from '../../Buttons/Button/Button'
 
 const AccountPanel = () => {

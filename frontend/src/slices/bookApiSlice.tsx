@@ -12,7 +12,10 @@ interface BookData {
     philosophical_nonfiction: Book[],
     poetry: Book[],
     political_nonfiction: Book[],
-    science_fiction: Book[]
+    science_fiction: Book[],
+    contemporary_fiction: Book[],
+    fantasy: Book[],
+    detective_fiction: Book[]
 }
 
 

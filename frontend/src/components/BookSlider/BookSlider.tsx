@@ -1,18 +1,20 @@
 import './BookSlider.css'
-import { useState, useRef, FC } from 'react'
+import { useState, useRef, memo, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { Book } from '../../types'
 
 
 
-interface BookSliderProps {
-    books: Book[]
+interface Props {
+    children: Book[]
 }
 
-const BookSlider: FC<BookSliderProps> = ({books}) => {
+const BookSlider = ({children}: Props) => {
+
+    if (!children) return null;
 
     const [matches] = useState(window.matchMedia('(prefers-reduced-motion: reduce)').matches)
-    const [isPlaying, setIsPlaying] = useState(false)
+    const [isPlaying, setIsPlaying] = useState(true)
     const animationRef = useRef<HTMLUListElement>(null)
 
     const toggleAnimation = () => {
@@ -22,7 +24,7 @@ const BookSlider: FC<BookSliderProps> = ({books}) => {
         }
     }
 
-    const bookElements = books.map((book: Book)=> {
+    const bookElements = children.map((book: Book)=> {
         return(
         <li className='book-element' key={book.id} >
             <Link to={`/book/${book.id}`}><img src={book.imageLinks['smallThumbnail']} alt="bestseller-img" /></Link>
@@ -34,14 +36,14 @@ const BookSlider: FC<BookSliderProps> = ({books}) => {
     return(
 
         <div className="book-scroller"
-        onMouseEnter={toggleAnimation}
-        onMouseLeave={toggleAnimation}
-        {...(matches ? {'data-animated': true} : {})}
+            onMouseEnter={toggleAnimation}
+            onMouseLeave={toggleAnimation}
+            {...(matches ? {'data-animated': true} : {})}
         >
-        <ul className="book-list book-scroller__inner" ref={animationRef}>
-            {bookElements}
-            {bookElements}
-        </ul>
+            <ul className="book-list book-scroller__inner" ref={animationRef}>
+                {bookElements}
+                {bookElements}
+            </ul>
         </div>
 
         
@@ -51,4 +53,4 @@ const BookSlider: FC<BookSliderProps> = ({books}) => {
     )
 }
 
-export default BookSlider
+export default memo(BookSlider)

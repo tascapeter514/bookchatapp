@@ -1,5 +1,5 @@
 import './CurrentRead.css'
-import Header from '../../Header/Header'
+import Header from '../../Headers/Header/Header'
 
 
 const CurrentReadPanel = () => {

@@ -2,8 +2,8 @@ import './MessagePanel.css'
 import { Link } from 'react-router-dom'
 import { Invitation } from '../../../types.ts'
 import { formatDate } from '../../functions.tsx'
-import Header from '../../Header/Header.tsx'
-import SubHeader from '../../SubHeader/SubHeader.tsx'
+import Header from '../../Headers/Header/Header.tsx'
+import SubHeader from '../../Headers/SubHeader/SubHeader.tsx'
 
 
 interface Props {

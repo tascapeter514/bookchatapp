@@ -5,10 +5,10 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useRegisterMutation } from '../../../slices/authApiSlice';
 import { setCredentials } from '../../../slices/authSlice';
-import SubHeader from '../../SubHeader/SubHeader';
+import SubHeader from '../../Headers/SubHeader/SubHeader';
 import Button from '../../Buttons/Button/Button'
 import {useState, ChangeEvent } from 'react';
-import Header from '../../Header/Header'
+import Header from '../../Headers/Header/Header'
 import './RegisterForm.css'
 
 

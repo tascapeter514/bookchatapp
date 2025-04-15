@@ -4,6 +4,7 @@ import { IoMdArrowDropright, IoIosCloseCircle } from "react-icons/io";
 import { ImCheckmark2, ImCancelCircle } from 'react-icons/im'
 import { GrLike, GrDislike } from "react-icons/gr";
 import { BsBookmarkPlus } from "react-icons/bs"
+import { MdArrowForwardIos, MdArrowBackIosNew } from "react-icons/md";
 
 
 export type ArrowProps = {
@@ -42,6 +43,10 @@ export const CloseIcon = (props: IconProps) => <IoIosCloseCircle className='clos
 export const CheckmarkIcon = (props: IconProps) => <ImCheckmark2 className='checkmark-icon' {...props}/>
 
 export const CancelIcon = (props: IconProps) => <ImCancelCircle className='cancel-icon' {...props} />
+
+export const RightArrow = (props: IconProps) => <MdArrowForwardIos className='right-arrow' {...props} />
+
+export const LeftArrow = (props: IconProps) => <MdArrowBackIosNew className='left-arrow' {...props}/>
 
 
 

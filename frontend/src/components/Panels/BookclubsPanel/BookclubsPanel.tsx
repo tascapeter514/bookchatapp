@@ -3,7 +3,7 @@ import { Bookclub } from '../../../types.ts'
 import { weeksAgo } from '../../functions.tsx'
 import Button from '../../Buttons/Button/Button.tsx'
 import ProfileIcons from '../../ProfileIcons/ProfileIcons.tsx'
-import Header from '../../Header/Header.tsx'
+import Header from '../../Headers/Header/Header.tsx'
 import { Link } from 'react-router-dom'
 
 interface Props {
