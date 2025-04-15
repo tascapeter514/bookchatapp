@@ -38,10 +38,29 @@ def get_book(request, id):
 def get_books(request):
     print('get books check')
     try:
-        books = Book.objects.all()
+        best_sellers = Book.objects.filter(genres_id=18)
+        literary_fiction = Book.objects.filter(genres_id=1)
+        science_fiction = Book.objects.filter(genres_id=23)
+        political_nonfiction = Book.objects.filter(genres_id=22)
+        philosophical_nonfiction = Book.objects.filter(genres_id=19)
+        biography = Book.objects.filter(genres_id=6)
+        poetry = Book.objects.filter(genres_id=3)
+        literary_criticism = Book.objects.filter(genres_id=2)
 
-        books_serializer = BookSerializer(books, many=True)
-        return Response(books_serializer.data, status=status.HTTP_200_OK)
+        book_data = {
+            'best_sellers': BookSerializer(best_sellers, many=True).data,
+            'literary_fiction': BookSerializer(literary_fiction, many=True).data,
+            'science_fiction': BookSerializer(science_fiction, many=True).data,
+            'political_nonfiction': BookSerializer(political_nonfiction, many=True).data,
+            'philosophical_nonfiction': BookSerializer(philosophical_nonfiction, many=True).data,
+            'biography': BookSerializer(biography, many=True).data,
+            'poetry': BookSerializer(poetry, many=True).data,
+            'literary_criticism': BookSerializer(literary_criticism, many=True).data
+        }
+
+
+        
+        return Response(book_data, status=status.HTTP_200_OK)
 
     except ValidationError as e:
 
