@@ -46,6 +46,7 @@ def get_books(request):
         biography = Book.objects.filter(genres_id=6)
         poetry = Book.objects.filter(genres_id=3)
         literary_criticism = Book.objects.filter(genres_id=2)
+        drama = Book.objects.filter(genres_id=24)
 
         book_data = {
             'best_sellers': BookSerializer(best_sellers, many=True).data,
@@ -55,7 +56,8 @@ def get_books(request):
             'philosophical_nonfiction': BookSerializer(philosophical_nonfiction, many=True).data,
             'biography': BookSerializer(biography, many=True).data,
             'poetry': BookSerializer(poetry, many=True).data,
-            'literary_criticism': BookSerializer(literary_criticism, many=True).data
+            'literary_criticism': BookSerializer(literary_criticism, many=True).data,
+            'drama': BookSerializer(drama, many=True).data
         }
 
 
