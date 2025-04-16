@@ -1,5 +1,5 @@
 import './BooksPage.css'
-import BookSlider from '../BookSlider/BookSlider'
+// import Carousel from '../Carousel/Carousel'
 import { useGetBooksQuery,  } from '../../slices/bookApiSlice'
 import SlideHeader from '../Headers/SlideHeader/SlideHeader'
 import { Book } from '../../types'
@@ -24,36 +24,36 @@ const BooksPage = () => {
 
         return(
             <div className='books-main-content'>
-            {/* //     <div className='content best-sellers'>
-            //         <SlideHeader>Bestsellers</SlideHeader>
-            //         <BookSlider>{best_sellers}</BookSlider>
-            //     </div>
-            //     <div className='content drama'>
-            //         <SlideHeader>Drama</SlideHeader>
-            //         <BookSlider>{drama}</BookSlider>
-            //     </div>
-            //     <div className='content literary-fiction'>
-            //         <SlideHeader>Classic Fiction</SlideHeader>
-            //         <BookSlider>{literary_fiction}</BookSlider>
-            //     </div>
-            //     <div className='content science-fiction'>
-            //         <SlideHeader>Science Fiction</SlideHeader>
-            //         <BookSlider>{science_fiction}</BookSlider>
-            //     </div>
-            //     <div className='content contemporary-fiction'>
-            //         <SlideHeader>Contemporary Classics</SlideHeader>
-            //         <BookSlider>{contemporary_fiction}</BookSlider>
-            //     </div>
-            //     <div className='content fantasy'>
-            //         <SlideHeader>Fantasy</SlideHeader>
-            //         <BookSlider>{fantasy}</BookSlider>
-            //     </div>
-            //     <div className='content detective-mystery-fiction'>
-            //         <SlideHeader>Detective and Mystery Fiction</SlideHeader>
-            //         <BookSlider>{detective_fiction}</BookSlider>
-            //     </div> */}
+                    <div className='content best-sellers'>
+                   <SlideHeader>Bestsellers</SlideHeader>
+                     <Carousel>{best_sellers}</Carousel>
+                 </div>
+                 <div className='content drama'>
+                    <SlideHeader>Drama</SlideHeader>
+                    <Carousel>{drama}</Carousel>
+                </div>
+                 <div className='content literary-fiction'>
+                   <SlideHeader>Classic Fiction</SlideHeader>
+                   <Carousel>{literary_fiction}</Carousel>
+                 </div>
+               <div className='content science-fiction'>
+                    <SlideHeader>Science Fiction</SlideHeader>
+                     <Carousel>{science_fiction}</Carousel>
+                </div>
+                <div className='content contemporary-fiction'>
+                    <SlideHeader>Contemporary Classics</SlideHeader>
+                     <Carousel>{contemporary_fiction}</Carousel>
+                 </div>
+                <div className='content fantasy'>
+                    <SlideHeader>Fantasy</SlideHeader>
+                     <Carousel>{fantasy}</Carousel>
+                </div>
+                <div className='content detective-mystery-fiction'>
+                     <SlideHeader>Detective and Mystery Fiction</SlideHeader>
+                    <Carousel>{detective_fiction}</Carousel>
+                </div>
 
-            <Carousel>{best_sellers}</Carousel>
+            
 
 
 

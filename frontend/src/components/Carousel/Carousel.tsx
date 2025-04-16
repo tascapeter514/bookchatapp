@@ -1,5 +1,5 @@
 import { Book, Author } from '../../types'
-import { useRef, useState, MouseEvent } from 'react'
+import { useRef, useState, MouseEvent, useLayoutEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { RightArrow, LeftArrow } from '../Icons'
 import './Carousel.css'
@@ -10,28 +10,36 @@ interface Props {
 }
 
 
-
-
-
 const Carousel = ({children}: Props) => {
 
     const carouselRef = useRef<HTMLUListElement>(null);
+    const [booksPerPage, setBooksPerPage] = useState<number>(5)
+    const [currentPage, setCurrentPage] = useState<number>(0)
 
-    const getBooksPerPage = () => {
-        console.log('get books per page check')
-        const container = carouselRef.current;
-        console.log('container:', container)
-        if (!container) return 5;
-    
-        const containerWidth = container.offsetWidth;
-        const book = container.querySelector('.carousel-element') as HTMLElement;
-        if (!book) return 5;
-    
-        const bookWidth = book.offsetWidth;
-        return Math.floor(containerWidth / bookWidth);
-    }
+    useLayoutEffect(() => {
 
-    const booksPerPage = getBooksPerPage();
+        const getBooksPerPage = () => {
+            console.log('get books per page check')
+            const container = carouselRef.current;
+            console.log('container:', container)
+            if (!container) return 5;
+        
+            const containerWidth = container.offsetWidth;
+            const book = container.querySelector('.carousel-element') as HTMLElement;
+            if (!book) return 5;
+        
+            const bookWidth = book.offsetWidth;
+            const books = Math.floor(containerWidth / bookWidth)
+            setBooksPerPage(books)
+        }
+
+        getBooksPerPage()
+        window.addEventListener('resize', getBooksPerPage)
+        return () => window.removeEventListener('resize', getBooksPerPage)
+
+    }, [])
+
+   
     const totalBooks = children.length
     const maxPage = Math.ceil(totalBooks / booksPerPage) - 1
     
@@ -44,24 +52,24 @@ const Carousel = ({children}: Props) => {
         const carousel = carouselRef.current
         if (!carousel) return;
 
-        const indexString = getComputedStyle(carousel).getPropertyValue('--slider-index')
-        const currentPage = parseInt(indexString, 10) || 0;
+        const book = carousel.querySelector('.carousel-element') as HTMLElement;
+        if(!book) return
 
-        const remainingBooks = totalBooks % booksPerPage
-        console.log('remaining books:', remainingBooks)
+        const bookWidth = book.offsetWidth;
 
-        console.log('books per page:', booksPerPage)
-
-        console.log('current page:', currentPage)
-        console.log('max page:', maxPage)
 
         const newPage = handle.classList.contains('right-handle')
             ? Math.min(currentPage + 1, maxPage)
             : Math.max(0, currentPage - 1)
 
-        console.log('new page:', newPage)
+        setCurrentPage(newPage)
 
-        carousel.style.setProperty('--slider-index', newPage.toString())
+
+        const scrollAmount = (bookWidth) * booksPerPage * newPage
+
+        
+        carousel.style.transform = `translateX(-${scrollAmount}px)`
+    
         
     }
 
@@ -69,7 +77,7 @@ const Carousel = ({children}: Props) => {
 
 
 
-    const books = children.map((book: Book, index: number)=> {
+    const books = children.map((book: Book)=> {
         return(
         <li className='carousel-element' key={book.id}>
                 <Link to={`/book/${book.id}`}>
@@ -104,5 +112,3 @@ const Carousel = ({children}: Props) => {
 }
 
 export default Carousel
-
-// style={{ transform: `translateX(${offset}px)` }}

@@ -23,10 +23,8 @@
 
     --slider-index: 0;
     display: flex;
-    /* flex-grow: 1; */
-
+    width: 100%;
     padding: 0;
-    transform: translateX(calc(var(--slider-index) * -100%));
     transition: transform 250ms ease-in-out;
 
 
@@ -34,13 +32,17 @@
 
 .carousel-element {
 
-    /* border: 1px solid red; */
     width: 100%;
     flex: 0 0 20%;
-    max-width: 20%;
+    max-width: 183px;
     overflow: hidden;
     padding: .25em;
     transition: transform 250ms ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    
   
 }
 
@@ -57,6 +59,9 @@
 
 .carousel-image {
     width: 100%;
+    max-height: 285px;
+    object-fit: contain;
+    
     
 }
 
@@ -69,17 +74,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 5rem;
+    width: 3rem;
+    aspect-ratio: 1 / 1;
     line-height: 0;
     transition: background-color 150ms ease-in-out;
-    border: 1px solid red;
 }
 
 
 .right-arrow, .left-arrow {
 
     transition: transform 150ms ease-in-out;
-    min-width: 2.5rem;
+    width: 100%;
+    height: 100%
 
 }
 
@@ -91,7 +97,6 @@
 }
 
 .carousel-book-title, .carousel-author-text {
-    /* align-self: flex-start; */
     font-size: 16px;
     text-align: left;
     color: black;
@@ -106,9 +111,12 @@
         max-width: 750px;
     }
 
-    .book-list {
-        width: 100%;
+    .carousel-element {
+        flex: 0 0 25%;
+        max-width: 25%;
     }
+
+
 }
 
 
@@ -123,7 +131,27 @@
     .carousel-element {
         flex: 0 0 33.33%;
         max-width: 33.33%;
-        border: 1px solid lime;
+        /* border: 1px solid lime; */
+
+    }
+}
+
+@media ( max-width: 650px) {
+    .carousel-container {
+        max-width: 350px;
+    }
+
+    .carousel-element {
+        flex: 0 0 100%;
+        max-width: 100%;
+
+    }
+
+    .carousel-book-title, .carousel-author-text {
+
+        text-align: center;
+        text-wrap: balance;
+        font-size: 14px;
 
     }
 }

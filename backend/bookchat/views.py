@@ -38,13 +38,20 @@ def get_book(request, id):
 def get_books(request):
     print('get books check')
     try:
-        best_sellers = Book.objects.filter(genres_id=18)
-        literary_fiction = Book.objects.filter(genres_id=1)[:15]
-        science_fiction = Book.objects.filter(genres_id=23)[:15]
-        drama = Book.objects.filter(genres_id=24)
-        contemporary_fiction = Book.objects.filter(genres_id=25)[:15]
-        fantasy = Book.objects.filter(genres_id=15)
-        detective_fiction = Book.objects.filter(genres_id=8)
+
+        def with_images(queryset):
+            return queryset.exclude(imageLinks__smallThumbnail__isnull=True).exclude(imageLinks__smallThumbnail__exact='')
+
+
+
+        best_sellers = with_images(Book.objects.filter(genres_id=18))
+        literary_fiction = with_images(Book.objects.filter(genres_id=1))[:15]
+        science_fiction = with_images(Book.objects.filter(genres_id=23))[:15]
+        drama = with_images(Book.objects.filter(genres_id=24))
+        contemporary_fiction = with_images(Book.objects.filter(genres_id=25))[:15]
+        fantasy = with_images(Book.objects.filter(genres_id=15))
+        detective_fiction = with_images(Book.objects.filter(genres_id=8))
+
 
         book_data = {
             'best_sellers': BookSerializer(best_sellers, many=True).data,
