@@ -20,13 +20,10 @@ const Carousel = ({children}: Props) => {
 
     
     const handleScroll = (e: MouseEvent<HTMLButtonElement>) => {
-        // console.log('handle scroll event:', e)
+
         const handle = e.currentTarget
         const carousel = carouselRef.current
         if (!carousel) return;
-
-
-        // console.log('handle:', handle)
 
         const indexString = getComputedStyle(carousel).getPropertyValue('--slider-index')
         const currentPage = parseInt(indexString, 10) || 0;
@@ -51,13 +48,15 @@ const Carousel = ({children}: Props) => {
         return(
 
         <li className='carousel-element' key={book.id}>
-            <Link to={`/book/${book.id}`}>
-                <img src={book.imageLinks['smallThumbnail']} alt="carousel-img" className='carousel-image'/>
-                <small className='carousel-book-title'>{book.name}</small>
-                {book.authors?.map((author: Author) => (
-                    <small className='carousel-author-text' key={author.id}>{author.name}</small>
-                ))}
-            </Link>
+            <div className="carousel-card">
+                <Link to={`/book/${book.id}`}>
+                    <img src={book.imageLinks['smallThumbnail']} alt="carousel-img" className='carousel-image'/>
+                    <small className='carousel-book-title'>{book.name}</small>
+                    {book.authors?.map((author: Author) => (
+                        <small className='carousel-author-text' key={author.id}>{author.name}</small>
+                    ))}
+                </Link>
+            </div>
         </li>
         )
     })

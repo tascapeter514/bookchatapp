@@ -37,10 +37,17 @@
     width: 100%;
     flex: 0 0 20%;
     /* max-width: 20%; */
-    transition: transform 250ms ease-in-out
+    overflow: hidden;
+    padding: .5em;
+  
 }
 
-.carousel-element:hover {
+.carousel-card {
+    transition: transform 250ms ease-in-out;
+    width: 100%;
+}
+
+.carousel-card:hover {
     transform: scale(1.1)
 }
 
