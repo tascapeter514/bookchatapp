@@ -65,11 +65,15 @@ const Carousel = ({children}: Props) => {
     return(
 
         <div className="carousel-container">
-            {/* <LeftArrow onClick={() => scroll('left')} />
-            <RightArrow onClick={() => scroll('right')}/> */}
-            <ul className='carousel' ref={carouselRef} style={{ transform: `translateX(${offset}px)` }}>
+            <button className="handle left-handle">
+                <LeftArrow onClick={() => scroll('left')} />
+            </button>
+            <ul className='carousel' ref={carouselRef} >
                 {books}
             </ul>
+            <button className="handle right-handle">
+                <RightArrow onClick={() => scroll('right')}/>
+            </button>
         </div>
 
     )
@@ -77,3 +81,5 @@ const Carousel = ({children}: Props) => {
 }
 
 export default Carousel
+
+// style={{ transform: `translateX(${offset}px)` }}
