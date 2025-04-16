@@ -47,7 +47,7 @@ const Carousel = ({children}: Props) => {
 
 
 
-    const carouselElements = children.map((book: Book, index: number)=> {
+    const books = children.map((book: Book, index: number)=> {
         return(
 
         <li className='carousel-element' key={book.id} ref={index === 0 ? firstBookRef : null}>
@@ -68,7 +68,7 @@ const Carousel = ({children}: Props) => {
             <LeftArrow onClick={() => scroll('left')} />
             <RightArrow onClick={() => scroll('right')}/>
             <ul className='carousel' ref={carouselRef} style={{ transform: `translateX(${offset}px)` }}>
-                {carouselElements}
+                {books}
             </ul>
         </div>
 

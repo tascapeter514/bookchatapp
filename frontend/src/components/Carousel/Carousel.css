@@ -2,14 +2,21 @@
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: 1fr;
+
 }
 
 .carousel-container {
 
-    /* grid-auto-columns: 100%; */
     border: 3px solid green;
-    max-width: 950px;
+    width: 100%;
+    max-width: 975px;
     grid-auto-columns: 100%;
+    overflow-x: hidden;
+    position: relative;
+
+
+    
+   
 
 }
 
@@ -36,36 +43,40 @@
 
 .carousel {
 
-    grid-auto-columns: 20%;
+    grid-auto-columns: 19.5%;
     border: 5px solid yellow;
     padding: 0;
+    grid-gap: .25em;
 
 }
 
 
 
 .carousel-element {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    scroll-snap-align: center;
-    flex: 0 0 auto;
-    width: 180px;
+
+    border: 1px solid red;
+    padding: .5em;
+    
 }
 
 .carousel-element a {
-    border: 1px solid red;
-    display: flex;
-    flex-direction: column;
-    /* align-items: center; */
-    gap: .25rem;
     text-decoration: none;
-    color: black;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: .25rem;
+
+    
+
 }
 
 
 .carousel-image {
     height: 250px;
+    width: 100%;
+    object-fit: cover;
+
+
     
     
 }
@@ -74,8 +85,9 @@
 
 .carousel-book-title, .carousel-author-text {
     align-self: flex-start;
-    font-size: 14px;
+    font-size: 16px;
     text-align: left;
+    color: black;
     
 }
 
