@@ -39,15 +39,13 @@
     /* max-width: 20%; */
     overflow: hidden;
     padding: .5em;
+    transition: transform 250ms ease-in-out;
   
 }
 
-.carousel-card {
-    transition: transform 250ms ease-in-out;
-    width: 100%;
-}
 
-.carousel-card:hover {
+
+.carousel-element:hover {
     transform: scale(1.1)
 }
 
