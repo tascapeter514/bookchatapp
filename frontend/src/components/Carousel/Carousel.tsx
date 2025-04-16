@@ -11,12 +11,31 @@ interface Props {
 
 
 
+
+
 const Carousel = ({children}: Props) => {
 
     const carouselRef = useRef<HTMLUListElement>(null);
-    const booksPerPage = 5;
+
+    const getBooksPerPage = () => {
+        console.log('get books per page check')
+        const container = carouselRef.current;
+        console.log('container:', container)
+        if (!container) return 5;
+    
+        const containerWidth = container.offsetWidth;
+        const book = container.querySelector('.carousel-element') as HTMLElement;
+        if (!book) return 5;
+    
+        const bookWidth = book.offsetWidth;
+        return Math.floor(containerWidth / bookWidth);
+    }
+
+    const booksPerPage = getBooksPerPage();
     const totalBooks = children.length
     const maxPage = Math.ceil(totalBooks / booksPerPage) - 1
+    
+    
 
     
     const handleScroll = (e: MouseEvent<HTMLButtonElement>) => {
@@ -28,13 +47,19 @@ const Carousel = ({children}: Props) => {
         const indexString = getComputedStyle(carousel).getPropertyValue('--slider-index')
         const currentPage = parseInt(indexString, 10) || 0;
 
-        console.log('index type:', typeof currentPage)
+        const remainingBooks = totalBooks % booksPerPage
+        console.log('remaining books:', remainingBooks)
 
-        console.log('computed style:', currentPage)
+        console.log('books per page:', booksPerPage)
+
+        console.log('current page:', currentPage)
+        console.log('max page:', maxPage)
 
         const newPage = handle.classList.contains('right-handle')
             ? Math.min(currentPage + 1, maxPage)
             : Math.max(0, currentPage - 1)
+
+        console.log('new page:', newPage)
 
         carousel.style.setProperty('--slider-index', newPage.toString())
         

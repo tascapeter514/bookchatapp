@@ -15,6 +15,7 @@
     overflow: hidden;
     display: flex;
     justify-content: center;
+    padding: .25em;
     
 }
 
@@ -22,7 +23,7 @@
 
     --slider-index: 0;
     display: flex;
-    flex-grow: 1;
+    /* flex-grow: 1; */
 
     padding: 0;
     transform: translateX(calc(var(--slider-index) * -100%));
@@ -36,9 +37,9 @@
     /* border: 1px solid red; */
     width: 100%;
     flex: 0 0 20%;
-    /* max-width: 20%; */
+    max-width: 20%;
     overflow: hidden;
-    padding: .5em;
+    padding: .25em;
     transition: transform 250ms ease-in-out;
   
 }
@@ -56,7 +57,6 @@
 
 .carousel-image {
     width: 100%;
-    padding: .25em;
     
 }
 
@@ -72,12 +72,14 @@
     font-size: 5rem;
     line-height: 0;
     transition: background-color 150ms ease-in-out;
+    border: 1px solid red;
 }
 
 
 .right-arrow, .left-arrow {
 
     transition: transform 150ms ease-in-out;
+    min-width: 2.5rem;
 
 }
 
@@ -89,12 +91,41 @@
 }
 
 .carousel-book-title, .carousel-author-text {
-    align-self: flex-start;
+    /* align-self: flex-start; */
     font-size: 16px;
     text-align: left;
     color: black;
     display: block;
     
+}
+
+
+@media (max-width: 1000px) {
+
+    .carousel-container {
+        max-width: 750px;
+    }
+
+    .book-list {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 750px) {
+
+    .carousel-container {
+        max-width: 600px;
+    }
+
+
+
+    .carousel-element {
+        flex: 0 0 33.33%;
+        max-width: 33.33%;
+        border: 1px solid lime;
+
+    }
 }
 
 
