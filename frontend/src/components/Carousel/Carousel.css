@@ -41,19 +41,36 @@
 }
 
 .handle {
-    width: var(--slider-padding);
     background-color: rgba(0, 0, 0, .25);
     z-index: 1000;
     margin: .25rem 0;
     flex-grow: 0;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 5rem;
-    text-align: center;
-    position: relative;
+    line-height: 0;
+    transition: background-color 150ms ease-in-out;
 }
 
-.handle:hover {
-    background-color: rgba(0, 0, 0, .5)
+.handle:hover,
+.handle:focus {
+    background-color: rgba(0, 0, 0, .5);
+
+}
+
+.right-arrow, .left-arrow {
+
+    transition: transform 150ms ease-in-out;
+
+}
+
+.handle:hover .right-arrow, 
+.handle:hover .left-arrow, 
+.handle:focus .right-arrow,
+.handle:focus .left-arrow {
+    transform: scale(1.2)
 }
 
 
