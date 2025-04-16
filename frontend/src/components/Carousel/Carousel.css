@@ -1,18 +1,12 @@
-.carousel-container, .carousel {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: 1fr;
 
-}
 
 .carousel-container {
-
-    border: 3px solid green;
+    border: 3px solid gold;
     width: 100%;
-    max-width: 975px;
-    grid-auto-columns: 100%;
-    overflow-x: hidden;
-    position: relative;
+    max-width: 950px;
+
+
+   
 
 
     
@@ -20,8 +14,32 @@
 
 }
 
+
+.carousel {
+    display: flex;
+    border: 1px solid lime;
+    width: 100%;
+    gap: .75rem;
+
+    padding: 0;
+
+}
+
+.carousel-element {
+
+    border: 1px solid red;
+    width: 100%;
+    flex: 0 0 19%;
+    max-width: 19%;
+}
+
+.carousel-image {
+    width: 100%;
+    
+}
+
+/* 
 .right-arrow, .left-arrow{
-    /* border: 1px solid red; */
     width: 50px;
     height: 50px;
     position: absolute;
@@ -30,66 +48,49 @@
     cursor: pointer;
     z-index: 90000;
 
-}
+} */
 
-.right-arrow {
+/* .right-arrow {
     right: -30px;
 
 }
 
 .left-arrow {
     left: 0;
-}
+} */
 
-.carousel {
-
-    grid-auto-columns: 19.5%;
-    border: 5px solid yellow;
-    padding: 0;
-    grid-gap: .25em;
-
-}
-
-
-
-.carousel-element {
+/* .carousel-element {
 
     border: 1px solid red;
     padding: .5em;
     
-}
+} */
 
-.carousel-element a {
+/* .carousel-element a {
     text-decoration: none;
     display: flex;
     justify-content: center;
     flex-direction: column;
     gap: .25rem;
 
-    
-
-}
+} */
 
 
-.carousel-image {
+/* .carousel-image {
     height: 250px;
     width: 100%;
-    object-fit: cover;
-
-
-    
-    
-}
+    object-fit: cover;   
+} */
 
 
 
-.carousel-book-title, .carousel-author-text {
+/* .carousel-book-title, .carousel-author-text {
     align-self: flex-start;
     font-size: 16px;
     text-align: left;
     color: black;
     
-}
+} */
 
 
 

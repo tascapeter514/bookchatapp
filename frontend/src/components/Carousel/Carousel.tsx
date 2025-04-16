@@ -65,8 +65,8 @@ const Carousel = ({children}: Props) => {
     return(
 
         <div className="carousel-container">
-            <LeftArrow onClick={() => scroll('left')} />
-            <RightArrow onClick={() => scroll('right')}/>
+            {/* <LeftArrow onClick={() => scroll('left')} />
+            <RightArrow onClick={() => scroll('right')}/> */}
             <ul className='carousel' ref={carouselRef} style={{ transform: `translateX(${offset}px)` }}>
                 {books}
             </ul>
