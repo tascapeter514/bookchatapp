@@ -14,6 +14,9 @@ interface Props {
 const Carousel = ({children}: Props) => {
 
     const carouselRef = useRef<HTMLUListElement>(null);
+    const booksPerPage = 5;
+    const totalBooks = children.length
+    const maxPage = Math.ceil(totalBooks / booksPerPage) - 1
 
     
     const handleScroll = (e: MouseEvent<HTMLButtonElement>) => {
@@ -26,17 +29,17 @@ const Carousel = ({children}: Props) => {
         // console.log('handle:', handle)
 
         const indexString = getComputedStyle(carousel).getPropertyValue('--slider-index')
-        const carouselIndex = parseInt(indexString, 10) || 0;
+        const currentPage = parseInt(indexString, 10) || 0;
 
-        console.log('index type:', typeof carouselIndex)
+        console.log('index type:', typeof currentPage)
 
-        console.log('computed style:', carouselIndex)
+        console.log('computed style:', currentPage)
 
-        const newIndex = handle.classList.contains('right-handle')
-            ? carouselIndex + 1
-            : Math.max(0, carouselIndex - 1)
+        const newPage = handle.classList.contains('right-handle')
+            ? Math.min(currentPage + 1, maxPage)
+            : Math.max(0, currentPage - 1)
 
-        carousel.style.setProperty('--slider-index', newIndex.toString())
+        carousel.style.setProperty('--slider-index', newPage.toString())
         
     }
 

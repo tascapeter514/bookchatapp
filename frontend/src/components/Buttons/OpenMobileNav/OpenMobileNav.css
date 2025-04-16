@@ -32,7 +32,7 @@
         height: auto;
     }
 
-    .user-icon, * {
+    .user-icon > * {
         fill: orange;
     }
 
