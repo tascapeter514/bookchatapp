@@ -1,5 +1,5 @@
 import { Book, Author } from '../../types'
-import { useRef, useState } from 'react'
+import { useRef, useState, MouseEvent } from 'react'
 import { Link } from 'react-router-dom'
 import { RightArrow, LeftArrow } from '../Icons'
 import './Carousel.css'
@@ -14,43 +14,40 @@ interface Props {
 const Carousel = ({children}: Props) => {
 
     const carouselRef = useRef<HTMLUListElement>(null);
-    const firstBookRef = useRef<HTMLLIElement>(null)
-    const [offset, setOffset] = useState(0)
 
-    const scroll = (direction: 'left' | 'right') => {
-        console.log('scroll check')
-        const container = carouselRef.current;
-        if (!container) return
+    
+    const handleScroll = (e: MouseEvent<HTMLButtonElement>) => {
+        // console.log('handle scroll event:', e)
+        const handle = e.currentTarget
+        const carousel = carouselRef.current
+        if (!carousel) return;
 
-        const book = container.querySelector('.carousel-element') as HTMLLIElement | null
-        if (!book) return
 
-        const bookStyle = getComputedStyle(book)
-        const bookWidth = book.offsetWidth + parseFloat(bookStyle.marginRight || '0')
+        // console.log('handle:', handle)
 
-        const scrollAmount = bookWidth * 5;
-        const maxScroll = container.scrollWidth - container.offsetWidth
+        const indexString = getComputedStyle(carousel).getPropertyValue('--slider-index')
+        const carouselIndex = parseInt(indexString, 10) || 0;
 
-        setOffset(prevOffset => {
-            const newOffset =
-                direction === 'left'
-                ? Math.min(prevOffset + scrollAmount, 0)
-                : Math.max(prevOffset - scrollAmount, -maxScroll);
-            return newOffset;
-        })
+        console.log('index type:', typeof carouselIndex)
+
+        console.log('computed style:', carouselIndex)
+
+        const newIndex = handle.classList.contains('right-handle')
+            ? carouselIndex + 1
+            : Math.max(0, carouselIndex - 1)
+
+        carousel.style.setProperty('--slider-index', newIndex.toString())
+        
     }
 
-    //    setOffset(prevOffset => {
-    //     const newOffset = direction === 'left' ? prevOffset - scrollAmount : prevOffset + scrollAmount
-    //     return Math.max(Math.min(newOffset, 0), -(container.scrollWidth - container.offsetWidth))
-    //    })
+  
 
 
 
     const books = children.map((book: Book, index: number)=> {
         return(
 
-        <li className='carousel-element' key={book.id} ref={index === 0 ? firstBookRef : null}>
+        <li className='carousel-element' key={book.id}>
             <Link to={`/book/${book.id}`}>
                 <img src={book.imageLinks['smallThumbnail']} alt="carousel-img" className='carousel-image'/>
                 <small className='carousel-book-title'>{book.name}</small>
@@ -65,14 +62,16 @@ const Carousel = ({children}: Props) => {
     return(
 
         <div className="carousel-container">
-            <button className="handle left-handle">
-                <LeftArrow onClick={() => scroll('left')} />
+            <button className="handle left-handle" onClick={(e) => handleScroll(e)}>
+                <LeftArrow />
             </button>
-            <ul className='carousel' ref={carouselRef} >
-                {books}
-            </ul>
-            <button className="handle right-handle">
-                <RightArrow onClick={() => scroll('right')}/>
+            <div className="carousel">
+                <ul className='book-list'  ref={carouselRef}>
+                    {books}
+                </ul>
+            </div>
+            <button className="handle right-handle" onClick={(e) => handleScroll(e)}>
+                <RightArrow />
             </button>
         </div>
 

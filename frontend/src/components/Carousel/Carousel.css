@@ -3,7 +3,7 @@
 }
 
 .carousel-container {
-    border: 3px solid gold;
+    /* border: 3px solid gold; */
     width: 100%;
     max-width: 1000px;
     display: flex;
@@ -14,30 +14,44 @@
 
 
 .carousel {
+    /* border: 10px solid red; */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.book-list {
 
     --slider-index: 0;
     display: flex;
-    border: 5px solid lime;
     flex-grow: 1;
-    /* width: calc(100% - var(--slider-padding)); */
-    gap: .55rem;
+    /* gap: .5rem; */
     padding: 0;
-    overflow: hidden;
+    
+    
+    
 
     /* DO WE NEED? */
-    margin: 0 .25rem;
-    transform: translateX(calc(var(--slider-index) * -100%))
+    /* margin: 0 .25rem; */
+    transform: translateX(calc(var(--slider-index) * -100%));
+    transition: transform 250ms ease-in-out;
 
 
 }
 
 .carousel-element {
 
-    border: 1px solid red;
+    /* border: 1px solid red; */
     width: 100%;
-    flex: 0 0 19%;
-    max-width: 19%;
-  
+    flex: 0 0 20%;
+    max-width: 20%;
+   
+}
+
+.carousel-element a {
+    text-decoration: none;
+
 }
 
 .carousel-image {
@@ -49,9 +63,9 @@
 .handle {
     background-color: rgba(0, 0, 0, .25);
     z-index: 1000;
-    margin: .25rem 0;
+    /* margin: .25rem 0; */
     flex-grow: 0;
-    padding: 0 .25rem;
+    /* padding: 0 .25rem; */
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -78,6 +92,15 @@
 .handle:focus .right-arrow,
 .handle:focus .left-arrow {
     transform: scale(1.2)
+}
+
+.carousel-book-title, .carousel-author-text {
+    align-self: flex-start;
+    font-size: 16px;
+    text-align: left;
+    color: black;
+    display: block;
+    
 }
 
 
@@ -136,13 +159,7 @@
 
 
 
-/* .carousel-book-title, .carousel-author-text {
-    align-self: flex-start;
-    font-size: 16px;
-    text-align: left;
-    color: black;
-    
-} */
+
 
 
 
