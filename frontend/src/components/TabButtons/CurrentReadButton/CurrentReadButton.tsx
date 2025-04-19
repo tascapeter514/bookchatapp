@@ -8,11 +8,12 @@ import CreatePollModal from '../../Modals/CreatePollModal/CreatePollModal'
 interface Props {
     tabs: TabState,
     dispatchTabs: Dispatch<TabAction>,
-    books: Book[]
+    books: Book[],
+    bookclubId: number
 }
 
 
-const CurrentReadButton = ({dispatchTabs, tabs, books}: Props) => {
+const CurrentReadButton = ({dispatchTabs, tabs, books, bookclubId}: Props) => {
 
     return(
         <div className="tab-button current-read">
@@ -22,7 +23,7 @@ const CurrentReadButton = ({dispatchTabs, tabs, books}: Props) => {
             >
                 Current Read
             </a>
-            <CreatePollModal books={books}/>
+            <CreatePollModal books={books} bookclubId={bookclubId}/>
         </div>
     )
 

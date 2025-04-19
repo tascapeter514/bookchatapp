@@ -2,7 +2,7 @@ import { apiSlice } from "./apiSlice";
 import { Poll } from "../types";
 
 
-export const pollApiSlice = apiSlice.injectEndpoints({
+export const pollApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         createPoll: builder.mutation({
             query: (data: Poll) => ({
@@ -14,3 +14,4 @@ export const pollApiSlice = apiSlice.injectEndpoints({
     })
 })
 
+export const {useCreatePollMutation} = pollApi

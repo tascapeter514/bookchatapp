@@ -1,33 +1,31 @@
 import './CreatePollModal.css'
 import CreateButton from '../../Buttons/CreateButton/CreateButton'
 import Button from '../../Buttons/Button/Button'
+import {  handlePollError, PollError } from '../../../utils/errorHandling'
 import ErrorMessage from '../../Messages/ErrorMessage/ErrorMessage'
 import { Book } from '../../../types'
 import { selectBookOne, selectBookTwo, selectBookThree } from '../../../slices/pollSlice'
+import { useCreatePollMutation } from '../../../slices/pollApiSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { useRef, ChangeEvent } from 'react'
 import { RootState } from '../../../store/store'
 
 
 interface Props {
-    books: Book[]
+    books: Book[],
+    bookclubId: number
 }
 
 
-// VALIDATE ON BACKEND?
-// if (poll.bookOne && poll.bookTwo && poll.bookThree) {
-//     console.log('ready to create a poll!')
-// } else {
-//     throw new Error('You must select three books to create a poll')
-// }
 
-const CreatePollModal = ({books}: Props) => {
+const CreatePollModal = ({books, bookclubId}: Props) => {
 
     const pollRef = useRef<HTMLDialogElement>(null)
     const openModal = () => pollRef.current?.showModal()
     const closeModal = () => pollRef.current?.close()
     const { poll } = useSelector((state: RootState) => state.poll)
     const dispatch = useDispatch()
+    const [createPoll, {isLoading, isError, error}] = useCreatePollMutation()
     
     const handleChangeBooks = (event: ChangeEvent<HTMLSelectElement>) => {
         console.log('event:', event)
@@ -62,7 +60,18 @@ const CreatePollModal = ({books}: Props) => {
 
     const handleCreatePoll = () => {
 
+        const data = {
+            bookOne: poll.bookOne,
+            bookTwo: poll.bookTwo,
+            bookThree: poll.bookThree,
+            bookclubId: bookclubId
+        }
+
         try {
+
+            const response = createPoll(data).unwrap()
+
+            console.log('poll response:', response)
 
             
 
@@ -86,6 +95,7 @@ const CreatePollModal = ({books}: Props) => {
         <>
             <CreateButton onClick={openModal}>Poll</CreateButton>
             <dialog className='poll-dialog' ref={pollRef}>
+            {isError && <ErrorMessage>{handlePollError(error as PollError)}</ErrorMessage>}
                 {books.length >= 3 ? (
                     <>
                        <label>Book One</label>

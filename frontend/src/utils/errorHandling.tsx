@@ -44,6 +44,13 @@ export type InviteError = {
     }
 }
 
+export type PollError = {
+    status: number,
+    data: {
+        poll?: string
+    }
+}
+
 
 
 export const handleLoginError = (err: LoginError ) => {
@@ -112,6 +119,16 @@ export const handleInviteError = (err: InviteError) => {
 
             return err.data.duplicate
         }
+    }
+
+    return 'Your request to send an invitation failed. Please try again.'
+}
+
+
+export const handlePollError = (err: PollError) => {
+    
+    if ('data' in err) {
+        return err.data.poll ? err.data.poll : 'Unknown poll error'
     }
 
     return 'Your request to send an invitation failed. Please try again.'

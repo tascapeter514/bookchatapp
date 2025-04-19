@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { Bookclub, Bookshelf } from "../types";
-import { BsBuildingExclamation } from "react-icons/bs";
 
 
 export interface BookclubData {

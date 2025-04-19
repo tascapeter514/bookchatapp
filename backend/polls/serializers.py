@@ -1,20 +1,15 @@
 from rest_framework import serializers
 from .models import Poll
-
-
-# # USER SERIALIZER
-# class UserSerializer(serializers.ModelSerializer):
-#     profile = ProfileSerializer(read_only=True, required=False, allow_null=True)
-#     date_joined = serializers.DateTimeField(format="%d %B %Y")
-    
-#     class Meta:
-#         model = User
-
-#         fields = ['id', 'username', 'profile', 'first_name', 'last_name', 'email', 'date_joined', 'password']
+from bookchat.serializers import BookSerializer
 
 
 
 class PollSerializer(serializers.ModelSerializer):
+    book_one = BookSerializer()
+    book_two = BookSerializer()
+    book_three = BookSerializer()
+
+
 
     class Meta:
         model = Poll

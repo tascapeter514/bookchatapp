@@ -49,7 +49,7 @@ const BookclubPage = () => {
 
                     </DashboardMain>
                     <DashboardNav mobileNav={mobileNav}>
-                        <CurrentReadButton dispatchTabs={dispatchTabs} tabs={bookclubTabs} books={books}/>
+                        <CurrentReadButton dispatchTabs={dispatchTabs} tabs={bookclubTabs} books={books ?? []} bookclubId={bookclub.id}/>
                         <InviteButton bookclub={bookclub}/>
                         <BookshelfButton>
                             <NavbarDivider />

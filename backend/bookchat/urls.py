@@ -15,12 +15,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
     """
 
-from rest_framework import routers
 from .views import *
 from django.urls import path, include
 
 
-router = routers.DefaultRouter()
 
 
 
@@ -47,8 +45,7 @@ urlpatterns = [
     
     
      path('api/fileUpload/<uuid:id>', upload_file, name='upload_file'),
-     
-     path('', include(router.urls))
+    
 ]
 
 
