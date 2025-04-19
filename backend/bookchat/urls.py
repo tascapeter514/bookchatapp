@@ -16,13 +16,12 @@ Including another URLconf
     """
 
 from rest_framework import routers
-from .api import BestsellerViewSet, InvitationAPI
 from .views import *
 from django.urls import path, include
 
 
 router = routers.DefaultRouter()
-router.register('', BestsellerViewSet, 'homepage')
+
 
 
 
@@ -42,9 +41,7 @@ urlpatterns = [
 
     # UNFINISHED ROUTES? NEED WORK
     path('api/author/<int:id>', get_author_data, name='get_author_data'),
-     
-     path('api/getInvites/<int:id>', InvitationAPI.as_view(), name='get-invites'),
-     path('api/acceptInvite', InvitationAPI.as_view(), name='accept-invite'),
+    
 
     #  path('api/bookclub/<uuid:id>', get_bookclub, name='get_bookclub'),
     

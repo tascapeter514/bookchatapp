@@ -1,5 +1,4 @@
 from django.urls import path, include
-from .api import InviteUsersAPI
 from knox import views as knox_views
 from rest_framework.routers import DefaultRouter
 from .views import *

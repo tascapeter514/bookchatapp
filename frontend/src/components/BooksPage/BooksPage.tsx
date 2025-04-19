@@ -25,7 +25,7 @@ const BooksPage = () => {
         return(
             <div className='books-main-content'>
                     <div className='content best-sellers'>
-                   <SlideHeader>Bestsellers</SlideHeader>
+                     <SlideHeader>Bestsellers</SlideHeader>
                      <Carousel>{best_sellers}</Carousel>
                  </div>
                  <div className='content drama'>
@@ -42,29 +42,17 @@ const BooksPage = () => {
                 </div>
                 <div className='content contemporary-fiction'>
                     <SlideHeader>Contemporary Classics</SlideHeader>
-                     <Carousel>{contemporary_fiction}</Carousel>
+                    <Carousel>{contemporary_fiction}</Carousel>
                  </div>
                 <div className='content fantasy'>
                     <SlideHeader>Fantasy</SlideHeader>
-                     <Carousel>{fantasy}</Carousel>
+                    <Carousel>{fantasy}</Carousel>
                 </div>
                 <div className='content detective-mystery-fiction'>
-                     <SlideHeader>Detective and Mystery Fiction</SlideHeader>
+                    <SlideHeader>Detective and Mystery Fiction</SlideHeader>
                     <Carousel>{detective_fiction}</Carousel>
                 </div>
 
-            
-
-
-
-
-                
-              
-                
-                
-                
-                
-                
             </div>
 
         )
