@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bookchat',
+    'polls',
     'rest_framework',
     'knox',
     'accounts',
