@@ -3,6 +3,7 @@ import authReducer from '../slices/authSlice'
 import bookReducer from '../slices/bookSlice'
 import authorReducer from '../slices/authorSlice'
 import userDataReducer from '../slices/userDataSlice'
+import pollReducer from '../slices/pollSlice'
 import { apiSlice } from '../slices/apiSlice'
 import { userDataApi } from '../slices/userDataApiSlice'
 import { searchDataApi } from '../slices/searchApiSlice'
@@ -18,6 +19,7 @@ const store = configureStore({
         author: authorReducer,
         bookshelf: bookshelfReducer,
         userData: userDataReducer,
+        poll: pollReducer,
         [apiSlice.reducerPath]: apiSlice.reducer,
         [userDataApi.reducerPath]: userDataApi.reducer,
         [searchDataApi.reducerPath]: searchDataApi.reducer,
