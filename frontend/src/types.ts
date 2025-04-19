@@ -108,6 +108,11 @@ export interface Poll {
     bookThree: {id: number, name: string}
 }
 
+export interface Vote {
+    id: number,
+    choice: number
+}
+
 export type SearchResult = {
     type: string,
     items: Book[] | Author[] | Bookclub[];

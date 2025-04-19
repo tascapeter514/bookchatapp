@@ -14,6 +14,13 @@ interface Props {
 }
 
 
+// VALIDATE ON BACKEND?
+// if (poll.bookOne && poll.bookTwo && poll.bookThree) {
+//     console.log('ready to create a poll!')
+// } else {
+//     throw new Error('You must select three books to create a poll')
+// }
+
 const CreatePollModal = ({books}: Props) => {
 
     const pollRef = useRef<HTMLDialogElement>(null)
@@ -57,25 +64,23 @@ const CreatePollModal = ({books}: Props) => {
 
         try {
 
-            if (poll.bookOne && poll.bookTwo && poll.bookThree) {
-                console.log('ready to create a poll!')
-            } else {
-                throw new Error('Select three books to create a poll')
-            }
+            
 
         } catch (err: any) {
 
             console.error(err)
 
-        }
-
-
-
-
-        
+        }  
     }
 
     console.log('poll state:', poll)
+
+    const closeDialog = () => {
+        closeModal()
+        dispatch(selectBookOne({id: NaN, name: ''}))
+        dispatch(selectBookTwo({id: NaN, name: ''}))
+        dispatch(selectBookThree({id: NaN, name: ''}))
+    }
 
     return(
         <>
@@ -106,7 +111,7 @@ const CreatePollModal = ({books}: Props) => {
                 }
                 
                 <div className="button-wrapper">
-                    <Button type='button' onClick={closeModal}>Cancel</Button>
+                    <Button type='button' onClick={closeDialog}>Cancel</Button>
                     <Button type='submit' onClick={handleCreatePoll}>Create</Button>
                 </div>
 
