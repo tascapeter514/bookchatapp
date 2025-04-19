@@ -1,16 +1,18 @@
 import './CurrentReadButton.css'
 import { Dispatch } from 'react'
+import { Book } from '../../../types'
 import { TabAction, TabState } from '../../../reducers/tabsReducer'
 import CreatePollModal from '../../Modals/CreatePollModal/CreatePollModal'
 
 
 interface Props {
     tabs: TabState,
-    dispatchTabs: Dispatch<TabAction>
+    dispatchTabs: Dispatch<TabAction>,
+    books: Book[]
 }
 
 
-const CurrentReadButton = ({dispatchTabs, tabs}: Props) => {
+const CurrentReadButton = ({dispatchTabs, tabs, books}: Props) => {
 
     return(
         <div className="tab-button current-read">
@@ -20,7 +22,7 @@ const CurrentReadButton = ({dispatchTabs, tabs}: Props) => {
             >
                 Current Read
             </a>
-            <CreatePollModal />
+            <CreatePollModal books={books}/>
         </div>
     )
 

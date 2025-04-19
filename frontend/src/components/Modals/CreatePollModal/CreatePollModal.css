@@ -1,0 +1,16 @@
+.poll-dialog {
+    background-color: white;
+    border-radius: 3px;
+    border: 2px solid black;
+    /* position: absolute; */
+    margin: auto;
+    
+
+}
+
+.poll-dialog[open] {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+}

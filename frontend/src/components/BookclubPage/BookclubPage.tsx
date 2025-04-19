@@ -24,10 +24,13 @@ const BookclubPage = () => {
     const {data, isLoading, error, isError}= useGetBookclubDataQuery(Number(id))
     const bookclub = data?.bookclub
     const bookshelves = data?.bookshelves
+    const books = bookshelves?.flatMap(bookshelf => bookshelf.books)
     const [bookclubTabs, dispatchTabs] = useReducer(tabsReducer, {activeTab: '', activeBookshelf: '', showNav: false})
     const [mobileNav, navDispatch] = useReducer(mobileNavReducer, {open: false, isExiting: false})
 
     console.log('bookclub data:', data)
+
+    console.log('bookshelves:', bookshelves)
 
     
     return(
@@ -46,7 +49,7 @@ const BookclubPage = () => {
 
                     </DashboardMain>
                     <DashboardNav mobileNav={mobileNav}>
-                        <CurrentReadButton dispatchTabs={dispatchTabs} tabs={bookclubTabs}/>
+                        <CurrentReadButton dispatchTabs={dispatchTabs} tabs={bookclubTabs} books={books}/>
                         <InviteButton bookclub={bookclub}/>
                         <BookshelfButton>
                             <NavbarDivider />
