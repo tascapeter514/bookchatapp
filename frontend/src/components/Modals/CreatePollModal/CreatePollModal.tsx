@@ -69,9 +69,10 @@ const CreatePollModal = ({books, bookclubId}: Props) => {
 
         try {
 
-            const response = createPoll(data).unwrap()
+            const response = createPoll(data)
 
             console.log('poll response:', response)
+
 
             
 

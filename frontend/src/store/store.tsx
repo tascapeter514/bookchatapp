@@ -9,6 +9,7 @@ import { userDataApi } from '../slices/userDataApiSlice'
 import { searchDataApi } from '../slices/searchApiSlice'
 import bookshelfReducer from '../slices/bookshelfSlice'
 import { bookclubApi } from '../slices/bookclubApiSlice'
+import { pollApi } from '../slices/pollApiSlice'
 
 
 
@@ -23,9 +24,10 @@ const store = configureStore({
         [apiSlice.reducerPath]: apiSlice.reducer,
         [userDataApi.reducerPath]: userDataApi.reducer,
         [searchDataApi.reducerPath]: searchDataApi.reducer,
-        [bookclubApi.reducerPath]: bookclubApi.reducer
+        [bookclubApi.reducerPath]: bookclubApi.reducer,
+        [pollApi.reducerPath]: pollApi.reducer,
     },
-    middleware: (getdefaultMiddleWare) => getdefaultMiddleWare().concat(apiSlice.middleware, userDataApi.middleware, searchDataApi.middleware, bookclubApi.middleware),
+    middleware: (getdefaultMiddleWare) => getdefaultMiddleWare().concat(apiSlice.middleware, userDataApi.middleware, searchDataApi.middleware, bookclubApi.middleware, pollApi.middleware),
     devTools: true
 })
 
