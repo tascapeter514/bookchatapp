@@ -24,14 +24,18 @@ export const pollApi = createApi({
                     await cacheDataLoaded
                     const listener = (event: MessageEvent) => {
                         const data = JSON.parse(event.data)
-                        if (data.type === 'get_poll') {
-                            updateCachedData((draft) => {
-                                if (!draft) {
-                                    console.warn('Draft is undefined')
-                                }
-                                draft = data.polls
-                            })
+                        console.log('poll query data:', data)
+                        if (data.type === 'poll_data') {
+                            updateCachedData(() => data.polls)
                         }
+                        // if (data.type === 'poll_data') {
+                        //     updateCachedData((draft) => {
+                        //         if (!draft) {
+                        //             console.warn('Draft is undefined')
+                        //         }
+                        //         draft = [...draft, data.polls]
+                        //     })
+                        // }
                     }
 
                     ws.addEventListener('message', listener)

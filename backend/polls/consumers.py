@@ -10,7 +10,9 @@ from .serializers import PollSerializer
 
 class PollConsumer(WebsocketConsumer):
     def connect(self):
+
         self.bookclub_id = self.scope['url_route']['kwargs']['id']
+
         self.group_name = f'poll_data_{self.bookclub_id}'
 
         async_to_sync(self.channel_layer.group_add)(
@@ -19,7 +21,7 @@ class PollConsumer(WebsocketConsumer):
         )
 
         self.accept()
-        self.get_polls
+        self.get_polls()
 
     def disconnect(self, close_code):
         async_to_sync(self.channel_layer.group_discard)(
@@ -28,15 +30,22 @@ class PollConsumer(WebsocketConsumer):
         )
 
     def get_polls(self):
+        print('get poll check')
 
-        bookclub = Bookclub.objects.filter(id=self.bookclub_id)
+        bookclub = Bookclub.objects.get(id=self.bookclub_id)
 
-        poll_serializer = PollSerializer(bookclub.polls, many=True)
+        polls = bookclub.polls.all()
 
-        poll_response = {
-            'type': 'poll_data',
-            'polls': poll_serializer.data
-        }
+        poll_serializer = PollSerializer(polls, many=True)
+
+        # print('bookclub serializer:', poll_serializer.data)
+
+        self.send(text_data=json.dumps(
+            {
+                'type': 'poll_data',
+                'polls': poll_serializer.data
+            }
+        ))
 
     
 

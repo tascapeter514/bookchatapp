@@ -1,7 +1,7 @@
 import './CurrentRead.css'
 import Header from '../../Headers/Header/Header'
 import { useGetPollsQuery } from '../../../slices/pollApiSlice'
-import Button from '../../Buttons/Button/Button'
+import ActivePoll from '../../ActivePoll/ActivePoll'
 
 
 interface Props {
@@ -12,6 +12,7 @@ interface Props {
 const CurrentReadPanel = ({bookclubId}: Props) => {
 
     const {data, isLoading, isError, error} = useGetPollsQuery(bookclubId)
+    const poll = data?.[0]
 
     console.log('poll data:', data)
 
@@ -19,10 +20,9 @@ const CurrentReadPanel = ({bookclubId}: Props) => {
     return (
         <div className="current-read-panel">
             <Header>Current Read</Header>
-            <div className="active-poll">
-                <Button>Vote</Button>
-                <Button>See Results</Button>
-            </div>
+            {poll ? <ActivePoll poll={poll}/> : <p>Start a poll!</p>}
+            
+            
             
                                     
         </div>

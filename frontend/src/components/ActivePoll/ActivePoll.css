@@ -1,0 +1,13 @@
+.active-poll {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 300px;
+    gap: 2rem;
+    
+}
+
+.active-poll button {
+    flex: 1;
+    max-width: 118px;
+}
