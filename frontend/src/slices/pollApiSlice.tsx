@@ -49,7 +49,7 @@ export const pollApi = createApi({
             }
         }),
         createPoll: build.mutation({
-            query: (data: Poll) => ({
+            query: (data) => ({
                 url: 'api/polls/create',
                 method: 'POST',
                 body: data

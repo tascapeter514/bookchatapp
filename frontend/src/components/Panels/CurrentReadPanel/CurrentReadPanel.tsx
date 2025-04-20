@@ -14,7 +14,7 @@ const CurrentReadPanel = ({bookclubId}: Props) => {
 
     const {data, isLoading, isError, error} = useGetPollsQuery(bookclubId)
 
-    const poll = data?.[0]
+
 
     console.log('poll data:', data)
 
@@ -22,10 +22,10 @@ const CurrentReadPanel = ({bookclubId}: Props) => {
     return (
         <div className="current-read-panel">
             <Header>Current Read</Header>
-            {poll ? 
+            {data ? 
                 <>
                     <SubHeader>Poll in Progress</SubHeader>
-                    <ActivePoll poll={poll}/>
+                    <ActivePoll poll={data}/>
                 </> 
             : 
                 <p>Start a poll!</p>
