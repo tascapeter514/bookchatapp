@@ -1,6 +1,7 @@
 import './CurrentRead.css'
 import Header from '../../Headers/Header/Header'
 import { useGetPollsQuery } from '../../../slices/pollApiSlice'
+import Button from '../../Buttons/Button/Button'
 
 
 interface Props {
@@ -16,8 +17,13 @@ const CurrentReadPanel = ({bookclubId}: Props) => {
 
 
     return (
-        <div className="currentRead-panel">
+        <div className="current-read-panel">
             <Header>Current Read</Header>
+            <div className="active-poll">
+                <Button>Vote</Button>
+                <Button>See Results</Button>
+            </div>
+            
                                     
         </div>
     )
