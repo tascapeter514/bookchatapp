@@ -31,8 +31,6 @@ def create(request):
             request.data.get('bookThree')
         ]
 
-
-
         for book in books:
             if not book or not book.get('id') or not book.get('name'):
                 raise ValidationError({'poll': 'You must select three books.'})
@@ -45,11 +43,6 @@ def create(request):
         book_two_id = books[1]['id']
         book_three_id = books[2]['id']
         
-
-
-        # bookclub = get_object_or_404(Bookclub, id=bookclub_id)
-
-
         book_one = get_object_or_404(Book, id=book_one_id)
         book_two = get_object_or_404(Book, id=book_two_id)
         book_three = get_object_or_404(Book, id=book_three_id)

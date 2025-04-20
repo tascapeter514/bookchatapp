@@ -21,6 +21,6 @@ class Poll(models.Model):
     book_one_count = models.IntegerField(default=0)
     book_two_count = models.IntegerField(default=0)
     book_three_count = models.IntegerField(default=0)
-    bookclub = models.ForeignKey(Bookclub, on_delete=models.CASCADE)
+    bookclub = models.ForeignKey(Bookclub, on_delete=models.CASCADE, related_name='polls')
     status = models.CharField(max_length=100, choices=STATUS_CHOICES, default=VOTING)
 
