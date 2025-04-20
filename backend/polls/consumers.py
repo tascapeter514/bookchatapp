@@ -19,7 +19,7 @@ class PollConsumer(WebsocketConsumer):
         )
 
         self.accept()
-        self.get_poll
+        self.get_polls
 
     def disconnect(self, close_code):
         async_to_sync(self.channel_layer.group_discard)(

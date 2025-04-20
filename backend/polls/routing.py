@@ -3,9 +3,6 @@ from .consumers import *
 
 websocket_urlpatterns = [
     # finished routes
-    path('ws/polls/<int:bookclubId>', PollConsumer.as_asgi()),
-   
-    
-    
+    path('ws/polls/<int:id>', PollConsumer.as_asgi()),
     
 ]

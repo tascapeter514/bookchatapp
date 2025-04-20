@@ -18,12 +18,13 @@ from channels.auth import AuthMiddlewareStack
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mysite.settings')
 django_asgi_app = get_asgi_application()
 
-from bookchat import routing
+from bookchat.routing import websocket_urlpatterns as bookchat_ws
+from polls.routing import websocket_urlpatterns as polls_ws
 
 
 application = ProtocolTypeRouter({
     'http': django_asgi_app,
     'websocket': AllowedHostsOriginValidator(
-        AuthMiddlewareStack(URLRouter(routing.websocket_urlpatterns))
+        AuthMiddlewareStack(URLRouter(bookchat_ws + polls_ws))
     )
 })
