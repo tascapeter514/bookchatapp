@@ -20,8 +20,8 @@ export const pollApi = createApi({
                 {updateCachedData, cacheDataLoaded, cacheEntryRemoved},
             )
             {
-                const ws = new WebSocket(`ws://localhost:8000/ws/bookclub/${bookclubId}`)
-
+                const ws = new WebSocket(`ws://localhost:8000/ws/polls/${bookclubId}`)
+                
                 try {
 
                     await cacheDataLoaded
