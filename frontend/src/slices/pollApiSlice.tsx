@@ -8,9 +8,9 @@ export const pollApi = createApi({
     reducerPath: 'pollDataApi',
     baseQuery: fetchBaseQuery({baseUrl: 'http://localhost:8000/'}),
     endpoints: (build) => ({
-        getPolls: build.query<Poll[], number>({
+        getPolls: build.query<Poll, number>({
             queryFn: async () => ({
-                data: []
+                data: {} as Poll
             }),
             async onCacheEntryAdded(
                 bookclubId,
@@ -19,6 +19,7 @@ export const pollApi = createApi({
             {
                 const ws = new WebSocket(`ws://localhost:8000/ws/polls/${bookclubId}`)
 
+        
                 try {
 
                     await cacheDataLoaded
@@ -26,7 +27,15 @@ export const pollApi = createApi({
                         const data = JSON.parse(event.data)
                         console.log('poll query data:', data)
                         if (data.type === 'poll_data') {
-                            updateCachedData(() => data.polls)
+                            updateCachedData((draft) => {
+                                if (!draft) {
+                                    console.warn('Draft is undefined')
+                                    return
+                                }
+                                draft.bookOne = data.polls.book_one;
+                                draft.bookTwo = data.polls.book_two;
+                                draft.bookThree = data.polls.book_three;
+                            })
                         }
                     }
 

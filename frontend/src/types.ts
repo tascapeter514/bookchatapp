@@ -103,6 +103,7 @@ export interface Bookclub {
 }
 
 export interface Poll {
+    id: number,
     bookOne: {id: number, name: string},
     bookTwo: {id: number, name: string},
     bookThree: {id: number, name: string}
