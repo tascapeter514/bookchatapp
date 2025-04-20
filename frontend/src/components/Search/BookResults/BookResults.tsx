@@ -34,7 +34,7 @@ const BookResults = ({children, bookDispatch}: Props) => {
                         <input 
                             type="radio"
                             name='bookResultsGroup'
-                            // checked={newBookId === bookResult.id}
+
                             onChange={() => bookDispatch({type: 'CHECK_BOOK', payload: bookResult.id})}
                             className='book-result-input'  
                         />

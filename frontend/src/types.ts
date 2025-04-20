@@ -111,7 +111,14 @@ export interface Poll {
 
 export interface Vote {
     id: number,
-    choice: number
+    choice: number,
+    user: number,
+    pollId: number
+}
+
+export interface VoteRequest {
+    choice: number,
+    user: number
 }
 
 export type SearchResult = {

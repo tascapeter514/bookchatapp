@@ -1,5 +1,5 @@
 import './ActivePoll.css'
-import { useRef } from 'react'
+import { ChangeEvent, useRef, useState } from 'react'
 import Button from '../Buttons/Button/Button'
 import { Poll } from '../../types'
 import { Book } from '../../types'
@@ -17,10 +17,20 @@ const ActivePoll = ({poll}: Props) => {
     const openVote = () => voteRef.current?.showModal()
     const closeVote = () => voteRef.current?.close()
     const pollData = [poll.bookOne, poll.bookTwo, poll.bookThree]
+    const [selection, setSelection] = useState(0)
+
+
+    const handleOnChange = (event: string) => {
+        
+        console.log('selection:', event)
+        setSelection(Number(event))
+
+    }
 
 
     const handleSubmitVote = () => {
         console.log('submit vote')
+        console.log('selection:', selection)
     }
 
     console.log("active poll data:", poll)
@@ -33,11 +43,23 @@ const ActivePoll = ({poll}: Props) => {
             <dialog className='vote-dialog' ref={voteRef}>
                 <h4>Choose a book</h4>
                {pollData.map((choice) => {
+
+                const inputId = `choice-${choice.id}`
+
+
+
                 return(
 
                     <li className='choice-list-element' key={choice.id} >
                         <label htmlFor={choice.name} className='choice-label'>{choice.name}</label>
-                        <input type="radio" id='book-one' value={choice.name} className='choice-input'/>
+                        <input 
+                            type="radio" 
+                            id={inputId}
+                            value={choice.id} 
+                            className='choice-input'
+                            name='choiceGroup'
+                            onChange={(e) => handleOnChange(e.target.value)}
+                        />
                     
                     </li>
 

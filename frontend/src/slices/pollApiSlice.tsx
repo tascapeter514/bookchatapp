@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Poll } from "../types";
+import { Poll, VoteRequest } from "../types";
 
 
 
@@ -51,6 +51,13 @@ export const pollApi = createApi({
         createPoll: build.mutation({
             query: (data) => ({
                 url: 'api/polls/create',
+                method: 'POST',
+                body: data
+            })
+        }),
+        vote: build.mutation({
+            query: ({data, pollId}: {data: VoteRequest, pollId: number}) => ({
+                url: `api/poll/vote/${pollId}`,
                 method: 'POST',
                 body: data
             })
