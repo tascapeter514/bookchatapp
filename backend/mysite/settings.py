@@ -21,10 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ky6(5cjx9rqisgs4^^hngm+7a+573fmah0a1g9m9_)r6ks!@of'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'fallback-dev-key')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
+
 
 RENDER_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'bookchatapp-2r38.onrender.com']
