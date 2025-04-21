@@ -22,12 +22,12 @@ const BookclubPage = () => {
 
 
     const { id } = useParams()
-    const {data, isLoading, error, isError}= useGetBookclubDataQuery(Number(id))
+    const {data }= useGetBookclubDataQuery(Number(id))
     const bookclub = data?.bookclub
     const bookshelves = data?.bookshelves
     const books = bookshelves?.flatMap(bookshelf => bookshelf.books)
     const [bookclubTabs, dispatchTabs] = useReducer(tabsReducer, {activeTab: '', activeBookshelf: '', showNav: false})
-    const [mobileNav, navDispatch] = useReducer(mobileNavReducer, {open: false, isExiting: false})
+    const [mobileNav] = useReducer(mobileNavReducer, {open: false, isExiting: false})
 
     console.log('bookclub data:', data)
 

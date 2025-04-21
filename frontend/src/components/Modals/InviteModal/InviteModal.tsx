@@ -26,7 +26,7 @@ const InviteModal = ({bookclubId}: Props) => {
     const ref = useRef<HTMLDialogElement>(null)
     const openInviteModal = () => ref.current?.showModal()
     const closeInviteModal = () => ref.current?.close()
-    const [inviteUser, {error, isLoading, isError, reset}] = useInviteUserMutation()
+    const [inviteUser, {error, isError, reset}] = useInviteUserMutation()
 
     const {results} = useGetUsers(bookclubId)
 

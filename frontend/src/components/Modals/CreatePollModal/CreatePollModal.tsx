@@ -25,7 +25,7 @@ const CreatePollModal = ({books, bookclubId}: Props) => {
     const closeModal = () => pollRef.current?.close()
     const { poll } = useSelector((state: RootState) => state.poll)
     const dispatch = useDispatch()
-    const [createPoll, {isLoading, isError, error}] = useCreatePollMutation()
+    const [createPoll, { isError, error}] = useCreatePollMutation()
     
     const handleChangeBooks = (event: ChangeEvent<HTMLSelectElement>) => {
         console.log('event:', event)

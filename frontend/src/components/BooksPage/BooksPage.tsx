@@ -2,14 +2,12 @@ import './BooksPage.css'
 // import Carousel from '../Carousel/Carousel'
 import { useGetBooksQuery,  } from '../../slices/bookApiSlice'
 import SlideHeader from '../Headers/SlideHeader/SlideHeader'
-import { Book } from '../../types'
-import { useState } from 'react'
 import Carousel from '../Carousel/Carousel'
 
 
 const BooksPage = () => {
 
-    const {data, isLoading, isError, error} = useGetBooksQuery()
+    const { data } = useGetBooksQuery()
 
     if (!data) return null
 

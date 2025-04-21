@@ -1,5 +1,4 @@
 import './BookSearchbar.css'
-import { Dispatch } from 'react'
 import { SearchIcon } from '../../Icons'
 
 interface Props {

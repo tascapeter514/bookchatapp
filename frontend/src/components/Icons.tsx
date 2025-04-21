@@ -1,4 +1,4 @@
-import { FaSearch, FaArrowLeft, FaArrowRight, FaUser } from 'react-icons/fa'
+import { FaSearch, FaUser } from 'react-icons/fa'
 import { DropdownState } from '../reducers/dropdownReducer';
 import { IoMdArrowDropright, IoIosCloseCircle } from "react-icons/io";
 import { ImCheckmark2, ImCancelCircle } from 'react-icons/im'
@@ -12,6 +12,8 @@ export type ArrowProps = {
 } & IconProps
 
 
+// import icon statemetns add later
+// FaArrowLeft, FaArrowRight,
 
 export type IconProps = React.ComponentPropsWithoutRef<'svg'>
 

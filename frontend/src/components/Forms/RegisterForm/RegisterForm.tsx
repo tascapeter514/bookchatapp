@@ -22,7 +22,7 @@ const RegisterForm = () => {
     })
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const [register, {isLoading, isError, error, reset}] = useRegisterMutation()
+    const [register, { isError, error, reset}] = useRegisterMutation()
 
     const handleRegister = async (formData: FormData) => {
         const firstName = formData.get('firstName')

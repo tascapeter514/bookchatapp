@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
-export default function useSearch(url: string, type: string) {
+export default function useSearch(url: string) {
 
     const [searchValue, setSearchValue] = useState('')
     const [debouncedValue, setDebouncedValue] = useState('')

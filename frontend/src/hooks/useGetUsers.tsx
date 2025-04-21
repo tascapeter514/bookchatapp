@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ActiveUser } from '../types'
 import { useGetUsersMutation } from '../slices/bookclubApiSlice'
 
