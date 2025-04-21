@@ -135,7 +135,7 @@ if os.getenv("RENDER", "") == "true":
         )
     }
 else:
-    # Use SqLite locally 
+    # Use SqLite for local 
 
     DATABASES = {
         'default': {
