@@ -12,7 +12,7 @@ interface Props {
 
 const CurrentReadPanel = ({bookclubId}: Props) => {
 
-    const {data, isLoading, isError, error} = useGetPollsQuery(bookclubId)
+    const {data } = useGetPollsQuery(bookclubId)
 
 
 

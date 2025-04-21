@@ -14,7 +14,7 @@ const AuthorPage = () => {
 
     const {id} = useParams();
     const dispatch = useDispatch()
-    const [getAuthor, {isLoading, isError, error}] = useGetAuthorMutation()
+    const [getAuthor, {isLoading }] = useGetAuthorMutation()
     const { author } = useSelector((state: RootState) => state.author)
 
     const handleGetAuthor = async () => {

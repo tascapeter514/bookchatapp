@@ -15,10 +15,9 @@ import './BookshelfButtonModal.css'
 
 interface Props {
     book: Book,
-    id: number
 }
 
-const BookshelfButtonModal = ({book, id}: Props) => {
+const BookshelfButtonModal = ({book}: Props) => {
 
     const { user } = useSelector((state: RootState) => state.auth)
     const {data, isError: isUserDataError} = useGetUserDataQuery(user?.id, {
@@ -38,7 +37,7 @@ const BookshelfButtonModal = ({book, id}: Props) => {
     
         try {
 
-            if (!resultId || !id || !book) {
+            if (!resultId || !user.id || !book) {
                 throw Error('You are missing an id.')
                 
             }
@@ -46,6 +45,7 @@ const BookshelfButtonModal = ({book, id}: Props) => {
             
             const bookshelfId = Number(resultId)
             const newBookId = Number(book.id)
+            const id = Number(user.id)
 
             console.log('new book id:', newBookId)
 

@@ -65,4 +65,4 @@ export const pollApi = createApi({
     })
 })
 
-export const {useGetPollsQuery, useCreatePollMutation} = pollApi
+export const {useGetPollsQuery, useCreatePollMutation, useVoteMutation} = pollApi

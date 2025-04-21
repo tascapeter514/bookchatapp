@@ -1,8 +1,8 @@
 import './ActivePoll.css'
-import { ChangeEvent, useRef, useState } from 'react'
+import {  useRef, useState } from 'react'
 import Button from '../Buttons/Button/Button'
 import { Poll } from '../../types'
-import { Book } from '../../types'
+
 
 
 
@@ -80,23 +80,3 @@ const ActivePoll = ({poll}: Props) => {
 
 export default ActivePoll
 
-{/* <label htmlFor={poll.bookTwo.name}>{poll.bookTwo.name}</label>
-<input type="radio" id='book-two' value={poll?.bookTwo?.name}/>
-<label htmlFor={poll.bookThree.name}>{poll.bookThree.name}</label>
-<input type="radio" id='book-three' value={poll?.bookThree?.name}/> */}
-
-
-
-{/* <li 
-                    className='book-result-listElement'
-                    key={bookResult.id}
-                    >
-                        <label className='book-result-label' htmlFor={bookResult.name}>{bookResult.name}</label>
-                        <input 
-                            type="radio"
-                            name='bookResultsGroup'
-                            // checked={newBookId === bookResult.id}
-                            onChange={() => bookDispatch({type: 'CHECK_BOOK', payload: bookResult.id})}
-                            className='book-result-input'  
-                        />
-                    </li> */}
