@@ -13,6 +13,11 @@ const Searchbar = () => {
 
 
     const { searchValue, setSearchValue, searchResults } = useSearch(wsSearchBase)
+
+    const handleSearch = (e: string) => {
+        console.log('search bar check')
+        setSearchValue(e)
+    }
     
     return(
 
@@ -21,7 +26,7 @@ const Searchbar = () => {
                     
                     placeholder='Type to search...' 
                     value={searchValue} 
-                    onChange={(e) => setSearchValue(e.target.value)}
+                    onChange={(e) => handleSearch(e.target.value)}
                 />
                 <SearchIcon className='search-icon'/>
 

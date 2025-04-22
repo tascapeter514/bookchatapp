@@ -10,11 +10,6 @@ import './Navbar.css'
 
 
 
-
-
-
-
-
 const Navbar = () => {
 
   const navigate = useNavigate()
