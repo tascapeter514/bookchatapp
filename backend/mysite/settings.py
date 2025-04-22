@@ -110,13 +110,26 @@ STATIC_ROOT = BASE_DIR/'staticfiles'
 
 ASGI_APPLICATION = 'mysite.asgi.application'
 
-#CHANNEL LAYERS
 
+# Fetch the REDIS_URL environment variable
+REDIS_URL = os.getenv('REDIS_URL')
+
+
+# Set default Redis host for local development
+if os.getenv('DJANGO_DEBUG', 'False') == 'True':
+    # Local development environment, use localhost
+    redis_host = '127.0.0.1'
+    redis_port = 6379
+else:
+    # Production environment, use the Redis URL from the environment
+    redis_host = REDIS_URL
+
+# CHANNEL LAYERS setup
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            'hosts': [('127.0.0.1', 6379)],
+            'hosts': [(redis_host, redis_port)],
         }
     }
 }
