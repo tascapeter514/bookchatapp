@@ -14,6 +14,7 @@ from pathlib import Path
 import os
 import dj_database_url
 from urllib.parse import urlparse
+import logging
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -129,10 +130,12 @@ else:
         parsed_url = urlparse(REDIS_URL)
         redis_host = parsed_url.hostname
         redis_port = parsed_url.port
+        logging.info(f"Using Redis host: {redis_host} and port: {redis_port}")
     else:
         # Fallback in case REDIS_URL is not set
         redis_host = '127.0.0.1'
         redis_port = 6379
+        logging.warning("REDIS_URL environment variable not set, using fallback values")
 
 # CHANNEL LAYERS setup
 CHANNEL_LAYERS = {

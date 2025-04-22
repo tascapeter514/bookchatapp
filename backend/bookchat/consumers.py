@@ -73,6 +73,7 @@ def send_user_data_to_group(user_id):
 
 class SearchDataConsumer(WebsocketConsumer):
     def connect(self):
+        print('search data connection')
         self.group_name = 'get_search_query'
         self.search_term = unquote(self.scope['url_route']['kwargs']['searchTerm'])
         print('search term:', self.search_term)
