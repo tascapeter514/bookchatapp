@@ -1,5 +1,5 @@
 from channels.generic.websocket import WebsocketConsumer, AsyncWebsocketConsumer
-from asgiref.sync import async_to_sync
+from asgiref.sync import async_to_sync, sync_to_async
 from urllib.parse import unquote
 from channels.layers import get_channel_layer
 import json
@@ -69,51 +69,96 @@ def send_user_data_to_group(user_id):
         }
     )
 
-
-
-class SearchDataConsumer(WebsocketConsumer):
-    def connect(self):
+class SearchDataConsumer(AsyncWebsocketConsumer):
+    async def connect(self):
         print('search data connection')
         self.group_name = 'get_search_query'
         self.search_term = unquote(self.scope['url_route']['kwargs']['searchTerm'])
         print('search term:', self.search_term)
 
-        async_to_sync(self.channel_layer.group_add)(
+        await self.channel_layer.group_add(
             self.group_name,
             self.channel_name
         )
 
-        self.accept()
+        await self.accept()
+        await self.get_search_query()
 
-        self.get_search_query()
-
-    def disconnect(self, close_code):
-
-        async_to_sync(self.channel_layer.group_discard)(
+    async def disconnect(self, close_code):
+        await self.channel_layer.group_discard(
             self.group_name,
             self.channel_name
         )
 
-    def get_search_query(self):
+    async def get_search_query(self):
+        book_results = await sync_to_async(lambda: Book.objects.filter(
+            Q(name__icontains=self.search_term) | Q(author__name__icontains=self.search_term)
+        ).distinct())()
 
-        book_results = Book.objects.filter(Q(name__icontains=self.search_term) | Q(author__name__icontains=self.search_term)).distinct()
-        author_results = Author.objects.filter(name__icontains=self.search_term)
-        bookclub_results = Bookclub.objects.filter(name__icontains=self.search_term)
+        author_results = await sync_to_async(lambda: Author.objects.filter(
+            name__icontains=self.search_term
+        ))()
+
+        bookclub_results = await sync_to_async(lambda: Bookclub.objects.filter(
+            name__icontains=self.search_term
+        ))()
 
         author_serializer = AuthorSerializer(author_results, many=True, fields=['id', 'name'])
         book_serializer = BookSerializer(book_results, many=True, fields=['id', 'name'])
         bookclub_serializer = BookclubSerializer(bookclub_results, many=True, fields=['id', 'name'])
 
-
-        self.send(text_data=json.dumps({
+        await self.send(text_data=json.dumps({
             'type': 'get_search_query',
-            'search_results': 
-            [
+            'search_results': [
                 {'type': 'author', 'items': author_serializer.data},
                 {'type': 'bookclub', 'items': bookclub_serializer.data},
                 {'type': 'book', 'items': book_serializer.data}
             ]
         }))
+
+# class SearchDataConsumer(WebsocketConsumer):
+#     def connect(self):
+#         print('search data connection')
+#         self.group_name = 'get_search_query'
+#         self.search_term = unquote(self.scope['url_route']['kwargs']['searchTerm'])
+#         print('search term:', self.search_term)
+
+#         async_to_sync(self.channel_layer.group_add)(
+#             self.group_name,
+#             self.channel_name
+#         )
+
+#         self.accept()
+
+#         self.get_search_query()
+
+#     def disconnect(self, close_code):
+
+#         async_to_sync(self.channel_layer.group_discard)(
+#             self.group_name,
+#             self.channel_name
+#         )
+
+#     def get_search_query(self):
+
+#         book_results = Book.objects.filter(Q(name__icontains=self.search_term) | Q(author__name__icontains=self.search_term)).distinct()
+#         author_results = Author.objects.filter(name__icontains=self.search_term)
+#         bookclub_results = Bookclub.objects.filter(name__icontains=self.search_term)
+
+#         author_serializer = AuthorSerializer(author_results, many=True, fields=['id', 'name'])
+#         book_serializer = BookSerializer(book_results, many=True, fields=['id', 'name'])
+#         bookclub_serializer = BookclubSerializer(bookclub_results, many=True, fields=['id', 'name'])
+
+
+#         self.send(text_data=json.dumps({
+#             'type': 'get_search_query',
+#             'search_results': 
+#             [
+#                 {'type': 'author', 'items': author_serializer.data},
+#                 {'type': 'bookclub', 'items': bookclub_serializer.data},
+#                 {'type': 'book', 'items': book_serializer.data}
+#             ]
+#         }))
 
     
 
