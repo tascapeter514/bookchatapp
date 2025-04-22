@@ -7,10 +7,12 @@ import {SearchIcon} from '../../Icons'
 
 const wsSearchBase = import.meta.env.VITE_WS_SEARCH_BASE || 'ws://localhost:8000/ws/search/'
 
-console.log("WebSocket Base URL: ", import.meta.env.VITE_WS_SEARCH_BASE);
+
 
 
 const Searchbar = () => {
+
+    console.log("WebSocket Base URL: ", import.meta.env.VITE_WS_SEARCH_BASE);
 
 
     const { searchValue, setSearchValue, searchResults } = useSearch('wss://bookchatapp-2r38.onrender.com/ws/search/')
