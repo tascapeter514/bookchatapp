@@ -12,10 +12,16 @@ export type BookSearchData = {
 
 }
 
+const apiBase = import.meta.env.VITE_API_BASE || 'http://localhost:8000/'
+const wsHost = import.meta.env.VITE_WS_HOST || 'http://localhost:8000/'
+
+const wsProtocol = apiBase.startsWith('https') ? 'wss' : 'ws'
+const wsBase = `${wsProtocol}://${wsHost}`
+
 
 export const searchDataApi = createApi({
     reducerPath: 'searchDataApi',
-    baseQuery: fetchBaseQuery({baseUrl: 'http://localhost:8000/'}),
+    baseQuery: fetchBaseQuery({baseUrl: apiBase }),
     endpoints: (build) => ({
         getBookData: build.query<BookSearchData, string>({
             queryFn: async () => ({data: {type: '', search_results: []}}),
@@ -24,7 +30,7 @@ export const searchDataApi = createApi({
                 {updateCachedData, cacheDataLoaded, cacheEntryRemoved}
             )
             {   const encodedValue = encodeURIComponent(searchTerm)
-                const ws = new WebSocket(`ws://localhost:8000/ws/search/books/${encodedValue}/`)
+                const ws = new WebSocket(`${wsBase}/ws/search/books/${encodedValue}/`)
                 try {
 
                     await cacheDataLoaded
