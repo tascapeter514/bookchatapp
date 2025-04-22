@@ -8,8 +8,26 @@ from django.shortcuts import get_object_or_404
 from bookchat.models import Book, Bookclub
 from .models import Poll
 from .serializers import PollSerializer
+import redis
+from django.http import JsonResponse
 
 # Create your views here.
+
+
+
+
+def check_redis_connection(request):
+    try:
+        # Test the Redis connection
+        r = redis.Redis(host='red-d03sqi9r0fns739g5cng', port=6379)
+        if r.ping():  # Check if Redis responds with a "ping"
+            return JsonResponse({"status": "success", "message": "Connected to Redis!"})
+        else:
+            return JsonResponse({"status": "error", "message": "Failed to connect to Redis."})
+    except Exception as e:
+        return JsonResponse({"status": "error", "message": f"Redis connection error: {str(e)}"})
+
+
 
 
 @api_view(['POST'])
