@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+from urllib.parse import urlparse
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -115,6 +116,7 @@ ASGI_APPLICATION = 'mysite.asgi.application'
 REDIS_URL = os.getenv('REDIS_URL')
 
 
+
 # Set default Redis host for local development
 if os.getenv('DJANGO_DEBUG', 'False') == 'True':
     # Local development environment, use localhost
@@ -122,7 +124,15 @@ if os.getenv('DJANGO_DEBUG', 'False') == 'True':
     redis_port = 6379
 else:
     # Production environment, use the Redis URL from the environment
-    redis_host = REDIS_URL
+    if REDIS_URL:
+        # Parse the REDIS_URL to extract host and port
+        parsed_url = urlparse(REDIS_URL)
+        redis_host = parsed_url.hostname
+        redis_port = parsed_url.port
+    else:
+        # Fallback in case REDIS_URL is not set
+        redis_host = '127.0.0.1'
+        redis_port = 6379
 
 # CHANNEL LAYERS setup
 CHANNEL_LAYERS = {
