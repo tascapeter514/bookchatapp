@@ -3,13 +3,15 @@ import './BooksPage.css'
 import { useGetBooksQuery,  } from '../../slices/bookApiSlice'
 import SlideHeader from '../Headers/SlideHeader/SlideHeader'
 import Carousel from '../Carousel/Carousel'
+import LoadSpinner from '../LoadSpinner/LoadSpinner'
 
 
 const BooksPage = () => {
 
-    const { data } = useGetBooksQuery()
+    const { data, isLoading } = useGetBooksQuery()
 
     if (!data) return null
+    
 
     const {best_sellers, drama, literary_fiction, science_fiction, 
           contemporary_fiction, fantasy, detective_fiction } = data
@@ -22,26 +24,29 @@ const BooksPage = () => {
 
         return(
             <div className='books-main-content'>
-                    <div className='content best-sellers'>
-                     <SlideHeader>Bestsellers</SlideHeader>
-                     <Carousel>{best_sellers}</Carousel>
-                 </div>
-                 <div className='content drama'>
+                {isLoading && <LoadSpinner />}
+
+
+                <div className='content best-sellers'>
+                    <SlideHeader>Bestsellers</SlideHeader>
+                    <Carousel>{best_sellers}</Carousel>
+                </div>
+                <div className='content drama'>
                     <SlideHeader>Drama</SlideHeader>
                     <Carousel>{drama}</Carousel>
                 </div>
-                 <div className='content literary-fiction'>
-                   <SlideHeader>Classic Fiction</SlideHeader>
+                <div className='content literary-fiction'>
+                    <SlideHeader>Classic Fiction</SlideHeader>
                    <Carousel>{literary_fiction}</Carousel>
-                 </div>
-               <div className='content science-fiction'>
+                </div>
+                <div className='content science-fiction'>
                     <SlideHeader>Science Fiction</SlideHeader>
                      <Carousel>{science_fiction}</Carousel>
                 </div>
                 <div className='content contemporary-fiction'>
                     <SlideHeader>Contemporary Classics</SlideHeader>
                     <Carousel>{contemporary_fiction}</Carousel>
-                 </div>
+                </div>
                 <div className='content fantasy'>
                     <SlideHeader>Fantasy</SlideHeader>
                     <Carousel>{fantasy}</Carousel>
@@ -50,7 +55,6 @@ const BooksPage = () => {
                     <SlideHeader>Detective and Mystery Fiction</SlideHeader>
                     <Carousel>{detective_fiction}</Carousel>
                 </div>
-
             </div>
 
         )
