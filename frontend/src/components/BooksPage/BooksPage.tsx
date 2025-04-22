@@ -10,6 +10,8 @@ const BooksPage = () => {
 
     const { data, isLoading } = useGetBooksQuery()
 
+
+    if (isLoading) return <LoadSpinner />
     if (!data) return null
     
 
@@ -24,7 +26,7 @@ const BooksPage = () => {
 
         return(
             <div className='books-main-content'>
-                {isLoading && <LoadSpinner />}
+                
 
 
                 <div className='content best-sellers'>
