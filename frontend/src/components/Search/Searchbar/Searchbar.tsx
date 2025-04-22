@@ -5,7 +5,7 @@ import {SearchIcon} from '../../Icons'
 
 
 
-const wsSearchBase = import.meta.env.VITE_WS_SEARCH_BASE || 'ws://localhost:8000/ws/search/'
+// const wsSearchBase = import.meta.env.VITE_WS_SEARCH_BASE || 'ws://localhost:8000/ws/search/'
 
 
 
