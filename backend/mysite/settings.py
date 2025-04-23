@@ -32,7 +32,7 @@ DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
 
 
 RENDER_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'bookchatapp-2r38.onrender.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'bookchatapp-2r38.onrender.com', 'https://bookchatapp.onrender.com']
 if RENDER_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_HOSTNAME)
 
