@@ -34,38 +34,89 @@ def get_book(request, id):
         return Response({'message': 'Book not found'}, status=status.HTTP_404_NOT_FOUND)
 
 
+# @api_view(['GET'])
+# def get_books(request):
+#     print('get books check')
+#     try:
+
+#         def with_images(queryset):
+#             return queryset.exclude(imageLinks__smallThumbnail__isnull=True).exclude(imageLinks__smallThumbnail__exact='')
+
+
+
+#         best_sellers = with_images(Book.objects.filter(genres_id=18))
+#         literary_fiction = with_images(Book.objects.filter(genres_id=1))[:15]
+#         science_fiction = with_images(Book.objects.filter(genres_id=23))[:15]
+#         drama = with_images(Book.objects.filter(genres_id=24))
+#         contemporary_fiction = with_images(Book.objects.filter(genres_id=25))[:15]
+#         fantasy = with_images(Book.objects.filter(genres_id=15))
+#         detective_fiction = with_images(Book.objects.filter(genres_id=8))
+
+
+#         book_data = {
+#             'best_sellers': BookSerializer(best_sellers, many=True).data,
+#             'literary_fiction': BookSerializer(literary_fiction, many=True).data,
+#             'science_fiction': BookSerializer(science_fiction, many=True).data,
+#             'drama': BookSerializer(drama, many=True).data,
+#             'contemporary_fiction': BookSerializer(contemporary_fiction, many=True).data,
+#             'fantasy': BookSerializer(fantasy , many=True).data,
+#             'detective_fiction': BookSerializer(detective_fiction, many=True).data,
+#         }
+
+
+        
+#         return Response(book_data, status=status.HTTP_200_OK)
+
+#     except ValidationError as e:
+
+#         return Response(e.detail, status=status.HTTP_400_BAD_REQUEST)
+    
+#     except Exception as e:
+#         print(f'Error: {str(e)}')
+#         return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
 @api_view(['GET'])
 def get_books(request):
     print('get books check')
     try:
+        from collections import defaultdict
 
-        def with_images(queryset):
-            return queryset.exclude(imageLinks__smallThumbnail__isnull=True).exclude(imageLinks__smallThumbnail__exact='')
+        desired_genres = [1, 8, 15, 18, 23, 24, 25]
 
+        books = Book.objects.exclude(imageLinks__smallThumbnail__isnull=True)\
+                            .exclude(imageLinks__smallThumbnail__exact='')\
+                            .filter(genres_id__in=desired_genres)
+        # Create dictionary to group books by genre
+        grouped = defaultdict(list)
 
-
-        best_sellers = with_images(Book.objects.filter(genres_id=18))
-        literary_fiction = with_images(Book.objects.filter(genres_id=1))[:15]
-        science_fiction = with_images(Book.objects.filter(genres_id=23))[:15]
-        drama = with_images(Book.objects.filter(genres_id=24))
-        contemporary_fiction = with_images(Book.objects.filter(genres_id=25))[:15]
-        fantasy = with_images(Book.objects.filter(genres_id=15))
-        detective_fiction = with_images(Book.objects.filter(genres_id=8))
-
-
-        book_data = {
-            'best_sellers': BookSerializer(best_sellers, many=True).data,
-            'literary_fiction': BookSerializer(literary_fiction, many=True).data,
-            'science_fiction': BookSerializer(science_fiction, many=True).data,
-            'drama': BookSerializer(drama, many=True).data,
-            'contemporary_fiction': BookSerializer(contemporary_fiction, many=True).data,
-            'fantasy': BookSerializer(fantasy , many=True).data,
-            'detective_fiction': BookSerializer(detective_fiction, many=True).data,
+         # Map genre IDs to category names
+        genre_map = {
+            18: 'best_sellers',
+            1: 'literary_fiction',
+            23: 'science_fiction',
+            24: 'drama',
+            25: 'contemporary_fiction',
+            15: 'fantasy',
+            8: 'detective_fiction',
         }
 
+        # Group books by genre
+        for book in books:
+            key = genre_map.get(book.genres_id)
+            if key:
+                grouped[key].append(book)
 
-        
+        # Apply limits where appropriate
+        for key in grouped:
+            if key != 'best_sellers':
+                grouped[key] = grouped[key][:15]
+
+        # Serialize grouped books
+        book_data = {k: BookSerializer(v, many=True).data for k, v in grouped.items()}
+
         return Response(book_data, status=status.HTTP_200_OK)
+
 
     except ValidationError as e:
 
@@ -74,6 +125,8 @@ def get_books(request):
     except Exception as e:
         print(f'Error: {str(e)}')
         return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+
     
 
 
