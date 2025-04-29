@@ -4,6 +4,7 @@ import { Invitation } from '../../../types.ts'
 import { formatDate } from '../../functions.tsx'
 import Header from '../../Headers/Header/Header.tsx'
 import SubHeader from '../../Headers/SubHeader/SubHeader.tsx'
+import Button from '../../Buttons/Button/Button.tsx'
 
 
 interface Props {
@@ -40,7 +41,8 @@ const UserMessages = ({invitations}: Props) => {
                         </div>
                         <div className="message-content">
                         {/* REMOVED ONCLICK HANDLER UNTIL FETCH LOGIC IS IMPLEMENTED */}
-                        {!invite.accepted && (<button className='accept-button' >Accept</button>) }
+                        {!invite.accepted && (<Button>Accept</Button>) }
+                        {!invite.accepted && (<Button>Decline</Button>) }
                         </div> 
                     </li>
                 )

@@ -121,17 +121,7 @@
     
 }
 
-.accept-button {
-    display: block;
-    border: 1px solid #FF8C00;
-    padding: .5em 1em;
-    font-size: .825rem;
-    width: auto;
-    cursor: pointer;
-    background-color: #FF8C00;
-    color: white;
 
-}
 
 
 @media (max-width: 900px) {
