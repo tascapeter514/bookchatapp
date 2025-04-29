@@ -12,12 +12,12 @@ export type BookSearchData = {
 
 }
 
-const apiBase = import.meta.env.VITE_API_BASE || 'http://localhost:8000/'
-const wsHost = import.meta.env.VITE_WS_HOST || 'http://localhost:8000/'
+const apiBase = import.meta.env.PROD
+    ? 'https://bookchatapp-2r38.onrender.com/'
+    : 'http://localhost:8000/'
 
-const wsProtocol = apiBase.startsWith('https') ? 'wss' : 'ws'
-const wsBase = `${wsProtocol}://${wsHost}`
 
+const wsBase = 'wss://bookchatapp-2r38.onrender.com'
 
 export const searchDataApi = createApi({
     reducerPath: 'searchDataApi',
