@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { Bookclub, Bookshelf, Invitation } from "../types";
-const WEBSOCKET_URL = 'ws://localhost:8000'
+// const WEBSOCKET_URL = 'ws://localhost:8000'
+const PRODUCTION_WEBSOCKET_URL = 'wss://bookchatapp-2r38.onrender.com'
 
 export interface UserData {
     type: string,
@@ -21,7 +22,7 @@ export const userDataApi = createApi({
                 { updateCachedData, cacheDataLoaded, cacheEntryRemoved},
             )
             {
-                const ws = new WebSocket(`${WEBSOCKET_URL}/ws/userData/${userId}`)
+                const ws = new WebSocket(`${PRODUCTION_WEBSOCKET_URL}/ws/userData/${userId}`)
                 try {
 
                     await cacheDataLoaded
