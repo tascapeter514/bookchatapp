@@ -1,3 +1,13 @@
+
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 200;
+    src: url('/fonts/montserrat-v25-latin-200.woff2') format('woff2');
+    font-display: swap;
+  }
+  
+
 .slider-header{
     font-family: 'Montserrat';
     font-weight: 200;

@@ -91,6 +91,7 @@ const Carousel = ({children}: Props) => {
                         className='carousel-image'
                         width='175'
                         height='265'
+                        loading='lazy'
                     />
                     <small className='carousel-book-title'>{book.name}</small>
                     {book.authors?.map((author: Author) => (
