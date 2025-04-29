@@ -15,6 +15,7 @@ const Carousel = ({children}: Props) => {
     const carouselRef = useRef<HTMLUListElement>(null);
     const [booksPerPage, setBooksPerPage] = useState<number>(5)
     const [currentPage, setCurrentPage] = useState<number>(0)
+    const [layoutReady, setLayoutReady] = useState<boolean>(false)
 
     useLayoutEffect(() => {
 
@@ -31,6 +32,7 @@ const Carousel = ({children}: Props) => {
             const bookWidth = book.offsetWidth;
             const books = Math.floor(containerWidth / bookWidth)
             setBooksPerPage(books)
+            setLayoutReady(true)
         }
 
         getBooksPerPage()
@@ -42,11 +44,13 @@ const Carousel = ({children}: Props) => {
    
     const totalBooks = children.length
     const maxPage = Math.ceil(totalBooks / booksPerPage) - 1
-    
-    
 
     
+    
     const handleScroll = (e: MouseEvent<HTMLButtonElement>) => {
+
+        if(!layoutReady) return;
+
 
         const handle = e.currentTarget
         const carousel = carouselRef.current
