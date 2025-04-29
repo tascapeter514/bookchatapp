@@ -23,7 +23,7 @@ export const bookclubApi = createApi({
                 {updateCachedData, cacheDataLoaded, cacheEntryRemoved},
             )
             {
-                const ws = new WebSocket(`${PRODUCTION_WEBSOCKET_URL}/${bookclubId}`)
+                const ws = new WebSocket(`${PRODUCTION_WEBSOCKET_URL}/ws/${bookclubId}`)
                 console.log('ws:', ws)
 
                 try {
