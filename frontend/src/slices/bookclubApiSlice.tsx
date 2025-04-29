@@ -1,6 +1,9 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { Bookclub, Bookshelf } from "../types";
 
+const PRODUCTION_BASE_URL = 'https://bookchatapp-2r38.onrender.com'
+const PRODUCTION_WEBSOCKET_URL = 'wss://bookchatapp-2r38.onrender.com'
+
 
 export interface BookclubData {
     type: string,
@@ -11,7 +14,7 @@ export interface BookclubData {
 
 export const bookclubApi = createApi({
     reducerPath: 'bookclubDataApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:8000/'}),
+    baseQuery: fetchBaseQuery({ baseUrl: PRODUCTION_BASE_URL}),
     endpoints: (build) => ({
         getBookclubData: build.query<BookclubData, number>({
             queryFn: async () => ({data: {type: '', bookclub: null, bookshelves: [] }}),
@@ -20,7 +23,7 @@ export const bookclubApi = createApi({
                 {updateCachedData, cacheDataLoaded, cacheEntryRemoved},
             )
             {
-                const ws = new WebSocket(`ws://localhost:8000/ws/bookclub/${bookclubId}`)
+                const ws = new WebSocket(`${PRODUCTION_WEBSOCKET_URL}/${bookclubId}`)
 
                 try {
 
