@@ -85,7 +85,13 @@ const Carousel = ({children}: Props) => {
         return(
         <li className='carousel-element' key={book.id}>
                 <Link to={`/book/${book.id}`}>
-                    <img src={book.imageLinks['smallThumbnail']} alt="carousel-img" className='carousel-image'/>
+                    <img 
+                        src={book.imageLinks['smallThumbnail']} 
+                        alt="carousel-img" 
+                        className='carousel-image'
+                        width='175'
+                        height='265'
+                    />
                     <small className='carousel-book-title'>{book.name}</small>
                     {book.authors?.map((author: Author) => (
                         <small className='carousel-author-text' key={author.id}>{author.name}</small>
