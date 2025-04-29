@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { Bookclub, Bookshelf, Invitation } from "../types";
 // const WEBSOCKET_URL = 'ws://localhost:8000'
+const PRODUCTION_BASE_URL = 'https://bookchatapp-2r38.onrender.com'
 const PRODUCTION_WEBSOCKET_URL = 'wss://bookchatapp-2r38.onrender.com'
 
 export interface UserData {
@@ -13,7 +14,7 @@ export interface UserData {
 
 export const userDataApi = createApi({
     reducerPath: 'userDataApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:8000/'}),
+    baseQuery: fetchBaseQuery({ baseUrl: PRODUCTION_BASE_URL}),
     endpoints: (build) => ({
         getUserData: build.query<UserData, number>({
             queryFn: async () => ({data: {type: '', bookclubs: [], bookshelves: [], invitations: []}}),
