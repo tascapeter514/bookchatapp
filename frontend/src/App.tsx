@@ -32,7 +32,7 @@ function App() {
               <Route path='/book/:id' element={<Bookpage />} />
               <Route path='/books' element={<BooksPage />} />
 
-              {/* Can we lift author state up? */}
+
               <Route path='/author/:id' element={<AuthorPage />} />
               <Route path='/login' element={<Login />} />
 
