@@ -24,6 +24,7 @@ export const bookclubApi = createApi({
             )
             {
                 const ws = new WebSocket(`${PRODUCTION_WEBSOCKET_URL}/${bookclubId}`)
+                console.log('ws:', ws)
 
                 try {
 
