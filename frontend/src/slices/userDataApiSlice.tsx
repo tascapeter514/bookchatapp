@@ -66,6 +66,20 @@ export const userDataApi = createApi({
 
             })
         }),
+        acceptInvite: build.mutation({
+            query: ({userId, bookclubId}: {userId: number, bookclubId: number}) => ({
+                url: `/api/user/invite/accept`,
+                method: 'PUT',
+                body: {userId: userId, bookclubId: bookclubId}
+            })
+        }),
+        declineInvite: build.mutation({
+            query: ({userId, bookclubId}: {userId: Number, bookclubId: number}) => ({
+                url: '/api/user/invite/decline',
+                method: 'DELETE',
+                body: {userId: userId, bookclubId: bookclubId}
+            })
+        })
         
         
     })
