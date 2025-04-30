@@ -110,7 +110,7 @@ describe('<MessagePanel invitations={invitations} />', () => {
 
         await user.click(acceptButton)
 
-        expect(mockAcceptInvite).toHaveBeenCalledWith({id: 1})
+        expect(mockAcceptInvite).toHaveBeenCalledWith(1)
     })
 
     test('calls declineInvite with correct invite id when delete button is clicked', async () => {
@@ -121,7 +121,7 @@ describe('<MessagePanel invitations={invitations} />', () => {
 
         await user.click(declineButton)
 
-        expect(mockDeclineInvite).toHaveBeenCalledWith({id: 1})
+        expect(mockDeclineInvite).toHaveBeenCalledWith(1)
     })
     
 

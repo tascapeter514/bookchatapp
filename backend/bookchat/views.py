@@ -170,7 +170,7 @@ def upload_file(request, **kwargs):
 
 
 @api_view(['POST'])
-def add_bookclub_bookshelf(request, id):
+def add_bookshelf_to_bookclub(request, id):
     try:
         bookclub = Bookclub.objects.get(id=id)
         bookshelf_name = request.data.get('name')
@@ -195,7 +195,7 @@ def add_bookclub_bookshelf(request, id):
 
 
 @api_view(['PUT'])
-def add_book(request):
+def add_book_to_bookshelf(request):
 
     
 
@@ -322,7 +322,7 @@ def delete_book(request):
 
 
 @api_view(['POST'])
-def add_user_bookshelf(request, id):
+def add_bookshelf_to_user(request, id):
     print('add bookshelf check')
     try:
         user = User.objects.get(id=id)
@@ -350,7 +350,7 @@ def add_user_bookshelf(request, id):
 
 
 @api_view(['POST'])
-def add_user_bookclub(request, id):
+def create_bookclub(request, id):
 
     try:
         user = User.objects.get(id=id)
