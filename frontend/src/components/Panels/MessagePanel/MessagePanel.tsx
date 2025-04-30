@@ -17,7 +17,7 @@ const InviteMessages = ({invitations}: Props) => {
         <ul className='messages-list'>
             {invitations?.map((invitation: Invitation) => {
                 return(
-                    <InviteMessage invitation={invitation}/>
+                    <InviteMessage invitation={invitation} key={invitation.id}/>
                 )
             })}
         </ul>

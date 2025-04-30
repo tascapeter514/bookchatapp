@@ -7,12 +7,10 @@
     justify-content: space-between;
     background-color: #f6f6f6;
     border-radius: 2rem;
-    
-
     font-size: 1rem;
 }
 
-.message-header-wrapper {
+.message-content {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -23,7 +21,7 @@
     text-decoration: none;
 }
 
-.message-user-wrapper {
+.message-text {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -48,32 +46,31 @@
     background-color: #FF8C00;
 }
 
-.message-user-text {
+.message-main-text {
     display: flex;
     gap: .5rem;
     width: 100%;
 }
 
-.message-user-span {
+.message-inviter {
     font-weight: bold;
 }
 
-.message-date-span {
-    /* border: 1px solid red; */
-
+.message-date {
     font-size: 1rem;
     color: rgb(112, 112, 112)
 }
 
-.message-bookclub-span {
+.message-bookclub-link {
     color: #FF8C00;
     font-weight: bold;
 }
 
-.message-content {
+.message-buttons {
     display: flex;
     justify-content: center;
     align-items: top;
+    gap: 1rem;
     
 }
 
@@ -85,11 +82,12 @@
     }
 
 
-    .message-header-wrapper {
+    .message-content {
         justify-content: space-evenly;
+        
 
     }
-    .message-user-wrapper {
+    .message-text {
         
         width: 100%;
         max-width: 225px;
@@ -98,7 +96,7 @@
 
 
 
-   .message-user-text {
+    .message-main-text {
         flex-direction: column;
         gap: .25rem;
         

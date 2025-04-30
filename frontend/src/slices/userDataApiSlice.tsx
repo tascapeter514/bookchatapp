@@ -1,8 +1,14 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { Bookclub, Bookshelf, Invitation } from "../types";
-// const WEBSOCKET_URL = 'ws://localhost:8000'
-const PRODUCTION_BASE_URL = 'https://bookchatapp-2r38.onrender.com'
-const PRODUCTION_WEBSOCKET_URL = 'wss://bookchatapp-2r38.onrender.com'
+
+
+const BASE_URL = import.meta.env.PROD
+    ? 'https://bookchatapp-2r38.onrender.com/'
+    : 'http://localhost:8000/'
+
+const WEBSOCKET_URL = import.meta.env.PROD
+    ? 'wss://bookchatapp-2r38.onrender.com'
+    : 'ws://localhost:8000'
 
 export interface UserData {
     type: string,
@@ -14,7 +20,7 @@ export interface UserData {
 
 export const userDataApi = createApi({
     reducerPath: 'userDataApi',
-    baseQuery: fetchBaseQuery({ baseUrl: PRODUCTION_BASE_URL}),
+    baseQuery: fetchBaseQuery({ baseUrl: BASE_URL}),
     endpoints: (build) => ({
         getUserData: build.query<UserData, number>({
             queryFn: async () => ({data: {type: '', bookclubs: [], bookshelves: [], invitations: []}}),
@@ -23,7 +29,7 @@ export const userDataApi = createApi({
                 { updateCachedData, cacheDataLoaded, cacheEntryRemoved},
             )
             {
-                const ws = new WebSocket(`${PRODUCTION_WEBSOCKET_URL}/ws/userData/${userId}`)
+                const ws = new WebSocket(`${WEBSOCKET_URL}/ws/userData/${userId}`)
                 try {
 
                     await cacheDataLoaded
@@ -85,5 +91,5 @@ export const userDataApi = createApi({
     })
 })
 
-export const { useGetUserDataQuery, usePostBookclubMutation, usePostBookshelfMutation } = userDataApi
+export const { useGetUserDataQuery, usePostBookclubMutation, usePostBookshelfMutation, useAcceptInviteMutation, useDeclineInviteMutation } = userDataApi
 

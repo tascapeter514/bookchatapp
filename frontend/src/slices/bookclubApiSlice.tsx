@@ -1,8 +1,12 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { Bookclub, Bookshelf } from "../types";
+const BASE_URL = import.meta.env.PROD
+    ? 'https://bookchatapp-2r38.onrender.com/'
+    : 'http://localhost:8000/'
 
-const PRODUCTION_BASE_URL = 'https://bookchatapp-2r38.onrender.com'
-const PRODUCTION_WEBSOCKET_URL = 'wss://bookchatapp-2r38.onrender.com'
+const WEBSOCKET_URL = import.meta.env.PROD
+    ? 'wss://bookchatapp-2r38.onrender.com'
+    : 'ws://localhost:8000/'
 
 
 export interface BookclubData {
@@ -14,7 +18,7 @@ export interface BookclubData {
 
 export const bookclubApi = createApi({
     reducerPath: 'bookclubDataApi',
-    baseQuery: fetchBaseQuery({ baseUrl: PRODUCTION_BASE_URL}),
+    baseQuery: fetchBaseQuery({ baseUrl: BASE_URL}),
     endpoints: (build) => ({
         getBookclubData: build.query<BookclubData, number>({
             queryFn: async () => ({data: {type: '', bookclub: null, bookshelves: [] }}),
@@ -23,7 +27,7 @@ export const bookclubApi = createApi({
                 {updateCachedData, cacheDataLoaded, cacheEntryRemoved},
             )
             {
-                const ws = new WebSocket(`${PRODUCTION_WEBSOCKET_URL}/ws/bookclub/${bookclubId}`)
+                const ws = new WebSocket(`${WEBSOCKET_URL}/ws/bookclub/${bookclubId}`)
                 console.log('ws:', ws)
 
                 try {
@@ -74,21 +78,8 @@ export const bookclubApi = createApi({
                 body: {name: keyword}
 
             })
-        }),
-        acceptInvite: build.mutation({
-            query: ({userId, bookclubId}: {userId: number, bookclubId: number}) => ({
-                url: `/api/user/invite/accept`,
-                method: 'PUT',
-                body: {userId: userId, bookclubId: bookclubId}
-            })
-        }),
-        declineInvite: build.mutation({
-            query: ({userId, bookclubId}: {userId: Number, bookclubId: number}) => ({
-                url: '/api/user/invite/decline',
-                method: 'DELETE',
-                body: {userId: userId, bookclubId: bookclubId}
-            })
         })
+
     })
 })
 
