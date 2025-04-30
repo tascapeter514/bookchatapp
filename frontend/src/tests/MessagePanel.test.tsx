@@ -123,7 +123,7 @@ describe('<MessagePanel invitations={invitations} />', () => {
 
         expect(mockDeclineInvite).toHaveBeenCalledWith({id: 1})
     })
-    })
+    
 
     test('after clicking the accept button, accept button disappears', async () => {
 
@@ -143,14 +143,6 @@ describe('<MessagePanel invitations={invitations} />', () => {
         expect(declineButton).toBeNull()
     })
 
-
-
-   
-
-    
-
-    
-   
 })
 
 

@@ -1,0 +1,139 @@
+.message-element {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    max-width: 700px;
+    width: 100%;
+    justify-content: space-between;
+    background-color: #f6f6f6;
+    border-radius: 2rem;
+    
+
+    font-size: 1rem;
+}
+
+.message-header-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.message-element a {
+    text-decoration: none;
+}
+
+.message-user-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: .5rem;
+    width: 100%;
+    max-width: 465px;
+}
+
+.message-profile-icon {
+
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.1s ease-in-out;
+    background-color: #FF8C00;
+}
+
+.message-user-text {
+    display: flex;
+    gap: .5rem;
+    width: 100%;
+}
+
+.message-user-span {
+    font-weight: bold;
+}
+
+.message-date-span {
+    /* border: 1px solid red; */
+
+    font-size: 1rem;
+    color: rgb(112, 112, 112)
+}
+
+.message-bookclub-span {
+    color: #FF8C00;
+    font-weight: bold;
+}
+
+.message-content {
+    display: flex;
+    justify-content: center;
+    align-items: top;
+    
+}
+
+@media (max-width: 900px) {
+
+    .message-element {
+        max-width: 450px;
+        
+    }
+
+
+    .message-header-wrapper {
+        justify-content: space-evenly;
+
+    }
+    .message-user-wrapper {
+        
+        width: 100%;
+        max-width: 225px;
+        
+    }
+
+
+
+   .message-user-text {
+        flex-direction: column;
+        gap: .25rem;
+        
+        
+    
+        
+   }
+
+}
+
+@media (max-width: 600px) {
+
+
+    .message-profile-icon {
+        width: 35px;
+        height: 35px;
+        font-size: .75rem;
+    }
+
+    .accept-button {
+
+        padding: .25em .5em;
+        font-size: .75rem;
+
+
+    }
+}
+
+@media (max-width: 400px) {
+    .message-element {
+        font-size: .75rem
+    }
+
+    .message-date-span {
+        font-size: .75rem;
+    }
+}
+

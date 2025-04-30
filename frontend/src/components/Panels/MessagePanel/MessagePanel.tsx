@@ -1,10 +1,9 @@
 import './MessagePanel.css'
-import { Link } from 'react-router-dom'
 import { Invitation } from '../../../types.ts'
-import { formatDate } from '../../functions.tsx'
 import Header from '../../Headers/Header/Header.tsx'
 import SubHeader from '../../Headers/SubHeader/SubHeader.tsx'
-import Button from '../../Buttons/Button/Button.tsx'
+import InviteMessage from '../../InviteMessage/InviteMessage.tsx'
+
 
 
 interface Props {
@@ -12,39 +11,13 @@ interface Props {
 }
 
 
-const UserMessages = ({invitations}: Props) => {
+const InviteMessages = ({invitations}: Props) => {
 
     return(
         <ul className='messages-list'>
-            {invitations?.map((invite: Invitation) => {
-                const {day, month, year } = formatDate(invite.created_at)
+            {invitations?.map((invitation: Invitation) => {
                 return(
-                    <li key={invite.id} className='message-element'>
-                        <div className="message-header-wrapper">
-                            <div className="message-user-wrapper">
-                                <div className="message-profile-icon">
-                                    {invite.inviter.charAt(0).toUpperCase()}
-                                </div>
-                                <div className="message-user-text">
-                                    <span className='message-user-span'>{invite.inviter}</span>
-                                    <span className='message-invitation-span'>has invited you to</span>
-                                    <Link to={`/bookclub/${invite.bookclub.id}`}>
-                                        <span className='message-bookclub-span'>
-                                            {invite.bookclub.name}
-                                        </span>
-                                    </Link>
-                                </div>
-                            </div>
-                            <span className='message-date-span'>
-                                {day} {month} {year}
-                            </span>
-                        </div>
-                        <div className="message-content">
-                        {/* REMOVED ONCLICK HANDLER UNTIL FETCH LOGIC IS IMPLEMENTED */}
-                        {!invite.accepted && (<Button>Accept</Button>) }
-                        {!invite.accepted && (<Button>Decline</Button>) }
-                        </div> 
-                    </li>
+                    <InviteMessage invitation={invitation}/>
                 )
             })}
         </ul>
@@ -60,7 +33,7 @@ const MessagePanel = ({invitations}: Props) => {
         <section id='messages' className='messages-container' aria-labelledby='tab-2'>
             <Header>Messages</Header>
             <SubHeader>Invitations</SubHeader>
-            <UserMessages invitations={invitations} />
+            <InviteMessages invitations={invitations} />
             
         </section>
     )
