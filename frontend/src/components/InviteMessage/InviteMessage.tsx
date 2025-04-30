@@ -31,6 +31,9 @@ const InviteMessage = ({
 
     const {day, month, year } = formatDate(invitation.created_at)
 
+
+    
+
     return(
         <li className='message-element'>
             <div className="message-content">
@@ -53,17 +56,8 @@ const InviteMessage = ({
                 </span>
             </div>
             <div className="message-buttons">
-                {isAcceptError && (
-                    <>
-                        <ErrorMessage>There was an error with accepting the invitation</ErrorMessage>
-                        <Button onClick={handleAccept}>Accept</Button>
-                    </>)}
-                {isDeclineError && (
-                    <>
-                        <ErrorMessage>There was an error with declining the invitation</ErrorMessage>
-                        <Button onClick={handleAccept}>Decline</Button>
-                    </>
-                )}
+                {isAcceptError && (<ErrorMessage>There was an error with accepting the invitation</ErrorMessage>)}
+                {isDeclineError && (<ErrorMessage>There was an error with declining the invitation</ErrorMessage>)}
                 {isAccepting && (
                     <>
                         <div>...Loading</div>

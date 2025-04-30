@@ -35,8 +35,8 @@ urlpatterns = [
     path('api/bookclub/invite', send_invite, name='send-invite'),
     path('api/bookclub/bookshelf/<int:id>', add_bookshelf_to_bookclub, name='add_bookshelf'),
     path('api/books', get_books, name='get_books'),
-    path('/api/user/invite/accept', accept_invite, name='accept_invite'),
-    path('/api/user/invite/decline', decline_invite, name='decline_invite'),
+    path('api/user/invite/accept', accept_invite, name='accept_invite'),
+    path('api/user/invite/decline', decline_invite, name='decline_invite'),
    
 
     # UNFINISHED ROUTES? NEED WORK

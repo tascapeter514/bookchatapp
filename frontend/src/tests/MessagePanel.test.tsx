@@ -1,9 +1,16 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import MessagePanel from '../components/Panels/MessagePanel/MessagePanel'
 import userEvent from '@testing-library/user-event'
+import InviteMessage from '../components/InviteMessage/InviteMessage'
 import { MemoryRouter } from 'react-router-dom'
+import { useGetUserDataQuery } from '../slices/userDataApiSlice'
+import { vi } from 'vitest'
 
 
+
+vi.mock('../slices/userDataApiSlice', () => ({
+    ...vi.importActual('')
+}))
 
 const mockAcceptInvite = vi.fn()
 const mockDeclineInvite = vi.fn()
@@ -36,9 +43,10 @@ test('renders content', () => {
         </MemoryRouter>
     )
 
-    const element = screen.getByText('tascapeter514')
+    const element = screen.queryByText('tascapeter514')
 
-    expect(element).toBeDefined()
+    expect(element).not.toBeNull()
+    expect(element).toBeTruthy()
     
   
 })
@@ -51,8 +59,8 @@ afterEach(() => {
     vi.restoreAllMocks()
 })
 
-test('clicking the button calls event handler once', async () => {
-    const invitations = [{
+test('clicking the accept button calls event handler once', async () => {
+    const invitation = {
         id: 1,
         accepted: false,
         created_at: "2025-04-29T16:19:41.470649-04:00",
@@ -61,13 +69,23 @@ test('clicking the button calls event handler once', async () => {
         status: 'pending',
         bookclub: {id: 3, name: 'Virginia Woolf Bookclub'}
 
-    }]
+    }
 
-    const mockHandler = vi.fn()
 
     render(
         <MemoryRouter>
-            <MessagePanel invitations={invitations} />
+            <InviteMessage 
+                invitation={invitation}
+                handleAccept={mockAcceptInvite}
+                handleDecline={mockDeclineInvite}
+                isAccepting={false}
+                isDeclining={false}
+                isAcceptError={false}
+                isDeclineError={false}
+
+            
+            
+            />
         </MemoryRouter>
     )
 
@@ -76,7 +94,7 @@ test('clicking the button calls event handler once', async () => {
     const acceptButton = screen.getByText('Accept')
     await user.click(acceptButton)
 
-    expect(mockHandler.mock.calls).toHaveLength(1)
+    expect(mockAcceptInvite.mock.calls).toHaveLength(1)
 
 })
 
@@ -127,11 +145,39 @@ describe('<MessagePanel invitations={invitations} />', () => {
 
     test('after clicking the accept button, accept button disappears', async () => {
 
+        const initialData = {
+            invitations: [{id: 1, name: 'Invitation 1', status: 'pending'}]
+        };
+
+        const updatedData = {
+            invitations: [{id: 1, name: 'Invitation 1', status: 'accepted'}]
+        };
+
+        (useGetUserDataQuery as vi.Mock).mockImplementation({
+            data: initialData,
+            isLoading: false
+        })
+
         const user = userEvent.setup()
         const acceptButton = screen.getByText('Accept')
+
+        // Mock resposne to simluate status change after accept
+        mockAcceptInvite.mockResolvedValue({data: {status: 'accepted'}})
+
+
         await user.click(acceptButton)
-    
-        expect(acceptButton).toBeNull()
+        
+
+        // Check 'Accept' Button is no longer present
+        await waitFor(() => {
+
+            expect(screen.queryByText('Accept')).toBeNull()
+
+        })
+        
+
+        //Check for 'Invitation Accepted' message
+        expect(screen.getByText('Invitation Accepted')).toBeTruthy()
     
     })
 
@@ -140,7 +186,7 @@ describe('<MessagePanel invitations={invitations} />', () => {
         const declineButton = screen.getByText('Decline')
         await user.click(declineButton)
 
-        expect(declineButton).toBeNull()
+        expect(screen.queryByText('Decline')).toBeNull()
     })
 
 })

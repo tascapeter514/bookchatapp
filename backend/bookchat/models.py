@@ -86,8 +86,8 @@ class Invitation(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=100, choices=STATUS_CHOICES, default=PENDING)
 
-    def __str__(self):
-        return f'Invitation for {self.invited_user} to join {self.bookclub.name}.'
+    # def __str__(self):
+    #     return f'Invitation for {self.inviter} to join {self.bookclub.name}.'
     
 
 

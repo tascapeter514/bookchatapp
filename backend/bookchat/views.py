@@ -285,10 +285,72 @@ def send_invite(request):
     except Exception as e:
         print(f'Error: {str(e)}')
         return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+@api_view(['PUT'])
+def accept_invite(request):
+    try:
+        print(request.body)
+
+        invitation_id = request.data.get('inviteId')
+        invitation = get_object_or_404(Invitation, id=invitation_id)
+
+        invitation.status = 'accepted'
+        invitation.save()
+
+        invitation_serializer = InvitationSerializer(invitation)
+
+    
+        invitee_id = invitation_serializer.data.get('invitee')
+
+
+
+        send_user_data_to_group(invitee_id)
+
+
+        return Response(invitation_serializer.data, status=status.HTTP_202_ACCEPTED)
+
+    
+    
+    
+    except ValidationError as e:
+        return Response(e.detail, status=status.HTTP_400_BAD_REQUEST)
+
+    except Exception as e:
+        print(f'Error: {str(e)}')
+        return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+@api_view(['DELETE'])
+def decline_invite(request):
+    try:
+        print(request.body)
+
+        invitation_id = request.data.get('inviteId')
+        
+        invitation = get_object_or_404(Invitation, id=invitation_id)
+        print('invitation:', invitation)
+
+        invitation.status = 'declined'
+        invitation.save()
+
+        invitation_serializer = InvitationSerializer(invitation)
+
+        invitee_id = invitation_serializer.data.get('invitee')
+
+        send_user_data_to_group(invitee_id)
+
+
+        return Response(invitation_serializer.data, status=status.HTTP_200_OK)
+
+    except ValidationError as e:
+        return Response(e.detail, status=status.HTTP_400_BAD_REQUEST)
+
+    except Exception as e:
+        print(f'Error: {str(e)}')
+        return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 @api_view(['DELETE'])
-def delete_book(request):
+def remove_book_from_bookshelf(request):
     print('delete book check')
 
     try:
