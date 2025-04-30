@@ -3,6 +3,8 @@ import { formatDate } from '../functions'
 import { Invitation } from '../../types'
 import Button from '../Buttons/Button/Button'
 import { Link } from 'react-router-dom'
+import ErrorMessage from '../Messages/ErrorMessage/ErrorMessage'
+
 
 interface Props {
     invitation: Invitation,
@@ -51,8 +53,35 @@ const InviteMessage = ({
                 </span>
             </div>
             <div className="message-buttons">
-                {!invitation.accepted && (<Button onClick={handleAccept}>Accept</Button>) }
-                {!invitation.accepted && (<Button onClick={handleDecline}>Decline</Button>) }
+                {isAcceptError && (
+                    <>
+                        <ErrorMessage>There was an error with accepting the invitation</ErrorMessage>
+                        <Button onClick={handleAccept}>Accept</Button>
+                    </>)}
+                {isDeclineError && (
+                    <>
+                        <ErrorMessage>There was an error with declining the invitation</ErrorMessage>
+                        <Button onClick={handleAccept}>Decline</Button>
+                    </>
+                )}
+                {isAccepting && (
+                    <>
+                        <div>...Loading</div>
+                        <Button>Accept</Button>
+
+                    </>
+                )}
+                {isDeclining && (
+                    <>
+                        <div>...Loading</div>
+                        <Button>Decline</Button>
+
+                    </>
+                )}
+                {invitation.status === 'pending' && (<Button onClick={handleAccept}>Accept</Button>) }
+                {invitation.status === 'pending' && (<Button onClick={handleDecline}>Decline</Button>) }
+                {invitation.status === 'accepted' && (<div>Invitation Accepted</div>)}
+                {invitation.status === 'declined' && (<div>Invitation Declined</div>)}
             </div> 
         </li>
 
