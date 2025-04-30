@@ -3,12 +3,15 @@ import { Invitation } from '../../../types.ts'
 import Header from '../../Headers/Header/Header.tsx'
 import SubHeader from '../../Headers/SubHeader/SubHeader.tsx'
 import InviteMessage from '../../InviteMessage/InviteMessage.tsx'
+import WithAcceptDeclineLogic from '../../HigherOrderComponents/WithAcceptDeclineLogic.tsx'
 
 
 
 interface Props {
     invitations: Invitation[]
 }
+
+const InviteMessageWithLogic = WithAcceptDeclineLogic(InviteMessage)
 
 
 const InviteMessages = ({invitations}: Props) => {
@@ -17,7 +20,7 @@ const InviteMessages = ({invitations}: Props) => {
         <ul className='messages-list'>
             {invitations?.map((invitation: Invitation) => {
                 return(
-                    <InviteMessage invitation={invitation} key={invitation.id}/>
+                    <InviteMessageWithLogic invitation={invitation} key={invitation.id}/>
                 )
             })}
         </ul>

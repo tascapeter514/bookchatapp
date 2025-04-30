@@ -4,13 +4,28 @@ import { Invitation } from '../../types'
 import Button from '../Buttons/Button/Button'
 import { Link } from 'react-router-dom'
 
-
 interface Props {
-    invitation: Invitation
+    invitation: Invitation,
+    handleAccept: () => void,
+    handleDecline: () => void,
+    isAccepting: boolean,
+    isDeclining: boolean,
+    isAcceptError: boolean,
+    isDeclineError: boolean
+
 }
 
 
-const InviteMessage = ({invitation}: Props) => {
+const InviteMessage = ({
+    invitation, 
+    handleAccept, 
+    handleDecline,
+    isAccepting,
+    isDeclining,
+    isAcceptError,
+    isDeclineError
+
+    }: Props) => {
 
     const {day, month, year } = formatDate(invitation.created_at)
 
@@ -36,8 +51,8 @@ const InviteMessage = ({invitation}: Props) => {
                 </span>
             </div>
             <div className="message-buttons">
-                {!invitation.accepted && (<Button>Accept</Button>) }
-                {!invitation.accepted && (<Button>Decline</Button>) }
+                {!invitation.accepted && (<Button onClick={handleAccept}>Accept</Button>) }
+                {!invitation.accepted && (<Button onClick={handleDecline}>Decline</Button>) }
             </div> 
         </li>
 

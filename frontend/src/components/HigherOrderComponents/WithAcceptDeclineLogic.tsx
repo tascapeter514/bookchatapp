@@ -1,25 +1,37 @@
 import { useAcceptInviteMutation, useDeclineInviteMutation } from "../../slices/userDataApiSlice"
 import { ComponentType } from "react"
+import { Invitation } from "../../types"
 
 
 interface WithAcceptDeclineProps {
-    inviteId: number
+    invitation: Invitation
+}
+
+interface InjectedProps {
+    handleAccept: () => void,
+    handleDecline: () => void,
+    isAccepting: boolean,
+    isDeclining: boolean,
+    isAcceptError: boolean,
+    isDeclineError: boolean
 }
 
 
-const WithAcceptDeclineLogic = <T extends WithAcceptDeclineProps>(WrappedComponent: ComponentType<T>) => {
+const WithAcceptDeclineLogic = (
+    WrappedComponent: ComponentType<InjectedProps & WithAcceptDeclineProps>
+): ComponentType<WithAcceptDeclineProps> => {
     
-    return function WithAcceptDeclineLogicWrapper(props: T) {
+    return function WithAcceptDeclineLogicWrapper(props: WithAcceptDeclineProps) {
 
-        const { inviteId } = props
+        const { invitation } = props
 
         const [acceptInvite, {isLoading: isAccepting, isError: isAcceptError}] = useAcceptInviteMutation()
         const [declineInvite, {isLoading: isDeclining, isError: isDeclineError}] = useDeclineInviteMutation()
 
-        const handleAccept = () => acceptInvite(inviteId)
-        const handleDecline = () => declineInvite(inviteId)
+        const handleAccept = () => acceptInvite(invitation.id)
+        const handleDecline = () => declineInvite(invitation.id)
 
-        const logicProps = {
+        const injectedProps: InjectedProps = {
             handleAccept,
             handleDecline,
             isAccepting,
@@ -28,7 +40,7 @@ const WithAcceptDeclineLogic = <T extends WithAcceptDeclineProps>(WrappedCompone
             isDeclineError
         }
 
-        return <WrappedComponent {...props} {...logicProps} />
+        return <WrappedComponent {...props} {...injectedProps} />
 
     }
 
