@@ -93,6 +93,19 @@ def create(request):
 def vote(request, id):
     print('Vote on poll')
 
+    try:
+        print('request body:', request.body)
+
+    except ValidationError as e:
+
+        return Response(e.detail, status=status.HTTP_400_BAD_REQUEST)
+    
+    except Exception as e:
+        print(f'Error: {str(e)}')
+        return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+
 @api_view(['GET'])
 def get_results(request, id):
     print('get poll results')

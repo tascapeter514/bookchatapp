@@ -4,9 +4,10 @@ import { useVoteMutation } from "../../slices/pollApiSlice"
 import { VoteRequest } from "../../types"
 import { useSelector } from "react-redux"
 import { RootState } from "../../store/store"
+import { Poll } from "../../types"
 
 interface WithVotingProps {
-    pollId: number
+    poll: Poll
 }
 
 interface InjectedProps {
@@ -30,7 +31,7 @@ const WithVotingLogic = (
 
 
         const [successMessage, setSuccessMessage] = useState<string>('')
-        const { pollId } = props
+        const { poll } = props
         const { user } = useSelector((state: RootState) => state.auth)
 
         const [selection, setSelection] = useState(0)
@@ -46,7 +47,7 @@ const WithVotingLogic = (
 
             try {
 
-                const response = await vote({data: voteRequestData, pollId}).unwrap()
+                const response = await vote({data: voteRequestData, pollId: poll.id}).unwrap()
 
                 console.log('vote response:', response)
 
@@ -65,7 +66,7 @@ const WithVotingLogic = (
 
         }
 
-        const injectedProps = {
+        const injectedProps: InjectedProps = {
 
             handleSelection,
             handleSubmitVote,

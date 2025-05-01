@@ -1,5 +1,5 @@
 import './PollVoteModal.css'
-import {  useRef, useState } from 'react'
+import {  useRef } from 'react'
 import Button from '../../Buttons/Button/Button'
 import { Poll } from '../../../types'
 import RadioButtonsMapper from '../../RadioButtonsMapper/RadioButtonsMapper'
@@ -8,31 +8,24 @@ import RadioButtonsMapper from '../../RadioButtonsMapper/RadioButtonsMapper'
 
 
 interface Props {
-    poll: Poll
+    poll: Poll,
+    handleSelection: (id: number) => void,
+    handleSubmitVote: () => void,
+    isVoting: boolean,
+    isVoteError: boolean,
+    successMessage: string
+
+    
 }
 
 
-const PollVoteModal = ({poll}: Props) => {
+const PollVoteModal = ({poll, handleSelection, handleSubmitVote}: Props) => {
 
     const voteRef = useRef<HTMLDialogElement>(null)
     const openVote = () => voteRef.current?.showModal()
     const closeVote = () => voteRef.current?.close()
     const pollData = [poll.bookOne, poll.bookTwo, poll.bookThree]
-    const [selection, setSelection] = useState(0)
-
-
-    const handleOnChange = (id: number) => {
-        
-        console.log('selection:', id)
-        setSelection(id)
-
-    }
-
-
-    const handleSubmitVote = () => {
-        console.log('submit vote')
-        console.log('selection:', selection)
-    }
+   
 
     console.log("active poll data:", poll)
 
@@ -45,7 +38,7 @@ const PollVoteModal = ({poll}: Props) => {
                
 
                <RadioButtonsMapper 
-                    dispatch={handleOnChange}
+                    dispatch={handleSelection}
                     data={pollData}
                />
                 

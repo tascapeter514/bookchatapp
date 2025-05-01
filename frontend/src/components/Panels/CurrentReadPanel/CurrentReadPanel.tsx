@@ -1,6 +1,7 @@
 import './CurrentRead.css'
 import Header from '../../Headers/Header/Header'
 import { useGetPollsQuery } from '../../../slices/pollApiSlice'
+import WithVotingLogic from '../../HigherOrderComponents/WithVotingLogic'
 import PollVoteModal from '../../Modals/PollVoteModal/PollVoteModal'
 import SubHeader from '../../Headers/SubHeader/SubHeader'
 
@@ -9,24 +10,26 @@ interface Props {
     bookclubId: number
 }
 
+const PollVoteModalWithLogic = WithVotingLogic(PollVoteModal)
+
 
 const CurrentReadPanel = ({bookclubId}: Props) => {
 
-    const { data } = useGetPollsQuery(bookclubId)
+    const { data: poll } = useGetPollsQuery(bookclubId)
 
 
 
-    console.log('poll data:', data)
-    console.log('poll ternary:', data ? true : false)
+    console.log('poll data:', poll)
+    
 
 
     return (
         <div className="current-read-panel">
             <Header>Current Read</Header>
-            {data?.id ? 
+            {poll?.id ? 
                 <>
                     <SubHeader>Poll in Progress</SubHeader>
-                    <PollVoteModal poll={data}/>
+                    <PollVoteModalWithLogic poll={poll} />
                 </> 
             : 
                 <p>Start a poll!</p>
