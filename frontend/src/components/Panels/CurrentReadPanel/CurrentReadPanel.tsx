@@ -1,4 +1,4 @@
-import './CurrentRead.css'
+import './CurrentReadPanel.css'
 import Header from '../../Headers/Header/Header'
 import { useGetPollsQuery } from '../../../slices/pollApiSlice'
 import WithVotingLogic from '../../HigherOrderComponents/WithVotingLogic'

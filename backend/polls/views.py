@@ -3,6 +3,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.exceptions import ValidationError
 from rest_framework import status
+from polls.consumers import send_poll_data_to_group
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import get_object_or_404
 from bookchat.models import Book, Bookclub
@@ -51,6 +52,7 @@ def create(request):
             current_book = get_object_or_404(Book, id=book['id'])
             PollChoice.objects.create(poll=new_poll, book=current_book)
 
+        send_poll_data_to_group(bookclub_id)
         poll_serializer = PollSerializer(new_poll)
 
 

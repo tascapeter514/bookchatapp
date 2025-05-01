@@ -65,7 +65,7 @@ export const pollApi = createApi({
         vote: build.mutation({
             query: ({data, pollId}: {data: VoteRequest, pollId: number}) => ({
                 url: `api/poll/vote/${pollId}`,
-                method: 'POST',
+                method: 'PUT',
                 body: data
             })
         })

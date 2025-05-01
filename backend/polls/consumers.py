@@ -47,6 +47,21 @@ class PollConsumer(WebsocketConsumer):
                 'polls': poll_serializer.data
             }
         ))
+    
+    def send_poll_data(self, event):
+        self.get_polls()
+    
+def send_poll_data_to_group(bookclub_id):
+
+    channel_layer = get_channel_layer()
+
+    async_to_sync(channel_layer.group_send)(
+        f'poll_data_{bookclub_id}',
+        {
+            'type': 'send_poll_data',
+            'bookclub_id': bookclub_id
+        }
+    )
 
     
 

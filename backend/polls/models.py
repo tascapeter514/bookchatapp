@@ -1,7 +1,7 @@
 from django.db import models
 from bookchat.models import Bookclub, Book
 from django.contrib.auth.models import User
-from django.core.exceptions import ValidationError
+from rest_framework.exceptions import ValidationError
 
 # Create your models here.
 
