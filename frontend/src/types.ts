@@ -91,6 +91,7 @@ export interface Book {
     authors: Author[]
 }
 
+
 export interface Bookclub {
     id: number,
     name: string,
@@ -102,11 +103,17 @@ export interface Bookclub {
 
 }
 
+export interface PollChoice {
+    id: number,
+    book: {id: number, name: string}
+
+}
+
 export interface Poll {
     id: number,
-    bookOne: {id: number, name: string},
-    bookTwo: {id: number, name: string},
-    bookThree: {id: number, name: string}
+    status: string,
+    pollChoices: PollChoice[]
+
 }
 
 export interface Vote {

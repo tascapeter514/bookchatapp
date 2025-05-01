@@ -39,9 +39,8 @@ export const pollApi = createApi({
                                     return
                                 }
                                 draft.id = data.polls.id
-                                draft.bookOne = data.polls.book_one;
-                                draft.bookTwo = data.polls.book_two;
-                                draft.bookThree = data.polls.book_three;
+                                draft.status = data.polls.status,
+                                draft.pollChoices = data.polls.poll_choices
                             })
                         }
                     }

@@ -24,7 +24,7 @@ const PollVoteModal = ({poll, handleSelection, handleSubmitVote}: Props) => {
     const voteRef = useRef<HTMLDialogElement>(null)
     const openVote = () => voteRef.current?.showModal()
     const closeVote = () => voteRef.current?.close()
-    const pollData = [poll.bookOne, poll.bookTwo, poll.bookThree]
+    
    
 
     console.log("active poll data:", poll)
@@ -39,7 +39,10 @@ const PollVoteModal = ({poll, handleSelection, handleSubmitVote}: Props) => {
 
                <RadioButtonsMapper 
                     dispatch={handleSelection}
-                    data={pollData}
+                    data={poll.pollChoices.map((choice) => ({
+                        id: choice.book.id,
+                        name: choice.book.name
+                    }))}
                />
                 
                 <div className="button-wrapper">

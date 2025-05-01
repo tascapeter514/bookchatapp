@@ -7,12 +7,12 @@ interface Data {
 }
 
 
-interface Props {
-    data: Data[],
+interface Props<T extends Data> {
+    data: T[],
     dispatch: (input: number) => void
 }
 
-const RadioButtonsMapper = ({data, dispatch}: Props) => {
+const RadioButtonsMapper = <T extends Data>({data, dispatch}: Props<T>) => {
 
     return(
         <ul className='radio-buttons-list'>
