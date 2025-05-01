@@ -146,14 +146,14 @@ describe('<MessagePanel invitations={invitations} />', () => {
             invitations: [{id: 1, name: 'Invitation 1', status: 'pending'}]
         };
 
-        const updatedData = {
-            invitations: [{id: 1, name: 'Invitation 1', status: 'accepted'}]
-        };
+        // const updatedData = {
+        //     invitations: [{id: 1, name: 'Invitation 1', status: 'accepted'}]
+        // };
 
-        (useGetUserDataQuery).mockReturnValue({
-            data: initialData,
-            isLoading: false
-        })
+        // (useGetUserDataQuery).mockReturnValue({
+        //     data: initialData,
+        //     isLoading: false
+        // })
 
         const user = userEvent.setup()
         const acceptButton = screen.getByText('Accept')
