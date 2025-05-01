@@ -301,6 +301,12 @@ def accept_invite(request):
 
     
         invitee_id = invitation_serializer.data.get('invitee')
+        bookclub_id = invitation_serializer.data.get('bookclub', {}).get('id')
+
+        bookclub = get_object_or_404(Bookclub, id=bookclub_id)
+        bookclub.members.add(invitee_id)
+
+        print('invitation serialized:', invitation_serializer.data)
 
 
 
