@@ -5,12 +5,9 @@ import InviteMessage from '../components/InviteMessage/InviteMessage'
 import { MemoryRouter } from 'react-router-dom'
 import { useGetUserDataQuery } from '../slices/userDataApiSlice'
 import { vi } from 'vitest'
+import { setupServer } from 'msw/node'
 
 
-
-vi.mock('../slices/userDataApiSlice', () => ({
-    ...vi.importActual('')
-}))
 
 const mockAcceptInvite = vi.fn()
 const mockDeclineInvite = vi.fn()
@@ -153,7 +150,7 @@ describe('<MessagePanel invitations={invitations} />', () => {
             invitations: [{id: 1, name: 'Invitation 1', status: 'accepted'}]
         };
 
-        (useGetUserDataQuery as vi.Mock).mockImplementation({
+        (useGetUserDataQuery).mockReturnValue({
             data: initialData,
             isLoading: false
         })

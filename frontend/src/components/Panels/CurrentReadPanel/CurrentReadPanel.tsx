@@ -12,17 +12,18 @@ interface Props {
 
 const CurrentReadPanel = ({bookclubId}: Props) => {
 
-    const {data } = useGetPollsQuery(bookclubId)
+    const { data } = useGetPollsQuery(bookclubId)
 
 
 
     console.log('poll data:', data)
+    console.log('poll ternary:', data ? true : false)
 
 
     return (
         <div className="current-read-panel">
             <Header>Current Read</Header>
-            {data ? 
+            {data?.id ? 
                 <>
                     <SubHeader>Poll in Progress</SubHeader>
                     <ActivePoll poll={data}/>

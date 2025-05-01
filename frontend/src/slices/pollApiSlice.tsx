@@ -32,6 +32,7 @@ export const pollApi = createApi({
                                     console.warn('Draft is undefined')
                                     return
                                 }
+                                draft.id = data.polls.id
                                 draft.bookOne = data.polls.book_one;
                                 draft.bookTwo = data.polls.book_two;
                                 draft.bookThree = data.polls.book_three;

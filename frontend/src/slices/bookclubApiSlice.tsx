@@ -6,7 +6,7 @@ const BASE_URL = import.meta.env.PROD
 
 const WEBSOCKET_URL = import.meta.env.PROD
     ? 'wss://bookchatapp-2r38.onrender.com'
-    : 'ws://localhost:8000/'
+    : 'ws://localhost:8000'
 
 
 export interface BookclubData {
