@@ -1,16 +1,47 @@
 from rest_framework import serializers
-from .models import Poll
+from .models import Poll, PollChoice, Vote, Results
 from bookchat.serializers import BookSerializer
+
+
+class PollChoiceSerializer(serializers.ModelSerializer):
+    book = serializers.SerializerMethodField()
+
+    class Meta:
+        model = PollChoice
+        fields = ['id', 'book']
+
+    def get_book(self, obj):
+
+        return {
+            'id': obj.book.id,
+            'name': obj.book.name
+        }
+
+
+class VoteSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Vote
+        fields = ['id', 'user', 'poll', 'choice']
 
 
 
 class PollSerializer(serializers.ModelSerializer):
-    book_one = BookSerializer()
-    book_two = BookSerializer()
-    book_three = BookSerializer()
-
-
-
+    poll_choices = PollChoiceSerializer(many=True, read_only=True)
+    
     class Meta:
         model = Poll
-        fields = ['id', 'book_one', 'book_two', 'book_three', 'book_one_count', 'book_two_count', 'book_three_count']
+        fields = ['id', 'status', 'poll_choices']
+
+class ResultsSerializer(serializers.ModelSerializer):
+    book = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Results
+        fields = ['book', 'vote_count']
+
+    def get_book(self, obj):
+        return {
+            'id': obj.choice.book.id,
+            'name': obj.choice.book.name
+        }

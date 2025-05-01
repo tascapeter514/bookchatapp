@@ -6,26 +6,13 @@ from rest_framework import status
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import get_object_or_404
 from bookchat.models import Book, Bookclub
-from .models import Poll
-from .serializers import PollSerializer
+from .models import *
+from .serializers import *
 import redis
 from django.http import JsonResponse
 
 # Create your views here.
 
-
-
-
-def check_redis_connection(request):
-    try:
-        # Test the Redis connection
-        r = redis.Redis(host='red-d03sqi9r0fns739g5cng', port=6379)
-        if r.ping():  # Check if Redis responds with a "ping"
-            return JsonResponse({"status": "success", "message": "Connected to Redis!"})
-        else:
-            return JsonResponse({"status": "error", "message": "Failed to connect to Redis."})
-    except Exception as e:
-        return JsonResponse({"status": "error", "message": f"Redis connection error: {str(e)}"})
 
 
 
@@ -56,23 +43,13 @@ def create(request):
         names = [book['name'].strip().lower() for book in books]
         if len(set(names)) != 3:
             raise ValidationError({'poll': 'All three books must be different'})
-
-        book_one_id = books[0]['id']
-        book_two_id = books[1]['id']
-        book_three_id = books[2]['id']
         
-        book_one = get_object_or_404(Book, id=book_one_id)
-        book_two = get_object_or_404(Book, id=book_two_id)
-        book_three = get_object_or_404(Book, id=book_three_id)
-        
+        new_poll = Poll.objects.create(bookclub=bookclub)
 
 
-        new_poll = Poll.objects.create(
-            book_one=book_one,
-            book_two=book_two,
-            book_three=book_three,
-            bookclub=bookclub 
-        )
+        for book in books:
+            current_book = get_object_or_404(Book, id=book['id'])
+            PollChoice.objects.create(poll=new_poll, book=current_book)
 
         poll_serializer = PollSerializer(new_poll)
 
@@ -95,6 +72,8 @@ def vote(request, id):
 
     try:
         print('request body:', request.body)
+
+        return Response({'message': 'You have reached the poll backend view!'})
 
     except ValidationError as e:
 
