@@ -1,12 +1,18 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { Poll, VoteRequest } from "../types";
 
+const BASE_URL = import.meta.env.PROD
+    ? 'https://bookchatapp-2r38.onrender.com/'
+    : 'http://localhost:8000/'
 
+const WEBSOCKET_URL = import.meta.env.PROD
+    ? 'wss://bookchatapp-2r38.onrender.com'
+    : 'ws://localhost:8000'
 
 
 export const pollApi = createApi({
     reducerPath: 'pollDataApi',
-    baseQuery: fetchBaseQuery({baseUrl: 'http://localhost:8000/'}),
+    baseQuery: fetchBaseQuery({baseUrl: BASE_URL}),
     endpoints: (build) => ({
         getPolls: build.query<Poll, number>({
             queryFn: async () => ({
@@ -17,7 +23,7 @@ export const pollApi = createApi({
                 {updateCachedData, cacheDataLoaded, cacheEntryRemoved},
             )
             {
-                const ws = new WebSocket(`ws://localhost:8000/ws/polls/${bookclubId}`)
+                const ws = new WebSocket(`${WEBSOCKET_URL}/ws/polls/${bookclubId}`)
 
         
                 try {
