@@ -1,7 +1,8 @@
-import './ActivePoll.css'
+import './PollVoteModal.css'
 import {  useRef, useState } from 'react'
-import Button from '../Buttons/Button/Button'
-import { Poll } from '../../types'
+import Button from '../../Buttons/Button/Button'
+import { Poll } from '../../../types'
+import RadioButtonsMapper from '../../HigherOrderComponents/RadioButtonsMapper/RadioButtonsMapper'
 
 
 
@@ -11,7 +12,7 @@ interface Props {
 }
 
 
-const ActivePoll = ({poll}: Props) => {
+const PollVoteModal = ({poll}: Props) => {
 
     const voteRef = useRef<HTMLDialogElement>(null)
     const openVote = () => voteRef.current?.showModal()
@@ -20,10 +21,10 @@ const ActivePoll = ({poll}: Props) => {
     const [selection, setSelection] = useState(0)
 
 
-    const handleOnChange = (event: string) => {
+    const handleOnChange = (id: number) => {
         
-        console.log('selection:', event)
-        setSelection(Number(event))
+        console.log('selection:', id)
+        setSelection(id)
 
     }
 
@@ -42,7 +43,7 @@ const ActivePoll = ({poll}: Props) => {
 
             <dialog className='vote-dialog' ref={voteRef}>
                 <h4>Choose a book</h4>
-               {pollData.map((choice) => {
+               {/* {pollData.map((choice) => {
 
                 const inputId = `choice-${choice.id}`
 
@@ -64,7 +65,13 @@ const ActivePoll = ({poll}: Props) => {
                     </li>
 
                 )
-               })}
+               })} */}
+
+               <RadioButtonsMapper 
+                    dispatch={handleOnChange}
+                    data={pollData}
+               />
+                
 
 
 
@@ -78,5 +85,5 @@ const ActivePoll = ({poll}: Props) => {
 
 }
 
-export default ActivePoll
+export default PollVoteModal
 

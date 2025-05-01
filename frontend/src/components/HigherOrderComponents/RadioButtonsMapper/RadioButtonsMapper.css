@@ -11,17 +11,18 @@
 
 
 .radio-button-list-element {
-    display: flex;
-    justify-content: space-between;
+
     font-size: 1.125rem;
-    width: 100%;
     padding: .5em;
-    align-items: center;
     
 }
 
 .radio-button-label {
     margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 
 .radio-button-input {

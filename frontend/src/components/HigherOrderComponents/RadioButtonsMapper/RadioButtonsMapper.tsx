@@ -1,3 +1,5 @@
+import './RadioButtonsMapper.css'
+
 
 interface Data {
     id: number,
@@ -5,16 +7,16 @@ interface Data {
 }
 
 
-interface Props<T extends Data[]> {
-    children: T,
+interface Props {
+    data: Data[],
     dispatch: (input: number) => void
 }
 
-const WithRadioButtons = <T extends Data>({children, dispatch}: Props<T[]>) => {
+const RadioButtonsMapper = ({data, dispatch}: Props) => {
 
     return(
         <ul className='radio-buttons-list'>
-            {children.map((radioButton: Data) => {
+            {data.map((radioButton: Data) => {
 
                 if (!radioButton) return null
 
@@ -28,14 +30,15 @@ const WithRadioButtons = <T extends Data>({children, dispatch}: Props<T[]>) => {
                             className='radio-button-label'
                         
                         >
+                            {radioButton.name}
                             <input 
                                 type="radio"
                                 className='radio-button-input'
                                 name='radioButtonsGroup'
-                                onChange={() => dispatch(radioButton.id)} 
+                                onChange={() => dispatch(Number(radioButton.id))} 
                             
                             />
-                            {radioButton.name}
+                            
 
                         </label>
 
@@ -48,5 +51,5 @@ const WithRadioButtons = <T extends Data>({children, dispatch}: Props<T[]>) => {
     )
 }
 
-export default WithRadioButtons
+export default RadioButtonsMapper
 
