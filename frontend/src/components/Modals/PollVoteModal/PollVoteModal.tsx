@@ -2,7 +2,7 @@ import './PollVoteModal.css'
 import {  useRef, useState } from 'react'
 import Button from '../../Buttons/Button/Button'
 import { Poll } from '../../../types'
-import RadioButtonsMapper from '../../HigherOrderComponents/RadioButtonsMapper/RadioButtonsMapper'
+import RadioButtonsMapper from '../../RadioButtonsMapper/RadioButtonsMapper'
 
 
 
@@ -37,44 +37,18 @@ const PollVoteModal = ({poll}: Props) => {
     console.log("active poll data:", poll)
 
     return(
-        <div className="active-poll">
+        <div className="poll-vote-modal">
             <Button onClick={openVote}>Vote</Button>
-            <Button>See Results</Button>
 
-            <dialog className='vote-dialog' ref={voteRef}>
+            <dialog className='poll-vote-dialog' ref={voteRef}>
                 <h4>Choose a book</h4>
-               {/* {pollData.map((choice) => {
-
-                const inputId = `choice-${choice.id}`
-
-
-
-                return(
-
-                    <li className='choice-list-element' key={choice.id} >
-                        <label htmlFor={choice.name} className='choice-label'>{choice.name}</label>
-                        <input 
-                            type="radio" 
-                            id={inputId}
-                            value={choice.id} 
-                            className='choice-input'
-                            name='choiceGroup'
-                            onChange={(e) => handleOnChange(e.target.value)}
-                        />
-                    
-                    </li>
-
-                )
-               })} */}
+               
 
                <RadioButtonsMapper 
                     dispatch={handleOnChange}
                     data={pollData}
                />
                 
-
-
-
                 <div className="button-wrapper">
                     <Button type='button' onClick={closeVote}>Cancel</Button>
                     <Button type='submit' onClick={handleSubmitVote}>Vote</Button>

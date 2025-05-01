@@ -1,4 +1,4 @@
-.active-poll {
+.poll-vote-modal {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -7,12 +7,12 @@
     
 }
 
-.active-poll button {
+.poll-vote-modal button {
     flex: 1;
     max-width: 118px;
 }
 
-.vote-dialog {
+.poll-vote-dialog {
     background-color: white;
     border-radius: 3px;
     border: 2px solid black;
@@ -23,7 +23,7 @@
 
 }
 
-.vote-dialog[open] {
+.poll-vote-dialog[open] {
     display: flex;
     flex-direction: column;
     gap: 1rem;

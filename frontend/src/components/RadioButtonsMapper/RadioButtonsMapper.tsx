@@ -31,7 +31,8 @@ const RadioButtonsMapper = ({data, dispatch}: Props) => {
                         
                         >
                             {radioButton.name}
-                            <input 
+                            <input
+                                id={radioButton.name} 
                                 type="radio"
                                 className='radio-button-input'
                                 name='radioButtonsGroup'
