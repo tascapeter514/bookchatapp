@@ -34,13 +34,13 @@ const PollVoteModal = ({poll, handleSelection, handleSubmitVote}: Props) => {
             <Button onClick={openVote}>Vote</Button>
 
             <dialog className='poll-vote-dialog' ref={voteRef}>
-                <h4>Choose a book</h4>
+                <h4>Cast your vote!</h4>
                
 
                <RadioButtonsMapper 
                     dispatch={handleSelection}
                     data={poll.pollChoices.map((choice) => ({
-                        id: choice.book.id,
+                        id: choice.id,
                         name: choice.book.name
                     }))}
                />

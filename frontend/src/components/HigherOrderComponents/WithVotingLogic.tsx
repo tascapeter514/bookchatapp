@@ -42,7 +42,7 @@ const WithVotingLogic = (
 
             const voteRequestData: VoteRequest = {
                 choice: selection,
-                user: user.id
+                user: user.id,
             }
 
             try {
