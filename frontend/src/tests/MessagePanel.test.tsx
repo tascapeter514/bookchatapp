@@ -3,9 +3,9 @@ import MessagePanel from '../components/Panels/MessagePanel/MessagePanel'
 import userEvent from '@testing-library/user-event'
 import InviteMessage from '../components/InviteMessage/InviteMessage'
 import { MemoryRouter } from 'react-router-dom'
-import { useGetUserDataQuery } from '../slices/userDataApiSlice'
+// import { useGetUserDataQuery } from '../slices/userDataApiSlice'
 import { vi } from 'vitest'
-import { setupServer } from 'msw/node'
+// import { setupServer } from 'msw/node'
 
 
 
@@ -142,18 +142,18 @@ describe('<MessagePanel invitations={invitations} />', () => {
 
     test('after clicking the accept button, accept button disappears', async () => {
 
-        const initialData = {
-            invitations: [{id: 1, name: 'Invitation 1', status: 'pending'}]
-        };
+        // const initialData = {
+        //     invitations: [{id: 1, name: 'Invitation 1', status: 'pending'}]
+        // };
 
-        const updatedData = {
-            invitations: [{id: 1, name: 'Invitation 1', status: 'accepted'}]
-        };
+        // const updatedData = {
+        //     invitations: [{id: 1, name: 'Invitation 1', status: 'accepted'}]
+        // };
 
-        (useGetUserDataQuery).mockReturnValue({
-            data: initialData,
-            isLoading: false
-        })
+        // (useGetUserDataQuery).mockReturnValue({
+        //     data: initialData,
+        //     isLoading: false
+        // })
 
         const user = userEvent.setup()
         const acceptButton = screen.getByText('Accept')
