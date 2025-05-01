@@ -1,0 +1,54 @@
+.radio-buttons-list {
+    display: flex;
+    padding: 0;
+    width: 100%;
+    flex-direction: column;
+    max-height: 150px;
+    overflow: scroll;
+
+}
+
+
+
+.radio-button-list-element {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.125rem;
+    width: 100%;
+    padding: .5em;
+    align-items: center;
+    
+}
+
+.radio-button-label {
+    margin: 0;
+}
+
+.radio-button-input {
+    display: inline-block;
+    margin-bottom: 0;
+    max-width: 18px;
+    cursor: pointer;
+    appearance: none;
+    height: 18px;
+    position: relative;
+    background-color: white;
+}
+
+.radio-button-input:checked {
+    background-color: orange;
+}
+
+
+
+/* Create a visible inner dot when checked */
+.radio-button-input:checked::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
