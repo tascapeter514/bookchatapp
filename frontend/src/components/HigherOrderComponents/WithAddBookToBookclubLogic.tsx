@@ -11,12 +11,14 @@ interface WithAddBookToBookclubProps {
 }
 
 interface InjectedProps {
-    handleSelection: (id: number) => void,
+    handleBookclubSelection: (id: number) => void,
+    handleBookshelfSelection: (id: number) => void,
     // handleAddBookToBookclub: () => void,
     handleGetUserBookclubs: () => Promise<void>,
     bookclubData: MapperData[],
     isGettingBookclubs: boolean,
     isGetBookclubsError: boolean,
+    bookclubSelection: number
 
 
 }
@@ -30,10 +32,15 @@ const WithAddBookToBookclubLogic = (
     return function WithAddBookToBookclubLogicWrapper(props: WithAddBookToBookclubProps) {
 
 
-        const [selection, setSelection] = useState<number>(0)
-        const handleSelection = (id: number) => setSelection(id)
+        const [bookclubSelection, setBookclubSelection] = useState<number>(0)
+        const handleBookclubSelection = (id: number) => setBookclubSelection(id)
+
+        const [bookshelfSelection, setBookshelfSelection] = useState<number>(0)
+        const handleBookshelfSelection = (id: number) => setBookshelfSelection(id)
 
         const { user } = useSelector((state: RootState) => state.auth)
+
+        
 
 
         console.log('user:', user)
@@ -59,7 +66,7 @@ const WithAddBookToBookclubLogic = (
         const handleAddBookToBookclub = () => {
             const data = {
                 bookId: props.bookId,
-                bookshelfId: selection,
+                bookshelfId: bookshelfSelection,
             }
         }
         
@@ -68,11 +75,13 @@ const WithAddBookToBookclubLogic = (
 
 
         const injectedProps = {
-            handleSelection,
+            handleBookclubSelection,
             handleGetUserBookclubs,
             bookclubData,
             isGettingBookclubs,
             isGetBookclubsError,
+            bookclubSelection,
+            handleBookshelfSelection
 
         }
 

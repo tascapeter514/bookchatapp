@@ -4,22 +4,26 @@ import ErrorMessage from '../../Messages/ErrorMessage/ErrorMessage'
 import { MapperData } from '../../../types'
 import './AddBookToBookclubModal.css'
 import Button from '../../Buttons/Button/Button'
+import RadioButtonsMapper from '../../RadioButtonsMapper/RadioButtonsMapper'
 
 
 
 interface Props {
     bookclubData: MapperData[],
-    handleSelection: (id: number) => void,
+    handleBookclubSelection: (id: number) => void,
     // handleAddBookToBookclub: () => void,
     handleGetUserBookclubs: () => Promise<void>,
     isGettingBookclubs: boolean,
     isGetBookclubsError: boolean,
+    bookclubSelection: number,
+    handleBookshelfSelection: (id: number) => void
+
 
 }
 
 const AddBookToBookclubModal = ({
     bookclubData,
-    handleSelection,
+    handleBookclubSelection,
     handleGetUserBookclubs,
     isGettingBookclubs,
     isGetBookclubsError
@@ -54,10 +58,15 @@ const AddBookToBookclubModal = ({
                         <h3>Add this book to your bookclub</h3>
                         <hr />
                         <DropdownMapper
-                            dispatch={handleSelection}
+                            dispatch={handleBookclubSelection}
                             data={bookclubData}
                             dataType='Bookclubs'
 
+                         />
+                         <RadioButtonsMapper
+                            dispatch={handleBookshelfSelection} 
+                         
+                         
                          />
                   
                
