@@ -20,29 +20,25 @@
     border: 2px solid black;
     margin: auto;
     width: 100%;
-    max-width: 764px;
+    max-width: 500px;
    
 }
 
-.add-book-to-bookclub-dialog.show {
+.add-book-to-bookclub-dialog[open] {
     display: flex;
     flex-direction: column;
     gap: .5rem;
+    align-items: center;
 }
 
-.add-book-to-bookclub-dialog.show > h3 {
+.add-book-to-bookclub-dialog[open] > h3 {
     text-align: center;
     font-size: 1.25rem;
 }
 
-.add-book-to-bookclub-dialog.show > hr {
+.add-book-to-bookclub-dialog[open] > hr {
     border: 1px solid lightgrey;
     margin-bottom: 0;
-}
-
-.add-book-to-bookclub-dialog.show button {
-    width: 100%;
-    max-width: 81px;
 }
 
 .bookclub-results-content {

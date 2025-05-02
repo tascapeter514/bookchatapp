@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../../store/store'
 import { useGetUserBookclubsMutation } from '../../slices/userDataApiSlice'
 import { useState } from 'react'
-// import { usePostBookToBookclubMutation } from '../../slices/bookclubApiSlice'
+import { usePostBookToBookclubMutation } from '../../slices/bookclubApiSlice'
 
 interface WithAddBookToBookclubProps {
     bookId: number
@@ -36,6 +36,9 @@ const WithAddBookToBookclubLogic = (
         const { user } = useSelector((state: RootState) => state.auth)
 
 
+        console.log('user:', user)
+
+
         const [bookclubData, setBookclubData] = useState<MapperData[]>([])
         const [getUserBookclubs, { isLoading: isGettingBookclubs, isError: isGetBookclubsError }] = useGetUserBookclubsMutation()
         const handleGetUserBookclubs = useCallback(async (): Promise<void> => {
@@ -51,17 +54,17 @@ const WithAddBookToBookclubLogic = (
 
         }, [user.id])
 
-        // const [postBookToBookclub, {isLoading: isPostingBookToBookclub, isError: isPostToBookclubError}] = usePostBookToBookclubMutation()
+        const [postBookToBookclub, {isLoading: isPostingBookToBookclub, isError: isPostToBookclubError}] = usePostBookToBookclubMutation()
 
-        // const handleAddBookToBookclub = () => {
-        //     const data = {
-        //         bookId: props.bookId,
-        //         bookshelfId: selection,
-        //     }
-        // }
+        const handleAddBookToBookclub = () => {
+            const data = {
+                bookId: props.bookId,
+                bookshelfId: selection,
+            }
+        }
         
 
-
+        console.log('bookclub data:', bookclubData)
 
 
         const injectedProps = {

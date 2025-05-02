@@ -92,8 +92,14 @@ def get_user_bookclubs(request, id):
     try:
         print('request body:', request.body)
 
-        user_bookclubs = Bookclub.objects.filter(Q(administrator=id) | Q(members__id=id)).distinct()
+        user_bookclubs = (
+            Bookclub.objects
+            .filter(Q(administrator=id) | Q(members__id=id))
+            .distinct()
+            .prefetch_related('bookshelves')
+        )
 
+        
         user_bookclubs_serializer = BookclubSerializer(user_bookclubs, many=True)
 
         print('user bookclubs:', user_bookclubs_serializer.data)  
@@ -108,8 +114,6 @@ def get_user_bookclubs(request, id):
         print(f'Error: {str(e)}')
         return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-
-# bookclubs = Bookclub.objects.filter(Q (administrator=self.user_id) | Q(members__id=self.user_id)).distinct()
 
 # REFACTOR
 @api_view(['GET'])

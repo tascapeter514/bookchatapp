@@ -81,12 +81,13 @@ class BookclubSerializer(serializers.ModelSerializer):
 
     currentRead = BookSerializer(read_only=True, required=False)
     members = UserSerializer(many=True, read_only=True, required=False)
+    bookshelves = BookshelfSerializer(many=True)
 
 
 
     class Meta:
         model = Bookclub
-        fields = ['id', 'name', 'administrator', 'currentRead', 'members', 'cover_image']
+        fields = ['id', 'name', 'administrator', 'currentRead', 'members', 'cover_image', 'bookshelves']
 
     def __init__(self, *args, **kwargs):
         fields = kwargs.pop('fields', None)

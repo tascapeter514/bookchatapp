@@ -36,6 +36,8 @@ const AddBookToBookclubModal = ({
         modalRef.current?.showModal()
     }
 
+    console.log('bookclub data modal:', bookclubData)
+
     return(
         <>
             <button

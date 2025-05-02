@@ -1,4 +1,4 @@
-import './DropDownMapper.css'
+import './DropdownMapper.css'
 import { MapperData, MapperProps } from '../../../types'
 
 
@@ -12,16 +12,17 @@ const DropdownMapper = <T extends MapperData>({data, dispatch, dataType}: Props<
 
     return(
         <>
-            <label htmlFor='dropdown'>
-                Select your ${dataType}
+            <label htmlFor='dropdown-mapper' className='dropdown-mapper-label'>
+                Select one of your {dataType}
 
-                <select name="" id='dropdown' onChange={() => dispatch}>
+                <select name="" id='dropdown-mapper' className='dropdown-mapper' onChange={() => dispatch}>
                     {data.map((option: MapperData) => {
                         return(
                             <option
                                 key={option.id} 
                                 value={option.id}
                                 data-name={option.name}
+                                className='dropdown-mapper-option'
                             >
                                 {option.name}
                             </option>
