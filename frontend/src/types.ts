@@ -139,6 +139,16 @@ export type SearchData = {
     items: Book[] | Author[] | Bookclub[];
 }[]
 
+export interface MapperData {
+    id: number,
+    name: string
+}
+
+export interface MapperProps<T extends MapperData> {
+    data: T[],
+    dispatch: (input: number) => void
+}
+
 export type BookclubData = {type: string, items: Bookclub[]}
 export type BookshelfData = {type: string, items: Bookshelf[]}
 export type InviteData = {type: string, items: Invitation[]}

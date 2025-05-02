@@ -1,22 +1,17 @@
 import './RadioButtonsMapper.css'
+import { MapperData, MapperProps } from '../../types'
 
 
-interface Data {
-    id: number,
-    name: string
-}
 
 
-interface Props<T extends Data> {
-    data: T[],
-    dispatch: (input: number) => void
-}
 
-const RadioButtonsMapper = <T extends Data>({data, dispatch}: Props<T>) => {
+
+
+const RadioButtonsMapper = <T extends MapperData>({data, dispatch}: MapperProps<T>) => {
 
     return(
         <ul className='radio-buttons-list'>
-            {data.map((radioButton: Data) => {
+            {data.map((radioButton: MapperData) => {
 
                 if (!radioButton) return null
 
