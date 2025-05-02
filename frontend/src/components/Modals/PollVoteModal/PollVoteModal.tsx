@@ -19,7 +19,16 @@ interface Props {
 }
 
 
-const PollVoteModal = ({poll, handleSelection, handleSubmitVote}: Props) => {
+const PollVoteModal = ({
+    poll, 
+    handleSelection, 
+    handleSubmitVote,
+    isVoting,
+    isVoteError,
+    successMessage
+
+
+}: Props) => {
 
     const voteRef = useRef<HTMLDialogElement>(null)
     const openVote = () => voteRef.current?.showModal()
@@ -34,6 +43,7 @@ const PollVoteModal = ({poll, handleSelection, handleSubmitVote}: Props) => {
             <Button onClick={openVote}>Vote</Button>
 
             <dialog className='poll-vote-dialog' ref={voteRef}>
+                
                 <h4>Cast your vote!</h4>
                
 
