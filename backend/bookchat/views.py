@@ -13,6 +13,7 @@ from bookchat.consumers import send_user_data_to_group, send_bookclub_data_to_gr
 from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync
 from django.http import JsonResponse
+from django.db.models import Q
 from uuid import UUID
 import json
 
@@ -86,10 +87,29 @@ def get_books(request):
         return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     
 
+@api_view(['GET'])
+def get_user_bookclubs(request, id):
+    try:
+        print('request body:', request.body)
+
+        user_bookclubs = Bookclub.objects.filter(Q(administrator=id) | Q(members__id=id)).distinct()
+
+        user_bookclubs_serializer = BookclubSerializer(user_bookclubs, many=True)
+
+        print('user bookclubs:', user_bookclubs_serializer.data)  
+
+        return Response(user_bookclubs_serializer.data, status=status.HTTP_200_OK)
+
+    except ValidationError as e:
+
+        return Response(e.detail, status=status.HTTP_400_BAD_REQUEST)
     
+    except Exception as e:
+        print(f'Error: {str(e)}')
+        return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
-
+# bookclubs = Bookclub.objects.filter(Q (administrator=self.user_id) | Q(members__id=self.user_id)).distinct()
 
 # REFACTOR
 @api_view(['GET'])
@@ -404,6 +424,21 @@ def create_bookclub(request, id):
     except Exception as e:
         print(f'Error: {str(e)}')
         return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+@api_view(['PUT'])
+def add_book_to_bookclub(request, id):
+    try:
+        print(request.body)
+
+    except ValidationError as e:
+        print('bookclub error:', e)
+        print('bookclub error detail:', e.detail)
+        return Response(e.detail, status=status.HTTP_400_BAD_REQUEST)
+
+    except Exception as e:
+        print(f'Error: {str(e)}')
+        return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
     
 
 

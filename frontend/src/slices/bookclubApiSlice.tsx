@@ -15,6 +15,11 @@ export interface BookclubData {
     bookshelves: Bookshelf[]
 }
 
+export interface AddBookToBookclubData {
+    bookshelfId: number,
+    newBookId: number
+}
+
 
 export const bookclubApi = createApi({
     reducerPath: 'bookclubDataApi',
@@ -78,6 +83,13 @@ export const bookclubApi = createApi({
                 body: {name: keyword}
 
             })
+        }),
+        postBookToBookclub: build.mutation({
+            query: ({bookclubId, data} : {bookclubId: number, data: AddBookToBookclubData}) => ({
+                url: `api/bookclub/bookshelf/book/${bookclubId}`,
+                method: 'PUT',
+                body: data
+            })
         })
 
     })
@@ -85,4 +97,11 @@ export const bookclubApi = createApi({
 
 
 
-export const {useGetBookclubDataQuery, useGetUsersMutation, useInviteUserMutation, usePostBookshelfMutation} = bookclubApi
+export const {
+    useGetBookclubDataQuery, 
+    useGetUsersMutation, 
+    useInviteUserMutation, 
+    usePostBookshelfMutation,
+    usePostBookToBookclubMutation
+
+} = bookclubApi

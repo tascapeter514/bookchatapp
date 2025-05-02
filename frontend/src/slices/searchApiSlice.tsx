@@ -61,4 +61,8 @@ export const searchDataApi = createApi({
 })
 
 
-export const {useLazyGetBookDataQuery} = searchDataApi
+export const {
+    
+    useLazyGetBookDataQuery
+
+} = searchDataApi
