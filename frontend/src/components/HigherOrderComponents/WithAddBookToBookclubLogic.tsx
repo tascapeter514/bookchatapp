@@ -13,7 +13,7 @@ interface WithAddBookToBookclubProps {
 interface InjectedProps {
     handleSelection: (id: number) => void,
     // handleAddBookToBookclub: () => void,
-    handleGetUserBookclubs: (id: number) => Promise<void>,
+    handleGetUserBookclubs: () => Promise<void>,
     bookclubData: MapperData[],
     isGettingBookclubs: boolean,
     isGetBookclubsError: boolean,

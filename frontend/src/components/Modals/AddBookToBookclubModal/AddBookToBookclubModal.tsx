@@ -1,14 +1,40 @@
 import { useRef } from 'react'
+import DropdownMapper from '../../Mappers/DropdownMapper/DropdownMapper'
+import ErrorMessage from '../../Messages/ErrorMessage/ErrorMessage'
+import { MapperData } from '../../../types'
 import './AddBookToBookclubModal.css'
 import Button from '../../Buttons/Button/Button'
 
 
 
-const AddBookToBookclubModal = () => {
+interface Props {
+    bookclubData: MapperData[],
+    handleSelection: (id: number) => void,
+    // handleAddBookToBookclub: () => void,
+    handleGetUserBookclubs: () => Promise<void>,
+    isGettingBookclubs: boolean,
+    isGetBookclubsError: boolean,
+
+}
+
+const AddBookToBookclubModal = ({
+    bookclubData,
+    handleSelection,
+    handleGetUserBookclubs,
+    isGettingBookclubs,
+    isGetBookclubsError
+
+}: Props) => {
+
+
 
     const modalRef = useRef<HTMLDialogElement>(null)
-    const openModal = () => modalRef.current?.showModal()
     const closeModal = () => modalRef.current?.close()
+
+    const openModal = () => {
+        handleGetUserBookclubs()
+        modalRef.current?.showModal()
+    }
 
     return(
         <>
@@ -19,22 +45,28 @@ const AddBookToBookclubModal = () => {
                 Add to Bookclub
             </button>
             <dialog className='add-book-to-bookclub-dialog'ref={modalRef}>
-                <h3>Add this book to your bookclub</h3>
-                <hr />
-                    <main className="bookclub-results-content">
-                        <div className="suggested-search-results">
-                            
-                            
-                            
-                        </div>
-                       
-                    </main>
+                {isGettingBookclubs && (<div>Loading...</div>)}
+                {isGetBookclubsError && <ErrorMessage>There is a problem with fetching your bookclubs</ErrorMessage>}
+                {bookclubData.length > 0 && (
+                    <>
+                        <h3>Add this book to your bookclub</h3>
+                        <hr />
+                        <DropdownMapper
+                            dispatch={handleSelection}
+                            data={bookclubData}
+                            dataType='Bookclubs'
+
+                         />
+                  
                
                 
-                <div className="button-wrapper">
-                    <Button onClick={closeModal}>Cancel</Button>
-                    <Button>Add</Button>
-                </div>
+                        <div className="button-wrapper">
+                            <Button onClick={closeModal}>Cancel</Button>
+                            <Button>Add</Button>
+                        </div>
+                    </>
+                )}
+                
 
             </dialog>
 
@@ -46,7 +78,14 @@ const AddBookToBookclubModal = () => {
 
 export default AddBookToBookclubModal
 
-
+  {/* <main className="bookclub-results-content">
+                        <div className="suggested-search-results">
+                            
+                            
+                            
+                        </div>
+                       
+                         </main> */}
 
 {/* <aside className='bookclub-bookshelves'>
 {currentBookclub && currentBookclub.bookshelves !== undefined  ? 
