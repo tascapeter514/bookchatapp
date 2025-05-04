@@ -1,5 +1,5 @@
 import { ComponentType, useCallback } from 'react'
-import {  MapperData } from '../../types'
+import {  Bookclub } from '../../types'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../store/store'
 import { useGetUserBookclubsMutation } from '../../slices/userDataApiSlice'
@@ -11,14 +11,14 @@ interface WithAddBookToBookclubProps {
 }
 
 interface InjectedProps {
-    handleBookclubSelection: (id: number) => void,
-    handleBookshelfSelection: (id: number) => void,
+    // handleBookclubSelection: (id: number) => void,
+    // handleBookshelfSelection: (id: number) => void,
     // handleAddBookToBookclub: () => void,
     handleGetUserBookclubs: () => Promise<void>,
-    bookclubData: MapperData[],
+    bookclubData: Bookclub[],
     isGettingBookclubs: boolean,
     isGetBookclubsError: boolean,
-    bookclubSelection: number
+    // bookclubSelection: number
 
 
 }
@@ -75,13 +75,13 @@ const WithAddBookToBookclubLogic = (
 
 
         const injectedProps = {
-            handleBookclubSelection,
+            // handleBookclubSelection,
             handleGetUserBookclubs,
             bookclubData,
             isGettingBookclubs,
             isGetBookclubsError,
-            bookclubSelection,
-            handleBookshelfSelection
+            // bookclubSelection,
+            // handleBookshelfSelection
 
         }
 

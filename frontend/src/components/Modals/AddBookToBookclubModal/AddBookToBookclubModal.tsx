@@ -6,30 +6,32 @@ import { MapperData } from '../../../types'
 import './AddBookToBookclubModal.css'
 import Button from '../../Buttons/Button/Button'
 import RadioButtonsMapper from '../../RadioButtonsMapper/RadioButtonsMapper'
+import { useDispatch } from 'react-redux'
+import { selectBookclub, selectBookshelf, selectDefault } from '../../../slices/addBookToBookclubSlice'
 
 
 
 interface Props {
     bookclubData: Bookclub[],
-    handleBookclubSelection: (id: number | null) => void,
+    // handleBookclubSelection: (id: number | null) => void,
     // handleAddBookToBookclub: () => void,
     handleGetUserBookclubs: () => Promise<void>,
     isGettingBookclubs: boolean,
     isGetBookclubsError: boolean,
-    bookclubSelection: number,
-    handleBookshelfSelection: (id: number | null) => void
+    // bookclubSelection: number,
+    // handleBookshelfSelection: (id: number | null) => void
 
 
 }
 
 const AddBookToBookclubModal = ({
     bookclubData,
-    handleBookclubSelection,
-    handleBookshelfSelection,
+    // handleBookclubSelection,
+    // handleBookshelfSelection,
     handleGetUserBookclubs,
     isGettingBookclubs,
     isGetBookclubsError,
-    bookclubSelection
+    // bookclubSelection
 
 }: Props) => {
 
@@ -42,6 +44,8 @@ const AddBookToBookclubModal = ({
         handleGetUserBookclubs()
         modalRef.current?.showModal()
     }
+
+    const dispatch = useDispatch()
 
     console.log('bookclub data modal:', bookclubData)
 

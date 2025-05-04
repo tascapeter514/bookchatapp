@@ -149,6 +149,18 @@ export interface MapperProps<T extends MapperData> {
     dispatch: (input: number) => void
 }
 
+export interface DropdownData {
+    id: number,
+    name: string,
+}
+
+export interface DropdownProps<T extends DropdownData>{
+    dropdownData: T[],
+    dataType: string,
+    dispatch: (action: any) => void,
+    action: (payload: number) => number
+}
+
 export type BookclubData = {type: string, items: Bookclub[]}
 export type BookshelfData = {type: string, items: Bookshelf[]}
 export type InviteData = {type: string, items: Invitation[]}

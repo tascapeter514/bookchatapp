@@ -1,14 +1,11 @@
 import './DropdownMapper.css'
-import { MapperData, MapperProps } from '../../../types'
+import { DropdownData, DropdownProps } from '../../../types'
 
 
-interface DropdownProps {
-    dataType: string
-}
 
-type Props<T extends MapperData> = MapperProps<T> & DropdownProps
+type Props<T extends DropdownData> = DropdownProps<T>
 
-const DropdownMapper = <T extends MapperData>({data, dispatch, dataType}: Props<T> ) => {
+const DropdownMapper = <T extends DropdownData>({dropdownData, dispatch, dataType}: Props<T> ) => {
 
     return(
         <>
@@ -19,13 +16,11 @@ const DropdownMapper = <T extends MapperData>({data, dispatch, dataType}: Props<
                     id='dropdown-mapper' 
                     className='dropdown-mapper'
                     onChange={(e) => {
-                        // const value = Number(e.target.value);
-                        // if (!isNaN(value)) dispatch(value);
                         e.target.value === '' ? dispatch(NaN) : dispatch(Number(e.target.value))
                     }}
                     >
                     <option>Please select your {dataType.slice(0, dataType.length - 1)}</option>
-                    {data.map((option: MapperData) => {
+                    {dropdownData.map((option: DropdownData) => {
                         return(
                             <option
                                 key={option.id} 

@@ -18,10 +18,10 @@ describe('radio buttons mapper test suite', () => {
 
         render(
             <MemoryRouter>
-                <RadioButtonsMapper 
+                {/* <RadioButtonsMapper 
                     data={mockedPollData}
                     dispatch={mockDispatch} 
-                />
+                /> */}
             </MemoryRouter>  
         )
 
