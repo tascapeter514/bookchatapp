@@ -434,6 +434,8 @@ def add_book_to_bookclub(request, id):
     try:
         print(request.body)
 
+        return Response({'message:' 'You reached the backend'}, status=status.HTTP_200_OK)
+
     except ValidationError as e:
         print('bookclub error:', e)
         print('bookclub error detail:', e.detail)

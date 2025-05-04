@@ -146,7 +146,7 @@ export interface MapperData {
 
 export interface MapperProps<T extends MapperData> {
     data: T[],
-    dataType: string,
+    dataType?: string,
     dispatch: (action: any) => void,
     action: (payload: number) => any
 }

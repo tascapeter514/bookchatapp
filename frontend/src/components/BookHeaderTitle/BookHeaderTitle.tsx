@@ -12,7 +12,11 @@ interface Props {
 
 const AddBookToBookclubModalWithLogic = WithAddBookToBookclubLogic(WithAsync(AddBookToBookclubModal))
 
+
+
 const BookHeaderTitle = ({book}: Props) => {
+
+    console.log('book header title id:', book.id)
     return(
 
         <article className="book-header-title">

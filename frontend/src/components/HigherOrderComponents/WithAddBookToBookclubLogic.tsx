@@ -12,6 +12,7 @@ interface WithAddBookToBookclubProps {
 
 interface InjectedProps {
 
+    handleAddBookToBookclub: (bookshelfId: number, bookclubId: number) => Promise<void>,
     handleGetUserBookclubs: () => Promise<void>,
     bookclubData: Bookclub[],
     isLoading: boolean,
@@ -30,13 +31,11 @@ const WithAddBookToBookclubLogic = (
 
     return function WithAddBookToBookclubLogicWrapper(props: WithAddBookToBookclubProps) {
 
-
         const { user } = useSelector((state: RootState) => state.auth)
 
-        
-
-
+    
         console.log('user:', user)
+        console.log('book prop id:', props.bookId)
 
 
         const [bookclubData, setBookclubData] = useState<Bookclub[]>([])
@@ -55,14 +54,30 @@ const WithAddBookToBookclubLogic = (
 
         }, [user.id])
 
-        // const [postBookToBookclub, {isLoading: isPostingBookToBookclub, isError: isPostToBookclubError}] = usePostBookToBookclubMutation()
+        const [postBookToBookclub] = usePostBookToBookclubMutation()
 
-        // const handleAddBookToBookclub = () => {
-        //     const data = {
-        //         bookId: props.bookId,
-        //         bookshelfId: bookshelfSelection,
-        //     }
-        // }
+        const handleAddBookToBookclub = useCallback(async (bookshelfId: number, bookclubId: number) => {
+
+            console.log('handle add book id:', props.bookId)
+
+            const data = {
+                newBookId: props.bookId,
+                bookshelfId: bookshelfId
+            }
+
+            try {
+
+                await postBookToBookclub({bookclubId, data}).unwrap()
+
+            } catch(err: any) {
+                console.error('There was an error adding this book to your bookclub')
+            }
+
+           
+            
+
+            
+        }, [props.bookId])
         
 
         console.log('bookclub data:', bookclubData)
@@ -70,6 +85,7 @@ const WithAddBookToBookclubLogic = (
 
         const injectedProps = {
 
+            handleAddBookToBookclub,
             handleGetUserBookclubs,
             bookclubData,
             isLoading,

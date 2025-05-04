@@ -17,15 +17,25 @@ const WithAsync = <P extends object>(
 
     return function WithAsyncWrapper(props: P & WithAsyncProps) {
 
-        if (props.isLoading) {
-            return <LoadSpinner />
+        const { isLoading, isError, error, ...rest } = props
+        
+
+        console.log('isLoading:', isLoading)
+
+        if (isLoading) {
+            return (
+                <WrappedComponent {...rest as P}>
+                    <LoadSpinner />
+                </WrappedComponent>
+            )
         }
 
+        
         if (props.isError) {
             return <ErrorMessage>{props.error}</ErrorMessage>
         }
 
-        const { isLoading, isError, error, ...rest } = props
+        
 
         return(
 

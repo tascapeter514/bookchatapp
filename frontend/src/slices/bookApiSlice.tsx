@@ -36,4 +36,7 @@ export const bookApiSlice = apiSlice.injectEndpoints({
     })
 })
 
-export const {useGetBooksQuery, useGetBookMutation} = bookApiSlice
+export const {
+    useGetBooksQuery, 
+    useGetBookMutation
+} = bookApiSlice

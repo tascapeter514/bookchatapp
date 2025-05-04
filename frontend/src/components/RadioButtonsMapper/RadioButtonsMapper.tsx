@@ -2,12 +2,7 @@ import './RadioButtonsMapper.css'
 import { MapperData, MapperProps } from '../../types'
 
 
-
-
-
-
-
-const RadioButtonsMapper = <T extends MapperData>({data, dispatch}: MapperProps<T>) => {
+const RadioButtonsMapper = <T extends MapperData>({data, dispatch, action}: MapperProps<T>) => {
 
     console.log('radio buttons mapper data length:', data.length)
 
@@ -35,7 +30,7 @@ const RadioButtonsMapper = <T extends MapperData>({data, dispatch}: MapperProps<
                                 type="radio"
                                 className='radio-button-input'
                                 name='radioButtonsGroup'
-                                onChange={() => dispatch(Number(radioButton.id))} 
+                                onChange={() => dispatch(action(Number(radioButton.id)))} 
                             
                             />
                             

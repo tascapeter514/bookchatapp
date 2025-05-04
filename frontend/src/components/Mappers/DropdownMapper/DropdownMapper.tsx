@@ -23,7 +23,7 @@ const DropdownMapper = <T extends MapperData>({
                         e.target.value === '' ? dispatch(action(NaN)) : dispatch(action(Number(e.target.value)))
                     }}
                     >
-                    <option>Please select your {dataType.slice(0, dataType.length - 1)}</option>
+                    <option>Please select your {dataType?.slice(0, dataType.length - 1)}</option>
                     {data.map((option: MapperData) => {
                         return(
                             <option

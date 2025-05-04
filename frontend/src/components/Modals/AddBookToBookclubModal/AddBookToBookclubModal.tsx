@@ -13,7 +13,7 @@ import { selectBookclub, selectBookshelf, selectDefault } from '../../../slices/
 
 interface Props {
     bookclubData: Bookclub[],
-    // handleAddBookToBookclub: () => void,
+    handleAddBookToBookclub: (bookshelfId: number, bookclubId: number) => Promise<void>,
     handleGetUserBookclubs: () => Promise<void>,
     // isGettingBookclubs: boolean,
     // isGetBookclubsError: boolean,
@@ -25,6 +25,7 @@ interface Props {
 const AddBookToBookclubModal = ({
     bookclubData,
     handleGetUserBookclubs,
+    handleAddBookToBookclub,
     // isGettingBookclubs,
     // isGetBookclubsError,
 
@@ -85,12 +86,19 @@ const AddBookToBookclubModal = ({
                                 } 
                             />
                          
-                  
-               
-                
                         <div className="button-wrapper">
                             <Button onClick={closeModal}>Cancel</Button>
-                            <Button>Add</Button>
+                            <Button 
+                                onClick={() => {
+                                    const {selectedBookclub, selectedBookshelf } = bookclubDataState
+                                    if (!selectedBookclub || !selectedBookshelf) {
+                                        alert("Please select both a bookclub and a bookshelf")
+                                        return
+                                    }
+                                    handleAddBookToBookclub(selectedBookshelf, selectedBookclub)
+                                }}
+                            >Add
+                            </Button>
                         </div>
                     </>
                 )}

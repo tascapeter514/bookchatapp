@@ -29,70 +29,9 @@
 }
 
 
-.add-to-bookClubBtn {
-    display: inline-block;
-    background-color: transparent;
-    border: 3px solid red;
-    padding: .5em 1.5em;
-    font-size: 1.125rem;
-    width: 55%;
-    cursor: pointer;
-    
-}
 
-.add-to-bookClubBtn:hover {
-    border: 3px solid black;
-}
 
-.addToBookclub-modal {
-    background-color: white;
-    border-radius: 3px;
-    border: 2px solid black;
-    margin: auto;
-    width: 100%;
-    max-width: 764px;
-   
-}
 
-.addToBookclub-modal.show {
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-}
-
-.addToBookclub-modal.show > h3 {
-    text-align: center;
-    font-size: 1.25rem;
-}
-
-.addToBookclub-modal.show > hr {
-    border: 1px solid lightgrey;
-    margin-bottom: 0;
-}
-
-.addToBookclub-modal.show button {
-    width: 100%;
-    max-width: 81px;
-}
-
-.bookclub-results-content {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    border: 0;
-
-}
-
-.suggested-search-results {
-    padding: .25em;
-
-    width: 100%;
-    max-width: 500px;
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-}
 
 
 .bookclub-bookshelves {
