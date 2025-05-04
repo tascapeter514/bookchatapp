@@ -7,49 +7,51 @@ import './AddBookToBookclubModal.css'
 import Button from '../../Buttons/Button/Button'
 import RadioButtonsMapper from '../../RadioButtonsMapper/RadioButtonsMapper'
 import { useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../../store/store'
 import { selectBookclub, selectBookshelf, selectDefault } from '../../../slices/addBookToBookclubSlice'
 
 
 
 interface Props {
     bookclubData: Bookclub[],
-    // handleBookclubSelection: (id: number | null) => void,
     // handleAddBookToBookclub: () => void,
     handleGetUserBookclubs: () => Promise<void>,
     isGettingBookclubs: boolean,
     isGetBookclubsError: boolean,
-    // bookclubSelection: number,
-    // handleBookshelfSelection: (id: number | null) => void
+
 
 
 }
 
 const AddBookToBookclubModal = ({
     bookclubData,
-    // handleBookclubSelection,
-    // handleBookshelfSelection,
     handleGetUserBookclubs,
     isGettingBookclubs,
     isGetBookclubsError,
-    // bookclubSelection
+
 
 }: Props) => {
 
-
+    const dispatch = useDispatch()
+    const { bookclubDataState } = useSelector((state: RootState ) => state.bookclubDataState)
 
     const modalRef = useRef<HTMLDialogElement>(null)
-    const closeModal = () => modalRef.current?.close()
-
     const openModal = () => {
         handleGetUserBookclubs()
         modalRef.current?.showModal()
     }
 
-    const dispatch = useDispatch()
+    const closeModal = () => {
+        modalRef.current?.close()
+        dispatch(selectDefault())
+    }
+
+    
 
     console.log('bookclub data modal:', bookclubData)
 
-    console.log('modal bookclub selection:', bookclubSelection)
+    
 
     return(
         <>
@@ -67,16 +69,19 @@ const AddBookToBookclubModal = ({
                         <h3>Add this book to your bookclub</h3>
                         <hr />
                         <DropdownMapper
-                            dispatch={handleBookclubSelection}
+                            dispatch={dispatch}
                             data={bookclubData}
+                            action={selectBookclub}
                             dataType='Bookclubs'
 
                          />
                          <RadioButtonsMapper
-                                dispatch={handleBookshelfSelection}
+                                dispatch={dispatch}
+                                action={selectBookshelf}
+                                dataType='Bookshelves'
                                 data={
                                     bookclubData
-                                        .find((bookclub: Bookclub) => bookclub.id === bookclubSelection)
+                                        .find((bookclub: Bookclub) => bookclub.id === bookclubDataState.selectedBookclub)
                                         ?.bookshelves
                                         ?.map((bookshelf: MapperData) => ({id: bookshelf.id, name: bookshelf.name})) || []
                                 } 

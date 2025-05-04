@@ -22,7 +22,7 @@ const store = configureStore({
         bookshelf: bookshelfReducer,
         userData: userDataReducer,
         poll: pollReducer,
-        bookclub: addBookToBookclubReducer,
+        bookclubDataState: addBookToBookclubReducer,
         [apiSlice.reducerPath]: apiSlice.reducer,
         [userDataApi.reducerPath]: userDataApi.reducer,
         [searchDataApi.reducerPath]: searchDataApi.reducer,

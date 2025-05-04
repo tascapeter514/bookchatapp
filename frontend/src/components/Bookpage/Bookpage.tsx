@@ -24,6 +24,7 @@ const Bookpage = () => {
     const [getBook, {isLoading, isError, error}] = useGetBookMutation()
     const { book } = useSelector((state: RootState) => state.book)
 
+    // REMOVE CALLBACK HANDLER
     const getBookData = useCallback( async () => {
 
         try {
@@ -59,18 +60,3 @@ const Bookpage = () => {
 }
 
 export default Bookpage
-
-
- // const showBookshelves = (bookclub_id: string) => {
-    
-    //     const selectedBookclub = bookclubSearchResults.find((bookclub: Bookclub) => bookclub.bookclub_id === bookclub_id) || null
-    //     console.log('selected bookclub:', selectedBookclub);
-        
-    //     setCurrentBookclub(selectedBookclub)
-    // }
-
-    // const handleBookclubSelection = (bookclubId: string) => {
-    //     console.log('bookclub id:', bookclubId)
-    //     setSelectedBookclub(bookclubId)
-    //     showBookshelves(bookclubId)
-    // }

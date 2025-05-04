@@ -3,8 +3,12 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
 
-   selectedBookclub: 0,
-   selectedBookshelf: 0
+    bookclubDataState : {
+        selectedBookclub: 0,
+        selectedBookshelf: 0
+    }
+
+   
     
 }
 
@@ -14,13 +18,13 @@ const addBookToBookclubSlice = createSlice({
     initialState,
     reducers: {
         selectBookclub: (state, action) => {
-            state.selectedBookclub = action.payload
+            state.bookclubDataState.selectedBookclub = action.payload
         },
         selectBookshelf: (state, action) => {
-            state.selectedBookshelf = action.payload
+            state.bookclubDataState.selectedBookshelf = action.payload
         },
         selectDefault: (state) => {
-            state.selectedBookclub = NaN
+            state.bookclubDataState.selectedBookclub = NaN
         }
     }
 })
