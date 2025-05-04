@@ -433,8 +433,22 @@ def create_bookclub(request, id):
 def add_book_to_bookclub(request, id):
     try:
         print(request.body)
+        new_book_id = request.data.get('newBookId')
+        bookshelf_id = request.data.get('bookshelfId')
 
-        return Response({'message:' 'You reached the backend'}, status=status.HTTP_200_OK)
+        current_book = Book.objects.get(id=new_book_id)
+        current_bookshelf = Bookshelf.objects.get(id=bookshelf_id)
+
+        if current_bookshelf.books.filter(id=current_book.id).exists():
+            print('validation error check')
+            raise ValidationError({'book': 'This book is already in the bookshelf.'})
+        
+        else:
+            current_bookshelf.books.add(current_book)
+            send_bookclub_data_to_group(id)
+
+            return Response(status=status.HTTP_200_OK)
+
 
     except ValidationError as e:
         print('bookclub error:', e)
