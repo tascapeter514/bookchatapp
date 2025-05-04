@@ -2,6 +2,7 @@ import { authorText } from '../../utils/textFormatting'
 import { Link } from 'react-router-dom'
 import { Book } from '../../types'
 import WithAddBookToBookclubLogic from '../HigherOrderComponents/WithAddBookToBookclubLogic'
+import WithAsync from '../HigherOrderComponents/WithAsync'
 import AddBookToBookclubModal from '../Modals/AddBookToBookclubModal/AddBookToBookclubModal'
 import './BookHeaderTitle.css'
 
@@ -9,7 +10,7 @@ interface Props {
     book: Book
 }
 
-const AddBookToBookclubModalWithLogic = WithAddBookToBookclubLogic(AddBookToBookclubModal)
+const AddBookToBookclubModalWithLogic = WithAddBookToBookclubLogic(WithAsync(AddBookToBookclubModal))
 
 const BookHeaderTitle = ({book}: Props) => {
     return(

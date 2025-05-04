@@ -11,32 +11,25 @@ interface WithAddBookToBookclubProps {
 }
 
 interface InjectedProps {
-    // handleBookclubSelection: (id: number) => void,
-    // handleBookshelfSelection: (id: number) => void,
-    // handleAddBookToBookclub: () => void,
+
     handleGetUserBookclubs: () => Promise<void>,
     bookclubData: Bookclub[],
-    isGettingBookclubs: boolean,
-    isGetBookclubsError: boolean,
-    // bookclubSelection: number
+    isLoading: boolean,
+    isError: boolean,
+    error: string
+
 
 
 }
 
 
 const WithAddBookToBookclubLogic = (
-    WrappedComponent: ComponentType<InjectedProps & WithAddBookToBookclubProps>
+    WrappedComponent: ComponentType<InjectedProps>
 
 ): ComponentType<WithAddBookToBookclubProps> => {
 
     return function WithAddBookToBookclubLogicWrapper(props: WithAddBookToBookclubProps) {
 
-
-        const [bookclubSelection, setBookclubSelection] = useState<number | null>(null)
-        const handleBookclubSelection = (id: number) => setBookclubSelection(id)
-
-        const [bookshelfSelection, setBookshelfSelection] = useState<number>(0)
-        const handleBookshelfSelection = (id: number) => setBookshelfSelection(id)
 
         const { user } = useSelector((state: RootState) => state.auth)
 
@@ -46,8 +39,9 @@ const WithAddBookToBookclubLogic = (
         console.log('user:', user)
 
 
-        const [bookclubData, setBookclubData] = useState<MapperData[]>([])
-        const [getUserBookclubs, { isLoading: isGettingBookclubs, isError: isGetBookclubsError }] = useGetUserBookclubsMutation()
+        const [bookclubData, setBookclubData] = useState<Bookclub[]>([])
+        const [getUserBookclubs, { isLoading, isError }] = useGetUserBookclubsMutation()
+
         const handleGetUserBookclubs = useCallback(async (): Promise<void> => {
 
             const response = await getUserBookclubs(user.id);
@@ -61,32 +55,32 @@ const WithAddBookToBookclubLogic = (
 
         }, [user.id])
 
-        const [postBookToBookclub, {isLoading: isPostingBookToBookclub, isError: isPostToBookclubError}] = usePostBookToBookclubMutation()
+        // const [postBookToBookclub, {isLoading: isPostingBookToBookclub, isError: isPostToBookclubError}] = usePostBookToBookclubMutation()
 
-        const handleAddBookToBookclub = () => {
-            const data = {
-                bookId: props.bookId,
-                bookshelfId: bookshelfSelection,
-            }
-        }
+        // const handleAddBookToBookclub = () => {
+        //     const data = {
+        //         bookId: props.bookId,
+        //         bookshelfId: bookshelfSelection,
+        //     }
+        // }
         
 
         console.log('bookclub data:', bookclubData)
 
 
         const injectedProps = {
-            // handleBookclubSelection,
+
             handleGetUserBookclubs,
             bookclubData,
-            isGettingBookclubs,
-            isGetBookclubsError,
-            // bookclubSelection,
-            // handleBookshelfSelection
+            isLoading,
+            isError, 
+            error: isError ? 'There was a problem fetching your bookclubs' : ''
+
 
         }
 
 
-        return <WrappedComponent {...props} {...injectedProps} />
+        return <WrappedComponent {...injectedProps} />
 
     }
 
