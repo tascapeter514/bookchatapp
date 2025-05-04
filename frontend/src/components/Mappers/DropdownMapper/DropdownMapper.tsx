@@ -13,9 +13,18 @@ const DropdownMapper = <T extends MapperData>({data, dispatch, dataType}: Props<
     return(
         <>
             <label htmlFor='dropdown-mapper' className='dropdown-mapper-label'>
-                Select one of your {dataType}
+                Select one of your {dataType} 
 
-                <select name="" id='dropdown-mapper' className='dropdown-mapper' onChange={() => dispatch}>
+                <select 
+                    id='dropdown-mapper' 
+                    className='dropdown-mapper'
+                    onChange={(e) => {
+                        // const value = Number(e.target.value);
+                        // if (!isNaN(value)) dispatch(value);
+                        e.target.value === '' ? dispatch(NaN) : dispatch(Number(e.target.value))
+                    }}
+                    >
+                    <option>Please select your {dataType.slice(0, dataType.length - 1)}</option>
                     {data.map((option: MapperData) => {
                         return(
                             <option
@@ -23,6 +32,7 @@ const DropdownMapper = <T extends MapperData>({data, dispatch, dataType}: Props<
                                 value={option.id}
                                 data-name={option.name}
                                 className='dropdown-mapper-option'
+                                
                             >
                                 {option.name}
                             </option>

@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+import { Bookclub } from '../../../types'
 import DropdownMapper from '../../Mappers/DropdownMapper/DropdownMapper'
 import ErrorMessage from '../../Messages/ErrorMessage/ErrorMessage'
 import { MapperData } from '../../../types'
@@ -9,14 +10,14 @@ import RadioButtonsMapper from '../../RadioButtonsMapper/RadioButtonsMapper'
 
 
 interface Props {
-    bookclubData: MapperData[],
-    handleBookclubSelection: (id: number) => void,
+    bookclubData: Bookclub[],
+    handleBookclubSelection: (id: number | null) => void,
     // handleAddBookToBookclub: () => void,
     handleGetUserBookclubs: () => Promise<void>,
     isGettingBookclubs: boolean,
     isGetBookclubsError: boolean,
     bookclubSelection: number,
-    handleBookshelfSelection: (id: number) => void
+    handleBookshelfSelection: (id: number | null) => void
 
 
 }
@@ -24,9 +25,11 @@ interface Props {
 const AddBookToBookclubModal = ({
     bookclubData,
     handleBookclubSelection,
+    handleBookshelfSelection,
     handleGetUserBookclubs,
     isGettingBookclubs,
-    isGetBookclubsError
+    isGetBookclubsError,
+    bookclubSelection
 
 }: Props) => {
 
@@ -41,6 +44,8 @@ const AddBookToBookclubModal = ({
     }
 
     console.log('bookclub data modal:', bookclubData)
+
+    console.log('modal bookclub selection:', bookclubSelection)
 
     return(
         <>
@@ -64,10 +69,15 @@ const AddBookToBookclubModal = ({
 
                          />
                          <RadioButtonsMapper
-                            dispatch={handleBookshelfSelection} 
+                                dispatch={handleBookshelfSelection}
+                                data={
+                                    bookclubData
+                                        .find((bookclub: Bookclub) => bookclub.id === bookclubSelection)
+                                        ?.bookshelves
+                                        ?.map((bookshelf: MapperData) => ({id: bookshelf.id, name: bookshelf.name})) || []
+                                } 
+                            />
                          
-                         
-                         />
                   
                
                 

@@ -43,7 +43,7 @@ const PollVoteModal = ({
             <Button onClick={openVote}>Vote</Button>
 
             <dialog className='poll-vote-dialog' ref={voteRef}>
-                
+
                 <h4>Cast your vote!</h4>
                
 

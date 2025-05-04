@@ -9,6 +9,10 @@ import { MapperData, MapperProps } from '../../types'
 
 const RadioButtonsMapper = <T extends MapperData>({data, dispatch}: MapperProps<T>) => {
 
+    console.log('radio buttons mapper data length:', data.length)
+
+    if (!data.length) return null
+
     return(
         <ul className='radio-buttons-list'>
             {data.map((radioButton: MapperData) => {

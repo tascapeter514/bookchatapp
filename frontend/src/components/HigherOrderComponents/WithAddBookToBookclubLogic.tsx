@@ -32,7 +32,7 @@ const WithAddBookToBookclubLogic = (
     return function WithAddBookToBookclubLogicWrapper(props: WithAddBookToBookclubProps) {
 
 
-        const [bookclubSelection, setBookclubSelection] = useState<number>(0)
+        const [bookclubSelection, setBookclubSelection] = useState<number | null>(null)
         const handleBookclubSelection = (id: number) => setBookclubSelection(id)
 
         const [bookshelfSelection, setBookshelfSelection] = useState<number>(0)
