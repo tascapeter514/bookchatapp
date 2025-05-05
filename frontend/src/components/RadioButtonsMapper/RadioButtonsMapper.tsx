@@ -30,7 +30,7 @@ const RadioButtonsMapper = <T extends MapperData>({data, dispatch, action}: Mapp
                                 type="radio"
                                 className='radio-button-input'
                                 name='radioButtonsGroup'
-                                onChange={() => dispatch(action(Number(radioButton.id)))} 
+                                onChange={() => {dispatch(action ? action(radioButton.id) : radioButton.id)}} 
                             
                             />
                             

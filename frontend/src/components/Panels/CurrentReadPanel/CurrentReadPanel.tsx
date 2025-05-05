@@ -4,13 +4,14 @@ import { useGetPollsQuery } from '../../../slices/pollApiSlice'
 import WithVotingLogic from '../../HigherOrderComponents/WithVotingLogic'
 import PollVoteModal from '../../Modals/PollVoteModal/PollVoteModal'
 import SubHeader from '../../Headers/SubHeader/SubHeader'
+import WithAsync from '../../HigherOrderComponents/WithAsync'
 
 
 interface Props {
     bookclubId: number
 }
 
-const PollVoteModalWithLogic = WithVotingLogic(PollVoteModal)
+const PollVoteModalWithLogic = WithVotingLogic(WithAsync(PollVoteModal))
 
 
 const CurrentReadPanel = ({bookclubId}: Props) => {

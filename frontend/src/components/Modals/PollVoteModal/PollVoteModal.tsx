@@ -11,9 +11,8 @@ interface Props {
     poll: Poll,
     handleSelection: (id: number) => void,
     handleSubmitVote: () => void,
-    isVoting: boolean,
-    isVoteError: boolean,
-    successMessage: string
+    successMessage: string,
+    children?: React.ReactNode
 
     
 }
@@ -23,9 +22,8 @@ const PollVoteModal = ({
     poll, 
     handleSelection, 
     handleSubmitVote,
-    isVoting,
-    isVoteError,
-    successMessage
+    successMessage,
+    children
 
 
 }: Props) => {
@@ -45,6 +43,8 @@ const PollVoteModal = ({
             <dialog className='poll-vote-dialog' ref={voteRef}>
 
                 <h4>Cast your vote!</h4>
+
+                {children}
                
 
                <RadioButtonsMapper 

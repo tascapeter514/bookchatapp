@@ -13,14 +13,15 @@ interface WithAsyncProps {
 const WithAsync = <P extends object>(
     WrappedComponent: ComponentType<P>
 
-):ComponentType<P & WithAsyncProps> => {
+):ComponentType<P & WithAsyncProps & {children?: React.ReactNode}> => {
 
-    return function WithAsyncWrapper(props: P & WithAsyncProps) {
+    return function WithAsyncWrapper(props: P & WithAsyncProps & {children?: React.ReactNode}) {
 
         const { isLoading, isError, error, ...rest } = props
         
 
         console.log('isLoading:', isLoading)
+        console.log('error', error)
 
         if (isLoading) {
             return (
@@ -32,7 +33,13 @@ const WithAsync = <P extends object>(
 
         
         if (props.isError) {
-            return <ErrorMessage>{props.error}</ErrorMessage>
+            return (
+                <WrappedComponent {...rest as P}>
+                    <ErrorMessage>{props.error}</ErrorMessage>
+                </WrappedComponent> 
+            )
+            
+            
         }
 
         

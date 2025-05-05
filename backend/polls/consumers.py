@@ -39,7 +39,7 @@ class PollConsumer(WebsocketConsumer):
 
         poll_serializer = PollSerializer(poll)
 
-        # print('bookclub serializer:', poll_serializer.data)
+        
 
         self.send(text_data=json.dumps(
             {

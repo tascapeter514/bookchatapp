@@ -14,9 +14,10 @@ interface InjectedProps {
 
     handleSelection: (id: number) => void,
     handleSubmitVote: () => void,
-    isVoting: boolean,
-    isVoteError: boolean,
-    successMessage: string
+    isLoading: boolean,
+    isError: boolean,
+    successMessage: string,
+    error: string
 
 }
 
@@ -31,13 +32,18 @@ const WithVotingLogic = (
 
 
         const [successMessage, setSuccessMessage] = useState<string>('')
+        const [error, setError] = useState<string>('')
+
+
+
         const { poll } = props
         const { user } = useSelector((state: RootState) => state.auth)
 
         const [selection, setSelection] = useState(0)
         const handleSelection = (id: number) => setSelection(id)
 
-        const [vote, {isLoading: isVoting, isError: isVoteError} ] = useVoteMutation()
+        const [vote, {isLoading, isError} ] = useVoteMutation()
+
         const handleSubmitVote = async () => {
 
             const voteRequestData: VoteRequest = {
@@ -61,6 +67,12 @@ const WithVotingLogic = (
 
             } catch(err: any) {
                 console.error(err)
+                const message = 
+                err?.data.message ||
+                err?.data?.vote ||
+                'An unexpected error occurred while casting your vote'
+
+                setError(message)
             }
 
 
@@ -70,8 +82,9 @@ const WithVotingLogic = (
 
             handleSelection,
             handleSubmitVote,
-            isVoting,
-            isVoteError,
+            isLoading,
+            isError,
+            error,
             successMessage
 
 

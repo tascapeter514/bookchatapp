@@ -83,9 +83,15 @@ def vote(request, id):
         current_user = get_object_or_404(User, id=user_id)
         current_poll = get_object_or_404(Poll, id=poll_id)
         user_choice = get_object_or_404(PollChoice, id=choice_id)
+
+        existing_vote = Vote.objects.filter(user=current_user, poll=current_poll).first()
+
+        if existing_vote:
+            print('existing vote check')
+            raise ValidationError({'vote': 'You have already voted in this poll'})
         
 
-        current_vote = Vote.objects.create(
+        Vote.objects.create(
             user=current_user,
             poll=current_poll,
             choice = user_choice
@@ -95,6 +101,7 @@ def vote(request, id):
         return Response({'message': 'You have successfully cast your vote!'}, status=status.HTTP_200_OK)
 
     except ValidationError as e:
+        print('e:', e.detail)
 
         return Response(e.detail, status=status.HTTP_400_BAD_REQUEST)
     
