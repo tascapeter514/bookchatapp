@@ -34,10 +34,13 @@ class PollConsumer(WebsocketConsumer):
 
         bookclub = Bookclub.objects.get(id=self.bookclub_id)
 
-        poll = bookclub.polls.filter(status=Poll.VOTING).first()
+        # poll = bookclub.polls.filter(status=Poll.VOTING & Poll.RESULTS).first()
+        poll = Poll.objects.get(bookclub=bookclub)
         print('bookclub poll:', poll)
 
         poll_serializer = PollSerializer(poll)
+
+        print(poll_serializer.data)
 
         
 

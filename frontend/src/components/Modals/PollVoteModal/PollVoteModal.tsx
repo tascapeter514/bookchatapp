@@ -45,6 +45,7 @@ const PollVoteModal = ({
                 <h4>Cast your vote!</h4>
 
                 {children}
+                {successMessage && (<p>{successMessage}</p>)}
                
 
                <RadioButtonsMapper 

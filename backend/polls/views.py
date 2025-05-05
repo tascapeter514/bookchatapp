@@ -101,7 +101,6 @@ def vote(request, id):
         return Response({'message': 'You have successfully cast your vote!'}, status=status.HTTP_200_OK)
 
     except ValidationError as e:
-        print('e:', e.detail)
 
         return Response(e.detail, status=status.HTTP_400_BAD_REQUEST)
     
@@ -113,4 +112,24 @@ def vote(request, id):
 
 @api_view(['GET'])
 def get_results(request, id):
-    print('get poll results')
+    try:
+        print('results body:', id)
+        current_poll = Poll.objects.get(id=id)
+        print('current poll:', current_poll)
+        current_poll.tally_results()
+
+        poll_results = Results.objects.filter(poll=current_poll)
+        print('poll results:', poll_results)
+
+        poll_results_serializer = ResultsSerializer(poll_results, many=True)
+        
+
+        return Response(poll_results_serializer.data, status=status.HTTP_200_OK)
+
+    except ValidationError as e:
+
+        return Response(e.detail, status=status.HTTP_400_BAD_REQUEST)
+    
+    except Exception as e:
+        print(f'Error: {str(e)}')
+        return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

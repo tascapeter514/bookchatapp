@@ -5,6 +5,7 @@ import WithVotingLogic from '../../HigherOrderComponents/WithVotingLogic'
 import PollVoteModal from '../../Modals/PollVoteModal/PollVoteModal'
 import SubHeader from '../../Headers/SubHeader/SubHeader'
 import WithAsync from '../../HigherOrderComponents/WithAsync'
+import PollResultsModal from '../../Modals/PollResultsModal/PollResultsModal'
 
 
 interface Props {
@@ -31,6 +32,9 @@ const CurrentReadPanel = ({bookclubId}: Props) => {
                 <>
                     <SubHeader>Poll in Progress</SubHeader>
                     <PollVoteModalWithLogic poll={poll} />
+                    <PollResultsModal pollId={poll.id}/>
+                    
+                    
                 </> 
             : 
                 <p>Start a poll!</p>

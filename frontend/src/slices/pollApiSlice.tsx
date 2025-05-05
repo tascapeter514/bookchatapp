@@ -67,8 +67,20 @@ export const pollApi = createApi({
                 method: 'PUT',
                 body: data
             })
+        }),
+        getPollResults: build.mutation({
+            query: (pollId: number) => ({
+                url: `api/polls/results/${pollId}`,
+                method: 'GET'
+            })
         })
     })
 })
 
-export const {useGetPollsQuery, useCreatePollMutation, useVoteMutation} = pollApi
+export const {
+    useGetPollsQuery, 
+    useCreatePollMutation, 
+    useVoteMutation,
+    useGetPollResultsMutation
+
+} = pollApi

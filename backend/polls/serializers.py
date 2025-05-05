@@ -38,7 +38,7 @@ class ResultsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Results
-        fields = ['book', 'vote_count']
+        fields = ['id', 'book', 'vote_count']
 
     def get_book(self, obj):
         return {

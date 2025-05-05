@@ -116,6 +116,13 @@ export interface Poll {
 
 }
 
+export interface PollResult {
+    id: number,
+    book: {id: number, name: string}
+    voteCount: number
+
+}
+
 export interface Vote {
     id: number,
     choice: number,
