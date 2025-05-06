@@ -20,6 +20,13 @@ const userDataSlice = createSlice({
     name: 'userData',
     initialState,
     reducers: {
+        loadUserData: (state, action) => {
+            state.type = 'userData',
+            state.bookclubs = [...state.bookclubs, ...action.payload.bookclubs],
+            state.bookshelves = [...state.bookshelves, ...action.payload.bookclubs],
+            state.invitations = [...state.invitations, ...action.payload.invitations]
+
+        },
         addBookclub: (state, action) => {
             state.bookclubs = [...state.bookclubs, action.payload]
         },
@@ -29,5 +36,9 @@ const userDataSlice = createSlice({
     }
 })
 
-export const {addBookclub} = userDataSlice.actions
+export const {
+    loadUserData,
+    addBookclub,
+    addBookshelf,
+} = userDataSlice.actions
 export default userDataSlice.reducer

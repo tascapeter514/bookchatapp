@@ -85,11 +85,24 @@ export const userDataApi = createApi({
                 method: 'DELETE',
                 body: {inviteId: inviteId}
             })
+        }),
+        getUserBookclubs: build.mutation({
+            query: (userId: number) => ({
+                url: `/api/user/bookclubs/${userId}`,
+                method: 'GET'
+            })
         })
         
         
     })
 })
 
-export const { useGetUserDataQuery, usePostBookclubMutation, usePostBookshelfMutation, useAcceptInviteMutation, useDeclineInviteMutation } = userDataApi
+export const { 
+    useGetUserDataQuery, 
+    usePostBookclubMutation, 
+    usePostBookshelfMutation, 
+    useAcceptInviteMutation, 
+    useDeclineInviteMutation,
+    useGetUserBookclubsMutation
+} = userDataApi
 

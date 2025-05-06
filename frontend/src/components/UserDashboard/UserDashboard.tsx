@@ -44,11 +44,18 @@ const ProfileHeader = ({user}: Props) => {
 const UserDashboard = () => {
 
     const { user } = useSelector((state: RootState) => state.auth, shallowEqual)
-    const { data, isLoading } = useGetUserDataQuery(user.id)
+    const { data: userData, isLoading } = useGetUserDataQuery(user.id)
+    // const dispatch = useDispatch()
 
-    const bookclubs = data?.bookclubs ?? []
-    const bookshelves = data?.bookshelves ?? []
-    const invitations = data?.invitations ?? []
+    // if (userData) {
+    //     dispatch(loadUserData(userData))
+    // }
+
+    const bookclubs = userData?.bookclubs ?? []
+    const bookshelves = userData?.bookshelves ?? []
+    const invitations = userData?.invitations ?? []
+
+    
 
     
     const [mobileNav, navDispatch] = useReducer(mobileNavReducer, {open: false, isExiting: false})
@@ -59,7 +66,7 @@ const UserDashboard = () => {
     
 
 
-    console.log('user dashboard data:', data)
+    console.log('user dashboard data:', userData)
     // console.log('user dashboard bookshelves:', bookshelves)
 
     return(

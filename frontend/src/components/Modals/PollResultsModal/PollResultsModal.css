@@ -1,0 +1,32 @@
+.poll-results-modal {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 300px;
+    gap: 2rem;
+    
+}
+
+.poll-results-modal button {
+    flex: 1;
+    max-width: 118px;
+}
+
+.poll-results-dialog {
+    background-color: white;
+    border-radius: 3px;
+    border: 2px solid black;
+    /* position: absolute; */
+    margin: auto;
+    width: 100%;
+    max-width: 500px;
+
+}
+
+.poll-results-dialog[open] {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+}

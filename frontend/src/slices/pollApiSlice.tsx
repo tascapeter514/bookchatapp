@@ -39,9 +39,8 @@ export const pollApi = createApi({
                                     return
                                 }
                                 draft.id = data.polls.id
-                                draft.bookOne = data.polls.book_one;
-                                draft.bookTwo = data.polls.book_two;
-                                draft.bookThree = data.polls.book_three;
+                                draft.status = data.polls.status,
+                                draft.pollChoices = data.polls.poll_choices
                             })
                         }
                     }
@@ -65,11 +64,23 @@ export const pollApi = createApi({
         vote: build.mutation({
             query: ({data, pollId}: {data: VoteRequest, pollId: number}) => ({
                 url: `api/poll/vote/${pollId}`,
-                method: 'POST',
+                method: 'PUT',
                 body: data
+            })
+        }),
+        getPollResults: build.mutation({
+            query: (pollId: number) => ({
+                url: `api/polls/results/${pollId}`,
+                method: 'GET'
             })
         })
     })
 })
 
-export const {useGetPollsQuery, useCreatePollMutation, useVoteMutation} = pollApi
+export const {
+    useGetPollsQuery, 
+    useCreatePollMutation, 
+    useVoteMutation,
+    useGetPollResultsMutation
+
+} = pollApi

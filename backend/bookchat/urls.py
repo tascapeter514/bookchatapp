@@ -27,16 +27,19 @@ from django.urls import path, include
 urlpatterns = [
     # finished routes
     path('api/book/<int:id>', get_book, name='get_book'),
-    path('api/user/bookshelf/<int:id>', add_bookshelf_to_user, name='add_user_bookshelf'),
-    path('api/user/bookclub/<int:id>', create_bookclub, name='add_user_bookclub'),
-    path('api/bookshelf/book/add', add_book_to_bookshelf, name='add_user_book'),
-    path('api/bookshelf/book/delete', remove_book_from_bookshelf, name='delete_book'),
-    
-    path('api/bookclub/invite', send_invite, name='send-invite'),
-    path('api/bookclub/bookshelf/<int:id>', add_bookshelf_to_bookclub, name='add_bookshelf'),
-    path('api/books', get_books, name='get_books'),
+    path('api/user/bookshelf/<int:id>', add_bookshelf_to_user, name='add_bookshelf_to_user'),
+    path('api/user/bookclub/<int:id>', create_bookclub, name='create_bookclub'),
     path('api/user/invite/accept', accept_invite, name='accept_invite'),
     path('api/user/invite/decline', decline_invite, name='decline_invite'),
+    path('api/user/bookclubs/<int:id>', get_user_bookclubs, name='get_user_bookclubs'),
+    path('api/bookshelf/book/add', add_book_to_bookshelf, name='add_book_to_bookshelf'),
+    path('api/bookshelf/book/delete', remove_book_from_bookshelf, name='remove_book_from_bookshelf'),
+    
+    path('api/bookclub/invite', send_invite, name='send-invite'),
+    path('api/bookclub/bookshelf/<int:id>', add_bookshelf_to_bookclub, name='add_bookshelf_to_bookclub'),
+    path('api/bookclub/bookshelf/book/<int:id>', add_book_to_bookclub, name='add_book_to_bookclub' ),
+    path('api/books', get_books, name='get_books'),
+
    
 
     # UNFINISHED ROUTES? NEED WORK

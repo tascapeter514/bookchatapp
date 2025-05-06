@@ -34,12 +34,15 @@ class PollConsumer(WebsocketConsumer):
 
         bookclub = Bookclub.objects.get(id=self.bookclub_id)
 
-        poll = bookclub.polls.filter(status=Poll.VOTING).first()
+        # poll = bookclub.polls.filter(status=Poll.VOTING & Poll.RESULTS).first()
+        poll = Poll.objects.get(bookclub=bookclub)
         print('bookclub poll:', poll)
 
         poll_serializer = PollSerializer(poll)
 
-        # print('bookclub serializer:', poll_serializer.data)
+        print(poll_serializer.data)
+
+        
 
         self.send(text_data=json.dumps(
             {
@@ -47,6 +50,21 @@ class PollConsumer(WebsocketConsumer):
                 'polls': poll_serializer.data
             }
         ))
+    
+    def send_poll_data(self, event):
+        self.get_polls()
+    
+def send_poll_data_to_group(bookclub_id):
+
+    channel_layer = get_channel_layer()
+
+    async_to_sync(channel_layer.group_send)(
+        f'poll_data_{bookclub_id}',
+        {
+            'type': 'send_poll_data',
+            'bookclub_id': bookclub_id
+        }
+    )
 
     
 

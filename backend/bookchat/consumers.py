@@ -31,7 +31,7 @@ class UserDataConsumer(WebsocketConsumer):
     def get_user_data(self):
         print('get user data trigger')
         print('user id:', self.user_id)
-        bookclubs = Bookclub.objects.filter(Q (administrator=self.user_id) | Q(members__id=self.user_id))
+        bookclubs = Bookclub.objects.filter(Q (administrator=self.user_id) | Q(members__id=self.user_id)).distinct()
         invitations = Invitation.objects.filter(invitee=self.user_id)
         bookshelves = Bookshelf.objects.filter(user_id=self.user_id)
 
@@ -48,7 +48,7 @@ class UserDataConsumer(WebsocketConsumer):
                 
             }
         
-        print('user data response:', user_data_response)
+        print('user data response:', user_data_response['bookclubs'])
         
 
         self.send(text_data=json.dumps(

@@ -91,6 +91,7 @@ export interface Book {
     authors: Author[]
 }
 
+
 export interface Bookclub {
     id: number,
     name: string,
@@ -102,11 +103,24 @@ export interface Bookclub {
 
 }
 
+export interface PollChoice {
+    id: number,
+    book: {id: number, name: string}
+
+}
+
 export interface Poll {
     id: number,
-    bookOne: {id: number, name: string},
-    bookTwo: {id: number, name: string},
-    bookThree: {id: number, name: string}
+    status: string,
+    pollChoices: PollChoice[]
+
+}
+
+export interface PollResult {
+    id: number,
+    book: {id: number, name: string}
+    voteCount: number
+
 }
 
 export interface Vote {
@@ -131,6 +145,19 @@ export type SearchData = {
     type: string,
     items: Book[] | Author[] | Bookclub[];
 }[]
+
+export interface MapperData {
+    id: number,
+    name: string
+}
+
+export interface MapperProps<T extends MapperData> {
+    data: T[],
+    dataType?: string,
+    dispatch: (action: any) => void,
+    action?: (payload: number) => any
+}
+
 
 export type BookclubData = {type: string, items: Bookclub[]}
 export type BookshelfData = {type: string, items: Bookshelf[]}

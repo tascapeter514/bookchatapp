@@ -3,29 +3,17 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.exceptions import ValidationError
 from rest_framework import status
+from polls.consumers import send_poll_data_to_group
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import get_object_or_404
 from bookchat.models import Book, Bookclub
-from .models import Poll
-from .serializers import PollSerializer
+from .models import *
+from .serializers import *
 import redis
 from django.http import JsonResponse
 
 # Create your views here.
 
-
-
-
-def check_redis_connection(request):
-    try:
-        # Test the Redis connection
-        r = redis.Redis(host='red-d03sqi9r0fns739g5cng', port=6379)
-        if r.ping():  # Check if Redis responds with a "ping"
-            return JsonResponse({"status": "success", "message": "Connected to Redis!"})
-        else:
-            return JsonResponse({"status": "error", "message": "Failed to connect to Redis."})
-    except Exception as e:
-        return JsonResponse({"status": "error", "message": f"Redis connection error: {str(e)}"})
 
 
 
@@ -56,24 +44,15 @@ def create(request):
         names = [book['name'].strip().lower() for book in books]
         if len(set(names)) != 3:
             raise ValidationError({'poll': 'All three books must be different'})
-
-        book_one_id = books[0]['id']
-        book_two_id = books[1]['id']
-        book_three_id = books[2]['id']
         
-        book_one = get_object_or_404(Book, id=book_one_id)
-        book_two = get_object_or_404(Book, id=book_two_id)
-        book_three = get_object_or_404(Book, id=book_three_id)
-        
+        new_poll = Poll.objects.create(bookclub=bookclub)
 
 
-        new_poll = Poll.objects.create(
-            book_one=book_one,
-            book_two=book_two,
-            book_three=book_three,
-            bookclub=bookclub 
-        )
+        for book in books:
+            current_book = get_object_or_404(Book, id=book['id'])
+            PollChoice.objects.create(poll=new_poll, book=current_book)
 
+        send_poll_data_to_group(bookclub_id)
         poll_serializer = PollSerializer(new_poll)
 
 
@@ -93,6 +72,64 @@ def create(request):
 def vote(request, id):
     print('Vote on poll')
 
+    try:
+        print('request body:', request.body)
+        print('poll id:', id)
+
+        choice_id = request.data.get('choice')
+        user_id = request.data.get('user')
+        poll_id = id
+
+        current_user = get_object_or_404(User, id=user_id)
+        current_poll = get_object_or_404(Poll, id=poll_id)
+        user_choice = get_object_or_404(PollChoice, id=choice_id)
+
+        existing_vote = Vote.objects.filter(user=current_user, poll=current_poll).first()
+
+        if existing_vote:
+            print('existing vote check')
+            raise ValidationError({'vote': 'You have already voted in this poll'})
+        
+
+        Vote.objects.create(
+            user=current_user,
+            poll=current_poll,
+            choice = user_choice
+        )
+
+
+        return Response({'message': 'You have successfully cast your vote!'}, status=status.HTTP_200_OK)
+
+    except ValidationError as e:
+
+        return Response(e.detail, status=status.HTTP_400_BAD_REQUEST)
+    
+    except Exception as e:
+        print(f'Error: {str(e)}')
+        return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+
 @api_view(['GET'])
 def get_results(request, id):
-    print('get poll results')
+    try:
+        print('results body:', id)
+        current_poll = Poll.objects.get(id=id)
+        print('current poll:', current_poll)
+        current_poll.tally_results()
+
+        poll_results = Results.objects.filter(poll=current_poll)
+        print('poll results:', poll_results)
+
+        poll_results_serializer = ResultsSerializer(poll_results, many=True)
+        
+
+        return Response(poll_results_serializer.data, status=status.HTTP_200_OK)
+
+    except ValidationError as e:
+
+        return Response(e.detail, status=status.HTTP_400_BAD_REQUEST)
+    
+    except Exception as e:
+        print(f'Error: {str(e)}')
+        return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

@@ -13,6 +13,7 @@ from bookchat.consumers import send_user_data_to_group, send_bookclub_data_to_gr
 from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync
 from django.http import JsonResponse
+from django.db.models import Q
 from uuid import UUID
 import json
 
@@ -33,47 +34,6 @@ def get_book(request, id):
     else:
         return Response({'message': 'Book not found'}, status=status.HTTP_404_NOT_FOUND)
 
-
-# @api_view(['GET'])
-# def get_books(request):
-#     print('get books check')
-#     try:
-
-#         def with_images(queryset):
-#             return queryset.exclude(imageLinks__smallThumbnail__isnull=True).exclude(imageLinks__smallThumbnail__exact='')
-
-
-
-#         best_sellers = with_images(Book.objects.filter(genres_id=18))
-#         literary_fiction = with_images(Book.objects.filter(genres_id=1))[:15]
-#         science_fiction = with_images(Book.objects.filter(genres_id=23))[:15]
-#         drama = with_images(Book.objects.filter(genres_id=24))
-#         contemporary_fiction = with_images(Book.objects.filter(genres_id=25))[:15]
-#         fantasy = with_images(Book.objects.filter(genres_id=15))
-#         detective_fiction = with_images(Book.objects.filter(genres_id=8))
-
-
-#         book_data = {
-#             'best_sellers': BookSerializer(best_sellers, many=True).data,
-#             'literary_fiction': BookSerializer(literary_fiction, many=True).data,
-#             'science_fiction': BookSerializer(science_fiction, many=True).data,
-#             'drama': BookSerializer(drama, many=True).data,
-#             'contemporary_fiction': BookSerializer(contemporary_fiction, many=True).data,
-#             'fantasy': BookSerializer(fantasy , many=True).data,
-#             'detective_fiction': BookSerializer(detective_fiction, many=True).data,
-#         }
-
-
-        
-#         return Response(book_data, status=status.HTTP_200_OK)
-
-#     except ValidationError as e:
-
-#         return Response(e.detail, status=status.HTTP_400_BAD_REQUEST)
-    
-#     except Exception as e:
-#         print(f'Error: {str(e)}')
-#         return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 @api_view(['GET'])
@@ -127,9 +87,32 @@ def get_books(request):
         return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     
 
+@api_view(['GET'])
+def get_user_bookclubs(request, id):
+    try:
+        print('request body:', request.body)
+
+        user_bookclubs = (
+            Bookclub.objects
+            .filter(Q(administrator=id) | Q(members__id=id))
+            .distinct()
+            .prefetch_related('bookshelves')
+        )
+
+        
+        user_bookclubs_serializer = BookclubSerializer(user_bookclubs, many=True)
+
+        print('user bookclubs:', user_bookclubs_serializer.data)  
+
+        return Response(user_bookclubs_serializer.data, status=status.HTTP_200_OK)
+
+    except ValidationError as e:
+
+        return Response(e.detail, status=status.HTTP_400_BAD_REQUEST)
     
-
-
+    except Exception as e:
+        print(f'Error: {str(e)}')
+        return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 # REFACTOR
@@ -445,6 +428,37 @@ def create_bookclub(request, id):
     except Exception as e:
         print(f'Error: {str(e)}')
         return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+@api_view(['PUT'])
+def add_book_to_bookclub(request, id):
+    try:
+        print(request.body)
+        new_book_id = request.data.get('newBookId')
+        bookshelf_id = request.data.get('bookshelfId')
+
+        current_book = Book.objects.get(id=new_book_id)
+        current_bookshelf = Bookshelf.objects.get(id=bookshelf_id)
+
+        if current_bookshelf.books.filter(id=current_book.id).exists():
+            print('validation error check')
+            raise ValidationError({'book': 'This book is already in the bookshelf.'})
+        
+        else:
+            current_bookshelf.books.add(current_book)
+            send_bookclub_data_to_group(id)
+
+            return Response(status=status.HTTP_200_OK)
+
+
+    except ValidationError as e:
+        print('bookclub error:', e)
+        print('bookclub error detail:', e.detail)
+        return Response(e.detail, status=status.HTTP_400_BAD_REQUEST)
+
+    except Exception as e:
+        print(f'Error: {str(e)}')
+        return Response({'error': 'Internal server error'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
     
 
 

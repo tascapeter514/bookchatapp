@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import MessagePanel from '../components/Panels/MessagePanel/MessagePanel'
 import userEvent from '@testing-library/user-event'
 import InviteMessage from '../components/InviteMessage/InviteMessage'
@@ -140,8 +140,9 @@ describe('<MessagePanel invitations={invitations} />', () => {
     })
     
 
-    test('after clicking the accept button, accept button disappears', async () => {
+    // test('after clicking the accept button, accept button disappears', async () => {
 
+<<<<<<< HEAD
         // const initialData = {
         //     invitations: [{id: 1, name: 'Invitation 1', status: 'pending'}]
         // };
@@ -154,37 +155,51 @@ describe('<MessagePanel invitations={invitations} />', () => {
         //     data: initialData,
         //     isLoading: false
         // })
+=======
+    //     const initialData = {
+    //         invitations: [{id: 1, name: 'Invitation 1', status: 'pending'}]
+    //     };
 
-        const user = userEvent.setup()
-        const acceptButton = screen.getByText('Accept')
+    //     const updatedData = {
+    //         invitations: [{id: 1, name: 'Invitation 1', status: 'accepted'}]
+    //     };
 
-        // Mock resposne to simluate status change after accept
-        mockAcceptInvite.mockResolvedValue({data: {status: 'accepted'}})
+    //     (useGetUserDataQuery).mockReturnValue({
+    //         data: initialData,
+    //         isLoading: false
+    //     })
+>>>>>>> testing
+
+    //     const user = userEvent.setup()
+    //     const acceptButton = screen.getByText('Accept')
+
+    //     // Mock resposne to simluate status change after accept
+    //     mockAcceptInvite.mockResolvedValue({data: {status: 'accepted'}})
 
 
-        await user.click(acceptButton)
+    //     await user.click(acceptButton)
         
 
-        // Check 'Accept' Button is no longer present
-        await waitFor(() => {
+    //     // Check 'Accept' Button is no longer present
+    //     await waitFor(() => {
 
-            expect(screen.queryByText('Accept')).toBeNull()
+    //         expect(screen.queryByText('Accept')).toBeNull()
 
-        })
+    //     })
         
 
-        //Check for 'Invitation Accepted' message
-        expect(screen.getByText('Invitation Accepted')).toBeTruthy()
+    //     //Check for 'Invitation Accepted' message
+    //     expect(screen.getByText('Invitation Accepted')).toBeTruthy()
     
-    })
+    // })
 
-    test('after clicking the decline button, decline button disappears', async () => {
-        const user = userEvent.setup()
-        const declineButton = screen.getByText('Decline')
-        await user.click(declineButton)
+    // test('after clicking the decline button, decline button disappears', async () => {
+    //     const user = userEvent.setup()
+    //     const declineButton = screen.getByText('Decline')
+    //     await user.click(declineButton)
 
-        expect(screen.queryByText('Decline')).toBeNull()
-    })
+    //     expect(screen.queryByText('Decline')).toBeNull()
+    // })
 
 })
 

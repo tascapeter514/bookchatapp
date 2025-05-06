@@ -51,9 +51,11 @@ const CreatePollModal = ({books, bookclubId}: Props) => {
         
 
         return(
-            <option key={book.id} value={book.id} data-name={book.name}>
-                {book.name}
-            </option>
+            <>
+                <option key={book.id} value={book.id} data-name={book.name}>
+                    {book.name}
+                </option>
+            </>
         )
 
     }

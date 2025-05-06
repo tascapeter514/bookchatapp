@@ -1,32 +1,40 @@
-import './CurrentRead.css'
+import './CurrentReadPanel.css'
 import Header from '../../Headers/Header/Header'
 import { useGetPollsQuery } from '../../../slices/pollApiSlice'
-import ActivePoll from '../../ActivePoll/ActivePoll'
+import WithVotingLogic from '../../HigherOrderComponents/WithVotingLogic'
+import PollVoteModal from '../../Modals/PollVoteModal/PollVoteModal'
 import SubHeader from '../../Headers/SubHeader/SubHeader'
+import WithAsync from '../../HigherOrderComponents/WithAsync'
+import PollResultsModal from '../../Modals/PollResultsModal/PollResultsModal'
 
 
 interface Props {
     bookclubId: number
 }
 
+const PollVoteModalWithLogic = WithVotingLogic(WithAsync(PollVoteModal))
+
 
 const CurrentReadPanel = ({bookclubId}: Props) => {
 
-    const { data } = useGetPollsQuery(bookclubId)
+    const { data: poll } = useGetPollsQuery(bookclubId)
 
 
 
-    console.log('poll data:', data)
-    console.log('poll ternary:', data ? true : false)
+    console.log('poll data:', poll)
+    
 
 
     return (
         <div className="current-read-panel">
             <Header>Current Read</Header>
-            {data?.id ? 
+            {poll?.id ? 
                 <>
                     <SubHeader>Poll in Progress</SubHeader>
-                    <ActivePoll poll={data}/>
+                    <PollVoteModalWithLogic poll={poll} />
+                    <PollResultsModal pollId={poll.id}/>
+                    
+                    
                 </> 
             : 
                 <p>Start a poll!</p>
