@@ -70,6 +70,20 @@ const BarChart = ({results}: Props) => {
 
         svg.append('g')
         .call(d3.axisLeft(yScale))
+        .selectAll('.tick text')
+        .call(text => {
+            text.each(function() {
+                const self = d3.select(this);
+                const words = self.text().split(/\s+/);
+                self.text(null);
+                words.forEach((word, i) => {
+                    self.append('tspan')
+                        .text(word)
+                        .attr('x', 0)
+                        .attr('dy', i === 0 ? 0 : '1.1em');
+                });
+            });
+        });
 
 
 
