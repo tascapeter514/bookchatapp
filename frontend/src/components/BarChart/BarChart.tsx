@@ -17,7 +17,7 @@ const BarChart = ({results}: Props) => {
         if (!results.length) return;
 
         const margin = { top: 20, right: 30, bottom: 30, left: 110}
-        const width = 600 - margin.left - margin.right;
+        const width = 700 - margin.left - margin.right;
         const height = results.length * 30;
 
         //clear previous chart
@@ -77,30 +77,6 @@ const BarChart = ({results}: Props) => {
             .style('text-anchor', 'end');  // right-align text
         
 
-        
-
-        // ➕ UPDATED: Reformat wrapped tick labels with clearer vertical spacing
-        // yAxis.selectAll('.tick text')
-        //     .call(text => {
-        //         text.each(function () {
-        //             const self = d3.select(this);
-        //             const words = self.text().split(/\s+/);
-        //             self.text(null);
-        //             words.forEach((word, i) => {
-        //                 self.append('tspan')
-        //                     .text(word)
-        //                     .attr('x', 0)
-        //                     .attr('dy', i === 0 ? '-0.6em' : '1em');  // ➕ Adjust vertical spacing
-        //             });
-        //         });
-        //     });
-
-        // ➕ NEW: Vertically align tick labels with their bars
-        // yAxis.selectAll('.tick')
-        //     .attr('transform', function (d) {
-        //         const y = yScale(d as string)! + yScale.bandwidth() / 2;
-        //         return `translate(0, ${y})`;
-        //     });
 
     }, [results])
 
