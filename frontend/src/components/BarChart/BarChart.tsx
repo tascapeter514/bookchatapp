@@ -60,7 +60,7 @@ const BarChart = ({results}: Props) => {
         .enter()
         .append('text')
         .text(d => d.voteCount)
-        .attr('x', d => xScale(d.voteCount) + 5)
+        .attr('x', d => xScale(d.voteCount))
         .attr('y', d => yScale(d.book.name)! + yScale.bandwidth() / 2)
         .attr('alignment-baseline', 'middle')
         .attr('fill', 'black');
