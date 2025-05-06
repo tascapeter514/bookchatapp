@@ -142,7 +142,6 @@ describe('<MessagePanel invitations={invitations} />', () => {
 
     // test('after clicking the accept button, accept button disappears', async () => {
 
-<<<<<<< HEAD
         // const initialData = {
         //     invitations: [{id: 1, name: 'Invitation 1', status: 'pending'}]
         // };
@@ -155,20 +154,6 @@ describe('<MessagePanel invitations={invitations} />', () => {
         //     data: initialData,
         //     isLoading: false
         // })
-=======
-    //     const initialData = {
-    //         invitations: [{id: 1, name: 'Invitation 1', status: 'pending'}]
-    //     };
-
-    //     const updatedData = {
-    //         invitations: [{id: 1, name: 'Invitation 1', status: 'accepted'}]
-    //     };
-
-    //     (useGetUserDataQuery).mockReturnValue({
-    //         data: initialData,
-    //         isLoading: false
-    //     })
->>>>>>> testing
 
     //     const user = userEvent.setup()
     //     const acceptButton = screen.getByText('Accept')
