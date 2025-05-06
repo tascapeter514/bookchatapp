@@ -1,7 +1,6 @@
 import { useRef } from 'react'
 import { Bookclub } from '../../../types'
 import DropdownMapper from '../../Mappers/DropdownMapper/DropdownMapper'
-// import ErrorMessage from '../../Messages/ErrorMessage/ErrorMessage'
 import { MapperData } from '../../../types'
 import './AddBookToBookclubModal.css'
 import Button from '../../Buttons/Button/Button'
@@ -61,9 +60,8 @@ const AddBookToBookclubModal = ({
                 Add to Bookclub
             </button>
             <dialog className='add-book-to-bookclub-dialog'ref={modalRef}>
-                {/* {isGettingBookclubs && (<div>Loading...</div>)}
-                {isGetBookclubsError && <ErrorMessage>There is a problem with fetching your bookclubs</ErrorMessage>} */}
-                {bookclubData.length > 0 && (
+
+                {bookclubData  && bookclubData.length > 0 && (
                     <>
                         <h3>Add this book to your bookclub</h3>
                         <hr />
