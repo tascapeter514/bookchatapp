@@ -17,6 +17,7 @@ const AddBookToBookclubModalWithLogic = WithAddBookToBookclubLogic(WithAsync(Add
 const BookHeaderTitle = ({book}: Props) => {
 
     console.log('book header title id:', book.id)
+    
     return(
 
         <article className="book-header-title">

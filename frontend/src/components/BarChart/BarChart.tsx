@@ -46,11 +46,12 @@ const BarChart = ({results}: Props) => {
             .data(results)
             .enter()
             .append('rect')
-            .text(d => d.voteCount)
-            .attr('x', d => xScale(d.voteCount || 0) + 5)
-            .attr('y', d => yScale(d.book.name)! + yScale.bandwidth() / 2)
-            .attr('alignment-baseline', 'middle')
-            .attr('fill', 'black');
+            .attr('x', 0)
+            .attr('y', d => yScale(d.book.name)!)
+            .attr('width', d => xScale(d.voteCount || 0))
+            .attr('height', yScale.bandwidth())
+            .attr('fill', 'orange')
+            
 
 
         // Add labels
