@@ -17,8 +17,6 @@ import tabsReducer from '../../reducers/tabsReducer';
 import BookshelfTabs from '../BookshelfTabs/BookshelfTabs';
 import DashboardMain from '../DashboardMain/DashboardMain';
 import DashboardNav from '../DashboardNav/DashboardNav';
-import { loadUserData } from '../../slices/userDataSlice';
-import { useDispatch } from 'react-redux';
 import { ActiveUser } from '../../types';
 import { RootState } from '../../store/store';
 import { useSelector,  shallowEqual } from 'react-redux';

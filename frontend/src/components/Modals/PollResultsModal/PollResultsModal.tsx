@@ -1,6 +1,6 @@
 import './PollResultsModal.css'
 import { useRef, useState } from 'react'
-import { PollResult, Poll } from '../../../types'
+import { PollResult } from '../../../types'
 import { useGetPollResultsMutation } from '../../../slices/pollApiSlice'
 import Button from '../../Buttons/Button/Button'
 import BarChart from '../../BarChart/BarChart'
