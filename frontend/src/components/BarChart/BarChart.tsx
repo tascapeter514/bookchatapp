@@ -16,8 +16,8 @@ const BarChart = ({results}: Props) => {
     useEffect(() => {
         if (!results.length) return;
 
-        const margin = { top: 20, right: 30, bottom: 30, left: 110}
-        const width = 700 - margin.left - margin.right;
+        const margin = { top: 20, right: 30, bottom: 30, left: 300}
+        const width = 800 - margin.left - margin.right;
         const height = results.length * 30;
 
         //clear previous chart
