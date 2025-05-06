@@ -25,8 +25,14 @@ const PollResultsModal = ({pollId}: Props) => {
         try {
             const response = await getPollResults(pollId)
 
-            console.log('poll results resposne:', response)
-            setPollResults(response.data)
+            const remappedResults = response.data.map(({vote_count, ...rest}: any) => ({
+                ...rest,
+                voteCount: vote_count,
+                
+            }))
+
+
+            setPollResults(remappedResults)
 
             
 
