@@ -61,10 +61,10 @@ def get_books(request):
                 SELECT b.*, ROW_NUMBER() OVER (PARTITION BY b.genres_id ORDER BY b.id) as rn
                 FROM public.bookchat_book b
                 WHERE b.genres_id IN ({genres_id_str})
-                AND b.imageLinks ->> 'smallThumbnail' IS NOT NULL
-                AND b.imageLinks ->> 'smallThumbnail' <> ''
+                AND CAST(b.imageLinks ->> 'smallThumbnail' AS TEXT) IS NOT NULL
+                AND CAST(b.imageLinks ->> 'smallThumbnail' AS TEXT) <> ''
             ) sub
-            WHERE rn <=15;
+            WHERE rn <= 15;
         """
 
         books = Book.objects.raw(sql)
