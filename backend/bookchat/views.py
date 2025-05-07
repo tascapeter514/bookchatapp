@@ -47,6 +47,9 @@ def get_books(request):
         books = Book.objects.exclude(imageLinks__smallThumbnail__isnull=True)\
                             .exclude(imageLinks__smallThumbnail__exact='')\
                             .filter(genres_id__in=desired_genres)
+        
+        print('get books length:', len(books))
+
         # Create dictionary to group books by genre
         grouped = defaultdict(list)
 
