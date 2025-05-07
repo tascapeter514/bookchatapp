@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
-import { BookData } from '../slices/searchApiSlice'
+// import { BookData } from '../slices/searchApiSlice'
+import { SearchResultData } from '../types'
 import { useLazyGetBookDataQuery } from '../slices/searchApiSlice'
 
 
@@ -8,7 +9,7 @@ const useBookSearch = () => {
 
     const [searchValue, setSearchValue] = useState('')
     const [debouncedValue, setDebouncedValue] = useState('')
-    const [searchResults, setSearchResults] = useState<BookData[]>([])
+    const [searchResults, setSearchResults] = useState<SearchResultData[]>([])
 
     const [triggerBookSearch, {data, isError, error, reset}] = useLazyGetBookDataQuery()
 

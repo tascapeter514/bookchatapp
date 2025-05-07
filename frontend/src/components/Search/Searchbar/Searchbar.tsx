@@ -1,5 +1,5 @@
 import './Searchbar.css'
-import SearchbarResults from '../SearchbarResults/SearchbarResults'
+import SearchResults from '../SearchResults/SearchResults'
 import useSearch from '../../../hooks/useSearch'
 import {SearchIcon} from '../../Icons'
 
@@ -33,7 +33,8 @@ const Searchbar = () => {
                 />
                 <SearchIcon className='search-icon'/>
 
-                {searchValue && searchResults.length > 0 && <SearchbarResults>{searchResults}</SearchbarResults>}
+                {/* {searchValue && searchResults.length > 0 && <SearchbarResults>{searchResults}</SearchbarResults>} */}
+                {searchValue && searchResults.length > 0 && <SearchResults searchData={searchResults} />}
 
                 
                 

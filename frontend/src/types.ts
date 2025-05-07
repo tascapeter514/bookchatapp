@@ -158,6 +158,34 @@ export interface MapperProps<T extends MapperData> {
     action?: (payload: number) => any
 }
 
+export type SearchLink = {
+    id: number,
+    name: string
+}
+
+export type SearchLinkData = {
+    type: string,
+    items: SearchLink[]
+}
+
+export type SearchResultData = {
+    id: number,
+    name: string
+}
+
+export type SearchResultsData = {
+    type: string,
+    items: SearchResultData[]
+}
+
+
+export interface SearchProps<T extends SearchResultData> {
+    searchData: T[],
+    // searchDataType?: string,
+    dispatch: (action: any) => void,
+    action?: (payload: number) => any
+}
+
 
 export type BookclubData = {type: string, items: Bookclub[]}
 export type BookshelfData = {type: string, items: Bookshelf[]}

@@ -6,9 +6,9 @@ import { usePostBookMutation } from '../../../slices/bookshelfApiSlice'
 import useBookSearch from '../../../hooks/useBookSearch'
 import { SearchIcon } from '../../Icons'
 import booksearchReducer from '../../../reducers/booksearchReducer'
-import BookResults from '../../Search/BookResults/BookResults'
+import SearchResults from '../../Search/SearchResults/SearchResults'
 import BookSearchbar from '../../Search/BookSearchbar/BookSearchbar'
-import { Bookshelf } from '../../../types'
+import { Bookshelf  } from '../../../types'
 import ModalButtons from '../../Buttons/ModalButtons/ModalButtons'
 import './BookSearchModal.css'
 
@@ -27,7 +27,7 @@ const BookSearchModal = ({ bookshelf, id }: Props) => {
     const bookSearchRef = useRef<HTMLDialogElement>(null)
     const openModal = () => bookSearchRef.current?.showModal()
     const closeModal = () => bookSearchRef.current?.close()
-    const [searchData, bookDispatch] = useReducer(booksearchReducer, {bookshelfId: bookshelf.id,  newBookId: 0} )
+    const [searchData, searchDispatch] = useReducer(booksearchReducer, {bookshelfId: bookshelf.id,  newBookId: 0} )
     const { searchValue, searchResults, setSearchValue }  = useBookSearch()
     const [postBook, {isError, error, reset}] = usePostBookMutation()
     
@@ -70,19 +70,15 @@ const BookSearchModal = ({ bookshelf, id }: Props) => {
                 <section className='search-books-content'>
                     <article className='suggested-book-list'>
                         <BookSearchbar  searchValue={searchValue} handleOnChange={handleOnChange} />
-                        <BookResults bookDispatch={bookDispatch}>{searchResults}</BookResults>
+                        <SearchResults searchData={searchResults} dispatch={searchDispatch}/>
+                        {/* <BookResults bookDispatch={bookDispatch}>{searchResults}</BookResults> */}
                     </article>
                 </section>
                 <ModalButtons
                     closeModal={closeModal}
                     submitHandler={addBook}
                     submitButtonText='Add Book'
-                 
                  />
-                {/* <div className="button-wrapper">
-                    <Button onClick={closeModal}>Cancel</Button>
-                    <Button onClick={addBook}>Add Book</Button>
-                </div> */}
             </dialog>
         </>
     )
