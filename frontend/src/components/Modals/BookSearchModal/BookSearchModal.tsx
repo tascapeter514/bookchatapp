@@ -9,6 +9,7 @@ import booksearchReducer from '../../../reducers/booksearchReducer'
 import BookResults from '../../Search/BookResults/BookResults'
 import BookSearchbar from '../../Search/BookSearchbar/BookSearchbar'
 import { Bookshelf } from '../../../types'
+import ModalButtons from '../../Buttons/ModalButtons/ModalButtons'
 import './BookSearchModal.css'
 
 
@@ -72,10 +73,16 @@ const BookSearchModal = ({ bookshelf, id }: Props) => {
                         <BookResults bookDispatch={bookDispatch}>{searchResults}</BookResults>
                     </article>
                 </section>
-                <div className="button-wrapper">
+                <ModalButtons
+                    closeModal={closeModal}
+                    submitHandler={addBook}
+                    submitButtonText='Add Book'
+                 
+                 />
+                {/* <div className="button-wrapper">
                     <Button onClick={closeModal}>Cancel</Button>
                     <Button onClick={addBook}>Add Book</Button>
-                </div>
+                </div> */}
             </dialog>
         </>
     )

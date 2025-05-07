@@ -12,6 +12,7 @@ interface ResultProps {
 const SearchbarResults = ({children}: ResultProps ) => {
 
     const noResults = children.map((searchResult: SearchResult) => searchResult.items).every(items => items.length < 1)
+    
     const sortedResults = children.sort((a, b) => {
         
         return (a.items?.length || 0) - (b.items?.length || 0)
