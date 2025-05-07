@@ -44,30 +44,14 @@ def get_books(request):
 
         desired_genres = [1, 8, 15, 18, 23, 24, 25]
 
-        # books = Book.objects.select_related('genres')\
-        #                     .exclude(imageLinks__smallThumbnail__isnull=True)\
-        #                     .exclude(imageLinks__smallThumbnail__exact='')\
-        #                     .filter(genres_id__in=desired_genres)
+        books = Book.objects.select_related('genres')\
+                            .exclude(imageLinks__smallThumbnail__isnull=True)\
+                            .exclude(imageLinks__smallThumbnail__exact='')\
+                            .filter(genres_id__in=desired_genres)
         
         # print('get books length:', len(books))
 
-        genres_id_str = ', '.join(str(g) for g in desired_genres)
 
-
-        # raw SQL query to get first 15 books by genre
-
-        sql = f"""
-            SELECT * FROM (
-                SELECT b.*, ROW_NUMBER() OVER (PARTITION BY b.genres_id ORDER BY b.id) as rn
-                FROM public.bookchat_book b
-                WHERE b.genres_id IN ({genres_id_str})
-                AND CAST(b."imageLinks" ->> 'smallThumbnail' AS TEXT) IS NOT NULL
-                AND CAST(b."imageLinks" ->> 'smallThumbnail' AS TEXT) <> ''
-            ) sub
-            WHERE rn <= 15;
-        """
-
-        books = Book.objects.raw(sql)
 
         # Create dictionary to group books by genre
         grouped = defaultdict(list)
