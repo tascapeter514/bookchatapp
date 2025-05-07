@@ -1,10 +1,10 @@
 import { useRef } from 'react'
 import { Bookclub } from '../../../types'
-import DropdownMapper from '../../Mappers/DropdownMapper/DropdownMapper'
+import Dropdown from '../../Mappers/Dropdown/Dropdown'
 import { MapperData } from '../../../types'
 import './AddBookToBookclubModal.css'
 import Button from '../../Buttons/Button/Button'
-import RadioButtonsMapper from '../../Mappers/RadioButtons/RadioButtons'
+import RadioButtons from '../../Mappers/RadioButtons/RadioButtons'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../../store/store'
@@ -62,14 +62,14 @@ const AddBookToBookclubModal = ({
                     <>
                         <h3>Add this book to your bookclub</h3>
                         <hr />
-                        <DropdownMapper
+                        <Dropdown
                             dispatch={dispatch}
                             data={bookclubData}
                             action={selectBookclub}
                             dataType='Bookclubs'
 
                          />
-                         <RadioButtonsMapper
+                         <RadioButtons
                                 dispatch={dispatch}
                                 action={selectBookshelf}
                                 dataType='Bookshelves'

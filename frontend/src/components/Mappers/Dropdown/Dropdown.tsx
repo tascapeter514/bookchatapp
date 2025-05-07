@@ -1,11 +1,11 @@
-import './DropdownMapper.css'
+import './Dropdown.css'
 import { MapperData, MapperProps } from '../../../types'
 
 
 
 type Props<T extends MapperData> = MapperProps<T>
 
-const DropdownMapper = <T extends MapperData>({
+const Dropdown = <T extends MapperData>({
     data, 
     dispatch, 
     dataType, 
@@ -47,4 +47,4 @@ const DropdownMapper = <T extends MapperData>({
 
 }
 
-export default DropdownMapper
+export default Dropdown
