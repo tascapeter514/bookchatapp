@@ -4,7 +4,7 @@ import DropdownMapper from '../../Mappers/DropdownMapper/DropdownMapper'
 import { MapperData } from '../../../types'
 import './AddBookToBookclubModal.css'
 import Button from '../../Buttons/Button/Button'
-import RadioButtonsMapper from '../../RadioButtonsMapper/RadioButtonsMapper'
+import RadioButtonsMapper from '../../Mappers/RadioButtons/RadioButtons'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../../store/store'
@@ -14,8 +14,6 @@ interface Props {
     bookclubData: Bookclub[],
     handleAddBookToBookclub: (bookshelfId: number, bookclubId: number) => Promise<void>,
     handleGetUserBookclubs: () => Promise<void>,
-    // isGettingBookclubs: boolean,
-    // isGetBookclubsError: boolean,
 
 
 
@@ -25,8 +23,7 @@ const AddBookToBookclubModal = ({
     bookclubData,
     handleGetUserBookclubs,
     handleAddBookToBookclub,
-    // isGettingBookclubs,
-    // isGetBookclubsError,
+
 
 
 }: Props) => {

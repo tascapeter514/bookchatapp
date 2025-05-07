@@ -1,8 +1,8 @@
-import './RadioButtonsMapper.css'
-import { MapperData, MapperProps } from '../../types'
+import './RadioButtons.css'
+import { MapperData, MapperProps } from '../../../types'
 
 
-const RadioButtonsMapper = <T extends MapperData>({data, dispatch, action}: MapperProps<T>) => {
+const RadioButtons = <T extends MapperData>({data, dispatch, action}: MapperProps<T>) => {
 
     console.log('radio buttons mapper data length:', data.length)
 
@@ -46,5 +46,5 @@ const RadioButtonsMapper = <T extends MapperData>({data, dispatch, action}: Mapp
     )
 }
 
-export default RadioButtonsMapper
+export default RadioButtons
 

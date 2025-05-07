@@ -1,4 +1,4 @@
-import RadioButtonsMapper from '../components/RadioButtonsMapper/RadioButtonsMapper'
+import RadioButtons from '../components/Mappers/RadioButtons/RadioButtons'
 import userEvent from '@testing-library/user-event'
 import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
@@ -18,7 +18,7 @@ describe('radio buttons mapper test suite', () => {
 
         render(
             <MemoryRouter>
-                <RadioButtonsMapper 
+                <RadioButtons 
                     data={mockedPollData}
                     dispatch={mockDispatch} 
                 />

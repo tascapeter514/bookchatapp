@@ -2,7 +2,7 @@ import './PollVoteModal.css'
 import {  useRef } from 'react'
 import Button from '../../Buttons/Button/Button'
 import { Poll } from '../../../types'
-import RadioButtonsMapper from '../../RadioButtonsMapper/RadioButtonsMapper'
+import RadioButtons from '../../Mappers/RadioButtons/RadioButtons'
 
 
 
@@ -48,7 +48,7 @@ const PollVoteModal = ({
                 {successMessage && (<p>{successMessage}</p>)}
                
 
-               <RadioButtonsMapper 
+               <RadioButtons 
                     dispatch={handleSelection}
                     data={poll.pollChoices.map((choice) => ({
                         id: choice.id,
