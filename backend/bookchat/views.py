@@ -44,7 +44,8 @@ def get_books(request):
 
         desired_genres = [1, 8, 15, 18, 23, 24, 25]
 
-        books = Book.objects.exclude(imageLinks__smallThumbnail__isnull=True)\
+        books = Book.objects.selected_related('genres')\
+                            .exclude(imageLinks__smallThumbnail__isnull=True)\
                             .exclude(imageLinks__smallThumbnail__exact='')\
                             .filter(genres_id__in=desired_genres)
         
