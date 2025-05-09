@@ -1,55 +1,30 @@
 import './Searchbar.css'
-import SearchResults from '../SearchResults/SearchResults'
+// import SearchResults from '../SearchResults/SearchResults'
 import useSearch from '../../../hooks/useSearch'
-import Links from '../../Mappers/Links/Links'
-import {SearchIcon} from '../../Icons'
+import SearchInput from '../SearchInput/SearchInput'
+import { SearchResultData, SearchResultsData } from '../../../types'
+import { ReactNode } from 'react'
 
 
-
-// const wsSearchBase = import.meta.env.VITE_WS_SEARCH_BASE || 'ws://localhost:8000/ws/search/'
-
-
-
-
-const Searchbar = () => {
-
-    console.log("WebSocket Base URL: ", import.meta.env.VITE_WS_SEARCH_BASE);
+interface Props<T extends SearchResultData | SearchResultsData> {
+    url: string,
+    children: (searchResults: T[]) => ReactNode
+}
 
 
-    const { searchValue, setSearchValue, searchResults } = useSearch('wss://bookchatapp-2r38.onrender.com/ws/search/')
+const Searchbar = <T extends SearchResultData | SearchResultsData>({url, children}: Props<T>) => {
 
-    const handleSearch = (e: string) => {
-        console.log('search bar check')
-        setSearchValue(e)
-    }
+
+    const { searchValue, setSearchValue, searchResults } = useSearch(url)
+
     
     return(
 
-            <div className={`input-wrapper ${searchValue && searchResults.length > 0 ? 'active' : ''}`}>
-                <input
-                    
-                    placeholder='Type to search...' 
-                    value={searchValue} 
-                    onChange={(e) => handleSearch(e.target.value)}
-                />
-                <SearchIcon className='search-icon'/>
-                {searchValue && searchResults.length > 0 && 
-
-                    <SearchResults searchData={searchResults}>
-                        {searchData => (
-                            <>
-                                <Links searchResults={searchData} />
-                            </>  
-                        )}
-                    </SearchResults>
-                
+            <div className={`searchbar ${searchValue && searchResults.length > 0 ? 'active' : ''}`}>
+                <SearchInput searchValue={searchValue} setSearchValue={setSearchValue}/>
+                {searchValue && searchResults.length > 0 &&
+                    (<div className='search-results'>{children(searchResults)}</div>)
                 }
-
-        
-                {/* {searchValue && searchResults.length > 0 && <SearchResults searchData={searchResults} />} */}
-
-                
-                
             </div>
     )
 }
@@ -58,4 +33,10 @@ export default Searchbar
 
 
 
-
+{/* <SearchResults searchData={searchResults as SearchResultsData[]}>
+                        {searchData => (
+                            <>
+                                <Links searchResults={searchData as SearchResultsData[]} />
+                            </>  
+                        )}
+                    </SearchResults> */}

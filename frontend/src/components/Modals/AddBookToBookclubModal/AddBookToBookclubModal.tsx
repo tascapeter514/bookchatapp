@@ -14,18 +14,12 @@ interface Props {
     bookclubData: Bookclub[],
     handleAddBookToBookclub: (bookshelfId: number, bookclubId: number) => Promise<void>,
     handleGetUserBookclubs: () => Promise<void>,
-
-
-
 }
 
 const AddBookToBookclubModal = ({
     bookclubData,
     handleGetUserBookclubs,
     handleAddBookToBookclub,
-
-
-
 }: Props) => {
 
     const dispatch = useDispatch()

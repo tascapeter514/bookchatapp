@@ -1,6 +1,6 @@
 
 
-.input-wrapper {
+.searchbar {
     background-color: whitesmoke;
     width: 100%;
     border-radius: 10px;
@@ -12,26 +12,14 @@
     position: relative;
 }
 
-.input-wrapper.active {
+.searchbar.active {
     border-radius: 10px 10px 0 0;
 }
 
 
-.input-wrapper > input {
 
-    background-color: transparent;
-    border: none;
-    height: 100%;
-    font-size: 1rem;
-    margin: 0;
-    outline: none;
-    width: 100%;
-    font-size: 1rem;
-    
 
-}
 
-.input-wrapper > input:focus::placeholder {
-    color: transparent;
 
-}
+
+

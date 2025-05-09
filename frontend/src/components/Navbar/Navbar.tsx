@@ -4,8 +4,11 @@ import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { useLogoutMutation } from '../../slices/authApiSlice.tsx'
 import { RootState } from '../../store/store.tsx'
+import { SearchResultsData } from '../../types.ts'
 import Searchbar from '../Search/Searchbar/Searchbar.tsx'
+import Links from '../Mappers/Links/Links.tsx'
 import { removeCredentials } from '../../slices/authSlice.tsx'
+import { WEBSOCKET_BASE } from '../../utils/baseAPI.tsx'
 import './Navbar.css'
 
 
@@ -52,11 +55,6 @@ const Navbar = () => {
   const navLinks = useMemo(() => authToken ? authLinks : guestLinks , [authToken])
 
 
-    // console.log('navbar auth token:', authToken)
-
-  
-
-
     return(
         <header>
             <div className="container container-nav">
@@ -66,7 +64,11 @@ const Navbar = () => {
                   <p className="subtitle">A book club app for book lovers</p>
                   </div>
                   <div className="searchBar-searchResults-wrapper">
-                    <Searchbar></Searchbar>
+                    <Searchbar url={`${WEBSOCKET_BASE}/ws/search/`}>
+                        {searchData => (
+                          <Links searchResults={searchData as SearchResultsData[]} />
+                        )} 
+                    </Searchbar>
                   </div>
                 </div>
                 <button className='mobile-nav-toggle' aria-expanded={showNavbar}>

@@ -181,7 +181,7 @@ export type SearchResultsData = {
 
 export interface SearchProps<T extends SearchResultData> {
     data: T[],
-    // searchDataType?: string,
+    dataType?: string,
     dispatch: (action: any) => void,
     action?: (payload: number) => any
 }
