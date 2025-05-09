@@ -180,7 +180,7 @@ export type SearchResultsData = {
 
 
 export interface SearchProps<T extends SearchResultData> {
-    searchData: T[],
+    data: T[],
     // searchDataType?: string,
     dispatch: (action: any) => void,
     action?: (payload: number) => any

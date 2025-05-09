@@ -1,6 +1,7 @@
 import './Searchbar.css'
 import SearchResults from '../SearchResults/SearchResults'
 import useSearch from '../../../hooks/useSearch'
+import Links from '../../Mappers/Links/Links'
 import {SearchIcon} from '../../Icons'
 
 
@@ -32,9 +33,20 @@ const Searchbar = () => {
                     onChange={(e) => handleSearch(e.target.value)}
                 />
                 <SearchIcon className='search-icon'/>
+                {searchValue && searchResults.length > 0 && 
 
-                {/* {searchValue && searchResults.length > 0 && <SearchbarResults>{searchResults}</SearchbarResults>} */}
-                {searchValue && searchResults.length > 0 && <SearchResults searchData={searchResults} />}
+                    <SearchResults searchData={searchResults}>
+                        {searchData => (
+                            <>
+                                <Links searchResults={searchData} />
+                            </>  
+                        )}
+                    </SearchResults>
+                
+                }
+
+        
+                {/* {searchValue && searchResults.length > 0 && <SearchResults searchData={searchResults} />} */}
 
                 
                 

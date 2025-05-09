@@ -1,8 +1,8 @@
 import './RadioButtons.css'
-import { MapperData, MapperProps } from '../../../types'
+import { SearchResultData, SearchProps } from '../../../types'
 
 
-const RadioButtons = <T extends MapperData>({data, dispatch, action}: MapperProps<T>) => {
+const RadioButtons = <T extends SearchResultData>({data, dispatch, action}: SearchProps<T>) => {
 
     console.log('radio buttons mapper data length:', data.length)
 
@@ -10,7 +10,7 @@ const RadioButtons = <T extends MapperData>({data, dispatch, action}: MapperProp
 
     return(
         <ul className='radio-buttons-list'>
-            {data.map((radioButton: MapperData) => {
+            {data.map((radioButton: SearchResultData) => {
 
                 if (!radioButton) return null
 

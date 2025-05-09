@@ -18,5 +18,20 @@
 
 .links-divider {
     margin-block: .25rem;
-    
+}
+
+.search-link-list-element {
+    display: flex;
+    padding: .5em .5em;
+    gap: .5rem;
+}
+
+.link-search-icon {
+    color: grey;
+}
+
+.search-link {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
 }

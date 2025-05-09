@@ -1,5 +1,6 @@
 import './Links.css'
 import { SearchLink, SearchLinkData, SearchResultsData} from '../../../types'
+import { SearchIcon } from '../../Icons'
 import { Link } from 'react-router-dom'
 
 interface Props {
@@ -27,8 +28,9 @@ const Links = ({searchResults} : Props) => {
                 return(
                     result.items.map((r: SearchLink) => {
                         return(
-                            <li key={r.id}>
-                                <Link to={`/${result.type}/${r.id}`}>
+                            <li key={r.id} className='search-link-list-element'>
+                                <SearchIcon className='link-search-icon'/>
+                                <Link to={`/${result.type}/${r.id}`} className='search-link'>
                                     {r.name}
                                 </Link>
 
