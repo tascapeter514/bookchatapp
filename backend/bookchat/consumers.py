@@ -232,7 +232,7 @@ class BookSearchConsumer(WebsocketConsumer):
         )
 
     def get_books_data(self):
-        book_results = Book.objects.filter(Q(name__icontains=self.search_term) | Q(author__name__icontains=self.search_term))
+        book_results = Book.objects.filter(Q(name__icontains=self.search_term) | Q(author__name__icontains=self.search_term)).distinct()
         print('book results:', book_results)
         book_serializer = BookSerializer(book_results, many=True, fields=['id', 'name'])
         print ('book results serializer:', book_serializer.data)

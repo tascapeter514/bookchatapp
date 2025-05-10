@@ -4,6 +4,9 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    border-radius: 10px;
+    padding-inline: .25em;
+    
 }
 
 

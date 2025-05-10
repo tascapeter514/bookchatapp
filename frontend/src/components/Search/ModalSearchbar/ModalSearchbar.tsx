@@ -1,23 +1,23 @@
 import './ModalSearchbar.css'
+import { Dispatch } from 'react'
 import SearchResults from '../SearchResults/SearchResults'
 import SearchInput from '../SearchInput/SearchInput'
 import useSearch from '../../../hooks/useSearch'
 import { SearchResultData } from '../../../types'
 import RadioButtons from '../../Mappers/RadioButtons/RadioButtons'
-import { useReducer } from 'react'
-import searchReducer from '../../../reducers/searchReducer'
 
 
 interface Props {
-    url: string
+    url: string,
+    setNewBook: Dispatch<number>
+
 }
 
-const ModalSearchbar = ({url}: Props) => {
+const ModalSearchbar = ({url, setNewBook}: Props) => {
 
     const {searchResults, searchValue, setSearchValue} = useSearch(url)
-    const [searchState, dispatchSearch] = useReducer(searchReducer, {parentId: NaN, newItemId: NaN})
 
-    console.log('modal searchbar state:', searchState)
+
 
     return (
             <div className="modal-searchbar">
@@ -29,7 +29,7 @@ const ModalSearchbar = ({url}: Props) => {
                                 <>
                                     <RadioButtons
                                         data={searchData}
-                                        dispatch={dispatchSearch}
+                                        dispatch={setNewBook}
                                     />
                                 </>
 
@@ -38,10 +38,6 @@ const ModalSearchbar = ({url}: Props) => {
                     )
                 }
             </div>
-            
-            
-        
-
     )
 }
 

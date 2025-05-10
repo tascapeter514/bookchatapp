@@ -6,7 +6,9 @@ import { useLogoutMutation } from '../../slices/authApiSlice.tsx'
 import { RootState } from '../../store/store.tsx'
 import NavigationSearchbar from '../Search/NavigationSearchbar/NavigationSearchbar.tsx'
 import { removeCredentials } from '../../slices/authSlice.tsx'
+import Links from '../Mappers/Links/Links.tsx'
 import { WEBSOCKET_BASE } from '../../utils/baseAPI.tsx'
+import { SearchResultsData } from '../../types.ts'
 import './Navbar.css'
 
 
@@ -62,7 +64,13 @@ const Navbar = () => {
                   <p className="subtitle">A book club app for book lovers</p>
                   </div>
                   <div className="searchBar-searchResults-wrapper">
-                    <NavigationSearchbar url={`${WEBSOCKET_BASE}/ws/search/`} />
+                    <NavigationSearchbar url={`${WEBSOCKET_BASE}/ws/search/`}>
+                    {searchResults => (
+                        <>
+                          <Links searchResults={searchResults as SearchResultsData[]} />
+                        </>  
+                    )} 
+                    </NavigationSearchbar>
                   </div>
                 </div>
                 <button className='mobile-nav-toggle' aria-expanded={showNavbar}>

@@ -1,6 +1,7 @@
 .search-results {
-    border: 3px solid red;
     display: flex;
-    /* flex-direction: column; */
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
 
 }

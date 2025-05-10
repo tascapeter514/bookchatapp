@@ -1,17 +1,16 @@
 import './NavigationSearchbar.css'
-import SearchResults from '../SearchResults/SearchResults'
 import useSearch from '../../../hooks/useSearch'
 import SearchInput from '../SearchInput/SearchInput'
 import {  SearchResultsData } from '../../../types'
-import Links from '../../Mappers/Links/Links'
 
 
-interface Props {
-    url: string
+interface Props<T extends SearchResultsData> {
+    url: string,
+    children: (data: T[]) => React.ReactNode
 }
 
 
-const Searchbar = ({url}: Props) => {
+const NavigationSearchbar = <T extends SearchResultsData>({url, children}: Props<T>) => {
 
 
     const { searchValue, setSearchValue, searchResults } = useSearch(url)
@@ -22,20 +21,13 @@ const Searchbar = ({url}: Props) => {
             <div className={`navigation-searchbar ${searchValue && searchResults.length > 0 ? 'active' : ''}`}>
                 <SearchInput searchValue={searchValue} setSearchValue={setSearchValue}/>
                 {
-                    searchValue && searchResults.length > 0 &&
-                    <SearchResults searchData={searchResults as SearchResultsData[]}>
-                        {searchData => (
-                            <>
-                                <Links searchResults={searchData as SearchResultsData[]} />
-                            </>  
-                        )}
-                    </SearchResults>
+                    searchValue && searchResults.length > 0 && (
+                        <>{children(searchResults)}</>
+                    )
                 }
-                
-                
             </div>
     )
 }
 
-export default Searchbar
+export default NavigationSearchbar
 

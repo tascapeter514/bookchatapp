@@ -10,6 +10,7 @@
     align-items: center;
     justify-content: space-between;
     position: relative;
+    
 }
 
 .navigation-searchbar.active {

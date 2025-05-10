@@ -52,7 +52,7 @@ def get_books(request):
         # print('get books length:', len(books))
 
 
-
+    
         # Create dictionary to group books by genre
         grouped = defaultdict(list)
 

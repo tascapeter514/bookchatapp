@@ -1,7 +1,8 @@
 import {Bookshelf, Book} from '../../types'
 import BookCard from '../BookCard/BookCard'
 import BookSearchModal from '../Modals/BookSearchModal/BookSearchModal'
-
+import WithAsync from '../HigherOrderComponents/WithAsync'
+import WithAddBook from '../HigherOrderComponents/WithAddBook'
 import './BookshelfDisplay.css'
 
 interface Props {
@@ -11,16 +12,20 @@ interface Props {
 }
 
 
+
+const BookSearchModalWithLogic = WithAddBook(WithAsync(BookSearchModal))
+
 const BookshelfDisplay = ({ children, id }: Props) => {
 
-    
+    console.log('bookshelf display children:', children)
 
 
     const { books } = children
     
     return(
         <section className="bookshelf-container">
-            <BookSearchModal bookshelf={children} id={id} />
+            <BookSearchModalWithLogic id={id} bookshelfId={children.id} />
+            
             <ul className="bookshelf-title-list">
                 {books.map((bookElement: Book) => {
                     return(
