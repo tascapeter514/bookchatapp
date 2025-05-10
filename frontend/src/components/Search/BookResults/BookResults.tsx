@@ -1,6 +1,6 @@
 import './BookResults.css'
 import { Dispatch } from 'react'
-import { BookSearchAction } from '../../../reducers/booksearchReducer'
+import { BookSearchAction } from '../../../reducers/searchReducer'
 import { BookData } from '../../../slices/searchApiSlice'
 
 

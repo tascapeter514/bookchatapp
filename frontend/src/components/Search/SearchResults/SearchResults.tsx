@@ -15,6 +15,6 @@ interface Props<T extends SearchResultData | SearchResultsData> {
 const SearchResults = <T extends SearchResultData | SearchResultsData>({
     searchData, 
     children
-}: Props<T> ) => {return <>{children(searchData)}</>}
+}: Props<T> ) => {return <div className='search-results'>{children(searchData)}</div>}
 
 export default SearchResults

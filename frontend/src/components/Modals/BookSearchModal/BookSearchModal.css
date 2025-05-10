@@ -32,6 +32,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    /* border: 3px solid green; */
 
     
 }
@@ -58,7 +59,7 @@
     line-height: 1;
 }
 
-.bookshelf-input {
+/* .bookshelf-input {
     display: inline-block;
     margin-bottom: 0;
     max-width: 18px;
@@ -67,4 +68,4 @@
     height: 18px;
     position: relative;
     background-color: white;
-}
+} */

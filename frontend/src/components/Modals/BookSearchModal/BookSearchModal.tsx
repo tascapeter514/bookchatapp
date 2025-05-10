@@ -3,15 +3,16 @@ import { useReducer, useRef} from 'react'
 import { handleBookError, BookError } from '../../../utils/errorHandling'
 import ErrorMessage from '../../Messages/ErrorMessage/ErrorMessage'
 import { usePostBookMutation } from '../../../slices/bookshelfApiSlice'
-// import useBookSearch from '../../../hooks/useBookSearch'
+
+import ModalSearchbar from '../../Search/ModalSearchbar/ModalSearchbar'
 import { SearchIcon } from '../../Icons'
-import booksearchReducer from '../../../reducers/booksearchReducer'
+import searchReducer from '../../../reducers/searchReducer'
 import { WEBSOCKET_BASE } from '../../../utils/baseAPI'
 import RadioButtons from '../../Mappers/RadioButtons/RadioButtons'
 // import SearchResults from '../../Search/SearchResults/SearchResults'
 // import BookSearchbar from '../../Search/BookSearchbar/BookSearchbar'
 import { SearchResultData } from '../../../types'
-import Searchbar from '../../Search/Searchbar/Searchbar'
+import Searchbar from '../../Search/NavigationSearchbar/NavigationSearchbar'
 import { Bookshelf  } from '../../../types'
 import ModalButtons from '../../Buttons/ModalButtons/ModalButtons'
 import './BookSearchModal.css'
@@ -31,7 +32,7 @@ const BookSearchModal = ({ bookshelf, id }: Props) => {
     const bookSearchRef = useRef<HTMLDialogElement>(null)
     const openModal = () => bookSearchRef.current?.showModal()
     const closeModal = () => bookSearchRef.current?.close()
-    const [searchData, searchDispatch] = useReducer(booksearchReducer, {bookshelfId: bookshelf.id,  newBookId: 0} )
+    const [searchData, dispatchSearch] = useReducer(searchReducer, {parentId: bookshelf.id,  newItemId: 0} )
     // const { searchValue, searchResults, setSearchValue }  = useBookSearch()
     const [postBook, {isError, error, reset}] = usePostBookMutation()
     
@@ -59,9 +60,7 @@ const BookSearchModal = ({ bookshelf, id }: Props) => {
         
     }
             
-    
 
-    console.log('error:', error)
     
     return (
         <>
@@ -74,17 +73,8 @@ const BookSearchModal = ({ bookshelf, id }: Props) => {
                 <hr />
                 <section className='search-books-content'>
                     <article className='suggested-book-list'>
-                        <Searchbar url={`${WEBSOCKET_BASE}/ws/search/books/`}>
-                            {searchData => (                              
-                                <RadioButtons
-                                    dispatch={searchDispatch}
-                                    data={searchData as SearchResultData[]} 
-                                />
-                            )}
-                        </Searchbar>
-                        {/* <BookSearchbar  searchValue={searchValue} handleOnChange={handleOnChange} /> */}
-                        {/* <SearchResults searchData={searchResults} dispatch={searchDispatch}/> */}
-                        {/* <BookResults bookDispatch={bookDispatch}>{searchResults}</BookResults> */}
+                        <ModalSearchbar url={`${WEBSOCKET_BASE}/ws/search/books/`}/>
+                        
                     </article>
                 </section>
                 <ModalButtons

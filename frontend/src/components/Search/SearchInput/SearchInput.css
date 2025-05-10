@@ -1,4 +1,10 @@
 
+.search-input-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
 
 
 .search-input {
@@ -13,11 +19,14 @@
     font-size: 1rem;
     display: flex;
     align-items: center;
-    
-
 }
 
 .search-input:focus::placeholder {
     color: transparent;
 
 }
+
+.search-input-icon {
+    color: black;
+}
+

@@ -1,35 +1,21 @@
 
-
 export type SearchState = {
-    value: string,
-    resultId: number
+    parentId: number,
+    newItemId: number,
 }
 
-
-export type SearchAction = {type: 'START_SEARCH', payload: string} | {type: 'CHECK_RESULT', payload: number}
-
-const searchReducer = (state: SearchState, action: SearchAction) => {
-    const {type, payload} = action
-
-    switch(type){
-
-        case 'START_SEARCH':
-            return {
-                ...state,
-                value: payload
-            }
+export type SearchAction = {type: 'CHECK_SEARCH_ITEM', payload: number}
 
 
-        case 'CHECK_RESULT':
-            return {
-                ...state,
-                resultId: payload
-            }
-        
+export default function searchReducer(state: SearchState, action: SearchAction): SearchState {
+    const { type, payload } = action
+    switch(type) {
+    
+        case "CHECK_SEARCH_ITEM":
+            return {...state, newItemId: payload}
+
         default:
-            throw new Error('search reducer error')
+            return state
     }
 
 }
-
-export default searchReducer

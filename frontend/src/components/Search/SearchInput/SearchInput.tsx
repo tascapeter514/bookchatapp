@@ -11,7 +11,7 @@ interface Props {
 const SearchInput = ({searchValue, setSearchValue}: Props) => {
 
     return(
-        <>
+        <div className='search-input-container'>
             <input
             className='search-input'
             placeholder='Type to search...'
@@ -19,8 +19,8 @@ const SearchInput = ({searchValue, setSearchValue}: Props) => {
             onChange={(e) => setSearchValue(e.target.value)} 
         
             />
-            <SearchIcon className='search-icon'/>
-        </>
+            <SearchIcon className='search-input-icon'/>
+        </div>
         
     )
 
