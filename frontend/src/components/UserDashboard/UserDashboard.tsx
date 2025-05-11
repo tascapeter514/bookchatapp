@@ -3,12 +3,12 @@ import BookshelfButton from '../TabButtons/BookshelfButton/BookshelfButton';
 import BookclubButton from '../TabButtons/BookclubButton/BookclubButton';
 import AccountButton from '../TabButtons/AccountButton/AccountButton';
 import MessageButton from '../TabButtons/MessageButton/MessageButton';
-import CloseMobileNav from '../Buttons/CloseMobileNav/CloseMobileNav';
+import CloseMobileUserNav from '../Buttons/CloseMobileNav/CloseMobileNav';
 import BookshelfPanel from '../Panels/BookshelfPanel/BookshelfPanel';
 import BookclubsPanel from '../Panels/BookclubsPanel/BookclubsPanel';
 import NavbarDivider from '../Dividers/NavbarDivider/NavbarDivider';
 import { useGetUserDataQuery } from '../../slices/userDataApiSlice';
-import OpenMobileNav from '../Buttons/OpenMobileNav/OpenMobileNav';
+import OpenMobileUserNav from '../Buttons/OpenMobileUserNav/OpenMobileUserNav';
 import LoadSpinner from '../LoadSpinner/LoadSpinner';
 import MessagePanel from '../Panels/MessagePanel/MessagePanel';
 import AccountPanel from '../Panels/AccountPanel/AccountPanel';
@@ -39,17 +39,11 @@ const ProfileHeader = ({user}: Props) => {
 
 }
 
-
-
 const UserDashboard = () => {
 
     const { user } = useSelector((state: RootState) => state.auth, shallowEqual)
     const { data: userData, isLoading } = useGetUserDataQuery(user.id)
-    // const dispatch = useDispatch()
-
-    // if (userData) {
-    //     dispatch(loadUserData(userData))
-    // }
+ 
 
     const bookclubs = userData?.bookclubs ?? []
     const bookshelves = userData?.bookshelves ?? []
@@ -67,20 +61,20 @@ const UserDashboard = () => {
 
 
     console.log('user dashboard data:', userData)
-    // console.log('user dashboard bookshelves:', bookshelves)
+
 
     return(
         <div className='dashboard-container'>
   
             <DashboardMain>
-                <OpenMobileNav mobileNav={mobileNav} navDispatch={navDispatch} />
+                <OpenMobileUserNav mobileNav={mobileNav} navDispatch={navDispatch} />
                 {userTabs.activeTab === 'accountPanel' && <AccountPanel />}
                 {userTabs.activeTab === 'messagesPanel' && <MessagePanel invitations={invitations} />}
                 {userTabs.activeTab === 'bookclubPanel' && <BookclubsPanel bookclubs={bookclubs}/>}
                 {userTabs.activeTab === 'bookshelfPanel' && <BookshelfPanel tabs={userTabs} bookshelves={bookshelves} id={user.id}/>}
             </DashboardMain>
             <DashboardNav mobileNav={mobileNav}>
-                <CloseMobileNav mobileNav={mobileNav} navDispatch={navDispatch} />
+                <CloseMobileUserNav mobileNav={mobileNav} navDispatch={navDispatch} />
                 <ProfileHeader user={user}/>
                 <AccountButton userTabs={userTabs} dispatchUserTabs={dispatchUserTabs}/>
                 <MessageButton userTabs={userTabs} dispatchUserTabs={dispatchUserTabs}/>

@@ -20,8 +20,6 @@ const Navbar = () => {
   const { authToken } = useSelector((state: RootState) => state.auth)
   const [logout ] = useLogoutMutation()
   
-
- 
   const [showNavbar] = useState(false)
 
  

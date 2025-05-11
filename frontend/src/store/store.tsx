@@ -11,6 +11,7 @@ import bookshelfReducer from '../slices/bookshelfSlice'
 import { bookclubApi } from '../slices/bookclubApiSlice'
 import { pollApi } from '../slices/pollApiSlice'
 import addBookToBookclubReducer from '../slices/addBookToBookclubSlice'
+import searchReducer from '../slices/searchSlice'
 
 
 
@@ -21,6 +22,7 @@ const store = configureStore({
         author: authorReducer,
         bookshelf: bookshelfReducer,
         userData: userDataReducer,
+        search: searchReducer,
         poll: pollReducer,
         bookclubDataState: addBookToBookclubReducer,
         [apiSlice.reducerPath]: apiSlice.reducer,

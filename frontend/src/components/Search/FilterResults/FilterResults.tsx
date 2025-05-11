@@ -1,22 +1,23 @@
-import { SearchState, SearchAction } from '../../../reducers/searchReducer'
+import { useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../../store/store'
 import { Bookshelf } from '../../../types'
-import { Dispatch } from 'react'
+import { checkSearchResult } from '../../../slices/searchSlice'
 import './FilterResults.css'
 
 
 
 interface FilterProps {
     children: Bookshelf[]
-    search: SearchState,
-    dispatchSearch: Dispatch<SearchAction>
 }
 
 
-const FilterResults = ({children, search, dispatchSearch}: FilterProps  ) => {
+const FilterResults = ({children}: FilterProps  ) => {
 
-
+    const dispatch = useDispatch()
+    const search = useSelector((state: RootState) => state.search)
     
-    const results = children?.filter(child => child.name.toLowerCase().includes(search.value.toLowerCase()))
+    const results = children?.filter(child => child.name.toLowerCase().includes(search.searchTerm.toLowerCase()))
 
     return (
         <ul className="search-results-list">
@@ -29,7 +30,7 @@ const FilterResults = ({children, search, dispatchSearch}: FilterProps  ) => {
                                 type="radio" 
                                 className='search-result-input' 
                                 name='searchResultsGroup'
-                                onChange={() => dispatchSearch({type: 'CHECK_RESULT', payload: result.id})}
+                                onChange={() => dispatch(checkSearchResult(result.id))}
                             />
                         </div>
                     </li>

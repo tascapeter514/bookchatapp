@@ -1,22 +1,24 @@
 import './UserResults.css'
-import { SearchState, SearchAction } from '../../../reducers/searchReducer'
+import { useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../../store/store'
+import { checkSearchResult } from '../../../slices/searchSlice'
 import { ActiveUser } from '../../../types'
-import { Dispatch } from 'react'
-
 
 
 interface Props {
     results: ActiveUser[]
-    search: SearchState,
-    dispatchSearch: Dispatch<SearchAction>
 }
 
 
-const UserResults = ({results, search, dispatchSearch}: Props ) => {
+const UserResults = ({results}: Props ) => {
+
+    const dispatch = useDispatch();
+    const search = useSelector((state: RootState) => state.search)
 
 
     
-    const users = results?.filter(user => user.username.toLowerCase().includes(search.value.toLowerCase()))
+    const users = results?.filter(user => user.username.toLowerCase().includes(search.searchTerm.toLowerCase()))
 
     return (
         <ul className="user-results-list">
@@ -29,7 +31,7 @@ const UserResults = ({results, search, dispatchSearch}: Props ) => {
                                 type="radio" 
                                 className='user-result-input' 
                                 name='userResultsGroup'
-                                onChange={() => dispatchSearch({type: 'CHECK_RESULT', payload: result.id})}
+                                onChange={() => dispatch(checkSearchResult(result.id))}
                             />
                         </div>
                     </li>

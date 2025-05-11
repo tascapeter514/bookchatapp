@@ -1,8 +1,8 @@
 import './InviteModal.css'
-import { useRef, useReducer } from 'react'
+import { useRef } from 'react'
 import Button from '../../Buttons/Button/Button'
 import SearchFilter from '../../Search/SearchFilter/SearchFilter'
-import searchReducer from '../../../reducers/searchReducer'
+// import searchReducer from '../../../reducers/searchReducer'
 import UserResults from '../../Search/UserResults/UserResults'
 import useGetUsers from '../../../hooks/useGetUsers'
 import { useInviteUserMutation } from '../../../slices/bookclubApiSlice'
@@ -22,7 +22,7 @@ interface Props {
 const InviteModal = ({bookclubId}: Props) => {
 
     const { user } = useSelector((state: RootState) => state.auth)
-    const [search, dispatchSearch] = useReducer(searchReducer, {resultId: 0, value: ''})
+    // const [search, dispatchSearch] = useReducer(searchReducer, {resultId: 0, value: ''})
     const ref = useRef<HTMLDialogElement>(null)
     const openInviteModal = () => ref.current?.showModal()
     const closeInviteModal = () => ref.current?.close()
@@ -36,7 +36,7 @@ const InviteModal = ({bookclubId}: Props) => {
             const data = {
                 bookclubId: bookclubId,
                 inviter: Number(user.id),
-                invitee: Number(search.resultId)
+                // invitee: Number(search.resultId)
             }
 
             if (!data) throw new Error('You must select a user to invite');
@@ -55,7 +55,7 @@ const InviteModal = ({bookclubId}: Props) => {
        
     }
 
-    console.log('invite modal resarch:', search)
+    // console.log('invite modal resarch:', search)
 
 
     return (
@@ -70,8 +70,8 @@ const InviteModal = ({bookclubId}: Props) => {
                 {isError && <ErrorMessage>{handleInviteError(error as InviteError)}</ErrorMessage>}
                 <h3>Invite a user to your bookclub</h3>
                 <hr />
-                <SearchFilter search={search} dispatchSearch={dispatchSearch}/>
-                <UserResults search={search} dispatchSearch={dispatchSearch} results={results ?? []} />
+                <SearchFilter/>
+                <UserResults results={results ?? []} />
                 <div className="button-wrapper">
                     <Button onClick={() => {closeInviteModal(); reset()}}>Cancel</Button>
                     <Button onClick={handleInviteUser}>Invite</Button>

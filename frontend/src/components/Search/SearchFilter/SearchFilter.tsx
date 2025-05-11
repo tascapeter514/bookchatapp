@@ -1,15 +1,17 @@
 import './SearchFilter.css'
-import { Dispatch } from 'react'
-import { SearchState, SearchAction } from '../../../reducers/searchReducer'
+import { useDispatch } from 'react-redux'
+import { startSearch } from '../../../slices/searchSlice'
+import { RootState } from '../../../store/store'
+import { useSelector } from 'react-redux'
 import { SearchIcon } from '../../Icons'
 
+// {type: 'START_SEARCH', payload: e.target.value}
 
-type Props = {
-    search: SearchState,
-    dispatchSearch: Dispatch<SearchAction>
-}
+const SearchFilter = () => {
 
-const SearchFilter = ({search, dispatchSearch}: Props) => {
+    const dispatch = useDispatch()
+    const search = useSelector((state: RootState) => state.search)
+
 
     
 
@@ -19,8 +21,8 @@ const SearchFilter = ({search, dispatchSearch}: Props) => {
                 className='searchFilter-input'
                 name='searchValue'
                 placeholder='Enter your search term' 
-                value={search.value} 
-                onChange={(e) => dispatchSearch({type: 'START_SEARCH', payload: e.target.value})}
+                value={search.searchTerm} 
+                onChange={(e) => dispatch(startSearch(e.target.value))}
                 required 
             />
             <SearchIcon className='search-icon'/>

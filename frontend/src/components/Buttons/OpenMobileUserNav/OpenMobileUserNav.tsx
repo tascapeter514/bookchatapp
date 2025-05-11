@@ -1,7 +1,7 @@
 import { Dispatch } from 'react';
 import { MobileNavAction, MobileNavState } from '../../../reducers/mobileNavReducer';
 import { UserIcon } from '../../Icons'
-import './OpenMobileNav.css'
+import './OpenMobileUserNav.css'
 
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
     navDispatch: Dispatch<MobileNavAction>
 }
 
-const OpenMobileNav = ({mobileNav, navDispatch}: Props) => {
+const OpenMobileUserNav = ({mobileNav, navDispatch}: Props) => {
 
 
     return(
@@ -25,4 +25,4 @@ const OpenMobileNav = ({mobileNav, navDispatch}: Props) => {
 
 }
 
-export default OpenMobileNav
+export default OpenMobileUserNav

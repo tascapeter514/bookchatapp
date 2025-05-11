@@ -5,11 +5,10 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../../../store/store'
 import SearchFilter from '../../Search/SearchFilter/SearchFilter'
 import FilterResults from '../../Search/FilterResults/FilterResults'
-import searchReducer from '../../../reducers/searchReducer'
 import { useGetUserDataQuery} from '../../../slices/userDataApiSlice'
 import { usePostBookMutation } from '../../../slices/bookshelfApiSlice'
 import ErrorMessage from '../../Messages/ErrorMessage/ErrorMessage'
-import { useRef, useReducer, useState, memo } from 'react'
+import { useRef,  useState, memo } from 'react'
 import { handleBookError, BookError } from '../../../utils/errorHandling'
 import './BookshelfButtonModal.css'
 
@@ -24,8 +23,9 @@ const BookshelfButtonModal = ({book}: Props) => {
         skip: !user?.id
     })
     const [idError, setIdError] = useState<string>('')
+    const search = useSelector((state: RootState) => state.search)
     const [postBook, {isError: isPostBookError, error: postBookError, reset}] = usePostBookMutation()
-    const [search, dispatchSearch] = useReducer(searchReducer, {resultId: 0, value: ''})
+
     const ref = useRef<HTMLDialogElement>(null)
     const openModal = () => ref.current?.showModal()
     const closeModal = () => ref.current?.close()
@@ -33,17 +33,17 @@ const BookshelfButtonModal = ({book}: Props) => {
   
     const handleAddBook = async () => {
 
-        const { resultId } = search
+        const { newItemId  } = search
     
         try {
 
-            if (!resultId || !user.id || !book) {
+            if (!newItemId || !user.id || !book) {
                 throw Error('You are missing an id.')
                 
             }
 
             
-            const bookshelfId = Number(resultId)
+            const bookshelfId = Number(newItemId)
             const newBookId = Number(book.id)
             const id = Number(user.id)
 
@@ -76,9 +76,9 @@ const BookshelfButtonModal = ({book}: Props) => {
                     <hr />
                     {user ? 
                         <>
-                            <SearchFilter search={search} dispatchSearch={dispatchSearch}/>
+                            <SearchFilter/>
                             {isUserDataError && <ErrorMessage>There was an error loading your bookshelves</ErrorMessage>}
-                            <FilterResults search={search} dispatchSearch={dispatchSearch}>{data?.bookshelves as Bookshelf[]}</FilterResults>
+                            <FilterResults>{data?.bookshelves as Bookshelf[]}</FilterResults>
                         </>
                         : <span>You must be logged in to use this feature</span>}
                 <div className="bookshelf-dialog-button-wrapper">
