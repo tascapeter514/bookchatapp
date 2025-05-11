@@ -31,7 +31,7 @@ const UserResults = ({results}: Props ) => {
                                 type="radio" 
                                 className='user-result-input' 
                                 name='userResultsGroup'
-                                onChange={() => dispatch(checkSearchResult(result.id))}
+                                onChange={() => dispatch(checkSearchResult({newItemId: result.id}))}
                             />
                         </div>
                     </li>

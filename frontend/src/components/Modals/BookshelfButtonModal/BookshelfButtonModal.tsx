@@ -26,6 +26,8 @@ const BookshelfButtonModal = ({book}: Props) => {
     const search = useSelector((state: RootState) => state.search)
     const [postBook, {isError: isPostBookError, error: postBookError, reset}] = usePostBookMutation()
 
+    console.log
+
     const ref = useRef<HTMLDialogElement>(null)
     const openModal = () => ref.current?.showModal()
     const closeModal = () => ref.current?.close()
@@ -34,6 +36,8 @@ const BookshelfButtonModal = ({book}: Props) => {
     const handleAddBook = async () => {
 
         const { newItemId  } = search
+
+        console.log('new item id:', newItemId)
     
         try {
 

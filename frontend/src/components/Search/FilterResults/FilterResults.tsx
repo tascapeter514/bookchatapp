@@ -16,6 +16,8 @@ const FilterResults = ({children}: FilterProps  ) => {
 
     const dispatch = useDispatch()
     const search = useSelector((state: RootState) => state.search)
+
+    console.log('filter results search state:', search)
     
     const results = children?.filter(child => child.name.toLowerCase().includes(search.searchTerm.toLowerCase()))
 
@@ -30,7 +32,7 @@ const FilterResults = ({children}: FilterProps  ) => {
                                 type="radio" 
                                 className='search-result-input' 
                                 name='searchResultsGroup'
-                                onChange={() => dispatch(checkSearchResult(result.id))}
+                                onChange={() => dispatch(checkSearchResult({newItemId: result.id}))}
                             />
                         </div>
                     </li>
