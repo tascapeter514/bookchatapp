@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
@@ -42,37 +42,17 @@ const Navbar = () => {
     }
 
   }
- 
-  const guestLinks = (<li className='login-link'><Link to='/login'>Log In</Link></li>)
-  const authLinks = (
-      <li>
-          <Link className='profile-link' to='/userDashboard'>Profile</Link>
-          <a className='logout-link' onClick={handleLogout}>Logout</a>
-      </li>
-
-  )
-
-  const navLinks = useMemo(() => authToken ? authLinks : guestLinks , [authToken])
-
 
     return(
         <header>
             <div className="container container-nav">
-                <div className="title-searchbar-wrapper">
-                  <div className="site-title">
-                  <h1>Book Chat</h1>
-                  <p className="subtitle">A book club app for book lovers</p>
-                  </div>
-                  <div className="searchBar-searchResults-wrapper">
-                    <NavigationSearchbar url={`${WEBSOCKET_BASE}/ws/search/`}>
-                    {searchResults => (
-                        <>
-                          <Links searchResults={searchResults as SearchResultsData[]} />
-                        </>  
-                    )} 
-                    </NavigationSearchbar>
-                  </div>
-                </div>
+                <NavigationSearchbar url={`${WEBSOCKET_BASE}/ws/search/`}>
+                  {searchResults => (
+                      <>
+                        <Links searchResults={searchResults as SearchResultsData[]} />
+                      </>  
+                  )} 
+                </NavigationSearchbar>
                 <button className='mobile-nav-toggle' aria-expanded={showNavbar}>
                 </button>
                 <nav className='main-navbar'>
@@ -81,7 +61,16 @@ const Navbar = () => {
                         <li className='main-list-element'><Link to='/books'>Books</Link></li>
                         <li className='main-list-element'><Link to='#'>Authors</Link></li>
                         <li className='main-list-element'><Link to='#'>About</Link></li>
-                        {navLinks}
+                        <li>
+                          {authToken ? (
+                            <>
+                              <Link className='profile-link' to='/userDashboard'>Profile</Link>
+                              <a className='logout-link' onClick={handleLogout}>Logout</a>
+                            </>
+                          ) : (
+                            <Link className='login-link' to='/login'>Log In</Link>
+                          )}
+                        </li>
                     </ul>
                 </nav>
             </div> 

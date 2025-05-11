@@ -10,6 +10,8 @@ interface Props<T extends SearchResultsData> {
 }
 
 
+
+
 const NavigationSearchbar = <T extends SearchResultsData>({url, children}: Props<T>) => {
 
 
@@ -17,15 +19,22 @@ const NavigationSearchbar = <T extends SearchResultsData>({url, children}: Props
 
     
     return(
-
-            <div className={`navigation-searchbar ${searchValue && searchResults.length > 0 ? 'active' : ''}`}>
-                <SearchInput searchValue={searchValue} setSearchValue={setSearchValue}/>
-                {
-                    searchValue && searchResults.length > 0 && (
-                        <>{children(searchResults)}</>
-                    )
-                }
+            <div className='nav-searchbar-wrapper'>
+                <div className="searchbar-title">
+                    <h1>Book Chat</h1>
+                    <p className="subtitle">A book club app for book lovers</p>
+                </div>
+                <div className={`navigation-searchbar ${searchValue && searchResults.length > 0 ? 'active' : ''}`}>
+                    <SearchInput searchValue={searchValue} setSearchValue={setSearchValue}/>
+                        {
+                            searchValue && searchResults.length > 0 && (
+                                <>{children(searchResults)}</>
+                            )
+                        }
+                </div>
             </div>
+
+            
     )
 }
 

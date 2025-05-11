@@ -1,3 +1,22 @@
+.nav-searchbar-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 1.25rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+
+
+.searchbar-title {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
 
 
 .navigation-searchbar {
@@ -10,12 +29,15 @@
     align-items: center;
     justify-content: space-between;
     position: relative;
-    
+    max-width: 250px;
+
 }
 
 .navigation-searchbar.active {
     border-radius: 10px 10px 0 0;
 }
+
+
 
 
 

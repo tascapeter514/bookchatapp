@@ -12,8 +12,6 @@ interface Props {
 const OpenMobileNav = ({mobileNav, navDispatch}: Props) => {
 
 
-    // console.log('open mobile nav:', mobileNav)
-
     return(
         <>
             <button 
