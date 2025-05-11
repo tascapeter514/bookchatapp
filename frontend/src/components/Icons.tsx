@@ -4,7 +4,9 @@ import { IoMdArrowDropright, IoIosCloseCircle } from "react-icons/io";
 import { ImCheckmark2, ImCancelCircle } from 'react-icons/im'
 import { GrLike, GrDislike } from "react-icons/gr";
 import { BsBookmarkPlus } from "react-icons/bs"
+import { GiHamburgerMenu } from "react-icons/gi";
 import { MdArrowForwardIos, MdArrowBackIosNew } from "react-icons/md";
+import { AiOutlineClose } from "react-icons/ai";
 
 
 export type ArrowProps = {
@@ -29,6 +31,10 @@ export const SearchIcon = (props: IconProps) => <FaSearch className='search-icon
 //     <FaArrowRight className={`arrow-right-icon ${isRotated ? 'rotated': ''}`} {...props} />
 
 
+export const HamburgerIcon = (props: IconProps) => <GiHamburgerMenu className='hamburger-icon' {...props}/>
+
+export const CloseHamburgerIcon = (props: IconProps) => <AiOutlineClose className='hamburger-close-icon' {...props}/>
+
 export const RightDropDownIcon = ({dropdown, ...props}: ArrowProps) => 
     <IoMdArrowDropright className={`right-dropdown-icon ${dropdown.isRotated ? 'rotated': ''}`} {...props} />
 
@@ -36,7 +42,6 @@ export const RightDropDownIcon = ({dropdown, ...props}: ArrowProps) =>
 export const LikeIcon = (props: IconProps) => <GrLike className='like-icon'  {...props}/>
 
 export const DislikeIcon = (props: IconProps) => <GrDislike className='dislike-icon'  {...props}/>
-
 
 export const UserIcon = (props: IconProps) => <FaUser className='user-icon' {...props} />
 

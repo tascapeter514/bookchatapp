@@ -4,6 +4,7 @@ import SearchInput from '../SearchInput/SearchInput'
 import {  SearchResultsData } from '../../../types'
 
 
+
 interface Props<T extends SearchResultsData> {
     url: string,
     children: (data: T[]) => React.ReactNode
@@ -20,10 +21,8 @@ const NavigationSearchbar = <T extends SearchResultsData>({url, children}: Props
     
     return(
             <div className='nav-searchbar-wrapper'>
-                <div className="searchbar-title">
-                    <h1>Book Chat</h1>
-                    <p className="subtitle">A book club app for book lovers</p>
-                </div>
+                
+                
                 <div className={`navigation-searchbar ${searchValue && searchResults.length > 0 ? 'active' : ''}`}>
                     <SearchInput searchValue={searchValue} setSearchValue={setSearchValue}/>
                         {

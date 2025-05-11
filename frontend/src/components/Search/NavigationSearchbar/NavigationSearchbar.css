@@ -1,41 +1,35 @@
 .nav-searchbar-wrapper {
     display: flex;
-    flex-direction: row;
     gap: 1.25rem;
     align-items: center;
     justify-content: space-between;
+    position: absolute;
+    right: 0;
+    bottom: -65px;
+    border-radius: 10px;
+    z-index: 99999;
+    border: 1px solid black;
 }
-
-
-
-
-.searchbar-title {
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
-}
-
 
 
 .navigation-searchbar {
     background-color: whitesmoke;
     width: 100%;
     border-radius: 10px;
-    height: 2rem;
+    height: 4rem;
     padding: 0 .5em;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: relative;
-    max-width: 250px;
 
 }
 
 .navigation-searchbar.active {
     border-radius: 10px 10px 0 0;
 }
+
+
+
 
 
 

@@ -34,7 +34,7 @@ const ProfileHeader = ({user}: Props) => {
 
     return(
         <div className="profile-header">
-            <h1>Hi {user?.firstName}!</h1>
+            <h1 className='profile-greeting'>Hi {user?.firstName}!</h1>
             <span>Member since {user?.dateJoined}</span>
         </div>
     )

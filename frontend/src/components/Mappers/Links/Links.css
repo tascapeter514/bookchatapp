@@ -5,7 +5,7 @@
     flex-direction: column;
     color: black;
     left: 0;
-    top: 2rem;
+    top: 4.2rem;
     position: absolute;
     box-shadow: 0px 0px 8px #ddd;
     border-radius: 0 0 10px 10px;
@@ -13,6 +13,7 @@
     overflow-y: scroll;
     font-size: 1rem;
     padding: 0 .5em 0 .5em;
+    z-index: 99999;
 
 }
 

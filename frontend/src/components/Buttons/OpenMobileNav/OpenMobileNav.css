@@ -27,13 +27,6 @@
 
    
 
-    .user-icon {
-        width: 100%;
-        height: auto;
-    }
-
-    .user-icon > * {
-        fill: orange;
-    }
+   
 
 }

@@ -1,18 +1,9 @@
 
-header {
-    display: flex;
-    border: 1px solid green;
-    padding: 2em 0;
-    background-color: black;
-    color: white;
-}
-
-
-
-
 .container {
     width: 100%;
-    max-width: 1100px;
+    background-color: black;
+    color: white;
+    /* position: relative; */
 
 }
 
@@ -20,37 +11,43 @@ header {
     display: flex;
     margin: 0 auto;
     justify-content: space-between;
-
-    padding: 1em;
+    gap: 2.5rem;
+    padding: 2em;
     align-items: center;
+    position: relative;
+    
 }
 
+.searchbar-title-wrapper{
 
-h1 {
-    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.main-title {
+    font-weight: 700;
     font-size: 2rem;
 }
 
 .subtitle {
-    font-weight: 700;
+    font-weight: 400;
     font-size: .75rem;
 }
 
 
 
-.main-navbar {
+
+.desktop-main-navbar {
     display: flex;
     align-items: center;
-    /* border: 1px dotted green; */
+    justify-content: center;
 }
 
-
-
-
 .main-navbar-list {
-    padding: 0;
+    padding: .25em;
     display: flex;
-    /* border: 1px solid red; */
 
 }
 
@@ -63,7 +60,7 @@ h1 {
 
 }
 
-.main-navbar a {
+.desktop-main-navbar a {
     text-decoration: none;
     font-size: 1.25rem;
     color: white;
@@ -73,46 +70,71 @@ h1 {
     display: none;
 }
 
-.main-navbar a:hover {
+.desktop-main-navbar a:hover {
     color: red;
 }
 
-.login-link {
-    margin-left: 2.5em
+
+.desktop-right-navbar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
 }
 
-.profile-link {
-    margin-right: 2.5em;
-    margin-left: 2.5em;
-}
 
 .logout-link {
     cursor: pointer;
 }
 
+.login-link,
+.profile-link,
+.logout-link {
+    text-decoration: none;
+    font-size: 1.25rem;
+    color: white;
 
-@media (max-width: 675px) {
+}
 
-    .mobile-nav-toggle {
-        z-index: 9999;
-        display: block;
+
+
+
+
+
+@media (max-width: 900px) {
+
+    .desktop-right-navbar {
+        display: none;
+    }
+
+
+    .desktop-main-navbar {
+        /* transform: translateX(100%);
+        inset: 0 0 0 10%;
+        position: fixed; */
+        display: none;
+    }
+
+    .hamburger-icon {
+        width: 100%;
+        height: auto;
         position: absolute;
-        border: 0;
-        background-image: url(./assets/icon-hamburger.svg);
-        aspect-ratio: 1;
-        background-repeat: no-repeat;
-        background-color: transparent;
-        cursor: pointer;
-        width: 2rem;
-        top: 3rem;
-        right: 2rem;
         
     }
 
-    .main-navbar {
-        transform: translateX(100%);
-        inset: 0 0 0 10%;
-        position: fixed;
+    .hamburger-icon > * {
+        fill: white;
+        top: 3rem;
+    }
+
+    .hamburger-close-icon {
+        position: absolute;
+        width: 100%;
+        height: auto;
+    }
+
+    .hamburger-close-icon {
+        fill: white;
     }
 
 }

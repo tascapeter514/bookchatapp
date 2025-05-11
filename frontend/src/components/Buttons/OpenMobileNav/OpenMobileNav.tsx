@@ -10,7 +10,7 @@ interface Props {
 
 }
 
-const OpenMobileUserNav = ({mobileNav, navDispatch, children}: Props) => {
+const OpenMobileNav = ({mobileNav, navDispatch, children}: Props) => {
 
 
     return(
@@ -26,4 +26,4 @@ const OpenMobileUserNav = ({mobileNav, navDispatch, children}: Props) => {
 
 }
 
-export default OpenMobileUserNav
+export default OpenMobileNav

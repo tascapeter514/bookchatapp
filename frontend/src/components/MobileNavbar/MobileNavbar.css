@@ -1,0 +1,83 @@
+.mobile-navbar {
+    display: none;
+}
+
+
+@media (max-width: 900px) {
+
+    .mobile-navbar {
+        position: absolute;
+        right: 30px;
+        top: 75px;
+        width: 100%;
+        max-width: 200px;
+        z-index: 99999;
+        height: fit-content;
+        background: orange;
+        gap: 1rem;
+        display: none;
+
+    }
+
+    .mobile-navbar.open {
+        display: block;
+        font-family: "IBM Plex Mono", monospace;
+    }
+
+
+
+    .mobile-navbar-list {
+        padding: 5%;
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        align-items: center;
+        
+    }
+
+    .mobile-list-element {
+        font-weight: bold;
+    }
+
+
+    .mobile-list-element > a {
+        text-decoration: none;
+        color: white; 
+    }
+
+    .mobile-auth-links {
+        /* border: 1px solid white; */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 1.25rem;
+        justify-content: center;
+    }
+
+    .mobile-auth-links > .open-search-toggle {
+        height: 27px;
+        width: 27px;
+
+    }
+
+    .mobile-user-links {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mobile-login-link,
+    .mobile-profile-link,
+    .mobile-login-link {
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+    }
+
+    .mobile-logout-link {
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+}
+
