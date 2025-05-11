@@ -1,17 +1,17 @@
 import { Dispatch } from 'react';
 import { MobileNavAction, MobileNavState } from '../../../reducers/mobileNavReducer';
-import { CloseIcon } from '../../Icons'
 import './CloseMobileNav.css'
 
 interface Props {
     mobileNav: MobileNavState,
-    navDispatch: Dispatch<MobileNavAction>
+    navDispatch: Dispatch<MobileNavAction>,
+    children: React.ReactNode
 }
 
 
-const CloseMobileNav = ({mobileNav, navDispatch}: Props) => {
+const CloseMobileNav = ({mobileNav, navDispatch, children}: Props) => {
 
-    // console.log('close mobile nav:', mobileNav)
+
 
 
     return(
@@ -22,7 +22,8 @@ const CloseMobileNav = ({mobileNav, navDispatch}: Props) => {
             onClick={() => { navDispatch({type: 'CLOSING_MOBILE_NAV', payload: true});
             setTimeout(() => {navDispatch({type: 'CLOSED_MOBILE_NAV', payload: false})}, 350)}}
         >
-            <CloseIcon />
+            {children}
+            
         </button>
     )
 

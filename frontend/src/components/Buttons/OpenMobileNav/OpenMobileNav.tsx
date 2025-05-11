@@ -1,15 +1,16 @@
 import { Dispatch } from 'react';
 import { MobileNavAction, MobileNavState } from '../../../reducers/mobileNavReducer';
-import { UserIcon } from '../../Icons'
-import './OpenMobileUserNav.css'
+import './OpenMobileNav.css'
 
 
 interface Props {
     mobileNav: MobileNavState,
-    navDispatch: Dispatch<MobileNavAction>
+    navDispatch: Dispatch<MobileNavAction>,
+    children: React.ReactNode
+
 }
 
-const OpenMobileUserNav = ({mobileNav, navDispatch}: Props) => {
+const OpenMobileUserNav = ({mobileNav, navDispatch, children}: Props) => {
 
 
     return(
@@ -18,7 +19,7 @@ const OpenMobileUserNav = ({mobileNav, navDispatch}: Props) => {
                 className={`open-toggle ${mobileNav.open ? 'closed' : ''}`} 
                 onClick={() => navDispatch({type: 'OPEN_MOBILE_NAV', payload: true})}
             >
-                <UserIcon />
+                {children}
             </button>  
         </>
     )
