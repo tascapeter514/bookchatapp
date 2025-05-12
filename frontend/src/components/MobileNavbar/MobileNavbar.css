@@ -37,12 +37,22 @@
 
     .mobile-list-element {
         font-weight: bold;
+        padding: .2em
+    }
+
+    .mobile-list-element:hover {
+        background-color: white;
+        
     }
 
 
     .mobile-list-element > a {
         text-decoration: none;
         color: white; 
+    }
+
+    .mobile-list-element > a:hover {
+        color: black
     }
 
     .mobile-auth-links {
@@ -68,15 +78,25 @@
 
     .mobile-login-link,
     .mobile-profile-link,
-    .mobile-login-link {
+    .mobile-logout-link {
         text-decoration: none;
         color: white;
         font-weight: bold;
+        padding: .2em
     }
 
     .mobile-logout-link {
         cursor: pointer;
         font-weight: bold;
+    }
+
+    .mobile-login-link:hover,
+    .mobile-profile-link:hover,
+    .mobile-logout-link:hover{
+
+        background-color: white;
+        color: black;
+
     }
 
 }
