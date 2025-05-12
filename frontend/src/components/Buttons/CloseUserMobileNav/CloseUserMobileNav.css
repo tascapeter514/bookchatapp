@@ -1,0 +1,39 @@
+.close-user-nav-toggle {
+    display: none;
+}
+
+
+
+@media (max-width: 900px) {
+
+
+    
+    
+    .close-user-nav-toggle.active {
+        display: block;
+        cursor: pointer;
+        position: absolute;
+        right: 1.5em;
+        top: 1.5em;
+        width: 35px;
+        height: 35px;
+        border: 0;
+        background: transparent;
+        z-index: 999999;
+        
+    
+    }
+
+    .close-icon {
+        width: 100%;
+        height: auto;
+    }
+
+    .close-icon > * {
+        fill: orange;
+    }
+
+
+
+
+}

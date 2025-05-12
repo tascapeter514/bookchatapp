@@ -3,12 +3,12 @@ import BookshelfButton from '../TabButtons/BookshelfButton/BookshelfButton';
 import BookclubButton from '../TabButtons/BookclubButton/BookclubButton';
 import AccountButton from '../TabButtons/AccountButton/AccountButton';
 import MessageButton from '../TabButtons/MessageButton/MessageButton';
-import CloseMobileNav from '../Buttons/CloseMobileNav/CloseMobileNav';
+import CloseUserMobileNav from '../Buttons/CloseUserMobileNav/CloseUserMobileNav';
 import BookshelfPanel from '../Panels/BookshelfPanel/BookshelfPanel';
 import BookclubsPanel from '../Panels/BookclubsPanel/BookclubsPanel';
 import NavbarDivider from '../Dividers/NavbarDivider/NavbarDivider';
 import { useGetUserDataQuery } from '../../slices/userDataApiSlice';
-import OpenMobileNav from '../Buttons/OpenMobileNav/OpenMobileNav';
+import OpenUserMobileNav from '../Buttons/OpenUserMobileNav/OpenUserMobileNav';
 import LoadSpinner from '../LoadSpinner/LoadSpinner';
 import MessagePanel from '../Panels/MessagePanel/MessagePanel';
 import AccountPanel from '../Panels/AccountPanel/AccountPanel';
@@ -68,14 +68,14 @@ const UserDashboard = () => {
     return(
         <div className='dashboard-container'>
             <DashboardMain>
-                <OpenMobileNav mobileNav={mobileNav} navDispatch={navDispatch}><UserIcon /></OpenMobileNav>
+                <OpenUserMobileNav mobileNav={mobileNav} navDispatch={navDispatch}><UserIcon /></OpenUserMobileNav>
                 {userTabs.activeTab === 'accountPanel' && <AccountPanel />}
                 {userTabs.activeTab === 'messagesPanel' && <MessagePanel invitations={invitations} />}
                 {userTabs.activeTab === 'bookclubPanel' && <BookclubsPanel bookclubs={bookclubs}/>}
                 {userTabs.activeTab === 'bookshelfPanel' && <BookshelfPanel tabs={userTabs} bookshelves={bookshelves} id={user.id}/>}
             </DashboardMain>
             <DashboardNav mobileNav={mobileNav}>
-                <CloseMobileNav mobileNav={mobileNav} navDispatch={navDispatch} > <CloseIcon /> </CloseMobileNav>
+                <CloseUserMobileNav mobileNav={mobileNav} navDispatch={navDispatch} > <CloseIcon /> </CloseUserMobileNav>
                 <ProfileHeader user={user}/>
                 <AccountButton userTabs={userTabs} dispatchUserTabs={dispatchUserTabs}/>
                 <MessageButton userTabs={userTabs} dispatchUserTabs={dispatchUserTabs}/>

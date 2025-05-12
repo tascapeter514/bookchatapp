@@ -1,0 +1,32 @@
+.open-user-nav-toggle {
+    display: none;
+}
+
+
+@media (max-width: 900px) {
+
+    .open-user-nav-toggle  {
+        display: block;
+        position: absolute;
+        right: 1.5em;
+        top: 1.5em;
+        width: 35px;
+        height: 35px;
+        border: 0;
+        background: transparent;
+        cursor: pointer;
+
+    }
+
+
+
+    .open-user-nav-toggle.closed {
+        display: none;
+
+    }
+
+   
+
+   
+
+}
