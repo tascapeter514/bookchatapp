@@ -1,13 +1,47 @@
 .search-page {
-    font-family: "IBM Plex Mono", monospace;
-    padding: 4em 15em;
+
     color: white;
-    background-color: orange;
-    height: 100vh;
+    background-color: rgba(255, 165, 0, 0.8);
     display: flex;
     flex-direction: column;
+    min-height: 88vh;
+
 }
 
-.search-page > h1 {
-    margin-bottom: 5rem;
+.search-page-main-content {
+    margin: 90px auto;
 }
+
+.search-page-subheader {
+    margin-bottom: 5rem;
+    flex-wrap: wrap;
+    font-size: 40.5px;
+    max-width: 80%;
+}
+
+
+@media (max-width: 975px) {
+
+    .search-page-main-content {
+        padding: 2em;
+    }
+
+
+
+    .search-page-subheader {
+        font-size: 30.5px;
+        margin-bottom: 2.5rem;
+        
+    }
+}
+
+
+@media (max-width: 600px) {
+    .search-page-subheader {
+        font-size: 27px;
+        max-width: 100%;
+
+    }
+}
+
+

@@ -84,6 +84,12 @@
 
 }
 
+.desktop-right-navbar > .open-search-toggle {
+    /* border: 1px solid red; */
+    height: 30px;
+    width: 30px;
+}
+
 
 .logout-link {
     cursor: pointer;
@@ -104,28 +110,21 @@
 
 
 @media (max-width: 900px) {
-
+    .container-nav {
+        display: flex;
+        justify-content: space-between;
+        padding: 2em 2em;
+    }
     .container-nav > .open-search-toggle {
         display: block;
-        /* position: absolute;
-        right: 80px; */
         height: 40px;
         width: 40px;
 
     }
 
-    /* .container-nav > .open-search-toggle > .search-icon {
-        border: 1px solid red;
-        width: 100%;
-        height: auto;
-  
-    } */
-
 
     .main-navbar-list {
-        /* transform: translateX(100%);
-        inset: 0 0 0 10%;
-        position: fixed; */
+
         display: none;
     }
 

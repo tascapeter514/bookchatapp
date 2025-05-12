@@ -5,8 +5,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useLogoutMutation } from '../../slices/authApiSlice.tsx'
 import { RootState } from '../../store/store.tsx'
 import { removeCredentials } from '../../slices/authSlice.tsx'
-import OpenSearchbar from '../Buttons/OpenSearchbar/OpenSearchbar..tsx'
+import OpenSearchbar from '../Buttons/OpenSearchbar/OpenSearchbar.tsx'
 import MobileNavbar from '../MobileNavbar/MobileNavbar.tsx'
+
 
 import './Navbar.css'
 

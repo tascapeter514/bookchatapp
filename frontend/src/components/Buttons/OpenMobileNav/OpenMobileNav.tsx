@@ -14,14 +14,12 @@ const OpenMobileNav = ({mobileNav, navDispatch, children}: Props) => {
 
 
     return(
-        <>
             <button 
                 className={`open-toggle ${mobileNav.open ? 'closed' : ''}`} 
                 onClick={() => navDispatch({type: 'OPEN_MOBILE_NAV', payload: true})}
             >
                 {children}
             </button>  
-        </>
     )
 
 }

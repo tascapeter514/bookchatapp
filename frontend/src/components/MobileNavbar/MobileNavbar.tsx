@@ -3,7 +3,7 @@
 import { Link } from 'react-router-dom';
 import OpenMobileNav from '../Buttons/OpenMobileNav/OpenMobileNav';
 import CloseMobileNav from '../Buttons/CloseMobileNav/CloseMobileNav';
-import OpenSearchbar from '../Buttons/OpenSearchbar/OpenSearchbar.';
+import OpenSearchbar from '../Buttons/OpenSearchbar/OpenSearchbar';
 import { HamburgerIcon, CloseHamburgerIcon } from '../Icons';
 import mobileNavReducer from '../../reducers/mobileNavReducer';
 import { useReducer } from 'react';

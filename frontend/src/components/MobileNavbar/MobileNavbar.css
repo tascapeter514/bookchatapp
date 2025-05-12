@@ -10,29 +10,25 @@
 @media (max-width: 900px) {
 
     .mobile-navbar-container {
-        display: inline-block;
+        display: flex;
+
     }
 
 
 
     .mobile-navbar-buttons {
         display: flex;
-        justify-content: center;
+        width: 100%;
+        max-width: 75px;
+        justify-content: space-between;
+        
     }
 
-    .mobile-navbar-buttons > .open-search-toggle {
-        height: 35px;
-        width: 35px;
-    }
-
-    .mobile-navbar-buttons > .open-toggle {
-        position:fixed;
-    }
+    
 
     .hamburger-icon {
         width: 100%;
         height: auto;
-        position: absolute;
         
     }
 
@@ -42,7 +38,6 @@
     }
 
     .hamburger-close-icon {
-        position: absolute;
         width: 100%;
         height: auto;
     }
@@ -54,21 +49,22 @@
     .mobile-navbar {
         position: absolute;
         right: 30px;
-        top: 75px;
+        top: 80px;
         width: 100%;
         max-width: 200px;
         z-index: 99999;
         height: fit-content;
         background: orange;
+        padding: 3em;
         gap: 1rem;
         display: none;
         border: 1px solid black;
+        font-size: 16px
 
     }
 
     .mobile-navbar.open {
         display: block;
-        font-family: "IBM Plex Mono", monospace;
     }
 
 
@@ -103,7 +99,6 @@
     }
 
     .mobile-auth-links {
-        /* border: 1px solid white; */
         display: flex;
         flex-direction: column;
         align-items: center;

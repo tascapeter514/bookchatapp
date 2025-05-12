@@ -7,14 +7,12 @@
 
     .open-toggle  {
         display: block;
-        position: absolute;
-        right: 1.5em;
-        top: 1.5em;
-        width: 35px;
-        height: 35px;
-        border: 0;
+        height: 40px;
+        width: 40px;
         background: transparent;
         cursor: pointer;
+        border: 0;
+        
 
     }
 
