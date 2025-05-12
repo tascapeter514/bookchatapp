@@ -7,6 +7,7 @@ import BookclubPage from './components/BookclubPage/BookclubPage.tsx'
 import Login from './components/LogIn/Login.tsx'
 import UserDashboard from './components/UserDashboard/UserDashboard.tsx'
 import PrivateRoute from './components/HigherOrderComponents/PrivateRoute.tsx'
+import SearchPage from './components/SearchPage/SearchPage.tsx'
 // import CheckMembers from './components/CheckMembers.tsx'
 import BooksPage from './components/BooksPage/BooksPage.tsx'
 import './App.css';
@@ -29,6 +30,7 @@ function App() {
         <Navbar />
         <Routes>
               <Route path='/' element={<Homepage />} />
+              <Route path='/search' element={<SearchPage />}/>
               <Route path='/book/:id' element={<Bookpage />} />
               <Route path='/books' element={<BooksPage />} />
 

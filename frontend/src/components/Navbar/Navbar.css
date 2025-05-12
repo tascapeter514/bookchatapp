@@ -3,7 +3,7 @@
     width: 100%;
     background-color: black;
     color: white;
-    /* position: relative; */
+
 
 }
 
@@ -12,10 +12,14 @@
     margin: 0 auto;
     justify-content: space-between;
     gap: 2.5rem;
-    padding: 2em;
+    padding: 2em 4em;
     align-items: center;
     position: relative;
     
+}
+
+.container-nav > .open-search-toggle {
+    display: none;
 }
 
 .searchbar-title-wrapper{
@@ -36,13 +40,11 @@
     font-size: .75rem;
 }
 
-
-
-
 .desktop-main-navbar {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 2rem;
 }
 
 .main-navbar-list {
@@ -103,39 +105,34 @@
 
 @media (max-width: 900px) {
 
-    .desktop-right-navbar {
-        display: none;
+    .container-nav > .open-search-toggle {
+        display: block;
+        /* position: absolute;
+        right: 80px; */
+        height: 40px;
+        width: 40px;
+
     }
 
+    /* .container-nav > .open-search-toggle > .search-icon {
+        border: 1px solid red;
+        width: 100%;
+        height: auto;
+  
+    } */
 
-    .desktop-main-navbar {
+
+    .main-navbar-list {
         /* transform: translateX(100%);
         inset: 0 0 0 10%;
         position: fixed; */
         display: none;
     }
 
-    .hamburger-icon {
-        width: 100%;
-        height: auto;
-        position: absolute;
-        
+    .desktop-right-navbar {
+        display: none;
     }
 
-    .hamburger-icon > * {
-        fill: white;
-        top: 3rem;
-    }
-
-    .hamburger-close-icon {
-        position: absolute;
-        width: 100%;
-        height: auto;
-    }
-
-    .hamburger-close-icon {
-        fill: white;
-    }
 
 }
 

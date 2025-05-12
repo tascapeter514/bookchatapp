@@ -1,0 +1,13 @@
+.search-page {
+    font-family: "IBM Plex Mono", monospace;
+    padding: 4em 2em;
+    color: white;
+    background-color: orange;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-page > h1 {
+    margin-bottom: 5rem;
+}

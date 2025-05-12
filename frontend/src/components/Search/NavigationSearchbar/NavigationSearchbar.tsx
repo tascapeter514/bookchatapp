@@ -27,7 +27,7 @@ const NavigationSearchbar = <T extends SearchResultsData>({url, children}: Props
                     <SearchInput searchValue={searchValue} setSearchValue={setSearchValue}/>
                         {
                             searchValue && searchResults.length > 0 && (
-                                <>{children(searchResults)}</>
+                                <div>{children(searchResults)}</div>
                             )
                         }
                 </div>

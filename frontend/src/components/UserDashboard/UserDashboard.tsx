@@ -67,7 +67,6 @@ const UserDashboard = () => {
 
     return(
         <div className='dashboard-container'>
-  
             <DashboardMain>
                 <OpenMobileNav mobileNav={mobileNav} navDispatch={navDispatch}><UserIcon /></OpenMobileNav>
                 {userTabs.activeTab === 'accountPanel' && <AccountPanel />}
@@ -87,6 +86,8 @@ const UserDashboard = () => {
                     <CreateBookshelfModal />
                 </BookshelfButton>
             </DashboardNav>
+           
+            
         </div>
     )
 }

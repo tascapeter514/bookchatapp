@@ -1,10 +1,9 @@
 
 
 .dashboard-container {
-    margin: 0;
     font-size: 1.25rem;
     display: grid;
-    grid-template-columns: minmax(250px, 80%) minmax(300px, 20%);
+    grid-template-columns: minmax(250px, 80%) minmax(300px, 20%) ;
     margin: 0 auto;
     z-index: 10000;
 }

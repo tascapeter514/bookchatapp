@@ -1,7 +1,12 @@
 
-import { MobileNavState } from '../../reducers/mobileNavReducer';
+// import { MobileNavState } from '../../reducers/mobileNavReducer';
 import { Link } from 'react-router-dom';
-// import { useState } from 'react';
+import OpenMobileNav from '../Buttons/OpenMobileNav/OpenMobileNav';
+import CloseMobileNav from '../Buttons/CloseMobileNav/CloseMobileNav';
+import OpenSearchbar from '../Buttons/OpenSearchbar/OpenSearchbar.';
+import { HamburgerIcon, CloseHamburgerIcon } from '../Icons';
+import mobileNavReducer from '../../reducers/mobileNavReducer';
+import { useReducer } from 'react';
 // import OpenMobileSearch from '../Buttons/OpenMobileSearch/OpenMobileSearch';
 // import { SearchResultsData } from '../../types';
 // import NavigationSearchbar from '../Search/NavigationSearchbar/NavigationSearchbar';
@@ -10,51 +15,54 @@ import './MobileNavbar.css'
 // import Links from '../Mappers/Links/Links';
 
 interface Props {
-    mobileNav: MobileNavState
     authToken: string,
     handleLogout: () => Promise<void>
 
 }
 
-const MobileNavbar = ({ mobileNav, authToken, handleLogout}: Props) => {
+const MobileNavbar = ({ authToken, handleLogout}: Props) => {
 
-    // const [openSearchbar, setOpenSearchbar] = useState<boolean>(false)
+
+    const [mobileNav, dispatchNav] = useReducer(mobileNavReducer, {open: false, isExiting: false})
+
 
     return(
-        <aside className={`mobile-navbar ${mobileNav.open ? 'open' : ''}`}>
-            <ul className='mobile-navbar-list'>
-                <li className='mobile-list-element'><Link to='/'>Home</Link></li>
-                <li className='mobile-list-element'><Link to='/books'>Books</Link></li>
-                <li className='mobile-list-element'><Link to='#'>Authors</Link></li>
-                <li className='mobile-list-element'><Link to='#'>About</Link></li>
-                <li className="mobile-auth-links">
-                    {authToken ? (
-                        <>
-                            <Link className='mobile-profile-link' to='/userDashboard'>Profile</Link>
-                            <a className='mobile-logout-link' onClick={handleLogout}>Logout</a>
-                        </>
-                        
-                    ) : (
-                        <Link className='mobile-login-link' to='/login'>Log In</Link>
-                    )}
-                </li>
-                {/* {authToken && ()} */}
-                {/* {openSearchbar && (
-                    <NavigationSearchbar url={`${WEBSOCKET_BASE}/ws/search/`}>
-                    {searchResults => (
-                        <>
-                            <Links searchResults={searchResults as SearchResultsData[]} />
-                        </>
-                    )}
-                    </NavigationSearchbar>
-                )} */}
-
-            </ul>
-            
-        </aside>
+        <div className='mobile-navbar-container'>
+            <div className='mobile-navbar-buttons'>
+                <OpenSearchbar/>
+                <OpenMobileNav mobileNav={mobileNav} navDispatch={dispatchNav}><HamburgerIcon /></OpenMobileNav>
+                <CloseMobileNav mobileNav={mobileNav} navDispatch={dispatchNav}><CloseHamburgerIcon /></CloseMobileNav>
+            </div>  
+            <aside className={`mobile-navbar ${mobileNav.open ? 'open' : ''}`}>
+                <ul className='mobile-navbar-list'>
+                    <li className='mobile-list-element'><Link to='/'>Home</Link></li>
+                    <li className='mobile-list-element'><Link to='/books'>Books</Link></li>
+                    <li className='mobile-list-element'><Link to='#'>Authors</Link></li>
+                    <li className='mobile-list-element'><Link to='#'>About</Link></li>
+                    <li className="mobile-auth-links">
+                        {authToken ? (
+                            <>
+                                <Link className='mobile-profile-link' to='/userDashboard'>Profile</Link>
+                                <a className='mobile-logout-link' onClick={handleLogout}>Logout</a>
+                            </>
+                            
+                        ) : (
+                            <Link className='mobile-login-link' to='/login'>Log In</Link>
+                        )}
+                    </li>
+                
+                </ul>
+                
+            </aside>
+        
+        </div>
+        
     )
 }
 
 export default MobileNavbar
+
+
+
 
 

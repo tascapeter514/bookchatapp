@@ -1,14 +1,12 @@
 .nav-searchbar-wrapper {
     display: flex;
+    padding: 2em 4em;
+    max-width: 1000px;
     gap: 1.25rem;
     align-items: center;
     justify-content: space-between;
-    position: absolute;
-    right: 0;
-    bottom: -65px;
     border-radius: 10px;
     z-index: 99999;
-    border: 1px solid black;
 }
 
 
@@ -16,11 +14,12 @@
     background-color: whitesmoke;
     width: 100%;
     border-radius: 10px;
-    height: 4rem;
+    height: 3rem;
     padding: 0 .5em;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
 
 }
 
