@@ -6,3 +6,9 @@
 .register-form > button {
     font-size: 1.125rem;
 }
+
+@media (max-width: 600px) {
+    .register-form {
+        padding: 2em;
+    }
+}
