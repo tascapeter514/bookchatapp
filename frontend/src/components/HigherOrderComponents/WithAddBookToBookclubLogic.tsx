@@ -31,10 +31,10 @@ const WithAddBookToBookclubLogic = (
 
     return function WithAddBookToBookclubLogicWrapper(props: WithAddBookToBookclubProps) {
 
-        const { user } = useSelector((state: RootState) => state.auth)
+        const { user } = useSelector((state: RootState) => state.auth) ?? {}
 
     
-        console.log('user:', user)
+        // console.log('user:', user)
         console.log('book prop id:', props.bookId)
 
 
@@ -42,6 +42,12 @@ const WithAddBookToBookclubLogic = (
         const [getUserBookclubs, { isLoading, isError }] = useGetUserBookclubsMutation()
 
         const handleGetUserBookclubs = useCallback(async (): Promise<void> => {
+
+            if (!user) {
+                console.warn('User is not logged in')
+                return
+            }
+
 
             const response = await getUserBookclubs(user.id);
 
@@ -52,7 +58,7 @@ const WithAddBookToBookclubLogic = (
                 throw new Error('There was an error with fetching your bookclubs')
             }
 
-        }, [user.id])
+        }, [user])
 
         const [postBookToBookclub] = usePostBookToBookclubMutation()
 

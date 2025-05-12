@@ -19,8 +19,7 @@ const CloseMobileNav = ({mobileNav, navDispatch, children}: Props) => {
             className={`close-toggle ${mobileNav.open ? 'active' : ''}`}
             aria-controls='dashboard-navbar'
             aria-expanded={mobileNav.open} 
-            onClick={() => { navDispatch({type: 'CLOSING_MOBILE_NAV', payload: true});
-            setTimeout(() => {navDispatch({type: 'CLOSED_MOBILE_NAV', payload: false})}, 350)}}
+            onClick={() => { navDispatch({type: 'CLOSED_MOBILE_NAV', payload: true})}}
         >
             {children}
             
