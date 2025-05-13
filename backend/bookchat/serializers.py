@@ -32,6 +32,10 @@ class AuthorSerializer(serializers.ModelSerializer):
             for field_name in existing - allowed:
                 self.fields.pop(field_name)
 
+            # dynamically add book fields only if needed
+            if 'books' in allowed:
+                self.fields['books'] = serializers.SerializerMethodField()
+
     def get_books(self, obj):
         return [
             {
