@@ -94,6 +94,8 @@ def get_books(request):
 
         print(f'get books view ended at {current_time}')
 
+
+        print('begin database queries')
         print("[DB QUERIES]")
 
         for query in connection.queries:
