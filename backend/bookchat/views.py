@@ -15,6 +15,7 @@ from asgiref.sync import async_to_sync
 from django.http import JsonResponse
 from django.db.models import Q
 from uuid import UUID
+import datetime
 import json
 
 
@@ -40,19 +41,26 @@ def get_book(request, id):
 def get_books(request):
     print('get books check')
     try:
+        current_time = datetime.datetime.now()
+        print(f'get_books begins at: {current_time}')
+
         from collections import defaultdict
 
         desired_genres = [1, 8, 15, 18, 23, 24, 25]
+
+        print(f'fetching books from library at {current_time}')
 
         books = Book.objects.select_related('genres')\
                             .exclude(imageLinks__smallThumbnail__isnull=True)\
                             .exclude(imageLinks__smallThumbnail__exact='')\
                             .filter(genres_id__in=desired_genres)
         
+        print(f'books fetched by genre at {current_time}')
+        
         # print('get books length:', len(books))
 
 
-    
+
         # Create dictionary to group books by genre
         grouped = defaultdict(list)
 
@@ -66,7 +74,7 @@ def get_books(request):
             15: 'fantasy',
             8: 'detective_fiction',
         }
-
+        print(f'books about to be grouped at {current_time}')
         # Group books by genre
         for book in books:
             key = genre_map.get(book.genres_id)
@@ -78,8 +86,12 @@ def get_books(request):
             if key != 'best_sellers':
                 grouped[key] = grouped[key][:15]
 
+        print(f'books finished grouping at {current_time}')
+
         # Serialize grouped books
         book_data = {k: BookSerializer(v, many=True).data for k, v in grouped.items()}
+
+        print(f'get books view ended at {current_time}')
 
         return Response(book_data, status=status.HTTP_200_OK)
 
