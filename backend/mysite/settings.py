@@ -78,6 +78,7 @@ REST_FRAMEWORK = {
 }
 
 MIDDLEWARE = [
+    'bookchat.timing_middleware.TimingMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
