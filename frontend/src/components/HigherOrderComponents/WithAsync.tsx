@@ -21,7 +21,7 @@ const WithAsync = <P extends object>(
         
 
         console.log('isLoading:', isLoading)
-        console.log('error', error)
+        console.log('with async error', error)
 
         if (isLoading) {
             return (
@@ -35,7 +35,7 @@ const WithAsync = <P extends object>(
         if (props.isError) {
             return (
                 <WrappedComponent {...rest as P}>
-                    <ErrorMessage>{props.error}</ErrorMessage>
+                    <ErrorMessage>{error}</ErrorMessage>
                 </WrappedComponent> 
             )
             
