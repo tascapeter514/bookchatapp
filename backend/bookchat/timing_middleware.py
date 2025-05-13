@@ -8,6 +8,7 @@ class TimingMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
+        print('beginning middleware time stamps')
         start_time = datetime.datetime.now()
         print(f"[Middleware] Request received at: {start_time}")
 
