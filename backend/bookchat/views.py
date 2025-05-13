@@ -15,6 +15,7 @@ from asgiref.sync import async_to_sync
 from django.http import JsonResponse
 from django.db.models import Q
 from uuid import UUID
+from django.db import connection
 import datetime
 import json
 
@@ -92,6 +93,11 @@ def get_books(request):
         book_data = {k: BookSerializer(v, many=True).data for k, v in grouped.items()}
 
         print(f'get books view ended at {current_time}')
+
+        print("[DB QUERIES]")
+
+        for query in connection.queries:
+            print('query:', query)
 
         return Response(book_data, status=status.HTTP_200_OK)
 
