@@ -41,6 +41,7 @@ def get_book(request, id):
 @api_view(['GET'])
 def get_books(request):
     print('get books check')
+    print("Client IP:", request.META.get('REMOTE_ADDR'))
     try:
         current_time = datetime.datetime.now()
         print(f'get_books begins at: {current_time}')
@@ -94,12 +95,6 @@ def get_books(request):
 
         print(f'get books view ended at {current_time}')
 
-
-        print('begin database queries')
-        print("[DB QUERIES]")
-
-        for query in connection.queries:
-            print('query:', query)
 
         return Response(book_data, status=status.HTTP_200_OK)
 
