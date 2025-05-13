@@ -33,6 +33,7 @@ class TimingMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
+        print('TIMING MIDDLEWARE START')
         start_request = time.time()
         
         response = self.get_response(request)
