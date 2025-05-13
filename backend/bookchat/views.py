@@ -53,7 +53,7 @@ def get_books(request):
         print(f'fetching books from library at {current_time}')
 
         books = Book.objects.select_related('genres')\
-                            .prefetch_related('authors')\
+                            .prefetch_related('author')\
                             .exclude(imageLinks__smallThumbnail__isnull=True)\
                             .exclude(imageLinks__smallThumbnail__exact='')\
                             .filter(genres_id__in=desired_genres)
