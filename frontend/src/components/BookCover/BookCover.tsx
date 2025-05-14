@@ -1,10 +1,14 @@
-import BookshelfButtonModal from '../Modals/BookshelfButtonModal/BookshelfButtonModal'
+import AddBookToBookshelfModal from '../Modals/AddBookToBookshelfModal/AddBookToBookshelfModal'
+import WithAsync from '../HigherOrderComponents/WithAsync'
+import WithAddBookToBookshelf from '../HigherOrderComponents/WithAddBookToBookshelf'
 import { Book } from '../../types'
 import './BookCover.css'
 
 interface Props {
     book: Book
 }
+
+const BookshelfButtonModalWithLogic = WithAddBookToBookshelf(WithAsync(AddBookToBookshelfModal))
 
 const BookCover = ({book}: Props) => {
 
@@ -22,7 +26,7 @@ const BookCover = ({book}: Props) => {
         
             }
             
-            <BookshelfButtonModal book={book} /> 
+            <BookshelfButtonModalWithLogic bookId={book.id}/> 
         </div>
     )
 

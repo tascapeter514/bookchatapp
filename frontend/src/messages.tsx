@@ -13,9 +13,6 @@ export const returnErrors = (msg: string, status: string | number) => {
     }
 }
 
-
-
-
 export const axiosErrorHandler = (error: AxiosError): string => {
 
     console.log('error:', error)

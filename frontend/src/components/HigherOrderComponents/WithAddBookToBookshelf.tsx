@@ -2,12 +2,15 @@ import { ComponentType } from "react"
 import { usePostBookMutation } from "../../slices/bookshelfApiSlice"
 import { handleBookError } from "../../utils/errorHandling"
 import { BookError } from "../../utils/errorHandling"
+import { useSelector } from "react-redux"
+import { useGetUserDataQuery } from "../../slices/userDataApiSlice"
 import { useState, Dispatch } from "react"
+import { RootState } from "../../store/store"
+import { ActiveUser, Bookshelf } from "../../types"
 
 
 interface Props {
-    id: number,
-    bookshelfId?: number,
+    bookId: number,
 }
 
 interface InjectedProps {
@@ -15,17 +18,25 @@ interface InjectedProps {
     isError: boolean,
     error: string,
     isLoading: boolean,
-    setNewBook: Dispatch<number>
+    setBookshelf: Dispatch<number>,
+    bookshelves: Bookshelf[],
+    user: ActiveUser
 }
 
-const WithAddBook = (
+const WithAddBookToBookshelf = (
     WrappedComponent: ComponentType<InjectedProps>
 ): ComponentType<Props> => {
 
-    return function WithAddBookWrapper({ bookshelfId, id}: Props) {
+    return function WithAddBookToBookshelfWrapper({ bookId}: Props) {
 
         
-        const [newBook, setNewBook] = useState<number>(NaN)
+        const { user } = useSelector((state: RootState) => state.auth)
+        const { data } = useGetUserDataQuery(user?.id, {
+            skip: !user?.id
+        })
+
+
+        const [bookshelf, setBookshelf] = useState<number>(NaN)
         const [error, setError] = useState<string>('')
         
 
@@ -36,12 +47,12 @@ const WithAddBook = (
     
             try {
 
-                if (!bookshelfId || !newBook || !id) {
+                if (!bookshelf || !bookId|| !user.id) {
                     throw new Error('You are missing an id.')
                     
                 }
     
-                await postBook({bookshelfId, newBookId: newBook, id}).unwrap()
+                await postBook({bookshelfId: bookshelf, newBookId: bookId, id: user.id}).unwrap()
     
             } catch(err: any | BookError) {
                 console.log('catch handler running')
@@ -62,7 +73,9 @@ const WithAddBook = (
             isError,
             isLoading,
             error,
-            setNewBook
+            setBookshelf,
+            bookshelves: data?.bookshelves as Bookshelf[],
+            user
 
         }
 
@@ -71,4 +84,4 @@ const WithAddBook = (
 }
 
 
-export default WithAddBook
+export default WithAddBookToBookshelf

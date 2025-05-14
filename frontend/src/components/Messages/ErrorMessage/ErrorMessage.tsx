@@ -8,8 +8,10 @@ interface Props {
 
  const ErrorMessage = ({children}: Props) => {
 
+    console.log('error message string:', children)
+
     return(
-        <p className='error-message'>{children}</p>
+        <p className='error-message' data-testid='error-message'>{children}</p>
     )
 
 

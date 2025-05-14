@@ -25,8 +25,8 @@ const Dropdown = <T extends MapperData>({
                         : dispatch(action ? action(Number(e.target.value)) : Number(e.target.value))
                     }}
                     >
-                    <option>Please select your {dataType?.slice(0, dataType.length - 1)}</option>
-                    {data.map((option: MapperData) => {
+                    <option>Please select</option>
+                    {data?.map((option: MapperData) => {
                         return(
                             <option
                                 key={option.id} 

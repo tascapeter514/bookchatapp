@@ -9,19 +9,20 @@ import './BookSearchModal.css'
 
 interface Props {
     addBook: () => Promise<void>,
-    setNewBook: Dispatch<number>
+    setNewBook: Dispatch<number>,
+    children?: React.ReactNode
+
 }
 
 
-const BookSearchModal = ({addBook, setNewBook}: Props) => {
+const BookSearchModal = ({addBook, setNewBook, children}: Props) => {
 
 
     const bookSearchRef = useRef<HTMLDialogElement>(null)
     const openModal = () => bookSearchRef.current?.showModal()
     const closeModal = () => bookSearchRef.current?.close()
     
-    
-
+    console.log('book search modal children:', children)
     
             
     return (
@@ -30,6 +31,7 @@ const BookSearchModal = ({addBook, setNewBook}: Props) => {
                 <SearchIcon />
             </Button>
             <dialog className='search-books-modal' ref={bookSearchRef}>
+                {children}
                 <h3>Add a new title to your bookshelf</h3>
                 <hr />
                 <ModalSearchbar url={`${WEBSOCKET_BASE}/ws/search/books/`} setNewBook={setNewBook}/>

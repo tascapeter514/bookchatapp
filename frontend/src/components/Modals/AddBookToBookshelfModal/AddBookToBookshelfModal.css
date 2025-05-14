@@ -48,17 +48,3 @@
 
 }
 
-.bookshelf-dialog-button-wrapper {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 300px; 
-
-}
-
-
-.bookshelf-dialog-button-wrapper > button {
-    font-size: 1.125rem;
-
-}
-
