@@ -8,6 +8,10 @@ interface Props {
     book: Book
 }
 
+
+  
+
+
 const BookMainContent = ({book}: Props) => {
 
     return(
