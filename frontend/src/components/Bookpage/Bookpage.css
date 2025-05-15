@@ -1,12 +1,65 @@
+.book-header-skeleton {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    min-height: 180px; /* Reserve space */
+  }
+  
+  .skeleton-cover {
+    width: 120px;
+    height: 180px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    animation: pulse 1.5s infinite ease-in-out;
+  }
+  
+  .skeleton-title-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .skeleton-title,
+  .skeleton-subtitle {
+    height: 20px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    animation: pulse 1.5s infinite ease-in-out;
+  }
+  
+  .skeleton-title {
+    width: 60%;
+  }
+  
+  .skeleton-subtitle {
+    width: 40%;
+  }
+  
+  /* Pulse animation for shimmer effect */
+  @keyframes pulse {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.4;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+
+
+
+
+
 
 .bookpage-container {
     display: flex;
     flex-direction: column;
 }
-
-
-
-
 
 
 .author-product-container {

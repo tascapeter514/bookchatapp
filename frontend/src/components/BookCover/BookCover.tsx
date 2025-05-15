@@ -19,7 +19,7 @@ const BookCover = ({book}: Props) => {
         <div className="book-cover">
             {thumbnail ? (
                 <img 
-                    className='book-cover-image' 
+                    className='book-cover-image skeleton' 
                     src={book.imageLinks?.thumbnail}
                     height='500'
                     loading='lazy' 

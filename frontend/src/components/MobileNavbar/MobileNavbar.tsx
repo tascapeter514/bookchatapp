@@ -34,7 +34,7 @@ const MobileNavbar = ({ authToken, handleLogout}: Props) => {
                 <CloseMobileNav mobileNav={mobileNav} navDispatch={dispatchNav}><CloseHamburgerIcon /></CloseMobileNav>
             </div>  
             <aside className={`mobile-navbar ${mobileNav.open ? 'open' : ''}`}>
-                <ul className='mobile-navbar-list'>
+                <ul className='mobile-navbar-list' onClick={() => mobileNav.open = false}>
                     <li className='mobile-list-element'><Link to='/'>Home</Link></li>
                     <li className='mobile-list-element'><Link to='/books'>Books</Link></li>
                     <li className='mobile-list-element'><Link to='#'>Authors</Link></li>

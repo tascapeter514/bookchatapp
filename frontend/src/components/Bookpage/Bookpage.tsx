@@ -14,7 +14,18 @@ import './Bookpage.css'
 
 
 
+const BookHeaderSkeleton = () => {
+    return (
+        <div className="book-header-skeleton">
+          <div className="skeleton-cover" />
+          <div className="skeleton-title-group">
+            <div className="skeleton-title" />
+            <div className="skeleton-subtitle" />
+          </div>
+        </div>
+      )
 
+}
 
 const Bookpage = () => {
 
@@ -51,8 +62,15 @@ const Bookpage = () => {
             {isError && <ErrorMessage>{error as string}</ErrorMessage>}
             {isLoading && <LoadSpinner />}
             <BookHeader>
-                <BookCover book={book}/>
-                <BookHeaderTitle book={book}/> 
+                {isLoading ? (
+                    <BookHeaderSkeleton />
+                ): (
+                    <>
+                        <BookCover book={book}/>
+                        <BookHeaderTitle book={book}/> 
+                    </>
+                )}
+
             </BookHeader>
             <BookMainContent book={book} />     
         </div>
