@@ -21,7 +21,6 @@ const BookCover = ({book}: Props) => {
                 <img 
                     className='book-cover-image skeleton' 
                     src={book.imageLinks?.thumbnail}
-                    width='500'
                     height='500'
                     loading='lazy' 
                     
