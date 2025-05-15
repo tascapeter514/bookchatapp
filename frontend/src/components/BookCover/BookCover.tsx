@@ -18,7 +18,13 @@ const BookCover = ({book}: Props) => {
     return(
         <div className="book-cover">
             {thumbnail ? (
-                <img className='book-cover-image' src={book.imageLinks?.thumbnail} alt="" />
+                <img 
+                    className='book-cover-image' 
+                    src={book.imageLinks?.thumbnail}
+                    height='500'
+                    loading='lazy' 
+                    
+                    alt="" />
 
                 ) : (
                     <div className="cover-placeholder">No Cover</div>
