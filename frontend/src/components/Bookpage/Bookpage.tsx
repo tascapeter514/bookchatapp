@@ -27,6 +27,30 @@ const BookHeaderSkeleton = () => {
 
 }
 
+const BookMainContentSkeleton = () => {
+    return (
+      <div className="main-content">
+        <div className="book-description">
+          <hr />
+          <div className="skeleton-title" />
+          <div className="skeleton-paragraph" />
+          <div className="skeleton-paragraph short" />
+        </div>
+  
+        <div className="author-product-container">
+          {/* Simulate two author blocks */}
+          <div className="skeleton-author" />
+          <div className="skeleton-author" />
+  
+          {/* Simulate product details */}
+          <div className="skeleton-product-detail" />
+          <div className="skeleton-product-detail" />
+          <div className="skeleton-product-detail" />
+        </div>
+      </div>
+    )
+  }
+
 const Bookpage = () => {
 
     const { id } = useParams();
@@ -72,7 +96,11 @@ const Bookpage = () => {
                 )}
 
             </BookHeader>
-            <BookMainContent book={book} />     
+            {isLoading ? (
+                <BookMainContentSkeleton />
+            ) : (
+                <BookMainContent book={book} />     
+            )}
         </div>
     )
 }
