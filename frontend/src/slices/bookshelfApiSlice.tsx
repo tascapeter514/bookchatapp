@@ -3,10 +3,10 @@ import { apiSlice } from "./apiSlice";
 export const bookshelfApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         postBook: builder.mutation({
-            query: ({bookshelfId, newBookId, id}: {bookshelfId: number, newBookId: number, id: number }) => ({
+            query: ({bookshelfId, newBookId}: {bookshelfId: number, newBookId: number }) => ({
                 url: 'api/bookshelf/book/add',
                 method: 'PUT',
-                body: {bookshelfId: bookshelfId, newBookId: newBookId, id: id}
+                body: {bookshelfId: bookshelfId, newBookId: newBookId}
             })
         }),
         deleteBook: builder.mutation({

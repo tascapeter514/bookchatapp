@@ -6,7 +6,6 @@ import { useState, Dispatch } from "react"
 
 
 interface Props {
-    id: number,
     bookshelfId?: number,
 }
 
@@ -22,7 +21,7 @@ const WithAddBook = (
     WrappedComponent: ComponentType<InjectedProps>
 ): ComponentType<Props> => {
 
-    return function WithAddBookWrapper({ bookshelfId, id}: Props) {
+    return function WithAddBookWrapper({ bookshelfId}: Props) {
 
         
         const [newBook, setNewBook] = useState<number>(NaN)
@@ -36,12 +35,12 @@ const WithAddBook = (
     
             try {
 
-                if (!bookshelfId || !newBook || !id) {
+                if (!bookshelfId || !newBook) {
                     throw new Error('You are missing an id.')
                     
                 }
     
-                await postBook({bookshelfId, newBookId: newBook, id}).unwrap()
+                await postBook({bookshelfId, newBookId: newBook}).unwrap()
     
             } catch(err: any | BookError) {
                 console.log('catch handler running')

@@ -24,7 +24,7 @@ const BookshelfDisplay = ({ children, id }: Props) => {
     
     return(
         <section className="bookshelf-container">
-            <BookSearchModalWithLogic id={id} bookshelfId={children.id} />
+            <BookSearchModalWithLogic bookshelfId={children.id} />
             
             <ul className="bookshelf-title-list">
                 {books.map((bookElement: Book) => {

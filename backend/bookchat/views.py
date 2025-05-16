@@ -14,6 +14,7 @@ from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync
 from django.http import JsonResponse
 from django.db.models import Q
+from django.forms.models import model_to_dict
 from uuid import UUID
 from django.db import connection
 import datetime
@@ -205,13 +206,13 @@ def add_book_to_bookshelf(request):
     
 
     try:
-        id = request.data.get('id')
+        print('request data:', request.data)
         book_id  = request.data.get('newBookId')
         bookshelf_id = request.data.get('bookshelfId')
-        current_book = Book.objects.get(id=book_id)
-        current_bookshelf = Bookshelf.objects.get(id=bookshelf_id)
+        current_book = Book.objects.select_related('genres').prefetch_related('author', 'author__books').get(id=book_id)
+        current_bookshelf = Bookshelf.objects.prefetch_related('books', 'bookclub').get(id=bookshelf_id)
 
-        print('current bookshelf:', current_bookshelf)
+        # print('current bookshelf:', current_bookshelf)
        
         if current_bookshelf.books.filter(id=current_book.id).exists():
             print('validation error check')
@@ -220,8 +221,17 @@ def add_book_to_bookshelf(request):
         else:
         
             current_bookshelf.books.add(current_book)
-            send_user_data_to_group(id)
-            send_bookclub_data_to_group(id)
+            bookclubs = current_bookshelf.bookclub.all()
+
+            if current_bookshelf.user:
+                print('user exists')
+                send_user_data_to_group(current_bookshelf.user.id)
+            if bookclubs.exists():
+                print('bookclub exists')
+                print(model_to_dict(current_bookshelf))
+                for club in bookclubs:
+                    send_bookclub_data_to_group(club.id)
+
             book_serializer = BookSerializer(current_book)
 
             return Response(book_serializer.data, status=status.HTTP_200_OK)
