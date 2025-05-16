@@ -52,7 +52,7 @@ const WithAddBookToBookshelf = (
                     
                 }
     
-                await postBook({bookshelfId: bookshelf, newBookId: bookId, id: user.id}).unwrap()
+                await postBook({bookshelfId: bookshelf, newBookId: bookId}).unwrap()
     
             } catch(err: any | BookError) {
                 console.log('catch handler running')
