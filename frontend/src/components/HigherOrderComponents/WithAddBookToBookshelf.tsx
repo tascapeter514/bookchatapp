@@ -34,13 +34,14 @@ const WithAddBookToBookshelf = (
         const { data } = useGetUserDataQuery(user?.id, {
             skip: !user?.id
         })
+        const [postBook, {isError, isLoading}] = usePostBookMutation()
 
 
         const [bookshelf, setBookshelf] = useState<number>(NaN)
         const [error, setError] = useState<string>('')
         
 
-        const [postBook, {isError, isLoading}] = usePostBookMutation()
+        
 
 
         const addBook = async () => {

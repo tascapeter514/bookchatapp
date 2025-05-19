@@ -1,0 +1,23 @@
+.bookshelf-icon-button {
+    display: flex;
+    gap: .5rem;
+    /* border: 1px solid red; */
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    background-color: transparent;
+    font-size: 1.2rem;
+
+
+}
+
+
+
+.bookshelf-icon-button > span  {
+    width: 60%;
+    text-align: left;
+}
+
+.bookmark-icon {
+    cursor: pointer;
+}
