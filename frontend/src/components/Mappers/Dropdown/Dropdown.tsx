@@ -9,8 +9,10 @@ const Dropdown = <T extends MapperData>({
     data, 
     dispatch, 
     dataType, 
-    action}: Props<T> ) => {
+    
+}: Props<T> ) => {
 
+        console.log('dropdown dispatch:', dispatch)
     return(
         <>
             <label htmlFor='dropdown-mapper' className='dropdown-mapper-label'>
@@ -19,10 +21,11 @@ const Dropdown = <T extends MapperData>({
                 <select 
                     id='dropdown-mapper' 
                     className='dropdown-mapper'
+                    
                     onChange={(e) => {
-                        e.target.value === '' 
-                        ? dispatch(action ? action(NaN) : NaN) 
-                        : dispatch(action ? action(Number(e.target.value)) : Number(e.target.value))
+                        const selectedId = e.target.value === '' ? NaN : Number(e.target.value);
+                        dispatch(selectedId)
+                        
                     }}
                     >
                     <option>Please select</option>

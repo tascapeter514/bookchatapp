@@ -154,8 +154,7 @@ export interface MapperData {
 export interface MapperProps<T extends MapperData> {
     data: T[],
     dataType?: string,
-    dispatch: (action: any) => void,
-    action?: (payload: number) => any
+    dispatch: (action: any) => void
 }
 
 export type SearchLink = {

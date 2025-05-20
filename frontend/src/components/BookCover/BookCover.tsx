@@ -1,6 +1,3 @@
-import AddBookToBookshelfModal from '../Modals/AddBookToBookshelfModal/AddBookToBookshelfModal'
-import WithAsync from '../HigherOrderComponents/WithAsync'
-import WithAddBookToBookshelf from '../HigherOrderComponents/WithAddBookToBookshelf'
 import BookshelfIconButton from '../Buttons/BookshelfIconButton/BookshelfIconButton'
 import Dropdown from '../Mappers/Dropdown/Dropdown'
 import { RootState } from '../../store/store'
@@ -77,7 +74,6 @@ const BookCover = ({book}: Props) => {
         
             }
             
-            {/* <BookshelfButtonModalWithLogic bookId={book.id}/>  */}
             <Dialog
                 data={userData?.bookshelves.map((
                     bookshelf: SearchResultData) => ({id: bookshelf.id, name: bookshelf.name})) as SearchResultData[]}
@@ -85,7 +81,13 @@ const BookCover = ({book}: Props) => {
                     handleSubmit={addBook}
                     button={openModal => <BookshelfIconButton openModal={openModal}/>}
             >
-                {(data, dispatch) => <Dropdown data={data} dispatch={dispatch} dataType='bookshelves'  />} 
+                {(data, handleSelectedItem) => 
+                    <Dropdown 
+                        data={data} 
+                        dispatch={handleSelectedItem}
+                        dataType='bookshelves'  
+                    
+                    />} 
 
             </Dialog>
         </div>

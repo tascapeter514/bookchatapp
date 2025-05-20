@@ -8,7 +8,7 @@ import RadioButtons from '../../Mappers/RadioButtons/RadioButtons'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../../store/store'
-import { selectBookclub, selectBookshelf, selectDefault } from '../../../slices/addBookToBookclubSlice'
+import {  selectBookshelf, selectDefault } from '../../../slices/addBookToBookclubSlice'
 
 interface Props {
     bookclubData: Bookclub[],
@@ -59,7 +59,6 @@ const AddBookToBookclubModal = ({
                         <Dropdown
                             dispatch={dispatch}
                             data={bookclubData}
-                            action={selectBookclub}
                             dataType='Bookclubs'
 
                          />
