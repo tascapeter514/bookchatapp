@@ -1,13 +1,13 @@
 import BookshelfIconButton from '../Buttons/BookshelfIconButton/BookshelfIconButton'
 import Dropdown from '../Mappers/Dropdown/Dropdown'
 import { RootState } from '../../store/store'
-import { useState } from 'react'
+// import { useState } from 'react'
 import { usePostBookMutation } from '../../slices/bookshelfApiSlice'
 import { useSelector } from 'react-redux'
 import { useGetUserDataQuery } from '../../slices/userDataApiSlice'
 import { Book, SearchResultData } from '../../types'
 import { BookError } from '../../utils/errorHandling'
-import { handleBookError } from '../../utils/errorHandling'
+// import { handleBookError } from '../../utils/errorHandling'
 import Dialog from '../Dialog/Dialog'
 import './BookCover.css'
 
@@ -28,7 +28,7 @@ const BookCover = ({book}: Props) => {
     const [postBook] = usePostBookMutation()
 
 
-    const [error, setError] = useState<string>('')
+    // const [error, setError] = useState<string>('')
     
 
     
@@ -50,7 +50,7 @@ const BookCover = ({book}: Props) => {
 
             console.log('Error' in err)
 
-            err instanceof Error ? setError(err.message) : setError(handleBookError(err))
+            // err instanceof Error ? setError(err.message) : setError(handleBookError(err))
 
         }
         
@@ -88,7 +88,6 @@ const BookCover = ({book}: Props) => {
                         dataType='bookshelves'  
                     
                     />} 
-
             </Dialog>
         </div>
     )
