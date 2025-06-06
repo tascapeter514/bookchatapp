@@ -1,6 +1,7 @@
 .modal-searchbar {
     background-color: white;
     width: 100%;
+    max-width: 350px;
     gap: .5rem;
     display: flex;
     flex-direction: column;
