@@ -2,15 +2,11 @@
 ![bookchat-search](https://github.com/user-attachments/assets/dfad1735-ff58-4827-9b06-b68a65835020)
 This repository contains the source code for Bookchat, a bookclub app for lovers of the written word. Bookchat was designed to facilitate community learning around a shared love of books for users from across the globe. The app was built with Typescript, React, and Django.
 
-<p align="center">
-  <a href="#introduction">Introduction</a> •
-  <a href="#installation">Installation</a> •
-  <a href="#documentation">Documentation</a> •
-  <a href="#issue">Issue?</a>
-</p>
-
+[Introduction](#introduction) • [Installation](#installation) • [Documentation](#documentation) • [Issue?](#issue)
 
 ## Introduction
+
+Bookchat is a social media app centered around bringing folks together from all different backgrounds around a shared love reading. Borne out of my experience during the pandemic teaching English literature to UCLA undergraduates and maintaining a philosophy bookclub with friends, Bookchat is a full stack app where users can browse books from a range of genres, create bookshelves and bookclubs, add books to either and create polls with other bookclub members to decide the next read. Users can invite other members to join a bookclub. Future functionality will include a bookclub recommendation algorithm, a scheduler, and integration with Zoom and Google Meet. Head on over to the <a href="#documentation">Documentation</a> for more information on how to use Bookchat. Happy reading!
 
 ## Installation
 
@@ -80,7 +76,7 @@ npm run dev
 
 ## Documentation
 
-## Issue
+## Issue(#issue)
 If you like what you see, please give us a star.
 
 This app is actively maintained, and we welcome all feedback.
