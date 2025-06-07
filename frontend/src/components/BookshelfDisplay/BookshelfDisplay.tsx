@@ -8,9 +8,6 @@ import ModalSearchbar from '../Search/ModalSearchbar/ModalSearchbar'
 import Dialog from '../Dialog/Dialog'
 import { usePostBookMutation } from '../../slices/bookshelfApiSlice'
 import './BookshelfDisplay.css'
-// import BookSearchModal from '../Modals/BookSearchModal/BookSearchModal'
-// import WithAsync from '../HigherOrderComponents/WithAsync'
-// import WithAddBook from '../HigherOrderComponents/WithAddBook'
 
 interface Props {
     children: Bookshelf,
@@ -55,7 +52,7 @@ const BookshelfDisplay = ({ children, id }: Props) => {
     
     return(
         <section className="bookshelf-container">
-            {/* <BookSearchModalWithLogic bookshelfId={children.id} /> */}
+
             <Dialog
                 title='Add a new title to your bookshelf'
                 button={openModal => <Button onClick={openModal}><SearchIcon /></Button>}
