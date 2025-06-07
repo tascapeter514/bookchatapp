@@ -67,9 +67,11 @@ const Wrapper = () => {
     const [searchValue, setSearchValue] = useState<string>('')
     const [searchResults, setSearchResults] = useState<MockSearchResultData[]>([])
     const [selectedId, setSelection] = useState<number>(NaN)
+    
 
     useEffect(() => {
         const query = searchValue.toLowerCase().trim()
+        console.log('selected Id:', selectedId)
 
         if (query) {
             setTimeout(() => {
@@ -150,6 +152,8 @@ describe('ModalSearchbar testing suite', () => {
     it('calls setSelectId when the user selects the correpsonding radio button', async () => {
         
         const mockSetSelection = vi.fn();
+        
+
 
         render(
             <ModalSearchbar

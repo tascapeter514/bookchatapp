@@ -10,10 +10,11 @@
 
 .search-page-main-content {
     margin: 90px auto;
+    /* border: 1px solid white; */
 }
 
-.search-page-subheader {
-    margin-bottom: 5rem;
+.search-page-header {
+    margin-bottom: 1rem;
     flex-wrap: wrap;
     font-size: 40.5px;
     max-width: 80%;

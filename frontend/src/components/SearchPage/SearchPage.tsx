@@ -12,7 +12,7 @@ const SearchPage = () => {
         <main className='search-page'>
             
             <div className="search-page-main-content">
-                <h1 className='search-page-subheader'>Search for books, authors, and bookclubs</h1>
+                <h1 className='search-page-header'>Search for books, authors, and bookclubs</h1>
                 <NavigationSearchbar url={`${WEBSOCKET_BASE}/ws/search/`}>
                     {searchResults => (
                         <Links searchResults={searchResults as SearchResultsData[]} />

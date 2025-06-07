@@ -1,6 +1,6 @@
 .nav-searchbar-wrapper {
     display: flex;
-    padding: 2em 4em;
+    padding: 2em 4em 2em 0;
     max-width: 1000px;
     gap: 1.25rem;
     align-items: center;
