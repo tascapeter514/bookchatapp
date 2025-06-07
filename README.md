@@ -14,6 +14,69 @@ This repository contains the source code for Bookchat, a bookclub app for lovers
 
 ## Installation
 
+
+### 🔧 Prerequisites
+
+- Python 3.10+
+- Node.js 18+
+- PostgreSQL (optional for production)
+- Django Rest Framework
+- Redis (for Django Channels WebSocket support)
+- [pip](https://pip.pypa.io/en/stable/installation/) and [virtualenv](https://virtualenv.pypa.io/en/latest/)
+
+---
+
+## 🧠 Backend (Django)
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/your-username/your-repo.git
+cd your-repo/backend
+```
+### 2. Create and Activate a Virtual Environment
+```
+python -m venv venv
+# On Windows
+venv\Scripts\activate
+# On macOS/Linux
+source venv/bin/activate
+```
+### 3. Upgrade pip (optional but recommended)
+```
+python -m pip install --upgrade pip
+```
+### 4.  Install Dependencies
+```
+pip install -r requirements.txt
+```
+### 5.Apply Migrations
+```
+python manage.py migrate
+```
+### 6. Load Demo Data
+```
+python manage.py loaddata finished_bookchat.json
+```
+### 7. Run the Django development server
+```
+python manage.py runserver
+```
+
+## 💻 Frontend Setup (/frontend)
+
+### 1. Navigate to the frontend directory
+```
+cd frontend
+```
+### 2. Install Node dependencies
+```
+npm install
+```
+### 3. Start the Vite development server
+```
+npm run dev
+```
+
 ## Documentation
 
 ## Issue
