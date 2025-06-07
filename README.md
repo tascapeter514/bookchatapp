@@ -6,7 +6,32 @@ This repository contains the source code for Bookchat, a bookclub app for lovers
 
 ## Introduction
 
-Bookchat is a social media app centered around bringing folks together from all different backgrounds around a shared love reading. Borne out of my experience during the pandemic teaching English literature to UCLA undergraduates and maintaining a philosophy bookclub with friends, Bookchat is a full stack app where users can browse books from a range of genres, create bookshelves and bookclubs, add books to either and create polls with other bookclub members to decide the next read. Users can invite other members to join a bookclub. Future functionality will include a bookclub recommendation algorithm, a scheduler, and integration with Zoom and Google Meet. Head on over to the <a href="#documentation">Documentation</a> for more information on how to use Bookchat. Happy reading!
+Bookchat is a full-stack social platform designed to bring people together through a shared love of reading. Inspired by my experience teaching English literature at UCLA during the pandemic and running a philosophy book club with friends, Bookchat makes it easy to build community around books — no matter where you're from.
+
+With Bookchat, users can:
+
+ + Discover books across a variety of genres
+
+    -Discover books across a variety of genres
+
+    -Create and join bookshelves and bookclubs
+
+    -Add books to personal or shared spaces
+
+    -Collaborate with club members using polls to choose the next read
+
+    -Invite others to participate in ongoing discussions
+
+Future features will include:
+
+    A smart bookclub recommendation algorithm
+
+    Event scheduling
+
+    Integration with Zoom and Google Meet
+
+
+📚 For more details on how to get started, head to the [Documentation](#documentation). Happy reading!
 
 ## Installation
 
