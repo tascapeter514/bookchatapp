@@ -17,3 +17,8 @@ This repository contains the source code for Bookchat, a bookclub app for lovers
 ## Documentation
 
 ## Issue
+If you like what you see, please give us a star.
+
+This app is actively maintained, and we welcome all feedback.
+
+Please raise an issue [here](https://github.com/tascapeter514/bookchatapp/issues/new).
