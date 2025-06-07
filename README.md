@@ -22,6 +22,7 @@ This repository contains the source code for Bookchat, a bookclub app for lovers
 - PostgreSQL (optional for production)
 - Django Rest Framework
 - Redis (for Django Channels WebSocket support)
+- Redux Toolkit
 - [pip](https://pip.pypa.io/en/stable/installation/) and [virtualenv](https://virtualenv.pypa.io/en/latest/)
 
 ---
