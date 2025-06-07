@@ -94,11 +94,49 @@ npm run dev
 ### 1.Begin by searching for your favorite books
 ![book-search](./assets/book-search.png)
 
-Once you have entered a search term, click on the link. You will be brought to a book page:
+Start by entering a book title, author, or keyword in the search bar. Click on a result to view the book’s dedicated detail page:
 
 ![sample-book](./assets/sample-book.png)
 
-You can also view the author
+From the book page, you can also explore the author’s profile and browse other books they’ve written:
+
+![sample-author](./assets/sample-author.png)
+
+You can always discover the latest books and authors using the links in the navigation bar.
+
+### 2. Register and explore the userdashboard
+
+To get started, navigate to the home page and register for an account:
+
+![register](./assets/register.png)
+
+After creating your account, you'll be redirected to your personal user dashboard:
+
+![user-dashboard](./assets/user-dashboard.png)
+
+### 3. Create a bookshelf and add books to it.
+
+In the right-hand sidebar of your dashboard, you’ll find buttons to create bookshelves and bookclubs.
+
+To create a bookshelf, click “Create Bookshelf” and enter a name for your new shelf:
+
+![create-bookshelf](./assets/create-bookshelf.png)
+
+Once your bookshelf is created, you can search for books and easily add them to your shelf:
+
+![add-book-to-bookshelf](./assets/add-book-to-bookshelf.png)
+
+### 4. Create a bookclub and invite other users
+
+Click on “Create Bookclub” and provide a name for your club:
+
+![create-bookclub](./assets/create-bookclub.png)
+
+After setting up your bookclub, invite members by clicking the “Invite Members” button and searching for users you'd like to add:
+
+![invite-bookclub-members](./assets/invite-bookclub-members.png)
+
+Once your bookclub has at least three books on its shelf and a few members, you’ll be able to create polls to decide your next group read.
 
 
 ## Issue
