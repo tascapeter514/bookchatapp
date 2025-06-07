@@ -34,43 +34,43 @@ DEBUG = True
 
 import sys
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
     
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-            'stream': sys.stdout,  # Explicit stdout logging (Render uses this)
-        },
-    },
-    'root': {
-        'handlers': ['console'],
-        'level': 'INFO',
-    },
-    'loggers': {
-        'django.db.backends': {
-            'handlers': ['console'],
-            'level': 'DEBUG',  # Only use DEBUG here if you want SQL statements
-        },
-        'bookchat.timing_middleware': {
-            'handlers': ['console'],
-            'level': 'INFO',
-            'propagate': False,
-        },
-    }
-}
+#     'handlers': {
+#         'console': {
+#             'class': 'logging.StreamHandler',
+#             'stream': sys.stdout,  # Explicit stdout logging (Render uses this)
+#         },
+#     },
+#     'root': {
+#         'handlers': ['console'],
+#         'level': 'INFO',
+#     },
+#     'loggers': {
+#         'django.db.backends': {
+#             'handlers': ['console'],
+#             'level': 'DEBUG',  # Only use DEBUG here if you want SQL statements
+#         },
+#         'bookchat.timing_middleware': {
+#             'handlers': ['console'],
+#             'level': 'INFO',
+#             'propagate': False,
+#         },
+#     }
+# }
 
 
-if not DEBUG:
-    import logging
-    from django.db import connection
+# if not DEBUG:
+#     import logging
+#     from django.db import connection
 
-    def enable_query_logging():
-        from django.db.backends.utils import CursorDebugWrapper
-        CursorDebugWrapper.__init__ = lambda self, cursor, db: setattr(self, 'cursor', cursor) or setattr(self, 'db', db)
+#     def enable_query_logging():
+#         from django.db.backends.utils import CursorDebugWrapper
+#         CursorDebugWrapper.__init__ = lambda self, cursor, db: setattr(self, 'cursor', cursor) or setattr(self, 'db', db)
 
-    enable_query_logging()
+#     enable_query_logging()
 
 
 

@@ -10,10 +10,10 @@ export const bookshelfApiSlice = apiSlice.injectEndpoints({
             })
         }),
         deleteBook: builder.mutation({
-            query: ({bookId, bookshelfId, id}: {bookId: number, bookshelfId: number, id: number}) => ({
+            query: ({bookId, bookshelfId}: {bookId: number, bookshelfId: number}) => ({
                 url: 'api/bookshelf/book/delete',
                 method: 'DELETE',
-                body: {bookId: bookId, bookshelfId: bookshelfId, id: id}
+                body: {bookId: bookId, bookshelfId: bookshelfId}
             })
         })
     })

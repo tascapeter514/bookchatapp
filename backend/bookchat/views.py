@@ -379,14 +379,24 @@ def remove_book_from_bookshelf(request):
         book_id = request.data.get('bookId')
         print('book id:', book_id)
         bookshelf_id = request.data.get('bookshelfId')
-        id = request.data.get('id')
 
-        current_bookshelf = Bookshelf.objects.get(id=bookshelf_id)
-        current_book = Book.objects.get(id=book_id)
+
+        current_book = Book.objects.select_related('genres').prefetch_related('author', 'author__books').get(id=book_id)
+        current_bookshelf = Bookshelf.objects.prefetch_related('books', 'bookclub').get(id=bookshelf_id)
 
         print('current book:', current_book)
 
         current_bookshelf.books.remove(current_book)
+        bookclubs = current_bookshelf.bookclub.all()
+
+        if current_bookshelf.user:
+            print('user exists')
+            send_user_data_to_group(current_bookshelf.user.id)
+        if bookclubs.exists():
+            print('bookclub exists')
+            print(model_to_dict(current_bookshelf))
+            for club in bookclubs:
+                send_bookclub_data_to_group(club.id)
         
         book_serializer = BookSerializer(current_book)
 

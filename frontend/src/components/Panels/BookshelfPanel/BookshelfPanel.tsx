@@ -8,11 +8,12 @@ import './BookshelfPanel.css';
 
 interface Props {
     bookshelves: Bookshelf[],
-    tabs: TabState,
-    id: number
+    tabs: TabState
 }
 
-const Bookshelves = ({bookshelves, tabs, id}: Props) => {
+const Bookshelves = ({bookshelves, tabs}: Props) => {
+
+
 
     
 
@@ -26,7 +27,7 @@ const Bookshelves = ({bookshelves, tabs, id}: Props) => {
                         className='bookshelf-listElement'
                     >
                         <SubHeader>{bookshelf.name}</SubHeader>
-                        <BookshelfDisplay id={id}>{bookshelf}</BookshelfDisplay>
+                        <BookshelfDisplay bookshelf={bookshelf} />
                     </li>
                 )
             })}
@@ -34,13 +35,13 @@ const Bookshelves = ({bookshelves, tabs, id}: Props) => {
     )
 }
 
-const BookshelfPanel = ({bookshelves, tabs, id}: Props) => {
+const BookshelfPanel = ({bookshelves, tabs}: Props) => {
 
 
     return(
         <section className='bookshelves-container' aria-labelledby='tab-1'>
             <Header>Bookshelves</Header>
-            <Bookshelves bookshelves={bookshelves} tabs={tabs} id={id}/>
+            <Bookshelves bookshelves={bookshelves} tabs={tabs}/>
         </section>
 
     )

@@ -10,8 +10,7 @@ import { usePostBookMutation } from '../../slices/bookshelfApiSlice'
 import './BookshelfDisplay.css'
 
 interface Props {
-    children: Bookshelf,
-    id: number
+    bookshelf: Bookshelf
 
 }
 
@@ -19,12 +18,12 @@ interface Props {
 
 // const BookSearchModalWithLogic = WithAddBook(WithAsync(BookSearchModal))
 
-const BookshelfDisplay = ({ children, id }: Props) => {
+const BookshelfDisplay = ({ bookshelf}: Props) => {
 
-    console.log('bookshelf display children:', children)
+    console.log('bookshelf display children:', bookshelf)
 
 
-    const { books } = children
+    const { books } = bookshelf
     const {searchResults, searchValue, setSearchValue} = useSearch(`${WEBSOCKET_BASE}/ws/search/books/`)
     const [postBook] = usePostBookMutation()
 
@@ -32,12 +31,12 @@ const BookshelfDisplay = ({ children, id }: Props) => {
     
         try {
 
-            if (!id|| !newBookId) {
+            if (!bookshelf.id|| !newBookId) {
                 throw new Error('You are missing an id.')
                 
             }
 
-            await postBook({bookshelfId: id, newBookId}).unwrap()
+            await postBook({bookshelfId: bookshelf.id, newBookId}).unwrap()
 
         } catch(err: any) {
             console.log('catch handler running')
@@ -78,7 +77,7 @@ const BookshelfDisplay = ({ children, id }: Props) => {
                             className='book-card-listElement'
                             key={bookElement.id}
                         >
-                            <BookCard id={id} bookshelfId={children.id}>{bookElement}</BookCard>
+                            <BookCard bookshelfId={bookshelf.id}>{bookElement}</BookCard>
                         </li>
                     )
                 })}

@@ -5,12 +5,11 @@ import './BookCard.css'
 
 interface Props {
     children: Book,
-    bookshelfId: number,
-    id: number
+    bookshelfId: number
 }
 
 
-const BookCard = ({children, bookshelfId, id}: Props) => {
+const BookCard = ({children, bookshelfId}: Props) => {
 
    
     const [deleteBook] = useDeleteBookMutation()
@@ -21,7 +20,7 @@ const BookCard = ({children, bookshelfId, id}: Props) => {
         const bookId = Number(children.id)
 
         try {
-            await deleteBook({bookId, bookshelfId, id})
+            await deleteBook({bookId, bookshelfId})
 
         } catch(err) {
             console.error('Delete Book Error:', err)
