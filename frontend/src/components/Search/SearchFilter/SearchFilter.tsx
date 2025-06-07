@@ -25,7 +25,7 @@ const SearchFilter = () => {
                 onChange={(e) => dispatch(startSearch(e.target.value))}
                 required 
             />
-            <SearchIcon className='search-icon'/>
+            <SearchIcon className='search-filter-search-icon'/>
 
         </div>
     )
