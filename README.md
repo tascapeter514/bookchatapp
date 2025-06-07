@@ -76,7 +76,7 @@ npm run dev
 
 ## Documentation
 
-## Issue(#issue)
+## Issue
 If you like what you see, please give us a star.
 
 This app is actively maintained, and we welcome all feedback.
