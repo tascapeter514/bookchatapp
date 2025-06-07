@@ -11,25 +11,15 @@ Bookchat is a full-stack social platform designed to bring people together throu
 With Bookchat, users can:
 
  + Discover books across a variety of genres
-
-    -Discover books across a variety of genres
-
-    -Create and join bookshelves and bookclubs
-
-    -Add books to personal or shared spaces
-
-    -Collaborate with club members using polls to choose the next read
-
-    -Invite others to participate in ongoing discussions
+ + Create and join bookshelves and bookclubs
+ + Add books to personal or shared spaces
+ + Collaborate with club members using polls to choose the next read
+ + Invite others to participate in ongoing discussions
 
 Future features will include:
-
-    A smart bookclub recommendation algorithm
-
-    Event scheduling
-
-    Integration with Zoom and Google Meet
-
+  + A smart bookclub recommendation algorithm
+  + Event scheduling
+  + Integration with Zoom and Google Meet
 
 📚 For more details on how to get started, head to the [Documentation](#documentation). Happy reading!
 
