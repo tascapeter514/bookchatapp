@@ -138,7 +138,6 @@ After setting up your bookclub, invite members by clicking the “Invite Members
 
 Once your bookclub has at least three books on its shelf and a few members, you’ll be able to create polls to decide your next group read.
 
-
 ## Issue
 If you like what you see, please give us a star.
 
