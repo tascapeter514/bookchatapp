@@ -19,6 +19,10 @@ const BookCard = ({children, bookshelfId}: Props) => {
         
         const bookId = Number(children.id)
 
+        if (!bookId || !bookshelfId) {
+            throw new Error ('Invalid bookId or bookshelfId')
+        }
+
         try {
             await deleteBook({bookId, bookshelfId})
 
@@ -32,7 +36,7 @@ const BookCard = ({children, bookshelfId}: Props) => {
     return(
         <article className="book-card" >
             <div className="img-overlay">
-                <CancelIcon onClick={handleDeleteBook} />
+                <CancelIcon onClick={handleDeleteBook} aria-label='delete book' role='button'/>
                 <img src={children.imageLinks?.thumbnail} alt="book-card-cover" className='book-card-img' />
                 <div className="book-card-buttons">
                     <LikeIcon />
