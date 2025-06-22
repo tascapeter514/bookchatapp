@@ -16,14 +16,14 @@ const BookCard = ({children, bookshelfId}: Props) => {
 
     const handleDeleteBook = async () => {
 
-        
         const bookId = Number(children.id)
 
-        if (!bookId || !bookshelfId) {
-            throw new Error ('Invalid bookId or bookshelfId')
-        }
-
         try {
+
+            if (!bookId || !bookshelfId) {
+                throw new Error ('Invalid bookId or bookshelfId')
+            }
+
             await deleteBook({bookId, bookshelfId})
 
         } catch(err) {

@@ -12,42 +12,42 @@ vi.mock('../slices/bookshelfApiSlice', () => ({
 
 import { useDeleteBookMutation } from '../slices/bookshelfApiSlice'
 
-      const bookshelfId = 1090
+const bookshelfId = 1090
 
-        const mockBook: Book = {
-            id: 1,
-            name: "A Portrait of the Artist as a Young Man",
-            publisher: "B. W. Huebsch",
-            description: "A semi-autobiographical novel by James Joyce, portraying the early years of Stephen Dedalus, a fictional alter ego of Joyce and an aspiring writer.",
-            ISBN_Identifiers: [
-                { type: "ISBN_10", identifier: "0142437344" },
-                { type: "ISBN_13", identifier: "9780142437346" }
-            ],
-            averageRating: 4.1,
-            ratingsCount: 2350,
-            imageLinks: {
-                smallThumbnail: "https://books.google.com/books/content?id=portrait-thumbnail",
-                thumbnail: "https://books.google.com/books/content?id=portrait-thumbnail-large"
-            },
-            pageCount: 276,
-            genres: {
-                id: 12,
-                name: "Modernist Fiction"
-            },
-            authors: []
-        }
+const mockBook: Book = {
+    id: 1,
+    name: "A Portrait of the Artist as a Young Man",
+    publisher: "B. W. Huebsch",
+    description: "A semi-autobiographical novel by James Joyce, portraying the early years of Stephen Dedalus, a fictional alter ego of Joyce and an aspiring writer.",
+    ISBN_Identifiers: [
+        { type: "ISBN_10", identifier: "0142437344" },
+        { type: "ISBN_13", identifier: "9780142437346" }
+    ],
+    averageRating: 4.1,
+    ratingsCount: 2350,
+    imageLinks: {
+        smallThumbnail: "https://books.google.com/books/content?id=portrait-thumbnail",
+        thumbnail: "https://books.google.com/books/content?id=portrait-thumbnail-large"
+    },
+    pageCount: 276,
+    genres: {
+        id: 12,
+        name: "Modernist Fiction"
+    },
+    authors: []
+}
 
-        const mockAuthor: Author = {
-            id: 1,
-            name: "James Joyce",
-            bio: "James Joyce was an Irish novelist and poet, considered to be one of the most influential writers of the early 20th century.",
-            books: [mockBook], // recursive relationship
-            authorPhoto: "https://example.com/james-joyce.jpg",
-            birthDate: "1882-02-02",
-            deathDate: "1941-01-13"
-        }
+const mockAuthor: Author = {
+    id: 1,
+    name: "James Joyce",
+    bio: "James Joyce was an Irish novelist and poet, considered to be one of the most influential writers of the early 20th century.",
+    books: [mockBook], // recursive relationship
+    authorPhoto: "https://example.com/james-joyce.jpg",
+    birthDate: "1882-02-02",
+    deathDate: "1941-01-13"
+}
 
-        mockBook.authors = [mockAuthor]
+mockBook.authors = [mockAuthor]
 
 describe('BookCard and handleDeleteBook', () => {
     it ('calls delete book with correct arguments', async () => {

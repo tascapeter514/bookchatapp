@@ -10,10 +10,14 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement>{
 const BookshelfIconButton = ({openModal}: Props) => {
 
     return(
-        <div className='bookshelf-icon-button' >
-            <BookmarkIcon onClick={openModal} />
+        <button 
+            className='bookshelf-icon-button'
+            onClick={openModal}
+            aria-label='Add to Bookshelf'
+        >
+            <BookmarkIcon />
             <span>Add to Bookshelf</span>
-        </div>
+        </button>
 
     )
 
