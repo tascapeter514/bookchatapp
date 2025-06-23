@@ -30,8 +30,6 @@ const BookCover = ({book}: Props) => {
 
     // const [error, setError] = useState<string>('')
     
-
-    
     const addBook = async (bookshelfId: number) => {
 
         try {
@@ -66,7 +64,7 @@ const BookCover = ({book}: Props) => {
                     height='500'
                     loading='lazy' 
                     
-                    alt="" />
+                    alt="book cover image" />
 
                 ) : (
                     <div className="cover-placeholder">No Cover</div>
