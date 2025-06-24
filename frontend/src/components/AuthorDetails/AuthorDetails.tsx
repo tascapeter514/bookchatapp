@@ -14,7 +14,7 @@ const AuthorDetails = ({id, name, bio}: Props) => {
     return(
         <aside key={id} className='author-details'>
             <hr />
-            <h3>About {name}</h3>
+            <h2>About {name}</h2>
             <div className='author-text-container'>
                 <p>{bio}</p>
                 <span className="author-link">

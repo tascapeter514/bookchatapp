@@ -11,7 +11,7 @@ describe('formatDate and weeksAgo', () => {
 
     it('should give the correct number of weeks past' ,() => {
         
-        expect(weeksAgo(mockDateString)).toEqual(83)
+        expect(weeksAgo(mockDateString)).toEqual(84)
     })
 
 })

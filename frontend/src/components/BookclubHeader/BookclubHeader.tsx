@@ -15,7 +15,7 @@ const BookclubHeader = ({bookclub}: Props) => {
     return (
         <div className='bookclub-top-facade'>
             <div className="bookclub-background">
-                <div className="bookclub-background-img-wrapper"><img src={BookclubBackground} alt="" /></div>
+                <div className="bookclub-background-img-wrapper"><img src={BookclubBackground} alt="bookclub-background" /></div>
                 <BookclubAvatar id={bookclub?.id}/>
                 <div className="bookclub-header-title">
                     <h2>{bookclub?.name}</h2>

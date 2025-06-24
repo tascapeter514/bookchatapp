@@ -18,7 +18,7 @@ const BookMainContent = ({book}: Props) => {
         <div className="main-content">
             <div className="book-description">
                 <hr />
-                <h3>About {book.name}</h3>
+                <h2>About {book.name}</h2>
                 <p>{book.description}</p>
             </div>
             <div className="author-product-container">
