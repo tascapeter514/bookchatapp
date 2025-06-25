@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import BookclubPage from "../components/BookclubPage/BookclubPage";
 import useBookclubData from "../hooks/useBookclubData";
 import userEvent from "@testing-library/user-event";
@@ -186,8 +186,8 @@ describe('BookclubPage', () => {
         // expect(panel).toBeNull()
         // expect(bookshelvesHeader).toBeNull()
 
-        const toggleButton = screen.getByRole('button', { name: /Bookshelves/i })
-        await userEvent.click(toggleButton)
+        const dropdownButton = screen.getByRole('button', { name: /Bookshelves/i })
+        await userEvent.click(dropdownButton)
 
         const panel = await screen.findByTestId('bookclub-bookshelf-panel')
         const bookshelvesHeader = await screen.findByRole('heading', {level: 1, name: /Bookshelves/i})

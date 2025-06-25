@@ -1,4 +1,11 @@
 
+.bookclub-container {
+    overflow-x: hidden;
+    position: relative;
+}
+
+
+
 .bookclub-dashboard-layout {
     margin: 0;
     font-size: 1.25rem;
@@ -6,6 +13,8 @@
     grid-template-columns: minmax(250px, 80%) minmax(300px, 20%);
     margin: 0 auto;
     z-index: 10000;
+    overflow-x: hidden;
+    
 }
 
 .bookclub-dashboard-layout .open-user-nav-toggle {
@@ -22,6 +31,8 @@
 
 
 @media (max-width: 900px) {
+
+    
     .dashboard-main {
         grid-template-columns: 1fr;
         position: relative;
