@@ -6,7 +6,7 @@ import CreateBookclubBookshelfModal from '../Modals/CreateBookclubBookshelfModal
 import BookshelfTabs from '../BookshelfTabs/BookshelfTabs'
 import CurrentReadPanel from '../Panels/CurrentReadPanel/CurrentReadPanel'
 import useBookclubData from '../../hooks/useBookclubData'
-import BookclubHeader from '../BookclubHeader/BookclubHeader'
+import BookclubHero from '../BookclubHero/BookclubHero'
 import tabsReducer from '../../reducers/tabsReducer'
 import BookshelfButton from '../TabButtons/BookshelfButton/BookshelfButton'
 import DashboardNav from '../DashboardNav/DashboardNav'
@@ -21,6 +21,13 @@ import { UserIcon, CloseIcon } from '../Icons'
 import ErrorMessage from '../Messages/ErrorMessage/ErrorMessage'
 
 
+
+// const DashboardLayout = ({children}: ReactNode) => (
+//     <div className='bookclub-dashboard-layout'>
+//         {children} 
+//     </div>
+
+// )
 
 const BookclubPage = () => {
 
@@ -46,35 +53,39 @@ const BookclubPage = () => {
 
         
         <div className='bookclub-container'>
-            <BookclubHeader bookclub={bookclub}/>
-            <DashboardMain>
-                <OpenUserMobileNav mobileNav={mobileNav} navDispatch={navDispatch}><UserIcon aria-label='open bookclub mobile nav' /></OpenUserMobileNav>
-                {bookclubTabs.activeTab === 'currentReadPanel' && <CurrentReadPanel bookclubId={bookclub?.id}  />}
-                {bookclubTabs.activeTab === 'bookshelfPanel' && 
-                    <BookshelfPanel 
-                        tabs={bookclubTabs} 
-                        bookshelves={bookshelves ?? []} 
-                />}
-            </DashboardMain>
-            <DashboardNav mobileNav={mobileNav}>
-                <CloseUserMobileNav mobileNav={mobileNav} navDispatch={navDispatch}><CloseIcon aria-label='close bookclub mobile nav'/></CloseUserMobileNav>
-                <CurrentReadButton 
-                    dispatchTabs={dispatchTabs} 
-                    tabs={bookclubTabs} 
-                    books={books ?? []} 
-                    bookclubId={bookclub?.id}
-                />
-                <InviteButton bookclub={bookclub}/>
-                <BookshelfButton>
-                    <NavbarDivider />
-                    <BookshelfTabs 
-                        tabs={bookclubTabs} 
-                        dispatchTabs={dispatchTabs} 
-                        bookshelves={bookshelves ?? []}
+            <BookclubHero bookclub={bookclub}/>
+            <div className="bookclub-dashboard-layout">
+                <DashboardMain>
+                    <OpenUserMobileNav mobileNav={mobileNav} navDispatch={navDispatch}><UserIcon aria-label='open bookclub mobile nav' /></OpenUserMobileNav>
+                    {bookclubTabs.activeTab === 'currentReadPanel' && <CurrentReadPanel bookclubId={bookclub?.id}  />}
+                    {bookclubTabs.activeTab === 'bookshelfPanel' &&
+                        <BookshelfPanel
+                            data-testid='bookclub-bookshelf-panel'
+                            tabs={bookclubTabs}
+                            bookshelves={bookshelves ?? []}
+                    />}
+                </DashboardMain>
+                <DashboardNav mobileNav={mobileNav}>
+                    
+                    <CloseUserMobileNav mobileNav={mobileNav} navDispatch={navDispatch}><CloseIcon aria-label='close bookclub mobile nav'/></CloseUserMobileNav>
+                    <CurrentReadButton
+                        dispatchTabs={dispatchTabs}
+                        tabs={bookclubTabs}
+                        books={books ?? []}
+                        bookclubId={bookclub?.id}
                     />
-                    <CreateBookclubBookshelfModal bookclub={bookclub}/>
-                </BookshelfButton>
-            </DashboardNav>
+                    <InviteButton bookclub={bookclub}/>
+                    <BookshelfButton>
+                        <NavbarDivider />
+                        <BookshelfTabs
+                            tabs={bookclubTabs}
+                            dispatchTabs={dispatchTabs}
+                            bookshelves={bookshelves ?? []}
+                        />
+                        <CreateBookclubBookshelfModal bookclub={bookclub}/>
+                    </BookshelfButton>
+                </DashboardNav>
+            </div>
         </div>
     )
 }

@@ -1,5 +1,5 @@
 
-.bookclub-content {
+.bookclub-dashboard-layout {
     margin: 0;
     font-size: 1.25rem;
     display: grid;
@@ -8,15 +8,25 @@
     z-index: 10000;
 }
 
+.bookclub-dashboard-layout .open-user-nav-toggle {
+    top: 15px;
+    right: -275px
+
+}
+
 
 .bookclub-divider {
     margin-block: .5em;
-
     border: 1px solid lightgrey;
 }
 
 
-
+@media (max-width: 900px) {
+    .dashboard-main {
+        grid-template-columns: 1fr;
+        position: relative;
+    }
+}
 
 
 

@@ -6,7 +6,7 @@ const LoadSpinner = () => {
 
 
     return(
-        <span className='loader'></span>
+        <span className='loader' data-testid='load-spinner'></span>
     )
 }
 

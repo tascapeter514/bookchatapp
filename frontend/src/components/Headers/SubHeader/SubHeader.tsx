@@ -8,7 +8,7 @@ const SubHeader = ({children}: SubHeaderProps) => {
 
     return (
         <>
-            <h2 className="subheader">{children}</h2>
+            <h3 className="subheader">{children}</h3>
         </>
     )
         
