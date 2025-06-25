@@ -19,7 +19,7 @@
 
 .bookclub-dashboard-layout .open-user-nav-toggle {
     top: 15px;
-    right: -275px
+    right: 10px
 
 }
 
@@ -33,7 +33,7 @@
 @media (max-width: 900px) {
 
     
-    .dashboard-main {
+    .bookclub-dashboard-layout {
         grid-template-columns: 1fr;
         position: relative;
     }
