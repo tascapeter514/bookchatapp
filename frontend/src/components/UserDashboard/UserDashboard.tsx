@@ -58,7 +58,7 @@ const UserDashboard = () => {
     const [userTabs, dispatchUserTabs] = useReducer(tabsReducer, {activeTab: 'accountPanel', activeBookshelf: ''})
 
     
-    if (isLoading) return <><LoadSpinner /></>
+    if (isLoading) return <LoadSpinner />
     
 
 
@@ -68,14 +68,14 @@ const UserDashboard = () => {
     return(
         <div className='dashboard-container'>
             <DashboardMain>
-                <OpenUserMobileNav mobileNav={mobileNav} navDispatch={navDispatch}><UserIcon /></OpenUserMobileNav>
+                <OpenUserMobileNav mobileNav={mobileNav} navDispatch={navDispatch}><UserIcon aria-label='open mobile navigation' /></OpenUserMobileNav>
                 {userTabs.activeTab === 'accountPanel' && <AccountPanel />}
                 {userTabs.activeTab === 'messagesPanel' && <MessagePanel invitations={invitations} />}
                 {userTabs.activeTab === 'bookclubPanel' && <BookclubsPanel bookclubs={bookclubs}/>}
                 {userTabs.activeTab === 'bookshelfPanel' && <BookshelfPanel tabs={userTabs} bookshelves={bookshelves}/>}
             </DashboardMain>
             <DashboardNav mobileNav={mobileNav}>
-                <CloseUserMobileNav mobileNav={mobileNav} navDispatch={navDispatch} > <CloseIcon /> </CloseUserMobileNav>
+                <CloseUserMobileNav mobileNav={mobileNav} navDispatch={navDispatch}> <CloseIcon aria-label='close mobile navigation' /> </CloseUserMobileNav>
                 <ProfileHeader user={user}/>
                 <AccountButton userTabs={userTabs} dispatchUserTabs={dispatchUserTabs}/>
                 <MessageButton userTabs={userTabs} dispatchUserTabs={dispatchUserTabs}/>

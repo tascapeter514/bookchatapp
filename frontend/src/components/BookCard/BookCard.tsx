@@ -9,14 +9,14 @@ interface Props {
 }
 
 
-const BookCard = ({children, bookshelfId}: Props) => {
+const BookCard = ({children: book, bookshelfId}: Props) => {
 
    
     const [deleteBook] = useDeleteBookMutation()
 
     const handleDeleteBook = async () => {
 
-        const bookId = Number(children.id)
+        const bookId = Number(book.id)
 
         try {
 
@@ -37,18 +37,18 @@ const BookCard = ({children, bookshelfId}: Props) => {
         <article className="book-card" >
             <div className="img-overlay">
                 <CancelIcon onClick={handleDeleteBook} aria-label='delete book' role='button'/>
-                <img src={children.imageLinks?.thumbnail} alt="book-card-cover" className='book-card-img' />
+                <img src={book.imageLinks?.thumbnail} alt="book-card-cover" className='book-card-img' />
                 <div className="book-card-buttons">
                     <LikeIcon />
                     <DislikeIcon />
                 </div>
             </div>      
             <div className="book-card-back">
-                <h3 className="book-card-title">{children.name}</h3>
-                {children.authors?.map((author: Author) => (
+                <h3 className="book-card-title">{book.name}</h3>
+                {book.authors?.map((author: Author) => (
                     <li className='card-author-listElement' key={author.id}><span className='card-author-name'>{author.name}</span></li>
                 ))}
-                <p className="book-card-ratings">{children.averageRating} out of {children.ratingsCount} ratings</p>
+                <p className="book-card-ratings">{book.averageRating} out of {book.ratingsCount} ratings</p>
                         
             </div>
         </article>

@@ -1,16 +1,11 @@
 import BookMainContent from '../BookMainContent/BookMainContent'
 import BookHeaderTitle from '../BookHeaderTitle/BookHeaderTitle'
-import { useGetBookMutation } from '../../slices/bookApiSlice'
-import { useDispatch, useSelector } from 'react-redux'
 import LoadSpinner from '../LoadSpinner/LoadSpinner'
 import ErrorMessage from '../Messages/ErrorMessage/ErrorMessage'
-import { loadBook } from '../../slices/bookSlice'
-import { useEffect, useCallback } from 'react'
 import BookCover from '../BookCover/BookCover'
 import BookHeader from '../BookHeader/BookHeader'
-import { RootState } from '../../store/store'
-import {useParams } from 'react-router-dom'
 import './Bookpage.css'
+import useGetBookData from '../../hooks/useGetBookData'
 
 
 
@@ -53,32 +48,7 @@ const BookMainContentSkeleton = () => {
 
 const Bookpage = () => {
 
-    const { id } = useParams();
-    console.log('book id:', id)
-    const dispatch = useDispatch()
-    const [getBook, {isLoading, isError, error}] = useGetBookMutation()
-    const { book } = useSelector((state: RootState) => state.book)
-
-    // REMOVE CALLBACK HANDLER
-    const getBookData = useCallback( async () => {
-
-        try {
-
-            const response = await getBook(Number(id)).unwrap()
-            dispatch(loadBook({...response}))
-
-        } catch(err: any) {
-            console.error('Error fetching book:', err)
-        }
-
-    }, [id])
-
-    useEffect(() => {
-
-        getBookData()
-
-    }, [id])
-
+  const { book, isLoading, isError, error } = useGetBookData()
 
     return (
         

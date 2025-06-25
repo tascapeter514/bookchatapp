@@ -5,8 +5,7 @@ import BookshelfPanel from '../Panels/BookshelfPanel/BookshelfPanel'
 import CreateBookclubBookshelfModal from '../Modals/CreateBookclubBookshelfModal/CreateBookclubBookshelfModal'
 import BookshelfTabs from '../BookshelfTabs/BookshelfTabs'
 import CurrentReadPanel from '../Panels/CurrentReadPanel/CurrentReadPanel'
-import { useParams } from 'react-router-dom'
-import { useGetBookclubDataQuery } from '../../slices/bookclubApiSlice'
+import useBookclubData from '../../hooks/useBookclubData'
 import BookclubHeader from '../BookclubHeader/BookclubHeader'
 import tabsReducer from '../../reducers/tabsReducer'
 import BookshelfButton from '../TabButtons/BookshelfButton/BookshelfButton'
@@ -15,51 +14,67 @@ import mobileNavReducer from '../../reducers/mobileNavReducer'
 import NavbarDivider from '../Dividers/NavbarDivider/NavbarDivider'
 import CurrentReadButton from '../TabButtons/CurrentReadButton/CurrentReadButton'
 import InviteButton from '../TabButtons/InviteButton/InviteButton'
+import LoadSpinner from '../LoadSpinner/LoadSpinner'
+import OpenUserMobileNav from '../Buttons/OpenUserMobileNav/OpenUserMobileNav'
+import CloseUserMobileNav from '../Buttons/CloseUserMobileNav/CloseUserMobileNav'
+import { UserIcon, CloseIcon } from '../Icons'
+import ErrorMessage from '../Messages/ErrorMessage/ErrorMessage'
 
 
 
 const BookclubPage = () => {
 
+    const {
+        bookclub,
+        bookshelves, 
+        books, 
+        isLoading, 
+        isError, 
+        error
+    } = useBookclubData()
 
-    const { id } = useParams()
-    const {data }= useGetBookclubDataQuery(Number(id))
-    const bookclub = data?.bookclub
-    const bookshelves = data?.bookshelves
-    const books = bookshelves?.flatMap(bookshelf => bookshelf.books)
     const [bookclubTabs, dispatchTabs] = useReducer(tabsReducer, {activeTab: '', activeBookshelf: '', showNav: false})
-    const [mobileNav] = useReducer(mobileNavReducer, {open: false, isExiting: false})
+    const [mobileNav, navDispatch] = useReducer(mobileNavReducer, {open: false, isExiting: false})
 
-    console.log('bookclub data:', data)
-
-    console.log('bookshelves:', bookshelves)
+    
+    if (isLoading) return <LoadSpinner />
+    if (isError) return <ErrorMessage>{error as string}</ErrorMessage>
+    if(!bookclub) return null;
 
     
     return(
 
         
         <div className='bookclub-container'>
-            {bookclub && (<BookclubHeader bookclub={bookclub}/>)}
-            {bookclub && (
-                <div className='bookclub-content'>
-                    <DashboardMain>
-                        {bookclubTabs.activeTab === 'currentReadPanel' && <CurrentReadPanel bookclubId={bookclub.id}  />}
-
-                        {bookclubTabs.activeTab === 'bookshelfPanel' && <BookshelfPanel tabs={bookclubTabs} bookshelves={bookshelves ?? []} />}
-                            
-                            
-
-                    </DashboardMain>
-                    <DashboardNav mobileNav={mobileNav}>
-                        <CurrentReadButton dispatchTabs={dispatchTabs} tabs={bookclubTabs} books={books ?? []} bookclubId={bookclub.id}/>
-                        <InviteButton bookclub={bookclub}/>
-                        <BookshelfButton>
-                            <NavbarDivider />
-                            <BookshelfTabs tabs={bookclubTabs} dispatchTabs={dispatchTabs} bookshelves={bookshelves ?? []}/>
-                            <CreateBookclubBookshelfModal bookclub={bookclub}/>
-                        </BookshelfButton>
-                    </DashboardNav>
-                </div>
-            )}
+            <BookclubHeader bookclub={bookclub}/>
+            <DashboardMain>
+                <OpenUserMobileNav mobileNav={mobileNav} navDispatch={navDispatch}><UserIcon aria-label='open bookclub mobile nav' /></OpenUserMobileNav>
+                {bookclubTabs.activeTab === 'currentReadPanel' && <CurrentReadPanel bookclubId={bookclub?.id}  />}
+                {bookclubTabs.activeTab === 'bookshelfPanel' && 
+                    <BookshelfPanel 
+                        tabs={bookclubTabs} 
+                        bookshelves={bookshelves ?? []} 
+                />}
+            </DashboardMain>
+            <DashboardNav mobileNav={mobileNav}>
+                <CloseUserMobileNav mobileNav={mobileNav} navDispatch={navDispatch}><CloseIcon aria-label='close bookclub mobile nav'/></CloseUserMobileNav>
+                <CurrentReadButton 
+                    dispatchTabs={dispatchTabs} 
+                    tabs={bookclubTabs} 
+                    books={books ?? []} 
+                    bookclubId={bookclub?.id}
+                />
+                <InviteButton bookclub={bookclub}/>
+                <BookshelfButton>
+                    <NavbarDivider />
+                    <BookshelfTabs 
+                        tabs={bookclubTabs} 
+                        dispatchTabs={dispatchTabs} 
+                        bookshelves={bookshelves ?? []}
+                    />
+                    <CreateBookclubBookshelfModal bookclub={bookclub}/>
+                </BookshelfButton>
+            </DashboardNav>
         </div>
     )
 }

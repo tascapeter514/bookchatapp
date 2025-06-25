@@ -43,9 +43,9 @@ export const LikeIcon = (props: IconProps) => <GrLike className='like-icon'  {..
 
 export const DislikeIcon = (props: IconProps) => <GrDislike className='dislike-icon'  {...props}/>
 
-export const UserIcon = (props: IconProps) => <FaUser className='user-icon' {...props} />
+export const UserIcon = (props: IconProps) => <FaUser className='user-icon' role='img' aria-label='user menu icon' {...props} />
 
-export const CloseIcon = (props: IconProps) => <IoIosCloseCircle className='close-icon' {...props} />
+export const CloseIcon = (props: IconProps) => <IoIosCloseCircle className='close-icon' role='img' aria-label='close menu icon' {...props} />
 
 export const CheckmarkIcon = (props: IconProps) => <ImCheckmark2 className='checkmark-icon' {...props}/>
 
