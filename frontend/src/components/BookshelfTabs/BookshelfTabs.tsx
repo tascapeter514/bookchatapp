@@ -52,7 +52,7 @@ const BookshelfTabs = ({tabs, bookshelves, dispatchTabs} : Props) => {
                     onClick={ () => dispatchTabs({type: 'SET_ACTIVE_TAB', payload: 'bookshelfPanel'})}
                 >
                     Bookshelves
-                    <RightDropDownIcon onClick={() => dispatchDropdown({type: 'TOGGLE_DROPDOWN'})} dropdown={dropdown} />
+                    <RightDropDownIcon data-testid="dropdown-toggle-icon" onClick={() => dispatchDropdown({type: 'TOGGLE_DROPDOWN'})} dropdown={dropdown} />
                 </a>
                 <BookshelfButtons tabs={tabs} bookshelves={bookshelves} dispatchTabs={dispatchTabs} />
             </BookshelfDropdown>

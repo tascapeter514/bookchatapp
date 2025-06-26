@@ -20,6 +20,7 @@ const BookshelfDropdown = ({children, dropdown}: BookshelfAccordionProps) => {
             <div className="dropdown-panel" >
                 <h2 id='dropdown-panel-heading' className='dropdown-panel-heading'>
                     <button
+                        data-testid='bookshelf-toggle'
                         className='dropdown-trigger'
                         aria-controls='dropdown-panel-content'
                         aria-expanded={dropdown.activePanel}
@@ -28,8 +29,9 @@ const BookshelfDropdown = ({children, dropdown}: BookshelfAccordionProps) => {
                         {firstChild}
                     </button>
                 </h2>
-                <div 
-                    className='dropdown-content' 
+                <button 
+                    className='dropdown-content'
+                    data-testid="dropdown-panel-content" 
                     id='dropdown-panel-content'
                     aria-labelledby='dropdown-panel-heading'
                     aria-hidden='true'
@@ -37,7 +39,7 @@ const BookshelfDropdown = ({children, dropdown}: BookshelfAccordionProps) => {
                 >
                     {secondChild}
                     
-                </div>
+                </button>
             </div>
         </div>
     )

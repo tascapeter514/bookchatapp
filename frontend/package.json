@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "vitest run --coverage"
+    "test": "vitest --coverage"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.6.1",
