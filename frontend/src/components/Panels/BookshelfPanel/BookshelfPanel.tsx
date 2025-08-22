@@ -35,11 +35,11 @@ const Bookshelves = ({bookshelves, tabs}: Props) => {
     )
 }
 
-const BookshelfPanel = ({bookshelves, tabs}: Props) => {
+const BookshelfPanel = ({bookshelves, tabs, ...props}: Props) => {
 
 
     return(
-        <section className='bookshelves-container' aria-labelledby='tab-1'>
+        <section className='bookshelves-container' aria-labelledby='tab-1' {...props}>
             <Header>Bookshelves</Header>
             <Bookshelves bookshelves={bookshelves} tabs={tabs}/>
         </section>

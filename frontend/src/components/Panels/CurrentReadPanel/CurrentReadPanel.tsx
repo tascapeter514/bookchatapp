@@ -15,7 +15,7 @@ interface Props {
 const PollVoteModalWithLogic = WithVotingLogic(WithAsync(PollVoteModal))
 
 
-const CurrentReadPanel = ({bookclubId}: Props) => {
+const CurrentReadPanel = ({bookclubId, ...props}: Props) => {
 
     const { data: poll } = useGetPollsQuery(bookclubId)
 
@@ -26,7 +26,7 @@ const CurrentReadPanel = ({bookclubId}: Props) => {
 
 
     return (
-        <div className="current-read-panel">
+        <div className="current-read-panel" {...props}>
             <Header>Current Read</Header>
             {poll?.id ? 
                 <>

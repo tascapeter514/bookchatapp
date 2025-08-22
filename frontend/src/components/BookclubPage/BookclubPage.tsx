@@ -57,7 +57,7 @@ const BookclubPage = () => {
             <div className="bookclub-dashboard-layout">
                 <DashboardMain>
                     <OpenUserMobileNav mobileNav={mobileNav} navDispatch={navDispatch}><UserIcon aria-label='open bookclub mobile nav' /></OpenUserMobileNav>
-                    {bookclubTabs.activeTab === 'currentReadPanel' && <CurrentReadPanel bookclubId={bookclub?.id}  />}
+                    {bookclubTabs.activeTab === 'currentReadPanel' && <CurrentReadPanel bookclubId={bookclub?.id} data-testid='bookclub-current-read-panel'  />}
                     {bookclubTabs.activeTab === 'bookshelfPanel' &&
                         <BookshelfPanel
                             data-testid='bookclub-bookshelf-panel'

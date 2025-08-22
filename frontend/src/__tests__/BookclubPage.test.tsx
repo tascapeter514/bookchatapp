@@ -7,6 +7,8 @@ import * as React from 'react';
 import { MemoryRouter } from "react-router-dom";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
+import { pollApi } from "../slices/pollApiSlice";
+
 
 // vi.mock("../reducers/tabsReducer", async () => {
 //   const actual = vi.importActual<typeof import("../reducers/tabsReducer")>("../reducers/tabsReducer");
@@ -42,14 +44,19 @@ vi.mock("../components/Modals/CreateBookclubBookshelfModal/CreateBookclubBookshe
 //   }
 // }))
 
+const activeTabMock = { current: 'bookshelfPanel' }
+
 vi.mock('../reducers/tabsReducer', () => ({
-  default: () =>
-    ({
-      activeTab: 'bookshelfPanel',
-      activeBookshelf: 'bookshelfTab1',
+    
+  default: () => {
+    console.log("OTHER MOCK TABS REDUCER IS FIRST IN FIRING")
+    return {
+      activeTab: activeTabMock.current,
+      activeBookshelf: 'bookshelfTab0',
       showNav: false,
-    })
-}))
+    }
+}
+  }))
 
 vi.mock('../reducers/mobileNavReducer', () => ({
   default: () => () => {
@@ -57,9 +64,19 @@ vi.mock('../reducers/mobileNavReducer', () => ({
   }
 }))
 
+// const createMockStore = () =>
+//   configureStore({
+//     reducer: () => ({}), // empty reducer, you don't need state here
+//   });
+
 const createMockStore = () =>
   configureStore({
-    reducer: () => ({}), // empty reducer, you don't need state here
+    reducer: {
+      [pollApi.reducerPath]: pollApi.reducer,
+      // Add other reducers if needed
+    },
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware().concat(pollApi.middleware),
   });
 
 
@@ -157,6 +174,54 @@ describe('BookclubPage', () => {
 
     })
 
+    it('does not render any panel when activeTab is empty and bookshelves/books are undefined', () => {
+        mockedUseBookclubData.mockReturnValue({
+            isLoading: false,
+            isError: false,
+            error: null,
+            bookclub: {
+            id: 1,
+            name: 'Test Club',
+            members: [],
+            administrator: 1,
+            currentRead: {},
+            cover_image: ''
+            },
+            bookshelves: undefined,
+            books: undefined,
+        });
+
+        renderWithProviders(<BookclubPage />);
+
+    expect(screen.queryByTestId('bookclub-bookshelf-panel')).toBeNull();
+    expect(screen.queryByTestId('bookclub-current-read-panel')).toBeNull();
+});
+
+    it ('does not render any panel when activeTab is empty and bookshelves/books are initialized as non-null', () => {
+                mockedUseBookclubData.mockReturnValue({
+            isLoading: false,
+            isError: false,
+            error: null,
+            bookclub: {
+            id: 1,
+            name: 'Test Club',
+            members: [],
+            administrator: 1,
+            currentRead: {},
+            cover_image: ''
+            },
+            bookshelves: [], // initialized
+            books: []         // initialized
+        });
+
+        renderWithProviders(<BookclubPage />);
+
+        expect(screen.queryByTestId('bookclub-bookshelf-panel')).toBeNull();
+        expect(screen.queryByTestId('bookclub-current-read-panel')).toBeNull();
+
+    })
+
+
     it("should render bookshelf links", async () => {
         mockedUseBookclubData.mockReturnValue({
             isLoading: false,
@@ -206,19 +271,7 @@ describe('BookclubPage', () => {
 
     it('should render <BookshelfPanel /> when activeTab is "bookshelfPanel"', async () => {
 
-        // vi.spyOn(React, 'useReducer').mockImplementation((reducer, initialArg) => {
-        //     if (typeof initialArg === 'object' && 'activeTab' in initialArg) {
-        //     return [
-        //         {
-        //         activeTab: 'bookshelfPanel',
-        //         activeBookshelf: 'bookshelfTab1',
-        //         showNav: false,
-        //         },
-        //         vi.fn()
-        //     ];
-        //     }
-        //     return [initialArg, vi.fn()];
-        // });
+        
 
         mockedUseBookclubData.mockReturnValue({
             isLoading: false,
@@ -269,6 +322,9 @@ describe('BookclubPage', () => {
         // )
 
         const panel = await screen.findByTestId('bookclub-bookshelf-panel')
+        
+
+
         expect(panel).not.toBeNull()
         // const bookshelvesHeader = await screen.findByRole('heading', {level: 1, name: /Bookshelves/i})
 
@@ -276,6 +332,46 @@ describe('BookclubPage', () => {
         // expect(bookshelvesHeader).not.toBeNull()
 
         
+
+    })
+
+    it('should render the current read panel when active tab is "currentReadPanel"', async () => {
+
+        vi.resetModules()
+
+        vi.doMock('../reducers/tabsReducer', () => ({
+            default: () => {
+                console.log('MOCKED TABS REDUCER FIRED')
+                return {
+                    activeTab: 'currentReadPanel',
+                    activeBookshelf: '',
+                    showNav: false
+                }
+            }
+   
+        }))
+
+        const { default: BookclubPage } = await import("../components/BookclubPage/BookclubPage");
+
+        renderWithProviders(<BookclubPage />);
+
+        const bookshelfButton = await screen.findByText('Bookshelves')
+        await userEvent.click(bookshelfButton)
+
+        const dropdownContent = await screen.findByTestId('dropdown-panel-content') // or any wrapper
+        const links = within(dropdownContent).getAllByRole('link', {name: /Fiction/i, hidden: true})
+
+        const fictionLink = links.find(link => link.getAttribute('href') === '#fiction')
+
+        if (!fictionLink) {
+            throw new Error('Fiction link not found')
+        }
+
+        await userEvent.click(fictionLink)
+
+        const panel = await screen.findByTestId('bookclub-current-read-panel');
+        expect(panel).not.toBeNull()
+
 
     })
 })
