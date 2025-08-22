@@ -15,10 +15,11 @@ const useGetAuthor = (id: number) => {
     useEffect(() => {
 
         const fetchAuthor = async () => {
+            
 
             try {
 
-                const response = await getAuthor(Number(id));
+                const response = await getAuthor(id);
                 console.log('author page response:', response)
                 dispatch(loadAuthor({
                     ...response.data,

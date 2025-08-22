@@ -1,56 +1,31 @@
-import { useGetAuthorMutation } from '../../slices/authorApiSlice'
+
 import AuthorHeader from '../AuthorHeader/AuthorHeader'
-import { useDispatch, useSelector } from 'react-redux'
-import { loadAuthor } from '../../slices/authorSlice'
+import ErrorMessage from '../Messages/ErrorMessage/ErrorMessage'
 import LoadSpinner from '../LoadSpinner/LoadSpinner'
 import AuthorBooks from '../AuthorBooks/AuthorBooks'
-import { RootState } from '../../store/store'
 import {useParams } from 'react-router-dom'
-import {  useEffect } from 'react'
+import useGetAuthor from '../../hooks/useGetAuthor'
 import './AuthorPage.css'
 
 
 const AuthorPage = () => {
 
     const {id} = useParams();
-    const dispatch = useDispatch()
-    const [getAuthor, {isLoading }] = useGetAuthorMutation()
-    const { author } = useSelector((state: RootState) => state.author)
+    console.log('author id:', id)
 
-    const handleGetAuthor = async () => {
+    const {author, isLoading, error} = useGetAuthor(Number(id))
 
-        try {
-            const response = await getAuthor(Number(id))
-            console.log('author page response:', response)
-            dispatch(loadAuthor({
-                ...response.data,
-                authorPhoto: response.data.author_photo,
-                birthDate: response.data.birth_date,
-                deathDate: response.data.death_date
-
-            }))
-
-        } catch(err: any) {
-            console.error('Error fetching author data')
-        }
-
-    }
-
-    useEffect (() => {
-
-        handleGetAuthor()
-
-    }, [id])
-
-
-
-    console.log('author page author:', author)
     return(
 
         <div className="author-page">
+            {error && <ErrorMessage>{error as string}</ErrorMessage>}
             {isLoading && <LoadSpinner />}
-            <AuthorHeader author={author}/>
-            <AuthorBooks author={author} />
+            {author.name && (
+                <>
+                    <AuthorHeader author={author}/>
+                    <AuthorBooks author={author} />
+                </>
+            )}
         </div>
 
     )
