@@ -20,7 +20,6 @@ const useGetAuthor = (id: number) => {
             try {
 
                 const response = await getAuthor(id);
-                console.log('author page response:', response)
                 dispatch(loadAuthor({
                     ...response.data,
                     authorPhoto: response.data.author_photo,

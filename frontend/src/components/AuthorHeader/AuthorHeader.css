@@ -11,7 +11,7 @@
 
 
 .author-cover {
-    /* width: 100%; */
+    width: 100%;
     max-width: 500px;
     max-height: 500px;
     object-fit: contain;
@@ -23,6 +23,7 @@
 .author-info {
     padding: 2em;
     width: 100%;
+    flex: 1 1 500px;
     max-width: 600px;
     display: flex;
     flex-direction: column;
@@ -30,7 +31,7 @@
     text-align: left;
     background-color: white;
     border: 1px solid black;
-    /* overflow: scroll; */
+
 }
 
 .author-info> h1 {
@@ -55,3 +56,12 @@
 .author-info > p > span {
     font-weight: 700;
 }
+
+@media (max-width: 1100px) {
+    .author-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+

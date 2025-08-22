@@ -9,6 +9,7 @@ interface Props {
 
 
 const AuthorHeader = ({author}: Props) => {
+    console.log('author bio:', author.bio)
 
     return(
         <div className="author-header">
@@ -20,7 +21,8 @@ const AuthorHeader = ({author}: Props) => {
                 <hr />
                 <h3>ABOUT THE AUTHOR </h3>
                                 
-                <Accordion>{author.bio}</Accordion>
+                {author.bio === 'none' ? 
+                   author.bio :  <Accordion>{author.bio}</Accordion>}
                 <hr />
             </article>
         </div>

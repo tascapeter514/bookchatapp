@@ -1,4 +1,4 @@
-.author-books{
+.author-books {
     display: flex;
     padding: 2em;
     flex-direction: column;
@@ -29,7 +29,8 @@
     display: flex;
     flex-direction: column;
     gap: .5rem;
-    border: 1px solid red;
+
+    
 
 }
 

@@ -11,9 +11,11 @@ import './AuthorPage.css'
 const AuthorPage = () => {
 
     const {id} = useParams();
-    console.log('author id:', id)
+
 
     const {author, isLoading, error} = useGetAuthor(Number(id))
+
+ 
 
     return(
 
