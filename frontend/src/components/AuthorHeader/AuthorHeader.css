@@ -9,7 +9,6 @@
 }
 
 
-
 .author-cover {
     width: 100%;
     max-width: 500px;
@@ -23,7 +22,7 @@
 .author-info {
     padding: 2em;
     width: 100%;
-    flex: 1 1 500px;
+
     max-width: 600px;
     display: flex;
     flex-direction: column;
@@ -62,6 +61,23 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        
+
+    }
+
+
+    
+}
+
+@media (max-width: 600px) {
+    .author-header {
+        width: 100%;
+        padding: .5em;
+    }
+
+    .author-info {
+        padding: .5em;
+        flex: 1 1 300px;
     }
 }
 
