@@ -9,11 +9,17 @@ interface Props {
 
 
 const AuthorHeader = ({author}: Props) => {
-    console.log('author bio:', author.bio)
+    
 
     return(
         <div className="author-header">
-            <img src={author.authorPhoto} alt={`Photo of ${author.name}`} className="author-cover" fetchPriority='high' width='500' height='500' />
+            <img src={author.authorPhoto} 
+                alt={`Photo of ${author.name}`} 
+                className="author-cover" 
+                fetchPriority='high' 
+                width='500' 
+                height='500' 
+            />
             <article className="author-info">
                 <h1>{author.name}</h1>
                 <p>Born on <span>{author.birthDate}</span></p>
