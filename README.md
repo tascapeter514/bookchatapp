@@ -2,7 +2,7 @@
 ![bookchat-search](./assets/bookchat-search.png)
 This repository contains the source code for Bookchat, a bookclub app for lovers of the written word. Bookchat was designed to facilitate community learning around a shared love of books for users from across the globe. The app was built with Typescript, React, and Django.
 
-[Introduction](#introduction) • [Installation](#installation) • [Documentation](#documentation) • [Upcoming Features](#Upcoming Features) • [Issue?](#issue)
+[Introduction](#introduction) • [Installation](#installation) • [Documentation](#documentation) • [Upcoming Features](#upcoming-features) • [Issue?](#issue)
 
 ## Introduction
 
